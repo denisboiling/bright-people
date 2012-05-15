@@ -1,10 +1,5 @@
 BrightPeople::Application.routes.draw do
-  get "organizations/index"
-
-  get "organizations/new"
-
-  get "organizations/create"
-
+  resources :organizations
   resources :activities
   # The priority is based upon order of creation:
   # first created -> highest priority.
