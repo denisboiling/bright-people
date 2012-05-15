@@ -2,6 +2,8 @@ source :rubygems
 
 gem 'rails', '3.2.3'
 gem 'pg'
+
+gem 'omniauth', '1.1.0'
 gem 'devise', '2.0.4'
 
 group :assets do
