@@ -1,4 +1,17 @@
-desc "Fill database with sample data"
+desc "Fill database with sample organizations"
+task :populate => :environment do
+  Rake::Task['db:reset'].invoke
+  5.times do |n|
+    title = Faker::Lorem.words(1).join(" ").to_s()
+    metro_station = Faker::Lorem.words(1).join(" ").to_s();
+    address = Faker::Lorem.words(3).join(" ").to_s();
+    Organization.create!(title: title,
+                address: address,
+                metro_station: metro_station)
+  end
+end
+
+desc "Fill database with sample activities"
 task :populate => :environment do
   Rake::Task['db:reset'].invoke
   99.times do |n|
@@ -8,9 +21,8 @@ task :populate => :environment do
     address = Faker::Lorem.words(3).join(" ").to_s();
     Activity.create!(title: title,
                 description: description,
-                organization_id: 1,
+                organization_id: 1+rand(5),
                 address: address,
                 metro_station: metro_station)
   end
 end
-
