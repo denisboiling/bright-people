@@ -38,5 +38,6 @@ gem 'jquery-rails'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :development, :test do
-    gem 'faker'
+  gem 'faker'
+  gem 'factory_girl_rails'
 end
