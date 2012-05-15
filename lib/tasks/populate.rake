@@ -13,8 +13,7 @@ end
 
 desc "Fill database with sample activities"
 task :populate => :environment do
-  Rake::Task['db:reset'].invoke
-  99.times do |n|
+  36.times do |n|
     title = Faker::Lorem.words(1).join(" ").to_s()
     description = Faker::Lorem.sentences(2).join(" ")
     metro_station = Faker::Lorem.words(1).join(" ").to_s();
