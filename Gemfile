@@ -18,9 +18,12 @@ group :development do
   gem 'letter_opener'
 end
 
+group :test do
+  gem 'cucumber-rails'
+end
+
 group :development, :test do
   gem 'rspec-rails'
-  gem 'cucumber-rails'
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'guard-rspec'
