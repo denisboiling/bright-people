@@ -27,10 +27,7 @@ group :development, :test do
   gem 'quiet_assets'
   unless ENV['JENKINS']
     gem 'thin'
-    gem 'launchy'
-    gem 'linecache19'
-    gem 'ruby-debug-base19'
-    gem 'ruby-debug19'
+    gem 'debugger'
   else
     gem 'headless'
   end
