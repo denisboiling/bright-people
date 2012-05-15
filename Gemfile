@@ -2,6 +2,7 @@ source :rubygems
 
 gem 'rails', '3.2.3'
 gem 'pg'
+gem 'devise', '2.0.4'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -28,9 +29,7 @@ group :development, :test do
   unless ENV['JENKINS']
     gem 'thin'
     gem 'launchy'
-    gem 'linecache19'
-    gem 'ruby-debug-base19'
-    gem 'ruby-debug19'
+    gem 'debugger'
   else
     gem 'headless'
   end
