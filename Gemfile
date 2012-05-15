@@ -2,6 +2,7 @@ source :rubygems
 
 gem 'rails', '3.2.3'
 gem 'pg'
+gem 'devise', '2.0.4'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -29,6 +30,7 @@ group :development, :test do
   gem 'database_cleaner'
   unless ENV['JENKINS']
     gem 'thin'
+    gem 'launchy'
     gem 'debugger'
   else
     gem 'headless'
