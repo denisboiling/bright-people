@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120516122039) do
+ActiveRecord::Schema.define(:version => 20120516143348) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(:version => 20120516122039) do
     t.string   "encrypted_password"
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["email"], :name => "index_users_on_email"
   add_index "users", ["facebook_id"], :name => "index_users_on_facebook_id"
   add_index "users", ["odnoklassniki_id"], :name => "index_users_on_odnoklassniki_id"
   add_index "users", ["vkontakte_id"], :name => "index_users_on_vkontakte_id"
