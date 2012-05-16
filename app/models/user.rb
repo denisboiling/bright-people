@@ -6,12 +6,10 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :remember_me
 
-  validates :role, :presence => true
+  validates :role, presence: true
 
   # Callbacks
-  before_create :add_default_role
-
-  def add_default_role
+  before_validation(on: :create) do
     self.role = Role.user
   end
 
