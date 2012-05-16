@@ -13,7 +13,8 @@ class User < ActiveRecord::Base
     self.role = Role.user
   end
 
-  attr_accessible :email, :remember_me, :vkontakte_id, :password
+  attr_accessible :email, :remember_me, :vkontakte_id, :password,
+  :password_confirmation
 
   def self.find_or_create_for_vkontakte(data)
     user_id = data.extra.raw_info.uid.to_s
