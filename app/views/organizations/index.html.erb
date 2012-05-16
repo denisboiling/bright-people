@@ -1,0 +1,6 @@
+<% @organizations.each do |organization| %>
+<h1><%= organization.title %></h1>
+  <% organization.activities.each do |activity| %>
+    <p><%= activity.title %></p>
+  <% end %>
+<% end %>

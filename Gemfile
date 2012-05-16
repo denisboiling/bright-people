@@ -4,7 +4,8 @@ gem 'rails', '3.2.3'
 gem 'pg'
 
 gem 'omniauth', '1.1.0'
-gem 'devise', '2.0.4'
+gem 'omniauth-vkontakte'
+gem 'devise', '2.1.0'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -27,6 +28,8 @@ group :test do
 end
 
 group :development, :test do
+  gem 'faker'
+  gem 'factory_girl_rails'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'ffaker'
