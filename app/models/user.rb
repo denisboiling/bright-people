@@ -13,7 +13,8 @@ class User < ActiveRecord::Base
     self.role = Role.user
   end
 
-  attr_accessible :email, :remember_me, :vkontakte_id, :password
+  attr_accessible :email, :remember_me, :password,
+                  :vkontakte_id, :facebook_id,
 
   def self.find_or_create_for_vkontakte(data)
     user_id = data.extra.raw_info.uid.to_s
@@ -21,7 +22,39 @@ class User < ActiveRecord::Base
     if user
       user
     else
-      self.create! vkontakte_id: user_id, password: Devise.friendly_token[0,8]
+      self.create! vkontakte_id: user_id
     end
+  end
+  
+  def self.find_or_create_for_facebook(data)
+    user_id = data.extra.raw_info.id.to_s
+    user = find_by_facebook_id(user_id)
+    if user
+      user
+    else
+      self.create! facebook_id: user_id
+    end
+  end
+  
+  def self.find_or_create_for_odnoklassniki(data)
+    user_id = data.extra.raw_info.id.to_s
+    user = find_by_odnoklassniki_id(user_id)
+    if user
+      user
+    else
+      self.create! odnoklassniki_id: user_id
+    end
+  end
+  
+  def admin?
+    role and role.name == 'admin'
+  end
+  
+  def password_required?
+    admin?
+  end
+  
+  def email_required?
+    false
   end
 end
