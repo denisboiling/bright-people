@@ -4,4 +4,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     sign_in @user
     redirect_to root_url
   end
+  
+  def facebook
+    @user = User.find_or_create_for_facebook(request.env["omniauth.auth"])
+    sign_in @user
+    redirect_to root_url
+  end
 end
