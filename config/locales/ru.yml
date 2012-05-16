@@ -1,0 +1,6 @@
+ru:
+  active_admin:
+    
+  activerecord:
+    models:
+      user: Пользователи

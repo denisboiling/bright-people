@@ -13,7 +13,6 @@ Spork.prefork do
   require 'cucumber/rails'
   require 'cucumber/rails/world'
   require 'factory_girl/step_definitions'
-  require 'email_spec/cucumber'
 
   Cucumber::Rails::World.use_transactional_fixtures = false
 
