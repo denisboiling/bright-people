@@ -29,7 +29,8 @@ CREATE TABLE activities (
     metro_station_id integer,
     organization_id integer,
     users_rating double precision,
-    experts_rating double precision
+    experts_rating double precision,
+    is_educational boolean
 );
 
 
