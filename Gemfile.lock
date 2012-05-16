@@ -84,8 +84,6 @@ GEM
       railties (>= 3.0.0)
     faker (1.0.1)
       i18n (~> 0.4)
-<<<<<<< .merge_file_piLPLT
-=======
     ffi (1.0.11)
     gherkin (2.10.0)
       json (>= 1.4.6)
@@ -101,7 +99,6 @@ GEM
       guard (>= 0.10.0)
       spork (>= 0.8.4)
     hashie (1.2.0)
->>>>>>> .merge_file_agHzJQ
     hike (1.2.1)
     i18n (0.6.0)
     journey (1.0.3)
@@ -217,10 +214,8 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
-<<<<<<< .merge_file_piLPLT
   factory_girl_rails
   faker
-=======
   cucumber-rails
   database_cleaner
   debugger
@@ -230,7 +225,6 @@ DEPENDENCIES
   guard-cucumber
   guard-rspec
   guard-spork
->>>>>>> .merge_file_agHzJQ
   jquery-rails
   launchy
   letter_opener
