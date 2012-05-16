@@ -36,6 +36,16 @@ class User < ActiveRecord::Base
     end
   end
   
+  def self.find_or_create_for_odnoklassniki(data)
+    user_id = data.extra.raw_info.id.to_s
+    user = find_by_odnoklassniki_id(user_id)
+    if user
+      user
+    else
+      self.create! odnoklassniki_id: user_id
+    end
+  end
+  
   def admin?
     role and role.name == 'admin'
   end
