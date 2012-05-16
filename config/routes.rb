@@ -7,5 +7,8 @@ BrightPeople::Application.routes.draw do
   resources :organizations
   resources :activities
 
+  resources :organizations
+  resources :activities
+
   root :to => 'home#show'
 end
