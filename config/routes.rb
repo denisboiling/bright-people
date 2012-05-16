@@ -1,4 +1,5 @@
 BrightPeople::Application.routes.draw do
+  root :to => 'home#show'
   resources :organizations
   resources :activities
 
