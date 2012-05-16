@@ -1,6 +1,9 @@
 ru:
-  active_admin:
-    
   activerecord:
     models:
       user: Пользователи
+    attributes:
+      organization:
+        title: Название
+        address: Адрес
+        metro_station: Станция метро
