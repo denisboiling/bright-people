@@ -4,6 +4,7 @@ gem 'rails', '3.2.3'
 gem 'pg'
 
 gem 'omniauth', '1.1.0'
+gem 'omniauth-vkontakte'
 gem 'devise', '2.1.0'
 
 group :assets do
