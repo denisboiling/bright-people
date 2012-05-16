@@ -24,4 +24,8 @@ class User < ActiveRecord::Base
       self.create! vkontakte_id: user_id, password: Devise.friendly_token[0,8]
     end
   end
+  
+  def email_required?
+    false
+  end
 end
