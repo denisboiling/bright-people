@@ -5,7 +5,7 @@ class CreateOrganizations < ActiveRecord::Migration
       t.timestamps
       t.string :title
       t.string :address
-      t.string :metro_station
+      t.integer :metro_station_id
     end
   end
 end
