@@ -21,7 +21,15 @@ group :development do
   gem 'letter_opener'
 end
 
+# To use ActiveModel has_secure_password
+# gem 'bcrypt-ruby', '~> 3.0.0'
+
+# To use debugger
+# gem 'ruby-debug19', :require => 'ruby-debug'
+
 group :development, :test do
+  gem 'faker'
+  gem 'factory_girl_rails'
   gem 'rspec-rails'
   gem 'cucumber-rails'
   gem 'factory_girl_rails'
