@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120515142605) do
+ActiveRecord::Schema.define(:version => 20120516071329) do
 
   create_table "users", :force => true do |t|
     t.string   "email",               :default => "", :null => false
@@ -23,8 +23,14 @@ ActiveRecord::Schema.define(:version => 20120515142605) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
+    t.string   "facebook_id"
+    t.string   "vkontakte_id"
+    t.string   "odnoklassniki_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["facebook_id"], :name => "index_users_on_facebook_id"
+  add_index "users", ["odnoklassniki_id"], :name => "index_users_on_odnoklassniki_id"
+  add_index "users", ["vkontakte_id"], :name => "index_users_on_vkontakte_id"
 
 end
