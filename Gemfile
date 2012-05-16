@@ -6,6 +6,7 @@ gem 'pg'
 gem 'omniauth', '1.1.0'
 gem 'omniauth-vkontakte'
 gem 'omniauth-facebook'
+gem 'omniauth-odnoklassniki'
 gem 'devise', '2.1.0'
 
 group :assets do

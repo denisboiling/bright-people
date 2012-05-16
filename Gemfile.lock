@@ -168,6 +168,9 @@ GEM
     omniauth-oauth2 (1.0.2)
       oauth2 (~> 0.6.0)
       omniauth (~> 1.0)
+    omniauth-odnoklassniki (0.0.1)
+      omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.0)
     omniauth-vkontakte (1.0.6)
       multi_json
       omniauth (~> 1.0)
@@ -283,6 +286,7 @@ DEPENDENCIES
   letter_opener
   omniauth (= 1.1.0)
   omniauth-facebook
+  omniauth-odnoklassniki
   omniauth-vkontakte
   pg
   quiet_assets
