@@ -31,7 +31,7 @@ module BrightPeople
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
+    config.i18n.default_locale = :ru
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
@@ -55,5 +55,13 @@ module BrightPeople
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # We should use sql scheme, because rb scheme not support ltree type
+    config.active_record.schema_format = :sql
+
+    config.generators do |g|
+      g.test_framework :rspec, :fixture => true, :views => false
+      g.stylesheets false
+    end
   end
 end

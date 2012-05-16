@@ -1,6 +1,8 @@
 BrightPeople::Application.routes.draw do
   resources :organizations
   resources :activities
+
+devise_for :users
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
