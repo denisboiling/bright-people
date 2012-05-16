@@ -1,6 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    GeoRuby (1.3.4)
     actionmailer (3.2.3)
       actionpack (= 3.2.3)
       mail (~> 2.4.4)
@@ -230,6 +231,9 @@ GEM
       libwebsocket (~> 0.1.3)
       multi_json (~> 1.0)
       rubyzip
+    spatial_adapter (1.2.0)
+      GeoRuby (>= 1.3.0)
+      activerecord (>= 2.2.2)
     spork (0.9.1)
     sprockets (2.1.3)
       hike (~> 1.2)
@@ -286,6 +290,7 @@ DEPENDENCIES
   rails (= 3.2.3)
   rspec-rails
   sass-rails (~> 3.2.3)
+  spatial_adapter
   therubyracer
   thin
   uglifier (>= 1.0.3)
