@@ -16,6 +16,7 @@ end
 gem 'jquery-rails'
 gem 'unicorn'
 gem 'activeadmin'
+gem 'cancan'
 
 group :development do
   gem 'letter_opener'

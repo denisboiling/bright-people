@@ -15,7 +15,7 @@ Spork.prefork do
   require 'rspec/rails'
   require 'rspec/autorun'
   require 'database_cleaner'
-  require 'faker'
+  require 'ffaker'
 
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
