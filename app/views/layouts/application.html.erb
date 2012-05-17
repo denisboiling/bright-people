@@ -9,7 +9,9 @@
 <body>
   
   <div class="hidden">
-    <%= render 'users/email_form', user: User.new %>
+    <div id="email_dialog">
+      <%= render 'users/email_form', user: User.new %>
+    </div>
   </div>
 
 <%= yield %>
