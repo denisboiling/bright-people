@@ -24,6 +24,9 @@ gem 'cancan'
 gem 'spatial_adapter'
 gem 'russian'
 
+# Because this need for samples
+gem 'ffaker'
+
 group :development do
   gem 'letter_opener'
 end
@@ -33,11 +36,8 @@ group :test do
 end
 
 group :development, :test do
-  gem 'faker'
-  gem 'factory_girl_rails'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'ffaker'
   gem 'guard-rspec'
   gem 'guard-cucumber'
   gem 'guard-spork'

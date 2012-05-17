@@ -1,0 +1,5 @@
+<% 1.upto(10).each do |i| %>
+user_<%= i %>:
+  email: <%= Faker::Internet.email %>
+  role: user
+<% end %>
