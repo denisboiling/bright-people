@@ -6,4 +6,6 @@ class Activity < ActiveRecord::Base
   validates :organization_id, presence: true
 
   belongs_to :organization
+  has_many :activity_direction_relations
+  has_many :direction_tags, through: :activity_direction_relations
 end

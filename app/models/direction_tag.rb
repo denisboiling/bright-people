@@ -1,3 +1,4 @@
 class DirectionTag < ActiveRecord::Base
-  # attr_accessible :title, :body
+  has_many :activity_direction_relations
+  has_many :activities, through: :activity_direction_relations
 end
