@@ -4,7 +4,7 @@ class Organization < ActiveRecord::Base
   validates :title, presence: true
   validates :address, presence: true
   validates :metro_station, presence: true
-  
+
   has_many :activities
   belongs_to :metro_station
 end

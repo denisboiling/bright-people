@@ -6,7 +6,9 @@ class Activity < ActiveRecord::Base
   validates :title, presence: true
   validates :description, presence: true
   validates :organization_id, presence: true
-  
+
   belongs_to :organization
   belongs_to :metro_station
+  has_many :activity_direction_relations
+  has_many :direction_tags, through: :activity_direction_relations
 end

@@ -7,6 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  
+  <div class="hidden">
+    <div id="email_dialog">
+      <%= render 'users/email_form', user: User.new %>
+    </div>
+  </div>
 
 <%= yield %>
 

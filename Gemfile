@@ -4,7 +4,10 @@ gem 'rails', '3.2.3'
 gem 'pg'
 
 gem 'omniauth', '1.1.0'
-gem 'devise', '2.0.4'
+gem 'omniauth-vkontakte'
+gem 'omniauth-facebook'
+gem 'omniauth-odnoklassniki'
+gem 'devise', '2.1.0'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -14,25 +17,25 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'jquery-ui-themes'
 gem 'unicorn'
+gem 'activeadmin'
+gem 'cancan'
 
 group :development do
   gem 'letter_opener'
 end
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
+group :test do
+  gem 'cucumber-rails'
+end
 
 group :development, :test do
   gem 'faker'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
-  gem 'cucumber-rails'
   gem 'factory_girl_rails'
-  gem 'faker'
+  gem 'ffaker'
   gem 'guard-rspec'
   gem 'guard-cucumber'
   gem 'guard-spork'
