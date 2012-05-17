@@ -17,6 +17,7 @@ ActiveAdmin.register Organization do
     f.inputs 'Основное' do
       f.input :title
       f.input :address
+      f.input :metro_station, as: :select, collection: MetroStation.all
     end
     f.inputs 'Карта' do
       f.input :coords, as: :hidden, input_html: { class: 'hidden_coords'}
@@ -26,7 +27,7 @@ ActiveAdmin.register Organization do
   end
 
   show do
-    attributes_table :title, :address, :created_at, :updated_at
+    attributes_table :title, :address, :created_at, :updated_at, :metro_station
 
     panel 'Карта' do
       form do |f|

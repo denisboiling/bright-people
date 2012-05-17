@@ -1,0 +1,7 @@
+<% 1.upto(10).each do |i| %>
+org_<%= i %>:
+  id: <%= i %>
+  title: <%= Faker::Lorem.words.join(' ') %>
+  address: <%= Faker::Address.street_address %>
+  metro_station_id: <%= rand(6) + 1 %>
+<% end %>

@@ -1,0 +1,11 @@
+<% 1.upto(20).each do |i| %>
+activity_<%= i %>:
+  title: <%= Faker::Lorem.words.join(' ') %>
+  description: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
+  organization_id: <%= rand(10) + 1 %>
+  users_rating: <%= rand(5) + 1 %>
+  experts_rating: <%= rand(5) + 1 %>
+  is_educational: <%= rand(2) == 1 ? true : false %>
+  address: <%= Faker::Address.street_address %>
+  metro_station_id: <%= rand(6) + 1 %>
+<% end %>
