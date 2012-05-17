@@ -1,0 +1,23 @@
+pobdelskogo:
+  id: 1  
+  title: Улица Подбельского
+
+cherkizovskaya:
+  id: 2  
+  title: Черкизовская
+
+sokolniki:
+  id: 3  
+  title: Сокольники
+
+krasnoselskaya:
+  id: 4  
+  title: Красносельская
+
+komsomolskaya:
+  id: 5  
+  title: Комсомольская
+
+lunyanka:
+  id: 6
+  title: Лубянка  
