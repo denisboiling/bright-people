@@ -1,9 +1,12 @@
 class Activity < ActiveRecord::Base
-  attr_accessible :title, :description, :organization_id, :rating, :metro_station, :address
+  include LocationExt
+
+  attr_accessible :title, :description, :organization_id, :rating,
+  :address, :users_rating, :experts_rating
 
   validates :title, presence: true
   validates :description, presence: true
-  validates :organization_id, presence: true
+  validates :organization, presence: true
 
   belongs_to :organization
 end

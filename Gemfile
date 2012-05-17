@@ -19,6 +19,7 @@ gem 'unicorn'
 gem 'activeadmin'
 gem 'cancan'
 gem 'spatial_adapter'
+gem 'russian'
 
 group :development do
   gem 'letter_opener'

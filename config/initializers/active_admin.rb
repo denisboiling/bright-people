@@ -4,6 +4,9 @@ ActiveAdmin.setup do |config|
   config.current_user_method = :current_admin_user
   config.logout_link_path = :destroy_admin_user_session_path
 
+  config.register_javascript '//api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU'
+  config.register_javascript 'edit_map'
+
   config.before_filter :set_admin_locale
 
   def set_admin_locale

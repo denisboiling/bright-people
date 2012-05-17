@@ -7316,15 +7316,15 @@ CREATE TABLE active_admin_comments (
 
 CREATE TABLE activities (
     id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
     title character varying(255),
-    description text,
     address character varying(255),
-    metro_station character varying(255),
+    description text,
     organization_id integer,
-    users_rating double precision,
-    experts_rating double precision
+    users_rating double precision DEFAULT 0 NOT NULL,
+    experts_rating double precision DEFAULT 0 NOT NULL,
+    location geography(Point,4326),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -7430,7 +7430,6 @@ CREATE TABLE organizations (
     id integer NOT NULL,
     title character varying(255),
     address character varying(255),
-    metro_station character varying(255),
     location geography(Point,4326),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-ActiveAdmin.register Organization do
-  menu :label => 'Организации'
+ActiveAdmin.register Activity do
+  menu :label => 'Кружки'
 
   filter :title
 
@@ -8,6 +8,8 @@ ActiveAdmin.register Organization do
     id_column
     column :title
     column :address
+    column :users_rating
+    column :experts_rating
     column :created_at
     column :updated_at
     default_actions
@@ -15,8 +17,12 @@ ActiveAdmin.register Organization do
 
   form do |f|
     f.inputs 'Основное' do
+      f.input :organization, as: :select, collection: Organization.all
       f.input :title
       f.input :address
+      f.input :description, input_html: { size: 10 }
+      f.input :users_rating
+      f.input :experts_rating
     end
     f.inputs 'Карта' do
       f.input :coords, as: :hidden, input_html: { class: 'hidden_coords'}
@@ -26,15 +32,15 @@ ActiveAdmin.register Organization do
   end
 
   show do
-    attributes_table :title, :address, :created_at, :updated_at
+    attributes_table :id, :title, :address, :description, :users_rating, :experts_rating,
+    :created_at, :updated_at
 
     panel 'Карта' do
       form do |f|
-        input class: 'hidden_coords', value: organization.coords, type: 'hidden'
+        input class: 'hidden_coords', value: activity.coords, type: 'hidden'
       end
       div id: 'edit_map' do
       end
     end
   end
-
 end

@@ -1,9 +1,22 @@
 ru:
+  active_admin:
+    create_model: "Новый %{model}"
   activerecord:
     models:
       user: Пользователи
+      organization: Организация
+      activity: Кружки
     attributes:
       organization:
         title: Название
         address: Адрес
         metro_station: Станция метро
+        created_at: Дата создания
+        updated_at: Дата обновления
+      activity:
+        title: Название
+        address: Адрес
+        description: Описание
+        users_rating: Рейтинг пользователей
+        experts_rating: Рейтинг экспертов
+        organization: Организация
