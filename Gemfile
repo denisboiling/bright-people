@@ -23,6 +23,7 @@ gem 'activeadmin'
 gem 'cancan'
 gem 'spatial_adapter'
 gem 'russian'
+gem 'paperclip'
 
 # Because this need for samples
 gem 'ffaker'

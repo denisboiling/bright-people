@@ -7503,6 +7503,42 @@ ALTER SEQUENCE direction_tags_id_seq OWNED BY direction_tags.id;
 
 
 --
+-- Name: experts; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE experts (
+    id integer NOT NULL,
+    name character varying(255),
+    description text,
+    photo_file_name character varying(255),
+    photo_content_type character varying(255),
+    photo_file_size integer,
+    photo_updated_at timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: experts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE experts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: experts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE experts_id_seq OWNED BY experts.id;
+
+
+--
 -- Name: geography_columns; Type: VIEW; Schema: public; Owner: -
 --
 
@@ -7725,6 +7761,13 @@ ALTER TABLE ONLY direction_tags ALTER COLUMN id SET DEFAULT nextval('direction_t
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY experts ALTER COLUMN id SET DEFAULT nextval('experts_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY metro_stations ALTER COLUMN id SET DEFAULT nextval('metro_stations_id_seq'::regclass);
 
 
@@ -7795,6 +7838,14 @@ ALTER TABLE ONLY app_configs
 
 ALTER TABLE ONLY direction_tags
     ADD CONSTRAINT direction_tags_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: experts_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY experts
+    ADD CONSTRAINT experts_pkey PRIMARY KEY (id);
 
 
 --
@@ -7963,3 +8014,5 @@ INSERT INTO schema_migrations (version) VALUES ('20120516143348');
 INSERT INTO schema_migrations (version) VALUES ('20120517091510');
 
 INSERT INTO schema_migrations (version) VALUES ('20120517092732');
+
+INSERT INTO schema_migrations (version) VALUES ('20120517130306');

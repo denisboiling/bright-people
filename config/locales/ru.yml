@@ -6,6 +6,7 @@ ru:
       user: Пользователи
       organization: Организация
       activity: Кружки
+      expert: Экспертный совет
     attributes:
       organization:
         title: Название
@@ -20,3 +21,6 @@ ru:
         users_rating: Рейтинг пользователей
         experts_rating: Рейтинг экспертов
         organization: Организация
+      experts:
+        name: Имя
+        description: Описание

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ActiveAdmin.register Activity do
-  menu :label => 'Кружки'
+  menu label: 'Кружки'
 
   filter :title
 
