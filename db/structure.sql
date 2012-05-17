@@ -7326,7 +7326,8 @@ CREATE TABLE activities (
     metro_station_id integer,
     is_educational boolean,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    age_tag_id integer
 );
 
 
@@ -7438,6 +7439,38 @@ CREATE SEQUENCE admin_users_id_seq
 --
 
 ALTER SEQUENCE admin_users_id_seq OWNED BY admin_users.id;
+
+
+--
+-- Name: age_tags; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE age_tags (
+    id integer NOT NULL,
+    start_year integer,
+    end_year integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: age_tags_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE age_tags_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: age_tags_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE age_tags_id_seq OWNED BY age_tags.id;
 
 
 --
@@ -7747,6 +7780,13 @@ ALTER TABLE ONLY admin_users ALTER COLUMN id SET DEFAULT nextval('admin_users_id
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY age_tags ALTER COLUMN id SET DEFAULT nextval('age_tags_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY app_configs ALTER COLUMN id SET DEFAULT nextval('app_configs_id_seq'::regclass);
 
 
@@ -7822,6 +7862,14 @@ ALTER TABLE ONLY active_admin_comments
 
 ALTER TABLE ONLY admin_users
     ADD CONSTRAINT admin_users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: age_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY age_tags
+    ADD CONSTRAINT age_tags_pkey PRIMARY KEY (id);
 
 
 --
@@ -8015,4 +8063,8 @@ INSERT INTO schema_migrations (version) VALUES ('20120517091510');
 
 INSERT INTO schema_migrations (version) VALUES ('20120517092732');
 
+INSERT INTO schema_migrations (version) VALUES ('20120517115429');
+
 INSERT INTO schema_migrations (version) VALUES ('20120517130306');
+
+INSERT INTO schema_migrations (version) VALUES ('20120517130728');
