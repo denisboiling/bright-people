@@ -21,6 +21,8 @@ ru:
         users_rating: Рейтинг пользователей
         experts_rating: Рейтинг экспертов
         organization: Организация
-      experts:
+      expert:
         name: Имя
         description: Описание
+        created_at: Дата создания
+        updated_at: Дата обновления

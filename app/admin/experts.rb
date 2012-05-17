@@ -6,6 +6,9 @@ ActiveAdmin.register Expert do
 
   index do
     id_column
+    column "Фотография" do |expert|
+        link_to image_tag(expert.photo.url(:thumb), alt: expert.name), admin_expert_path(expert)
+    end
     column :name
     column :created_at
     column :updated_at
