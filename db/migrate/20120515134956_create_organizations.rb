@@ -1,11 +1,11 @@
 class CreateOrganizations < ActiveRecord::Migration
   def change
     create_table :organizations do |t|
-
-      t.timestamps
-      t.string :title
-      t.string :address
+      t.string :title, :address
       t.integer :metro_station_id
+
+      t.point :location, geographic: true, srid: 4326
+      t.timestamps
     end
   end
 end

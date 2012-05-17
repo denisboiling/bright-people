@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 ActiveAdmin.register User do
+  menu :label => "Пользователи"
+
   filter :email
 
   index do
     id_column
-    column :username
     column :email
     column :created_at
     default_actions

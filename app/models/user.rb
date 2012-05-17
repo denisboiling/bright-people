@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
       self.create! vkontakte_id: user_id
     end
   end
-  
+
   def self.find_or_create_for_facebook(data)
     user_id = data.extra.raw_info.id.to_s
     email = data.extra.raw_info.email
@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
       self.create! facebook_id: user_id, email: email
     end
   end
-  
+
   def self.find_or_create_for_odnoklassniki(data)
     user_id = data.extra.raw_info.id.to_s
     user = find_by_odnoklassniki_id(user_id)
@@ -46,15 +46,15 @@ class User < ActiveRecord::Base
       self.create! odnoklassniki_id: user_id
     end
   end
-  
+
   def admin?
     role and role.name == 'admin'
   end
-  
+
   def password_required?
     admin?
   end
-  
+
   def email_required?
     false
   end
