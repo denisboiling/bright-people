@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120517115429) do
+ActiveRecord::Schema.define(:version => 20120517121417) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -39,6 +39,13 @@ ActiveRecord::Schema.define(:version => 20120517115429) do
     t.float    "users_rating"
     t.float    "experts_rating"
     t.boolean  "is_educational"
+  end
+
+  create_table "activity_age_relations", :force => true do |t|
+    t.integer  "activity_id"
+    t.integer  "age_tag_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "activity_direction_relations", :force => true do |t|
