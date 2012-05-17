@@ -15,6 +15,5 @@ class Activity < ActiveRecord::Base
   has_many :activity_direction_relations
   has_many :direction_tags, through: :activity_direction_relations
   
-  has_many :activity_age_relations
-  has_many :age_tags, through: :activity_age_relations
+  belongs_to :age_tag
 end
