@@ -14,3 +14,6 @@
 #= require jquery_ujs
 #= require jquery.cookie
 #= require_tree .
+
+$ ->
+  window.setup_email_dialog()

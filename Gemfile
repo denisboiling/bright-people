@@ -17,6 +17,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'jquery-ui-themes'
 gem 'unicorn'
 gem 'activeadmin'
 gem 'cancan'
