@@ -1,0 +1,10 @@
+<div id="email_dialog">
+<%= form_for user, method: :put, remote: true, url: update_user_email_path do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <% user.errors.each do |field, message| %>
+    <p><strong><%= field %></strong><%= message %></p>
+  <% end %>
+  <%= f.submit %>
+<% end %>
+</div>
