@@ -1,0 +1,39 @@
+art:
+  name: "искусство"
+
+nature:
+  name: "природа"
+
+science:
+  name: "наука"
+
+relax:
+  name: "активный отдых"
+
+create:
+  name: "творить"
+  is_educational: true
+
+master:
+  name: "мастерить"
+  is_educational: true
+
+explore:
+  name: "изучать"
+  is_educational: true
+
+make:
+  name: "готовить"
+  is_educational: true
+
+draw:
+  name: "рисовать"
+  is_educational: true
+
+train:
+  name: "тренироваться"
+  is_educational: true
+
+perform:
+  name: "выступать"
+  is_educational: true

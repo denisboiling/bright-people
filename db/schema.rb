@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120516143348) do
+ActiveRecord::Schema.define(:version => 20120517092732) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -40,6 +40,13 @@ ActiveRecord::Schema.define(:version => 20120516143348) do
     t.float    "experts_rating"
   end
 
+  create_table "activity_direction_relations", :force => true do |t|
+    t.integer  "activity_id"
+    t.integer  "direction_tag_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
   create_table "admin_users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
@@ -61,6 +68,13 @@ ActiveRecord::Schema.define(:version => 20120516143348) do
   create_table "app_configs", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "direction_tags", :force => true do |t|
+    t.string   "name"
+    t.boolean  "is_educational"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "organizations", :force => true do |t|
