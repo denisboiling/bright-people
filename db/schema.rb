@@ -29,15 +29,16 @@ ActiveRecord::Schema.define(:version => 20120517092732) do
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
 
   create_table "activities", :force => true do |t|
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.string   "title"
     t.text     "description"
     t.string   "address"
-    t.string   "metro_station"
+    t.integer  "metro_station_id"
     t.integer  "organization_id"
     t.float    "users_rating"
     t.float    "experts_rating"
+    t.boolean  "is_educational"
   end
 
   create_table "activity_direction_relations", :force => true do |t|
@@ -77,12 +78,18 @@ ActiveRecord::Schema.define(:version => 20120517092732) do
     t.datetime "updated_at",     :null => false
   end
 
+  create_table "metro_stations", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "title"
+  end
+
   create_table "organizations", :force => true do |t|
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.string   "title"
     t.string   "address"
-    t.string   "metro_station"
+    t.integer  "metro_station_id"
   end
 
   create_table "roles", :force => true do |t|
