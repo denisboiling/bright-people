@@ -4,12 +4,6 @@
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
-<<<<<<< HEAD
-SET standard_conforming_strings = off;
-SET check_function_bodies = false;
-SET client_min_messages = warning;
-SET escape_string_warning = off;
-=======
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
@@ -27,7 +21,6 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
->>>>>>> master
 
 SET search_path = public, pg_catalog;
 
@@ -7301,23 +7294,6 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
-<<<<<<< HEAD
--- Name: activities; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE activities (
-    id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    title character varying(255),
-    description text,
-    address character varying(255),
-    metro_station_id integer,
-    organization_id integer,
-    users_rating double precision,
-    experts_rating double precision,
-    is_educational boolean
-=======
 -- Name: active_admin_comments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -7331,12 +7307,10 @@ CREATE TABLE active_admin_comments (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     namespace character varying(255)
->>>>>>> master
 );
 
 
 --
-<<<<<<< HEAD
 -- Name: activities; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -7349,22 +7323,20 @@ CREATE TABLE activities (
     users_rating double precision DEFAULT 0 NOT NULL,
     experts_rating double precision DEFAULT 0 NOT NULL,
     location geography(Point,4326),
+    metro_station_id integer,
+    is_educational boolean,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
 
 
 --
-=======
-<<<<<<< HEAD
->>>>>>> origin/master
 -- Name: activities_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE activities_id_seq
     START WITH 1
     INCREMENT BY 1
-<<<<<<< HEAD
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
@@ -7378,11 +7350,38 @@ ALTER SEQUENCE activities_id_seq OWNED BY activities.id;
 
 
 --
-=======
-    NO MAXVALUE
+-- Name: activity_direction_relations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE activity_direction_relations (
+    id integer NOT NULL,
+    activity_id integer,
+    direction_tag_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: activity_direction_relations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE activity_direction_relations_id_seq
+    START WITH 1
+    INCREMENT BY 1
     NO MINVALUE
-=======
->>>>>>> origin/master
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: activity_direction_relations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE activity_direction_relations_id_seq OWNED BY activity_direction_relations.id;
+
+
+--
 -- Name: admin_notes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -7391,28 +7390,10 @@ CREATE SEQUENCE admin_notes_id_seq
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
->>>>>>> master
     CACHE 1;
 
 
 --
-<<<<<<< HEAD
--- Name: activities_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE activities_id_seq OWNED BY activities.id;
-
-
---
--- Name: metro_stations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE metro_stations (
-    id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    title character varying(255)
-=======
 -- Name: admin_notes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -7437,21 +7418,10 @@ CREATE TABLE admin_users (
     last_sign_in_ip character varying(255),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
->>>>>>> master
 );
 
 
 --
-<<<<<<< HEAD
--- Name: metro_stations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE metro_stations_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MAXVALUE
-    NO MINVALUE
-=======
 -- Name: admin_users_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -7460,34 +7430,76 @@ CREATE SEQUENCE admin_users_id_seq
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
->>>>>>> master
     CACHE 1;
 
 
 --
-<<<<<<< HEAD
--- Name: metro_stations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE metro_stations_id_seq OWNED BY metro_stations.id;
-
-
---
--- Name: organizations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE organizations (
-    id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    title character varying(255),
-    address character varying(255),
-    metro_station_id integer
-=======
 -- Name: admin_users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE admin_users_id_seq OWNED BY admin_users.id;
+
+
+--
+-- Name: app_configs; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE app_configs (
+    id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: app_configs_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE app_configs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: app_configs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE app_configs_id_seq OWNED BY app_configs.id;
+
+
+--
+-- Name: direction_tags; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE direction_tags (
+    id integer NOT NULL,
+    name character varying(255),
+    is_educational boolean,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: direction_tags_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE direction_tags_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: direction_tags_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE direction_tags_id_seq OWNED BY direction_tags.id;
 
 
 --
@@ -7507,6 +7519,37 @@ CREATE VIEW geometry_columns AS
 
 
 --
+-- Name: metro_stations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE metro_stations (
+    id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    title character varying(255)
+);
+
+
+--
+-- Name: metro_stations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE metro_stations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: metro_stations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE metro_stations_id_seq OWNED BY metro_stations.id;
+
+
+--
 -- Name: organizations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -7514,6 +7557,7 @@ CREATE TABLE organizations (
     id integer NOT NULL,
     title character varying(255),
     address character varying(255),
+    metro_station_id integer,
     location geography(Point,4326),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
@@ -7548,21 +7592,10 @@ CREATE TABLE roles (
     name character varying(255) NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
->>>>>>> master
 );
 
 
 --
-<<<<<<< HEAD
--- Name: organizations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE organizations_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MAXVALUE
-    NO MINVALUE
-=======
 -- Name: roles_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -7571,22 +7604,14 @@ CREATE SEQUENCE roles_id_seq
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
->>>>>>> master
     CACHE 1;
 
 
 --
-<<<<<<< HEAD
--- Name: organizations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE organizations_id_seq OWNED BY organizations.id;
-=======
 -- Name: roles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE roles_id_seq OWNED BY roles.id;
->>>>>>> master
 
 
 --
@@ -7626,20 +7651,12 @@ CREATE TABLE users (
     current_sign_in_ip character varying(255),
     last_sign_in_ip character varying(255),
     created_at timestamp without time zone NOT NULL,
-<<<<<<< HEAD
-    updated_at timestamp without time zone NOT NULL
-=======
     updated_at timestamp without time zone NOT NULL,
-<<<<<<< HEAD
     facebook_id character varying(255),
     vkontakte_id character varying(255),
     odnoklassniki_id character varying(255),
     role_id integer NOT NULL,
     encrypted_password character varying(255)
-=======
-    role_id integer NOT NULL
->>>>>>> master
->>>>>>> origin/master
 );
 
 
@@ -7650,13 +7667,8 @@ CREATE TABLE users (
 CREATE SEQUENCE users_id_seq
     START WITH 1
     INCREMENT BY 1
-<<<<<<< HEAD
-    NO MAXVALUE
-    NO MINVALUE
-=======
     NO MINVALUE
     NO MAXVALUE
->>>>>>> master
     CACHE 1;
 
 
@@ -7671,18 +7683,13 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-<<<<<<< HEAD
-ALTER TABLE ONLY activities ALTER COLUMN id SET DEFAULT nextval('activities_id_seq'::regclass);
-=======
 ALTER TABLE ONLY active_admin_comments ALTER COLUMN id SET DEFAULT nextval('admin_notes_id_seq'::regclass);
->>>>>>> master
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-<<<<<<< HEAD
 ALTER TABLE ONLY activities ALTER COLUMN id SET DEFAULT nextval('activities_id_seq'::regclass);
 
 
@@ -7690,20 +7697,41 @@ ALTER TABLE ONLY activities ALTER COLUMN id SET DEFAULT nextval('activities_id_s
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-=======
-<<<<<<< HEAD
-ALTER TABLE ONLY metro_stations ALTER COLUMN id SET DEFAULT nextval('metro_stations_id_seq'::regclass);
-=======
->>>>>>> origin/master
+ALTER TABLE ONLY activity_direction_relations ALTER COLUMN id SET DEFAULT nextval('activity_direction_relations_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY admin_users ALTER COLUMN id SET DEFAULT nextval('admin_users_id_seq'::regclass);
->>>>>>> master
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-<<<<<<< HEAD
+ALTER TABLE ONLY app_configs ALTER COLUMN id SET DEFAULT nextval('app_configs_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY direction_tags ALTER COLUMN id SET DEFAULT nextval('direction_tags_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY metro_stations ALTER COLUMN id SET DEFAULT nextval('metro_stations_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY organizations ALTER COLUMN id SET DEFAULT nextval('organizations_id_seq'::regclass);
 
 
@@ -7711,13 +7739,7 @@ ALTER TABLE ONLY organizations ALTER COLUMN id SET DEFAULT nextval('organization
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-=======
-<<<<<<< HEAD
-ALTER TABLE ONLY organizations ALTER COLUMN id SET DEFAULT nextval('organizations_id_seq'::regclass);
-=======
->>>>>>> origin/master
 ALTER TABLE ONLY roles ALTER COLUMN id SET DEFAULT nextval('roles_id_seq'::regclass);
->>>>>>> master
 
 
 --
@@ -7728,10 +7750,6 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 
 --
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> origin/master
 -- Name: activities_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -7740,23 +7758,14 @@ ALTER TABLE ONLY activities
 
 
 --
-<<<<<<< HEAD
-=======
--- Name: metro_stations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: activity_direction_relations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
-ALTER TABLE ONLY metro_stations
-    ADD CONSTRAINT metro_stations_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY activity_direction_relations
+    ADD CONSTRAINT activity_direction_relations_pkey PRIMARY KEY (id);
 
 
 --
--- Name: organizations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY organizations
-    ADD CONSTRAINT organizations_pkey PRIMARY KEY (id);
-=======
->>>>>>> origin/master
 -- Name: admin_notes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -7773,6 +7782,30 @@ ALTER TABLE ONLY admin_users
 
 
 --
+-- Name: app_configs_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY app_configs
+    ADD CONSTRAINT app_configs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: direction_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY direction_tags
+    ADD CONSTRAINT direction_tags_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: metro_stations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY metro_stations
+    ADD CONSTRAINT metro_stations_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: organizations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -7786,7 +7819,6 @@ ALTER TABLE ONLY organizations
 
 ALTER TABLE ONLY roles
     ADD CONSTRAINT roles_pkey PRIMARY KEY (id);
->>>>>>> master
 
 
 --
@@ -7806,8 +7838,6 @@ ALTER TABLE ONLY users
 
 
 --
-<<<<<<< HEAD
-=======
 -- Name: index_active_admin_comments_on_author_type_and_author_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -7843,11 +7873,10 @@ CREATE UNIQUE INDEX index_admin_users_on_reset_password_token ON admin_users USI
 
 
 --
->>>>>>> master
 -- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
+CREATE INDEX index_users_on_email ON users USING btree (email);
 
 
 --
@@ -7903,26 +7932,14 @@ CREATE RULE geometry_columns_update AS ON UPDATE TO geometry_columns DO INSTEAD 
 -- PostgreSQL database dump complete
 --
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> origin/master
 INSERT INTO schema_migrations (version) VALUES ('20120515123754');
 
 INSERT INTO schema_migrations (version) VALUES ('20120515134956');
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> master
->>>>>>> origin/master
 INSERT INTO schema_migrations (version) VALUES ('20120515135736');
 
 INSERT INTO schema_migrations (version) VALUES ('20120515142605');
 
-<<<<<<< HEAD
-INSERT INTO schema_migrations (version) VALUES ('20120516085512');
-=======
 INSERT INTO schema_migrations (version) VALUES ('20120515145341');
 
 INSERT INTO schema_migrations (version) VALUES ('20120515175344');
@@ -7934,9 +7951,15 @@ INSERT INTO schema_migrations (version) VALUES ('20120516071329');
 INSERT INTO schema_migrations (version) VALUES ('20120516075839');
 
 INSERT INTO schema_migrations (version) VALUES ('20120516080250');
-<<<<<<< HEAD
+
+INSERT INTO schema_migrations (version) VALUES ('20120516085512');
 
 INSERT INTO schema_migrations (version) VALUES ('20120516094956');
-=======
->>>>>>> master
->>>>>>> origin/master
+
+INSERT INTO schema_migrations (version) VALUES ('20120516122039');
+
+INSERT INTO schema_migrations (version) VALUES ('20120516143348');
+
+INSERT INTO schema_migrations (version) VALUES ('20120517091510');
+
+INSERT INTO schema_migrations (version) VALUES ('20120517092732');

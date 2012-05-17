@@ -47,14 +47,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def admin?
-    role and role.name == 'admin'
-  end
-
-  def password_required?
-    admin?
-  end
-
   def email_required?
     false
   end

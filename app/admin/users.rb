@@ -8,12 +8,14 @@ ActiveAdmin.register User do
     id_column
     column :email
     column :created_at
+    column :updated_at
     default_actions
   end
 
   form do |f|
-    f.inputs "Новый пользователь" do
+    f.inputs 'Основное' do
       f.input :email
+      f.input :role, as: :select, collection: Role.all
       f.buttons
     end
   end

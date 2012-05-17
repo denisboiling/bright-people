@@ -20,6 +20,7 @@ ActiveAdmin.register Activity do
       f.input :organization, as: :select, collection: Organization.all
       f.input :title
       f.input :address
+      f.input :metro_station, as: :select, collection: MetroStation.all
       f.input :description, input_html: { size: 10 }
       f.input :users_rating
       f.input :experts_rating
@@ -32,7 +33,7 @@ ActiveAdmin.register Activity do
   end
 
   show do
-    attributes_table :id, :title, :address, :description, :users_rating, :experts_rating,
+    attributes_table :id, :title, :address, :metro_station, :description, :users_rating, :experts_rating,
     :created_at, :updated_at
 
     panel 'Карта' do
