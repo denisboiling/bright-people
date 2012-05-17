@@ -14,3 +14,14 @@
 #= require jquery_ujs
 #= require jquery.cookie
 #= require_tree .
+
+setup_email_dialog = ->
+  if $.cookie('email_dialog')
+    $('#email_dialog').dialog
+      modal: true,
+      closeOnEscape: false,
+      open: (event, ui) -> # hide close button
+        $(this).parent().find(".ui-dialog-titlebar-close").hide()
+
+$ ->
+  setup_email_dialog()
