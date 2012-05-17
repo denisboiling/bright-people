@@ -28,11 +28,12 @@ class User < ActiveRecord::Base
   
   def self.find_or_create_for_facebook(data)
     user_id = data.extra.raw_info.id.to_s
+    email = data.extra.raw_info.email
     user = find_by_facebook_id(user_id)
     if user
       user
     else
-      self.create! facebook_id: user_id
+      self.create! facebook_id: user_id, email: email
     end
   end
   
