@@ -1,4 +1,40 @@
-<% @activities.each do |activity| %>
-  <h1><%= activity.title %></h1>
-  <p><%= activity.description %></p>
+
+sorting:
+<%= link_to "По названию",
+            activities_path(sort: 'title'),
+            class: :activities_filter_link,
+            "data-key" => :sort, "data-value" => :title %>
+<%= link_to "По пользовательскому рейтингу",
+            activities_path(sort: 'users_rating'),
+            class: :activities_filter_link,
+            "data-key" => :sort, "data-value" => :users_rating %>
+<%= link_to "По экспертной оценке",
+            activities_path(sort: 'experts_rating'),
+            class: :activities_filter_link,
+            "data-key" => :sort, "data-value" => :experts_rating %>
+<br />
+
+metro station:
+<%= select_tag "metro_station_id",\
+               options_from_collection_for_select(@metro_stations, 'id', 'title'),
+               id: :activities_metro_station_select,
+               include_blank: true %>
+<br />
+
+<% @directions.each do |direction_tag| %>
+  <%= link_to direction_tag.name,
+              activities_path(direction_tag_id: direction_tag.id),
+              class: :activities_filter_link,
+              "data-key" => :direction_tag_id, "data-value" => direction_tag.id %>
+<% end %><br />
+
+<% @age_tags.each do |age_tag| %>
+  <%= link_to age_tag.title,
+              activities_path(age_tag_ids: age_tag.id),
+              class: :activities_filter_link,
+              "data-key" => :age_tag_ids, "data-value" => age_tag.id %>
 <% end %>
+            
+<div id="activities_list">
+  <%= render 'activities', activities: @activities %>
+</div>

@@ -2850,7 +2850,7 @@ CREATE FUNCTION postgis_proj_version() RETURNS text
 
 CREATE FUNCTION postgis_scripts_build_date() RETURNS text
     LANGUAGE sql IMMUTABLE
-    AS $$SELECT '2012-04-18 12:57:11'::text AS version$$;
+    AS $$SELECT '2012-05-17 12:42:11'::text AS version$$;
 
 
 --
