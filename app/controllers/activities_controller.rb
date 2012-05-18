@@ -26,4 +26,8 @@ class ActivitiesController < ApplicationController
       render partial: 'activities', locals: {activities: @activities}
     end
   end
+  
+  def show
+    @activity = Activity.find(params[:id])
+  end
 end
