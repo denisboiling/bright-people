@@ -21,5 +21,9 @@ class ActivitiesController < ApplicationController
       else                       DirectionTag.scoped
       end
     @age_tags = AgeTag.scoped
+    
+    if params[:remote]
+      render partial: 'activities', locals: {activities: @activities}
+    end
   end
 end
