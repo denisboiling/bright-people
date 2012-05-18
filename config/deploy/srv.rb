@@ -1,6 +1,6 @@
-role :web, "192.168.2.101"
-role :app, "192.168.2.101"
-role :db,  "192.168.2.101", :primary=>true
+role :web, "bp.balticit.ru"
+role :app, "bp.balticit.ru"
+role :db,  "bp.balticit.ru", :primary=>true
 
 set :user, "rvm_user"
 set :deploy_via, :remote_cache
