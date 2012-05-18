@@ -19,3 +19,7 @@ before_fork do |server, worker|
     end
   end
 end
+
+after_fork do |server, worker|
+  ActiveRecord::Base.establish_connection
+end
