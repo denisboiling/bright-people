@@ -17,7 +17,8 @@ sorting:
 metro station:
 <%= select_tag "metro_station_id",\
                options_from_collection_for_select(@metro_stations, 'id', 'title'),
-               id: :activities_metro_station_select %>
+               id: :activities_metro_station_select,
+               include_blank: true %>
 <br />
 
 <% @directions.each do |direction_tag| %>
