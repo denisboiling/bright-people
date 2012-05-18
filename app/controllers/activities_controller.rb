@@ -12,5 +12,14 @@ class ActivitiesController < ApplicationController
       else                       @activities
       end
     @activities = @activities.distinct
+    
+    @metro_stations = MetroStation.scoped
+    @directions =
+      case params[:kind]
+      when 'educational'    then DirectionTag.educational
+      when 'entertainment'  then DirectionTag.entertainment
+      else                       DirectionTag.scoped
+      end
+    @age_tags = AgeTag.scoped
   end
 end
