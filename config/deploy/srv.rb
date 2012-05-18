@@ -12,14 +12,15 @@ set :rvm_type, :user
 set :rvm_ruby_string, 'ruby-1.9.3-head@bright-people'
 require "rvm/capistrano"
 
+before "deploy:finalize_update", "shared:symlinks"
 
-after "deploy:update","shared:symlinks"
-after "shared:symlinks","db:prepare"
-after "shared:symlinks","deploy:migrate"
-after "deploy:migrate","db:load_seed"
-after "db:load_seed","db:load_sample"
+after "deploy:update_code", "db:prepare"
+after "deploy:update_code", "deploy:migrate"
 
-before "deploy:restart","deploy:chwon"
+after "deploy:migrate", "db:load_seed"
+after "db:load_seed", "db:load_sample"
+
+# before "deploy:restart","deploy:chown"
 
 # Clear old releases
 after "deploy:restart","deploy:cleanup"
