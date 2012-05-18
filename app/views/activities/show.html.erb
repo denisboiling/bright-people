@@ -1,0 +1,5 @@
+<h1><%= @activity.title %></h1>
+<% if @activity.organization %>
+<h2><%= link_to @activity.organization.title, @activity.organization %></h2>
+<% end %>
+<p><%= @activity.description %></p>

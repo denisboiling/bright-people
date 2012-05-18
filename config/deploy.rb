@@ -1,0 +1,18 @@
+require 'capistrano/ext/multistage'
+require 'bundler/capistrano'
+
+set :stages, %w(srv)
+set :default_stage, "srv"
+set :repository,  "git@github.com:balticit/bright-people.git"
+set :scm, :git
+set :branch, "master"
+
+set :application, "bright-people"
+
+ssh_options[:forward_agent] = true
+default_run_options[:pty] = true
+
+set :keep_releases, 10
+
+
+

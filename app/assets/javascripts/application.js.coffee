@@ -17,3 +17,4 @@
 
 $ ->
   window.setup_email_dialog()
+  window.setup_activities_list()
