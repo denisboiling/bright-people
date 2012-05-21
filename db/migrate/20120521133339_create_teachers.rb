@@ -5,7 +5,7 @@ class CreateTeachers < ActiveRecord::Migration
       t.timestamps
       t.string :name
       t.text :description
-      t.has_attached_file :teacher_photo
+      t.has_attached_file :photo
     end
   end
 end
