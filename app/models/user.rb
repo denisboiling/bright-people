@@ -13,7 +13,8 @@ class User < ActiveRecord::Base
     self.role = Role.user
   end
 
-  attr_accessible :email, :password, :remember_me, :vkontakte_id, :facebook_id,
+  attr_accessible :email, :password, :remember_me
+  attr_accessible :vkontakte_id, :facebook_id, :odnoklassniki_id
 
   def self.find_or_create_for_vkontakte(data)
     user_id = data.extra.raw_info.uid.to_s
@@ -37,7 +38,7 @@ class User < ActiveRecord::Base
   end
 
   def self.find_or_create_for_odnoklassniki(data)
-    user_id = data.extra.raw_info.id.to_s
+    user_id = data.extra.raw_info.uid.to_s
     user = find_by_odnoklassniki_id(user_id)
     if user
       user

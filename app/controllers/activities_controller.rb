@@ -1,4 +1,7 @@
 class ActivitiesController < ApplicationController
+  # TODO: integrate metasearch for sorting
+  # TODO: MetroStation and AgeTag move to view template
+
   def index
     @activities = Activity.scoped
     @activities = @activities.with_direction(params[:direction_tag_id])   if params[:direction_tag_id]
@@ -12,7 +15,7 @@ class ActivitiesController < ApplicationController
       else                       @activities
       end
     @activities = @activities.distinct
-    
+
     @metro_stations = MetroStation.scoped
     @directions =
       case params[:kind]
@@ -21,12 +24,12 @@ class ActivitiesController < ApplicationController
       else                       DirectionTag.scoped
       end
     @age_tags = AgeTag.scoped
-    
+3
     if params[:remote]
       render partial: 'activities', locals: {activities: @activities}
     end
   end
-  
+
   def show
     @activity = Activity.find(params[:id])
   end
