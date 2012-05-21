@@ -3,5 +3,5 @@ class Teacher < ActiveRecord::Base
   
   belongs_to :activity
 
-  has_attached_file :teacher_photo#, :styles => {:thumb => "200x200"}
+  has_attached_file :photo#, :styles => {:thumb => "200x200"}
 end
