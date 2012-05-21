@@ -16,6 +16,8 @@ class Activity < ActiveRecord::Base
 
   belongs_to :age_tag
 
+  has_many :teachers
+
   scope :with_direction, lambda { |id|
     joins(:activity_direction_relations)
       .where('activity_direction_relations.direction_tag_id' => id) }
