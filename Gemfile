@@ -30,6 +30,11 @@ gem 'ffaker'
 
 group :development do
   gem 'letter_opener'
+  gem 'capistrano'
+  gem 'capistrano-ext'
+  gem 'capistrano-unicorn'
+  gem 'rvm-capistrano'
+
 end
 
 group :test do
