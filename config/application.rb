@@ -39,7 +39,7 @@ module BrightPeople
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
 
-    config.active_record.schema_format = :sql
+    # config.active_record.schema_format = :sql
 
     # Enforce whitelist mode for mass assignment.
     # This will create an empty whitelist of attributes available for mass-assignment for all models
