@@ -33,13 +33,15 @@ ActiveRecord::Schema.define(:version => 20120521133339) do
     t.string   "address"
     t.text     "description"
     t.integer  "organization_id"
-    t.float    "users_rating",                  :default => 0.0, :null => false
-    t.float    "experts_rating",                :default => 0.0, :null => false
-    t.point    "location",         :limit => 0,                                  :srid => 4326, :geographic => true
+    t.float    "users_rating",                        :default => 0.0, :null => false
+    t.float    "experts_rating",                      :default => 0.0, :null => false
+    t.point    "location",               :limit => 0,                                  :srid => 4326, :geographic => true
     t.integer  "metro_station_id"
     t.boolean  "is_educational"
-    t.datetime "created_at",                                     :null => false
-    t.datetime "updated_at",                                     :null => false
+    t.datetime "created_at",                                           :null => false
+    t.datetime "updated_at",                                           :null => false
+    t.text     "parent_activities"
+    t.text     "additional_information"
     t.integer  "age_tag_id"
   end
 

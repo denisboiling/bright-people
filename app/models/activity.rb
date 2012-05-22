@@ -2,7 +2,7 @@ class Activity < ActiveRecord::Base
   include LocationExt
 
   attr_accessible :title, :description, :organization_id, :users_rating,
-  :metro_station_id, :experts_rating, :address, :is_educational
+  :metro_station_id, :experts_rating, :address, :is_educational, :additional_information, :parent_activities
 
   validates :title, presence: true
   validates :description, presence: true
