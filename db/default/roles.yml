@@ -6,3 +6,6 @@ admin:
 
 editor:
   name: editor
+
+specialist:
+  name: specialist

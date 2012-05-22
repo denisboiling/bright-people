@@ -1,10 +1,4 @@
 <% activities.each do |activity| %>
   <h1><%= link_to activity.title, activity %></h1>
   <p><%= activity.description %></p>
-  <% activities.teachers.each do |teacher| %>
-    <br>
-    <%= image_tag teacher.photo.url %>
-    <%= teacher.name %>
-    <%= teacher.description %>
-  <% end %>
 <% end %>

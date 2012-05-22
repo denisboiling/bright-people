@@ -3,3 +3,44 @@
 <h2><%= link_to @activity.organization.title, @activity.organization %></h2>
 <% end %>
 <p><%= @activity.description %></p>
+
+<h1>Rate (<%= "u:#{@activity.users_rating}, e:#{@activity.experts_rating}" %>):</h1>
+<ul>
+<% (1..5).each do |n| %>
+  <li><%= link_to n, '#', class: "activity_rate#{n}_link" %></li>
+<% end %>
+</ul>
+
+<% @activity.teachers.each do |teacher| %>
+  <br>
+  <%= image_tag teacher.photo.url(:thumb) %>
+  <%= teacher.name %>
+  <%= teacher.description %>
+<% end %>
+
+<%=raw @activity.additional_information %>
+<%=raw @activity.parent_activities %>
+
+<h2>Children</h2>
+<% @activity.activity_comments.each do |comment| %>
+  <% if comment.isParent == false %>
+    <%= image_tag comment.picture.url(:thumb) %>
+    <p>
+      <%= comment.commentator %>
+      <br>
+      <%= comment.content %>
+    </p>
+  <% end %>
+<% end %>
+
+<h2>Parents</h2>
+<% @activity.activity_comments.each do |comment| %>
+  <% if comment.isParent == true %>
+    <%= image_tag comment.picture.url(:thumb) %>
+    <p>
+      <%= comment.commentator %>
+      <br>
+      <%= comment.content %>
+    </p>
+  <% end %>
+<% end %>

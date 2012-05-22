@@ -1,0 +1,65 @@
+<%= semantic_form_for [:admin, @activity] do |f| %>
+  <%= f.inputs 'Основное' do %>
+    <%= f.input :organization, as: :select, collection: Organization.all %>
+      <%= f.input :title %>
+      <%= f.input :address %>
+      <%= f.input :metro_station, as: :select, collection: MetroStation.all %>
+      <%= f.input :description, input_html: { size: 10 } %>
+      <%= f.input :users_rating %>
+      <%= f.input :experts_rating %>
+    <% end %>
+    <%= f.inputs 'Карта' do %>
+      <%= f.input :coords, as: :hidden, input_html: { class: 'hidden_coords'} %>
+      <%= f.input :coords, input_html: { class: 'edit_map' }, label: false %>
+    <% end %>
+    <%= f.inputs 'Допонительная информация' do %>
+      <div id="wysihtml5-toolbar-additional-information" style="display: none;">
+        <a data-wysihtml5-command="bold">bold</a>
+        <a data-wysihtml5-command="italic">italic</a>
+  
+        <!-- Some wysihtml5 commands like 'createLink' require extra paramaters specified by the user (eg. href) -->
+        <a data-wysihtml5-command="createLink">insert link</a>
+        <div data-wysihtml5-dialog="createLink" style="display: none;">
+          <label>
+            Link:
+            <input data-wysihtml5-dialog-field="href" value="http://" class="text">
+          </label>
+          <a data-wysihtml5-dialog-action="save">OK</a> <a data-wysihtml5-dialog-action="cancel">Cancel</a>
+        </div>
+      </div>
+      <%= f.input :additional_information, input_html: { size: 10 } %>
+      <div id="wysihtml5-toolbar-parent-activities" style="display: none;">
+        <a data-wysihtml5-command="bold">bold</a>
+        <a data-wysihtml5-command="italic">italic</a>
+  
+        <!-- Some wysihtml5 commands like 'createLink' require extra paramaters specified by the user (eg. href) -->
+        <a data-wysihtml5-command="createLink">insert link</a>
+        <div data-wysihtml5-dialog="createLink" style="display: none;">
+          <label>
+            Link:
+            <input data-wysihtml5-dialog-field="href" value="http://" class="text">
+          </label>
+          <a data-wysihtml5-dialog-action="save">OK</a> <a data-wysihtml5-dialog-action="cancel">Cancel</a>
+        </div>
+      </div>
+      <%= f.input :parent_activities, input_html: { size: 10 } %>
+    <% end %>
+
+    <%= f.inputs "Медиа контент" do %>
+      <%= f.has_many :photos do |photo| %>
+	<%= photo.input :attach, as: :file %>
+      <% end %>
+    <% end %>
+
+  <%= f.buttons %>
+<% end %>
+<script>
+var info_editor = new wysihtml5.Editor("activity_additional_information", { // id of textarea element
+  toolbar:      "wysihtml5-toolbar-additional-information", // id of toolbar element
+  parserRules:  wysihtml5ParserRules // defined in parser rules set 
+});
+var activities_editor = new wysihtml5.Editor("activity_parent_activities", { // id of textarea element
+  toolbar:      "wysihtml5-toolbar-parent-activities", // id of toolbar element
+  parserRules:  wysihtml5ParserRules // defined in parser rules set 
+});
+</script>

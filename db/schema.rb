@@ -33,14 +33,29 @@ ActiveRecord::Schema.define(:version => 20120522113822) do
     t.string   "address"
     t.text     "description"
     t.integer  "organization_id"
-    t.float    "users_rating",                  :default => 0.0, :null => false
-    t.float    "experts_rating",                :default => 0.0, :null => false
-    t.point    "location",         :limit => 0,                                  :srid => 4326, :geographic => true
+    t.float    "users_rating",                        :default => 0.0, :null => false
+    t.float    "experts_rating",                      :default => 0.0, :null => false
+    t.point    "location",               :limit => 0,                                  :srid => 4326, :geographic => true
     t.integer  "metro_station_id"
     t.boolean  "is_educational"
-    t.datetime "created_at",                                     :null => false
-    t.datetime "updated_at",                                     :null => false
+    t.datetime "created_at",                                           :null => false
+    t.datetime "updated_at",                                           :null => false
+    t.text     "parent_activities"
+    t.text     "additional_information"
     t.integer  "age_tag_id"
+  end
+
+  create_table "activity_comments", :force => true do |t|
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.string   "commentator"
+    t.text     "content"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+    t.boolean  "isParent"
+    t.integer  "activity_id"
   end
 
   create_table "activity_direction_relations", :force => true do |t|
@@ -63,6 +78,14 @@ ActiveRecord::Schema.define(:version => 20120522113822) do
   create_table "activity_video_urls", :force => true do |t|
     t.text     "url",         :null => false
     t.integer  "activity_id", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "activity_votes", :force => true do |t|
+    t.integer  "activity_id"
+    t.integer  "user_id"
+    t.integer  "rate"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -146,6 +169,7 @@ ActiveRecord::Schema.define(:version => 20120522113822) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.integer  "activity_id"
   end
 
   create_table "users", :force => true do |t|

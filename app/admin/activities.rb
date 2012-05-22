@@ -12,43 +12,16 @@ ActiveAdmin.register Activity do
     column :experts_rating
     column :created_at
     column :updated_at
+    column :additional_information
+    column :parent_activities
     default_actions
   end
 
-  form html: { multipart: true } do |f|
-    f.inputs 'Основное' do
-      f.input :organization, as: :select, collection: Organization.all
-      f.input :title
-      f.input :address
-      f.input :metro_station, as: :select, collection: MetroStation.all
-      f.input :description, input_html: { size: 10 }
-      f.input :users_rating
-      f.input :experts_rating
-    end
-    f.inputs 'Медиа контент' do
-      f.has_many :photos do |photo|
-        photo.input :attach, :as => :file, :label => "Фотография",
-        :hint => photo.object.attach.nil? ? p.template.content_tag(:span, "No Image Yet") : photo.template.image_tag(photo.object.attach.url(:thumb))
-        if !photo.object.nil?
-          photo.input '_destroy', as: :boolean, label: 'Удалить', input_html: {class: 'destroy_photo', data: {id: photo.object.id}}
-        end
-      end
-
-      f.has_many :video_urls do |url|
-        url.input :url, input_html: { :rows => 10, :cols => 2 }
-      end
-
-    end
-    f.inputs 'Карта' do
-      f.input :coords, as: :hidden, input_html: { class: 'hidden_coords'}
-      f.input :coords, input_html: { class: 'edit_map' }, label: false
-    end
-    f.buttons
-  end
+  form :partial => "editing"
 
   show do
     attributes_table :id, :title, :address, :metro_station, :description, :users_rating, :experts_rating,
-    :created_at, :updated_at
+    :created_at, :updated_at, :additional_information, :parent_activities
 
     panel 'Карта' do
       form do |f|

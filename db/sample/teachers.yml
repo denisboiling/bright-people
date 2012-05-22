@@ -1,0 +1,5 @@
+<% 1.upto(10).each do |i| %>
+teacher_<%= i %>:
+  name: <%= Faker::Name.name %>
+  description: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
+<% end %>
