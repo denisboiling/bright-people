@@ -64,5 +64,21 @@ $ ->
               contentBody: get_address()
           else
             myMap.balloon.close()
+    
+    update_coords = ->
+      window._coords_update_timeout = null
+      
+      address = $('#organization_address, #activity_address').val()
+      ymaps.geocode(address, results: 1).then (res) ->
+        geoObject = res.geoObjects.get(0)
+        coords = geoObject.geometry.getCoordinates()
+        set_coords(coords)
+        myMap.balloon.open coords,
+          contentHeader: get_name()
+          contentBody: get_address()
+    
+    $('#organization_address, #activity_address').bind 'keyup', ->
+      clearTimeout(window._coords_update_timeout) if window._coords_update_timeout
+      window._coords_update_timeout = setTimeout(update_coords, 1000)
 
     ymaps.ready init
