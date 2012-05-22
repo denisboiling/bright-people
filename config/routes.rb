@@ -9,6 +9,7 @@ BrightPeople::Application.routes.draw do
 
   resources :organizations, :only => [:show]
   resources :activities, :only => [:index, :show]
+  resources :experts, :only => [:index, :show]
 
   root :to => 'home#show'
 end
