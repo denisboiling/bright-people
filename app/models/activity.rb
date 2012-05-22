@@ -42,6 +42,12 @@ class Activity < ActiveRecord::Base
 
   scope :distinct, select('DISTINCT(activities.id), activities.*')
 
+  define_index do
+    indexes title, sortable: true
+    indexes description
+  end
+
+  # OPTIMIZE: bad bad bad!!!!
   def video_urls_attributes=(attrs)
     attrs.each do
       attrs.each do |attr|

@@ -28,6 +28,8 @@ gem 'paperclip'
 # Because this need for samples
 gem 'ffaker'
 
+gem 'thinking-sphinx'
+
 group :development do
   gem 'letter_opener'
   gem 'capistrano'
