@@ -65,6 +65,14 @@ ActiveRecord::Schema.define(:version => 20120522095345) do
     t.datetime "updated_at",       :null => false
   end
 
+  create_table "activity_votes", :force => true do |t|
+    t.integer  "activity_id"
+    t.integer  "user_id"
+    t.integer  "rate"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "admin_users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
