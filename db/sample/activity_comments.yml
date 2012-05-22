@@ -1,0 +1,6 @@
+<% 1.upto(200).each do |i| %>
+comment_<%= i %>:
+  commentator: <%= Faker::Name.name %>
+  content: "<%= Faker::Lorem.words(6).join(' ') %>"
+  isParent: <%= (rand(2)) == 1 ? true : false %>
+<% end %>

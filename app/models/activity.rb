@@ -18,6 +18,7 @@ class Activity < ActiveRecord::Base
 
   has_many :teachers
   has_many :votes, :class_name => 'ActivityVote'
+  has_many :activity_comments
 
   scope :with_direction, lambda { |id|
     joins(:activity_direction_relations)

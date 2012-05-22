@@ -30,7 +30,7 @@ ActiveAdmin.register Teacher do
     attributes_table :name, :description, :created_at, :updated_at, :activity
 
     panel 'Фотография' do
-      image_tag(expert.photo.url)
+      image_tag(teacher.photo.url)
     end
   end
 end

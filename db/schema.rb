@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120522081445) do
+ActiveRecord::Schema.define(:version => 20120522095345) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -43,6 +43,19 @@ ActiveRecord::Schema.define(:version => 20120522081445) do
     t.text     "parent_activities"
     t.text     "additional_information"
     t.integer  "age_tag_id"
+  end
+
+  create_table "activity_comments", :force => true do |t|
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.string   "commentator"
+    t.text     "content"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+    t.boolean  "isParent"
+    t.integer  "activity_id"
   end
 
   create_table "activity_direction_relations", :force => true do |t|
