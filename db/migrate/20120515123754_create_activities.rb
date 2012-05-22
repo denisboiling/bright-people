@@ -11,6 +11,9 @@ class CreateActivities < ActiveRecord::Migration
       t.integer :metro_station_id
       t.boolean :is_educational
       t.timestamps
+
+      t.text :parent_activities
+      t.text :additional_information
     end
   end
 end
