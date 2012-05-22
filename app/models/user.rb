@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
          :database_authenticatable
 
   belongs_to :role
+  
+  has_many :activity_votes
 
   attr_accessible :email, :remember_me
 
@@ -48,7 +50,7 @@ class User < ActiveRecord::Base
   end
   
   def specialist?
-    role and role.name == 'specialist'
+    role.name == 'specialist'
   end
 
   def email_required?
