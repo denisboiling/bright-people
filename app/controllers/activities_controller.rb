@@ -24,7 +24,7 @@ class ActivitiesController < ApplicationController
       else                       DirectionTag.scoped
       end
     @age_tags = AgeTag.scoped
-3
+
     if params[:remote]
       render partial: 'activities', locals: {activities: @activities}
     end
@@ -32,5 +32,12 @@ class ActivitiesController < ApplicationController
 
   def show
     @activity = Activity.find(params[:id])
+  end
+  
+  def vote
+    ActivityVote.create! user_id: current_user.id,
+                         rate: params[:rate].to_i,
+                         activity_id: params[:id]
+    head :ok
   end
 end
