@@ -12,3 +12,27 @@
 
 <%=raw @activity.additional_information %>
 <%=raw @activity.parent_activities %>
+
+<h2>Children</h2>
+<% @activity.activity_comments.each do |comment| %>
+  <% if comment.isParent == false %>
+    <%= image_tag comment.picture.url(:thumb) %>
+    <p>
+      <%= comment.commentator %>
+      <br>
+      <%= comment.content %>
+    </p>
+  <% end %>
+<% end %>
+
+<h2>Parents</h2>
+<% @activity.activity_comments.each do |comment| %>
+  <% if comment.isParent == true %>
+    <%= image_tag comment.picture.url(:thumb) %>
+    <p>
+      <%= comment.commentator %>
+      <br>
+      <%= comment.content %>
+    </p>
+  <% end %>
+<% end %>
