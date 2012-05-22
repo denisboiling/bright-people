@@ -3,6 +3,14 @@
 <h2><%= link_to @activity.organization.title, @activity.organization %></h2>
 <% end %>
 <p><%= @activity.description %></p>
+
+<h1>Rate (<%= "u:#{@activity.users_rating}, e:#{@activity.experts_rating}" %>):</h1>
+<ul>
+<% (1..5).each do |n| %>
+  <li><%= link_to n, '#', class: "activity_rate#{n}_link" %></li>
+<% end %>
+</ul>
+
 <% @activity.teachers.each do |teacher| %>
   <br>
   <%= image_tag teacher.photo.url(:thumb) %>

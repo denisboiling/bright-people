@@ -8,7 +8,9 @@ BrightPeople::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   resources :organizations, :only => [:show]
-  resources :activities, :only => [:index, :show]
+  resources :activities, :only => [:index, :show] do
+    put 'vote'
+  end
   resources :experts, :only => [:index, :show]
 
   root :to => 'home#show'
