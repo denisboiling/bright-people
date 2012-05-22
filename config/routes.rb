@@ -1,6 +1,4 @@
 BrightPeople::Application.routes.draw do
-  get "organizations/show"
-
   ActiveAdmin.routes(self)
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }

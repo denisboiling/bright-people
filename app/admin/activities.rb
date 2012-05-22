@@ -15,7 +15,7 @@ ActiveAdmin.register Activity do
     default_actions
   end
 
-  form do |f|
+  form html: { multipart: true } do |f|
     f.inputs 'Основное' do
       f.input :organization, as: :select, collection: Organization.all
       f.input :title
@@ -24,6 +24,20 @@ ActiveAdmin.register Activity do
       f.input :description, input_html: { size: 10 }
       f.input :users_rating
       f.input :experts_rating
+    end
+    f.inputs 'Медиа контент' do
+      f.has_many :photos do |photo|
+        photo.input :attach, :as => :file, :label => "Фотография",
+        :hint => photo.object.attach.nil? ? p.template.content_tag(:span, "No Image Yet") : photo.template.image_tag(photo.object.attach.url(:thumb))
+        if !photo.object.nil?
+          photo.input '_destroy', as: :boolean, label: 'Удалить', input_html: {class: 'destroy_photo', data: {id: photo.object.id}}
+        end
+      end
+
+      f.has_many :video_urls do |url|
+        url.input :url, input_html: { :rows => 10, :cols => 2 }
+      end
+
     end
     f.inputs 'Карта' do
       f.input :coords, as: :hidden, input_html: { class: 'hidden_coords'}

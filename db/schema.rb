@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120521133339) do
+ActiveRecord::Schema.define(:version => 20120522113822) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -48,6 +48,23 @@ ActiveRecord::Schema.define(:version => 20120521133339) do
     t.integer  "direction_tag_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+  end
+
+  create_table "activity_photos", :force => true do |t|
+    t.string   "attach_file_name"
+    t.string   "attach_content_type"
+    t.integer  "attach_file_size"
+    t.datetime "attach_updated_at"
+    t.integer  "activity_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  create_table "activity_video_urls", :force => true do |t|
+    t.text     "url",         :null => false
+    t.integer  "activity_id", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "admin_users", :force => true do |t|
@@ -120,14 +137,14 @@ ActiveRecord::Schema.define(:version => 20120521133339) do
   end
 
   create_table "teachers", :force => true do |t|
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.string   "name"
     t.text     "description"
-    t.string   "teacher_photo_file_name"
-    t.string   "teacher_photo_content_type"
-    t.integer  "teacher_photo_file_size"
-    t.datetime "teacher_photo_updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "users", :force => true do |t|
