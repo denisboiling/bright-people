@@ -37,7 +37,10 @@ window.setup_activities_list = ->
   
   $('#activities_metro_station_select').bind 'change', ->
     selected = $(this).val()
-    window._activities_params['metro_station_id'] = selected
+    if selected
+      window._activities_params['metro_station_id'] = selected
+    else
+      delete window._activities_params['metro_station_id']
     
     update_list()
 
