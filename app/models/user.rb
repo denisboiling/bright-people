@@ -46,6 +46,10 @@ class User < ActiveRecord::Base
       self.create! odnoklassniki_id: user_id, password: Devise.friendly_token[0,8]
     end
   end
+  
+  def specialist?
+    role and role.name == 'specialist'
+  end
 
   def email_required?
     false
