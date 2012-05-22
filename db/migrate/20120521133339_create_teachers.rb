@@ -6,6 +6,7 @@ class CreateTeachers < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.has_attached_file :photo
+      t.integer :activity_id
     end
   end
 end

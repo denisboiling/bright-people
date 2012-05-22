@@ -120,14 +120,15 @@ ActiveRecord::Schema.define(:version => 20120521133339) do
   end
 
   create_table "teachers", :force => true do |t|
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.string   "name"
     t.text     "description"
-    t.string   "teacher_photo_file_name"
-    t.string   "teacher_photo_content_type"
-    t.integer  "teacher_photo_file_size"
-    t.datetime "teacher_photo_updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.integer  "activity_id"
   end
 
   create_table "users", :force => true do |t|

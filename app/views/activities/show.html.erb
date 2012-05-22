@@ -3,3 +3,9 @@
 <h2><%= link_to @activity.organization.title, @activity.organization %></h2>
 <% end %>
 <p><%= @activity.description %></p>
+<% @activity.teachers.each do |teacher| %>
+  <br>
+  <%= image_tag teacher.photo.url(:thumb) %>
+  <%= teacher.name %>
+  <%= teacher.description %>
+<% end %>
