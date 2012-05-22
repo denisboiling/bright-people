@@ -37,7 +37,7 @@ class ActivitiesController < ApplicationController
   def vote
     ActivityVote.create! user_id: current_user.id,
                          rate: params[:rate].to_i,
-                         activity_id: params[:id]
+                         activity_id: params[:activity_id]
     head :ok
   end
 end

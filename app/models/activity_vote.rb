@@ -7,4 +7,5 @@ class ActivityVote < ActiveRecord::Base
   validates :rate, :numericality => { only_integer: true,
                                       greater_than_or_equal_to: 0,
                                       less_than_or_equal_to: 5 }
+  attr_accessible :user_id, :activity_id, :rate
 end
