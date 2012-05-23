@@ -232,6 +232,8 @@ GEM
       activesupport (= 3.2.3)
       bundler (~> 1.0)
       railties (= 3.2.3)
+    rails3-jquery-autocomplete (1.0.7)
+      rails (~> 3.0)
     railties (3.2.3)
       actionpack (= 3.2.3)
       activesupport (= 3.2.3)
@@ -347,6 +349,7 @@ DEPENDENCIES
   pg
   quiet_assets
   rails (= 3.2.3)
+  rails3-jquery-autocomplete
   rspec-rails
   russian
   rvm-capistrano

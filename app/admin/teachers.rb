@@ -7,7 +7,8 @@ ActiveAdmin.register Teacher do
   index do
     id_column
     column "Фотография" do |teacher|
-        link_to image_tag(teacher.photo.url(:thumb), alt: teacher.name), admin_teacher_path(teacher)
+        link_to image_tag(teacher.photo.url(:thumb), alt: teacher.name),
+                admin_teacher_path(teacher)
     end
     column :name
     column :created_at
@@ -20,7 +21,8 @@ ActiveAdmin.register Teacher do
     f.inputs 'Основное' do
       f.input :name
       f.input :description, input_html: {size: 10}
-      f.input :photo, as: :file, hint: f.template.image_tag(f.object.photo.url(:medium))
+      f.input :photo, as: :file,
+                      hint: f.template.image_tag(f.object.photo.url(:medium))
       f.input :activity, as: :select, collection: Activity.all
     end
     f.buttons
