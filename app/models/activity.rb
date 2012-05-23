@@ -2,8 +2,11 @@ class Activity < ActiveRecord::Base
   include LocationExt
 
   attr_accessible :title, :description, :organization_id, :users_rating,
-  :metro_station_id, :experts_rating, :address, :is_educational, :photos_attributes,
-  :additional_information, :parent_activities, :videos_attributes
+                  :metro_station_id, :experts_rating, :address, :is_educational,
+                  :additional_information, :parent_activities, :schedule, :week,
+                  :photos_attributes, :videos_attributes
+
+  store :schedule, accessors: [:week]
 
   validates :title, presence: true
   validates :description, presence: true
@@ -17,19 +20,15 @@ class Activity < ActiveRecord::Base
   has_many :direction_tags, through: :activity_direction_relations
 
   has_many :teachers
-  has_many :votes, :class_name => 'ActivityVote'
+  has_many :votes, class_name: 'ActivityVote'
   has_many :activity_comments
 
-  has_many :photos,
-  class_name: 'ActivityPhoto',
-  dependent: :destroy
+  has_many :photos, class_name: 'ActivityPhoto',
+                    dependent: :destroy
 
-  has_many :videos,
-  class_name: 'VideoUrl',
-  dependent: :destroy,
-  conditions: "relation_type = 'activity'",
-  foreign_key: 'relation_id',
-  before_add: :add_activity_type
+  has_many :videos, class_name: 'VideoUrl', dependent: :destroy,
+                    conditions: "relation_type = 'activity'",
+                    foreign_key: 'relation_id', before_add: :add_activity_type
 
   # Forcibly set activity relation type for video
   def add_activity_type(video)
@@ -43,12 +42,8 @@ class Activity < ActiveRecord::Base
     joins(:activity_direction_relations)
       .where('activity_direction_relations.direction_tag_id' => id) }
 
-  scope :with_ages, lambda { |ids|
-    where(:age_tag_id => ids) }
-
-  scope :with_station, lambda { |id|
-    where(:metro_station_id => id) }
-
+  scope :with_ages, lambda { |ids| where(age_tag_id: ids) }
+  scope :with_station, lambda { |id| where(metro_station_id: id) }
   scope :distinct, select('DISTINCT(activities.id), activities.*')
 
   define_index do
@@ -76,4 +71,8 @@ class Activity < ActiveRecord::Base
     self.save!
   end
 
+  def week=(value)
+    value = JSON(value) if value.kind_of? String
+    self[:week] = value
+  end
 end

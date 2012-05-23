@@ -30,6 +30,7 @@ gem 'ffaker'
 
 gem 'thinking-sphinx'
 gem 'cocoon'
+gem 'rails3-jquery-autocomplete'
 
 group :development do
   gem 'letter_opener'

@@ -2,7 +2,12 @@
 ActiveAdmin.register Activity do
   menu label: 'Кружки'
 
-  filter :title
+  controller do
+    autocomplete :activity, :title, full: true
+  end
+
+  filter :title, as: :autocomplete, :input_html => {'data-autocomplete' => '/admin/activities/autocomplete_activity_title', object: 'activity'}
+
 
   index do
     id_column
@@ -10,14 +15,20 @@ ActiveAdmin.register Activity do
     column :address
     column :users_rating
     column :experts_rating
+    column :created_at
+    column :updated_at
+    column :additional_information
+    column :parent_activities
+    column :schedule
     default_actions
   end
 
-  form :partial => 'form'
+  form partial: "form"
 
   show do
-    attributes_table :id, :title, :address, :metro_station, :description, :users_rating, :experts_rating,
-    :created_at, :updated_at, :additional_information, :parent_activities
+    attributes_table :id, :title, :address, :metro_station, :description,
+                     :users_rating, :experts_rating, :created_at, :updated_at,
+                     :additional_information, :parent_activities, :week
 
     panel 'Карта' do
       form do |f|

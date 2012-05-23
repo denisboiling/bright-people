@@ -1,12 +1,17 @@
 <%= semantic_form_for [:admin, @activity], html: { multipart: true } do |f| %>
   <%= f.inputs 'Основное' do %>
-    <%= f.input :organization, as: :select, collection: Organization.all %>
-      <%= f.input :title %>
-      <%= f.input :address %>
+    <%= f.input :organization, as: :select, collection: Organization.all, include_blank: false %>
+    <%= f.input :title %>
+    <%= f.input :description, input_html: { size: 10 } %>
+    <%= f.input :users_rating %>
+    <%= f.input :experts_rating %>
+  <% end %>
+
+    <%= f.inputs "Адрес" do %>
       <%= f.input :metro_station, as: :select, collection: MetroStation.all %>
-      <%= f.input :description, input_html: { size: 10 } %>
-      <%= f.input :users_rating %>
-      <%= f.input :experts_rating %>
+      <%= f.input :address %>
+      <%= f.input :coords, as: :hidden, input_html: { class: 'hidden_coords'} %>
+      <%= f.input :coords, input_html: { class: 'edit_map' }, label: false %>
     <% end %>
 
     <%= f.inputs "Медиа контент" do %>
@@ -25,11 +30,6 @@
       </div>
       <%= link_to_add_association 'Добавить ссылку на видео', f, :videos,  'data-association-insertion-method' => 'append',
 	  'data-association-insertion-node' => '.activity_videos' %>
-    <% end %>
-
-    <%= f.inputs 'Карта' do %>
-      <%= f.input :coords, as: :hidden, input_html: { class: 'hidden_coords'} %>
-      <%= f.input :coords, input_html: { class: 'edit_map' }, label: false %>
     <% end %>
 
     <%= f.inputs 'Допонительная информация' do %>
@@ -63,9 +63,41 @@
       </div>
       <%= f.input :parent_activities, input_html: { size: 10 } %>
     <% end %>
-
-
-
+    <%= f.inputs 'Расписание' do %>
+      <div id='list'>
+      <ul>
+        <li>Monday<button type="button" id='monday'>Click Me!</button></li>
+        <li>Tuesday<button type="button" id='tuesday'>Click Me!</button></li>
+        <li>Wednesday<button type="button" id='wednesday'>Click Me!</button></li>
+        <li>Thursday<button type="button" id='thursday'>Click Me!</button></li>
+        <li>Friday<button type="button" id='friday'>Click Me!</button></li>
+        <li>Saturday<button type="button" id='saturday'>Click Me!</button></li>
+        <li>Sunday<button type="button" id='sunday'>Click Me!</button></li>
+      </ul>
+      </div>
+      <%= f.input :week %>
+<script>
+  var JSONSchedule = {"monday":[], "tuesday":[], "wednesday":[], "thursday":[], "friday":[], "saturday":[], "sunday":[]};
+  $('#activity_week').val(JSON.stringify(JSONSchedule));
+  $('#list').find(":button").click(function(){
+    var day_of_week = $(this).attr('id');
+    $(this).parent().append("<input id=\"timeinput-first-" + day_of_week +"\" type=\"text\">");
+    $('#timeinput-first-' + day_of_week).timepicker({ 'step': 15, 'timeFormat': 'H:i' });
+    $(this).parent().append("<input id=\"timeinput-second-" + day_of_week +"\" type=\"text\">");
+    $("#timeinput-second-" + day_of_week).timepicker({ 'step': 15, 'timeFormat': 'H:i' });
+    $(this).parent().append("<button type=\"button\" id=\"save-button-"+day_of_week+"\">Save!</button></li>");
+    $("#save-button-"+day_of_week).click(function(){
+      var day_of_week = $(this).parent().find(":button").first().attr('id');
+      JSONSchedule = JSON.parse($('#activity_week').val());
+      JSONSchedule[day_of_week].push({start: $('#timeinput-first-'+day_of_week).val(), end: $('#timeinput-second-'+day_of_week).val()});
+      $('#activity_week').val(JSON.stringify(JSONSchedule));
+      $('#timeinput-first-'+day_of_week).remove();
+      $('#timeinput-second-'+day_of_week).remove();
+      $(this).remove();
+    });
+  });
+</script>
+    <% end %>
   <%= f.buttons %>
 <% end %>
 <script>
