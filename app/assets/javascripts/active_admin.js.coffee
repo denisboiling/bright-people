@@ -1,6 +1,6 @@
 #= require active_admin/base
 #= require advanced
-#= require wysihtml5-0.3.0.min
+#= require wysihtml5-0.3.0
 #= require jquery-ui-timepicker-addon
 #= require jquery-ui-timepicker-ru
 
