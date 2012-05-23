@@ -1,0 +1,8 @@
+<% @categories.each do |category| %>
+  <h1><%=link_to category.title, category %></h1>
+  <% @articles.each do |article| %>
+    <% if article.article_category == category %>
+      <p><%= link_to article.title, article %></p>
+    <% end %>
+  <% end %>
+<% end %>

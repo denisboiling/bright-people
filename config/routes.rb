@@ -11,6 +11,12 @@ BrightPeople::Application.routes.draw do
 
   resource :search, only: [:show]
   resources :experts, only: [:index, :show]
+  resources :articles, only: [:index, :show] do
+    collection do
+      get :tag
+    end
+  end
+  resources :article_categories, only: [:show]
 
   # Specialist
   namespace :specialist do
@@ -35,4 +41,6 @@ BrightPeople::Application.routes.draw do
   match '/staff/delete_video_by_activity' => 'staff#delete_video_by_activity', :via => :delete
 
   root :to => 'home#show'
+
+
 end
