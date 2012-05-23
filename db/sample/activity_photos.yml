@@ -1,0 +1,4 @@
+<% 1.upto(20).each do |i| %>
+photo_<%= i %>:
+  activity_id: <%= rand(20) + 1 %>
+<% end %>
