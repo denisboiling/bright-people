@@ -9,7 +9,21 @@ class Activity < ActiveRecord::Base
   SCHEDULE_DAYS = [:monday, :tuesday, :wednesday, :thursday, :friday,
                    :saturday, :sunday]
   
+  attr_accessible *SCHEDULE_DAYS
+  
   store :schedule, accessors: SCHEDULE_DAYS
+  
+  def schedule
+    map = self[:schedule].map { |day, value| [day, JSON(value)] }
+    Hash[map]
+  end
+  
+  SCHEDULE_DAYS.each do |day|
+    define_method(:"#{day}=") do |value|
+      value = value.to_json unless value.kind_of? String
+      self[:schedule][day] = value
+    end
+  end
 
   validates :title, presence: true
   validates :description, presence: true
