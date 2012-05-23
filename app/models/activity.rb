@@ -11,7 +11,7 @@ class Activity < ActiveRecord::Base
   
   attr_accessible *SCHEDULE_DAYS
   
-  store :schedule, accessors: SCHEDULE_DAYS
+  store :schedule
   
   def schedule
     map = self[:schedule].map { |day, value| [day, JSON(value)] }
@@ -22,6 +22,10 @@ class Activity < ActiveRecord::Base
     define_method(:"#{day}=") do |value|
       value = value.to_json unless value.kind_of? String
       self[:schedule][day] = value
+    end
+    
+    define_method(day) do
+      self[:schedule][day]
     end
   end
 
