@@ -10,31 +10,14 @@ ActiveAdmin.register Activity do
     column :address
     column :users_rating
     column :experts_rating
-    column :created_at
-    column :updated_at
     default_actions
   end
 
-  form do |f|
-    f.inputs 'Основное' do
-      f.input :organization, as: :select, collection: Organization.all
-      f.input :title
-      f.input :address
-      f.input :metro_station, as: :select, collection: MetroStation.all
-      f.input :description, input_html: { size: 10 }
-      f.input :users_rating
-      f.input :experts_rating
-    end
-    f.inputs 'Карта' do
-      f.input :coords, as: :hidden, input_html: { class: 'hidden_coords'}
-      f.input :coords, input_html: { class: 'edit_map' }, label: false
-    end
-    f.buttons
-  end
+  form :partial => 'form'
 
   show do
     attributes_table :id, :title, :address, :metro_station, :description, :users_rating, :experts_rating,
-    :created_at, :updated_at
+    :created_at, :updated_at, :additional_information, :parent_activities
 
     panel 'Карта' do
       form do |f|

@@ -1,4 +1,4 @@
 <% activities.each do |activity| %>
-  <h1><%= activity.title %></h1>
+  <h1><%= link_to activity.title, activity %></h1>
   <p><%= activity.description %></p>
 <% end %>

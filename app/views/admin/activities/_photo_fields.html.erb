@@ -1,0 +1,6 @@
+<div class="nested-fields">
+  <%= f.inputs do %>
+    <% f.input :attach, as: :file, hint: f.template.image_tag(f.object.attach.url(:medium)) %>
+  <% end %>
+  <%= link_to 'Убрать фотографию', '#', :class => 'remove_activity_photo', 'data-photo-id' => f.object.try(:id) %>
+</div>

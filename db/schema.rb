@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120517130728) do
+ActiveRecord::Schema.define(:version => 20120522193044) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -33,14 +33,29 @@ ActiveRecord::Schema.define(:version => 20120517130728) do
     t.string   "address"
     t.text     "description"
     t.integer  "organization_id"
-    t.float    "users_rating",                  :default => 0.0, :null => false
-    t.float    "experts_rating",                :default => 0.0, :null => false
-    t.point    "location",         :limit => 0,                                  :srid => 4326, :geographic => true
+    t.float    "users_rating",                        :default => 0.0, :null => false
+    t.float    "experts_rating",                      :default => 0.0, :null => false
+    t.point    "location",               :limit => 0,                                  :srid => 4326, :geographic => true
     t.integer  "metro_station_id"
     t.boolean  "is_educational"
-    t.datetime "created_at",                                     :null => false
-    t.datetime "updated_at",                                     :null => false
+    t.datetime "created_at",                                           :null => false
+    t.datetime "updated_at",                                           :null => false
+    t.text     "parent_activities"
+    t.text     "additional_information"
     t.integer  "age_tag_id"
+  end
+
+  create_table "activity_comments", :force => true do |t|
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.string   "commentator"
+    t.text     "content"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+    t.boolean  "isParent"
+    t.integer  "activity_id"
   end
 
   create_table "activity_direction_relations", :force => true do |t|
@@ -48,6 +63,24 @@ ActiveRecord::Schema.define(:version => 20120517130728) do
     t.integer  "direction_tag_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+  end
+
+  create_table "activity_photos", :force => true do |t|
+    t.string   "attach_file_name"
+    t.string   "attach_content_type"
+    t.integer  "attach_file_size"
+    t.datetime "attach_updated_at"
+    t.integer  "activity_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  create_table "activity_votes", :force => true do |t|
+    t.integer  "activity_id"
+    t.integer  "user_id"
+    t.integer  "rate"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "admin_users", :force => true do |t|
@@ -61,6 +94,7 @@ ActiveRecord::Schema.define(:version => 20120517130728) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "role_id",                                :null => false
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
   end
@@ -119,6 +153,18 @@ ActiveRecord::Schema.define(:version => 20120517130728) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "teachers", :force => true do |t|
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "name"
+    t.text     "description"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.integer  "activity_id"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email",               :default => "", :null => false
     t.datetime "remember_created_at"
@@ -140,5 +186,13 @@ ActiveRecord::Schema.define(:version => 20120517130728) do
   add_index "users", ["facebook_id"], :name => "index_users_on_facebook_id"
   add_index "users", ["odnoklassniki_id"], :name => "index_users_on_odnoklassniki_id"
   add_index "users", ["vkontakte_id"], :name => "index_users_on_vkontakte_id"
+
+  create_table "video_urls", :force => true do |t|
+    t.string   "relation_type", :null => false
+    t.integer  "relation_id",   :null => false
+    t.text     "url",           :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
 end

@@ -2,3 +2,15 @@ This is the main page!
 <%= link_to "VK", user_omniauth_authorize_path(:vkontakte) %>
 <%= link_to "FB", user_omniauth_authorize_path(:facebook) %>
 <%= link_to "OD", user_omniauth_authorize_path(:odnoklassniki) %>
+
+
+<%= render partial: 'shared/search' %>
+
+<h2>Our experts</h2>
+<% @experts.each do |expert| %>
+    <p><%= link_to expert.name, expert %>
+  <br>
+  <%= expert.description.split('.').first %></p>
+<% end %>
+<%= link_to 'All experts', experts_path %>
+

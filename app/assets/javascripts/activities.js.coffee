@@ -37,7 +37,21 @@ window.setup_activities_list = ->
   
   $('#activities_metro_station_select').bind 'change', ->
     selected = $(this).val()
-    window._activities_params['metro_station_id'] = selected
+    if selected
+      window._activities_params['metro_station_id'] = selected
+    else
+      delete window._activities_params['metro_station_id']
     
     update_list()
-    
+
+window.setup_activities_rating = ->
+  for n in [1,2,3,4,5]
+    $(".activity_rate#{n}_link").bind 'click', (event) ->
+      event.preventDefault()
+      
+      regex = /activities\/(\d+)/
+      activity_id = regex.exec(window.location.href)[1]
+      $.ajax
+        type: 'PUT',
+        url: "/activities/#{activity_id}/vote",
+        data: { rate: n }
