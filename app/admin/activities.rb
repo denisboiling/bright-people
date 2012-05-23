@@ -28,7 +28,7 @@ ActiveAdmin.register Activity do
   show do
     attributes_table :id, :title, :address, :metro_station, :description,
                      :users_rating, :experts_rating, :created_at, :updated_at,
-                     :additional_information, :parent_activities, :week
+                     :additional_information, :parent_activities
 
     panel 'Карта' do
       form do |f|

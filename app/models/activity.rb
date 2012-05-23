@@ -6,7 +6,28 @@ class Activity < ActiveRecord::Base
                   :additional_information, :parent_activities, :schedule, :week,
                   :photos_attributes, :videos_attributes
 
-  store :schedule, accessors: [:week]
+  SCHEDULE_DAYS = [:monday, :tuesday, :wednesday, :thursday, :friday,
+                   :saturday, :sunday]
+  
+  attr_accessible *SCHEDULE_DAYS
+  
+  store :schedule
+  
+  def schedule
+    map = self[:schedule].map { |day, value| [day, JSON(value)] }
+    Hash[map]
+  end
+  
+  SCHEDULE_DAYS.each do |day|
+    define_method(:"#{day}=") do |value|
+      value = value.to_json unless value.kind_of? String
+      self[:schedule][day] = value
+    end
+    
+    define_method(day) do
+      self[:schedule][day]
+    end
+  end
 
   validates :title, presence: true
   validates :description, presence: true
