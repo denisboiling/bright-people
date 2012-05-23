@@ -13,7 +13,7 @@ ActiveAdmin.register Activity do
     default_actions
   end
 
-  form :partial => "editing"
+  form :partial => '_form'
 
   show do
     attributes_table :id, :title, :address, :metro_station, :description, :users_rating, :experts_rating,
