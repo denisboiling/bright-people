@@ -1,0 +1,5 @@
+<% 1.upto(3).each do |i| %>
+article_categoty_<%= i %>:
+  id: <%= i %>
+  title: <%= Faker::Lorem.words.join(' ') %>
+<% end %>

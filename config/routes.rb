@@ -1,5 +1,5 @@
 BrightPeople::Application.routes.draw do
-  ActiveAdmin.routes(self)
+
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   put 'users/email' => 'users#update_email', as: :update_user_email
@@ -12,10 +12,30 @@ BrightPeople::Application.routes.draw do
 
   resource :search, only: [:show]
   resources :experts, only: [:index, :show]
+  resources :articles, only: [:index, :show] do
+    collection do
+      get :tag
+    end
+  end
+  resources :article_categories, only: [:show]
+
+  # Admin
+  namespace :admin do
+    resources :activities do
+      get :autocomplete_activity_title, :on => :collection
+    end
+    resources :organizations do
+      get :autocomplete_organization_title, :on => :collection
+    end
+  end
+
+  ActiveAdmin.routes(self)
 
   # Some staff match routes
   match '/staff/delete_photo_by_activity' => 'staff#delete_photo_by_activity', :via => :delete
   match '/staff/delete_video_by_activity' => 'staff#delete_video_by_activity', :via => :delete
 
   root :to => 'home#show'
+
+
 end
