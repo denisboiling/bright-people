@@ -2,7 +2,12 @@
 ActiveAdmin.register Activity do
   menu label: 'Кружки'
 
-  filter :title
+  controller do
+    autocomplete :activity, :title, full: true
+  end
+
+  filter :title, as: :autocomplete, :input_html => {'data-autocomplete' => '/admin/activities/autocomplete_activity_title', object: 'activity'}
+
 
   index do
     id_column
