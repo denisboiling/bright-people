@@ -16,3 +16,4 @@ config/database.yml
 public/system
 /config/development.sphinx.conf
 /config/sphinx.yml
+db/schema.rb
