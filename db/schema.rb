@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20120522193044) do
     t.datetime "updated_at",                                           :null => false
     t.text     "parent_activities"
     t.text     "additional_information"
+    t.text     "schedule"
     t.integer  "age_tag_id"
   end
 
@@ -54,7 +55,7 @@ ActiveRecord::Schema.define(:version => 20120522193044) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
-    t.boolean  "isParent"
+    t.boolean  "is_parent"
     t.integer  "activity_id"
   end
 

@@ -14,6 +14,7 @@ class CreateActivities < ActiveRecord::Migration
 
       t.text :parent_activities
       t.text :additional_information
+      t.text :schedule
     end
   end
 end

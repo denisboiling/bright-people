@@ -6,7 +6,7 @@ class CreateActivityComments < ActiveRecord::Migration
       t.string :commentator
       t.text :content
       t.has_attached_file :picture
-      t.boolean :isParent
+      t.boolean :is_parent
       t.integer :activity_id
     end
   end

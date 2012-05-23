@@ -16,7 +16,7 @@ sorting:
 
 metro station:
 <%= select_tag "metro_station_id",\
-               options_from_collection_for_select(@metro_stations, 'id', 'title'),
+               options_from_collection_for_select(MetroStation.all, 'id', 'title'),
                id: :activities_metro_station_select,
                include_blank: true %>
 <br />
@@ -28,7 +28,7 @@ metro station:
               "data-key" => :direction_tag_id, "data-value" => direction_tag.id %>
 <% end %><br />
 
-<% @age_tags.each do |age_tag| %>
+<% AgeTag.all.each do |age_tag| %>
   <%= link_to age_tag.title,
               activities_path(age_tag_ids: age_tag.id),
               class: :activities_filter_link,
