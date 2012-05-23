@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120522113822) do
+ActiveRecord::Schema.define(:version => 20120522193044) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -73,13 +73,6 @@ ActiveRecord::Schema.define(:version => 20120522113822) do
     t.integer  "activity_id"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
-  end
-
-  create_table "activity_video_urls", :force => true do |t|
-    t.text     "url",         :null => false
-    t.integer  "activity_id", :null => false
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
   end
 
   create_table "activity_votes", :force => true do |t|
@@ -193,5 +186,13 @@ ActiveRecord::Schema.define(:version => 20120522113822) do
   add_index "users", ["facebook_id"], :name => "index_users_on_facebook_id"
   add_index "users", ["odnoklassniki_id"], :name => "index_users_on_odnoklassniki_id"
   add_index "users", ["vkontakte_id"], :name => "index_users_on_vkontakte_id"
+
+  create_table "video_urls", :force => true do |t|
+    t.string   "relation_type", :null => false
+    t.integer  "relation_id",   :null => false
+    t.text     "url",           :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
 end

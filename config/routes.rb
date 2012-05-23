@@ -13,5 +13,9 @@ BrightPeople::Application.routes.draw do
   resource :search, only: [:show]
   resources :experts, only: [:index, :show]
 
+  # Some staff match routes
+  match '/staff/delete_photo_by_activity' => 'staff#delete_photo_by_activity', :via => :delete
+  match '/staff/delete_video_by_activity' => 'staff#delete_video_by_activity', :via => :delete
+
   root :to => 'home#show'
 end

@@ -29,6 +29,7 @@ gem 'paperclip'
 gem 'ffaker'
 
 gem 'thinking-sphinx'
+gem 'cocoon'
 
 group :development do
   gem 'letter_opener'
@@ -36,7 +37,8 @@ group :development do
   gem 'capistrano-ext'
   gem 'capistrano-unicorn'
   gem 'rvm-capistrano'
-
+  gem 'sextant'
+  gem 'quiet_assets'
 end
 
 group :test do
@@ -49,7 +51,6 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'guard-cucumber'
   gem 'guard-spork'
-  gem 'quiet_assets'
   gem 'database_cleaner'
   unless ENV['JENKINS']
     gem 'thin'

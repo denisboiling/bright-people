@@ -3,7 +3,7 @@ class Activity < ActiveRecord::Base
 
   attr_accessible :title, :description, :organization_id, :users_rating,
   :metro_station_id, :experts_rating, :address, :is_educational, :photos_attributes,
-  :_destroy, :video_urls_attributes, :additional_information, :parent_activities
+  :additional_information, :parent_activities, :videos_attributes
 
   validates :title, presence: true
   validates :description, presence: true
@@ -24,12 +24,20 @@ class Activity < ActiveRecord::Base
   class_name: 'ActivityPhoto',
   dependent: :destroy
 
-  has_many :video_urls,
-  class_name: 'ActivityVideoUrl',
-  dependent: :destroy
+  has_many :videos,
+  class_name: 'VideoUrl',
+  dependent: :destroy,
+  conditions: "relation_type = 'activity'",
+  foreign_key: 'relation_id',
+  before_add: :add_activity_type
 
-  accepts_nested_attributes_for :photos, allow_destroy: true
-  accepts_nested_attributes_for :video_urls, allow_destroy: true
+  # Forcibly set activity relation type for video
+  def add_activity_type(video)
+    video.relation_type = 'activity'
+  end
+
+  accepts_nested_attributes_for :photos, allow_destroy: true, reject_if: :all_blank
+  accepts_nested_attributes_for :videos, allow_destroy: true, reject_if: :all_blank
 
   scope :with_direction, lambda { |id|
     joins(:activity_direction_relations)
@@ -47,30 +55,6 @@ class Activity < ActiveRecord::Base
     indexes title, sortable: true
     indexes description
   end
-
-  # OPTIMIZE: bad bad bad!!!!
-  def video_urls_attributes=(attrs)
-    attrs.each do
-      attrs.each do |attr|
-        url = attr.last
-        self.video_urls.create(url)
-      end
-    end if self.save
-  end
-
-  # OPTIMIZE: bad bad bad!!!!
-  def photos_attributes=(attrs)
-    attrs.each do |attr|
-      photo = attr.last
-      if photo.keys.include?('_destroy') && photo['_destroy'].to_i == 1
-        self.photos.find(photo[:id]).destroy
-      else
-        photo.reject!{|k,v| k == '_destroy'}
-        self.photos.create(photo)
-      end
-    end if self.save
-  end
-
 
   # OPTIMIZE:
   def update_rating!
