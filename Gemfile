@@ -8,6 +8,7 @@ gem 'omniauth-vkontakte'
 gem 'omniauth-facebook'
 gem 'omniauth-odnoklassniki'
 gem 'devise', '2.1.0'
+gem 'acts-as-taggable-on'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -31,6 +32,7 @@ gem 'ffaker'
 gem 'thinking-sphinx'
 gem 'cocoon'
 gem 'rails3-jquery-autocomplete'
+gem 'hierarchy', github: 'RISCfuture/hierarchy'
 
 group :development do
   gem 'letter_opener'

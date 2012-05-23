@@ -1,8 +1,7 @@
 BrightPeople::Application.routes.draw do
-
-
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   put 'users/email' => 'users#update_email', as: :update_user_email
+
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   resources :organizations, only: [:show]
@@ -12,6 +11,18 @@ BrightPeople::Application.routes.draw do
 
   resource :search, only: [:show]
   resources :experts, only: [:index, :show]
+  resources :articles, only: [:index, :show] do
+    collection do
+      get :tag
+    end
+  end
+  resources :article_categories, only: [:show]
+
+  # Specialist
+  namespace :specialist do
+    resources :questions
+    root to: 'questions#index'
+  end
 
   # Admin
   namespace :admin do
@@ -30,4 +41,6 @@ BrightPeople::Application.routes.draw do
   match '/staff/delete_video_by_activity' => 'staff#delete_video_by_activity', :via => :delete
 
   root :to => 'home#show'
+
+
 end

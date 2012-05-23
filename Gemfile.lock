@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/RISCfuture/hierarchy.git
+  revision: 99cb2e3eb38f98d3ace615c69e5afd1f8bfff5f0
+  specs:
+    hierarchy (1.0.6)
+      pg
+      rails (>= 3.0.2)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -40,6 +48,8 @@ GEM
     activesupport (3.2.3)
       i18n (~> 0.6)
       multi_json (~> 1.0)
+    acts-as-taggable-on (2.2.2)
+      rails (~> 3.0)
     addressable (2.2.8)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
@@ -319,6 +329,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin
+  acts-as-taggable-on
   cancan
   capistrano
   capistrano-ext
@@ -334,6 +345,7 @@ DEPENDENCIES
   guard-cucumber
   guard-rspec
   guard-spork
+  hierarchy!
   jquery-rails
   jquery-ui-themes
   launchy
