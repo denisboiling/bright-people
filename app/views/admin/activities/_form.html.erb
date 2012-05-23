@@ -69,8 +69,10 @@
     <%= f.inputs 'Расписание' do %>
       <ul>
         <% Activity::SCHEDULE_DAYS.each do |day| %>
-          <li><%= link_to day, '#', 'data-day-name' => day, class: :schedule_day_link %></li>
-          <%= f.input day %>
+          <li data-day-name="<%= day %>">
+            <%= link_to day, '#', class: :schedule_day_link %>
+          </li>
+          <%= f.hidden_field day %>
         <% end %>
       </ul>
     <% end %>
