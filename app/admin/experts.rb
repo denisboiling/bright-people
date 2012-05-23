@@ -7,7 +7,8 @@ ActiveAdmin.register Expert do
   index do
     id_column
     column "Фотография" do |expert|
-        link_to image_tag(expert.photo.url(:thumb), alt: expert.name), admin_expert_path(expert)
+        link_to image_tag(expert.photo.url(:thumb), alt: expert.name),
+                admin_expert_path(expert)
     end
     column :name
     column :created_at
@@ -19,7 +20,8 @@ ActiveAdmin.register Expert do
     f.inputs 'Основное' do
       f.input :name
       f.input :description, input_html: {size: 10}
-      f.input :photo, as: :file, hint: f.template.image_tag(f.object.photo.url(:medium))
+      f.input :photo, as: :file,
+                      hint: f.template.image_tag(f.object.photo.url(:medium))
     end
     f.buttons
   end

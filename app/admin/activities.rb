@@ -2,7 +2,6 @@
 ActiveAdmin.register Activity do
   menu label: 'Кружки'
 
-
   filter :title
 
   index do
@@ -19,11 +18,12 @@ ActiveAdmin.register Activity do
     default_actions
   end
 
-  form :partial => "form"
+  form partial: "form"
 
   show do
-    attributes_table :id, :title, :address, :metro_station, :description, :users_rating, :experts_rating,
-    :created_at, :updated_at, :additional_information, :parent_activities, :week
+    attributes_table :id, :title, :address, :metro_station, :description,
+                     :users_rating, :experts_rating, :created_at, :updated_at,
+                     :additional_information, :parent_activities, :week
 
     panel 'Карта' do
       form do |f|

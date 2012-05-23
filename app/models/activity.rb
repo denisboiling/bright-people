@@ -20,19 +20,15 @@ class Activity < ActiveRecord::Base
   has_many :direction_tags, through: :activity_direction_relations
 
   has_many :teachers
-  has_many :votes, :class_name => 'ActivityVote'
+  has_many :votes, class_name: 'ActivityVote'
   has_many :activity_comments
 
-  has_many :photos,
-  class_name: 'ActivityPhoto',
-  dependent: :destroy
+  has_many :photos, class_name: 'ActivityPhoto',
+                    dependent: :destroy
 
-  has_many :videos,
-  class_name: 'VideoUrl',
-  dependent: :destroy,
-  conditions: "relation_type = 'activity'",
-  foreign_key: 'relation_id',
-  before_add: :add_activity_type
+  has_many :videos, class_name: 'VideoUrl', dependent: :destroy,
+                    conditions: "relation_type = 'activity'",
+                    foreign_key: 'relation_id', before_add: :add_activity_type
 
   # Forcibly set activity relation type for video
   def add_activity_type(video)
@@ -46,12 +42,8 @@ class Activity < ActiveRecord::Base
     joins(:activity_direction_relations)
       .where('activity_direction_relations.direction_tag_id' => id) }
 
-  scope :with_ages, lambda { |ids|
-    where(:age_tag_id => ids) }
-
-  scope :with_station, lambda { |id|
-    where(:metro_station_id => id) }
-
+  scope :with_ages, lambda { |ids| where(age_tag_id: ids) }
+  scope :with_station, lambda { |id| where(metro_station_id: id) }
   scope :distinct, select('DISTINCT(activities.id), activities.*')
 
   define_index do

@@ -5,7 +5,8 @@ class UsersController < ApplicationController
     if user.save and not user.email.blank?
       head :ok
     else
-      render partial: 'users/email_form', locals: {user: user}, status: :unprocessable_entity
+      render partial: 'users/email_form', locals: { user: user },
+             status: :unprocessable_entity
     end
   end
 end
