@@ -2,13 +2,6 @@
 ActiveAdmin.register Activity do
   menu label: 'Кружки'
 
-#  controller do
-#    def update
-#      @activity = Activity.find(params[:id])
-#      params[:activity_schedule] = parse(params[:activity_schedule])
-#      @activity.update_attributes(params[:activity])
-#    end
-#  end
 
   filter :title
 
@@ -26,7 +19,7 @@ ActiveAdmin.register Activity do
     default_actions
   end
 
-  form :partial => "editing"
+  form :partial => "form"
 
   show do
     attributes_table :id, :title, :address, :metro_station, :description, :users_rating, :experts_rating,

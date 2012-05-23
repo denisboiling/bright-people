@@ -1,6 +1,5 @@
 class ActivitiesController < ApplicationController
   # TODO: integrate metasearch for sorting
-  # TODO: MetroStation and AgeTag move to view template
 
   def index
     @activities = Activity.scoped
@@ -16,14 +15,12 @@ class ActivitiesController < ApplicationController
       end
     @activities = @activities.distinct
 
-    @metro_stations = MetroStation.scoped
     @directions =
       case params[:kind]
       when 'educational'    then DirectionTag.educational
       when 'entertainment'  then DirectionTag.entertainment
       else                       DirectionTag.scoped
       end
-    @age_tags = AgeTag.scoped
 
     if params[:remote]
       render partial: 'activities', locals: {activities: @activities}

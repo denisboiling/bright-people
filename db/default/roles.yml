@@ -1,5 +1,11 @@
 user:
   name: user
 
+admin:
+  name: admin
+
+editor:
+  name: editor
+
 specialist:
   name: specialist

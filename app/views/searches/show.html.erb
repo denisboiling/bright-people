@@ -1,0 +1,5 @@
+<%= render partial: 'shared/search' %>
+
+<% @results.each do |result| %>
+  <%= render "shared/#{result.class.name.downcase}", object: result %>
+<% end %>

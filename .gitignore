@@ -14,3 +14,5 @@ config/database.yml
 /tmp
 .rvmrc
 public/system
+/config/development.sphinx.conf
+/config/sphinx.yml
