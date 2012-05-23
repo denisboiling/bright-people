@@ -3,7 +3,9 @@ class Activity < ActiveRecord::Base
 
   attr_accessible :title, :description, :organization_id, :users_rating,
                   :metro_station_id, :experts_rating, :address, :is_educational,
-                  :additional_information, :parent_activities
+                  :additional_information, :parent_activities, :schedule, :week
+
+  store :schedule, accessors: [:week]
 
   validates :title, presence: true
   validates :description, presence: true
@@ -49,5 +51,10 @@ class Activity < ActiveRecord::Base
     self.experts_rating = experts_rating
     
     self.save!
+  end
+
+  def week=(value)
+    value = JSON(value) if value.kind_of? String
+    self[:week] = value
   end
 end

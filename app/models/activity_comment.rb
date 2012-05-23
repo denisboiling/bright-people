@@ -1,5 +1,5 @@
 class ActivityComment < ActiveRecord::Base
-  attr_accessible :content, :commentator, :picture, :isParent, :activity_id
+  attr_accessible :content, :commentator, :picture, :is_parent, :activity_id
 
   belongs_to :activity
 
