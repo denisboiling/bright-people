@@ -1,0 +1,6 @@
+<% 1.upto(20).each do |i| %>
+video_<%= i %>:
+  url: 'http://www.youtube.com/watch?v=60og9gwKh1o'
+  relation_type: activity
+  relation_id: <%= rand(20) + 1 %>
+<% end %>

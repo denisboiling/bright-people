@@ -19,6 +19,7 @@ class DeviseCreateAdminUsers < ActiveRecord::Migration
       t.string   :current_sign_in_ip
       t.string   :last_sign_in_ip
 
+      t.integer :role_id, null: false
       t.timestamps
     end
 

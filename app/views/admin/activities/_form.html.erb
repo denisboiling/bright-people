@@ -1,4 +1,4 @@
-<%= semantic_form_for [:admin, @activity] do |f| %>
+<%= semantic_form_for [:admin, @activity], html: { multipart: true } do |f| %>
   <%= f.inputs 'Основное' do %>
     <%= f.input :organization, as: :select, collection: Organization.all %>
       <%= f.input :title %>
@@ -8,16 +8,35 @@
       <%= f.input :users_rating %>
       <%= f.input :experts_rating %>
     <% end %>
+
+    <%= f.inputs "Медиа контент" do %>
+      <div class="activity_photos">
+	<%= f.semantic_fields_for :photos do |photo| %>
+	  <%= render 'admin/activities/photo_fields', f: photo %>
+	<% end %>
+      </div>
+      <%= link_to_add_association 'Добавить фотографию', f, :photos,  'data-association-insertion-method' => 'append',
+	  'data-association-insertion-node' => '.activity_photos' %>
+
+      <div class="activity_videos">
+	<%= f.semantic_fields_for :videos do |video| %>
+	  <%= render 'admin/activities/video_fields', f: video %>
+	<% end %>
+      </div>
+      <%= link_to_add_association 'Добавить ссылку на видео', f, :videos,  'data-association-insertion-method' => 'append',
+	  'data-association-insertion-node' => '.activity_videos' %>
+    <% end %>
+
     <%= f.inputs 'Карта' do %>
       <%= f.input :coords, as: :hidden, input_html: { class: 'hidden_coords'} %>
       <%= f.input :coords, input_html: { class: 'edit_map' }, label: false %>
     <% end %>
+
     <%= f.inputs 'Допонительная информация' do %>
       <div id="wysihtml5-toolbar-additional-information" style="display: none;">
         <a data-wysihtml5-command="bold">bold</a>
         <a data-wysihtml5-command="italic">italic</a>
   
-        <!-- Some wysihtml5 commands like 'createLink' require extra paramaters specified by the user (eg. href) -->
         <a data-wysihtml5-command="createLink">insert link</a>
         <div data-wysihtml5-dialog="createLink" style="display: none;">
           <label>
@@ -44,6 +63,9 @@
       </div>
       <%= f.input :parent_activities, input_html: { size: 10 } %>
     <% end %>
+
+
+
   <%= f.buttons %>
 <% end %>
 <script>

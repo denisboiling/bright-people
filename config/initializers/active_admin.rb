@@ -6,6 +6,7 @@ ActiveAdmin.setup do |config|
 
   config.register_javascript '//api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU'
   config.register_javascript 'edit_map'
+  config.register_javascript 'cocoon'
 
   config.before_filter :set_admin_locale
 

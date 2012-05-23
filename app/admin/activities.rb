@@ -10,14 +10,10 @@ ActiveAdmin.register Activity do
     column :address
     column :users_rating
     column :experts_rating
-    column :created_at
-    column :updated_at
-    column :additional_information
-    column :parent_activities
     default_actions
   end
 
-  form :partial => "editing"
+  form :partial => 'form'
 
   show do
     attributes_table :id, :title, :address, :metro_station, :description, :users_rating, :experts_rating,

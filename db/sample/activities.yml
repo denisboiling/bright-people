@@ -1,5 +1,6 @@
 <% 1.upto(20).each do |i| %>
 activity_<%= i %>:
+  id: <%= i %>
   title: <%= Faker::Lorem.words.join(' ') %>
   description: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
   organization_id: <%= rand(10) + 1 %>

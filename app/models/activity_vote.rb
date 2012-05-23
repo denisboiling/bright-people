@@ -1,7 +1,7 @@
 class ActivityVote < ActiveRecord::Base
   belongs_to :user
   belongs_to :activity
-  
+
   validates :user_id, uniqueness: true
   validates :activity_id, :user_id, :rate, presence: true
   validates :rate, :numericality => { only_integer: true,

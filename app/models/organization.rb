@@ -8,4 +8,8 @@ class Organization < ActiveRecord::Base
 
   has_many :activities
   belongs_to :metro_station
+
+  define_index do
+    indexes title, sortable: true
+  end
 end
