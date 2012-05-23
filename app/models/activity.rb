@@ -6,7 +6,10 @@ class Activity < ActiveRecord::Base
                   :additional_information, :parent_activities, :schedule, :week,
                   :photos_attributes, :videos_attributes
 
-  store :schedule, accessors: [:week]
+  SCHEDULE_DAYS = [:monday, :tuesday, :wednesday, :thursday, :friday,
+                   :saturday, :sunday]
+  
+  store :schedule, accessors: SCHEDULE_DAYS
 
   validates :title, presence: true
   validates :description, presence: true
