@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/RISCfuture/hierarchy.git
+  revision: 99cb2e3eb38f98d3ace615c69e5afd1f8bfff5f0
+  specs:
+    hierarchy (1.0.6)
+      pg
+      rails (>= 3.0.2)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -337,6 +345,7 @@ DEPENDENCIES
   guard-cucumber
   guard-rspec
   guard-spork
+  hierarchy!
   jquery-rails
   jquery-ui-themes
   launchy

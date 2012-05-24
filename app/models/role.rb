@@ -4,5 +4,6 @@ class Role < ActiveRecord::Base
 
   class << self
     def user; self.find_by_name('user'); end
+    def specialist; self.find_by_name('specialist'); end
   end
 end

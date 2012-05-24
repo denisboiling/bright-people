@@ -16,20 +16,22 @@
 
     <%= f.inputs "Медиа контент" do %>
       <div class="activity_photos">
-	<%= f.semantic_fields_for :photos do |photo| %>
-	  <%= render 'admin/activities/photo_fields', f: photo %>
-	<% end %>
+      <%= f.semantic_fields_for :photos do |photo| %>
+        <%= render 'admin/activities/photo_fields', f: photo %>
+      <% end %>
       </div>
-      <%= link_to_add_association 'Добавить фотографию', f, :photos,  'data-association-insertion-method' => 'append',
-	  'data-association-insertion-node' => '.activity_photos' %>
+      <%= link_to_add_association 'Добавить фотографию', f, :photos,
+                                  'data-association-insertion-method' => 'append',
+                                  'data-association-insertion-node' => '.activity_photos' %>
 
       <div class="activity_videos">
-	<%= f.semantic_fields_for :videos do |video| %>
-	  <%= render 'admin/activities/video_fields', f: video %>
-	<% end %>
+      <%= f.semantic_fields_for :videos do |video| %>
+        <%= render 'admin/activities/video_fields', f: video %>
+      <% end %>
       </div>
-      <%= link_to_add_association 'Добавить ссылку на видео', f, :videos,  'data-association-insertion-method' => 'append',
-	  'data-association-insertion-node' => '.activity_videos' %>
+      <%= link_to_add_association 'Добавить ссылку на видео', f, :videos,
+                                  'data-association-insertion-method' => 'append',
+                                  'data-association-insertion-node' => '.activity_videos' %>
     <% end %>
 
     <%= f.inputs 'Допонительная информация' do %>
@@ -63,50 +65,17 @@
       </div>
       <%= f.input :parent_activities, input_html: { size: 10 } %>
     <% end %>
+    
     <%= f.inputs 'Расписание' do %>
-      <div id='list'>
       <ul>
-        <li>Monday<button type="button" id='monday'>Click Me!</button></li>
-        <li>Tuesday<button type="button" id='tuesday'>Click Me!</button></li>
-        <li>Wednesday<button type="button" id='wednesday'>Click Me!</button></li>
-        <li>Thursday<button type="button" id='thursday'>Click Me!</button></li>
-        <li>Friday<button type="button" id='friday'>Click Me!</button></li>
-        <li>Saturday<button type="button" id='saturday'>Click Me!</button></li>
-        <li>Sunday<button type="button" id='sunday'>Click Me!</button></li>
+        <% Activity::SCHEDULE_DAYS.each do |day| %>
+          <li data-day-name="<%= day %>">
+            <%= link_to day, '#', class: :schedule_day_link %>
+          </li>
+          <%= f.hidden_field day %>
+        <% end %>
       </ul>
-      </div>
-      <%= f.input :week %>
-<script>
-  var JSONSchedule = {"monday":[], "tuesday":[], "wednesday":[], "thursday":[], "friday":[], "saturday":[], "sunday":[]};
-  $('#activity_week').val(JSON.stringify(JSONSchedule));
-  $('#list').find(":button").click(function(){
-    var day_of_week = $(this).attr('id');
-    $(this).parent().append("<input id=\"timeinput-first-" + day_of_week +"\" type=\"text\">");
-    $('#timeinput-first-' + day_of_week).timepicker({ 'step': 15, 'timeFormat': 'H:i' });
-    $(this).parent().append("<input id=\"timeinput-second-" + day_of_week +"\" type=\"text\">");
-    $("#timeinput-second-" + day_of_week).timepicker({ 'step': 15, 'timeFormat': 'H:i' });
-    $(this).parent().append("<button type=\"button\" id=\"save-button-"+day_of_week+"\">Save!</button></li>");
-    $("#save-button-"+day_of_week).click(function(){
-      var day_of_week = $(this).parent().find(":button").first().attr('id');
-      JSONSchedule = JSON.parse($('#activity_week').val());
-      JSONSchedule[day_of_week].push({start: $('#timeinput-first-'+day_of_week).val(), end: $('#timeinput-second-'+day_of_week).val()});
-      $('#activity_week').val(JSON.stringify(JSONSchedule));
-      $('#timeinput-first-'+day_of_week).remove();
-      $('#timeinput-second-'+day_of_week).remove();
-      $(this).remove();
-    });
-  });
-</script>
     <% end %>
+    
   <%= f.buttons %>
 <% end %>
-<script>
-var info_editor = new wysihtml5.Editor("activity_additional_information", { // id of textarea element
-  toolbar:      "wysihtml5-toolbar-additional-information", // id of toolbar element
-  parserRules:  wysihtml5ParserRules // defined in parser rules set 
-});
-var activities_editor = new wysihtml5.Editor("activity_parent_activities", { // id of textarea element
-  toolbar:      "wysihtml5-toolbar-parent-activities", // id of toolbar element
-  parserRules:  wysihtml5ParserRules // defined in parser rules set 
-});
-</script>

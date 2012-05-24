@@ -26,6 +26,18 @@ window.setup_activities_list = ->
       success: (content) ->
         $('#activities_list').html(content)
   
+  for kind in ['users', 'experts']
+    kind_local = kind.concat('') # copy explicitly, to not depend from loop var
+    $("##{kind}_rating_link").bind 'click', (event) ->
+      event.preventDefault()
+      kind = /(\w+)_rating_link/.exec($(this).attr('id'))[1]
+      start = $("##{kind}_rating_start").val()
+      end = $("##{kind}_rating_end").val()
+      window._activities_params["#{kind}_rating_start"] = start
+      window._activities_params["#{kind}_rating_end"] = end
+      
+      update_list()
+  
   $('.activities_filter_link').bind 'click', (event) ->
     event.preventDefault()
     

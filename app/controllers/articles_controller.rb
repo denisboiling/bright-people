@@ -13,5 +13,6 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @article_tags = @article.tag_counts_on(:article_tags)
+    @article_comments = @article.article_comments.select(&:top_level?)
   end
 end

@@ -20,6 +20,9 @@ module BrightPeople
     config.assets.enabled = true
     config.assets.version = '1.0'
 
+    # Special for ltree
+    config.active_record.schema_format = :sql
+
     config.generators do |g|
       g.test_framework :rspec, :fixture => true, :views => false
       g.stylesheets false

@@ -13,7 +13,7 @@
 #= require jquery
 #= require jquery_ujs
 #= require jquery.cookie
-#= require_tree .
+#= require_directory .
 
 $ ->
   window.setup_email_dialog()

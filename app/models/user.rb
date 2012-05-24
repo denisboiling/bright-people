@@ -3,10 +3,12 @@ class User < ActiveRecord::Base
          :database_authenticatable
 
   belongs_to :role
-  
   has_many :activity_votes
 
-  attr_accessible :email, :remember_me
+  has_many :questions, dependent: :destroy,
+                       foreign_key: 'specialist_id'
+
+  attr_accessible :email, :remember_me, :password, :password_confirmation
 
   validates :role, presence: true
 
@@ -48,9 +50,9 @@ class User < ActiveRecord::Base
       self.create! odnoklassniki_id: user_id, password: Devise.friendly_token[0,8]
     end
   end
-  
+
   def specialist?
-    role.name == 'specialist'
+    role == Role.specialist
   end
 
   def email_required?

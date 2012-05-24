@@ -3,3 +3,7 @@ user_<%= i %>:
   email: <%= Faker::Internet.email %>
   role: user
 <% end %>
+
+specialist:
+  email: specialist@example.com
+  role: specialist
