@@ -2864,7 +2864,7 @@ CREATE FUNCTION postgis_proj_version() RETURNS text
 
 CREATE FUNCTION postgis_scripts_build_date() RETURNS text
     LANGUAGE sql IMMUTABLE
-    AS $$SELECT '2012-05-17 12:42:11'::text AS version$$;
+    AS $$SELECT '2012-05-21 10:13:23'::text AS version$$;
 
 
 --
@@ -7659,6 +7659,40 @@ ALTER SEQUENCE article_categories_id_seq OWNED BY article_categories.id;
 
 
 --
+-- Name: article_comments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE article_comments (
+    id integer NOT NULL,
+    author character varying(255),
+    content text,
+    article_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    path ltree DEFAULT ''::ltree
+);
+
+
+--
+-- Name: article_comments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE article_comments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: article_comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE article_comments_id_seq OWNED BY article_comments.id;
+
+
+--
 -- Name: articles; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8218,6 +8252,13 @@ ALTER TABLE ONLY article_categories ALTER COLUMN id SET DEFAULT nextval('article
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY article_comments ALTER COLUMN id SET DEFAULT nextval('article_comments_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY articles ALTER COLUMN id SET DEFAULT nextval('articles_id_seq'::regclass);
 
 
@@ -8383,6 +8424,14 @@ ALTER TABLE ONLY app_configs
 
 ALTER TABLE ONLY article_categories
     ADD CONSTRAINT article_categories_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: article_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY article_comments
+    ADD CONSTRAINT article_comments_pkey PRIMARY KEY (id);
 
 
 --
@@ -8665,3 +8714,5 @@ INSERT INTO schema_migrations (version) VALUES ('20120523091754');
 INSERT INTO schema_migrations (version) VALUES ('20120523124358');
 
 INSERT INTO schema_migrations (version) VALUES ('20120523125126');
+
+INSERT INTO schema_migrations (version) VALUES ('20120523133724');
