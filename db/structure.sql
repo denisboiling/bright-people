@@ -2864,7 +2864,7 @@ CREATE FUNCTION postgis_proj_version() RETURNS text
 
 CREATE FUNCTION postgis_scripts_build_date() RETURNS text
     LANGUAGE sql IMMUTABLE
-    AS $$SELECT '2012-05-21 10:13:23'::text AS version$$;
+    AS $$SELECT '2012-05-17 12:42:11'::text AS version$$;
 
 
 --
@@ -7343,8 +7343,7 @@ CREATE TABLE activities (
     updated_at timestamp without time zone NOT NULL,
     parent_activities text,
     additional_information text,
-    schedule text,
-    age_tag_id integer
+    schedule text
 );
 
 
@@ -7365,6 +7364,38 @@ CREATE SEQUENCE activities_id_seq
 --
 
 ALTER SEQUENCE activities_id_seq OWNED BY activities.id;
+
+
+--
+-- Name: activity_age_relations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE activity_age_relations (
+    id integer NOT NULL,
+    activity_id integer,
+    age_tag_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: activity_age_relations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE activity_age_relations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: activity_age_relations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE activity_age_relations_id_seq OWNED BY activity_age_relations.id;
 
 
 --
@@ -8196,6 +8227,13 @@ ALTER TABLE ONLY activities ALTER COLUMN id SET DEFAULT nextval('activities_id_s
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY activity_age_relations ALTER COLUMN id SET DEFAULT nextval('activity_age_relations_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY activity_comments ALTER COLUMN id SET DEFAULT nextval('activity_comments_id_seq'::regclass);
 
 
@@ -8352,6 +8390,14 @@ ALTER TABLE ONLY video_urls ALTER COLUMN id SET DEFAULT nextval('video_urls_id_s
 
 ALTER TABLE ONLY activities
     ADD CONSTRAINT activities_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: activity_age_relations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY activity_age_relations
+    ADD CONSTRAINT activity_age_relations_pkey PRIMARY KEY (id);
 
 
 --
@@ -8693,8 +8739,6 @@ INSERT INTO schema_migrations (version) VALUES ('20120517115429');
 
 INSERT INTO schema_migrations (version) VALUES ('20120517130306');
 
-INSERT INTO schema_migrations (version) VALUES ('20120517130728');
-
 INSERT INTO schema_migrations (version) VALUES ('20120521133339');
 
 INSERT INTO schema_migrations (version) VALUES ('20120522071220');
@@ -8716,3 +8760,5 @@ INSERT INTO schema_migrations (version) VALUES ('20120523124358');
 INSERT INTO schema_migrations (version) VALUES ('20120523125126');
 
 INSERT INTO schema_migrations (version) VALUES ('20120523133724');
+
+INSERT INTO schema_migrations (version) VALUES ('20120524120947');

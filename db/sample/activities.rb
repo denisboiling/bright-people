@@ -11,7 +11,8 @@ Activity.all.each do |ac|
     ac.direction_tags << tag
   end
   
-  tag = AgeTag.all.sample
-  ac.age_tag = tag
-  ac.save!
+  rand(1..3).times do
+    tag = AgeTag.all.sample
+    ac.age_tags << tag
+  end
 end
