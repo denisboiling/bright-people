@@ -7815,6 +7815,77 @@ CREATE VIEW geometry_columns AS
 
 
 --
+-- Name: interview_comments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE interview_comments (
+    id integer NOT NULL,
+    author character varying(255),
+    content text,
+    interview_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    path ltree DEFAULT ''::ltree
+);
+
+
+--
+-- Name: interview_comments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE interview_comments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: interview_comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE interview_comments_id_seq OWNED BY interview_comments.id;
+
+
+--
+-- Name: interviews; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE interviews (
+    id integer NOT NULL,
+    title character varying(255),
+    content text,
+    author character varying(255),
+    picture_file_name character varying(255),
+    picture_content_type character varying(255),
+    picture_file_size integer,
+    picture_updated_at timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: interviews_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE interviews_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: interviews_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE interviews_id_seq OWNED BY interviews.id;
+
+
+--
 -- Name: metro_stations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8280,6 +8351,20 @@ ALTER TABLE ONLY experts ALTER COLUMN id SET DEFAULT nextval('experts_id_seq'::r
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY interview_comments ALTER COLUMN id SET DEFAULT nextval('interview_comments_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY interviews ALTER COLUMN id SET DEFAULT nextval('interviews_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY metro_stations ALTER COLUMN id SET DEFAULT nextval('metro_stations_id_seq'::regclass);
 
 
@@ -8456,6 +8541,22 @@ ALTER TABLE ONLY direction_tags
 
 ALTER TABLE ONLY experts
     ADD CONSTRAINT experts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: interview_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY interview_comments
+    ADD CONSTRAINT interview_comments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: interviews_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY interviews
+    ADD CONSTRAINT interviews_pkey PRIMARY KEY (id);
 
 
 --
@@ -8716,3 +8817,7 @@ INSERT INTO schema_migrations (version) VALUES ('20120523124358');
 INSERT INTO schema_migrations (version) VALUES ('20120523125126');
 
 INSERT INTO schema_migrations (version) VALUES ('20120523133724');
+
+INSERT INTO schema_migrations (version) VALUES ('20120524112423');
+
+INSERT INTO schema_migrations (version) VALUES ('20120524113843');

@@ -19,6 +19,13 @@ BrightPeople::Application.routes.draw do
   end
   resources :article_categories, only: [:show]
 
+  resources :interviews, only: [:index, :show] do
+    resources :interview_comments
+    collection do
+      get :tag
+    end
+  end
+
   # Specialist
   namespace :specialist do
     resources :questions
