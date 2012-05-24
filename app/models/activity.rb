@@ -59,12 +59,38 @@ class Activity < ActiveRecord::Base
   accepts_nested_attributes_for :photos, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :videos, allow_destroy: true, reject_if: :all_blank
 
-  scope :with_direction, lambda { |id|
-    joins(:activity_direction_relations)
-      .where('activity_direction_relations.direction_tag_id' => id) }
-
+  scope :with_direction, (lambda do |id|
+    if id
+      joins(:activity_direction_relations)
+        .where('activity_direction_relations.direction_tag_id' => id)
+    else
+      scoped
+    end
+  end)
+  
+  scope :with_station, (lambda do |id|
+    if id
+      where(metro_station_id: id)
+    else
+      scoped
+    end
+  end)
+  
+  scope :with_users_rating, (lambda do |start, end_rate|
+    start = 0 if start.blank?
+    end_rate = 5 if end_rate.blank?
+    where('users_rating >= :start AND users_rating <= :end',
+          start: start, end: end_rate)
+  end)
+  
+  scope :with_experts_rating, (lambda do |start, end_rate|
+    start = 0 if start.blank?
+    end_rate = 5 if end_rate.blank?
+    where('experts_rating >= :start AND experts_rating <= :end',
+          start: start, end: end_rate)
+  end)
+  
   scope :with_ages, lambda { |ids| where(age_tag_id: ids) }
-  scope :with_station, lambda { |id| where(metro_station_id: id) }
   scope :distinct, select('DISTINCT(activities.id), activities.*')
 
   define_index do

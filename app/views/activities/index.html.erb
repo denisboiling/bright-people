@@ -21,6 +21,14 @@ metro station:
                include_blank: true %>
 <br />
 
+<%= link_to "Экспертная оценка:", '#', id: :experts_rating_link %>
+<%= text_field_tag 'start', 0, id: :experts_rating_start %> -
+<%= text_field_tag 'end', 5, id: :experts_rating_end %><br />
+
+<%= link_to "Пользовательский рейтинг:", '#', id: :users_rating_link %>
+<%= text_field_tag 'start', 0, id: :users_rating_start %> -
+<%= text_field_tag 'end', 5, id: :users_rating_end %><br />
+
 <% @directions.each do |direction_tag| %>
   <%= link_to direction_tag.name,
               activities_path(direction_tag_id: direction_tag.id),
