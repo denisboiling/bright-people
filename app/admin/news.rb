@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-ActiveAdmin.register Interview do
-  menu label: 'Интервью'
+ActiveAdmin.register News do
+  menu label: 'Новости'
 
   index do
     id_column
-    column "Фотография" do |interview|
-        link_to image_tag(interview.picture.url(:thumb), alt: interview.title), admin_interview_path(interview)
+    column "Фотография" do |news|
+        link_to image_tag(news.picture.url(:thumb), alt: news.title), admin_news_path(news)
     end
     column :title
     column :author
@@ -19,16 +19,16 @@ ActiveAdmin.register Interview do
       f.input :title
       f.input :content, input_html: {size: 10}
       f.input :picture, as: :file, hint: f.template.image_tag(f.object.picture.url(:medium))
-      f.input :interview_tag_list
+      f.input :news_tag_list
     end
     f.buttons
   end
 
   show do
-    attributes_table :title, :author, :content, :created_at, :updated_at, :picture, :interview_tag_list
+    attributes_table :title, :author, :content, :created_at, :updated_at, :picture, :news_tag_list
 
     panel 'Фотография' do
-      image_tag(interview.picture.url)
+      image_tag(news.picture.url)
     end
   end
 end
