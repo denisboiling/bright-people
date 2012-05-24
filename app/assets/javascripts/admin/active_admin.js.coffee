@@ -1,8 +1,13 @@
 #= require active_admin/base
+
+#= require cocoon
+#= require autocomplete-rails
 #= require advanced
 #= require wysihtml5-0.3.0
 #= require jquery-ui-timepicker-addon
 #= require jquery-ui-timepicker-ru
+
+#= require admin/edit_map
 
 setup_schedule = ->
   days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday',
