@@ -53,26 +53,6 @@ setup_schedule = ->
     
     $li = $(this).closest('li')
     add_interval($li)
-      
-  # var JSONSchedule = {"monday":[], "tuesday":[], "wednesday":[], "thursday":[], "friday":[], "saturday":[], "sunday":[]};
-  # $('#activity_week').val(JSON.stringify(JSONSchedule));
-  # $('#list').find(":button").click(function(){
-  #   var day_of_week = $(this).attr('id');
-  #   $(this).parent().append("<input id=\"timeinput-first-" + day_of_week +"\" type=\"text\">");
-  #   $('#timeinput-first-' + day_of_week).timepicker({ 'step': 15, 'timeFormat': 'H:i' });
-  #   $(this).parent().append("<input id=\"timeinput-second-" + day_of_week +"\" type=\"text\">");
-  #   $("#timeinput-second-" + day_of_week).timepicker({ 'step': 15, 'timeFormat': 'H:i' });
-  #   $(this).parent().append("<button type=\"button\" id=\"save-button-"+day_of_week+"\">Save!</button></li>");
-  #   $("#save-button-"+day_of_week).click(function(){
-  #     var day_of_week = $(this).parent().find(":button").first().attr('id');
-  #     JSONSchedule = JSON.parse($('#activity_week').val());
-  #     JSONSchedule[day_of_week].push({start: $('#timeinput-first-'+day_of_week).val(), end: $('#timeinput-second-'+day_of_week).val()});
-  #     $('#activity_week').val(JSON.stringify(JSONSchedule));
-  #     $('#timeinput-first-'+day_of_week).remove();
-  #     $('#timeinput-second-'+day_of_week).remove();
-  #     $(this).remove();
-  #   });
-  # });
 
 setup_wysihtml5_editor = ->
   info_editor = new wysihtml5.Editor "activity_additional_information",
