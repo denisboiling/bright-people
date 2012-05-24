@@ -12,6 +12,7 @@ BrightPeople::Application.routes.draw do
   resource :search, only: [:show]
   resources :experts, only: [:index, :show]
   resources :articles, only: [:index, :show] do
+    resources :article_comments
     collection do
       get :tag
     end

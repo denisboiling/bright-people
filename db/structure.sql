@@ -2864,7 +2864,7 @@ CREATE FUNCTION postgis_proj_version() RETURNS text
 
 CREATE FUNCTION postgis_scripts_build_date() RETURNS text
     LANGUAGE sql IMMUTABLE
-    AS $$SELECT '2012-04-18 12:57:11'::text AS version$$;
+    AS $$SELECT '2012-05-21 10:13:23'::text AS version$$;
 
 
 --
@@ -7628,6 +7628,109 @@ ALTER SEQUENCE app_configs_id_seq OWNED BY app_configs.id;
 
 
 --
+-- Name: article_categories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE article_categories (
+    id integer NOT NULL,
+    title character varying(255),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: article_categories_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE article_categories_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: article_categories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE article_categories_id_seq OWNED BY article_categories.id;
+
+
+--
+-- Name: article_comments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE article_comments (
+    id integer NOT NULL,
+    author character varying(255),
+    content text,
+    article_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    path ltree DEFAULT ''::ltree
+);
+
+
+--
+-- Name: article_comments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE article_comments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: article_comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE article_comments_id_seq OWNED BY article_comments.id;
+
+
+--
+-- Name: articles; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE articles (
+    id integer NOT NULL,
+    title character varying(255),
+    content text,
+    author character varying(255),
+    article_category_id integer,
+    picture_file_name character varying(255),
+    picture_content_type character varying(255),
+    picture_file_size integer,
+    picture_updated_at timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: articles_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE articles_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: articles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE articles_id_seq OWNED BY articles.id;
+
+
+--
 -- Name: direction_tags; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -7900,6 +8003,70 @@ CREATE TABLE spatial_ref_sys (
 
 
 --
+-- Name: taggings; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE taggings (
+    id integer NOT NULL,
+    tag_id integer,
+    taggable_id integer,
+    taggable_type character varying(255),
+    tagger_id integer,
+    tagger_type character varying(255),
+    context character varying(128),
+    created_at timestamp without time zone
+);
+
+
+--
+-- Name: taggings_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE taggings_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: taggings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE taggings_id_seq OWNED BY taggings.id;
+
+
+--
+-- Name: tags; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE tags (
+    id integer NOT NULL,
+    name character varying(255)
+);
+
+
+--
+-- Name: tags_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE tags_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: tags_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE tags_id_seq OWNED BY tags.id;
+
+
+--
 -- Name: teachers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8078,6 +8245,27 @@ ALTER TABLE ONLY app_configs ALTER COLUMN id SET DEFAULT nextval('app_configs_id
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY article_categories ALTER COLUMN id SET DEFAULT nextval('article_categories_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY article_comments ALTER COLUMN id SET DEFAULT nextval('article_comments_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY articles ALTER COLUMN id SET DEFAULT nextval('articles_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY direction_tags ALTER COLUMN id SET DEFAULT nextval('direction_tags_id_seq'::regclass);
 
 
@@ -8121,6 +8309,20 @@ ALTER TABLE ONLY questions ALTER COLUMN id SET DEFAULT nextval('questions_id_seq
 --
 
 ALTER TABLE ONLY roles ALTER COLUMN id SET DEFAULT nextval('roles_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY taggings ALTER COLUMN id SET DEFAULT nextval('taggings_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY tags ALTER COLUMN id SET DEFAULT nextval('tags_id_seq'::regclass);
 
 
 --
@@ -8217,6 +8419,30 @@ ALTER TABLE ONLY app_configs
 
 
 --
+-- Name: article_categories_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY article_categories
+    ADD CONSTRAINT article_categories_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: article_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY article_comments
+    ADD CONSTRAINT article_comments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: articles_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY articles
+    ADD CONSTRAINT articles_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: direction_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8281,6 +8507,22 @@ ALTER TABLE ONLY spatial_ref_sys
 
 
 --
+-- Name: taggings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY taggings
+    ADD CONSTRAINT taggings_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY tags
+    ADD CONSTRAINT tags_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: teachers_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8337,6 +8579,20 @@ CREATE UNIQUE INDEX index_admin_users_on_email ON admin_users USING btree (email
 --
 
 CREATE UNIQUE INDEX index_admin_users_on_reset_password_token ON admin_users USING btree (reset_password_token);
+
+
+--
+-- Name: index_taggings_on_tag_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_taggings_on_tag_id ON taggings USING btree (tag_id);
+
+
+--
+-- Name: index_taggings_on_taggable_id_and_taggable_type_and_context; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_taggings_on_taggable_id_and_taggable_type_and_context ON taggings USING btree (taggable_id, taggable_type, context);
 
 
 --
@@ -8449,6 +8705,14 @@ INSERT INTO schema_migrations (version) VALUES ('20120522095345');
 
 INSERT INTO schema_migrations (version) VALUES ('20120522193044');
 
+INSERT INTO schema_migrations (version) VALUES ('20120523082257');
+
+INSERT INTO schema_migrations (version) VALUES ('20120523083451');
+
+INSERT INTO schema_migrations (version) VALUES ('20120523091754');
+
 INSERT INTO schema_migrations (version) VALUES ('20120523124358');
 
 INSERT INTO schema_migrations (version) VALUES ('20120523125126');
+
+INSERT INTO schema_migrations (version) VALUES ('20120523133724');
