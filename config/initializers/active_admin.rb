@@ -6,10 +6,15 @@ ActiveAdmin.setup do |config|
   config.current_user_method = :current_admin_user
   config.logout_link_path = :destroy_admin_user_session_path
 
+  # because our main script placed in not standard place,
+  # we should remove and and new path explicitly:
+  config.javascripts.delete 'active_admin.js'
+  config.register_javascript 'admin/active_admin'
+  
+  config.stylesheets.pop
+  config.register_stylesheet 'admin/active_admin'
+  
   config.register_javascript '//api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU'
-  config.register_javascript 'edit_map'
-  config.register_javascript 'cocoon'
-  config.register_javascript 'autocomplete-rails'
 
   config.before_filter :set_admin_locale
 
