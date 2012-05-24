@@ -4,6 +4,8 @@ class ActivitiesController < ApplicationController
   def index
     @activities = Activity.with_direction(params[:direction_tag_id])
                           .with_station(params[:metro_station_id])
+                          .with_users_rating(params[:users_rating_start], params[:users_rating_end])
+                          .with_experts_rating(params[:experts_rating_start], params[:experts_rating_end])
                           .order(params[:sort])
     @activities = @activities.with_ages(params[:age_tag_ids].split(','))  if params[:age_tag_ids]
     @activities = @activities.distinct
