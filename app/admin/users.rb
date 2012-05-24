@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ActiveAdmin.register User do
-  menu :label => "Пользователи"
+  menu label: "Пользователи"
 
   filter :email
 

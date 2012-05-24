@@ -6,7 +6,7 @@ ActiveAdmin.register Activity do
     autocomplete :activity, :title, full: true
   end
 
-  filter :title, as: :autocomplete, :input_html => {'data-autocomplete' => '/admin/activities/autocomplete_activity_title', object: 'activity'}
+  filter :title, as: :autocomplete, input_html: {'data-autocomplete' => '/admin/activities/autocomplete_activity_title', object: 'activity'}
 
 
   index do

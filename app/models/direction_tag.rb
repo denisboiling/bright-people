@@ -4,6 +4,6 @@ class DirectionTag < ActiveRecord::Base
   
   validates :name, presence: true
   
-  scope :educational, where(:is_educational => true)
-  scope :entertainment, where(:is_educational => [false, nil])
+  scope :educational, where(is_educational: true)
+  scope :entertainment, where(is_educational: [false, nil])
 end
