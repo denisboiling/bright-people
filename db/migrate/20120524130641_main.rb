@@ -193,4 +193,31 @@ class Main < ActiveRecord::Migration
     t.timestamps
   end
 
+  create_table :interviews do |t|
+      t.string :title, :author
+      t.text :content
+      t.has_attached_file :picture
+      t.timestamps
+  end
+
+  create_table :activity_age_relations do |t|
+      t.integer :activity_id, :age_tag_id
+
+      t.timestamps
+  end
+
+  create_table :news do |t|
+
+      t.timestamps
+  end
+
+
+  create_table :comments do |t|
+      t.integer :user_id, :interview_id, :article_id
+      t.text :content
+
+      t.timestamps
+  end
+  update "ALTER TABLE \"comments\" ADD \"path\" LTREE NULL DEFAULT ''"
+
 end
