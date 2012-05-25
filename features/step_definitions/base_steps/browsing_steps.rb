@@ -16,10 +16,6 @@ When /^wait for ajax$/ do
   end
 end
 
-When /^I click on "(.*?)" with "(.*?)" selector$/ do |link_text, selector|
-  page.find(selector, text: link_text).click
-end
-
 Then /^I should be redirected to (.+)$/ do |page|
   puts 'TODO: make this done'
   step "I should be on #{page}"
