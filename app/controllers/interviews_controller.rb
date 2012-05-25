@@ -2,7 +2,7 @@ class InterviewsController < ApplicationController
   def tag
     @interview_tag_name = params[:id]
     @interviews = Interview.tagged_with(params[:id])
-    render 'interviews_tags/show'
+    render 'interview_tags/show'
   end
 
   def index
