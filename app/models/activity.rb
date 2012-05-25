@@ -69,6 +69,15 @@ class Activity < ActiveRecord::Base
     end
   end)
   
+  scope :with_ages, (lambda do |ids|
+    if ids
+      joins(:activity_age_relations)
+        .where('activity_age_relations.age_tag_id' => ids)
+    else
+      scoped
+    end
+  end)
+  
   scope :with_station, (lambda do |id|
     if id
       where(metro_station_id: id)
@@ -91,7 +100,6 @@ class Activity < ActiveRecord::Base
           start: start, end: end_rate)
   end)
   
-  scope :with_ages, lambda { |ids| where(age_tag_id: ids) }
   scope :distinct, select('DISTINCT(activities.id), activities.*')
 
   define_index do
