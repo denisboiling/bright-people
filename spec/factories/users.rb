@@ -8,9 +8,7 @@ FactoryGirl.define do
 
   factory :specialist, parent: :user do
     description { Faker::Lorem.sentences.join("\n") }
-    after_create do |user|
-      user.specialist!
-    end
+    after(:create) {|user| user.specialist! }
   end
 
 end
