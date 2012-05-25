@@ -6,7 +6,7 @@ class Article < ActiveRecord::Base
   validates :title, :content, :author, :article_category_id, presence: :true
 
   belongs_to :article_category
-  has_many :article_comments
+  has_many :comments
 
   has_attached_file :picture,
                     styles: { medium: "300x300>", thumb: "100x100>" },

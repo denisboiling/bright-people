@@ -19,3 +19,4 @@ $ ->
   window.setup_email_dialog()
   window.setup_activities_list()
   window.setup_activities_rating()
+  window.setup_comments()

@@ -1,0 +1,14 @@
+<div class="comment">
+  <div><%= comment.content %></div>
+  <p> by <%= comment.author_name %></p>
+  <%= link_to "Добавить комментарий", '#', class: :add_comment_link %>
+  <div class="comment_text_block hidden">
+    <textarea></textarea>
+    <%= link_to "Отправить", '#', class: :send_comment_link, "data-id" => comment.id %>
+  </div>
+  <div class="nested_comments">
+  <% comment.children.each do |comment| %>
+    <%= render 'comments/comment', comment: comment %>
+  <% end %>
+  </div>
+</div>
