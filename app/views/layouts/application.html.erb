@@ -12,7 +12,7 @@
 
   <div class="hidden">
     <div id="email_dialog">
-      <%= render 'users/email_form', user: User.new %>
+      <%= render 'users/email_form', user: User.new if current_user and current_user.email.blank? %>
     </div>
   </div>
 

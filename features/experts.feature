@@ -1,10 +1,8 @@
 Feature: Create questions for specialist
 
   Background:
-    Given the following specialist exists:
-      | name        |
-      | Ivan Petrov |
-    Given I am signup and signin as "user" with "user@example.com/password"
+    Given a specialist exists with a name of "Ivan Petrov"
+    And I signed in as a specialist
   
   Scenario: Show path to specialists page
     And I am on the specialists page
