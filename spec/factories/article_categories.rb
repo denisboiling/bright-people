@@ -2,5 +2,6 @@
 
 FactoryGirl.define do
   factory :article_category do
+    title "test category"
   end
 end
