@@ -7705,9 +7705,9 @@ ALTER SEQUENCE articles_id_seq OWNED BY articles.id;
 CREATE TABLE comments (
     id integer NOT NULL,
     user_id integer,
-    content text,
     interview_id integer,
     article_id integer,
+    content text,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     path ltree DEFAULT ''::ltree
@@ -7824,8 +7824,8 @@ CREATE VIEW geometry_columns AS
 CREATE TABLE interviews (
     id integer NOT NULL,
     title character varying(255),
-    content text,
     author character varying(255),
+    content text,
     picture_file_name character varying(255),
     picture_content_type character varying(255),
     picture_file_size integer,
@@ -8191,8 +8191,7 @@ CREATE TABLE users (
     vkontakte_id character varying(255),
     odnoklassniki_id character varying(255),
     encrypted_password character varying(255),
-    first_name character varying(255),
-    last_name character varying(255),
+    name character varying(255),
     description character varying(255),
     role_id integer NOT NULL,
     avatar_file_name character varying(255),
@@ -8765,12 +8764,4 @@ CREATE RULE geometry_columns_update AS ON UPDATE TO geometry_columns DO INSTEAD 
 
 INSERT INTO schema_migrations (version) VALUES ('20120000000000');
 
-INSERT INTO schema_migrations (version) VALUES ('20120524112423');
-
-INSERT INTO schema_migrations (version) VALUES ('20120524120947');
-
-INSERT INTO schema_migrations (version) VALUES ('20120524130434');
-
 INSERT INTO schema_migrations (version) VALUES ('20120524130641');
-
-INSERT INTO schema_migrations (version) VALUES ('20120524132013');

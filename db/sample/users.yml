@@ -8,11 +8,13 @@ user_<%= i %>:
 specialist_<% i %>:
   email: <%= Faker::Internet.email %>
   role: specialist
+  name: <%= Faker::Name.name %>
 <% end %>
 
 specialist:
   email: specialist@example.com
   role: specialist
+  name: <%= Faker::Name.name %>
 
 user:
   email: user@example.com
