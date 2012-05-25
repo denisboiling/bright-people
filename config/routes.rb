@@ -18,6 +18,8 @@ BrightPeople::Application.routes.draw do
   end
   resources :article_categories, only: [:show]
 
+  resources :specialists, only: [:index, :show]
+  
   # Specialist
   namespace :specialist do
     resources :questions

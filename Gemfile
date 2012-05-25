@@ -33,27 +33,26 @@ gem 'thinking-sphinx'
 gem 'cocoon'
 gem 'rails3-jquery-autocomplete'
 gem 'hierarchy', github: 'RISCfuture/hierarchy'
+gem 'will_paginate'
 
 group :development do
   gem 'letter_opener'
-  gem 'capistrano'
-  gem 'capistrano-ext'
-  gem 'capistrano-unicorn'
-  gem 'rvm-capistrano'
+  # gem 'capistrano'
+  # gem 'capistrano-ext'
+  # gem 'capistrano-unicorn'
+  # gem 'rvm-capistrano'
   gem 'sextant'
   gem 'quiet_assets'
 end
 
-group :test do
-  gem 'cucumber-rails'
-end
-
 group :development, :test do
+  gem 'cucumber-rails'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'spork', '~> 1.0.0rc3'
+  gem 'guard-spork'
   gem 'guard-rspec'
   gem 'guard-cucumber'
-  gem 'guard-spork'
   gem 'database_cleaner'
   unless ENV['JENKINS']
     gem 'thin'

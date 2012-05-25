@@ -169,8 +169,13 @@ class Main < ActiveRecord::Migration
     t.datetime :remember_created_at, :current_sign_in_at, :last_sign_in_at
     t.integer :sign_in_count, default: 0
     t.string :current_sign_in_ip, :last_sign_in_ip, :facebook_id,
-             :vkontakte_id, :odnoklassniki_id, :encrypted_password
+             :vkontakte_id, :odnoklassniki_id, :encrypted_password,
+             :first_name, :last_name, :description
     t.integer :role_id, null: false
+
+    t.string :avatar_file_name, :avatar_content_type
+    t.integer :avatar_file_size
+    t.datetime :attach_updated_at
 
     t.timestamps
   end

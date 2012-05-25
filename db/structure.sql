@@ -7315,13 +7315,32 @@ CREATE TABLE active_admin_comments (
     id integer NOT NULL,
     resource_id character varying(255) NOT NULL,
     resource_type character varying(255) NOT NULL,
-    author_id integer,
     author_type character varying(255),
+    namespace character varying(255),
+    author_id integer,
     body text,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    namespace character varying(255)
+    updated_at timestamp without time zone NOT NULL
 );
+
+
+--
+-- Name: active_admin_comments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE active_admin_comments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: active_admin_comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE active_admin_comments_id_seq OWNED BY active_admin_comments.id;
 
 
 --
@@ -7333,18 +7352,18 @@ CREATE TABLE activities (
     title character varying(255),
     address character varying(255),
     description text,
-    organization_id integer,
-    users_rating double precision DEFAULT 0 NOT NULL,
-    experts_rating double precision DEFAULT 0 NOT NULL,
-    location geography(Point,4326),
-    metro_station_id integer,
-    is_educational boolean,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
     parent_activities text,
     additional_information text,
     schedule text,
-    age_tag_id integer
+    organization_id integer,
+    metro_station_id integer,
+    age_tag_id integer,
+    users_rating double precision DEFAULT 0.0 NOT NULL,
+    experts_rating double precision DEFAULT 0.0 NOT NULL,
+    location geography(Point,4326),
+    is_educational boolean,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -7373,16 +7392,16 @@ ALTER SEQUENCE activities_id_seq OWNED BY activities.id;
 
 CREATE TABLE activity_comments (
     id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
     commentator character varying(255),
-    content text,
     picture_file_name character varying(255),
     picture_content_type character varying(255),
+    content text,
     picture_file_size integer,
+    activity_id integer,
     picture_updated_at timestamp without time zone,
     is_parent boolean,
-    activity_id integer
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -7446,8 +7465,8 @@ CREATE TABLE activity_photos (
     attach_file_name character varying(255),
     attach_content_type character varying(255),
     attach_file_size integer,
-    attach_updated_at timestamp without time zone,
     activity_id integer,
+    attach_updated_at timestamp without time zone,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -7506,25 +7525,6 @@ ALTER SEQUENCE activity_votes_id_seq OWNED BY activity_votes.id;
 
 
 --
--- Name: admin_notes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE admin_notes_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: admin_notes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE admin_notes_id_seq OWNED BY active_admin_comments.id;
-
-
---
 -- Name: admin_users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -7533,13 +7533,13 @@ CREATE TABLE admin_users (
     email character varying(255) DEFAULT ''::character varying NOT NULL,
     encrypted_password character varying(255) DEFAULT ''::character varying NOT NULL,
     reset_password_token character varying(255),
-    reset_password_sent_at timestamp without time zone,
-    remember_created_at timestamp without time zone,
-    sign_in_count integer DEFAULT 0,
-    current_sign_in_at timestamp without time zone,
-    last_sign_in_at timestamp without time zone,
     current_sign_in_ip character varying(255),
     last_sign_in_ip character varying(255),
+    reset_password_sent_at timestamp without time zone,
+    remember_created_at timestamp without time zone,
+    current_sign_in_at timestamp without time zone,
+    last_sign_in_at timestamp without time zone,
+    sign_in_count integer DEFAULT 0,
     role_id integer NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
@@ -7598,21 +7598,22 @@ ALTER SEQUENCE age_tags_id_seq OWNED BY age_tags.id;
 
 
 --
--- Name: app_configs; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: article_categories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE TABLE app_configs (
+CREATE TABLE article_categories (
     id integer NOT NULL,
+    title character varying(255),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
 
 
 --
--- Name: app_configs_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: article_categories_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE app_configs_id_seq
+CREATE SEQUENCE article_categories_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -7621,10 +7622,48 @@ CREATE SEQUENCE app_configs_id_seq
 
 
 --
--- Name: app_configs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: article_categories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE app_configs_id_seq OWNED BY app_configs.id;
+ALTER SEQUENCE article_categories_id_seq OWNED BY article_categories.id;
+
+
+--
+-- Name: articles; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE articles (
+    id integer NOT NULL,
+    title character varying(255),
+    author character varying(255),
+    picture_file_name character varying(255),
+    picture_content_type character varying(255),
+    content text,
+    article_category_id integer,
+    picture_file_size integer,
+    picture_updated_at timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: articles_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE articles_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: articles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE articles_id_seq OWNED BY articles.id;
 
 
 --
@@ -7666,9 +7705,9 @@ ALTER SEQUENCE direction_tags_id_seq OWNED BY direction_tags.id;
 CREATE TABLE experts (
     id integer NOT NULL,
     name character varying(255),
-    description text,
     photo_file_name character varying(255),
     photo_content_type character varying(255),
+    description text,
     photo_file_size integer,
     photo_updated_at timestamp without time zone,
     created_at timestamp without time zone NOT NULL,
@@ -7717,9 +7756,9 @@ CREATE VIEW geometry_columns AS
 
 CREATE TABLE metro_stations (
     id integer NOT NULL,
+    title character varying(255),
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    title character varying(255)
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -7900,20 +7939,85 @@ CREATE TABLE spatial_ref_sys (
 
 
 --
+-- Name: taggings; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE taggings (
+    id integer NOT NULL,
+    tag_id integer,
+    taggable_id integer,
+    tagger_id integer,
+    taggable_type character varying(255),
+    tagger_type character varying(255),
+    context character varying(128),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: taggings_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE taggings_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: taggings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE taggings_id_seq OWNED BY taggings.id;
+
+
+--
+-- Name: tags; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE tags (
+    id integer NOT NULL,
+    name character varying(255)
+);
+
+
+--
+-- Name: tags_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE tags_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: tags_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE tags_id_seq OWNED BY tags.id;
+
+
+--
 -- Name: teachers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE teachers (
     id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
     name character varying(255),
-    description text,
     photo_file_name character varying(255),
     photo_content_type character varying(255),
+    description text,
     photo_file_size integer,
+    activity_id integer,
     photo_updated_at timestamp without time zone,
-    activity_id integer
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -7944,18 +8048,25 @@ CREATE TABLE users (
     id integer NOT NULL,
     email character varying(255) DEFAULT ''::character varying NOT NULL,
     remember_created_at timestamp without time zone,
-    sign_in_count integer DEFAULT 0,
     current_sign_in_at timestamp without time zone,
     last_sign_in_at timestamp without time zone,
+    sign_in_count integer DEFAULT 0,
     current_sign_in_ip character varying(255),
     last_sign_in_ip character varying(255),
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
     facebook_id character varying(255),
     vkontakte_id character varying(255),
     odnoklassniki_id character varying(255),
+    encrypted_password character varying(255),
+    first_name character varying(255),
+    last_name character varying(255),
+    description character varying(255),
     role_id integer NOT NULL,
-    encrypted_password character varying(255)
+    avatar_file_name character varying(255),
+    avatar_content_type character varying(255),
+    avatar_file_size integer,
+    attach_updated_at timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -8015,7 +8126,7 @@ ALTER SEQUENCE video_urls_id_seq OWNED BY video_urls.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY active_admin_comments ALTER COLUMN id SET DEFAULT nextval('admin_notes_id_seq'::regclass);
+ALTER TABLE ONLY active_admin_comments ALTER COLUMN id SET DEFAULT nextval('active_admin_comments_id_seq'::regclass);
 
 
 --
@@ -8071,7 +8182,14 @@ ALTER TABLE ONLY age_tags ALTER COLUMN id SET DEFAULT nextval('age_tags_id_seq':
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY app_configs ALTER COLUMN id SET DEFAULT nextval('app_configs_id_seq'::regclass);
+ALTER TABLE ONLY article_categories ALTER COLUMN id SET DEFAULT nextval('article_categories_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY articles ALTER COLUMN id SET DEFAULT nextval('articles_id_seq'::regclass);
 
 
 --
@@ -8127,6 +8245,20 @@ ALTER TABLE ONLY roles ALTER COLUMN id SET DEFAULT nextval('roles_id_seq'::regcl
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY taggings ALTER COLUMN id SET DEFAULT nextval('taggings_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY tags ALTER COLUMN id SET DEFAULT nextval('tags_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY teachers ALTER COLUMN id SET DEFAULT nextval('teachers_id_seq'::regclass);
 
 
@@ -8142,6 +8274,14 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 --
 
 ALTER TABLE ONLY video_urls ALTER COLUMN id SET DEFAULT nextval('video_urls_id_seq'::regclass);
+
+
+--
+-- Name: active_admin_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY active_admin_comments
+    ADD CONSTRAINT active_admin_comments_pkey PRIMARY KEY (id);
 
 
 --
@@ -8185,14 +8325,6 @@ ALTER TABLE ONLY activity_votes
 
 
 --
--- Name: admin_notes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY active_admin_comments
-    ADD CONSTRAINT admin_notes_pkey PRIMARY KEY (id);
-
-
---
 -- Name: admin_users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8209,11 +8341,19 @@ ALTER TABLE ONLY age_tags
 
 
 --
--- Name: app_configs_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: article_categories_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
-ALTER TABLE ONLY app_configs
-    ADD CONSTRAINT app_configs_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY article_categories
+    ADD CONSTRAINT article_categories_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: articles_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY articles
+    ADD CONSTRAINT articles_pkey PRIMARY KEY (id);
 
 
 --
@@ -8281,6 +8421,22 @@ ALTER TABLE ONLY spatial_ref_sys
 
 
 --
+-- Name: taggings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY taggings
+    ADD CONSTRAINT taggings_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY tags
+    ADD CONSTRAINT tags_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: teachers_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8337,6 +8493,20 @@ CREATE UNIQUE INDEX index_admin_users_on_email ON admin_users USING btree (email
 --
 
 CREATE UNIQUE INDEX index_admin_users_on_reset_password_token ON admin_users USING btree (reset_password_token);
+
+
+--
+-- Name: index_taggings_on_tag_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_taggings_on_tag_id ON taggings USING btree (tag_id);
+
+
+--
+-- Name: index_taggings_on_taggable_id_and_taggable_type_and_context; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_taggings_on_taggable_id_and_taggable_type_and_context ON taggings USING btree (taggable_id, taggable_type, context);
 
 
 --
@@ -8401,54 +8571,4 @@ CREATE RULE geometry_columns_update AS ON UPDATE TO geometry_columns DO INSTEAD 
 
 INSERT INTO schema_migrations (version) VALUES ('20120000000000');
 
-INSERT INTO schema_migrations (version) VALUES ('20120515123754');
-
-INSERT INTO schema_migrations (version) VALUES ('20120515134956');
-
-INSERT INTO schema_migrations (version) VALUES ('20120515135736');
-
-INSERT INTO schema_migrations (version) VALUES ('20120515142605');
-
-INSERT INTO schema_migrations (version) VALUES ('20120515145341');
-
-INSERT INTO schema_migrations (version) VALUES ('20120515175344');
-
-INSERT INTO schema_migrations (version) VALUES ('20120515175345');
-
-INSERT INTO schema_migrations (version) VALUES ('20120516071329');
-
-INSERT INTO schema_migrations (version) VALUES ('20120516075839');
-
-INSERT INTO schema_migrations (version) VALUES ('20120516080250');
-
-INSERT INTO schema_migrations (version) VALUES ('20120516085512');
-
-INSERT INTO schema_migrations (version) VALUES ('20120516094956');
-
-INSERT INTO schema_migrations (version) VALUES ('20120516122039');
-
-INSERT INTO schema_migrations (version) VALUES ('20120516143348');
-
-INSERT INTO schema_migrations (version) VALUES ('20120517091510');
-
-INSERT INTO schema_migrations (version) VALUES ('20120517092732');
-
-INSERT INTO schema_migrations (version) VALUES ('20120517115429');
-
-INSERT INTO schema_migrations (version) VALUES ('20120517130306');
-
-INSERT INTO schema_migrations (version) VALUES ('20120517130728');
-
-INSERT INTO schema_migrations (version) VALUES ('20120521133339');
-
-INSERT INTO schema_migrations (version) VALUES ('20120522071220');
-
-INSERT INTO schema_migrations (version) VALUES ('20120522081445');
-
-INSERT INTO schema_migrations (version) VALUES ('20120522095345');
-
-INSERT INTO schema_migrations (version) VALUES ('20120522193044');
-
-INSERT INTO schema_migrations (version) VALUES ('20120523124358');
-
-INSERT INTO schema_migrations (version) VALUES ('20120523125126');
+INSERT INTO schema_migrations (version) VALUES ('20120524130641');

@@ -1,0 +1,7 @@
+<h1>Страница всех специалистов</h1>
+
+<% @specialists.each do |spec| %>
+  <div class="specialist">
+    <%= spec.full_name %>
+  </div>
+<% end %>
