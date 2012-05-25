@@ -19,6 +19,9 @@ BrightPeople::Application.routes.draw do
   end
   resources :article_categories, only: [:show]
 
+
+  resources :specialists, only: [:index, :show]
+
   resources :interviews, only: [:index, :show] do
     resources :comments, only: [:create]
     collection do

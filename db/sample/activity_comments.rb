@@ -1,3 +1,5 @@
+FileUtils.rm_rf Rails.root.join('public/system/pictures')
+
 pictures = Dir.glob(Rails.root.join('db/sample/files/activity_comments', '*'))
 
 ActivityComment.all.each do |comment|

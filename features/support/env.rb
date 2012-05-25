@@ -2,23 +2,15 @@ require 'rubygems'
 require 'spork'
 require 'spork/ext/ruby-debug' unless ENV['JENKINS']
 
-if Spork.using_spork?
-  ActiveSupport::Dependencies.clear
-  ActiveRecord::Base.instantiate_observers
-  ActiveSupport::Dependencies.mechanism = :load
-end
-
 Spork.prefork do
   require 'cucumber'
   require 'cucumber/rails'
   require 'cucumber/rails/world'
   require 'factory_girl/step_definitions'
 
-  Cucumber::Rails::World.use_transactional_fixtures = false
-
   require 'database_cleaner'
   require 'database_cleaner/cucumber'
-  DatabaseCleaner.strategy = :truncation
+  DatabaseCleaner.strategy = :transaction
 
   SUPPORT_DIR = Rails.root.join('features/support')
 
@@ -31,11 +23,6 @@ Spork.prefork do
       headless.destroy
     end
   end
-
-  Cucumber::Rails::Database.javascript_strategy = :truncation
-  Capybara.default_selector = :css
-  ActionController::Base.allow_rescue = false
-
 end
 
 Spork.each_run do

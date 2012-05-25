@@ -4,6 +4,18 @@ user_<%= i %>:
   role: user
 <% end %>
 
+<% 11.upto(20).each do |i| %>
+specialist_<% i %>:
+  email: <%= Faker::Internet.email %>
+  role: specialist
+  name: <%= Faker::Name.name %>
+<% end %>
+
 specialist:
   email: specialist@example.com
   role: specialist
+  name: <%= Faker::Name.name %>
+
+user:
+  email: user@example.com
+  role: user

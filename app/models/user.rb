@@ -8,7 +8,12 @@ class User < ActiveRecord::Base
   has_many :questions, dependent: :destroy,
                        foreign_key: 'specialist_id'
 
-  attr_accessible :email, :remember_me, :password, :password_confirmation
+  has_attached_file :avatar,
+                    styles: { medium: "300x300>", thumb: "100x100>" },
+                    path: ":rails_root/public/system/:attachment/:id/:style/:filename",
+                    url: "/system/:attachment/:id/:style/:filename"
+
+  attr_accessible :email, :remember_me, :password, :password_confirmation, :avatar
 
   validates :role, presence: true
 
@@ -19,6 +24,8 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :name, :password, :remember_me
   attr_accessible :vkontakte_id, :facebook_id, :odnoklassniki_id
+
+  scope :specialists, where(role_id: 4).order('created_at DESC')
 
   def self.find_or_create_for_vkontakte(data)
     user_id = data.extra.raw_info.uid.to_s
@@ -58,7 +65,12 @@ class User < ActiveRecord::Base
     role == Role.specialist
   end
 
+  def specialist!
+    update_attribute(:role, Role.specialist)
+  end
+
   def email_required?
     false
   end
+
 end
