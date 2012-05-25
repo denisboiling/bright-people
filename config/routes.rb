@@ -20,7 +20,9 @@ BrightPeople::Application.routes.draw do
   resources :article_categories, only: [:show]
 
 
-  resources :specialists, only: [:index, :show]
+  resources :specialists, only: [:index, :show, :create_question] do
+    post :create_question, on: :member
+  end
 
   resources :interviews, only: [:index, :show] do
     resources :comments, only: [:create]

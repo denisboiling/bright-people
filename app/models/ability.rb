@@ -6,5 +6,7 @@ class Ability
 
     # Only specialist should can access to specialist dashboard
     can :access, :specialist_dashboard if user.specialist?
+
+    can :create, :question if user.id
   end
 end

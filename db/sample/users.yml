@@ -1,21 +1,23 @@
 <% 1.upto(10).each do |i| %>
 user_<%= i %>:
   email: <%= Faker::Internet.email %>
-  role: user
+  role_id: 1
+  name: <%= Faker::Name.name %>
 <% end %>
 
 <% 11.upto(20).each do |i| %>
 specialist_<% i %>:
   email: <%= Faker::Internet.email %>
-  role: specialist
+  role_id: 4
   name: <%= Faker::Name.name %>
 <% end %>
 
 specialist:
   email: specialist@example.com
-  role: specialist
+  role_id: 4
   name: <%= Faker::Name.name %>
 
 user:
   email: user@example.com
-  role: user
+  name: <%= Faker::Name.name %>
+  role_id: 1

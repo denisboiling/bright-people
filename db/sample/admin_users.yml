@@ -1,7 +1,7 @@
 admin:
   email: admin@example.com
-  role: admin
+  role_id: 2
 
 editor:
   email: editor@example.com
-  role: editor
+  role_id: 3
