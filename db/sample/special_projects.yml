@@ -1,0 +1,7 @@
+<% 1.upto(20).each do |i| %>
+special_project_<%= i %>:
+  id: <%= i %>
+  title: <%= Faker::Lorem.words.join(' ') %>
+  content: "<%= Faker::Lorem.paragraphs(5).join('\n') %>"
+  author: <%= Faker::Name.name %>
+<% end %>
