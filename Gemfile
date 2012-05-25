@@ -49,7 +49,7 @@ group :development, :test do
   gem 'cucumber-rails'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'spork', '~> 1.0.0rc3'
+  gem 'spork', github: 'sporkrb/spork'
   gem 'guard-spork'
   gem 'guard-rspec'
   gem 'guard-cucumber'

@@ -1,0 +1,20 @@
+<h2>Здесь специалист отвечает на вопрос</h2>
+
+<p>
+  Пользователь:
+  <%= image_tag @question.user.avatar.url %>
+  <%= @question.user.name %><br />
+  Вопрос
+  <%= @question.text %>
+</p>
+
+<% unless @question.publish %>
+  <%= form_for :question_comment, url: specialist_question_path(@question), method: :put do |f| %>
+    <%= f.label :text, 'Ответ' %>
+    <%= f.text_area :text %>
+    <%= label_tag :question_category_id, 'Категория вопроса' %>
+    <%= select_tag :question_category_id, 
+	options_from_collection_for_select(QuestionCategory.all, :id, :title) %>
+    <%= f.submit 'Ответить' %>
+  <% end %>
+<% end %>

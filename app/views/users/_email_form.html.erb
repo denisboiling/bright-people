@@ -1,6 +1,6 @@
 <%= form_for user, method: :put, remote: true, url: update_user_email_path,
                    html: {id: :update_email_form} do |f| %>
-  <%= f.label :email %>
+  <%= f.label :email, 'Email' %>
   <%= f.text_field :email %>
   <% user.errors.each do |field, message| %>
     <p><strong><%= field %>:</strong> <%= message %></p>

@@ -8,7 +8,7 @@
 </head>
 <body>
   
-  <%= flash[:notice] %>
+  <%= flash_messages %>
 
   <div class="hidden">
     <div id="email_dialog">
@@ -16,7 +16,11 @@
     </div>
   </div>
 
-<%= yield %>
+  <div class="header">
+    <%= render partial: 'shared/header' %>
+  </div>
+
+  <%= yield %>
 
 </body>
 </html>

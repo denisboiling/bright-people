@@ -10,6 +10,11 @@ module NavigationHelpers
       specialist_path(specialist_by_name($1))
     when /^the activities page$/
       activities_path
+
+    # Specialist dashboard
+    when /^the specialist question "(.+)" page$/
+      specialist_question_path(find_question($1))
+      
     else
       begin
         page_name =~ /^the (.*) page$/
