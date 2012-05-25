@@ -170,7 +170,7 @@ class Main < ActiveRecord::Migration
     t.integer :sign_in_count, default: 0
     t.string :current_sign_in_ip, :last_sign_in_ip, :facebook_id,
              :vkontakte_id, :odnoklassniki_id, :encrypted_password,
-             :first_name, :last_name, :description
+             :name, :description
     t.integer :role_id, null: false
 
     t.string :avatar_file_name, :avatar_content_type
