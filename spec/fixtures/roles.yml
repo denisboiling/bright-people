@@ -1,6 +1,15 @@
 user:
+  id: 1  
   name: user
 
 admin:
+  id: 2  
   name: admin
-    
+
+editor:
+  id: 3  
+  name: editor
+
+specialist:
+  id: 4  
+  name: specialist

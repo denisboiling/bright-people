@@ -10,8 +10,8 @@
  *
  *= require_self
  *= require jquery-ui/flick
- *= require_tree .
+ *= require_directory .
 */
 
 .hidden { display: none; }
-
+.comment { margin-left: 50px; }

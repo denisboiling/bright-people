@@ -42,7 +42,6 @@ group 'cucumber' do
                  :test_unit => false do
     watch('config/application.rb')
     watch('config/environment.rb')
-    # watch(%r{^app/models/.+\.rb$})
     watch(%r{^extras/.+\.rb$})
     watch(%r{^config/environments/.+\.rb$})
     watch(%r{^config/initializers/.+\.rb$})
@@ -50,7 +49,7 @@ group 'cucumber' do
     watch('Gemfile.lock')
   end
 
-  guard 'cucumber', :cli => '--profile wip -c',
+  guard 'cucumber', :cli => '--profile wip -c --drb',
                     :notification => false,
                     :all_after_pass => false,
                     :all_on_start => false do

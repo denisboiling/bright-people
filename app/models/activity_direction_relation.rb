@@ -8,6 +8,6 @@ class ActivityDirectionRelation < ActiveRecord::Base
   
   def kind_match
     match = !!activity.is_educational == !!direction_tag.is_educational
-    errors(:activity).add("Activity and direction kind must match") unless match
+    errors.add(:activity, ", direction kind must match") unless match
   end
 end

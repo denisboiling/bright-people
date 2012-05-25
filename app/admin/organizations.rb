@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 ActiveAdmin.register Organization do
-  menu :label => 'Организации'
+  menu label: 'Организации'
 
   controller do
     autocomplete :organization, :title, full: true
   end
 
-  filter :title, as: :autocomplete, :input_html => {'data-autocomplete' => '/admin/organizations/autocomplete_organization_title', object: 'organization'}
+  filter :title, as: :autocomplete, input_html: {'data-autocomplete' => '/admin/organizations/autocomplete_organization_title', object: 'organization'}
 
   index do
     id_column

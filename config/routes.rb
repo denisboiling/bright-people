@@ -12,11 +12,29 @@ BrightPeople::Application.routes.draw do
   resource :search, only: [:show]
   resources :experts, only: [:index, :show]
   resources :articles, only: [:index, :show] do
+    resources :comments, only: [:create]
     collection do
       get :tag
     end
   end
   resources :article_categories, only: [:show]
+
+
+  resources :specialists, only: [:index, :show]
+
+  resources :interviews, only: [:index, :show] do
+    resources :comments, only: [:create]
+    collection do
+      get :tag
+    end
+  end
+
+  resources :news, only: [:index, :show] do
+    resources :comments
+    collection do
+      get :tag
+    end
+  end
 
   # Specialist
   namespace :specialist do
