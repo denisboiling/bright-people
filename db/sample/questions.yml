@@ -4,4 +4,5 @@ question_<%= i %>:
   text: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
   user: user_<%= rand(10) + 1 %>
   specialist: specialist
+  question_category_id: <%= rand(10) + 1 %>
 <% end %>

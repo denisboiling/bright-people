@@ -1,0 +1,12 @@
+<h2>Страница вопросов для специалиста</h2>
+
+<% @questions.each do |question| %>
+  <p>
+    Пользователь:
+    <%= image_tag question.user.avatar.url %>
+    <%= question.user.name %><br />
+    Вопрос
+    <%= question.text %>
+  </p>
+  <%= link_to 'Ответить', specialist_question_path(question) %>
+<% end %>

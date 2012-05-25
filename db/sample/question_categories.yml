@@ -1,0 +1,5 @@
+<% 1.upto(10).each do |i| %>
+question_category_<%= i %>:
+  id: <%= i %>
+  title: <%= Faker::Lorem.words.join(' ') %>
+<% end %>

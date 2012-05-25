@@ -4,6 +4,7 @@ window.setup_comments = ->
     
     $block = $(this).parent().find('.comment_text_block').first()
     $block.removeClass('hidden')
+    $block.find('textarea').attr('name','comment_content')
   
   $('.send_comment_link').live 'click', (event) ->
     event.preventDefault()

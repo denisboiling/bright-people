@@ -18,3 +18,4 @@ public/system
 /config/sphinx.yml
 db/schema.rb
 db/structure.sql
+rerun.txt
