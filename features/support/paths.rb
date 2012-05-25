@@ -8,6 +8,8 @@ module NavigationHelpers
       specialists_path
     when /^the specialist "(.+)" page$/
       specialist_path(specialist_by_name($1))
+    when /^the activities page$/
+      activities_path
     else
       begin
         page_name =~ /^the (.*) page$/

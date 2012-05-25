@@ -2864,7 +2864,7 @@ CREATE FUNCTION postgis_proj_version() RETURNS text
 
 CREATE FUNCTION postgis_scripts_build_date() RETURNS text
     LANGUAGE sql IMMUTABLE
-    AS $$SELECT '2012-04-18 12:57:11'::text AS version$$;
+    AS $$SELECT '2012-05-17 12:42:11'::text AS version$$;
 
 
 --
@@ -7707,6 +7707,7 @@ CREATE TABLE comments (
     user_id integer,
     interview_id integer,
     article_id integer,
+    news_id integer,
     content text,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
@@ -7891,6 +7892,13 @@ ALTER SEQUENCE metro_stations_id_seq OWNED BY metro_stations.id;
 
 CREATE TABLE news (
     id integer NOT NULL,
+    title character varying(255),
+    author character varying(255),
+    content text,
+    picture_file_name character varying(255),
+    picture_content_type character varying(255),
+    picture_file_size integer,
+    picture_updated_at timestamp without time zone,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
