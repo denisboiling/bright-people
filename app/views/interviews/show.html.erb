@@ -3,26 +3,9 @@
 <p><%= @interview.content %></p>
 
 <h5>Interview Tags</h5>
-<% tag_cloud(@interview_tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+<% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
   <%= link_to tag.name, { :action => :tag, :id => tag.name }, :class => css_class %>
 <% end %>
 
 <h5>Comments</h5>
-<% if @interview_comments.any? %>
-  <% @interview_comments.each do |comment| %>
-    <div class="interview-comment">
-      <p>
-        <%= comment.content %> by
-        <%= comment.author %>
-        <button type="button" class="new-comment" id="<%= comment.id %>">Add reply!</button>
-        <% if comment.children.any? %>
-          <%= render "interview_comments/interview_comment", collection: comment.children %>
-        <% end %>
-      </p>
-    </div>
-  <% end %>
-<% end %>
-
-<button type="button" class="new-comment" id="0">Add reply!</button>
-
-<%= javascript_include_tag "interviews.js" %>
+<%= render 'comments/comments_block', comments: @comments %>

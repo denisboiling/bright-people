@@ -12,7 +12,7 @@ BrightPeople::Application.routes.draw do
   resource :search, only: [:show]
   resources :experts, only: [:index, :show]
   resources :articles, only: [:index, :show] do
-    resources :article_comments
+    resources :comments, only: [:create]
     collection do
       get :tag
     end
@@ -20,7 +20,7 @@ BrightPeople::Application.routes.draw do
   resources :article_categories, only: [:show]
 
   resources :interviews, only: [:index, :show] do
-    resources :interview_comments
+    resources :comments, only: [:create]
     collection do
       get :tag
     end

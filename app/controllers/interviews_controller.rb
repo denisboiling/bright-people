@@ -11,7 +11,7 @@ class InterviewsController < ApplicationController
 
   def show
     @interview = Interview.find(params[:id])
-    @interview_tags = @interview.tag_counts_on(:article_tags)
-    @interview_comments = @interview.interview_comments.select(&:top_level?)
+    @tags = @interview.tag_counts_on(:article_tags)
+    @comments = @interview.comments.select(&:top_level?)
   end
 end
