@@ -15,3 +15,18 @@
     </div>
   </div>
 <% end %>
+
+<h3>Вопросы к специалисту</h3>
+<% @questions.each do |question| %>
+  <div class="question">
+    Пользователь который написал вопрос <br />
+    <%= image_tag question.user.avatar.url(:thumb) %>
+    <%= question.user.name %>
+    <%= question.created_at %>
+    <br />
+    Сам вопрос <br />
+    <%= question.text %>
+  </div>
+<% end %>
+
+<%= will_paginate @questions %>

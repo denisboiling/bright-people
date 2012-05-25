@@ -4,4 +4,7 @@ class Question < ActiveRecord::Base
   belongs_to :user
 
   attr_accessible :text, :specialist_id
+
+  # Only publish question
+  scope :publish, where(publish: true)
 end

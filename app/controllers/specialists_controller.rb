@@ -7,6 +7,7 @@ class SpecialistsController < ApplicationController
   end
 
   def show
+    @questions = @specialist.questions.publish.paginate(page: params[:page], per_page: 5)
   end
 
   # Create question and assign it with specialist
