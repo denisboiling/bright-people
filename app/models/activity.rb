@@ -31,7 +31,6 @@ class Activity < ActiveRecord::Base
 
   validates :title, presence: true
   validates :description, presence: true
-  validates :organization, presence: true
 
   belongs_to :organization
   belongs_to :metro_station

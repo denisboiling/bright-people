@@ -10,6 +10,20 @@ When /^(?:|I )follow "([^"]*)"$/ do |link|
   click_link(link)
 end
 
+When /^wait (\d+) seconds?$/ do |seconds|
+  sleep seconds.to_i
+end
+
+When /^wait for a while$/ do
+  steps %{
+    When wait 1 second
+  }
+end
+
+When /^I click on "(.*?)" with "(.*?)" selector$/ do |link_text, selector|
+  page.find(selector, text: link_text).click
+end
+
 Then /^I should be redirected to (.+)$/ do |page|
   puts 'TODO: make this done'
   step "I should be on #{page}"
