@@ -1,8 +1,8 @@
 class InterviewsController < ApplicationController
-   def tag
+  def tag
     @interview_tag_name = params[:id]
     @interviews = Interview.tagged_with(params[:id])
-    render 'interviews_tags/show'
+    render 'interview_tags/show'
   end
 
   def index
@@ -11,7 +11,7 @@ class InterviewsController < ApplicationController
 
   def show
     @interview = Interview.find(params[:id])
-    @tags = @interview.tag_counts_on(:article_tags)
+    @tags = @interview.tag_counts_on(:interview_tags)
     @comments = @interview.comments.select(&:top_level?)
   end
 end

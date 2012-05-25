@@ -16,6 +16,12 @@ window.setup_comments = ->
         when /interviews\/(\d+)/.test(window.location.href)
           id = /interviews\/(\d+)/.exec(window.location.href)[1]
           "/interviews/#{id}/comments"
+        when /news\/(\d+)/.test(window.location.href)
+          id = /news\/(\d+)/.exec(window.location.href)[1]
+          "/news/#{id}/comments"
+        when /special_projects\/(\d+)/.test(window.location.href)
+          id = /special_projects\/(\d+)/.exec(window.location.href)[1]
+          "/news/#{id}/comments"
     
     $block = $(this).parent()
     parent_id = $(this).attr('data-id')

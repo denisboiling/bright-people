@@ -1,0 +1,10 @@
+<% @news.each do |news| %>
+  <p>
+     <%= link_to news.title, news %>
+      by <%= news.author %>
+     <%= time_ago_in_words news.created_at %> ago
+  </p>
+  <p>
+      <%= truncate(news.content, length: 25, omission: '...') %>
+  </p>
+<% end %>

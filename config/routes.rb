@@ -38,6 +38,13 @@ BrightPeople::Application.routes.draw do
     end
   end
 
+  resources :special_projects, only: [:index, :show] do
+    resources :comments
+    collection do
+      get :tag
+    end
+  end
+
   # Specialist
   namespace :specialist do
     resources :questions

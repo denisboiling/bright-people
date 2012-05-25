@@ -1,7 +1,7 @@
-class News < ActiveRecord::Base
-  attr_accessible :title, :content, :author, :news_tag_list, :picture
+class SpecialProject < ActiveRecord::Base
+  attr_accessible :title, :content, :author, :special_project_tag_list, :picture
 
-  acts_as_taggable_on :news_tags
+  acts_as_taggable_on :special_project_tags
 
   validates :title, :content, :author, presence: :true
 

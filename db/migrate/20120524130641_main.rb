@@ -207,13 +207,22 @@ class Main < ActiveRecord::Migration
   end
 
   create_table :news do |t|
-
+      t.string :title, :author
+      t.text :content
+      t.has_attached_file :picture
       t.timestamps
+  end
+
+  create_table :special_projects do |t|
+    t.string :title, :author
+    t.text :content
+    t.has_attached_file :picture
+    t.timestamps
   end
 
 
   create_table :comments do |t|
-      t.integer :user_id, :interview_id, :article_id
+      t.integer :user_id, :interview_id, :article_id, :news_id, :special_project_id
       t.text :content
 
       t.timestamps
