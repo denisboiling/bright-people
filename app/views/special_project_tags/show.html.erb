@@ -1,0 +1,10 @@
+<% @special_projects.each do |special_project| %>
+  <p>
+     <%= link_to special_project.title, special_project %>
+      by <%= special_project.author %>
+     <%= time_ago_in_words special_project.created_at %> ago
+  </p>
+  <p>
+      <%= truncate(special_project.content, length: 25, omission: '...') %>
+  </p>
+<% end %>
