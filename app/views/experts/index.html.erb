@@ -1,5 +1,7 @@
 <% @experts.each do |expert| %>
-  <p><%= link_to expert.name, expert %>
-  <br>
-  <%= expert.description.split('.').first %></p>
+  <p>
+    <%= link_to expert.name, expert %>
+    <br>
+    <%= expert.description.split('.').first %>
+  </p>
 <% end %>

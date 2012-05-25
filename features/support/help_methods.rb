@@ -4,7 +4,7 @@ module HelpSteps
   end
 
   def specialist_by_name(name)
-    User.specialists.find_by_first_name(name)
+    User.specialists.find_by_name(name)
   end
 end
 

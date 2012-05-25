@@ -1,6 +1,13 @@
 require 'active_record/fixtures'
 
 namespace :db do
+  desc 'db:drop db:create db:migrate db:seed db:load_sample'
+  task :setup_sample => :environment do
+    ['db:drop', 'db:create', 'db:migrate', 'db:seed', 'db:load_sample'].each do |t|
+      Rake::Task[t].execute
+    end
+  end
+
   desc "Loads a specified fixture using rake db:load_file[filename.rb]"
   task :load_file , [:file] => :environment do |t , args|
     file = args.file
