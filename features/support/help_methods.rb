@@ -22,6 +22,10 @@ module HelpSteps
   def news_by_title(title)
     News.find_by_title(title)
   end
+
+  def find_question(text)
+    Question.find_by_text(text)
+  end
 end
 
 World(HelpSteps)

@@ -18,6 +18,11 @@ module NavigationHelpers
       news_path(news_by_title($1))
     when /^the special_project "(.+)" page$/
       special_project_path(special_project_by_title($1))
+
+    # Specialist dashboard
+    when /^the specialist question "(.+)" page$/
+      specialist_question_path(find_question($1))
+      
     else
       begin
         page_name =~ /^the (.*) page$/

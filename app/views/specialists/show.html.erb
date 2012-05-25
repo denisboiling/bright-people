@@ -20,7 +20,7 @@
 <% @questions.each do |question| %>
   <div class="question">
     Пользователь который написал вопрос <br />
-    <%= image_tag question.user.avatar.url(:thumb) %>
+    <%= image_tag question.user.avatar.url %>
     <%= question.user.name %>
     <%= question.created_at %>
     <br />
