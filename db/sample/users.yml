@@ -6,10 +6,11 @@ user_<%= i %>:
 <% end %>
 
 <% 11.upto(20).each do |i| %>
-specialist_<% i %>:
+specialist_<%= i %>:
   email: <%= Faker::Internet.email %>
   role_id: 4
   name: <%= Faker::Name.name %>
+  description: <%= Faker::Lorem.words %>
 <% end %>
 
 specialist:

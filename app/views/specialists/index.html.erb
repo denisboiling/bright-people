@@ -3,6 +3,10 @@
 <% @specialists.each do |spec| %>
   <div class="specialist">
     <%= image_tag spec.avatar.url(:thumb) %>
-    <%= link_to spec.name, specialist_path(spec) %>
+    <%= link_to spec.name, specialist_path(spec) %><br />
+    описание специалиста
+    <p>
+      <%= spec.description %>
+    </p>
   </div>
 <% end %>

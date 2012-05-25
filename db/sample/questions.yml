@@ -1,0 +1,7 @@
+# Unpublist question
+<% 1.upto(10).each do |i| %>
+question_<%= i %>:
+  text: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
+  user: user_<%= rand(10) + 1 %>
+  specialist: specialist
+<% end %>
