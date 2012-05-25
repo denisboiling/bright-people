@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
     self.role = Role.user
   end
 
-  attr_accessible :email, :password, :remember_me
+  attr_accessible :email, :name, :password, :remember_me
   attr_accessible :vkontakte_id, :facebook_id, :odnoklassniki_id
 
   def self.find_or_create_for_vkontakte(data)
@@ -26,7 +26,8 @@ class User < ActiveRecord::Base
     if user
       user
     else
-      self.create! vkontakte_id: user_id, password: Devise.friendly_token[0,8]
+      self.create! vkontakte_id: user_id, password: Devise.friendly_token[0,8],
+                   name: data.info.name
     end
   end
 
@@ -37,7 +38,8 @@ class User < ActiveRecord::Base
     if user
       user
     else
-      self.create! facebook_id: user_id, email: email, password: Devise.friendly_token[0,8]
+      self.create! facebook_id: user_id, email: email, password: Devise.friendly_token[0,8],
+                   name: data.info.name
     end
   end
 
@@ -47,7 +49,8 @@ class User < ActiveRecord::Base
     if user
       user
     else
-      self.create! odnoklassniki_id: user_id, password: Devise.friendly_token[0,8]
+      self.create! odnoklassniki_id: user_id, password: Devise.friendly_token[0,8],
+                   name: data.extra.raw_info.name
     end
   end
 
