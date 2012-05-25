@@ -7387,6 +7387,38 @@ ALTER SEQUENCE activities_id_seq OWNED BY activities.id;
 
 
 --
+-- Name: activity_age_relations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE activity_age_relations (
+    id integer NOT NULL,
+    activity_id integer,
+    age_tag_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: activity_age_relations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE activity_age_relations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: activity_age_relations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE activity_age_relations_id_seq OWNED BY activity_age_relations.id;
+
+
+--
 -- Name: activity_comments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -7667,6 +7699,41 @@ ALTER SEQUENCE articles_id_seq OWNED BY articles.id;
 
 
 --
+-- Name: comments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE comments (
+    id integer NOT NULL,
+    user_id integer,
+    content text,
+    interview_id integer,
+    article_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    path ltree DEFAULT ''::ltree
+);
+
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE comments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE comments_id_seq OWNED BY comments.id;
+
+
+--
 -- Name: direction_tags; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -7751,6 +7818,43 @@ CREATE VIEW geometry_columns AS
 
 
 --
+-- Name: interviews; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE interviews (
+    id integer NOT NULL,
+    title character varying(255),
+    content text,
+    author character varying(255),
+    picture_file_name character varying(255),
+    picture_content_type character varying(255),
+    picture_file_size integer,
+    picture_updated_at timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: interviews_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE interviews_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: interviews_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE interviews_id_seq OWNED BY interviews.id;
+
+
+--
 -- Name: metro_stations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -7779,6 +7883,36 @@ CREATE SEQUENCE metro_stations_id_seq
 --
 
 ALTER SEQUENCE metro_stations_id_seq OWNED BY metro_stations.id;
+
+
+--
+-- Name: news; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE news (
+    id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: news_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE news_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: news_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE news_id_seq OWNED BY news.id;
 
 
 --
@@ -8140,6 +8274,13 @@ ALTER TABLE ONLY activities ALTER COLUMN id SET DEFAULT nextval('activities_id_s
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY activity_age_relations ALTER COLUMN id SET DEFAULT nextval('activity_age_relations_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY activity_comments ALTER COLUMN id SET DEFAULT nextval('activity_comments_id_seq'::regclass);
 
 
@@ -8196,6 +8337,13 @@ ALTER TABLE ONLY articles ALTER COLUMN id SET DEFAULT nextval('articles_id_seq':
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY direction_tags ALTER COLUMN id SET DEFAULT nextval('direction_tags_id_seq'::regclass);
 
 
@@ -8210,7 +8358,21 @@ ALTER TABLE ONLY experts ALTER COLUMN id SET DEFAULT nextval('experts_id_seq'::r
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY interviews ALTER COLUMN id SET DEFAULT nextval('interviews_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY metro_stations ALTER COLUMN id SET DEFAULT nextval('metro_stations_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY news ALTER COLUMN id SET DEFAULT nextval('news_id_seq'::regclass);
 
 
 --
@@ -8293,6 +8455,14 @@ ALTER TABLE ONLY activities
 
 
 --
+-- Name: activity_age_relations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY activity_age_relations
+    ADD CONSTRAINT activity_age_relations_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: activity_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8357,6 +8527,14 @@ ALTER TABLE ONLY articles
 
 
 --
+-- Name: comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY comments
+    ADD CONSTRAINT comments_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: direction_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -8373,11 +8551,27 @@ ALTER TABLE ONLY experts
 
 
 --
+-- Name: interviews_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY interviews
+    ADD CONSTRAINT interviews_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: metro_stations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY metro_stations
     ADD CONSTRAINT metro_stations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: news_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY news
+    ADD CONSTRAINT news_pkey PRIMARY KEY (id);
 
 
 --
@@ -8571,4 +8765,12 @@ CREATE RULE geometry_columns_update AS ON UPDATE TO geometry_columns DO INSTEAD 
 
 INSERT INTO schema_migrations (version) VALUES ('20120000000000');
 
+INSERT INTO schema_migrations (version) VALUES ('20120524112423');
+
+INSERT INTO schema_migrations (version) VALUES ('20120524120947');
+
+INSERT INTO schema_migrations (version) VALUES ('20120524130434');
+
 INSERT INTO schema_migrations (version) VALUES ('20120524130641');
+
+INSERT INTO schema_migrations (version) VALUES ('20120524132013');

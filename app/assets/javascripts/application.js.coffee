@@ -13,9 +13,10 @@
 #= require jquery
 #= require jquery_ujs
 #= require jquery.cookie
-#= require_tree .
+#= require_directory .
 
 $ ->
   window.setup_email_dialog()
   window.setup_activities_list()
   window.setup_activities_rating()
+  window.setup_comments()
