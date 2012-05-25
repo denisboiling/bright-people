@@ -3,16 +3,18 @@ Feature: Fitler activities
   As a user
   I want to be able to use filter links
   
+  Background:
+    Given activities with fields:
+      | name           | direction_tag_names | year_tag_intervals |
+      | First Activity | ["творить"]         | [[1, 3], [5,6]]    |
+      | Second One     | ["мастерить"]       | [[1 ,3]]           |
+    And I am on the activities page
+  
   @javascript
   Scenario: Filter by direction tag
-    Given direction tag with name "творить"
-    And direction tag with name "мастерить"
-    And activities with fields:
-      | name           | direction_tag_names |
-      | First Activity | ["творить"]         |
-      | Second One     | ["мастерить"]       |
-    And I am on the activities page
     When I click on "творить" with ".activities_filter_link" selector
-    And wait for a while
+    And wait for ajax
     Then I should see "First Activity"
     And I should not see "Second One"
+
+  

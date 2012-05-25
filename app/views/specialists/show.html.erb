@@ -1,1 +1,32 @@
 <h2>Страница специалиста</h2>
+
+<%= @specialist.name %>
+<%= image_tag @specialist.avatar.url %>
+
+<% if can? :create, :question %>
+  <%= link_to 'Задать свой вопрос', '', id: 'create_question' %>
+  <div class="question_div"></div>
+  <div class="hidden">
+    <div class="question_form">
+      <%= form_for :question, url: create_question_specialist_path do |f| %>
+        <%= f.text_area :text %>
+        <%= f.submit 'Отправить' %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<h3>Вопросы к специалисту</h3>
+<% @questions.each do |question| %>
+  <div class="question">
+    Пользователь который написал вопрос <br />
+    <%= image_tag question.user.avatar.url(:thumb) %>
+    <%= question.user.name %>
+    <%= question.created_at %>
+    <br />
+    Сам вопрос <br />
+    <%= question.text %>
+  </div>
+<% end %>
+
+<%= will_paginate @questions %>

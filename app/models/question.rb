@@ -3,5 +3,8 @@ class Question < ActiveRecord::Base
                           foreign_key: 'specialist_id'
   belongs_to :user
 
-  attr_accessible :text
+  attr_accessible :text, :specialist_id
+
+  # Only publish question
+  scope :publish, where(publish: true)
 end
