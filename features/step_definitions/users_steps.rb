@@ -1,5 +1,5 @@
-Given /^I signed in as a user$/ do
-  @user = FactoryGirl.create(:user)
+Given /^I signed in as a (.+)$/ do |role|
+  @user = FactoryGirl.create(role)
   visit new_user_session_path
   step %{I fill in "Email" with "#{@user.email}"}
   step %{I fill in "Password" with "#{@user.password}"}
