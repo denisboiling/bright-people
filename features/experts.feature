@@ -1,9 +1,7 @@
 Feature: Create questions for specialist
 
   Background:
-    Given the following specialist exists:
-      | name        |
-      | Ivan Petrov |
+    Given a specialist exists with a name of "Ivan Petrov"
     And I signed in as a specialist
   
   Scenario: Show path to specialists page

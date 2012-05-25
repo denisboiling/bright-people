@@ -7,7 +7,8 @@ Given /^activities with fields:$/ do |table|
     direction_names ||= []
     direction_names = eval(hash[:direction_tag_names]) if hash[:direction_tag_names]
     direction_names.each do |name|
-      steps %{ Given direction tag with name "#{name}" }
+      tag   = DirectionTag.find_by_name(name)
+      tag ||= FactoryGirl.create(:direction_tag, name: name)
       activity.direction_tags << DirectionTag.find_by_name(name)
     end
     
