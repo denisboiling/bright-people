@@ -2,13 +2,6 @@ require 'rubygems'
 require 'spork'
 require 'spork/ext/ruby-debug' unless ENV['JENKINS']
 
-# Some trick to reload models when it' changed
-if Spork.using_spork?
-  ActiveSupport::Dependencies.mechanism = :load
-  ActiveSupport::Dependencies.clear
-  ActiveRecord::Base.instantiate_observers
-end
-
 Spork.prefork do
   ENV["RAILS_ENV"] ||= 'test'
   require File.expand_path("../../config/environment", __FILE__)

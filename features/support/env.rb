@@ -38,9 +38,7 @@ Spork.each_run do
   Dir[Rails.root.join('features/support/**/*.rb')].each{|f| load f}
 
   # Reload models
-  Dir["#{Rails.root}/app/models/**/*.rb"].each do |model|
-    load model
-  end
+  Dir["#{Rails.root}/app/models/**/*.rb"].each{|f| load f}
 
   Before do
     DatabaseCleaner.start

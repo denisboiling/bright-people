@@ -118,7 +118,7 @@ class Main < ActiveRecord::Migration
   end
 
   create_table(:question_comments) do |t|
-    t.integer :user_id, :quiestion_id, null: false
+    t.integer :user_id, :question_id, null: false
     t.text :text, null: false
     t.boolean  :deleted, default: false, null: false
 
@@ -128,6 +128,7 @@ class Main < ActiveRecord::Migration
 
   create_table(:questions) do |t|
     t.integer :specialist_id, :user_id, null: false
+    t.integer :question_category_id
     t.text :text, null:  false
     t.boolean :publish, default: false, null: false
 
@@ -228,5 +229,10 @@ class Main < ActiveRecord::Migration
       t.timestamps
   end
   update "ALTER TABLE \"comments\" ADD \"path\" LTREE NULL DEFAULT ''"
+
+  create_table :question_categories do |t|
+      t.string :title
+      t.timestamps
+  end
 
 end
