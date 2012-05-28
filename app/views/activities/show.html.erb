@@ -23,7 +23,7 @@
 
 <h2>Children</h2>
 <% @activity.activity_comments.each do |comment| %>
-  <% if comment.is_parent == false %>
+  <% unless comment.is_parent %>
     <%= image_tag comment.picture.url(:thumb) %>
     <p>
       <%= comment.commentator %>
@@ -35,7 +35,7 @@
 
 <h2>Parents</h2>
 <% @activity.activity_comments.each do |comment| %>
-  <% if comment.is_parent == true %>
+  <% if comment.is_parent %>
     <%= image_tag comment.picture.url(:thumb) %>
     <p>
       <%= comment.commentator %>
