@@ -4,6 +4,11 @@ BrightPeople::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
+  get '/profile' => 'users#show'
+  get '/profile/edit' => 'users#edit'
+
+  resources :users, only: [:show, :update]
+
   resources :organizations, only: [:show]
   resources :activities, only: [:index, :show] do
     put 'vote'
