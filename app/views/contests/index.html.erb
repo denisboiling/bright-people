@@ -1,0 +1,5 @@
+<% @contests.each do |contest| %>
+  <h1><%= contest.name %></h1>
+  <strong>started at:</strong><%= contest.started_at %><br />
+  <strong>ended at:</strong><%= contest.ended_at %><br />
+<% end %>
