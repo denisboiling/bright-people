@@ -239,7 +239,16 @@ class Main < ActiveRecord::Migration
     t.string :name
     t.datetime :started_at
     t.datetime :ended_at
+    t.integer :category_id
     
+    t.timestamps
+  end
+  
+  add_index :contests, :category_id
+  
+  create_table :contest_categories do |t|
+    t.string :name
+
     t.timestamps
   end
 end
