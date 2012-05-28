@@ -1,5 +1,5 @@
 BrightPeople::Application.routes.draw do
-  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }, skip: [:registrations]
   put 'users/email' => 'users#update_email', as: :update_user_email
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -49,6 +49,8 @@ BrightPeople::Application.routes.draw do
       get :tag
     end
   end
+
+  resources :favourites, only: [:index, :create, :destroy]
 
   # Specialist
   namespace :specialist do

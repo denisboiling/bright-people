@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
 
   has_many :my_questions, class_name: 'Question'
 
+  has_many :favourites
+
   has_attached_file :avatar,
                     styles: { medium: "300x300>", thumb: "100x100>" },
                     path: ":rails_root/public/system/:attachment/:id/:style/:filename",

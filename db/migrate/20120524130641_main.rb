@@ -235,4 +235,11 @@ class Main < ActiveRecord::Migration
       t.timestamps
   end
 
+  create_table :favourites do |t|
+
+    t.string :url
+    t.integer :user_id
+    t.timestamps
+  end
+
 end

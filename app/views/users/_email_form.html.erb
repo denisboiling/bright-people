@@ -1,4 +1,4 @@
-<%= form_for url_for('/profile'), method: :put, remote: true, url: update_user_email_path,
+<%= form_for user, method: :put, remote: true, url: update_user_email_path,
                    html: {id: :update_email_form} do |f| %>
   <%= f.label :email, "Введите свой эл. адрес:" %>
   <%= f.text_field :email %>
