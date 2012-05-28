@@ -235,4 +235,11 @@ class Main < ActiveRecord::Migration
       t.timestamps
   end
 
+  create_table :contests do |t|
+    t.string :name
+    t.datetime :started_at
+    t.datetime :ended_at
+    
+    t.timestamps
+  end
 end
