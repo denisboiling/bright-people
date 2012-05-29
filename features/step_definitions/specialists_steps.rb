@@ -9,3 +9,10 @@ end
 Then /^question "(.*?)" should be publish$/ do |question|
   find_question(question).publish.should == true
 end
+
+Given /^specialist "(.*?)" create answer for question "(.*?)"$/ do |specialist, question|
+  specialist = specialist_by_name(specialist)
+  comment = Question.find_by_text(question).comments.build(text: 'this answer')
+  comment.user = specialist
+  comment.save
+end

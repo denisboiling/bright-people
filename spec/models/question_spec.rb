@@ -1,6 +1,13 @@
 require 'spec_helper'
 
-describe Question, current: true do
+describe Question do
+  it "Should check associated with comments" do
+    question = FactoryGirl.create(:question)
+    question.comments.should == []
+    comment = FactoryGirl.create(:comment_question, relation: question)
+    Question.find(question).comments.last.should == comment
+  end
+
   it "Should be default not publish" do
     question = FactoryGirl.create(:question)
     question.publish.should == false

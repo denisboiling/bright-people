@@ -1,4 +1,4 @@
-class Specialist::BaseController < ApplicationController
+class SpecialistUser::BaseController < ApplicationController
   protect_from_forgery
   # OPTIMIZE: brrr... ugly
   before_filter :verify_specialist

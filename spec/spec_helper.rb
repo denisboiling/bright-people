@@ -39,9 +39,6 @@ Spork.each_run do
   # Reload factory
   FactoryGirl.reload
 
-  # Reload routes
-  BrightPeople::Application.reload_routes!
-
   # Reload models
   Dir["#{Rails.root}/app/models/**/*.rb"].each do |model|
     load model
