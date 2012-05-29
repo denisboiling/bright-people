@@ -3,7 +3,7 @@ class SpecialistUser::QuestionsController < SpecialistUser::BaseController
   before_filter :load_object, except: :index
 
   def index
-    @questions = current_user.questions.paginate(page: params[:page], per_page: 10)
+    @questions = current_user.questions.page(params[:page]).per(10)
   end
 
   def show

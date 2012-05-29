@@ -1,0 +1,6 @@
+<% @favourites.each do |favourite| %>
+ <p>
+    <%=link_to favourite.url, favourite.url %>
+    <%= link_to "delete", favourite, method: :delete, confirm: "You sure?" %>
+  </p>
+<% end %>

@@ -3,11 +3,11 @@ class SpecialistsController < ApplicationController
   before_filter :load_object, except: :index
 
   def index
-    @specialists = User.specialists.paginate(page: params[:page], per_page: 5)
+    @specialists = User.specialists.page(params[:page]).per(5)
   end
 
   def show
-    @questions = @specialist.questions.publish.paginate(page: params[:page], per_page: 5)
+    @questions = @specialist.questions.publish.page(params[:page]).per(5)
   end
 
   # Create question and assign it with specialist

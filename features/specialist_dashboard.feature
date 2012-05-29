@@ -1,7 +1,7 @@
 Feature: Expert answer
   
   Background:
-    Given I am signup and signin as "specialist" with "specialist@example.com/password"
+    Given I signed in as a specialist
 
   Scenario: Path to specialist dashboard
     And I am on the home page

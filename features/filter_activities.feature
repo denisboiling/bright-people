@@ -4,7 +4,7 @@ Feature: Fitler activities
   I want to be able to use filter links
   
   Background:
-    Given direction tag with name "изучать"
+    Given a direction tag exists with a name of "изучать"
     And age tag with 6 to 12 interval
     And activities with fields:
       | name           | direction_tag_names | age_tag_names          |

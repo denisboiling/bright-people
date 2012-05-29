@@ -1,8 +1,11 @@
 This is the main page!
-<%= link_to "VK", user_omniauth_authorize_path(:vkontakte) %>
-<%= link_to "FB", user_omniauth_authorize_path(:facebook) %>
-<%= link_to "OD", user_omniauth_authorize_path(:odnoklassniki) %>
-
+<% if current_user %>
+  <%= link_to "Profile", url_for("/profile") %>
+<% else %>
+  <%= link_to "VK", user_omniauth_authorize_path(:vkontakte) %>
+  <%= link_to "FB", user_omniauth_authorize_path(:facebook) %>
+  <%= link_to "OD", user_omniauth_authorize_path(:odnoklassniki) %>
+<% end %>
 
 <%= render partial: 'shared/search' %>
 

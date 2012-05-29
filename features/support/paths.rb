@@ -10,6 +10,14 @@ module NavigationHelpers
       specialist_path(specialist_by_name($1))
     when /^the activities page$/
       activities_path
+    when /^the article "(.+)" page$/
+      article_path(article_by_title($1))
+    when /^the interview "(.+)" page$/
+      interview_path(interview_by_title($1))
+    when /^the news "(.+)" page$/
+      news_path(news_by_title($1))
+    when /^the special_project "(.+)" page$/
+      special_project_path(special_project_by_title($1))
 
       # Specialist dashboard
     when /^the specialist user question "(.+)" page$/

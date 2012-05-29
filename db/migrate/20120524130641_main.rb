@@ -230,4 +230,43 @@ class Main < ActiveRecord::Migration
       t.timestamps
   end
 
+  create_table :favourites do |t|
+
+    t.string :url
+    t.integer :user_id
+    t.timestamps
+  end
+
+  create_table :contests do |t|
+    t.string :name
+    t.text :description
+    t.datetime :started_at
+    t.datetime :ended_at
+    t.integer :category_id
+    
+    t.timestamps
+  end
+  
+  add_index :contests, :category_id
+  
+  create_table :contest_categories do |t|
+    t.string :name
+
+    t.timestamps
+  end
+  
+  create_table :contest_memberships do |t|
+    t.integer :contest_id
+    t.integer :user_id
+    t.string :picture_file_name
+    t.integer :picture_file_size
+    t.datetime :picture_updated_at
+    
+    t.string :name
+    t.text :description
+    
+    t.timestamps
+  end
+  
+  add_index :contest_memberships, :contest_id
 end
