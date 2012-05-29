@@ -25,6 +25,7 @@ class ContestMembershipsController < ApplicationController
   end
   
   def vote
+    return unless @contest.active?
     ContestVote.create user_id: current_user.id,
                        rate: params[:rate].to_i,
                        contest_id: params[:contest_id],
