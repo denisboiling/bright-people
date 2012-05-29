@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   belongs_to :role
   has_many :activity_votes
+  has_many :contest_votes
 
   has_many :questions, dependent: :destroy,
                        foreign_key: 'specialist_id'
