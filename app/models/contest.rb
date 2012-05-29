@@ -5,6 +5,8 @@ class Contest < ActiveRecord::Base
   
   attr_accessible :name, :started_at, :ended_at, :description, :picture, :category_id
   
+  validates :name, :started_at, :ended_at, :description, presence: true
+  
   has_attached_file :picture,
                     styles: { medium: "300x300>", thumb: "100x100>" },
                     path: ":rails_root/public/system/:attachment/:id/:style/:filename",

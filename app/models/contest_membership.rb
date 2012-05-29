@@ -6,6 +6,8 @@ class ContestMembership < ActiveRecord::Base
   
   attr_accessible :name, :description, :picture
   
+  validates :picture, :user_id, :contest_id, presence: true
+  
   has_attached_file :picture,
                     styles: { medium: "300x300>", thumb: "100x100>" },
                     path: ":rails_root/public/system/:attachment/:id/:style/:filename",
