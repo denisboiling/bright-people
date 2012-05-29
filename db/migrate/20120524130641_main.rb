@@ -263,6 +263,9 @@ class Main < ActiveRecord::Migration
   create_table :contest_memberships do |t|
     t.integer :contest_id
     t.integer :user_id
+    t.string :picture_file_name
+    t.integer :picture_file_size
+    t.datetime :picture_updated_at
     
     t.timestamps
   end
