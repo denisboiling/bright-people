@@ -249,6 +249,10 @@ class Main < ActiveRecord::Migration
     t.datetime :ended_at
     t.integer :category_id
     
+    t.string :picture_file_name
+    t.integer :picture_file_size
+    t.datetime :picture_updated_at
+    
     t.timestamps
   end
   

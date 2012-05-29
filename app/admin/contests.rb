@@ -10,4 +10,14 @@ ActiveAdmin.register Contest do
     column :updated_at
     default_actions
   end
+  
+  form html: { enctype: 'multipart/form-data' } do |f|
+    f.inputs 'Основное' do
+      f.input :name
+      f.input :category
+      f.input :description, input_html: {size: 10}
+      f.input :picture, as: :file, hint: f.template.image_tag(f.object.picture.url(:medium))
+    end
+    f.buttons
+  end
 end

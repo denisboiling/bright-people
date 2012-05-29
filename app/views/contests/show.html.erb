@@ -1,3 +1,4 @@
 <h1><%= @contest.name %></h1>
+<%= image_tag(@contest.picture.url(:medium)) if @contest.picture.exists? %>
 <p><%= @contest.description %></p>
 <%= link_to "участники", contest_memberships_path(contest_id: @contest.id) %>
