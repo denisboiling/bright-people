@@ -1,14 +1,21 @@
 one:
   name: 'Фотоконкурс: "Я играю на гармошке!"'
+  description: |
+    Описание фотоконкурса!
+    Правила и призы.
   started_at: <%= DateTime.now + 1.week + 3.days %>
   ended_at: <%= DateTime.now + 2.weeks + 2.days %>
 
 two:
   name: 'Конкурс рисунков: "Пусть всегда будет солнце!"'
+  description: |
+    Какое-то описание
   started_at: <%= DateTime.now - 1.week - 3.days %>
   ended_at: <%= DateTime.now + 2.weeks + 1.day %>
 
 three:
   name: 'Конкурс рисунков: "Моя семья!"'
+  description: |
+    Конкурс рисунков, ололо.
   started_at: <%= DateTime.now - 3.weeks + 3.days %>
   ended_at: <%= DateTime.now - 2.weeks + 1.day %>

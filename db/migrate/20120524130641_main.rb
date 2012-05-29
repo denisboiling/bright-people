@@ -237,6 +237,7 @@ class Main < ActiveRecord::Migration
 
   create_table :contests do |t|
     t.string :name
+    t.text :description
     t.datetime :started_at
     t.datetime :ended_at
     t.integer :category_id
