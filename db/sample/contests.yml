@@ -8,7 +8,7 @@ two:
   started_at: <%= DateTime.now - 1.week - 3.days %>
   ended_at: <%= DateTime.now + 2.weeks + 1.day %>
 
-two:
+three:
   name: 'Конкурс рисунков: "Моя семья!"'
   started_at: <%= DateTime.now - 3.weeks + 3.days %>
   ended_at: <%= DateTime.now - 2.weeks + 1.day %>
