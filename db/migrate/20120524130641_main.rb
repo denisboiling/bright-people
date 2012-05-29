@@ -273,4 +273,16 @@ class Main < ActiveRecord::Migration
   end
   
   add_index :contest_memberships, :contest_id
+  
+  create_table :contest_votes do |t|
+    t.integer :contest_id
+    t.integer :membership_id
+    t.integer :rate
+    t.integer :user_id
+    
+    t.timestamps
+  end
+  
+  add_index :contest_votes, :contest_id
+  add_index :contest_votes, :membership_id
 end
