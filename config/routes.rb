@@ -4,6 +4,11 @@ BrightPeople::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
+  get '/profile' => 'users#show'
+  get '/profile/edit' => 'users#edit'
+
+  resources :users, only: [:show, :update]
+
   resources :organizations, only: [:show]
   resources :activities, only: [:index, :show] do
     put 'vote'
@@ -20,7 +25,8 @@ BrightPeople::Application.routes.draw do
   resources :article_categories, only: [:show]
 
 
-  resources :specialists, only: [:index, :show, :create_question] do
+  resources :specialists, only: [:index, :show, :show, :create_question] do
+    resources :questions
     post :create_question, on: :member
   end
 
@@ -44,9 +50,17 @@ BrightPeople::Application.routes.draw do
       get :tag
     end
   end
+  
+  resources :contests, only: [:index, :show] do
+    resources :contest_memberships, path: "members",
+                                    only: [:index, :show],
+                                    as: :memberships
+  end
+
+  resources :favourites, only: [:index, :create, :destroy]
 
   # Specialist
-  namespace :specialist do
+  namespace :specialist_user do
     resources :questions
     root to: 'questions#index'
   end

@@ -1,0 +1,10 @@
+<%= form_for @user, method: :put, html: {id: :update_profile_form} do |f| %>
+  <%= f.label :email, 'Email' %>
+  <%= f.text_field :email %>
+  <%= f.label :name, 'Name' %>
+  <%= f.text_field :name %>
+  <% @user.errors.each do |field, message| %>
+    <p><strong><%= field %>:</strong> <%= message %></p>
+  <% end %>
+  <%= f.submit %>
+<% end %>

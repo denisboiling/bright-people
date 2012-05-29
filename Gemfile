@@ -33,7 +33,7 @@ gem 'thinking-sphinx'
 gem 'cocoon'
 gem 'rails3-jquery-autocomplete'
 gem 'hierarchy', github: 'RISCfuture/hierarchy'
-gem 'will_paginate'
+gem 'kaminari'
 
 group :development do
   gem 'letter_opener'

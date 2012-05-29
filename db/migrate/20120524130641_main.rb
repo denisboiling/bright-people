@@ -117,15 +117,6 @@ class Main < ActiveRecord::Migration
     t.timestamps
   end
 
-  create_table(:question_comments) do |t|
-    t.integer :user_id, :question_id, null: false
-    t.text :text, null: false
-    t.boolean  :deleted, default: false, null: false
-
-    t.timestamps
-  end
-  update "ALTER TABLE \"question_comments\" ADD \"path\" LTREE NOT NULL DEFAULT ''"
-
   create_table(:questions) do |t|
     t.integer :specialist_id, :user_id, null: false
     t.integer :question_category_id
@@ -223,10 +214,14 @@ class Main < ActiveRecord::Migration
 
 
   create_table :comments do |t|
-      t.integer :user_id, :interview_id, :article_id, :news_id, :special_project_id
-      t.text :content
+    # t.integer :user_id, :interview_id, :article_id, :news_id, :special_project_id
+    # t.text :content
+    t.text :text
+    t.integer :user_id, :relation_id, null: false
+    t.string :relation_type, null: false
+    t.boolean :deleted, null: false, default: false
 
-      t.timestamps
+    t.timestamps
   end
   update "ALTER TABLE \"comments\" ADD \"path\" LTREE NULL DEFAULT ''"
 
@@ -235,4 +230,43 @@ class Main < ActiveRecord::Migration
       t.timestamps
   end
 
+  create_table :favourites do |t|
+
+    t.string :url
+    t.integer :user_id
+    t.timestamps
+  end
+
+  create_table :contests do |t|
+    t.string :name
+    t.text :description
+    t.datetime :started_at
+    t.datetime :ended_at
+    t.integer :category_id
+    
+    t.timestamps
+  end
+  
+  add_index :contests, :category_id
+  
+  create_table :contest_categories do |t|
+    t.string :name
+
+    t.timestamps
+  end
+  
+  create_table :contest_memberships do |t|
+    t.integer :contest_id
+    t.integer :user_id
+    t.string :picture_file_name
+    t.integer :picture_file_size
+    t.datetime :picture_updated_at
+    
+    t.string :name
+    t.text :description
+    
+    t.timestamps
+  end
+  
+  add_index :contest_memberships, :contest_id
 end

@@ -5,9 +5,14 @@ Feature: Post comments
 
 @javascript
 Scenario: Posting article comment
-    Given a user visits article page
+    Given the following article category exists:
+      | title        |
+      | testcategory |
+    Given the following article exists:
+      | title     | author   | content              | article_category_id |
+      | testtitle | tauthort | qweqweqwe12dsadzxczx | id: testcategory    |
+    And I am on the article "testtitle" page
     And I follow "Добавить комментарий"
-    And wait for ajax
     And I fill in "comment_content" with "Test comment"
     When I follow "Отправить"
     And wait for ajax
@@ -15,9 +20,11 @@ Scenario: Posting article comment
 
 @javascript
 Scenario: Posting interview comment
-    Given a user visits interview page
+    Given the following interview exists:
+      | title         | author   | content              |
+      | testinterview | tauthort | qweqweqwe12dsadzxczx |
+    And I am on the interview "testinterview" page
     And I follow "Добавить комментарий"
-    And wait for ajax
     And I fill in "comment_content" with "Test comment"
     When I follow "Отправить"
     And wait for ajax
@@ -25,9 +32,11 @@ Scenario: Posting interview comment
 
 @javascript
 Scenario: Posting news comment
-    Given a user visits news page
+    Given the following news exists:
+      | title    | author   | content              |
+      | testnews | tauthort | qweqweqwe12dsadzxczx |
+    And I am on the news "testnews" page
     And I follow "Добавить комментарий"
-    And wait for ajax
     And I fill in "comment_content" with "Test comment"
     When I follow "Отправить"
     And wait for ajax
@@ -35,9 +44,11 @@ Scenario: Posting news comment
 
 @javascript
 Scenario: Posting special project comment
-    Given a user visits special_project page
+    Given the following special project exists:
+      | title       | author   | content              |
+      | testproject | tauthort | qweqweqwe12dsadzxczx |
+    And I am on the special_project "testproject" page
     And I follow "Добавить комментарий"
-    And wait for ajax
     And I fill in "comment_content" with "Test comment"
     When I follow "Отправить"
     And wait for ajax

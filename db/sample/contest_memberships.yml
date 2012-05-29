@@ -1,0 +1,6 @@
+<% 1.upto(20).each do |i| %>
+membership_<%= i %>:
+  id: <%= i %>
+  name: <%= Faker::Lorem.words.join(' ') %>
+  description: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
+<% end %>

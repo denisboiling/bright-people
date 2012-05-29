@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
                        foreign_key: 'specialist_id'
 
   has_many :my_questions, class_name: 'Question'
+  has_many :contest_memberships
+
+  has_many :favourites
 
   has_attached_file :avatar,
                     styles: { medium: "300x300>", thumb: "100x100>" },
