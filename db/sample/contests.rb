@@ -7,7 +7,9 @@ Contest.all.each do |contest|
   contest.save!
   
   rand(2..3).times do
-    membership = ContestMembership.new
+    membership = ContestMembership.where(:contest_id => nil).first
+    break unless membership
+    
     membership.contest_id = contest.id
     membership.user_id = User.all.sample.id
     membership.picture = File.new(pictures.shuffle.first)
