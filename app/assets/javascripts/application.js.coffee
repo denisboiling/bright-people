@@ -21,3 +21,4 @@ $ ->
   window.setup_activities_list()
   window.setup_activities_rating()
   window.setup_comments()
+  window.setup_favourite_button()
