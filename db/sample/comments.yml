@@ -1,0 +1,8 @@
+# Specialist answer for question
+<% 1.upto(5).each do |i| %>
+answer_<%= i %>:
+  text: "<%= Faker::Lorem.paragraphs.join('\n') %>"
+  user_id: 111
+  relation_type: Question
+  relation_id: <%= i %>
+<% end %>

@@ -25,7 +25,8 @@ BrightPeople::Application.routes.draw do
   resources :article_categories, only: [:show]
 
 
-  resources :specialists, only: [:index, :show, :create_question] do
+  resources :specialists, only: [:index, :show, :show, :create_question] do
+    resources :questions
     post :create_question, on: :member
   end
 
@@ -59,7 +60,7 @@ BrightPeople::Application.routes.draw do
   resources :favourites, only: [:index, :create, :destroy]
 
   # Specialist
-  namespace :specialist do
+  namespace :specialist_user do
     resources :questions
     root to: 'questions#index'
   end

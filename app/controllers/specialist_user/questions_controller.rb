@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-class Specialist::QuestionsController < Specialist::BaseController
+class SpecialistUser::QuestionsController < SpecialistUser::BaseController
   before_filter :load_object, except: :index
 
   def index
@@ -13,12 +13,11 @@ class Specialist::QuestionsController < Specialist::BaseController
   def update
     unless @question.publish
       @question.update_attribute(:category, QuestionCategory.find(params[:question_category_id]))
-      @question_comment = @question.comments.build(params[:question_comment])
+      @question_comment = @question.comments.build(params[:comment])
       @question_comment.user = current_user
-      @question_comment.question = @question
       if @question_comment.save
         flash[:notice] = 'Ваш ответ сохранен'
-        redirect_to specialist_questions_path
+        redirect_to specialist_user_questions_path
       else
         render :show
       end

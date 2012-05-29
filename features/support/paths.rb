@@ -19,10 +19,10 @@ module NavigationHelpers
     when /^the special_project "(.+)" page$/
       special_project_path(special_project_by_title($1))
 
-    # Specialist dashboard
-    when /^the specialist question "(.+)" page$/
-      specialist_question_path(find_question($1))
-      
+      # Specialist dashboard
+    when /^the specialist user question "(.+)" page$/
+      specialist_user_question_path(find_question($1))
+
     else
       begin
         page_name =~ /^the (.*) page$/
