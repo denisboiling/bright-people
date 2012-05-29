@@ -252,4 +252,13 @@ class Main < ActiveRecord::Migration
 
     t.timestamps
   end
+  
+  create_table :contest_memberships do |t|
+    t.integer :contest_id
+    t.integer :user_id
+    
+    t.timestamps
+  end
+  
+  add_index :contest_memberships, :contest_id
 end
