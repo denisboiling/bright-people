@@ -24,6 +24,14 @@ class ContestMembershipsController < ApplicationController
     end
   end
   
+  def vote
+    ContestVote.create user_id: current_user.id,
+                       rate: params[:rate].to_i,
+                       contest_id: params[:contest_id],
+                       membership_id: params[:membership_id]
+    head :ok
+  end
+  
   private
   
   def prepare

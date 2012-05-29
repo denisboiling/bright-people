@@ -54,7 +54,9 @@ BrightPeople::Application.routes.draw do
   resources :contests, only: [:index, :show] do
     resources :contest_memberships, path: "members",
                                     only: [:index, :show, :new, :create],
-                                    as: :memberships
+                                    as: :memberships do
+      put :vote
+    end
   end
 
   resources :favourites, only: [:index, :create, :destroy]

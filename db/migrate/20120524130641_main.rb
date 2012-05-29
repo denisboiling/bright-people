@@ -269,6 +269,8 @@ class Main < ActiveRecord::Migration
     t.string :name
     t.text :description
     
+    t.float :rating, default: 0.0, null: false
+    
     t.timestamps
   end
   

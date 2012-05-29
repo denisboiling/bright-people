@@ -2,6 +2,8 @@ class ContestVote < ActiveRecord::Base
   belongs_to :contest
   belongs_to :membership, class_name: 'ContestMembership'
   
+  attr_accessible :user_id, :rate, :contest_id, :membership_id
+  
   validate :contest_consistency
   
   validates :membership_id, :user_id, :contest_id, :rate, presence: true
@@ -13,6 +15,8 @@ class ContestVote < ActiveRecord::Base
   private
   
   def contest_consistency
-    errors.add(:contest, " should be same for membership") unless contest == membership.contest
+    if not membership or contest != membership.contest
+      errors.add(:contest, " should be same for membership")
+    end
   end
 end

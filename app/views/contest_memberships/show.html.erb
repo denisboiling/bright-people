@@ -1,4 +1,4 @@
-<h1><%= link_to @contest.name, @contest %></h1>
+<h1><%= link_to @contest.name, @contest %>(<%= @membership.rating %>)</h1>
 
 <h2><%= @membership.name %></h2>
 <%= image_tag(@membership.picture.url(:medium)) %>
