@@ -17,3 +17,10 @@ window.setup_email_dialog = ->
   
   $('#update_email_form').live 'ajax:success', (event, xhr) ->
     $('#email_dialog').dialog('close')
+
+window.setup_require_signin_actions = ->
+  $('a.signin_required').live 'click', (event) ->
+    unless $.cookie('current_user')
+      event.preventDefault()
+      $('#signin_dialog').dialog modal: true
+    
