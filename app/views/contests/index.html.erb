@@ -1,0 +1,10 @@
+<%= link_to "Все", contests_path %>
+<% ContestCategory.all.each do |category| %>
+ | <%= link_to category.name, contests_path(category: category.id) %>
+<% end %>
+
+<% @contests.each do |contest| %>
+  <h1><%= link_to contest.name, contest %></h1>
+  <strong>started at:</strong><%= contest.started_at %><br />
+  <strong>ended at:</strong><%= contest.ended_at %><br />
+<% end %>
