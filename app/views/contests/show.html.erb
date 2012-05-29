@@ -1,2 +1,3 @@
 <h1><%= @contest.name %></h1>
-<p><%= @contest.description %></p> 
+<p><%= @contest.description %></p>
+<%= link_to "участники", contest_memberships_path(contest_id: @contest.id) %>
