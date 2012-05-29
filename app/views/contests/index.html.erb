@@ -4,7 +4,7 @@
 <% end %>
 
 <% @contests.each do |contest| %>
-  <h1><%= contest.name %></h1>
+  <h1><%= link_to contest.name, contest %></h1>
   <strong>started at:</strong><%= contest.started_at %><br />
   <strong>ended at:</strong><%= contest.ended_at %><br />
 <% end %>

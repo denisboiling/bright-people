@@ -45,7 +45,7 @@ BrightPeople::Application.routes.draw do
     end
   end
   
-  resources :contests, only: [:index]
+  resources :contests, only: [:index, :show]
 
   # Specialist
   namespace :specialist do

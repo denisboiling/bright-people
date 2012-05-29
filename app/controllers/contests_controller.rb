@@ -7,4 +7,8 @@ class ContestsController < ApplicationController
         Contest.scoped
       end
   end
+  
+  def show
+    @contest = Contest.find(params[:id])
+  end
 end
