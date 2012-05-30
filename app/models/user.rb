@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
 
   has_many :comments
 
+  has_many :comment_notifies, class_name: 'UserCommentNofity', through: :comments
+
   has_attached_file :avatar,
                     styles: { medium: "300x300>", thumb: "100x100>" },
                     path: ":rails_root/public/system/:attachment/:id/:style/:filename",

@@ -59,6 +59,11 @@ BrightPeople::Application.routes.draw do
 
   resource :comments, only: :create
 
+  # User dashboard
+  namespace :dashboard do
+    resources :notifications, only: [:index, :destroy, :update]
+  end
+
   # Specialist dashboard
   namespace :specialist_user do
     resources :questions

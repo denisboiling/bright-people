@@ -1,0 +1,9 @@
+Здесь у нас нотификации от комментов
+
+<% @notifications.each do |notify| %>
+  <div class="comment_notify">
+    <p>Мой коммент: <%= notify.comment.text %></p>
+    <p>Кто написал ответ: <%= notify.child_comment.user.name %></p>
+    <p>Текст ответа: <%= notify.child_comment.text %></p>
+  </div>
+<% end %>
