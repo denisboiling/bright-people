@@ -7,7 +7,7 @@
 <h1>Rate (<%= "u:#{@activity.users_rating}, e:#{@activity.experts_rating}" %>):</h1>
 <ul>
 <% (1..5).each do |n| %>
-  <li><%= link_to n, '#', class: "activity_rate#{n}_link" %></li>
+  <li><%= link_to n, '#', class: "activity_rate#{n}_link signin_required" %></li>
 <% end %>
 </ul>
 

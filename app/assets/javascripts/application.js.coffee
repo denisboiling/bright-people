@@ -7,6 +7,7 @@
 $ ->
   window.setup_email_dialog()
   window.setup_activities_list()
-  window.setup_activities_rating()
+  window.setup_rating()
+  window.setup_comments()
   window.setup_favourite_button()
-  window.add_comment()
+  window.setup_require_signin_actions()

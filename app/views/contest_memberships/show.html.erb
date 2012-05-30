@@ -1,5 +1,11 @@
-<h1><%= link_to @contest.name, @contest %></h1>
+<h1><%= link_to @contest.name, @contest %>(<%= @membership.rating %>)</h1>
 
 <h2><%= @membership.name %></h2>
 <%= image_tag(@membership.picture.url(:medium)) %>
+<h2>Rate:</h2>
+
+<% (1..5).each do |n| %>
+  <li><%= link_to n, '#', class: "contest_rate#{n}_link signin_required" %></li>
+<% end %>
+
 <p><%= @membership.description %></p>

@@ -244,6 +244,10 @@ class Main < ActiveRecord::Migration
     t.datetime :ended_at
     t.integer :category_id
     
+    t.string :picture_file_name
+    t.integer :picture_file_size
+    t.datetime :picture_updated_at
+    
     t.timestamps
   end
   
@@ -265,8 +269,22 @@ class Main < ActiveRecord::Migration
     t.string :name
     t.text :description
     
+    t.float :rating, default: 0.0, null: false
+    
     t.timestamps
   end
   
   add_index :contest_memberships, :contest_id
+  
+  create_table :contest_votes do |t|
+    t.integer :contest_id
+    t.integer :membership_id
+    t.integer :rate
+    t.integer :user_id
+    
+    t.timestamps
+  end
+  
+  add_index :contest_votes, :contest_id
+  add_index :contest_votes, :membership_id
 end
