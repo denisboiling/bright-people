@@ -29,12 +29,31 @@ Feature: Create questions for specialist
     Then I go to the specialist "Ivan Petrov" page
     And I should see "Publish question"
     And I should not see "Not publish"
-@wip
+
+  @javascript
   Scenario: Create user comment for question
     Given the following questions exists:
       | specialist       | text          |
       | name:Ivan Petrov | Cool question |
       And specialist "Ivan Petrov" create answer for question "Cool question"
-      Then I go to the specialist "Ivan Petrov" page
-      Then show me the page
+      Then I go to the specialist question "Cool question" page
+      And I fill in "comment" with "This is my comment"
+      Then I press "Комментировать"
+      And I wait a second
+      And I should see "This is my comment"
 
+# TODO: fix this scenario
+# @wip
+#   @javascript
+#   Scenario: Create user sub comment for question
+#     Given the following questions exists:
+#       | specialist       | text          |
+#       | name:Ivan Petrov | Cool question |
+#       And specialist "Ivan Petrov" create answer for question "Cool question"
+#       Then I go to the specialist question "Cool question" page
+#       And I follow "Комментировать"
+#       And I fill in "comment" with "This is my comment"
+#       Then I press "Комментировать"
+#       And I wait a second
+#       And I should see "This is my comment"
+#       And comment "This is my comment" should be child

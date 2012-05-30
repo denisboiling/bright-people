@@ -17,7 +17,6 @@ BrightPeople::Application.routes.draw do
   resource :search, only: [:show]
   resources :experts, only: [:index, :show]
   resources :articles, only: [:index, :show] do
-    resources :comments, only: [:create]
     collection do
       get :tag
     end
@@ -31,26 +30,23 @@ BrightPeople::Application.routes.draw do
   end
 
   resources :interviews, only: [:index, :show] do
-    resources :comments, only: [:create]
     collection do
       get :tag
     end
   end
 
   resources :news, only: [:index, :show] do
-    resources :comments
     collection do
       get :tag
     end
   end
 
   resources :special_projects, only: [:index, :show] do
-    resources :comments
     collection do
       get :tag
     end
   end
-  
+
   resources :contests, only: [:index, :show] do
     resources :contest_memberships, path: "members",
                                     only: [:index, :show],
@@ -59,13 +55,15 @@ BrightPeople::Application.routes.draw do
 
   resources :favourites, only: [:index, :create, :destroy]
 
-  # Specialist
+  resource :comments, only: :create
+
+  # Specialist dashboard
   namespace :specialist_user do
     resources :questions
     root to: 'questions#index'
   end
 
-  # Admin
+  # Admin panel
   namespace :admin do
     resources :activities do
       get :autocomplete_activity_title, :on => :collection

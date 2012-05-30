@@ -4,6 +4,8 @@ class Comment < ActiveRecord::Base
   #                 :interview_id, :news_id, :parent,
   #                 :special_project_id
 
+
+
   attr_accessible :text
   belongs_to :user
   # belongs_to :article
@@ -25,8 +27,16 @@ class Comment < ActiveRecord::Base
 
   after_create :publish_question
 
+  # Mark question as publish
   def publish_question
     return if relation.class.name != 'Question'
     relation.publish! if !relation.publish && user == relation.specialist
+  end
+
+  class << self
+    # Return all possible relation type
+    def possible_relations
+      %w(Question)
+    end
   end
 end

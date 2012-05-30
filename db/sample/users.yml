@@ -20,10 +20,12 @@ specialist_<%= i %>:
 specialist:
   id: 111
   email: specialist@example.com
+  name: Main sample specialist
   role_id: 4
   name: <%= Faker::Name.name %>
 
 user:
+  id: 222  
   email: user@example.com
   name: <%= Faker::Name.name %>
   role_id: 1

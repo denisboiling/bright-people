@@ -16,3 +16,8 @@ Given /^specialist "(.*?)" create answer for question "(.*?)"$/ do |specialist, 
   comment.user = specialist
   comment.save
 end
+
+Then /^comment "(.*?)" should be child$/ do |comment|
+  # Comment.find_by_text(comment).top_level?.should == false
+  pp Comment.find_by_text(comment)
+end

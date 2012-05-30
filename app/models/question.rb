@@ -16,4 +16,10 @@ class Question < ActiveRecord::Base
     update_attribute(:publish, true)
   end
 
+  # This method need for samples. When question have a specialist answer
+  # we mark question as publish
+  def check_publish
+    publish! if comments.where(user_id: specialist.id).present?
+  end
+
 end
