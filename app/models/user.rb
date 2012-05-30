@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   belongs_to :role
   has_many :activity_votes
+  has_many :contest_votes
 
   has_many :questions, dependent: :destroy,
                        foreign_key: 'specialist_id'
@@ -12,6 +13,10 @@ class User < ActiveRecord::Base
   has_many :contest_memberships
 
   has_many :favourites
+
+  has_many :comments
+
+  has_many :comment_notifies, class_name: 'UserCommentNofity', through: :comments
 
   has_attached_file :avatar,
                     styles: { medium: "300x300>", thumb: "100x100>" },

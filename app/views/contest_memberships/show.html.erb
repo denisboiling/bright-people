@@ -1,5 +1,29 @@
-<h1><%= link_to @contest.name, @contest %></h1>
+<h1><%= link_to @contest.name, @contest %>(<%= @membership.rating %>)</h1>
 
 <h2><%= @membership.name %></h2>
 <%= image_tag(@membership.picture.url(:medium)) %>
+<h2>Rate:</h2>
+
+<% (1..5).each do |n| %>
+  <li><%= link_to n, '#', class: "contest_rate#{n}_link signin_required" %></li>
+<% end %>
+
 <p><%= @membership.description %></p>
+
+Комментарии <br />
+
+<div class="comments_list">
+  <% @comments.each do |comment| %>
+    <%= render 'shared/comment', comment: comment %>
+  <% end %>
+</div>
+
+<%= render 'shared/comment_form' %>
+
+<%= content_for :head do %>
+  <script>
+    var relation = 'ContestMembership';
+    var relation_id = <%= @membership.id %>;
+    var can_create_comment = <%= can? :create, :comment %>
+  </script>
+<% end %>

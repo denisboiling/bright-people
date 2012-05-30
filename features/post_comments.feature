@@ -1,55 +1,74 @@
 Feature: Post comments
-  In order to add some feedback
-  As a user
-  I want to be able to post comments
 
-@javascript
-Scenario: Posting article comment
-    Given the following article category exists:
+# TODO: create test for not sign user
+# TODO: create test for contest
+  Background:
+    Given I am signup and signin as "user" with "user@example.com/password"
+
+  @javascript
+  Scenario: Create top level comment for question
+    Given the following specialist exists:
+      | name        |
+      | Ivan Petrov |
+    Given the following questions exists:
+      | specialist       | text          |
+      | name:Ivan Petrov | Cool question |
+    And specialist "Ivan Petrov" create answer for question "Cool question"
+    Then I go to the specialist question "Cool question" page
+    And I fill in "comment" with "This is my comment"
+    Then I press "Комментировать"
+    And I wait a second
+    And I should see "This is my comment"
+
+  @javascript
+  Scenario: Posting article top level comment
+    Given the following article exist:
       | title        |
-      | testcategory |
-    Given the following article exists:
-      | title     | author   | content              | article_category_id |
-      | testtitle | tauthort | qweqweqwe12dsadzxczx | id: testcategory    |
-    And I am on the article "testtitle" page
-    And I follow "Добавить комментарий"
-    And I fill in "comment_content" with "Test comment"
-    When I follow "Отправить"
-    And wait for ajax
-    Then I should see "Test comment"
+      | Cool article |
+    Then I go to the article "Cool article" page
+    And I fill in "comment" with "This is my comment"
+    Then I press "Комментировать"
+    And I wait a second
+    And I should see "This is my comment"
+    Then I go to the article "Cool article" page
+    And I should see "This is my comment"
 
-@javascript
-Scenario: Posting interview comment
-    Given the following interview exists:
-      | title         | author   | content              |
-      | testinterview | tauthort | qweqweqwe12dsadzxczx |
-    And I am on the interview "testinterview" page
-    And I follow "Добавить комментарий"
-    And I fill in "comment_content" with "Test comment"
-    When I follow "Отправить"
-    And wait for ajax
-    Then I should see "Test comment"
+  @javascript
+  Scenario: Posting interview top level comment
+    Given the following interview exist:
+      | title          |
+      | Cool interview |
+    Then I go to the interview "Cool interview" page
+    And I fill in "comment" with "This is my comment"
+    Then I press "Комментировать"
+    And I wait a second
+    And I should see "This is my comment"
+    Then I go to the interview "Cool interview" page
+    And I should see "This is my comment"
 
-@javascript
-Scenario: Posting news comment
-    Given the following news exists:
-      | title    | author   | content              |
-      | testnews | tauthort | qweqweqwe12dsadzxczx |
-    And I am on the news "testnews" page
-    And I follow "Добавить комментарий"
-    And I fill in "comment_content" with "Test comment"
-    When I follow "Отправить"
-    And wait for ajax
-    Then I should see "Test comment"
+  @javascript
+  Scenario: Posting news top level comment
+    Given the following news exist:
+      | title     |
+      | Cool news |
+    Then I go to the news "Cool news" page
+    And I fill in "comment" with "This is my comment"
+    Then I press "Комментировать"
+    And I wait a second
+    And I should see "This is my comment"
+    Then I go to the news "Cool news" page
+    And I should see "This is my comment"
 
-@javascript
-Scenario: Posting special project comment
-    Given the following special project exists:
-      | title       | author   | content              |
-      | testproject | tauthort | qweqweqwe12dsadzxczx |
-    And I am on the special_project "testproject" page
-    And I follow "Добавить комментарий"
-    And I fill in "comment_content" with "Test comment"
-    When I follow "Отправить"
-    And wait for ajax
-    Then I should see "Test comment"
+  @javascript
+  Scenario: Posting special project top level comment
+    Given the following special project exist:
+      | title        |
+      | Cool project |
+    Then I go to the special project "Cool project" page
+    And I fill in "comment" with "This is my comment"
+    Then I press "Комментировать"
+    And I wait a second
+    And I should see "This is my comment"
+    Then I go to the special project "Cool project" page
+    And I should see "This is my comment"
+    

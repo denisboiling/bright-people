@@ -12,6 +12,6 @@ class SpecialProjectsController < ApplicationController
   def show
     @special_project = SpecialProject.find(params[:id])
     @tags = @special_project.tag_counts_on(:special_project_tags)
-    @comments = @special_project.comments.select(&:top_level?)
+    @comments = @special_project.comments.top_level
   end
 end

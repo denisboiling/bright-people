@@ -4,7 +4,7 @@ class Question < ActiveRecord::Base
   belongs_to :user
   belongs_to :category, class_name: 'QuestionCategory'
 
-  has_many :comments, as: :relation, dependent: :destroy
+  has_many :comments, as: :relation
 
   attr_accessible :text, :specialist_id
 
@@ -14,6 +14,12 @@ class Question < ActiveRecord::Base
   # Set question as publish
   def publish!
     update_attribute(:publish, true)
+  end
+
+  # This method need for samples. When question have a specialist answer
+  # we mark question as publish
+  def check_publish
+    publish! if comments.where(user_id: specialist.id).present?
   end
 
 end

@@ -161,8 +161,8 @@ class Main < ActiveRecord::Migration
     t.datetime :remember_created_at, :current_sign_in_at, :last_sign_in_at
     t.integer :sign_in_count, default: 0
     t.string :current_sign_in_ip, :last_sign_in_ip, :facebook_id,
-             :vkontakte_id, :odnoklassniki_id, :encrypted_password,
-             :name, :description
+    :vkontakte_id, :odnoklassniki_id, :encrypted_password,
+    :name, :description
     t.integer :role_id, null: false
 
     t.string :avatar_file_name, :avatar_content_type
@@ -186,23 +186,23 @@ class Main < ActiveRecord::Migration
   end
 
   create_table :interviews do |t|
-      t.string :title, :author
-      t.text :content
-      t.has_attached_file :picture
-      t.timestamps
+    t.string :title, :author
+    t.text :content
+    t.has_attached_file :picture
+    t.timestamps
   end
 
   create_table :activity_age_relations do |t|
-      t.integer :activity_id, :age_tag_id
+    t.integer :activity_id, :age_tag_id
 
-      t.timestamps
+    t.timestamps
   end
 
   create_table :news do |t|
-      t.string :title, :author
-      t.text :content
-      t.has_attached_file :picture
-      t.timestamps
+    t.string :title, :author
+    t.text :content
+    t.has_attached_file :picture
+    t.timestamps
   end
 
   create_table :special_projects do |t|
@@ -226,8 +226,8 @@ class Main < ActiveRecord::Migration
   update "ALTER TABLE \"comments\" ADD \"path\" LTREE NULL DEFAULT ''"
 
   create_table :question_categories do |t|
-      t.string :title
-      t.timestamps
+    t.string :title
+    t.timestamps
   end
 
   create_table :favourites do |t|
@@ -243,30 +243,54 @@ class Main < ActiveRecord::Migration
     t.datetime :started_at
     t.datetime :ended_at
     t.integer :category_id
-    
+
+    t.string :picture_file_name
+    t.integer :picture_file_size
+    t.datetime :picture_updated_at
+
     t.timestamps
   end
-  
+
   add_index :contests, :category_id
-  
+
   create_table :contest_categories do |t|
     t.string :name
 
     t.timestamps
   end
-  
+
   create_table :contest_memberships do |t|
     t.integer :contest_id
     t.integer :user_id
     t.string :picture_file_name
     t.integer :picture_file_size
     t.datetime :picture_updated_at
-    
+
     t.string :name
     t.text :description
-    
+
+    t.float :rating, default: 0.0, null: false
+
     t.timestamps
   end
-  
+
   add_index :contest_memberships, :contest_id
+
+  create_table :contest_votes do |t|
+    t.integer :contest_id
+    t.integer :membership_id
+    t.integer :rate
+    t.integer :user_id
+
+    t.timestamps
+  end
+
+  add_index :contest_votes, :contest_id
+  add_index :contest_votes, :membership_id
+
+  create_table :user_comment_nofities do |t|
+    t.integer :comment_id, :child_comment, null: false
+    t.boolean :read, null: false, default: false
+    t.timestamps
+  end
 end

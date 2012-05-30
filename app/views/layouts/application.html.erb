@@ -2,8 +2,9 @@
 <html>
 <head>
   <title>BrightPeople</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= yield :head %>
+  <%= stylesheet_link_tag 'application', :media => "all" %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -11,8 +12,14 @@
   <%= flash_messages %>
 
   <div class="hidden">
-    <div id="email_dialog">
-      <%= render 'users/email_form', user: User.new if current_user and current_user.email.blank? %>
+    <% if current_user and current_user.email.blank?  %>
+      <div id="email_dialog">
+        <%= render 'users/email_form', user: User.new %>
+      </div>
+    <% end %>
+    
+    <div id="signin_dialog">
+      <%= render 'users/signin_dialog' %>
     </div>
   </div>
 

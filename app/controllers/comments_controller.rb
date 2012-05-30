@@ -1,10 +1,17 @@
 class CommentsController < ApplicationController
+
+  # OPTIMIZE: bugagagga, this is tolsto
   def create
-    @comment = Comment.create! user: current_user, content: params[:content],
-                               article_id: params[:article_id],
-                               interview_id: params[:interview_id],
-                               news_id: params[:news_id],
-                               parent: Comment.where(id: params[:parent_comment_id]).first
-    render partial: 'comments/comment', locals: { comment: @comment }
+    return unless Comment.possible_relations.include?(params[:relation_type])
+    comment = current_user.comments.build
+    if params[:parent_id]
+      parent_comment = Comment.find(params[:parent_id])
+      comment.parent = parent_comment
+    end
+    comment.text = params[:text]
+    comment.relation_type = params[:relation_type]
+    comment.relation_id = params[:relation_id]
+    comment.save
+    render partial: 'shared/comment', locals: {comment: comment}
   end
 end

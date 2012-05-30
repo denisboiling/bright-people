@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   
   after_filter :ensure_email_existence
+  after_filter :current_user_presence
   
   # check current user for email
   # if none, then it sets apropriate flag into cookie
@@ -11,6 +12,15 @@ class ApplicationController < ActionController::Base
       cookies[:email_dialog] = true
     else
       cookies.delete :email_dialog
+    end
+  end
+  
+  # checks is user logged in, if so then it writes user's id to cookies
+  def current_user_presence
+    if current_user
+      cookies[:current_user] = current_user.id
+    else
+      cookies.delete :current_user
     end
   end
 end

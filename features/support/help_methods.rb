@@ -26,6 +26,10 @@ module HelpSteps
   def find_question(text)
     Question.find_by_text(text)
   end
+
+  def find_comment(text)
+    Comment.find_by_text(text)
+  end
 end
 
 World(HelpSteps)

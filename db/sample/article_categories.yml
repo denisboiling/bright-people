@@ -3,3 +3,7 @@ article_categoty_<%= i %>:
   id: <%= i %>
   title: <%= Faker::Lorem.words.join(' ') %>
 <% end %>
+
+main_category:
+  id: 111
+  title: Основная тестовая категория

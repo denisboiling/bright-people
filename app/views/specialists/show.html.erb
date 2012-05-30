@@ -9,8 +9,8 @@
   <div class="hidden">
     <div class="question_form">
       <%= form_for :question, url: create_question_specialist_path do |f| %>
-        <%= f.text_area :text %>
-        <%= f.submit 'Отправить' %>
+	<%= f.text_area :text %>
+	<%= f.submit 'Отправить' %>
       <% end %>
     </div>
   </div>
@@ -19,14 +19,18 @@
 <h3>Вопросы к специалисту</h3>
 <% @questions.each do |question| %>
   <div class="question">
-    Пользователь который написал вопрос <br />
-    <%= image_tag question.user.avatar.url %>
-    <%= question.user.name %>
-    <%= question.created_at %>
-    <br />
-    Сам вопрос <br />
-    <%= question.text %>
+    Пользователь который написал вопрос
+    <p>
+      <%= image_tag question.user.avatar.url %>
+      <%= question.user.name %>
+      <%= question.created_at %>
+    </p>
+    Сам вопрос
+    <p>
+      <%= question.text %>
+    </p>
   </div>
+  <%= link_to 'Посмотреть комментарии', specialist_question_path(@specialist, question) %>
 <% end %>
 
 <%= paginate @questions %>
