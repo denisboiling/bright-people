@@ -8,10 +8,6 @@ class Comment < ActiveRecord::Base
 
   attr_accessible :text
   belongs_to :user
-  # belongs_to :article
-  # belongs_to :interview
-  # belongs_to :news
-  # belongs_to :special_projects
 
   # validates :content, presence: :true
 
@@ -36,7 +32,7 @@ class Comment < ActiveRecord::Base
   class << self
     # Return all possible relation type
     def possible_relations
-      %w(Question Article)
+      %w(Question Article Interview News SpecialProject)
     end
   end
 end

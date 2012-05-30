@@ -12,6 +12,6 @@ class NewsController < ApplicationController
   def show
     @news = News.find(params[:id])
     @tags = @news.tag_counts_on(:news_tags)
-    @comments = @news.comments.select(&:top_level?)
+    @comments = @news.comments.top_level
   end
 end

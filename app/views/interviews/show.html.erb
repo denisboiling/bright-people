@@ -7,5 +7,21 @@
   <%= link_to tag.name, { :action => :tag, :id => tag.name }, :class => css_class %>
 <% end %>
 
-<h5>Comments</h5>
-<%= render 'comments/comments_block', comments: @comments %>
+Комментарии <br />
+
+<div class="comments_list">
+  <% @comments.each do |comment| %>
+    <%= render 'shared/comment', comment: comment %>
+  <% end %>
+</div>
+
+<%= render 'shared/comment_form' %>
+
+<%= content_for :head do %>
+  <script>
+    var relation = 'Interview';
+    var relation_id = <%= @interview.id %>;
+    var can_create_comment = <%= can? :create, :comment %>
+  </script>
+<% end %>
+

@@ -30,18 +30,6 @@ Feature: Create questions for specialist
     And I should see "Publish question"
     And I should not see "Not publish"
 
-  @javascript
-  Scenario: Create user comment for question
-    Given the following questions exists:
-      | specialist       | text          |
-      | name:Ivan Petrov | Cool question |
-      And specialist "Ivan Petrov" create answer for question "Cool question"
-      Then I go to the specialist question "Cool question" page
-      And I fill in "comment" with "This is my comment"
-      Then I press "Комментировать"
-      And I wait a second
-      And I should see "This is my comment"
-
 # TODO: fix this scenario
 # @wip
 #   @javascript

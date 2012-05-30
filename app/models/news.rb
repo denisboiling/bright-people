@@ -5,7 +5,7 @@ class News < ActiveRecord::Base
 
   validates :title, :content, :author, presence: :true
 
-  has_many :comments
+  has_many :comments, as: :relation
 
   has_attached_file :picture,
                     styles: { medium: "300x300>", thumb: "100x100>" },
