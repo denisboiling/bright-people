@@ -6,3 +6,12 @@ answer_<%= i %>:
   relation_type: Question
   relation_id: <%= i %>
 <% end %>
+
+# Comments for articles
+<% 6.upto(15).each do |i| %>
+comment_<%= i %>:
+  text: "<%= Faker::Lorem.paragraphs.join('\n') %>"
+  user_id: <%= rand(10) + 1 %>
+  relation_type: Article
+  relation_id: <%= rand(5) + 1 %>
+<% end %>

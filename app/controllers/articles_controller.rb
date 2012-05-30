@@ -6,13 +6,12 @@ class ArticlesController < ApplicationController
   end
 
   def index
-    @articles = Article.all
     @categories = ArticleCategory.all
   end
 
   def show
     @article = Article.find(params[:id])
     @tags = @article.tag_counts_on(:article_tags)
-    @comments = @article.comments.select(&:top_level?)
+    @comments = @article.comments.top_level
   end
 end

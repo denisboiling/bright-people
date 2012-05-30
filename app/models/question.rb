@@ -4,7 +4,7 @@ class Question < ActiveRecord::Base
   belongs_to :user
   belongs_to :category, class_name: 'QuestionCategory'
 
-  has_many :comments, as: :relation, dependent: :destroy
+  has_many :comments, as: :relation
 
   attr_accessible :text, :specialist_id
 

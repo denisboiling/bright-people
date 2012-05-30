@@ -36,7 +36,7 @@ class Comment < ActiveRecord::Base
   class << self
     # Return all possible relation type
     def possible_relations
-      %w(Question)
+      %w(Question Article)
     end
   end
 end
