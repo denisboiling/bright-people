@@ -1,6 +1,7 @@
 Feature: Post comments
 
 # TODO: create test for not sign user
+# TODO: create test for contest
   Background:
     Given I am signup and signin as "user" with "user@example.com/password"
 

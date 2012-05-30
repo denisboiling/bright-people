@@ -9,3 +9,21 @@
 <% end %>
 
 <p><%= @membership.description %></p>
+
+Комментарии <br />
+
+<div class="comments_list">
+  <% @comments.each do |comment| %>
+    <%= render 'shared/comment', comment: comment %>
+  <% end %>
+</div>
+
+<%= render 'shared/comment_form' %>
+
+<%= content_for :head do %>
+  <script>
+    var relation = 'ContestMembership';
+    var relation_id = <%= @membership.id %>;
+    var can_create_comment = <%= can? :create, :comment %>
+  </script>
+<% end %>

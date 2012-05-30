@@ -1,18 +1,19 @@
 class ContestMembershipsController < ApplicationController
   before_filter :prepare
-  
+
   def index
     @memberships = @contest.memberships
   end
-  
+
   def show
     @membership = @contest.memberships.find(params[:id])
+    @comments = @membership.comments.top_level 
   end
-  
+
   def new
     @membership = ContestMembership.new
   end
-  
+
   def create
     @membership = ContestMembership.new
     @membership.contest_id = @contest.id
@@ -23,7 +24,7 @@ class ContestMembershipsController < ApplicationController
       render 'new'
     end
   end
-  
+
   def vote
     return unless @contest.active?
     ContestVote.create user_id: current_user.id,
@@ -32,9 +33,9 @@ class ContestMembershipsController < ApplicationController
                        membership_id: params[:membership_id]
     head :ok
   end
-  
+
   private
-  
+
   def prepare
     @contest = Contest.find(params[:contest_id])
   end

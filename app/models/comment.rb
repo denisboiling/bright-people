@@ -1,23 +1,8 @@
 class Comment < ActiveRecord::Base
   include Hierarchy
-  # attr_accessible :user, :content, :article_id,
-  #                 :interview_id, :news_id, :parent,
-  #                 :special_project_id
-
-
 
   attr_accessible :text
   belongs_to :user
-
-  # validates :content, presence: :true
-
-  # def author_name
-  #   if user
-  #     user.name
-  #   else
-  #     "Anonymous"
-  #   end
-  # end
 
   belongs_to :relation, polymorphic: true
 
@@ -32,7 +17,7 @@ class Comment < ActiveRecord::Base
   class << self
     # Return all possible relation type
     def possible_relations
-      %w(Question Article Interview News SpecialProject)
+      %w(Question Article Interview News SpecialProject ContestMembership)
     end
   end
 end
