@@ -37,10 +37,10 @@ gem 'kaminari'
 
 group :development do
   gem 'letter_opener'
-  # gem 'capistrano'
-  # gem 'capistrano-ext'
-  # gem 'capistrano-unicorn'
-  # gem 'rvm-capistrano'
+  gem 'capistrano'
+  gem 'capistrano-ext'
+  gem 'capistrano-unicorn'
+  gem 'rvm-capistrano'
   gem 'sextant'
   gem 'quiet_assets'
 end
