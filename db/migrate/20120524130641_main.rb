@@ -276,4 +276,11 @@ class Main < ActiveRecord::Migration
     t.boolean :read, null: false, default: false
     t.timestamps
   end
+
+  create_table :sponsors do |t|
+    t.string :name, null: false
+
+    t.has_attached_file :photo
+    t.timestamps
+  end
 end

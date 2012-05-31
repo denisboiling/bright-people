@@ -1,0 +1,4 @@
+<% 1.upto(10).each do |i| %>
+sponsor_<%= i %>:
+  name: <%= Faker::Name.name %>
+<% end %>
