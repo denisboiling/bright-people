@@ -2,15 +2,16 @@
 ActiveAdmin.register SpecialProject do
   menu label: 'Спецпроекты'
 
+  filter :title
+  filter :author
+
   index do
     id_column
     column "Фотография" do |special_project|
-        link_to image_tag(special_project.picture.url(:thumb), alt: specialproject.title), admin_special_project_path(special_project)
+        link_to image_tag(special_project.picture.url(:thumb), alt: special_project.title), admin_special_project_path(special_project)
     end
     column :title
     column :author
-    column :created_at
-    column :updated_at
     default_actions
   end
 
