@@ -9,7 +9,7 @@ set :use_sudo, true
 set :rails_env, "production"
 
 set :rvm_type, :user
-set :rvm_ruby_string, 'ruby-1.9.3-head@bright-people'
+set :rvm_ruby_string, 'ruby-1.9.3-p194-perf@bright-people'
 require "rvm/capistrano"
 
 
