@@ -1,19 +1,383 @@
-This is the main page!
-<% if current_user %>
-  <%= link_to "Profile", url_for("/profile") %>
-<% else %>
-  <%= link_to "VK", user_omniauth_authorize_path(:vkontakte) %>
-  <%= link_to "FB", user_omniauth_authorize_path(:facebook) %>
-  <%= link_to "OD", user_omniauth_authorize_path(:odnoklassniki) %>
-<% end %>
+<div id="nested_slider">
+  <div class="slider_control">
+    <ul>
+      <li class="sl_news"><a rel="slider_news" href="#">Новости фестиваля</a></li>
+      <li class="sl_user"><a rel="slider_user" href="#">Участники</a></li>
+      <li class="sl_fest"><a rel="slider_fest" href="#">О фестивале</a></li>
+      <li class="sl_org"><a rel="slider_org" href="#">Оргкомитет</a></li>
+    </ul>
+  </div>
+  <div id="slider_news" class="slider">
+    <div class="slides_container">
+      <div style="background:url(/assets/samp/slide_samp.jpg) no-repeat 0 top; height:395px">
 
-<%= render partial: 'shared/search' %>
+      </div>
+      <div style="background:url(/assets/samp/slide_samp.jpg) no-repeat 0 top; height:395px">
 
-<h2>Our experts</h2>
-<% @experts.each do |expert| %>
-    <p><%= link_to expert.name, expert %>
-  <br>
-  <%= expert.description.split('.').first %></p>
-<% end %>
-<%= link_to 'All experts', experts_path %>
+      </div>
+      <div style="background:url(/assets/samp/slide_samp.jpg) no-repeat 0 top; height:395px">
 
+      </div>
+    </div>
+    <a href="" class="next">Вперед</a>
+    <a href="" class="prev">Назад</a>
+  </div>
+  <div id="slider_user" class="slider">
+    <div class="slides_container">
+      <div style="background:url(/assets/samp/slide_samp_2.jpg) no-repeat 0 top; height:395px">
+
+      </div>
+      <div style="background:url(/assets/samp/slide_samp_2.jpg) no-repeat 0 top; height:395px">
+
+      </div>
+      <div style="background:url(/assets/samp/slide_samp_2.jpg) no-repeat 0 top; height:395px">
+
+      </div>
+    </div>
+    <a href="" class="next">Вперед</a>
+    <a href="" class="prev">Назад</a>
+  </div>
+  <div id="slider_fest" class="slider">
+
+  </div>
+  <div id="slider_org" class="slider">
+
+  </div>
+</div>
+<div class="main_content">
+  <div>
+    <div class="adv"><a href=""><img src="/assets/samp/adv_pic.jpg" alt="" /></a></div>
+    <div class="bank_info">
+      <div class="title">Добро пожаловать в мир ярких людей!</div>
+      <div class="order_bank_catd">Заказать уникальную<br />родительскую карту Москвича</div>
+      <div class="bank_text">
+        Московский кредитный банк рад возможности подарить маленьким и взрослым москвичам этот праздник этим прекрасным летом 2012 года, когда все цветет.
+
+        <div class="signature">Александр НИКОЛАШИН,<br />Президент Московского кредитного банка</div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="timer">
+      <div class="title">До начала фестиваля «Яркие люди» остается:</div>
+    </div>
+
+    <div class="clear"></div>
+  </div>
+  <div class="subscription">
+    <div class="title">
+      Подписка
+      <span>на новые материалы из всех рубрик на</span>
+    </div>
+    <div class="subscript_form">
+      <form action="">
+        <input type="text" name="" />
+        <input type="submit" value="Ok!" />
+      </form>
+    </div>
+  </div>
+
+</div>
+
+<div id="center">
+  <div class="bright_magazine">
+
+    <div class="magazine_control">
+      <div class="title">Яркий журнал</div>
+      <div class="text">
+        Все что вы хотели узнать о детской жизни в Москве
+      </div>
+      <ul>
+        <li class="green"><a rel="show_mag_all" href="">Все</a></li>
+        <li class="red"><a rel="show_mag_article" href="">Статьи</a></li>
+        <li class="yellow"><a rel="show_mag_interview" href="">Интервью</a></li>
+        <li class="red"><a rel="show_mag_news" href="">Новости Москвы</a></li>
+      </ul>
+    </div>
+    <div class="magazine_tab">
+      <div id="show_mag_all" class="mag_tabs">
+        <div class="preview_cell">
+          <div class="info">
+            <div class="cat_name"><span>Новости Москвы</span></div>
+            <div class="thumb"><a href=""><img src="/assets/samp/samp_1.jpg"></a></div>
+            <div class="name"><a href="">Классический уже мультфильм слегка по мотивам ­Гам­лета</a></div>
+            <div class="date">27.06.12</div>
+          </div>
+        </div>
+        <div class="preview_cell">
+          <div class="info">
+            <div class="cat_name"><span>Новости Москвы</span></div>
+            <div class="thumb"><a href=""><img src="/assets/samp/samp_1.jpg"></a></div>
+            <div class="name"><a href="">Классический по мотивам ­Гам­лета уже мультфильм слегка </a></div>
+            <div class="date">27.06.12</div>
+          </div>
+        </div>
+        <div class="preview_cell">
+          <div class="info">
+            <div class="cat_name"><span>Новости Москвы</span></div>
+            <div class="thumb"><a href=""><img src="/assets/samp/samp_1.jpg"></a></div>
+            <div class="name"><a href="">Классический уже мультфильм слегка по мотивам ­Гам­лета</a></div>
+            <div class="date">27.06.12</div>
+          </div>
+        </div>
+        <div class="preview_cell">
+          <div class="info">
+            <div class="cat_name"><span>Новости Москвы</span></div>
+            <div class="thumb"><a href=""><img src="/assets/samp/samp_1.jpg"></a></div>
+            <div class="name"><a href="">Классический по мотивам ­Гам­лета уже мультфильм слегка </a></div>
+            <div class="date">27.06.12</div>
+          </div>
+        </div>
+        <div class="preview_cell">
+          <div class="info">
+            <div class="cat_name"><span>Новости Москвы</span></div>
+            <div class="thumb"><a href=""><img src="/assets/samp/samp_1.jpg"></a></div>
+            <div class="name"><a href="">zfb ids gjd giu eiugy erti bgiudf ig</a></div>
+            <div class="date">27.06.12</div>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div id="show_mag_article" class="mag_tabs">
+        <div class="magazine_cell">
+          <div class="preview_cell">
+            <div class="info">
+              <div class="cat_name"><span>Статьи</span></div>
+              <div class="thumb"><a href=""><img src="/assets/samp/samp_1.jpg"></a></div>
+              <div class="name"><a href="">Классический по мотивам ­Гам­лета уже мультфильм слегка </a></div>
+              <div class="date">27.06.12</div>
+            </div>
+          </div>
+          <div class="preview_cell">
+            <div class="info">
+              <div class="cat_name"><span>Статьи</span></div>
+              <div class="thumb"><a href=""><img src="/assets/samp/samp_1.jpg"></a></div>
+              <div class="name"><a href="">zfb ids gjd giu eiugy erti bgiudf ig</a></div>
+              <div class="date">27.06.12</div>
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div id="show_mag_interview" class="mag_tabs">
+        <div class="magazine_cell">
+          <div class="preview_cell">
+            <div class="info">
+              <div class="cat_name"><span>Интервью</span></div>
+              <div class="thumb"><a href=""><img src="/assets/samp/samp_1.jpg"></a></div>
+              <div class="name"><a href="">zfb ids gjd giu eiugy erti bgiudf ig</a></div>
+              <div class="date">27.06.12</div>
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div id="show_mag_news" class="mag_tabs">
+        <div class="magazine_cell">4</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="council">
+    <div class="expert">
+      <div class="title">Экспертный совет
+	<%= link_to 'Все эксперты', experts_path, class: :title_link %>
+      </div>
+
+      <% Expert.for_main.each do |expert| %>
+        <div class="exp_preview">
+	  <%= link_to expert_path(expert) do %>
+            <div class="thumb">
+	      <%= image_tag(expert.photo.url) %>
+            </div>
+	    <span class="name"><%= expert.name %></span>
+	  <% end %>
+          <span class="info"><%= expert.description %></span>
+        </div>
+      <% end %>
+
+    </div>
+    <div class="trustee">
+      <div class="title">Попечительский совет</div>
+
+      <!-- Slider Setup -->
+
+      <input class="hidden" checked type="radio" name="slider" id="slide1" />
+      <input class="hidden" type="radio" name="slider" id="slide2" />
+      <input class="hidden" type="radio" name="slider" id="slide3" />
+      <input class="hidden" type="radio" name="slider" id="slide4" />
+      <input class="hidden" type="radio" name="slider" id="slide5" />
+
+      <!-- The Slider -->
+
+      <div id="slides">
+
+        <div id="overflow">
+
+          <div class="inner">
+
+            <article>
+              <a class="thumb" href=""><img src="/assets/samp/samp_3.jpg" alt="" /></a>
+              <div class="info">Филлип <br /><span>КОЛМАНОВСКИЙ</span><br />
+                <a class="all_trustee" href="#">Весь совет</a></div>
+            </article>
+
+            <article>
+              <a class="thumb" href=""><img src="/assets/samp/samp_2.jpg" alt="" /></a>
+              <div class="info">Филлип <span>КОЛМАНОВСКИЙ</span><br /><a class="all_trustee" href="#">Весь совет</a></div>
+            </article>
+
+            <article>
+              <a class="thumb" href=""><img src="/assets/samp/samp_3.jpg" alt="" /></a>
+              <div class="info">Филлип <span>КОЛМАНОВСКИЙ</span><br /><a class="all_trustee" href="#">Весь совет</a></div>
+            </article>
+
+            <article>
+              <a class="thumb" href=""><img src="/assets/samp/samp_2.jpg" alt="" /></a>
+              <div class="info">Филлип <span>КОЛМАНОВСКИЙ</span><br /><a class="all_trustee" href="#">Весь совет</a></div>
+            </article>
+
+            <article>
+              <a class="thumb" href=""><img src="/assets/samp/samp_3.jpg" alt="" /></a>
+              <div class="info">Филлип <span>КОЛМАНОВСКИЙ</span><br /><a class="all_trustee" href="#">Весь совет</a></div>
+            </article>
+            <div class="clear"></div>
+          </div> <!-- .inner -->
+
+        </div> <!-- #overflow -->
+
+      </div> <!-- #slides -->
+
+
+      <!-- Controls and Active Slide Display -->
+
+      <div id="controls">
+        <label for="slide1"></label>
+        <label for="slide2"></label>
+        <label for="slide3"></label>
+        <label for="slide4"></label>
+        <label for="slide5"></label>
+      </div> <!-- #controls -->
+
+      <div id="active" class="hidden">
+        <label for="slide1"></label>
+        <label for="slide2"></label>
+        <label for="slide3"></label>
+        <label for="slide4"></label>
+        <label for="slide5"></label>
+      </div> <!-- #active -->
+
+
+
+
+    </div>
+    <div class="clear"></div>
+  </div>
+
+
+  <div class="">
+    <div class="moscow_agencies">
+      <div class="title">Детские учреждения Москвы
+        <a class="title_link globe" href="">Образовательные</a>
+        <a class="title_link balloon" href="">Развлекательные</a>
+      </div>
+
+      <div class="preview_agencies">
+        <div class="info">
+          <div class="thumb"><a href=""><img src="/assets/samp/samp_1.jpg"></a></div>
+          <div class="name"><a href="">Музей занимательных наук и практик "Экспериментаниум"</a></div>
+          <div class="geo">Юго-Восток</div>
+        </div>
+      </div>
+      <div class="preview_agencies">
+        <div class="info">
+          <div class="thumb"><a href=""><img src="/assets/samp/samp_1.jpg"></a></div>
+          <div class="name"><a href="">Музей занимательных наук и практик "Экспериментаниум"</a></div>
+          <div class="geo">Юго-Восток</div>
+        </div>
+      </div>
+      <div class="preview_agencies">
+        <div class="info">
+          <div class="thumb"><a href=""><img src="/assets/samp/samp_1.jpg"></a></div>
+          <div class="name"><a href="">Музей занимательных наук и практик "Экспериментаниум"</a></div>
+          <div class="geo">Юго-Восток</div>
+        </div>
+      </div>
+      <div class="preview_agencies last">
+        <div class="info">
+          <div class="thumb"><a href=""><img src="/assets/samp/samp_1.jpg"></a></div>
+          <div class="name"><a href="">Музей занимательных наук и практик "Экспериментаниум"</a></div>
+          <div class="geo">Юго-Восток</div>
+        </div>
+      </div>
+      <div class="clear"></div>
+
+    </div>
+    <div class="socialnet">
+
+    </div>
+    <div class="clear"></div>
+  </div>
+
+
+  <div class="tender_and_spec">
+    <div class="tender_last">
+      <div class="title">Конкурсы
+        <span class="tender_title_ico"></span>
+      </div>
+
+      <div class="preview_tender">
+        <div class="thumb"><a href=""><img src="/assets/samp/samp_5.jpg" alt="" /></a></div>
+        <div class="name"><a href="">Фотоконкурс "Что снится ребенку?"</a></div>
+        <div class="info">Прими участие в конкурсе и выиграй Iphone6!</div>
+      </div>
+
+    </div>
+
+    <div class="spec_project_last">
+      <div class="title">Спецпроекты</div>
+      <div class="preview_cell">
+        <div class="info">
+          <div class="cat_name"><span>Выбираем психолога</span></div>
+          <div class="thumb"><a href=""><img src="/assets/samp/samp_1.jpg"></a></div>
+          <div class="name">
+            <a href="">Классический уже мультфильм слегка по мотивам ­Гам­лета</a>
+            <span class="desc">Классический по мотивам</span>
+          </div>
+        </div>
+      </div>
+      <div class="preview_cell">
+        <div class="info">
+          <div class="cat_name"><span>Новости Москвы</span></div>
+          <div class="thumb"><a href=""><img src="/assets/samp/samp_1.jpg"></a></div>
+          <div class="name">
+            <a href="">Классический по мотивам ­Гам­лета уже мультфильм слегка </a>
+            <span class="desc">Классический по мотивам</span>
+          </div>
+        </div>
+      </div>
+      <div class="preview_cell">
+        <div class="info">
+          <div class="cat_name"><span>Выбираем психолога</span></div>
+          <div class="thumb"><a href=""><img src="/assets/samp/samp_1.jpg"></a></div>
+          <div class="name">
+            <a href="">Классический уже мультфильм слегка по мотивам ­Гам­лета</a>
+            <span class="desc">Классический по мотивам</span>
+          </div>
+        </div>
+      </div>
+      <div class="preview_cell">
+        <div class="info">
+          <div class="cat_name"><span>Выбираем психолога</span></div>
+          <div class="thumb"><a href=""><img src="/assets/samp/samp_1.jpg"></a></div>
+          <div class="name">
+            <a href="">Классический по мотивам ­Гам­лета уже мультфильм слегка </a>
+            <span class="desc">Классический по мотивам</span>
+          </div>
+        </div>
+      </div>
+      <div class="clear"></div>
+
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>

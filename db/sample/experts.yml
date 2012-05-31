@@ -1,5 +1,6 @@
 <% 1.upto(10).each do |i| %>
 expert_<%= i %>:
   name: <%= Faker::Name.name %>
-  description: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
+  description: <%= Faker::Lorem.words.join(' ') %>
+  about: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
 <% end %>

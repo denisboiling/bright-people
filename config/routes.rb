@@ -24,11 +24,6 @@ BrightPeople::Application.routes.draw do
   resources :article_categories, only: [:show]
 
 
-  resources :specialists, only: [:index, :show, :show, :create_question] do
-    resources :questions
-    post :create_question, on: :member
-  end
-
   resources :interviews, only: [:index, :show] do
     collection do
       get :tag
@@ -62,12 +57,6 @@ BrightPeople::Application.routes.draw do
   # User dashboard
   namespace :dashboard do
     resources :notifications, only: [:index, :destroy, :update]
-  end
-
-  # Specialist dashboard
-  namespace :specialist_user do
-    resources :questions
-    root to: 'questions#index'
   end
 
   # Admin panel
