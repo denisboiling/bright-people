@@ -1,5 +1,6 @@
 require 'capistrano/ext/multistage'
 require 'bundler/capistrano'
+require 'thinking_sphinx/deploy/capistrano'
 
 set :stages, %w(srv)
 set :default_stage, "srv"

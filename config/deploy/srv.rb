@@ -12,14 +12,20 @@ set :rvm_type, :user
 set :rvm_ruby_string, 'ruby-1.9.3-head@bright-people'
 require "rvm/capistrano"
 
+
 before "deploy:finalize_update", "shared:symlinks"
 
 before "db:prepare", "unicorn:stop"
+before "db:prepare", "thinking_sphinx:configure"
+before "db:prepare", "thinking_sphinx:stop"
+
 after "deploy:update_code", "db:prepare"
 after "deploy:update_code", "deploy:migrate"
 
 after "deploy:migrate", "db:load_seed"
 after "db:load_seed", "db:load_sample"
+
+after "db:load_sample", "thinking_sphinx:rebuild"
 
 # before "deploy:restart","deploy:chown"
 
@@ -52,8 +58,8 @@ namespace :shared do
   task :symlinks, :roles => :app do
     run "ln -nfs #{shared_path}/config/database.yml #{latest_release}/config/database.yml"
     run "ln -nfs #{shared_path}/config/rvmrc #{latest_release}/.rvmrc"
+    run "ln -nfs #{shared_path}/config/sphinx.yml #{latest_release}/config/sphinx.yml"
   end
-
 
 end
 
