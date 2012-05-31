@@ -214,32 +214,16 @@
         <div id="overflow">
 
           <div class="inner">
+	    <% Sponsor.all.each do |sponsor| %>
+              <article>
+		<%= link_to image_tag(sponsor.photo.url), '#', class: :thumb %>
+		<div class="info">
+		  <%= sponsor.first_name %><br /><span><%= sponsor.last_name.upcase %></span><br />
+		  <%= link_to 'Весь совет', '#', class: :all_trustee %>
+		</div>
+              </article>
+	    <% end %>
 
-            <article>
-              <a class="thumb" href=""><img src="/assets/samp/samp_3.jpg" alt="" /></a>
-              <div class="info">Филлип <br /><span>КОЛМАНОВСКИЙ</span><br />
-                <a class="all_trustee" href="#">Весь совет</a></div>
-            </article>
-
-            <article>
-              <a class="thumb" href=""><img src="/assets/samp/samp_2.jpg" alt="" /></a>
-              <div class="info">Филлип <span>КОЛМАНОВСКИЙ</span><br /><a class="all_trustee" href="#">Весь совет</a></div>
-            </article>
-
-            <article>
-              <a class="thumb" href=""><img src="/assets/samp/samp_3.jpg" alt="" /></a>
-              <div class="info">Филлип <span>КОЛМАНОВСКИЙ</span><br /><a class="all_trustee" href="#">Весь совет</a></div>
-            </article>
-
-            <article>
-              <a class="thumb" href=""><img src="/assets/samp/samp_2.jpg" alt="" /></a>
-              <div class="info">Филлип <span>КОЛМАНОВСКИЙ</span><br /><a class="all_trustee" href="#">Весь совет</a></div>
-            </article>
-
-            <article>
-              <a class="thumb" href=""><img src="/assets/samp/samp_3.jpg" alt="" /></a>
-              <div class="info">Филлип <span>КОЛМАНОВСКИЙ</span><br /><a class="all_trustee" href="#">Весь совет</a></div>
-            </article>
             <div class="clear"></div>
           </div> <!-- .inner -->
 
