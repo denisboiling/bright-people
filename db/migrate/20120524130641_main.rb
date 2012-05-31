@@ -289,7 +289,7 @@ class Main < ActiveRecord::Migration
   add_index :contest_votes, :membership_id
 
   create_table :user_comment_nofities do |t|
-    t.integer :comment_id, :child_comment, null: false
+    t.integer :comment_id, :child_comment_id, null: false
     t.boolean :read, null: false, default: false
     t.timestamps
   end

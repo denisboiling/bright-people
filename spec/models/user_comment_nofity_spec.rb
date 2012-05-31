@@ -4,6 +4,7 @@ describe UserCommentNofity do
   let(:user) { FactoryGirl.create(:user) }
   let(:comment) {FactoryGirl.create(:comment_question, user: user)}
 
+  # TODO: need more sexy )
   it 'Should create user comment notify when child comment created' do
     child_comment = FactoryGirl.build(:comment_question)
     child_comment.parent = comment
