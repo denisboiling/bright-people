@@ -1,3 +1,19 @@
+<%= flash_messages %>
+
+<%= link_to 'Add to favourites', '#', id: 'favourite_link' %>
+
+<div class="hidden">
+  <% if current_user and current_user.email.blank?  %>
+    <div id="email_dialog">
+      <%= render 'users/email_form', user: User.new %>
+    </div>
+  <% end %>
+
+  <div id="signin_dialog">
+    <%= render 'users/signin_dialog' %>
+  </div>
+</div>
+
 <% if can? :access, :specialist_dashboard  %>
   <%= link_to 'Страница специалиста', specialist_user_root_path %>
 <% end %>

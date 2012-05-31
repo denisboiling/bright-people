@@ -2,6 +2,7 @@
 #= require jquery-ui
 #= require jquery_ujs
 #= require jquery.cookie
+#= require slides.min.jquery
 #= require_directory .
 
 $ ->
@@ -11,3 +12,4 @@ $ ->
   window.add_comment()
   window.setup_favourite_button()
   window.setup_require_signin_actions()
+  window.setup_slider()
