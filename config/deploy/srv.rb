@@ -14,6 +14,7 @@ require "rvm/capistrano"
 
 before "deploy:finalize_update", "shared:symlinks"
 
+before "db:prepare", "unicorn:stop"
 after "deploy:update_code", "db:prepare"
 after "deploy:update_code", "deploy:migrate"
 
