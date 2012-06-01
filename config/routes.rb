@@ -50,6 +50,8 @@ BrightPeople::Application.routes.draw do
     end
   end
 
+  resources :sponsors, only: [:index, :show]
+
   resources :favourites, only: [:index, :create, :destroy]
 
   resource :comments, only: :create
