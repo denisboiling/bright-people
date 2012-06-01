@@ -5,8 +5,8 @@ require 'thinking_sphinx/deploy/capistrano'
 set :whenever_command, "bundle exec whenever"
 require 'whenever/capistrano'
 
-set :stages, %w(srv)
-set :default_stage, "srv"
+set :stages, %w(srv srv-dev)
+set :default_stage, "srv-dev"
 set :repository,  "git@github.com:balticit/bright-people.git"
 set :scm, :git
 set :branch, "ezo"
