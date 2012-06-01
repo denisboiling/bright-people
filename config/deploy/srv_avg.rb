@@ -4,25 +4,25 @@ role :db,  "bp.balticit.ru", :primary=>true
 
 set :user, "www-data"
 set :deploy_via, :remote_cache
-set :use_sudo, true
+set :use_sudo, false
 
 set :rvm_type, :user
 set :rvm_ruby_string, 'ruby-1.9.3-p194-perf@bright-people'
 require "rvm/capistrano"
 
-
 before "deploy:finalize_update", "shared:symlinks"
 
 before "db:prepare", "unicorn:stop"
-before "db:prepare", "thinking_sphinx:stop"
 
 before "deploy:assets:precompile", "db:prepare"
 before "deploy:assets:precompile", "deploy:migrate"
-after "deploy:migrate", "thinking_sphinx:configure"
+
 
 after "deploy:migrate", "db:load_seed"
 after "db:load_seed", "db:load_sample"
 
+before "db:prepare", "thinking_sphinx:stop"
+after "deploy:migrate", "thinking_sphinx:configure"
 after "db:load_sample", "thinking_sphinx:rebuild"
 
 # Clear old releases
