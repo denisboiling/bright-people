@@ -1,3 +1,59 @@
-<% if can? :access, :specialist_dashboard  %>
-  <%= link_to 'Страница специалиста', specialist_user_root_path %>
-<% end %>
+<div class="header_line">
+  <div class="left_bg"></div>
+  <div class="right_bg"></div>
+  <div class="wrapper">
+    <div class="header_left_text">Генеральный спонсор&nbsp;&nbsp;&nbsp;<br />&laquo;Ярких людей 2012&raquo;</div>
+    <div class="header_mkb"><a href=""><img src="/assets/header_bank_bg.jpg" alt="" /></a></div>
+    <div class="header_right_text">Нам 20 лет</div>
+  </div>
+</div>
+
+<div class="logo_warapper">
+  <div class="event_date">
+    Детский фестиваль<br />
+    18 августа 2012<br />
+    в Парке Горького
+  </div>
+  <div class="logo"><a href=""><img src="/assets/logo.png" alt="" /></a></div>
+  <div class="social_login">
+
+    <% unless current_user %>
+      <a class="login" href=""><img src="/assets/ico_login.png" alt="" /></a>
+      <%= link_to image_tag('ico_fb.png'), user_omniauth_authorize_path(:facebook) %>
+      <%= link_to image_tag('ico_vk.png'), user_omniauth_authorize_path(:vkontakte) %>
+      <%= link_to image_tag('ico_od.png'), user_omniauth_authorize_path(:odnoklassniki) %>
+    <% end %>
+
+    <div id="search">
+      <%= form_tag search_path, method: :get do %>
+	<%= text_field_tag :q, params[:q], class: 'main_search_field' %>
+	<%= submit_tag 'Поиск' %>
+      <% end %>
+    </div>
+
+  </div>
+
+  <div class="clear"></div>
+</div>
+
+<div class="menu_bg">
+  <div id="menu">
+    <ul class="">
+      <li><%= link_to 'Москва для детей', '#' %></li>
+      <li><%= link_to 'Вопрос специалисту', '#' %></li>
+      <li><%= link_to 'Журнал', '#' %></li>
+      <li class="current"><%= link_to 'Фестиваль', '#' %></li>
+      <div class="sub_menu">
+        <ul>
+          <li><a href="">Новости фестиваля</a></li>
+          <li><a href="">Участники</a></li>
+          <li><a href="">О фестивале</a></li>
+          <li><a href="">Оргкомитет</a></li>
+        </ul>
+      </div>
+      <li><%= link_to 'Конкурсы', '#' %></li>
+      <li><%= link_to 'Экспертный совет', '#' %></li>
+      <li><%= link_to 'Спецпроект', '#' %></li>
+    </ul>
+  </div>
+</div>

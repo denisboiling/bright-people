@@ -1,9 +1,0 @@
-# Unpublist question
-<% 1.upto(10).each do |i| %>
-question_<%= i %>:
-  id: <%= i %>
-  text: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
-  user_id: <%= rand(10) + 1 %>
-  specialist_id: 111
-  question_category_id: <%= rand(10) + 1 %>
-<% end %>

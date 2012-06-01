@@ -9,6 +9,16 @@ ru:
       expert: Экспертный совет
       metro_station: Станция метро
       attach: Фотография
+      interview:
+        one: Интервью
+        few: Интервью
+        many: Интервью
+        other: Интервью
+      contest:
+        one: Конкурс
+        few: Конкурса
+        many: Конкурсов
+        other: Конкурсы
     attributes:
       organization:
         title: Название
@@ -33,3 +43,12 @@ ru:
         attach: Фотография
       video_url:
         url: Ссылка на видео
+      interview:
+        title: Заголовок
+        author: Автор
+        content: Контент
+        interview_tag_list: Таги
+      contest:
+        name: Название
+        category: Категория
+        

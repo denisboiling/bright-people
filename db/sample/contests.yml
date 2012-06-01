@@ -5,6 +5,7 @@ one:
     Правила и призы.
   started_at: <%= DateTime.now + 1.week + 3.days %>
   ended_at: <%= DateTime.now + 2.weeks + 2.days %>
+  active: <%= rand(2) == 1 ? true : false %>
 
 two:
   name: 'Конкурс рисунков: "Пусть всегда будет солнце!"'
@@ -12,6 +13,7 @@ two:
     Какое-то описание
   started_at: <%= DateTime.now - 1.week - 3.days %>
   ended_at: <%= DateTime.now + 2.weeks + 1.day %>
+  active: <%= rand(2) == 1 ? true : false %>
 
 three:
   name: 'Конкурс рисунков: "Моя семья!"'
@@ -19,3 +21,4 @@ three:
     Конкурс рисунков, ололо.
   started_at: <%= DateTime.now - 3.weeks + 3.days %>
   ended_at: <%= DateTime.now - 2.weeks + 1.day %>
+  active: <%= rand(2) == 1 ? true : false %>

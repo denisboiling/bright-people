@@ -11,10 +11,8 @@ ActiveAdmin.register ActivityComment do
                 admin_comment_path(comment)
     end
     column :commentator
-    column :isParent
+    column :is_parent
     column :content
-    column :created_at
-    column :updated_at
     default_actions
   end
 

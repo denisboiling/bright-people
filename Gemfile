@@ -35,6 +35,7 @@ gem 'rails3-jquery-autocomplete'
 gem 'hierarchy', github: 'RISCfuture/hierarchy'
 gem 'kaminari'
 gem 'whenever'
+gem 'randumb'
 
 group :development do
   gem 'letter_opener'

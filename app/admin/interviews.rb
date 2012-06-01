@@ -2,6 +2,9 @@
 ActiveAdmin.register Interview do
   menu label: 'Интервью'
 
+  filter :title
+  filter :author
+
   index do
     id_column
     column "Фотография" do |interview|
@@ -9,8 +12,6 @@ ActiveAdmin.register Interview do
     end
     column :title
     column :author
-    column :created_at
-    column :updated_at
     default_actions
   end
 
@@ -25,7 +26,7 @@ ActiveAdmin.register Interview do
   end
 
   show do
-    attributes_table :title, :author, :content, :created_at, :updated_at, :picture, :interview_tag_list
+    attributes_table :title, :author, :content, :interview_tag_list
 
     panel 'Фотография' do
       image_tag(interview.picture.url)

@@ -3,10 +3,6 @@ module HelpSteps
     User.find_by_email(email)
   end
 
-  def specialist_by_name(name)
-    User.specialists.find_by_name(name)
-  end
-
   def article_by_title(title)
     Article.find_by_title(title)
   end
@@ -21,10 +17,6 @@ module HelpSteps
 
   def news_by_title(title)
     News.find_by_title(title)
-  end
-
-  def find_question(text)
-    Question.find_by_text(text)
   end
 
   def find_comment(text)

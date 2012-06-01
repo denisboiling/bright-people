@@ -7,23 +7,6 @@ user_<%= i %>:
   name: <%= Faker::Name.name %>
 <% end %>
 
-# Specialists
-<% 11.upto(20).each do |i| %>
-specialist_<%= i %>:
-  id: <%= i %>
-  email: <%= Faker::Internet.email %>
-  role_id: 4
-  name: <%= Faker::Name.name %>
-  description: <%= Faker::Lorem.words.join(' ') %>
-<% end %>
-
-specialist:
-  id: 111
-  email: specialist@example.com
-  name: Main sample specialist
-  role_id: 4
-  name: <%= Faker::Name.name %>
-
 user:
   id: 222  
   email: user@example.com

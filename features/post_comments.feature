@@ -6,21 +6,6 @@ Feature: Post comments
     Given I am signup and signin as "user" with "user@example.com/password"
 
   @javascript
-  Scenario: Create top level comment for question
-    Given the following specialist exists:
-      | name        |
-      | Ivan Petrov |
-    Given the following questions exists:
-      | specialist       | text          |
-      | name:Ivan Petrov | Cool question |
-    And specialist "Ivan Petrov" create answer for question "Cool question"
-    Then I go to the specialist question "Cool question" page
-    And I fill in "comment" with "This is my comment"
-    Then I press "Комментировать"
-    And I wait a second
-    And I should see "This is my comment"
-
-  @javascript
   Scenario: Posting article top level comment
     Given the following article exist:
       | title        |

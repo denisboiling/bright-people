@@ -1,4 +1,4 @@
-FileUtils.rm_rf Rails.root.join('public/system/photos')
+FileUtils.rm_rf Rails.root.join('public/system/experts/photos')
 
 photos = Dir.glob(Rails.root.join('db/sample/files/photos', '*'))
 

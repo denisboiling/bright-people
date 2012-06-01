@@ -19,6 +19,7 @@ class Main < ActiveRecord::Migration
     t.float :users_rating, :experts_rating, default: 0.0, null: false
     t.point :location, limit: 0, srid: 4326, geographic: true
     t.boolean :is_educational
+    t.has_attached_file :logo
 
     t.timestamps
   end
@@ -95,10 +96,9 @@ class Main < ActiveRecord::Migration
   end
 
   create_table(:experts) do |t|
-    t.string :name, :photo_file_name, :photo_content_type
-    t.text :description
-    t.integer :photo_file_size
-    t.datetime :photo_updated_at
+    t.string :name, :description
+    t.text :about
+    t.has_attached_file :photo
 
     t.timestamps
   end
@@ -113,15 +113,6 @@ class Main < ActiveRecord::Migration
     t.string :title, :address
     t.integer :metro_station_id
     t.point :location, limit: 0, srid: 4326, geographic: true
-
-    t.timestamps
-  end
-
-  create_table(:questions) do |t|
-    t.integer :specialist_id, :user_id, null: false
-    t.integer :question_category_id
-    t.text :text, null:  false
-    t.boolean :publish, default: false, null: false
 
     t.timestamps
   end
@@ -214,8 +205,6 @@ class Main < ActiveRecord::Migration
 
 
   create_table :comments do |t|
-    # t.integer :user_id, :interview_id, :article_id, :news_id, :special_project_id
-    # t.text :content
     t.text :text
     t.integer :user_id, :relation_id, null: false
     t.string :relation_type, null: false
@@ -224,11 +213,6 @@ class Main < ActiveRecord::Migration
     t.timestamps
   end
   update "ALTER TABLE \"comments\" ADD \"path\" LTREE NULL DEFAULT ''"
-
-  create_table :question_categories do |t|
-    t.string :title
-    t.timestamps
-  end
 
   create_table :favourites do |t|
 
@@ -243,10 +227,8 @@ class Main < ActiveRecord::Migration
     t.datetime :started_at
     t.datetime :ended_at
     t.integer :category_id
-
-    t.string :picture_file_name
-    t.integer :picture_file_size
-    t.datetime :picture_updated_at
+    t.has_attached_file :picture
+    t.boolean :active
 
     t.timestamps
   end
@@ -289,8 +271,15 @@ class Main < ActiveRecord::Migration
   add_index :contest_votes, :membership_id
 
   create_table :user_comment_nofities do |t|
-    t.integer :comment_id, :child_comment, null: false
+    t.integer :comment_id, :child_comment_id, null: false
     t.boolean :read, null: false, default: false
+    t.timestamps
+  end
+
+  create_table :sponsors do |t|
+    t.string :first_name, :last_name, null: false
+
+    t.has_attached_file :photo
     t.timestamps
   end
 end
