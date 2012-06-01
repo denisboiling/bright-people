@@ -19,6 +19,7 @@ class Main < ActiveRecord::Migration
     t.float :users_rating, :experts_rating, default: 0.0, null: false
     t.point :location, limit: 0, srid: 4326, geographic: true
     t.boolean :is_educational
+    t.has_attached_file :logo
 
     t.timestamps
   end
@@ -226,10 +227,8 @@ class Main < ActiveRecord::Migration
     t.datetime :started_at
     t.datetime :ended_at
     t.integer :category_id
-
-    t.string :picture_file_name
-    t.integer :picture_file_size
-    t.datetime :picture_updated_at
+    t.has_attached_file :picture
+    t.boolean :active
 
     t.timestamps
   end

@@ -95,84 +95,56 @@
     </div>
     <div class="magazine_tab">
       <div id="show_mag_all" class="mag_tabs">
-        <div class="preview_cell">
-          <div class="info">
-            <div class="cat_name"><span>Новости Москвы</span></div>
-            <div class="thumb"><a href=""><img src="/assets/samp/samp_1.jpg"></a></div>
-            <div class="name"><a href="">Классический уже мультфильм слегка по мотивам ­Гам­лета</a></div>
-            <div class="date">27.06.12</div>
-          </div>
-        </div>
-        <div class="preview_cell">
-          <div class="info">
-            <div class="cat_name"><span>Новости Москвы</span></div>
-            <div class="thumb"><a href=""><img src="/assets/samp/samp_1.jpg"></a></div>
-            <div class="name"><a href="">Классический по мотивам ­Гам­лета уже мультфильм слегка </a></div>
-            <div class="date">27.06.12</div>
-          </div>
-        </div>
-        <div class="preview_cell">
-          <div class="info">
-            <div class="cat_name"><span>Новости Москвы</span></div>
-            <div class="thumb"><a href=""><img src="/assets/samp/samp_1.jpg"></a></div>
-            <div class="name"><a href="">Классический уже мультфильм слегка по мотивам ­Гам­лета</a></div>
-            <div class="date">27.06.12</div>
-          </div>
-        </div>
-        <div class="preview_cell">
-          <div class="info">
-            <div class="cat_name"><span>Новости Москвы</span></div>
-            <div class="thumb"><a href=""><img src="/assets/samp/samp_1.jpg"></a></div>
-            <div class="name"><a href="">Классический по мотивам ­Гам­лета уже мультфильм слегка </a></div>
-            <div class="date">27.06.12</div>
-          </div>
-        </div>
-        <div class="preview_cell">
-          <div class="info">
-            <div class="cat_name"><span>Новости Москвы</span></div>
-            <div class="thumb"><a href=""><img src="/assets/samp/samp_1.jpg"></a></div>
-            <div class="name"><a href="">zfb ids gjd giu eiugy erti bgiudf ig</a></div>
-            <div class="date">27.06.12</div>
-          </div>
-        </div>
+
+	<% Staff::DB.jouranl_all.each do |all| %>
+	  <%= render "shared/main_#{all.class.name.downcase}", object: all%>
+	<% end %>
+	
         <div class="clear"></div>
       </div>
       <div id="show_mag_article" class="mag_tabs">
         <div class="magazine_cell">
-          <div class="preview_cell">
-            <div class="info">
-              <div class="cat_name"><span>Статьи</span></div>
-              <div class="thumb"><a href=""><img src="/assets/samp/samp_1.jpg"></a></div>
-              <div class="name"><a href="">Классический по мотивам ­Гам­лета уже мультфильм слегка </a></div>
-              <div class="date">27.06.12</div>
+	  <% Article.for_main.each do |article| %>
+	    <div class="preview_cell">
+              <div class="info">
+		<div class="cat_name"><span>Статьи</span></div>
+		<div class="thumb"><%= link_to image_tag(article.picture.url), article_path(article) %></div>
+		<div class="name"><%= link_to article.title, article_path(article) %></div>
+		<div class="date"><%= article.created_at.to_s(:main) %></div>
+              </div>
             </div>
-          </div>
-          <div class="preview_cell">
-            <div class="info">
-              <div class="cat_name"><span>Статьи</span></div>
-              <div class="thumb"><a href=""><img src="/assets/samp/samp_1.jpg"></a></div>
-              <div class="name"><a href="">zfb ids gjd giu eiugy erti bgiudf ig</a></div>
-              <div class="date">27.06.12</div>
-            </div>
-          </div>
+	  <% end %>
           <div class="clear"></div>
         </div>
       </div>
       <div id="show_mag_interview" class="mag_tabs">
         <div class="magazine_cell">
-          <div class="preview_cell">
-            <div class="info">
-              <div class="cat_name"><span>Интервью</span></div>
-              <div class="thumb"><a href=""><img src="/assets/samp/samp_1.jpg"></a></div>
-              <div class="name"><a href="">zfb ids gjd giu eiugy erti bgiudf ig</a></div>
-              <div class="date">27.06.12</div>
+	  <% Interview.for_main.each do |interview| %>
+	    <div class="preview_cell">
+              <div class="info">
+		<div class="cat_name"><span>Интервью</span></div>
+		<div class="thumb"><%= link_to image_tag(interview.picture.url), interview_path(interview) %></div>
+		<div class="name"><%= link_to interview.title, interview_path(interview) %></div>
+		<div class="date"><%= interview.created_at.to_s(:main) %></div>
+              </div>
             </div>
-          </div>
+	  <% end %>
           <div class="clear"></div>
         </div>
       </div>
       <div id="show_mag_news" class="mag_tabs">
-        <div class="magazine_cell">4</div>
+        <div class="magazine_cell">
+	  <% News.for_main.each do |novelty| %>
+	    <div class="preview_cell">
+              <div class="info">
+		<div class="cat_name"><span>Интервью</span></div>
+		<div class="thumb"><%= link_to image_tag(novelty.picture.url), news_path(novelty) %></div>
+		<div class="name"><%= link_to novelty.title, news_path(novelty) %></div>
+		<div class="date"><%= novelty.created_at.to_s(:main) %></div>
+              </div>
+            </div>
+	  <% end %>
+	</div>
       </div>
     </div>
   </div>
@@ -180,17 +152,17 @@
   <div class="council">
     <div class="expert">
       <div class="title">Экспертный совет
-	<%= link_to 'Все эксперты', experts_path, class: :title_link %>
+        <%= link_to 'Все эксперты', experts_path, class: :title_link %>
       </div>
 
       <% Expert.for_main.each do |expert| %>
         <div class="exp_preview">
-	  <%= link_to expert_path(expert) do %>
+          <%= link_to expert_path(expert) do %>
             <div class="thumb">
-	      <%= image_tag(expert.photo.url) %>
+              <%= image_tag(expert.photo.url) %>
             </div>
-	    <span class="name"><%= expert.name %></span>
-	  <% end %>
+            <span class="name"><%= expert.name %></span>
+          <% end %>
           <span class="info"><%= expert.description %></span>
         </div>
       <% end %>
@@ -214,15 +186,15 @@
         <div id="overflow">
 
           <div class="inner">
-	    <% Sponsor.all.each do |sponsor| %>
+            <% Sponsor.all.each do |sponsor| %>
               <article>
-		<%= link_to image_tag(sponsor.photo.url), '#', class: :thumb %>
-		<div class="info">
-		  <%= sponsor.first_name %><br /><span><%= sponsor.last_name.upcase %></span><br />
-		  <%= link_to 'Весь совет', '#', class: :all_trustee %>
-		</div>
+                <%= link_to image_tag(sponsor.photo.url), '#', class: :thumb %>
+                <div class="info">
+                  <%= sponsor.first_name %><br /><span><%= sponsor.last_name.upcase %></span><br />
+                  <%= link_to 'Весь совет', '#', class: :all_trustee %>
+                </div>
               </article>
-	    <% end %>
+            <% end %>
 
             <div class="clear"></div>
           </div> <!-- .inner -->
@@ -261,38 +233,20 @@
   <div class="">
     <div class="moscow_agencies">
       <div class="title">Детские учреждения Москвы
-        <a class="title_link globe" href="">Образовательные</a>
-        <a class="title_link balloon" href="">Развлекательные</a>
+        <%= link_to 'Образовательные', activities_path(kind: 'educational'), class: 'title_link globe' %>
+        <%= link_to 'Развлекательные', activities_path(kind: 'entertainment'), class: 'title_link balloon' %>
       </div>
 
-      <div class="preview_agencies">
-        <div class="info">
-          <div class="thumb"><a href=""><img src="/assets/samp/samp_1.jpg"></a></div>
-          <div class="name"><a href="">Музей занимательных наук и практик "Экспериментаниум"</a></div>
-          <div class="geo">Юго-Восток</div>
+      <% Activity.for_main.each do |activity| %>
+        <div class="preview_agencies">
+          <div class="info">
+	    <div class="thumb"><%= link_to image_tag(activity.logo.url), '#'%></div>
+	    <div class="name"><%= link_to activity.title, '#'%></div>
+            <div class="geo">Юго-Восток</div>
+          </div>
         </div>
-      </div>
-      <div class="preview_agencies">
-        <div class="info">
-          <div class="thumb"><a href=""><img src="/assets/samp/samp_1.jpg"></a></div>
-          <div class="name"><a href="">Музей занимательных наук и практик "Экспериментаниум"</a></div>
-          <div class="geo">Юго-Восток</div>
-        </div>
-      </div>
-      <div class="preview_agencies">
-        <div class="info">
-          <div class="thumb"><a href=""><img src="/assets/samp/samp_1.jpg"></a></div>
-          <div class="name"><a href="">Музей занимательных наук и практик "Экспериментаниум"</a></div>
-          <div class="geo">Юго-Восток</div>
-        </div>
-      </div>
-      <div class="preview_agencies last">
-        <div class="info">
-          <div class="thumb"><a href=""><img src="/assets/samp/samp_1.jpg"></a></div>
-          <div class="name"><a href="">Музей занимательных наук и практик "Экспериментаниум"</a></div>
-          <div class="geo">Юго-Восток</div>
-        </div>
-      </div>
+      <% end %>
+
       <div class="clear"></div>
 
     </div>
@@ -309,56 +263,31 @@
         <span class="tender_title_ico"></span>
       </div>
 
-      <div class="preview_tender">
-        <div class="thumb"><a href=""><img src="/assets/samp/samp_5.jpg" alt="" /></a></div>
-        <div class="name"><a href="">Фотоконкурс "Что снится ребенку?"</a></div>
-        <div class="info">Прими участие в конкурсе и выиграй Iphone6!</div>
-      </div>
+      <% if contest = Contest.for_main %>
+	<div class="preview_tender">
+          <div class="thumb"><%= link_to image_tag(contest.picture.url), contest_path(contest) %></div>
+          <div class="name"><%= link_to contest.name, contest_path(contest) %></div>
+          <div class="info"><%= simple_format contest.description %></div>
+	</div>
+      <% end %>
 
     </div>
 
     <div class="spec_project_last">
       <div class="title">Спецпроекты</div>
-      <div class="preview_cell">
-        <div class="info">
-          <div class="cat_name"><span>Выбираем психолога</span></div>
-          <div class="thumb"><a href=""><img src="/assets/samp/samp_1.jpg"></a></div>
-          <div class="name">
-            <a href="">Классический уже мультфильм слегка по мотивам ­Гам­лета</a>
-            <span class="desc">Классический по мотивам</span>
+      <% SpecialProject.for_main.each do |sp| %>
+	<div class="preview_cell">
+          <div class="info">
+            <div class="cat_name"><span><%= sp.title %></span></div>
+            <div class="thumb"><%= link_to image_tag(sp.picture.url), special_project_path(sp) %></div>
+            <div class="name">
+	      <%= link_to truncate(sp.content), special_project_path(sp) %>
+              <span class="desc">Классический по мотивам</span>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="preview_cell">
-        <div class="info">
-          <div class="cat_name"><span>Новости Москвы</span></div>
-          <div class="thumb"><a href=""><img src="/assets/samp/samp_1.jpg"></a></div>
-          <div class="name">
-            <a href="">Классический по мотивам ­Гам­лета уже мультфильм слегка </a>
-            <span class="desc">Классический по мотивам</span>
-          </div>
-        </div>
-      </div>
-      <div class="preview_cell">
-        <div class="info">
-          <div class="cat_name"><span>Выбираем психолога</span></div>
-          <div class="thumb"><a href=""><img src="/assets/samp/samp_1.jpg"></a></div>
-          <div class="name">
-            <a href="">Классический уже мультфильм слегка по мотивам ­Гам­лета</a>
-            <span class="desc">Классический по мотивам</span>
-          </div>
-        </div>
-      </div>
-      <div class="preview_cell">
-        <div class="info">
-          <div class="cat_name"><span>Выбираем психолога</span></div>
-          <div class="thumb"><a href=""><img src="/assets/samp/samp_1.jpg"></a></div>
-          <div class="name">
-            <a href="">Классический по мотивам ­Гам­лета уже мультфильм слегка </a>
-            <span class="desc">Классический по мотивам</span>
-          </div>
-        </div>
-      </div>
+	</div>
+      <% end %>
+
       <div class="clear"></div>
 
     </div>

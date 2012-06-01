@@ -1,3 +1,5 @@
+FileUtils.rm_rf Rails.root.join('public/system/special_projects')
+
 photos = Dir.glob(Rails.root.join('db/sample/files/articles', '*'))
 
 SpecialProject.all.each do |specialproject|
