@@ -13,5 +13,9 @@ class News < ActiveRecord::Base
                     url: "/system/news/:attachment/:id/:style/:filename",
                     default_style: :thumb
 
-  scope :for_main, self.order('created_at DESC').first(5)
+  class << self
+    def for_main
+      order('created_at DESC').first(5)
+    end
+  end
 end

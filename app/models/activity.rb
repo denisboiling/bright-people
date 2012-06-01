@@ -106,8 +106,6 @@ class Activity < ActiveRecord::Base
   
   scope :distinct, select('DISTINCT(activities.id), activities.*')
 
-  scope :for_main, self.random(4)
-
   define_index do
     indexes title, sortable: true
     indexes description
@@ -131,5 +129,11 @@ class Activity < ActiveRecord::Base
     self.experts_rating = experts_rating
 
     self.save!
+  end
+
+  class << self
+    def for_main
+      self.random(4)
+    end
   end
 end

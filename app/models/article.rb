@@ -16,5 +16,9 @@ class Article < ActiveRecord::Base
                     default_style: :thumb
 
 
-  scope :for_main, self.order('created_at DESC').first(5)
+  class << self
+    def for_main
+      order('created_at DESC').first(5)
+    end
+  end
 end
