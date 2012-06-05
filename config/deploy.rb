@@ -1,11 +1,15 @@
 require 'capistrano/ext/multistage'
 require 'bundler/capistrano'
+require 'thinking_sphinx/deploy/capistrano'
 
-set :stages, %w(srv)
+set :whenever_command, "bundle exec whenever"
+require 'whenever/capistrano'
+
+set :stages, %w(srv srv-dev)
 set :default_stage, "srv"
 set :repository,  "git@github.com:balticit/bright-people.git"
 set :scm, :git
-set :branch, "master"
+set :branch, "ezo"
 
 set :application, "bright-people"
 

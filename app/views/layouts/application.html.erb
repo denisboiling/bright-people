@@ -1,27 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>BrightPeople</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  
-  <%= flash_messages %>
+  <head>
+    <title>BrightPeople</title>
+    <%= yield :head %>
+    <%= stylesheet_link_tag 'application', :media => "all" %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="header">
+	<%= render partial: 'shared/header' %>
+      </div>
 
-  <div class="hidden">
-    <div id="email_dialog">
-      <%= render 'users/email_form', user: User.new if current_user and current_user.email.blank? %>
+      <%= yield %>
+
+      <div id="footer">
+	<%= render partial: 'shared/footer' %>
+      </div>
+
     </div>
-  </div>
-
-  <div class="header">
-    <%= render partial: 'shared/header' %>
-    <%= link_to 'Add to favourites', '#', id: 'favourite_link' %>
-  </div>
-
-  <%= yield %>
-
-</body>
+  </body>
 </html>

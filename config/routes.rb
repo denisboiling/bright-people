@@ -4,61 +4,61 @@ BrightPeople::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
+  # TODO: move to dashboard
   get '/profile' => 'users#show'
   get '/profile/edit' => 'users#edit'
 
   resources :users, only: [:show, :update]
-
   resources :organizations, only: [:show]
+  resource :search, only: [:show]
+  resources :experts, only: [:index, :show]
+  resources :sponsors, only: [:index, :show]
+  resources :favourites, only: [:index, :create, :destroy]
+  resource :comments, only: :create
+
   resources :activities, only: [:index, :show] do
     put 'vote'
   end
 
-  resource :search, only: [:show]
-  resources :experts, only: [:index, :show]
   resources :articles, only: [:index, :show] do
-    resources :comments, only: [:create]
     collection do
       get :tag
     end
   end
   resources :article_categories, only: [:show]
 
-
-  resources :specialists, only: [:index, :show, :create_question] do
-    post :create_question, on: :member
-  end
-
   resources :interviews, only: [:index, :show] do
-    resources :comments, only: [:create]
     collection do
       get :tag
     end
   end
 
   resources :news, only: [:index, :show] do
-    resources :comments
     collection do
       get :tag
     end
   end
 
   resources :special_projects, only: [:index, :show] do
-    resources :comments
     collection do
       get :tag
     end
   end
 
-  resources :favourites, only: [:index, :create, :destroy]
-
-  # Specialist
-  namespace :specialist do
-    resources :questions
-    root to: 'questions#index'
+  resources :contests, only: [:index, :show] do
+    resources :contest_memberships, path: "members",
+                                    only: [:index, :show, :new, :create],
+                                    as: :memberships do
+      put :vote
+    end
   end
 
-  # Admin
+  # User dashboard
+  namespace :dashboard do
+    resources :notifications, only: [:index, :destroy, :update]
+  end
+
+  # Admin panel
   namespace :admin do
     resources :activities do
       get :autocomplete_activity_title, :on => :collection

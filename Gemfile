@@ -1,6 +1,6 @@
 source :rubygems
 
-gem 'rails', '3.2.3'
+gem 'rails', '3.2.5'
 gem 'pg'
 
 gem 'omniauth', '1.1.0'
@@ -33,14 +33,16 @@ gem 'thinking-sphinx'
 gem 'cocoon'
 gem 'rails3-jquery-autocomplete'
 gem 'hierarchy', github: 'RISCfuture/hierarchy'
-gem 'will_paginate'
+gem 'kaminari'
+gem 'whenever'
+gem 'randumb'
 
 group :development do
   gem 'letter_opener'
-  # gem 'capistrano'
-  # gem 'capistrano-ext'
-  # gem 'capistrano-unicorn'
-  # gem 'rvm-capistrano'
+  gem 'capistrano'
+  gem 'capistrano-ext'
+  gem 'capistrano-unicorn'
+  gem 'rvm-capistrano'
   gem 'sextant'
   gem 'quiet_assets'
 end

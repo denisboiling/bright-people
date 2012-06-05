@@ -19,3 +19,5 @@ public/system
 db/schema.rb
 db/structure.sql
 rerun.txt
+public/assets
+REVISION

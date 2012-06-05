@@ -4,26 +4,25 @@ class Activity < ActiveRecord::Base
   attr_accessible :title, :description, :organization_id, :users_rating,
                   :metro_station_id, :experts_rating, :address, :is_educational,
                   :additional_information, :parent_activities, :schedule,
-                  :photos_attributes, :videos_attributes
+                  :photos_attributes, :videos_attributes, :logo
 
-  SCHEDULE_DAYS = [:monday, :tuesday, :wednesday, :thursday, :friday,
-                   :saturday, :sunday]
-  
+  SCHEDULE_DAYS = [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday]
+
   attr_accessible *SCHEDULE_DAYS
-  
+
   store :schedule
-  
+
   def schedule
     map = self[:schedule].map { |day, value| [day, JSON(value)] }
     Hash[map]
   end
-  
+
   SCHEDULE_DAYS.each do |day|
     define_method(:"#{day}=") do |value|
       value = value.to_json unless value.kind_of? String
       self[:schedule][day] = value
     end
-    
+
     define_method(day) do
       self[:schedule][day]
     end
@@ -50,7 +49,12 @@ class Activity < ActiveRecord::Base
 
   has_many :videos, class_name: 'VideoUrl', dependent: :destroy,
                     conditions: "relation_type = 'activity'",
-                    foreign_key: 'relation_id', before_add: :add_activity_type
+  foreign_key: 'relation_id', before_add: :add_activity_type
+
+  has_attached_file :logo, styles: { medium: "300x300>", thumb: '125x125' },
+                           path: ":rails_root/public/system/activities/:attachment/:id/:style/:filename",
+                           url: "/system/activities/:attachment/:id/:style/:filename",
+                           default_style: :thumb
 
   # Forcibly set activity relation type for video
   def add_activity_type(video)
@@ -125,5 +129,11 @@ class Activity < ActiveRecord::Base
     self.experts_rating = experts_rating
 
     self.save!
+  end
+
+  class << self
+    def for_main
+      self.random(4)
+    end
   end
 end

@@ -16,13 +16,16 @@ module NavigationHelpers
       interview_path(interview_by_title($1))
     when /^the news "(.+)" page$/
       news_path(news_by_title($1))
-    when /^the special_project "(.+)" page$/
+    when /^the special project "(.+)" page$/
       special_project_path(special_project_by_title($1))
+    # when /^the specialist question "(.+)" page$/
+    #   question = find_question($1)
+    #   specialist_question_path(question.specialist, question)
 
     # Specialist dashboard
-    when /^the specialist question "(.+)" page$/
-      specialist_question_path(find_question($1))
-      
+    # when /^the specialist user question "(.+)" page$/
+    #   specialist_user_question_path(find_question($1))
+
     else
       begin
         page_name =~ /^the (.*) page$/

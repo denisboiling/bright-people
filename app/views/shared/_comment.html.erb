@@ -1,0 +1,18 @@
+<div id="<%= dom_id comment %>" class="comment">
+  Коммент от:
+  <p>
+    <%= image_tag comment.user.avatar.url %><%= comment.user.name %>
+  </p>
+  Текст комментария:
+  <p>
+    <%= simple_format comment.text %>
+  </p>
+  <div class="subcomment">
+    <%= link_to 'Комментировать', '', :class => 'create_comment', 'data-id' => comment.id %>
+    
+    <% comment.children.each do |child| %>
+      <%= render 'shared/comment', comment: child %>
+    <% end %>
+  </div>
+</div>
+

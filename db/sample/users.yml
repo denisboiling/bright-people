@@ -1,24 +1,14 @@
+# Simple users
 <% 1.upto(10).each do |i| %>
 user_<%= i %>:
+  id: <%= i %>
   email: <%= Faker::Internet.email %>
   role_id: 1
   name: <%= Faker::Name.name %>
 <% end %>
 
-<% 11.upto(20).each do |i| %>
-specialist_<%= i %>:
-  email: <%= Faker::Internet.email %>
-  role_id: 4
-  name: <%= Faker::Name.name %>
-  description: <%= Faker::Lorem.words.join(' ') %>
-<% end %>
-
-specialist:
-  email: specialist@example.com
-  role_id: 4
-  name: <%= Faker::Name.name %>
-
 user:
+  id: 222  
   email: user@example.com
   name: <%= Faker::Name.name %>
   role_id: 1

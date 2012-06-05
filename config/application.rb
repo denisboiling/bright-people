@@ -12,7 +12,7 @@ end
 module BrightPeople
   class Application < Rails::Application
     config.autoload_paths += %W(#{config.root}/extras)
-    config.active_record.observers = :activity_vote_observer
+    config.active_record.observers = [:activity_vote_observer, :contest_vote_observer]
     config.i18n.default_locale = :ru
     config.encoding = "utf-8"
     config.filter_parameters += [:password]

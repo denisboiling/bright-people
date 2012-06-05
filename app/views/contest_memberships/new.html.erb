@@ -1,0 +1,9 @@
+<%= form_for(@membership, url: contest_memberships_path(contest_id: @contest.id)) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br />
+  <%= f.label :description %>
+  <%= f.text_area :description %><br />
+  <%= f.label :picture %>
+  <%= f.file_field :picture %><br />
+  <%= f.submit %>
+<% end %>

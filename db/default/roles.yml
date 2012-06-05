@@ -9,7 +9,3 @@ admin:
 editor:
   id: 3  
   name: editor
-
-specialist:
-  id: 4  
-  name: specialist

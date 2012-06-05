@@ -1,3 +1,7 @@
+Then /^I wait a second$/ do
+  sleep 1
+end
+
 Given /^(?:|I )am on (.+)$/ do |page_name|
   visit path_to(page_name)
 end
@@ -86,3 +90,4 @@ Then /^I should not see elements? kind of (.+)$/ do |locator|
     assert page.has_no_css?(selector_for(locator))
   end
 end
+
