@@ -65,7 +65,7 @@ h1 { font-size:22px; color:#4f4f4f}
 #header #menu li a { font-size:17px; font-weight:500; color:#4f4f4f; text-decoration:none; display:block; padding:0px 2px 1px 2px; letter-spacing:-1px; }
 #header #menu li.current { padding:0px 2px; border:3px solid #d21a18; -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px;}
 
-.sub_menu { display:none; z-index:200; position:absolute; background:url(../images/sub_menu_nested.png) no-repeat  95px top; padding-top:36px; width:590px; padding-left:10px; left:335px;}
+.sub_menu { display:none; z-index:200; position:absolute; background:url(../assets/sub_menu_nested.png) no-repeat  95px top; padding-top:36px; width:590px; padding-left:10px; left:335px;}
 .sub_menu li { padding:0px 2px; border:3px solid #d21a18 !important; overflow:hidden; position:relative; -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; behavior: url(border-radius.htc); background:#fbfbfb; width:110px; margin: 0px 9px !important; -moz-box-shadow:3px 3px 6px rgba(0,0,0,0.3);
 	-webkit-box-shadow:3px 3px 6px rgba(0,0,0,0.3);
 	box-shadow:3px 3px 6px rgba(0,0,0,0.3);}
