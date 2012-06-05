@@ -18,6 +18,7 @@ ActiveAdmin.register Article do
     f.inputs 'Основное' do
       f.input :title
       f.input :content, input_html: {size: 10}
+      f.input :short_description, input_html: {size: 5}
       f.input :picture, as: :file, hint: f.template.image_tag(f.object.picture.url(:medium))
       f.input :article_category, as: :select, collection: ArticleCategory.all
       f.input :article_tag_list
@@ -26,7 +27,7 @@ ActiveAdmin.register Article do
   end
 
   show do
-    attributes_table :title, :author, :content, :created_at, :updated_at, :picture, :article_category, :article_tag_list
+    attributes_table :title, :author, :content, :short_description, :created_at, :updated_at, :picture, :article_category, :article_tag_list
 
     panel 'Фотография' do
 #      image_tag(article.picture.url)
