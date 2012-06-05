@@ -13,13 +13,14 @@ class Main < ActiveRecord::Migration
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
 
   create_table(:activities) do |t|
-    t.string :title, :address
+    t.string :title, :address, :age
     t.text :description, :parent_activities, :additional_information, :schedule
-    t.integer :organization_id, :metro_station_id, :age_tag_id
-    t.float :users_rating, :experts_rating, default: 0.0, null: false
+    t.integer :organization_id, :metro_station_id
+    t.float :users_rating, default: 0.0, null: false
     t.point :location, limit: 0, srid: 4326, geographic: true
     t.boolean :is_educational
     t.has_attached_file :logo
+    t.boolean :participant, :approved, null: false, default: false
 
     t.timestamps
   end

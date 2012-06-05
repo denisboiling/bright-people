@@ -16,8 +16,8 @@ article img {
 }
 
 article a.thumb { position:relative; overflow:hidden; moz-border-radius:0 0 40px 40px; border-radius:0 0 40px 40px; -webkit-border-radius:0 0 40px 40px; -khtml-border-radius:0 0 40px 40px; display:block; width:120px; margin:auto; -moz-box-shadow:3px 3px 6px rgba(0,0,0,0.3);
-                  -webkit-box-shadow:3px 3px 6px rgba(0,0,0,0.3);
-                  box-shadow:3px 3px 6px rgba(0,0,0,0.3);}
+		  -webkit-box-shadow:3px 3px 6px rgba(0,0,0,0.3);
+		  box-shadow:3px 3px 6px rgba(0,0,0,0.3);}
 
 #slides .inner {
     width: 500%;
@@ -78,7 +78,7 @@ article a.thumb { position:relative; overflow:hidden; moz-border-radius:0 0 40px
 #slide3:checked ~ #controls label:nth-child(4),
 #slide4:checked ~ #controls label:nth-child(5),
 #slide5:checked ~ #controls label:nth-child(1) {
-    background: url('/assets/small_arrow_right.png') no-repeat;
+    background: url("/assets/images/small_arrow_right.png") no-repeat;
     float: right;
     margin: 100px 20px 0 0;
     display: block; cursor:pointer
@@ -90,7 +90,7 @@ article a.thumb { position:relative; overflow:hidden; moz-border-radius:0 0 40px
 #slide3:checked ~ #controls label:nth-child(2),
 #slide4:checked ~ #controls label:nth-child(3),
 #slide5:checked ~ #controls label:nth-child(4) {
-    background: url('/assets/small_arrow_left.png') no-repeat;
+    background: url("/assets/small_arrow_left.png") no-repeat;
     float: left;
     margin: 100px 0 0 20px;
     display: block; cursor:pointer

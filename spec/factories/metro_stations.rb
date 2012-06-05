@@ -1,6 +1,5 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :metro_station do
+    title { Faker::Lorem.words.join(' ') }
   end
 end
