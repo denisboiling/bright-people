@@ -184,6 +184,8 @@ class Main < ActiveRecord::Migration
   create_table :interviews do |t|
     t.string :title
     t.integer :author_id
+    t.text :review
+    t.string :review_title
     t.text :content, :short_description
     t.has_attached_file :picture
     t.timestamps
