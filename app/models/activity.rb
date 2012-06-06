@@ -4,7 +4,7 @@ class Activity < ActiveRecord::Base
   attr_accessible :title, :description, :organization_id, :users_rating,
   :metro_station_id, :address, :is_educational,
   :additional_information, :parent_activities, :schedule,
-  :photos_attributes, :videos_attributes, :logo
+  :photos_attributes, :videos_attributes, :logo, :expert_id
 
   SCHEDULE_DAYS = [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday]
 
@@ -47,9 +47,15 @@ class Activity < ActiveRecord::Base
   has_many :photos, class_name: 'ActivityPhoto',
                     dependent: :destroy
 
+  # TODO: replace with polymorphic
   has_many :videos, class_name: 'VideoUrl', dependent: :destroy,
                     conditions: "relation_type = 'activity'",
   foreign_key: 'relation_id', before_add: :add_activity_type
+
+  belongs_to :region
+
+  has_one :approval, class_name: 'ActivityApproval'
+  has_one :expert, through: :approval, class_name: 'Expert'
 
   has_attached_file :logo, styles: { medium: "300x300>", thumb: '125x125' },
                            path: ":rails_root/public/system/activities/:attachment/:id/:style/:filename",
@@ -90,6 +96,21 @@ class Activity < ActiveRecord::Base
     self.users_rating = users_rating
 
     self.save!
+  end
+
+  # Return min age from age_tags
+  def min_age
+    age_tags.minimum(:start_year)
+  end
+
+  # For near places
+  def place_near
+    region.activities.where('id != ?', self.id).first(4)
+  end
+
+  # If activity already has approval, we approved it
+  def recheck_approved
+    update_attribute(:approved, true) if approval.present?
   end
 
   class << self

@@ -2,7 +2,7 @@
   <% if activity.approved? %>
     <div class="preview_catalog approved">
       <div class="thumb">
-        <%= link_to image_tag(activity.logo.url), "#" %>
+        <%= link_to image_tag(activity.logo.url), activity_path(activity) %>
       </div>
       <div class="info">
         <span class="flag">Одобрено экспертом</span>
@@ -10,7 +10,7 @@
           <div class="mark"><span class="arrow"></span>Участник фестиваля-2012!</div>
         <% end %>
         <div class="name">
-          <%= link_to activity.title, "#" %>
+          <%= link_to activity.title, activity_path(activity) %>
         </div>
         Детям <%= activity.age %> лет<br />
         Учреждение: <%= activity.organization.title %>

@@ -1,11 +1,32 @@
-<% 1.upto(20).each do |i| %>
-activity_<%= i %>:
-  id: <%= i %>
-  title: <%= Faker::Lorem.words.join(' ') %>
+common: &common
   description: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
   organization_id: <%= rand(10) + 1 %>
   users_rating: <%= rand(5) + 1 %>
-  is_educational: <%= rand(2) == 1 ? true : false %>
   address: <%= Faker::Address.street_address %>
   metro_station_id: <%= rand(6) + 1 %>
+  phone: <%= Faker::PhoneNumber.phone_number %>
+  site: <%= Faker::Internet.domain_name %>
+  cost: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
+  parent_activities: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
+  additional_information: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
+  region_id: <%= rand(10) + 1 %>
+
+main_education_activity:
+  title: Main test education activity
+  id: 1
+  is_educational: true
+  <<: *common
+
+main_not_edication_activity:
+  title: Main test not education activity
+  id: 2
+  is_educational: false
+  <<: *common
+
+<% 3.upto(30).each do |i| %>
+activity_<%= i %>:
+  title: <%= Faker::Lorem.words.join(' ') %>
+  id: <%= i %>
+  is_educational: <%= rand(2) == 1 ? true : false %>
+  <<: *common
 <% end %>
