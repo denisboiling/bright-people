@@ -196,7 +196,8 @@ class Main < ActiveRecord::Migration
   end
 
   create_table :news do |t|
-    t.string :title, :author
+    t.string :title
+    t.integer :author_id
     t.text :content
     t.has_attached_file :picture
     t.timestamps

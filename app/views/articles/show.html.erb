@@ -18,8 +18,10 @@
            <%= @article.author.description %>
           <div class="title">Другие статьи автора</div>
           <ul>
-            <li><%= link_to @article.author.articles.shuffle.first.title, @article.author.articles.shuffle.first %>
-            <li><%= link_to @article.author.articles.shuffle.first.title, @article.author.articles.shuffle.first %>
+            <% article = @article.author.articles.shuffle.first %>
+            <li><%= link_to article.title, article %>
+            <% article = @article.author.articles.shuffle.last %>
+            <li><%= link_to article.title, article %>
           </ul>
         </div>
         <div class="post_share">
