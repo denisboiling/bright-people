@@ -3,6 +3,10 @@
 #= require jquery_ujs
 #= require jquery.cookie
 #= require slides.min.jquery
+#= require jquery.raty.min
+#= require jquery.pikachoose
+#= require jquery.jcarousel.min
+#= require jquery.countdown
 #= require_directory .
 
 $ ->
@@ -13,3 +17,5 @@ $ ->
   window.setup_favourite_button()
   window.setup_require_signin_actions()
   window.setup_slider()
+  window.setup_raty()
+  window.setup_hidden_checkbox()

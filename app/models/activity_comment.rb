@@ -4,7 +4,11 @@ class ActivityComment < ActiveRecord::Base
   belongs_to :activity
 
   has_attached_file :picture,
-                    styles: { medium: "300x300>", thumb: "100x100>" },
-                    path: ":rails_root/public/system/:attachment/:id/:style/:filename",
-                    url: "/system/:attachment/:id/:style/:filename"
+  styles: { medium: "300x300>", thumb: "100x100>" },
+  path: ":rails_root/public/system/activity_comments/:attachment/:id/:style/:filename",
+  url: "/system/activity_comments/:attachment/:id/:style/:filename",
+  default_style: :thumb
+
+  scope :parents, where(is_parent: true)
+  scope :childrens, where(is_parent: false)
 end

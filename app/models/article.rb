@@ -1,5 +1,5 @@
 class Article < ActiveRecord::Base
-  attr_accessible :title, :content, :author, :article_category_id, :article_tag_list, :picture
+  attr_accessible :title, :content, :author, :article_category_id, :article_tag_list, :picture, :short_description
 
   acts_as_taggable_on :article_tags
 

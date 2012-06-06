@@ -25,7 +25,7 @@ class Comment < ActiveRecord::Base
   class << self
     # Return all possible relation type
     def possible_relations
-      %w(Question Article Interview News SpecialProject ContestMembership)
+      %w(Article Interview News SpecialProject ContestMembership)
     end
   end
 end

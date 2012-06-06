@@ -13,13 +13,15 @@ class Main < ActiveRecord::Migration
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
 
   create_table(:activities) do |t|
-    t.string :title, :address
-    t.text :description, :parent_activities, :additional_information, :schedule
-    t.integer :organization_id, :metro_station_id, :age_tag_id
-    t.float :users_rating, :experts_rating, default: 0.0, null: false
+    t.string :title, :address, :age
+    t.text :description, :parent_activities, :additional_information, :schedule, :cost
+    t.integer :organization_id, :metro_station_id, :region_id
+    t.float :users_rating, default: 0.0, null: false
     t.point :location, limit: 0, srid: 4326, geographic: true
     t.boolean :is_educational
     t.has_attached_file :logo
+    t.boolean :participant, :approved, null: false, default: false
+    t.string :phone, :site
 
     t.timestamps
   end
@@ -29,7 +31,7 @@ class Main < ActiveRecord::Migration
     t.text :content
     t.integer :picture_file_size, :activity_id
     t.datetime :picture_updated_at
-    t.boolean :is_parent
+    t.boolean :is_parent, null: false, default: true
 
     t.timestamps
   end
@@ -81,7 +83,7 @@ class Main < ActiveRecord::Migration
 
   create_table(:articles) do |t|
     t.string :title, :author, :picture_file_name, :picture_content_type
-    t.text :content
+    t.text :content, :short_description
     t.integer :article_category_id, :picture_file_size
     t.datetime :picture_updated_at
 
@@ -139,10 +141,10 @@ class Main < ActiveRecord::Migration
   end
 
   create_table(:teachers) do |t|
-    t.string :name, :photo_file_name, :photo_content_type
+    t.string :name
     t.text :description
-    t.integer :photo_file_size, :activity_id
-    t.datetime :photo_updated_at
+    t.integer :activity_id
+    t.has_attached_file :photo
 
     t.timestamps
   end
@@ -178,7 +180,7 @@ class Main < ActiveRecord::Migration
 
   create_table :interviews do |t|
     t.string :title, :author
-    t.text :content
+    t.text :content, :short_description
     t.has_attached_file :picture
     t.timestamps
   end
@@ -280,6 +282,19 @@ class Main < ActiveRecord::Migration
     t.string :first_name, :last_name, null: false
 
     t.has_attached_file :photo
+    t.timestamps
+  end
+
+  create_table :regions do |t|
+    t.string :title, null: false
+
+    t.timestamps
+  end
+
+  create_table :activity_approvals do |t|
+    t.integer :activity_id, :expert_id, null: false
+    t.text :text, null: false
+
     t.timestamps
   end
 end

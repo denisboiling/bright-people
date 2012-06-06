@@ -1,8 +1,9 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :activity do
-    title "name"
-    description "description"
+    title { Faker::Lorem.words.join(' ') }
+    description { Faker::Lorem.paragraphs(3).join('\n') }
+    address { Faker::Address.street_address  }
+
+    association :organization, factory: :organization
   end
 end

@@ -4,25 +4,29 @@ BrightPeople::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
+  # TODO: move to dashboard
   get '/profile' => 'users#show'
   get '/profile/edit' => 'users#edit'
 
   resources :users, only: [:show, :update]
-
   resources :organizations, only: [:show]
-  resources :activities, only: [:index, :show] do
-    put 'vote'
-  end
-
   resource :search, only: [:show]
   resources :experts, only: [:index, :show]
+  resources :sponsors, only: [:index, :show]
+  resources :favourites, only: [:index, :create, :destroy]
+  resource :comments, only: :create
+
+  resources :activities, only: [:index, :show, :search] do
+    put 'vote'
+  end
+  match '/activities/search' => 'activities#search', :via => :post, :as => :activity_search
+
   resources :articles, only: [:index, :show] do
     collection do
       get :tag
     end
   end
   resources :article_categories, only: [:show]
-
 
   resources :interviews, only: [:index, :show] do
     collection do
@@ -49,10 +53,6 @@ BrightPeople::Application.routes.draw do
       put :vote
     end
   end
-
-  resources :favourites, only: [:index, :create, :destroy]
-
-  resource :comments, only: :create
 
   # User dashboard
   namespace :dashboard do
