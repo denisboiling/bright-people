@@ -4,6 +4,9 @@
 #= require jquery.cookie
 #= require slides.min.jquery
 #= require jquery.raty.min
+#= require jquery.pikachoose
+#= require jquery.jcarousel.min
+#= require jquery.countdown
 #= require_directory .
 
 $ ->
