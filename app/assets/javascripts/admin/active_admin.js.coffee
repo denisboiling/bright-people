@@ -55,16 +55,20 @@ setup_schedule = ->
 
 setup_wysihtml5_editor = ->
   if $('#activity_additional_information').length != 0
-    info_editor = new wysihtml5.Editor "activity_additional_information",
+    new wysihtml5.Editor "activity_additional_information",
                         toolbar:      "wysihtml5-toolbar-additional-information",
                         parserRules:  wysihtml5ParserRules
   if $('#activity_parent_activities').length != 0
-    activities_editor = new wysihtml5.Editor "activity_parent_activities", 
+    new wysihtml5.Editor "activity_parent_activities", 
                               toolbar: "wysihtml5-toolbar-parent-activities",
                               parserRules: wysihtml5ParserRules
   if $('#interview_content').length != 0
-    interview_content_editor = new wysihtml5.Editor "interview_content", 
-                              toolbar: "wysihtml5-toolbar-content",
+    new wysihtml5.Editor "interview_content", 
+                              toolbar: "wysihtml5-toolbar-interview",
+                              parserRules: wysihtml5ParserRules
+  if $('#article_content').length != 0
+    new wysihtml5.Editor "article_content", 
+                              toolbar: "wysihtml5-toolbar-article",
                               parserRules: wysihtml5ParserRules
 
 
@@ -96,6 +100,7 @@ setup_video_removing = ->
     return false
 
 $ ->
+  console.log 'ololoo'
   setup_video_removing()
   setup_wysihtml5_editor()
   if document.URL.substr(0, 39) is "http://bp.balticit.ru/admin/activities"
