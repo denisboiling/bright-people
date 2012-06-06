@@ -27,5 +27,7 @@ module BrightPeople
       g.test_framework :rspec, :fixture => true, :views => false
       g.stylesheets false
     end
+
+    config.i18n.default_locale = :ru
   end
 end
