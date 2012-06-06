@@ -82,7 +82,8 @@ class Main < ActiveRecord::Migration
   end
 
   create_table(:articles) do |t|
-    t.string :title, :author, :picture_file_name, :picture_content_type
+    t.string :title, :picture_file_name, :picture_content_type
+    t.integer :author_id
     t.text :content, :short_description
     t.integer :article_category_id, :picture_file_size
     t.datetime :picture_updated_at
@@ -158,6 +159,8 @@ class Main < ActiveRecord::Migration
     :name, :description
     t.integer :role_id, null: false
 
+    t.string :description
+
     t.string :avatar_file_name, :avatar_content_type
     t.integer :avatar_file_size
     t.datetime :attach_updated_at
@@ -179,7 +182,8 @@ class Main < ActiveRecord::Migration
   end
 
   create_table :interviews do |t|
-    t.string :title, :author
+    t.string :title
+    t.integer :author_id
     t.text :content, :short_description
     t.has_attached_file :picture
     t.timestamps
@@ -192,7 +196,8 @@ class Main < ActiveRecord::Migration
   end
 
   create_table :news do |t|
-    t.string :title, :author
+    t.string :title
+    t.integer :author_id
     t.text :content
     t.has_attached_file :picture
     t.timestamps

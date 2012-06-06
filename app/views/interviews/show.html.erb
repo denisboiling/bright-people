@@ -2,7 +2,7 @@
   <div class="pages">
     <div class="common">
       <h1><%= @interview.title %></h1>
-      <strong><%= @interview.author %>. <%= Russian::strftime(@interview.created_at, "%A, %e %B %Y г.") %></strong>
+      <strong><%= @interview.author.name %>. <%= Russian::strftime(@interview.created_at, "%A, %e %B %Y г.") %></strong>
       <div class="post_preview">
         <div class="thumb">
           <img alt="" src="/assets/samp/post_samp_prev.jpg" style="background-image: url('/assets/samp/post_samp_prev.jpg');">
@@ -29,7 +29,7 @@
         </div>
       </div>
       <div class="description">
-        <%= @interview.content %>
+        <%=raw @interview.content %>
       </div>
       <div class="clear"></div>
     </div>

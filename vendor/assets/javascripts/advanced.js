@@ -38,6 +38,7 @@ var wysihtml5ParserRules = {
      * Following css classes won't be removed when parsed by the wysihtml5 html parser
      */
     "classes": {
+        "question-class": 1,
         "wysiwyg-clear-both": 1,
         "wysiwyg-clear-left": 1,
         "wysiwyg-clear-right": 1,
@@ -257,9 +258,7 @@ var wysihtml5ParserRules = {
             "remove": 1
         },
         "div": {
-            "add_class": {
-                "align": "align_text"
-            }
+            "set_class": "question-class"
         },
         "option": {
             "rename_tag": "span"

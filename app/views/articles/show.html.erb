@@ -2,7 +2,7 @@
   <div class="pages">
     <div class="common">
       <h1><%= @article.title %></h1>
-      <strong><%= @article.author %>. <%= Russian::strftime(@article.created_at, "%A, %e %B %Y г.") %></strong>
+      <strong><%= @article.author.name %>. <%= Russian::strftime(@article.created_at, "%A, %e %B %Y г.") %></strong>
       <div class="post_preview">
         <div class="thumb">
           <img alt="" src="/assets/samp/post_samp_prev.jpg" style="background-image: url('/assets/samp/post_samp_prev.jpg');">
@@ -15,12 +15,13 @@
       <div class="post_info">
         <div class="other_link">
           <div class="title">Об авторе</div>
-          <br>
-          <br>
+           <%= @article.author.description %>
           <div class="title">Другие статьи автора</div>
           <ul>
-            <li><a href="">Как я стала мамой</a></li>
-            <li><a href="">Про манекенщицу, трех дочек и детский сад в Сомали</a></li>
+            <% article = @article.author.articles.shuffle.first %>
+            <li><%= link_to article.title, article %>
+            <% article = @article.author.articles.shuffle.last %>
+            <li><%= link_to article.title, article %>
           </ul>
         </div>
         <div class="post_share">

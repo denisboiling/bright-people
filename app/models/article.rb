@@ -1,11 +1,12 @@
 class Article < ActiveRecord::Base
-  attr_accessible :title, :content, :author, :article_category_id, :article_tag_list, :picture, :short_description
+  attr_accessible :title, :content, :author_id, :article_category_id, :article_tag_list, :picture, :short_description
 
   acts_as_taggable_on :article_tags
 
   validates :title, :content, :author, :article_category_id, presence: :true
 
   belongs_to :article_category
+  belongs_to :author, class_name: 'User'
 
   has_many :comments, as: :relation
 
