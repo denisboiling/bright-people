@@ -8,7 +8,6 @@
 #= require jquery-ui-timepicker-ru
 
 #= require admin/edit_map
-
 setup_schedule = ->
   days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday',
           'saturday', 'sunday']
@@ -47,7 +46,7 @@ setup_schedule = ->
     event.preventDefault()
     $(this).closest('.time_block').remove()
     update_fields()
-  
+    
   $('.schedule_day_link').bind 'click', (event) ->
     event.preventDefault()
     
@@ -55,12 +54,19 @@ setup_schedule = ->
     add_interval($li)
 
 setup_wysihtml5_editor = ->
-  info_editor = new wysihtml5.Editor "activity_additional_information",
-                      toolbar:      "wysihtml5-toolbar-additional-information",
-                      parserRules:  wysihtml5ParserRules
-  activities_editor = new wysihtml5.Editor "activity_parent_activities", 
-                            toolbar: "wysihtml5-toolbar-parent-activities",
-                            parserRules: wysihtml5ParserRules
+  if $('#activity_additional_information').length != 0
+    info_editor = new wysihtml5.Editor "activity_additional_information",
+                        toolbar:      "wysihtml5-toolbar-additional-information",
+                        parserRules:  wysihtml5ParserRules
+  if $('#activity_parent_activities').length != 0
+    activities_editor = new wysihtml5.Editor "activity_parent_activities", 
+                              toolbar: "wysihtml5-toolbar-parent-activities",
+                              parserRules: wysihtml5ParserRules
+  if $('#interview_content').length != 0
+    interview_content_editor = new wysihtml5.Editor "interview_content", 
+                              toolbar: "wysihtml5-toolbar-content",
+                              parserRules: wysihtml5ParserRules
+
 
 setup_video_removing = ->
     $('a.remove_activity_video').live 'click', () ->
@@ -92,4 +98,5 @@ setup_video_removing = ->
 $ ->
   setup_video_removing()
   setup_wysihtml5_editor()
-  setup_schedule()
+  if document.URL.substr(0, 39) is "http://bp.balticit.ru/admin/activities"
+    setup_schedule()

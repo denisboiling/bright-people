@@ -15,16 +15,7 @@ ActiveAdmin.register Interview do
     default_actions
   end
 
-  form html: { enctype: 'multipart/form-data' } do |f|
-    f.inputs 'Основное' do
-      f.input :title
-      f.input :short_description, input_html: {size: 5}
-      f.input :content, input_html: {size: 10}
-      f.input :picture, as: :file, hint: f.template.image_tag(f.object.picture.url(:medium))
-      f.input :interview_tag_list
-    end
-    f.buttons
-  end
+  form :partial => "form"
 
   show do
     attributes_table :title, :author, :content, :short_description, :interview_tag_list
