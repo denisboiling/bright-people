@@ -44,10 +44,9 @@ class ActivitiesController < ApplicationController
     return activities
   end
 
+  # TODO: create check params. More secure!!!
   def get_kind
-    possible_kinds = %w(education entertainment)
-    # @kind = params[:kind] ? (params[:kind] if possible_kinds.include?(params[:kind])) : 'educational'
-    @kind = params[:kind] if %w(education entertainment).include?(params[:kind])
+    @kind = params[:kind] || 'educational'
   end
 
   def get_directions
