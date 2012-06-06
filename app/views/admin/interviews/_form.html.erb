@@ -1,6 +1,7 @@
 <%= semantic_form_for [:admin, @interview], html: { multipart: true } do |f| %>
   <%= f.inputs 'Основное' do %>
     <%= f.input :title %>
+    <%= f.input :author, as: :select, collection: User.all %>
     <%= f.input :short_description, input_html: {size: 5} %>
     <div id="wysihtml5-toolbar-content" style="display: none;">
       <a data-wysihtml5-command="bold">bold</a>

@@ -17,6 +17,7 @@ ActiveAdmin.register Article do
   form html: { enctype: 'multipart/form-data' } do |f|
     f.inputs 'Основное' do
       f.input :title
+      f.input :author, as: :select, collection: User.all
       f.input :content, input_html: {size: 10}
       f.input :short_description, input_html: {size: 5}
       f.input :picture, as: :file, hint: f.template.image_tag(f.object.picture.url(:medium))
