@@ -9,6 +9,7 @@ class ActivitiesController < ApplicationController
       render partial: 'activities/activities', locals: {activities: @activities}
     else
       @activities = Activity.by_kind(@kind)
+      # @activities = @activities.page(params[:page]).per(10)
     end
   end
 
@@ -30,6 +31,7 @@ class ActivitiesController < ApplicationController
     activities = activities.approved if params[:only_approved].present?
     activities = activities.by_age(params[:age]) if params[:age].present?
     activities = activities.by_tag(params[:tag]) if params[:tag].present?
+    activities = activities.by_metro(params[:metro]) if params[:metro].present?
 
     activities = case params[:order_by]
                  when 'title' then activities.order('title ASC')
@@ -44,7 +46,8 @@ class ActivitiesController < ApplicationController
 
   def get_kind
     possible_kinds = %w(education entertainment)
-    @kind = params[:kind] ? (params[:kind] if possible_kinds.include?(params[:kind])) : 'educational'
+    # @kind = params[:kind] ? (params[:kind] if possible_kinds.include?(params[:kind])) : 'educational'
+    @kind = params[:kind] if %w(education entertainment).include?(params[:kind])
   end
 
   def get_directions

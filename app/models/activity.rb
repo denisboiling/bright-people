@@ -68,7 +68,9 @@ class Activity < ActiveRecord::Base
   scope :by_kind, lambda{|kind| where(is_educational: kind == 'educational' ? true : false)}
   scope :by_age, lambda{|ages| joins(:age_tags).where('age_tags.id IN (?)', ages)}
   scope :by_tag, lambda{|tags| joins(:direction_tags).where('direction_tags.id IN (?)', tags)}
+  scope :by_metro, lambda{|metros| where('metro_station_id in (?)', metros)}
   scope :approved, where(approved: true)
+
 
   define_index do
     indexes title, sortable: true

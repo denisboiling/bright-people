@@ -28,10 +28,14 @@
       </div>
       <div class="cell">
 	<strong>Ближайшая станция метро</strong>
+	<%= select_tag 'metro_faker_select', options_from_collection_for_select(MetroStation.all, :id, :title), 
+	    id: :select_metro, prompt: 'Выбирите метро' %>
 
-	Вы выбрали: <a class="clear_link" href="">Краснопресненьская</a><br />
-	<a class="clear_link" href="">Краснопресненьская</a><br />
-	<a class="clear_link" href="">Краснопресненьская</a>
+	<select id="metro" multiple="multiple" name="metro[]"></select>
+
+	Вы выбрали:
+	<div class="selected_metro">
+	</div>
 
       </div>
       <div class="cell">
