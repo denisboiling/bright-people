@@ -1,0 +1,12 @@
+<% comments.each do |comment| %>
+  <li>
+    <div class="thumb"><span class="mask"></span><%= image_tag comment.picture.url %></div>
+    <div class="info">
+      <div class="name"><%= comment.commentator %>:</div>
+      <div class="quote">
+        <%= comment.content %>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </li>
+<% end %>

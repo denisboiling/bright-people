@@ -1,6 +1,18 @@
-<% 1.upto(20).each do |i| %>
-comment_<%= i %>:
+common: &common
   commentator: <%= Faker::Name.name %>
   content: "<%= Faker::Lorem.words(6).join(' ') %>"
-  is_parent: <%= (rand(2)) == 1 ? true : false %>
+  is_parent: <%= rand(2) == 1 ? true : false %>
+
+# Activity comment for main education actiity
+<% 1.upto(20).each do |i| %>
+comment_<%= i %>:
+  activity_id: 1
+  <<: *common
+<% end %>
+
+# Activity comment for main not education actiity
+<% 21.upto(30).each do |i| %>
+comment_<%= i %>:
+  activity_id: 2
+  <<: *common
 <% end %>

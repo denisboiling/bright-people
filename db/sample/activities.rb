@@ -7,6 +7,7 @@ FileUtils.rm_rf Rails.root.join('public/system/activities')
 logos = Dir.glob(Rails.root.join('db/sample/files/activity_photos', '*'))
 
 Activity.all.each do |ac|
+  ac.recheck_approved
   ac.update_attribute(:location, rand_point)
   ac.update_attribute(:logo, File.new(logos.shuffle.first))
   rand(1..3).times do

@@ -52,3 +52,8 @@ ru:
         name: Название
         category: Категория
         
+  age:
+    one: '%{count} Года'
+    few: '%{count} Лет'
+    many: '%{count} Лет'
+    other: '%{count} Лет'

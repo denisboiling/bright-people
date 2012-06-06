@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
   # TODO: bugaggagga make it better, and try understand what every line do ;)
-  before_filter :get_kind
+  before_filter :get_kind, only: :index
   before_filter :get_directions, only: :index
 
   def index
