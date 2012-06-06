@@ -82,7 +82,7 @@ class Main < ActiveRecord::Migration
 
   create_table(:articles) do |t|
     t.string :title, :author, :picture_file_name, :picture_content_type
-    t.text :content
+    t.text :content, :short_description
     t.integer :article_category_id, :picture_file_size
     t.datetime :picture_updated_at
 
@@ -179,7 +179,7 @@ class Main < ActiveRecord::Migration
 
   create_table :interviews do |t|
     t.string :title, :author
-    t.text :content
+    t.text :content, :short_description
     t.has_attached_file :picture
     t.timestamps
   end

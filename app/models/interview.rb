@@ -1,5 +1,5 @@
 class Interview < ActiveRecord::Base
-  attr_accessible :title, :content, :author, :interview_tag_list, :picture
+  attr_accessible :title, :content, :author, :interview_tag_list, :picture, :short_description
 
   acts_as_taggable_on :interview_tags
 
