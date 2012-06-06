@@ -5,7 +5,6 @@ window.setup_slider = ->
     $("#menu .sub_menu").fadeOut 100
 
   $("div.magazine_tab div.mag_tabs:first").show()
-
   $("div.magazine_control li a").live "click", ->
     currentTab = $(this).attr("rel")
     $("div.magazine_tab div.mag_tabs").hide()
@@ -14,6 +13,9 @@ window.setup_slider = ->
 
   $("#nested_slider .slider_control li a").mouseenter ->
     currentSlider = $(this).attr("rel")
+    return false  if $(this).hasClass("active")
+    $("#nested_slider .slider_control li a").removeClass "active"
+    $(this).addClass "active"
     $("#nested_slider .slider").fadeOut 300
     $("#nested_slider #" + currentSlider).fadeIn 300
 
@@ -22,5 +24,9 @@ window.setup_slider = ->
     prev: "prev"
 
   $("#slider_user").slides
+    next: "next"
+    prev: "prev"
+
+  $("#slider_fest").slides
     next: "next"
     prev: "prev"
