@@ -1,3 +1,24 @@
+<div id="center">
+  <div class="pages">
+    <div class="common">
+      <h1>Конкурсы ярких людей</h1>
+      <div class="post_category_menu"></div>
+        <ul>
+          <li><%= link_to "Все", contests_path %></li>
+          <% ContestCategory.all.each do |category| %>
+            | <li><%= link_to category.name, contests_path(category: category.id) %></li>
+          <% end %>
+        </ul>
+        <div class="clear"></div>
+      <div class="contest_list"></div>
+    </div>
+    <div class="sidebar">
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
+
+<!--
 <%= link_to "Все", contests_path %>
 <% ContestCategory.all.each do |category| %>
  | <%= link_to category.name, contests_path(category: category.id) %>
@@ -8,3 +29,4 @@
   <strong>started at:</strong><%= contest.started_at %><br />
   <strong>ended at:</strong><%= contest.ended_at %><br />
 <% end %>
+-->
