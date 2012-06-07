@@ -22,6 +22,7 @@ class Main < ActiveRecord::Migration
     t.has_attached_file :logo
     t.boolean :participant, :approved, null: false, default: false
     t.string :phone, :site
+    t.boolean :available, null: false, default: true
 
     t.timestamps
   end
@@ -187,6 +188,7 @@ class Main < ActiveRecord::Migration
     t.integer :author_id
     t.text :review
     t.string :review_title
+    t.boolean :is_enabled
     t.text :content, :short_description
     t.has_attached_file :picture
     t.timestamps
