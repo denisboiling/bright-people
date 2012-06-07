@@ -7,6 +7,7 @@ class ArticlesController < ApplicationController
 
   def index
     @categories = ArticleCategory.all
+    @articles = Article.all
   end
 
   def show
