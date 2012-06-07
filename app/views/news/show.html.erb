@@ -3,7 +3,7 @@
     <div class="common">
       <h1><%= @news.title %></h1>
       <div>
-        <strong><%= @news.author %>. <%= Russian::strftime(@news.created_at, "%A, %e %B %Y г.") %></strong>
+        <strong><%= @news.author.name %>. <%= Russian::strftime(@news.created_at, "%A, %e %B %Y г.") %></strong>
       </div>
       <div class="post_info">
         <div class="thumb">
@@ -11,12 +11,13 @@
         </div>
         <div class="other_link">
           <div class="title">Об авторе</div>
-          <br>
-          <br>
+          <%= @news.author.description %>
           <div class="title">Другие статьи автора</div>
           <ul>
-            <li><a href="">Как я стала мамой</a></li>
-            <li><a href="">Про манекенщицу, трех дочек и детский сад в Сомали</a></li>
+            <% news = @news.author.news.shuffle.first %>
+            <li><%= link_to news.title, news %>
+            <% news = @news.author.news.shuffle.last %>
+            <li><%= link_to news.title, news %>
           </ul>
         </div>
         <div class="post_share">

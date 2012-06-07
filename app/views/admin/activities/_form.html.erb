@@ -4,11 +4,11 @@
     <%= f.input :title %>
     <%= f.input :description, input_html: { size: 10 } %>
     <%= f.input :users_rating %>
-    <%= f.input :experts_rating %>
   <% end %>
 
     <%= f.inputs "Адрес" do %>
       <%= f.input :metro_station, as: :select, collection: MetroStation.all %>
+      <%= f.input :region, as: :select, collection: Region.all, include_blank: false %>
       <%= f.input :address %>
       <%= f.input :coords, as: :hidden, input_html: { class: 'hidden_coords'} %>
       <%= f.input :coords, input_html: { class: 'edit_map' }, label: false %>
@@ -34,38 +34,13 @@
                                   'data-association-insertion-node' => '.activity_videos' %>
     <% end %>
 
-    <%= f.inputs 'Допонительная информация' do %>
-      <div id="wysihtml5-toolbar-additional-information" style="display: none;">
-        <a data-wysihtml5-command="bold">bold</a>
-        <a data-wysihtml5-command="italic">italic</a>
-  
-        <a data-wysihtml5-command="createLink">insert link</a>
-        <div data-wysihtml5-dialog="createLink" style="display: none;">
-          <label>
-            Link:
-            <input data-wysihtml5-dialog-field="href" value="http://" class="text">
-          </label>
-          <a data-wysihtml5-dialog-action="save">OK</a> <a data-wysihtml5-dialog-action="cancel">Cancel</a>
-        </div>
-      </div>
+    <%= f.inputs "Дополнительно" do %>
+      <%= f.input :description, input_html: { size: 10 } %>
       <%= f.input :additional_information, input_html: { size: 10 } %>
-      <div id="wysihtml5-toolbar-parent-activities" style="display: none;">
-        <a data-wysihtml5-command="bold">bold</a>
-        <a data-wysihtml5-command="italic">italic</a>
-  
-        <!-- Some wysihtml5 commands like 'createLink' require extra paramaters specified by the user (eg. href) -->
-        <a data-wysihtml5-command="createLink">insert link</a>
-        <div data-wysihtml5-dialog="createLink" style="display: none;">
-          <label>
-            Link:
-            <input data-wysihtml5-dialog-field="href" value="http://" class="text">
-          </label>
-          <a data-wysihtml5-dialog-action="save">OK</a> <a data-wysihtml5-dialog-action="cancel">Cancel</a>
-        </div>
-      </div>
       <%= f.input :parent_activities, input_html: { size: 10 } %>
+      <%= f.input :cost, input_html: { size: 10 } %>
     <% end %>
-    
+
     <%= f.inputs 'Расписание' do %>
       <ul>
         <% Activity::SCHEDULE_DAYS.each do |day| %>
@@ -77,5 +52,8 @@
       </ul>
     <% end %>
     
-  <%= f.buttons %>
+  <%= f.buttons do %>
+    <%= f.commit_button %>
+    <%= f.action :submit, :button_html => { :label => "create case", :name => 'preview', :value => "Предварительный просмотр" } %>
+  <% end %>
 <% end %>

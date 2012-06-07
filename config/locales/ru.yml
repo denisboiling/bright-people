@@ -19,6 +19,11 @@ ru:
         few: Конкурса
         many: Конкурсов
         other: Конкурсы
+      activity:
+        one: Кружок
+        few: Кружка
+        many: Кружков
+        other: Кружки
     attributes:
       organization:
         title: Название
@@ -57,3 +62,8 @@ ru:
     few: '%{count} Лет'
     many: '%{count} Лет'
     other: '%{count} Лет'
+  vote:
+    one: '%{count} голос'
+    few: '%{count} голоса'
+    many: '%{count} голосов'
+    other: '%{count} голосов'

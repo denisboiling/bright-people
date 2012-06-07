@@ -1,25 +1,31 @@
 # -*- coding: utf-8 -*-
 ActiveAdmin.register Activity do
-  menu label: 'Кружки'
 
   controller do
     autocomplete :activity, :title, full: true
+
+    def create
+      create! do |format|
+        redirect_to '/admin/users' and return
+      end
+    end
   end
 
-  filter :title, as: :autocomplete, input_html: {'data-autocomplete' => '/admin/activities/autocomplete_activity_title', object: 'activity'}
+  # member_action :create, :method => :post do
+  #   # create! do |format|
+  #   #   format.html { redirect_to '/'}
+  #   # end
+  #   create! { '/' }
+  # end
 
+
+  filter :title, as: :autocomplete, input_html: {'data-autocomplete' => '/admin/activities/autocomplete_activity_title', object: 'activity'}
 
   index do
     id_column
     column :title
     column :address
     column :users_rating
-    column :experts_rating
-    column :created_at
-    column :updated_at
-    column :additional_information
-    column :parent_activities
-    column :schedule
     default_actions
   end
 
@@ -27,8 +33,8 @@ ActiveAdmin.register Activity do
 
   show do
     attributes_table :id, :title, :address, :metro_station, :description,
-                     :users_rating, :experts_rating, :created_at, :updated_at,
-                     :additional_information, :parent_activities
+    :users_rating, :created_at, :updated_at,
+    :additional_information, :parent_activities
 
     panel 'Карта' do
       form do |f|
