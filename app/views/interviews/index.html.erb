@@ -1,3 +1,9 @@
-<% @interviews.each do |interview| %>
-    <p><%= link_to interview.title, interview_path(interview) %></p>
+<% @interviews.each do |inter| %>
+    <% if inter.is_enabled == false %>
+      <% if can? :view_disabled, inter %>
+        <p><%= link_to inter.title, interview_path(inter), {:style => "color:red"} %></p>
+      <% end %>
+    <% else %>
+      <p><%= link_to inter.title, interview_path(inter) %></p>
+    <% end %>
 <% end %>
