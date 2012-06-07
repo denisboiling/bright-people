@@ -65,25 +65,28 @@
   </div>
   
   <div class="common">
-  <% @articles.each do |article| %>
-    <div class="preview_cell">
-      <div class="info">
-        <div class="cat_name">
-          <span><%= article.category.title %></span>
-        </div>
-        <div class="thumb">
-          <%= link_to image_tag(article.picture), article %>
-        </div>
-        <div class="name">
-          <%= link_to article.title, article %>
-        </div>
-        <div class="date">
-          <%= article.created_at.to_s(:main) %>
+    <div class="articles_container">
+    <% @articles.each do |article| %>
+      <div class="preview_cell">
+        <div class="info">
+          <div class="cat_name">
+            <span><%= article.category.title %></span>
+          </div>
+          <div class="thumb">
+            <%= link_to image_tag(article.picture), article %>
+          </div>
+          <div class="name">
+            <%= link_to article.title, article %>
+          </div>
+          <div class="date">
+            <%= article.created_at.to_s(:main) %>
+          </div>
         </div>
       </div>
+    <% end %>
     </div>
-  <% end %>
+    <%= paginate @articles %>
+    <div class="clear"></div>
   </div>
-  <div class="clear">
-  </div>
+  
 </div>
