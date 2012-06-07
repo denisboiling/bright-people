@@ -437,15 +437,16 @@ h1 { font-size:22px; color:#4f4f4f}
 .post_preview .thumb img { height:275px; width:440px; border-radius:6px;}
 .post_preview .short_desc { font-size:16px; color:#585858; font-family:Futura}
 .post_info { float:left; width:240px; }
-.post_info .description { margin-left:260px; }
+.description { margin-left:260px; }
 
-.post_info .description h3 { color:#c14425; font-size:18px; font-family:Futura; padding:10px 0px}
-.post_info .description .question-class { color:#343434; font-weight:bold; padding:10px 0px 10px 40px; background:url(/assets/detail_aprroved.png) no-repeat 5px 0px;}
+ .description h3 { color:#c14425; font-size:18px; font-family:Futura; padding:10px 0px}
+ .description .question-class { color:#343434; font-weight:bold; padding:10px 0px 10px 40px; background:url(/assets/detail_aprroved.png) no-repeat 5px 0px;}
 
 .post_info .thumb { behavior: url(border-radius.htc); -moz-border-radius:10px; border-radius:10px; -webkit-border-radius:10px; -khtml-border-radius:10px; margin-bottom:20px; overflow:hidden}
 
 .post_info .other_link { behavior: url(border-radius.htc); -moz-border-radius:8px; border-radius:8px; -webkit-border-radius:8px; -khtml-border-radius:8px; border:1px solid #dbdbdb; padding:10px; font-size:12px; margin-bottom:20px}
-.post_info .other_link a { font-size:12px; background:url(/assets/other_link_ico.png) no-repeat 0px 0px; padding-left:16px;}
+.post_info .other_link li { padding:2px 0px}
+.post_info .other_link a { font-size:12px; background:url(/assets/other_link_ico.png) no-repeat 0px 1px; padding-left:16px;display:block}
 .post_info .other_link .title { font-size:16px; color:#007ba4; font-family:Futura;}
 
 
