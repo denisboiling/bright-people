@@ -65,19 +65,23 @@ setup_wysihtml5_editor = ->
   if $('#article_short_description').length != 0
     new wysihtml5.Editor "article_short_description", 
                               toolbar: "wysihtml5-toolbar-article-short",
-                              parserRules: wysihtml5ParserRules
+                              parserRules: wysihtml5ParserRules,
+                              stylesheets: ["/../assets/editor_style.css"]
   if $('#interview_short_description').length != 0
     new wysihtml5.Editor "interview_short_description", 
                               toolbar: "wysihtml5-toolbar-interview-short",
-                              parserRules: wysihtml5ParserRules
+                              parserRules: wysihtml5ParserRules,
+                              stylesheets: ["/../assets/editor_style.css"]
   if $('#interview_content').length != 0
     new wysihtml5.Editor "interview_content", 
                               toolbar: "wysihtml5-toolbar-interview",
-                              parserRules: wysihtml5ParserRules
+                              parserRules: wysihtml5ParserRules,
+                              stylesheets: ["/../assets/editor_style.css"]
   if $('#article_content').length != 0
     new wysihtml5.Editor "article_content", 
                               toolbar: "wysihtml5-toolbar-article",
-                              parserRules: wysihtml5ParserRules
+                              parserRules: wysihtml5ParserRules,
+                              stylesheets: ["/../assets/editor_style.css"]
 
 
 setup_video_removing = ->

@@ -68,10 +68,10 @@ ru:
         category: Категория
         
   age:
-    one: '%{count} Года'
-    few: '%{count} Лет'
-    many: '%{count} Лет'
-    other: '%{count} Лет'
+    one: '%{count} года'
+    few: '%{count} лет'
+    many: '%{count} лет'
+    other: '%{count} лет'
   vote:
     one: '%{count} голос'
     few: '%{count} голоса'
