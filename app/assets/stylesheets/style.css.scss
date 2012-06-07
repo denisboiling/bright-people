@@ -51,8 +51,8 @@ h1 { font-size:22px; color:#4f4f4f}
 #header .logo_warapper .logo {  margin:auto; margin-bottom:20px; width:590px; }
 
 
-.color_line_left { background:url(/assets/color_line.jpg) repeat-y left 100px}
-.color_line_right { background:url(/assets/color_line.jpg) repeat-y right}
+#main_page .color_line_left { background:url(/assets/color_line.jpg) repeat-y left 100px}
+#main_page .color_line_right { background:url(/assets/color_line.jpg) repeat-y right}
 
 #search { padding-top:10px}
 #search input[type="text"] { width:130px; height:20px; padding:2px; border:1px solid #b2c4d3}
@@ -448,8 +448,8 @@ span.sim_check.active { background-position:0px 0px; }
 
 
 
-.post_info .post_share { background:#ffb13b; padding:10px; behavior: url(border-radius.htc); -moz-border-radius:8px; border-radius:8px; -webkit-border-radius:8px; -khtml-border-radius:8px; margin-bottom:20px;}
-.post_info .post_share .title { font-size:16px; color:#654515; font-family:Futura;}
+.post_share { background:#ffb13b; padding:10px; behavior: url(border-radius.htc); -moz-border-radius:8px; border-radius:8px; -webkit-border-radius:8px; -khtml-border-radius:8px; margin-bottom:20px;}
+.post_share .title { font-size:16px; color:#654515; font-family:Futura;}
 
 
 
@@ -615,7 +615,8 @@ span.sim_check.active { background-position:0px 0px; }
 
 
 /* FOOTER */
-#footer { font-size:13px; color:#fff; background:#ECECE7}
+#main_page #footer { background:#ECECE7}
+#footer { font-size:13px; color:#fff; }
 #footer a { color:#fff;}
 #footer .footer_header { height:60px; background:url(/assets/footer_top.png) no-repeat center top; min-width:960px}
 #footer .footer_content { background:url(/assets/footer_bg.png) }
