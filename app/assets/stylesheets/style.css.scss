@@ -247,17 +247,10 @@ h1 { font-size:22px; color:#4f4f4f}
 .filter_sorter span.sim_check { background:url(/assets/checkbox_bg.png) no-repeat 0px bottom; width:25px; height:26px; display:inline-block; margin-top:1px }
 
 .filter_wraper strong { display:block; color:#828282}
-.filter_wraper #filter1:checked ~ #check1 { background-position:0px 0px; }
-.filter_wraper #filter2:checked ~ #check2 { background-position:0px 0px; }
-.filter_wraper #filter3:checked ~ #check3 { background-position:0px 0px; }
-.filter_wraper #filter4:checked ~ #check4 { background-position:0px 0px; }
-.filter_wraper #filter5:checked ~ #check5 { background-position:0px 0px; }
-.filter_wraper #filter6:checked ~ #check6 { background-position:0px 0px; }
-.filter_wraper #filter7:checked ~ #check7 { background-position:0px 0px; }
-.filter_wraper #filter8:checked ~ #check8 { background-position:0px 0px; }
-.filter_wraper #filter9:checked ~ #check9 { background-position:0px 0px; }
-.filter_wraper #filter10:checked ~ #check10 { background-position:0px 0px; }
-.sorter_wraper #filter11:checked ~ #check11 { background-position:0px 0px; }
+.filter_wraper #metro { display:none}
+
+
+span.sim_check.active { background-position:0px 0px; }
 
 .filter_wraper li, .sorter_wraper { line-height:30px}
 
@@ -271,7 +264,7 @@ h1 { font-size:22px; color:#4f4f4f}
 .filter_wraper .clear_block { border:none; padding:0}
 .filter_wraper .clear_block a { -moz-border-radius:8px; border-radius:8px; -webkit-border-radius:8px; -khtml-border-radius:8px; padding:5px 20px 5px 25px; color:#fff; font-weight:bold; text-decoration:none; display:inline-block; background:#0aaceb url(/assets/close_white.png) no-repeat 7px 9px;}
 
-
+.selected_metro .clear_link {margin-right:10px;}
 
 
 
