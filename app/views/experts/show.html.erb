@@ -2,7 +2,7 @@
   
   <div class="expert_nav">
     <% if @prev = @expert.prev %>
-    <div class="prev_exp">
+    <div class="prev_exp" data-url="<%= expert_path(@prev) %>">
       <div class="exp_cell">
         <div class="thumb">
           <%= link_to image_tag(@prev.photo), @prev %>
@@ -15,7 +15,7 @@
     <% end %>
     
     <% if @next = @expert.next %>
-    <div class="next_exp">
+    <div class="next_exp" data-url="<%= expert_path(@next) %>">
       <div class="exp_cell">
         <div class="thumb">
           <%= link_to image_tag(@next.photo), @next %>
