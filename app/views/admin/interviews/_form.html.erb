@@ -1,7 +1,7 @@
 <%= semantic_form_for [:admin, @interview], html: { multipart: true } do |f| %>
   <%= f.inputs 'Основное' do %>
     <%= f.input :title %>
-    <%= f.input :is_enabled, as: :boolean %>
+    <%= f.input :is_enabled, as: :boolean, :label => "Опубликовать?" %>
     <%= f.input :author, as: :select, collection: User.all, include_blank: false %>
     <%= f.input :review_title %>
     <%= f.input :review %>
