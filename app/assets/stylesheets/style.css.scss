@@ -117,9 +117,9 @@ h1 { font-size:22px; color:#4f4f4f}
 .timer_wrapper .cntSeparator { padding-top:22px; font-weight:bold; color:#af0035; font-size:20px}
 
 .main_content .bank_info { float:right; width:395px; margin-left:3% }
-.main_content .bank_info  .order_bank_catd { background:url(../samp/cards.jpg) no-repeat; padding-top:180px; float:left; width:160px; font-size:12px; text-align:center}
+.main_content .bank_info  .order_bank_catd { background:url(/assets/cards.jpg) no-repeat; padding-top:180px; float:left; width:160px; font-size:12px; text-align:center}
 .main_content .bank_info .bank_text { color:#525252; font-size:14px; float:left; width:225px; text-align:left; margin-left:10px}
-.main_content .bank_info .bank_text .signature { background:url(../samp/signature.jpg) no-repeat 40px 0px; padding:10px 30px 10px 0px; font-size:11px}
+.main_content .bank_info .bank_text .signature { background:url(/assets/signature.jpg) no-repeat 40px 0px; padding:10px 30px 10px 0px; font-size:11px}
 .main_content .adv { float:right; margin-left:3%}
 
 
@@ -437,7 +437,7 @@ h1 { font-size:22px; color:#4f4f4f}
 .post_preview .thumb img { height:275px; width:440px; border-radius:6px;}
 .post_preview .short_desc { font-size:16px; color:#585858; font-family:Futura}
 .post_info { float:left; width:240px; }
-.post_info .description { margin-left:260px;}
+.post_info .description { margin-left:260px; }
 
 .post_info .description h3 { color:#c14425; font-size:18px; font-family:Futura; padding:10px 0px}
 .post_info .description .question-class { color:#343434; font-weight:bold; padding:10px 0px 10px 40px; background:url(/assets/detail_aprroved.png) no-repeat 5px 0px;}
@@ -445,8 +445,10 @@ h1 { font-size:22px; color:#4f4f4f}
 .post_info .thumb { behavior: url(border-radius.htc); -moz-border-radius:10px; border-radius:10px; -webkit-border-radius:10px; -khtml-border-radius:10px; margin-bottom:20px; overflow:hidden}
 
 .post_info .other_link { behavior: url(border-radius.htc); -moz-border-radius:8px; border-radius:8px; -webkit-border-radius:8px; -khtml-border-radius:8px; border:1px solid #dbdbdb; padding:10px; font-size:12px; margin-bottom:20px}
-.post_info .other_link a { font-size:12px;}
+.post_info .other_link a { font-size:12px; background:url(/assets/other_link_ico.png) no-repeat 0px 0px; padding-left:16px;}
 .post_info .other_link .title { font-size:16px; color:#007ba4; font-family:Futura;}
+
+
 
 .post_info .post_share { background:#ffb13b; padding:10px; behavior: url(border-radius.htc); -moz-border-radius:8px; border-radius:8px; -webkit-border-radius:8px; -khtml-border-radius:8px; margin-bottom:20px;}
 .post_info .post_share .title { font-size:16px; color:#654515; font-family:Futura;}
