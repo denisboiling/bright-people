@@ -20,6 +20,7 @@ ActiveAdmin.register Expert do
     f.inputs 'Основное' do
       f.input :name
       f.input :description, input_html: {size: 10}
+      f.input :about
       f.input :photo, as: :file,
                       hint: f.template.image_tag(f.object.photo.url(:medium))
     end
@@ -27,7 +28,7 @@ ActiveAdmin.register Expert do
   end
 
   show do
-    attributes_table :name, :description, :created_at, :updated_at
+    attributes_table :name, :description, :about, :created_at, :updated_at
 
     panel 'Фотография' do
       image_tag(expert.photo.url)
