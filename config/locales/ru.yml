@@ -5,7 +5,11 @@ ru:
     models:
       user: Пользователи
       organization: Организация
-      activity: Кружки
+      activity:
+        one: Кружок
+        few: Кружка
+        many: Кружков
+        other: Кружки
       expert: Экспертный совет
       metro_station: Станция метро
       attach: Фотография
@@ -42,6 +46,8 @@ ru:
       expert:
         name: Имя
         description: Описание
+        about: Биография
+        photo: Фотография
         created_at: Дата создания
         updated_at: Дата обновления
       activity_photo:
@@ -50,18 +56,22 @@ ru:
         url: Ссылка на видео
       interview:
         title: Заголовок
+        short_description: Краткое описание
+        review: Ревью
+        review_title: Заголовок ревью
         author: Автор
+        picture: Прикрепленная фотография
         content: Контент
-        interview_tag_list: Таги
+        interview_tag_list: Тэги
       contest:
         name: Название
         category: Категория
         
   age:
-    one: '%{count} Года'
-    few: '%{count} Лет'
-    many: '%{count} Лет'
-    other: '%{count} Лет'
+    one: '%{count} года'
+    few: '%{count} лет'
+    many: '%{count} лет'
+    other: '%{count} лет'
   vote:
     one: '%{count} голос'
     few: '%{count} голоса'
