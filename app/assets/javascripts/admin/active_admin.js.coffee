@@ -62,6 +62,14 @@ setup_wysihtml5_editor = ->
     new wysihtml5.Editor "activity_parent_activities", 
                               toolbar: "wysihtml5-toolbar-parent-activities",
                               parserRules: wysihtml5ParserRules
+  if $('#article_short_description').length != 0
+    new wysihtml5.Editor "article_short_description", 
+                              toolbar: "wysihtml5-toolbar-article-short",
+                              parserRules: wysihtml5ParserRules
+  if $('#interview_short_description').length != 0
+    new wysihtml5.Editor "interview_short_description", 
+                              toolbar: "wysihtml5-toolbar-interview-short",
+                              parserRules: wysihtml5ParserRules
   if $('#interview_content').length != 0
     new wysihtml5.Editor "interview_content", 
                               toolbar: "wysihtml5-toolbar-interview",

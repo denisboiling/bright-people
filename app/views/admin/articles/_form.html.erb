@@ -2,12 +2,43 @@
   <%= f.inputs 'Основное' do %>
     <%= f.input :title %>
     <%= f.input :author, as: :select, collection: User.all %>
+    <div id="wysihtml5-toolbar-article-short" style="display: none;">
+      <a data-wysihtml5-command="bold">bold</a>
+      <a data-wysihtml5-command="italic">italic</a>
+      <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="div">question</a>
+      <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h3">intermediate header</a>
+      <a data-wysihtml5-command="insertImage">insert image</a>
+      <div data-wysihtml5-dialog="insertImage" style="display: none;">
+        <label>
+          Image:<input data-wysihtml5-dialog-field="src" value="">
+        </label>
+        <a data-wysihtml5-dialog-action="save">OK</a>
+        <a data-wysihtml5-dialog-action="cancel">Cancel</a>
+      </div>
+  
+      <a data-wysihtml5-command="createLink">insert link</a>
+      <div data-wysihtml5-dialog="createLink" style="display: none;">
+        <label>
+          Link:<input data-wysihtml5-dialog-field="href" value="http://" class="text">
+        </label>
+        <a data-wysihtml5-dialog-action="save">OK</a> <a data-wysihtml5-dialog-action="cancel">Cancel</a>
+      </div>
+    </div>
     <%= f.input :short_description, input_html: {size: 5} %>
     <div id="wysihtml5-toolbar-article" style="display: none;">
       <a data-wysihtml5-command="bold">bold</a>
       <a data-wysihtml5-command="italic">italic</a>
       <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h3">intermediate header</a>
       <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="blockquote">quote</a>
+
+      <a data-wysihtml5-command="insertImage">insert image</a>
+      <div data-wysihtml5-dialog="insertImage" style="display: none;">
+        <label>
+          Image:<input data-wysihtml5-dialog-field="src" value="">
+        </label>
+        <a data-wysihtml5-dialog-action="save">OK</a>
+        <a data-wysihtml5-dialog-action="cancel">Cancel</a>
+      </div>
   
       <a data-wysihtml5-command="createLink">insert link</a>
       <div data-wysihtml5-dialog="createLink" style="display: none;">
@@ -19,7 +50,7 @@
     </div>
     <%= f.input :content, input_html: {size: 10} %>
     <%= f.input :picture, as: :file, hint: f.template.image_tag(f.object.picture.url(:medium)) %>
-    <%= f.input :article_category, as: :select, collection: ArticleCategory.all %>
+    <%= f.input :category, as: :select, collection: ArticleCategory.all %>
     <%= f.input :article_tag_list %>
   <% end %>
   <%= f.buttons %>
