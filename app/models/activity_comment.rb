@@ -4,7 +4,7 @@ class ActivityComment < ActiveRecord::Base
   belongs_to :activity
 
   has_attached_file :picture,
-  styles: { medium: "300x300>", thumb: "100x100>" },
+  styles: { medium: "300x300>", thumb: "84x84#" },
   path: ":rails_root/public/system/activity_comments/:attachment/:id/:style/:filename",
   url: "/system/activity_comments/:attachment/:id/:style/:filename",
   default_style: :thumb
