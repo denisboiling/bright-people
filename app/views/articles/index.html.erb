@@ -28,8 +28,10 @@
           <strong>Показывать только материалы по следующим темам:</strong>
           <ul>
             <% @categories.each do |category| %>
-            <li>
-              <input type="checkbox" id="category_<%= category.id %>_checkbox" />
+            <li class="articles_category">
+              <input type="checkbox"
+                     id="category_<%= category.id %>_checkbox"
+                     data-id="<%= category.id %>"/>
               <span class="sim_check"></span>
               <label for="category_<%= category.id %>_checkbox">
                 <%= category.title %>
@@ -65,25 +67,12 @@
   </div>
   
   <div class="common">
-  <% @articles.each do |article| %>
-    <div class="preview_cell">
-      <div class="info">
-        <div class="cat_name">
-          <span><%= article.category.title %></span>
-        </div>
-        <div class="thumb">
-          <%= link_to image_tag(article.picture), article %>
-        </div>
-        <div class="name">
-          <%= link_to article.title, article %>
-        </div>
-        <div class="date">
-          <%= article.created_at.to_s(:main) %>
-        </div>
-      </div>
+    <div class="articles_container">
+      <%= render 'articles_list', articles: @articles %>
     </div>
-  <% end %>
+    <%= paginate @articles %>
+    <div class="clear"></div>
+    
   </div>
-  <div class="clear">
-  </div>
+  
 </div>
