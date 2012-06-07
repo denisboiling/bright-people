@@ -11,6 +11,8 @@ ActiveAdmin.register Interview do
         link_to image_tag(interview.picture.url(:thumb), alt: interview.title), admin_interview_path(interview)
     end
     column :title
+    column :review_title
+    column :review
     column :author
     default_actions
   end
@@ -18,7 +20,7 @@ ActiveAdmin.register Interview do
   form :partial => "form"
 
   show do
-    attributes_table :title, :author, :content, :short_description, :interview_tag_list
+    attributes_table :title, :author, :review_title, :review, :content, :short_description, :interview_tag_list
 
     panel 'Фотография' do
       image_tag(interview.picture.url)

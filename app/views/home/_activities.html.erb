@@ -1,0 +1,25 @@
+<div class="">
+  <div class="moscow_agencies">
+    <div class="title">Детские учреждения Москвы
+      <%= link_to 'Образовательные', activities_path(kind: 'educational'), class: 'title_link globe' %>
+      <%= link_to 'Развлекательные', activities_path(kind: 'entertainment'), class: 'title_link balloon' %>
+    </div>
+
+    <% Activity.for_main.each do |activity| %>
+      <div class="preview_agencies">
+        <div class="info">
+	    <div class="thumb"><%= link_to image_tag(activity.logo.url), '#'%></div>
+	    <div class="name"><%= link_to activity.title, '#'%></div>
+          <div class="geo">Юго-Восток</div>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="clear"></div>
+
+  </div>
+  <div class="socialnet">
+
+  </div>
+  <div class="clear"></div>
+</div>

@@ -51,7 +51,8 @@ class Main < ActiveRecord::Migration
   end
 
   create_table(:activity_votes) do |t|
-    t.integer :activity_id, :user_id, :rate
+    t.integer :activity_id, :user_id
+    t.float :rate, default: 0.0, null: false
 
     t.timestamps
   end
@@ -184,6 +185,8 @@ class Main < ActiveRecord::Migration
   create_table :interviews do |t|
     t.string :title
     t.integer :author_id
+    t.text :review
+    t.string :review_title
     t.text :content, :short_description
     t.has_attached_file :picture
     t.timestamps
