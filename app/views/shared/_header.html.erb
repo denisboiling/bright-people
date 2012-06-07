@@ -14,7 +14,7 @@
     18 августа 2012<br />
     в Парке Горького
   </div>
-  <div class="logo"><a href=""><img src="/assets/logo.png" alt="" /></a></div>
+  
   <div class="social_login">
 
     <% unless current_user %>
@@ -32,6 +32,7 @@
     </div>
 
   </div>
+  <div class="logo"><a href=""><img src="/assets/logo.png" alt="" /></a></div>
 
   <div class="clear"></div>
 </div>
@@ -42,7 +43,7 @@
       <li><%= link_to 'Москва для детей', '#' %></li>
       <li><%= link_to 'Вопрос специалисту', '#' %></li>
       <li><%= link_to 'Журнал', '#' %></li>
-      <li class="current"><%= link_to 'Фестиваль', '#' %></li>
+      <li class="current"><%= link_to 'Фестиваль', '#' %>
       <div class="sub_menu">
         <ul>
           <li><a href="">Новости фестиваля</a></li>
@@ -51,6 +52,7 @@
           <li><a href="">Оргкомитет</a></li>
         </ul>
       </div>
+      </li>
       <li><%= link_to 'Конкурсы', contests_path %></li>
       <li><%= link_to 'Экспертный совет', experts_path %></li>
       <li><%= link_to 'Спецпроект', special_projects_path %></li>
