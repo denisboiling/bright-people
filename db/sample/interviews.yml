@@ -4,5 +4,6 @@ interview_<%= i %>:
   title: <%= Faker::Lorem.words.join(' ') %>
   content: "<%= Faker::Lorem.paragraphs(5).join('\n') %>"
   short_description: "<%= Faker::Lorem.paragraphs(1).join('\n') %>"
-  author: <%= Faker::Name.name %>
+  review: "<%= Faker::Lorem.paragraphs(1).join('\n') %>"
+  review_title: <%= Faker::Lorem.words.join(' ') %>
 <% end %>

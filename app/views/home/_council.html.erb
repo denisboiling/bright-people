@@ -1,0 +1,75 @@
+<div class="council">
+  <div class="expert">
+    <div class="title">Экспертный совет
+      <%= link_to 'Все эксперты', experts_path, class: :title_link %>
+    </div>
+
+    <% Expert.for_main.each do |expert| %>
+      <div class="exp_preview">
+        <%= link_to expert_path(expert) do %>
+          <div class="thumb">
+            <%= image_tag(expert.photo.url) %>
+          </div>
+          <span class="name"><%= expert.name %></span>
+        <% end %>
+        <span class="info"><%= expert.description %></span>
+      </div>
+    <% end %>
+
+  </div>
+  <div class="trustee">
+    <div class="title">Попечительский совет</div>
+
+    <!-- Slider Setup -->
+
+    <input class="hidden" checked type="radio" name="slider" id="slide1" />
+    <input class="hidden" type="radio" name="slider" id="slide2" />
+    <input class="hidden" type="radio" name="slider" id="slide3" />
+    <input class="hidden" type="radio" name="slider" id="slide4" />
+    <input class="hidden" type="radio" name="slider" id="slide5" />
+
+    <!-- The Slider -->
+
+    <div id="slides">
+
+      <div id="overflow">
+
+        <div class="inner">
+          <% Sponsor.all.each do |sponsor| %>
+            <article>
+              <%= link_to image_tag(sponsor.photo.url), sponsor_path(sponsor), class: :thumb %>
+              <div class="info">
+                <%= sponsor.first_name %><br /><span><%= sponsor.last_name.upcase %></span><br />
+                <%= link_to 'Весь совет', sponsors_path, class: :all_trustee %>
+              </div>
+            </article>
+          <% end %>
+
+          <div class="clear"></div>
+        </div> <!-- .inner -->
+
+      </div> <!-- #overflow -->
+
+    </div> <!-- #slides -->
+
+
+    <!-- Controls and Active Slide Display -->
+
+    <div id="controls">
+      <label for="slide1"></label>
+      <label for="slide2"></label>
+      <label for="slide3"></label>
+      <label for="slide4"></label>
+      <label for="slide5"></label>
+    </div> <!-- #controls -->
+
+    <div id="active" class="hidden">
+      <label for="slide1"></label>
+      <label for="slide2"></label>
+      <label for="slide3"></label>
+      <label for="slide4"></label>
+      <label for="slide5"></label>
+    </div> <!-- #active -->
+  </div>
+  <div class="clear"></div>
+</div>

@@ -1,11 +1,12 @@
 class Interview < ActiveRecord::Base
-  attr_accessible :title, :content, :author, :interview_tag_list, :picture, :short_description
+  attr_accessible :title, :content, :interview_tag_list, :picture, :short_description, :author_id, :review, :review_title
 
   acts_as_taggable_on :interview_tags
 
   validates :title, :content, :author, presence: :true
 
   has_many :comments, as: :relation
+  belongs_to :author, class_name: 'User'
 
   has_attached_file :picture,
                     styles: { medium: "300x300>", thumb: "160x100>" },

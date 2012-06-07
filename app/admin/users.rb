@@ -16,6 +16,7 @@ ActiveAdmin.register User do
     f.inputs 'Основное' do
       f.input :email
       f.input :role, as: :select, collection: Role.all
+      f.input :description
       f.buttons
     end
   end

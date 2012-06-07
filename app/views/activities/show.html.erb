@@ -1,4 +1,3 @@
-<div id="center">
   <div class="pages">
 
     <div class="common">
@@ -61,158 +60,150 @@
         </div>
 
         <div class="right_part">
-
-
-          <div class="pikachoose">
-            <div class="mask"></div>
-            <ul id="pikame" class="jcarousel-skin-pika">
-              <% @activity.photos.each do |photo| %>
-                <li><%= link_to image_tag(photo.attach.url), '#' %></li>
-              <% end %>
-            </ul>
-          </div>
-
-          <script language="javascript">
-            $(document).ready(
-            function (){
-            $("#pikame").PikaChoose({carousel:true, autoPlay:false});
-            });
-          </script>
-
-        </div>
-        <div class="clear"></div>
-
-        <div class="title_block">О кружке</div>
-        <div><%= simple_format @activity.description %></div>
-
-        <div class="dop_info">
-          <span class="dop_title">Стоимость и длительность</span>
-          <%= simple_format @activity.cost %>
-        </div>
-        <div class="dop_info">
-          <span class="dop_title">Чем заняться родителю</span>
-          <%= simple_format @activity.parent_activities %>
-        </div>
-        <div class="dop_info">
-          <span class="dop_title">Дополнительно</span>
-          <%= simple_format @activity.additional_information %>
-        </div>
-        <div class="clear"></div>
-
-
-        <div class="title_block">Расписание занятий</div>
-        <div class="schedule">
-          <table>
-            <thead>
-              <tr>
-                <th class="first">Пн</th>
-                <th>Вт</th>
-                <th>Ср</th>
-                <th>Чт</th>
-                <th>Пт</th>
-                <th>Сб</th>
-                <th class="last">Вс</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td></td>
-                <td class="work_time">20:30—21:30</td>
-                <td class="work_time">20:30—21:30</td>
-                <td></td>
-                <td></td>
-                <td class="work_time">20:30—21:30</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td class="work_time">20:30—21:30</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td class="work_time">20:30—21:30</td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="title_block">Здесь работают</div>
-
-        <div id="ruk_slider">
-          <div class="slides_container">
-            <% @activity.teachers.each do |teacher| %>
-              <div class="slide">
-                <div class="thumb">
-                  <span class="mask"></span>
-                  <%= image_tag teacher.photo.url %>
-                </div>
-                <div class="info">
-                  <div class="name"><%= teacher.name %></div>
-                  <%= teacher.description %>
-                </div>
-              </div>
+        <div class="pikachoose">
+          <div class="mask"></div>
+          <ul id="pikame" class="jcarousel-skin-pika">
+            <% @activity.photos.each do |photo| %>
+              <li><%= link_to image_tag(photo.attach.url), '#' %></li>
             <% end %>
-          </div>
-          <a href="" class="next">Вперед</a>
-          <a href="" class="prev">Назад</a>
-        </div>
-
-
-        <div class="title_block">Отзывы родителей</div>
-        <div class="comment">
-          <ul>
-	    <%= render 'activity_comment', comments: @activity.activity_comments.parents %>
-          </ul>
-
-          <div class="more_comment">
-            <a href="">Загрузить еще 5 отзывов</a>
-          </div>
-
-        </div>
-
-        <div class="title_block">Отзывы детей</div>
-        <div class="comment">
-          <ul>
-	    <%= render 'activity_comment', comments: @activity.activity_comments.childrens %>
           </ul>
         </div>
+
+        <script language="javascript">
+          $(document).ready(
+          function (){
+          $("#pikame").PikaChoose({carousel:true, autoPlay:false});
+          });
+        </script>
+
+      </div>
+      <div class="clear"></div>
+
+      <div class="title_block">О кружке</div>
+      <div><%= simple_format @activity.description %></div>
+
+      <div class="dop_info">
+        <span class="dop_title">Стоимость и длительность</span>
+        <%= simple_format @activity.cost %>
+      </div>
+      <div class="dop_info">
+        <span class="dop_title">Чем заняться родителю</span>
+        <%= simple_format @activity.parent_activities %>
+      </div>
+      <div class="dop_info">
+        <span class="dop_title">Дополнительно</span>
+        <%= simple_format @activity.additional_information %>
+      </div>
+      <div class="clear"></div>
+
+      <div class="title_block">Расписание занятий</div>
+      <div class="schedule">
+        <table>
+          <thead>
+            <tr>
+              <th class="first">Пн</th>
+              <th>Вт</th>
+              <th>Ср</th>
+              <th>Чт</th>
+              <th>Пт</th>
+              <th>Сб</th>
+              <th class="last">Вс</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td class="work_time">20:30—21:30</td>
+              <td class="work_time">20:30—21:30</td>
+              <td></td>
+              <td></td>
+              <td class="work_time">20:30—21:30</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td class="work_time">20:30—21:30</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="work_time">20:30—21:30</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
+      <div class="title_block">Здесь работают</div>
 
-      <div class="share_block">Делись с друзьями</div>
+      <div id="ruk_slider">
+        <div class="slides_container">
+          <% @activity.teachers.each do |teacher| %>
+            <div class="slide">
+              <div class="thumb">
+                <span class="mask"></span>
+                <%= image_tag teacher.photo.url %>
+              </div>
+              <div class="info">
+                <div class="name"><%= teacher.name %></div>
+                <%= teacher.description %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <a href="" class="next">Вперед</a>
+        <a href="" class="prev">Назад</a>
+      </div>
 
+      <div class="title_block">Отзывы родителей</div>
+      <div class="comment">
+        <ul>
+          <%= render 'activity_comment', comments: @activity.activity_comments.parents %>
+        </ul>
+
+        <div class="more_comment">
+          <a href="">Загрузить еще 5 отзывов</a>
+        </div>
+
+      </div>
+
+      <div class="title_block">Отзывы детей</div>
+      <div class="comment">
+        <ul>
+          <%= render 'activity_comment', comments: @activity.activity_comments.childrens %>
+        </ul>
+      </div>
     </div>
-    <div class="sidebar">
-      <% if @activity.approved? %>
-	<% expert = @activity.expert %>
-	<div class="expert_opinion">
-          <div class="title">Мнение эксперта</div>
-          <div class="thumb"><%= link_to image_tag(expert.photo.url), expert_path(expert) %></div>
-          <div class="name"><%= expert.name %></div>
+    <div class="share_block">Делись с друзьями</div>
+  </div>
+  
+  <div class="sidebar">
+    <% if @activity.approved? %>
+      <% expert = @activity.expert %>
+      <div class="expert_opinion">
+        <div class="title">Мнение эксперта</div>
+        <div class="thumb"><%= link_to image_tag(expert.photo.url), expert_path(expert) %></div>
+        <div class="name"><%= expert.name %></div>
 
-          <div class="info"><%= expert.description %></div>
-          <div class="quote">
-	    <%= @activity.approval.text %>
-          </div>
-	</div>
-      <% end %>
+        <div class="info"><%= expert.description %></div>
+        <div class="quote">
+          <%= @activity.approval.text %>
+        </div>
+      </div>
+    <% end %>
 
       <div class="alongside">
         <div class="title">Еще места рядом</div>
-        <ul>
-	  <% @activity.place_near.each do |activity| %>
-	    <li>
-              <span class="thumb"><%= link_to image_tag(activity.logo.url), activity_path(activity) %></span>
-              <span class="name"><%= link_to activity.title, activity_path(activity) %></span>
-              <span class="geo"><%= activity.region.title %></span>
-            </li>
-	  <% end %>
-        </ul>
-      </div>
-
-
+      <ul>
+        <% @activity.place_near.each do |activity| %>
+        <li>
+          <span class="thumb"><%= link_to image_tag(activity.logo.url), activity_path(activity) %></span>
+          <span class="name"><%= link_to activity.title, activity_path(activity) %></span>
+          <span class="geo"><%= activity.region.title %></span>
+        </li>
+      <% end %>
+      </ul>
     </div>
-    <div class="clear"></div>
   </div>
+  <div class="clear"></div>
 </div>
+

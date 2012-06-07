@@ -1,6 +1,40 @@
-<% @favourites.each do |favourite| %>
- <p>
-    <%=link_to favourite.url, favourite.url %>
-    <%= link_to "delete", favourite, method: :delete, confirm: "You sure?" %>
-  </p>
-<% end %>
+
+<div class="pages">
+  <div class="common">
+    <h1>Личное пространство</h1>
+    Здесь мы храним для вас все ваши комментарии, избранные страницы и прочее
+    <div class="post_category_menu">
+      <ul>
+        <li class="profile_ico">
+          <a href="/profile">Профиль</a>
+        </li>
+        <li class="comment_ico">
+          <a href="">Комментарии</a>
+        </li>
+        <li class="fav_ico active">
+          <a href="/favourites">Избранное</a>
+        </li>
+      </ul>
+      <div class="clear"></div>
+    </div>
+    <div class="title">Избранные материалы яркого журнала</div>
+    <% @favourites.each do |favourite| %>
+      <div class="profile_magazine">
+        <div class="info">
+          <%= link_to "delete", favourite, method: :delete, confirm: "You sure?", :class => "close" %>
+          <div class="thumb">
+            <a href=""><img src="samp/samp_1.jpg" style="background-image: url("file:///home/khodzha/Documents/bp%20samples/samp/samp_1.jpg");"></a>
+          </div>
+          <div class="name">
+            <%=link_to favourite.url, favourite.url %>
+          </div>
+          <div class="date">27.03.2012</div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="sidebar">
+  </div>
+  <div class="clear"></div>
+</div>
+

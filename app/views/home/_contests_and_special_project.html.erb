@@ -1,0 +1,36 @@
+<div class="tender_and_spec">
+  <div class="tender_last">
+    <div class="title">
+      Конкурсы
+      <span class="tender_title_ico"></span>
+    </div>
+    <% if contest = Contest.for_main %>
+      <div class="preview_tender">
+        <div class="thumb"><%= link_to image_tag(contest.picture.url), contest_path(contest) %></div>
+        <div class="name"><%= link_to contest.name, contest_path(contest) %></div>
+        <div class="info"><%= simple_format contest.description %></div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="spec_project_last">
+    <div class="title">Спецпроекты</div>
+    <% SpecialProject.for_main.each do |sp| %>
+      <div class="preview_cell">
+        <div class="info">
+          <div class="cat_name"><span><%= sp.title %></span></div>
+          <div class="thumb"><%= link_to image_tag(sp.picture.url), special_project_path(sp) %></div>
+          <div class="name">
+            <%= link_to truncate(sp.content), special_project_path(sp) %>
+            <span class="desc">Классический по мотивам</span>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  
+    <div class="clear"></div>
+  </div>
+  
+  <div class="clear"></div>
+</div>
+
