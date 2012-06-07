@@ -187,6 +187,7 @@ class Main < ActiveRecord::Migration
     t.integer :author_id
     t.text :review
     t.string :review_title
+    t.boolean :is_enabled
     t.text :content, :short_description
     t.has_attached_file :picture
     t.timestamps
