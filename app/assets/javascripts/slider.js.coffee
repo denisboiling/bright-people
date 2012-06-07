@@ -30,3 +30,7 @@ window.setup_slider = ->
   $("#slider_fest").slides
     next: "next"
     prev: "prev"
+    
+  $("#slider_org").slides
+    next: "next"
+    prev: "prev"
