@@ -274,7 +274,8 @@ span.sim_check.active { background-position:0px 0px; }
 .catalog .preview_catalog { float:left; width:20%; margin:20px 0px;  }
 .catalog .preview_catalog .thumb { width:186px; -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; overflow:hidden; position:relative; margin:0px 0px 10px 0px}
 .catalog .preview_catalog .thumb img { height:114px; width:186px; border-radius:6px;}
-.catalog .preview_catalog .name { padding:4px 0px}
+.catalog .preview_catalog .name { padding:4px 0px; height:35px; overflow:hidden}
+.catalog .preview_catalog .short_desc {height:40px; overflow:hidden}
 .catalog .preview_catalog .name a { font-size:14px; font-weight:bold; color:#007ba4; text-decoration:none; line-height:1.2; }
 .catalog .preview_catalog .info { width:186px; font-size:12px; position:relative}
 .catalog .preview_catalog.approved { width:40%}
