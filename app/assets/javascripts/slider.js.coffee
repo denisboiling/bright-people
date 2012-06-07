@@ -23,6 +23,10 @@ window.setup_slider = ->
     $("#nested_slider .slider").fadeOut 300
     $("#nested_slider #" + currentSlider).fadeIn 300
 
+  $("#ruk_slider").slides
+    next: "next"
+    prev: "prev"
+
   $("#slider_news").slides
     next: "next"
     prev: "prev"

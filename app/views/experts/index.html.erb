@@ -13,7 +13,7 @@
         <div class="thumb">
           <%= link_to image_tag(expert.photo), expert %>
         </div>
-        <span class="name"><%= expert.name %></span>
+        <span class="name"><%= link_to expert.name, expert %></span>
         <span class="info"><%= expert.description %></span>
       </div>
     <% end %>
