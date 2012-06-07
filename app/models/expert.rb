@@ -5,7 +5,8 @@ class Expert < ActiveRecord::Base
   has_many :approved, through: :activity_approvals, class_name: 'Activity'
 
   has_attached_file :photo,
-                    styles: { medium: "300x300>", thumb: '125x125' },
+                    styles: { medium: "300x300^#", thumb: '125x125^#' },
+                    convert_options: {  },
                     path: ":rails_root/public/system/experts/:attachment/:id/:style/:filename",
                     url: "/system/experts/:attachment/:id/:style/:filename",
                     default_style: :thumb
