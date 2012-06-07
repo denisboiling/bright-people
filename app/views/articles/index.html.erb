@@ -1,6 +1,90 @@
-<% @categories.each do |category| %>
-  <h1><%=link_to category.title, category %></h1>
-  <% category.articles.each do |article| %>
-    <p><%= link_to article.title, article %></p>
-  <% end %>
-<% end %>
+<div id="center">
+  <div class="post_list">
+    <h1>Статьи</h1>
+     С блекджеком и шлюхами
+    <div class="post_category_menu">
+      <ul>
+        <li><a href="">Все</a></li>
+        <li><a href="">Статьи</a></li>
+        <li class="active"><a href="">Интервью</a></li>
+        <li><a href="">Новости Москвы</a></li>
+      </ul>
+      <div class="clear">
+      </div>
+    </div>
+    
+    <div class="sorter_wraper">
+      <div class="cell">
+         Сортировать по <span class="sort_date">дате добавления</span> или <span class="sort_comment">количеству комментариев</span>
+      </div>
+      <div class="clear">
+      </div>
+    </div>
+    
+    <div class="sidebar">
+      <div class="filter_sorter">
+        <div class="filter_wraper">
+          <div class="cell">
+            <strong>Показывать только материалы по следующим темам:</strong>
+            <ul>
+              <% @categories.each do |category| %>
+              <li>
+                <input type="checkbox" id="category_<%= category.id %>_checkbox" />
+                <span class="sim_check"></span>
+                <label for="category_<%= category.id %>_checkbox">
+                  <%= category.title %>
+                </label>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="alongside">
+        <div class="title">
+          Еще места рядом
+        </div>
+        <ul>
+          <li>
+          <span class="thumb"><a href=""><img src="samp/samp_1.jpg" alt="" /></a></span>
+          <span class="name"><a href="">Центр детских проектов и разработок "Шардам"</a></span>
+          <span class="geo">Северо-Восток</span>
+          </li>
+          <li>
+          <span class="thumb"><a href=""><img src="samp/samp_1.jpg" alt="" /></a></span>
+          <span class="name"><a href="">Центр детских проектов и разработок "Шардам"</a></span>
+          <span class="geo">Северо-Восток</span>
+          </li>
+          <li>
+          <span class="thumb"><a href=""><img src="samp/samp_1.jpg" alt="" /></a></span>
+          <span class="name"><a href="">Центр детских проектов и разработок "Шардам"</a></span>
+          <span class="geo">Северо-Восток</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="common">
+    <% @articles.each do |article| %>
+      <div class="preview_cell">
+        <div class="info">
+          <div class="cat_name">
+            <span><%= article.category.title %></span>
+          </div>
+          <div class="thumb">
+            <%= link_to image_tag(article.picture), article %>
+          </div>
+          <div class="name">
+            <%= link_to article.title, article %>
+          </div>
+          <div class="date">
+            <%= article.created_at.to_s(:main) %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    </div>
+    <div class="clear">
+    </div>
+  </div>
+</div>
