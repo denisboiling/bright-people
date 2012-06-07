@@ -61,14 +61,18 @@
 
         <div class="right_part">
         <div class="pikachoose">
-          <div class="mask"></div>
-          <ul id="pikame" class="jcarousel-skin-pika">
-            <% @activity.photos.each do |photo| %>
-              <li><%= link_to image_tag(photo.attach.url(:slider)), '#' %></li>
-            <% end %>
-          </ul>
+	  <% if @activity.photos.count == 1 %>
+	    <div class="mask"></div>
+	    <%= link_to image_tag(@activity.photos.last.attach.url(:slider)), '#' %>
+	  <% elsif  @activity.photos.count > 1 %>
+	    <div class="mask"></div>
+            <ul id="pikame" class="jcarousel-skin-pika">
+              <% @activity.photos.each do |photo| %>
+		<li><%= link_to image_tag(photo.attach.url(:slider)), '#' %></li>
+              <% end %>
+            </ul>
+	  <% end %>
         </div>
-
         <script language="javascript">
           $(document).ready(
           function (){
@@ -156,21 +160,25 @@
 
       <div class="title_block">Отзывы родителей</div>
       <div class="comment">
-        <ul>
-          <%= render 'activity_comment', comments: @activity.activity_comments.parents %>
+        <ul class="parent_comment">
+          <%= render 'activity_comment', comments: @activity.activity_comments.parents.first(5) %>
         </ul>
 
         <div class="more_comment">
-          <a href="">Загрузить еще 5 отзывов</a>
+          <a href="#" data-type="parents" data-page="1" class="load_comments">Загрузить еще 5 отзывов</a>
         </div>
 
       </div>
 
       <div class="title_block">Отзывы детей</div>
       <div class="comment">
-        <ul>
-          <%= render 'activity_comment', comments: @activity.activity_comments.childrens %>
+        <ul class="children_comment">
+          <%= render 'activity_comment', comments: @activity.activity_comments.childrens.first(5) %>
         </ul>
+
+	<div class="more_comment">
+          <a href="#" data-type="childrens" data-page="1" class="load_comments">Загрузить еще 5 отзывов</a>
+        </div>
       </div>
     </div>
     <div class="share_block">Делись с друзьями</div>

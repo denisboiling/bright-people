@@ -31,7 +31,7 @@
 	<%= select_tag 'metro_faker_select', options_from_collection_for_select(MetroStation.all, :id, :title), 
 	    id: :select_metro, prompt: 'Выбирите метро' %>
 
-	<select id="metro" multiple="multiple" name="metro[]"></select>
+	<div><select id="metro" multiple="multiple" name="metro[]"></select></div>
 
 	Вы выбрали:
 	<div class="selected_metro">

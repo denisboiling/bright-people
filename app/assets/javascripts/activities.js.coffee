@@ -24,6 +24,6 @@ window.setup_activities_list = ->
     selected = $("select option:selected").first()
     val = $(selected).val()
     text = $(selected).text()
-    $("div.selected_metro").append("<a class='clear_link' href='' " + 'data-val=' + val + ">" + text + "</a>")
+    $("div.selected_metro").append("<a class='clear_link' href='' " + 'data-val=' + val + ">" + text + "</a> ")
     $("select#metro").append(selected)
     $("#remote_form").submit()
