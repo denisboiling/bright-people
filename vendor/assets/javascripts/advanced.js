@@ -128,9 +128,8 @@ var wysihtml5ParserRules = {
             "rename_tag": "div"
         },
         "h4": {
-            "add_class": {
-                "align": "align_text"
-            }
+            "rename_tag": "div",
+            "set_class": "question-class"
         },
         "em": {},
         "title": {
@@ -258,7 +257,6 @@ var wysihtml5ParserRules = {
             "remove": 1
         },
         "div": {
-            "set_class": "question-class"
         },
         "option": {
             "rename_tag": "span"
