@@ -1,63 +1,65 @@
+  <div class="pages">
 
-<div class="pages">
-  <div class="common">
-    <div class="detail_page">
-      <h1><%= @activity.title %>
-        <% if @activity.participant? %>
-          <span class="mark">Участник фестиваля!</span>
-        <% end %>
-      </h1>
+    <div class="common">
 
-      <div class="base">На базе учреждения: <%= @activity.organization.title %></div>
-      <div class="cat_list">
-        Категории:
-        <% @activity.direction_tags.each do |tag| %>
-          <%= link_to tag.name, '#' %>
-        <% end %>
-      </div>
+      <div class="detail_page">
 
-      <div class="left_part">
-        <% if @activity.approved? %>
-          <div class="approved_mark">
-            <img src="/assets/detail_aprroved.png" alt="" />Одобрено экспертом
+        <h1><%= @activity.title %>
+          <% if @activity.participant? %>
+            <span class="mark">Участник фестиваля!</span>
+          <% end %>
+        </h1>
+
+        <div class="base">На базе учреждения: <%= @activity.organization.title %></div>
+        <div class="cat_list">
+          Категории:
+          <% @activity.direction_tags.each do |tag| %>
+            <%= link_to tag.name, '#' %>
+          <% end %>
+        </div>
+
+        <div class="left_part">
+          <% if @activity.approved? %>
+            <div class="approved_mark">
+              <img src="/assets/detail_aprroved.png" alt="" />Одобрено экспертом
+            </div>
+          <% end %>
+
+          <div class="age_block">
+            <span class="name">Возраст<br />детей</span><br />
+            <span class="age">от <%= t(:age, :count => @activity.min_age) %></span>
           </div>
-        <% end %>
+          <div class="rating_block">
+            <span class="name">Рейтинг родителей</span>
+            <div class="rating" data-rating="<%= @activity.users_rating %>" data-activity-id="<%= @activity.users_rating %>">Звезды</div>
+            <%= render partial: 'vote_count' %><br />
+            <a href="">Отменить</a>
+          </div>
+          <div class="clear"></div>
 
-        <div class="age_block">
-          <span class="name">Возраст<br />детей</span><br />
-          <span class="age">от <%= t(:age, :count => @activity.min_age) %></span>
+          <div class="info_block">
+            <table>
+              <tr>
+                <th><span>Метро</span></th>
+                <td><%= @activity.metro_station.title %><br />
+              </tr>
+              <tr>
+                <th><span>Адрес</span></th>
+                <td><a class="to_map_link" href=""><%= @activity.address %><span></span></a></td>
+              </tr>
+              <tr>
+                <th><span>Сайт</span></th>
+                <td><%= link_to @activity.site, @activity.site %></td>
+              </tr>
+              <tr>
+                <th><span>Телефон</span></th>
+                <td><%= @activity.phone %></td>
+              </tr>
+            </table>
+          </div>
         </div>
-        <div class="rating_block">
-          <span class="name">Рейтинг родителей</span>
-          <div class="rating">Звезды</div>
-          <span>523 голоса</span><br />
-          <a href="">Отменить</a>
-        </div>
-        <div class="clear"></div>
 
-        <div class="info_block">
-          <table>
-            <tr>
-              <th><span>Метро</span></th>
-              <td><%= @activity.metro_station.title %><br />
-            </tr>
-            <tr>
-              <th><span>Адрес</span></th>
-              <td><a class="to_map_link" href=""><%= @activity.address %><span></span></a></td>
-            </tr>
-            <tr>
-              <th><span>Сайт</span></th>
-              <td><%= link_to @activity.site, @activity.site %></td>
-            </tr>
-            <tr>
-              <th><span>Телефон</span></th>
-              <td><%= @activity.phone %></td>
-            </tr>
-          </table>
-        </div>
-      </div>
-
-      <div class="right_part">
+        <div class="right_part">
         <div class="pikachoose">
           <div class="mask"></div>
           <ul id="pikame" class="jcarousel-skin-pika">

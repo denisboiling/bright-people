@@ -51,7 +51,8 @@ class Main < ActiveRecord::Migration
   end
 
   create_table(:activity_votes) do |t|
-    t.integer :activity_id, :user_id, :rate
+    t.integer :activity_id, :user_id
+    t.float :rate, default: 0.0, null: false
 
     t.timestamps
   end

@@ -57,3 +57,8 @@ ru:
     few: '%{count} Лет'
     many: '%{count} Лет'
     other: '%{count} Лет'
+  vote:
+    one: '%{count} голос'
+    few: '%{count} голоса'
+    many: '%{count} голосов'
+    other: '%{count} голосов'
