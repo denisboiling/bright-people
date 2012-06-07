@@ -1,4 +1,12 @@
-<% 1.upto(20).each do |i| %>
+<% 1.upto(5).each do |i| %>
 photo_<%= i %>:
-  activity_id: <%= rand(20) + 1 %>
+  activity_id: 1
 <% end %>
+
+<% 6.upto(10).each do |i| %>
+photo_<%= i %>:
+  activity_id: 2
+<% end %>
+
+photo_11:
+  activity_id: 3

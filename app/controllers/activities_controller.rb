@@ -2,6 +2,7 @@ class ActivitiesController < ApplicationController
   # TODO: bugaggagga make it better, and try understand what every line do ;)
   before_filter :get_kind, only: :index
   before_filter :get_directions, only: :index
+  before_filter :load_object, only: [:show, :get_comments]
 
   def index
     if request.xhr?
@@ -14,7 +15,6 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-    @activity = Activity.find(params[:id])
   end
 
   def vote
@@ -23,7 +23,17 @@ class ActivitiesController < ApplicationController
     render partial: 'vote_count'
   end
 
+  def get_comments
+    scope = params[:type] == 'parents' ? 'parents' : 'childrens'
+    comments = @activity.activity_comments.send(scope).page(params[:page]).per(5)
+    render partial: 'activity_comment', locals: {comments: comments}
+  end
+
   private
+
+  def load_object
+    @activity = Activity.find(params[:id])
+  end
 
   def search
     activities = Activity.by_kind(@kind)

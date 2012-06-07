@@ -12,8 +12,10 @@
         <div class="name">
           <%= link_to activity.title, activity_path(activity) %>
         </div>
+        <div class="short_desc">
         Детям <%= activity.age %> лет<br />
         Учреждение: <%= activity.organization.title %>
+        </div>
         <div class="rating readonly" data-rating="<%= activity.users_rating %>"></div>
       </div>
     </div>
@@ -29,8 +31,10 @@
         <div class="name">
           <%= link_to activity.title, activity_path(activity) %>
         </div>
+        <div class="short_desc">
         Детям <%= activity.age %> лет<br />
         Учреждение: <%= activity.organization.title %>
+        </div>
         <div class="rating readonly" data-rating="<%= activity.users_rating %>"></div>
       </div>
     </div>
