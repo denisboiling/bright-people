@@ -32,8 +32,8 @@
           </div>
           <div class="rating_block">
             <span class="name">Рейтинг родителей</span>
-            <div class="rating">Звезды</div>
-            <span>523 голоса</span><br />
+            <div class="rating" data-rating="<%= @activity.users_rating %>" data-activity-id="<%= @activity.users_rating %>">Звезды</div>
+            <%= render partial: 'vote_count' %><br />
             <a href="">Отменить</a>
           </div>
           <div class="clear"></div>

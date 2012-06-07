@@ -18,10 +18,9 @@ class ActivitiesController < ApplicationController
   end
 
   def vote
-    ActivityVote.create user_id: current_user.id,
-    rate: params[:rate].to_i,
-    activity_id: params[:activity_id]
-    head :ok
+    @activity = Activity.find(params[:activity_id])
+    ActivityVote.update_rating(current_user, @activity, params[:rating].to_f)
+    render partial: 'vote_count'
   end
 
   private
