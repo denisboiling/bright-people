@@ -13,6 +13,10 @@ class Expert < ActiveRecord::Base
   validates :name, :description, presence: true
   validates_attachment_presence :photo
 
+  def mark
+    activity_approvals.count
+  end
+  
   class << self
     def for_main
       self.random(5)
