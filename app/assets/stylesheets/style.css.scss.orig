@@ -117,9 +117,15 @@ h1 { font-size:22px; color:#4f4f4f}
 .timer_wrapper .cntSeparator { padding-top:22px; font-weight:bold; color:#af0035; font-size:20px}
 
 .main_content .bank_info { float:right; width:395px; margin-left:3% }
+<<<<<<< HEAD
 .main_content .bank_info  .order_bank_catd { background:url(../assets/samp/cards.jpg) no-repeat; padding-top:180px; float:left; width:160px; font-size:12px; text-align:center}
 .main_content .bank_info .bank_text { color:#525252; font-size:14px; float:left; width:225px; text-align:left; margin-left:10px}
 .main_content .bank_info .bank_text .signature { background:url(../assets/samp/signature.jpg) no-repeat 40px 0px; padding:10px 30px 10px 0px; font-size:11px}
+=======
+.main_content .bank_info  .order_bank_catd { background:url(/assets/cards.jpg) no-repeat; padding-top:180px; float:left; width:160px; font-size:12px; text-align:center}
+.main_content .bank_info .bank_text { color:#525252; font-size:14px; float:left; width:225px; text-align:left; margin-left:10px}
+.main_content .bank_info .bank_text .signature { background:url(/assets/signature.jpg) no-repeat 40px 0px; padding:10px 30px 10px 0px; font-size:11px}
+>>>>>>> origin/master
 .main_content .adv { float:right; margin-left:3%}
 
 
