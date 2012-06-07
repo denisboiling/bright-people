@@ -13,7 +13,11 @@
         <%= render partial: 'shared/header' %>
       </div>
 
-      <%= yield %>
+      <%= yield(:before_center) %>
+      
+      <div id="center">
+        <%= yield %>
+      </div>
 
       <div id="footer">
         <%= render partial: 'shared/footer' %>
