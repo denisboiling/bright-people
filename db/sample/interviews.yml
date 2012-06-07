@@ -6,4 +6,5 @@ interview_<%= i %>:
   short_description: "<%= Faker::Lorem.paragraphs(1).join('\n') %>"
   review: "<%= Faker::Lorem.paragraphs(1).join('\n') %>"
   review_title: <%= Faker::Lorem.words.join(' ') %>
+  is_enabled: true
 <% end %>

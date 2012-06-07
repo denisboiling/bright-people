@@ -4,6 +4,10 @@ window.setup_slider = ->
   ).mouseleave ->
     $("#menu .sub_menu").fadeOut 100
 
+
+  $("div.moscow_agencies .preview_agencies:last").addClass("last")
+  $("div.council .exp_preview:last").addClass("last")
+
   $("div.magazine_tab div.mag_tabs:first").show()
   $("div.magazine_control li a").live "click", ->
     currentTab = $(this).attr("rel")
@@ -28,5 +32,9 @@ window.setup_slider = ->
     prev: "prev"
 
   $("#slider_fest").slides
+    next: "next"
+    prev: "prev"
+    
+  $("#slider_org").slides
     next: "next"
     prev: "prev"

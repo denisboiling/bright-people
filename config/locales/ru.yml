@@ -19,6 +19,11 @@ ru:
         few: Конкурса
         many: Конкурсов
         other: Конкурсы
+      activity:
+        one: Кружок
+        few: Кружка
+        many: Кружков
+        other: Кружки
     attributes:
       organization:
         title: Название
