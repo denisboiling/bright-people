@@ -17,6 +17,24 @@ class Expert < ActiveRecord::Base
     activity_approvals.count
   end
   
+  def prev
+    Expert.all.split(self).first.last
+  end
+  
+  def next
+    Expert.all.split(self).last.first
+  end
+  
+  # stub method, should be replaced
+  def mentions
+    0
+  end
+  
+  # stub method, should be replaced
+  def bio
+    "biography"
+  end
+  
   class << self
     def for_main
       self.random(5)

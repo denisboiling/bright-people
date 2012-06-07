@@ -1,5 +1,164 @@
-<p>
-  <%= @expert.name %>
-  <br>
-  <%= @expert.description %>
-</p>
+<div class="pages">
+  
+  <div class="expert_nav">
+    <% if @prev = @expert.prev %>
+    <div class="prev_exp">
+      <div class="exp_cell">
+        <div class="thumb">
+          <%= link_to image_tag(@prev.photo), @prev %>
+        </div>
+        <div class="name">
+          <%= link_to @prev.name, @prev %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    
+    <% if @next = @expert.next %>
+    <div class="next_exp">
+      <div class="exp_cell">
+        <div class="thumb">
+          <%= link_to image_tag(@next.photo), @next %>
+        </div>
+        <div class="name">
+          <%= link_to @next.name, @next %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  
+  <div class="expert_title">
+    <h1>Экспертный совет ярких людей</h1>
+     12 ярких людей современной России оценивают Москву для детей
+  </div>
+  
+  <div class="expert_big_info">
+    <div class="name"><%= @expert.name %></div>
+    <div class="thumb">
+      <%= link_to image_tag(@expert.photo(:medium)), @expert %>
+    </div>
+    <div class="doljnost"><%= @expert.description %></div>
+    <div class="clear"></div>
+  </div>
+  
+  <div class="expert_page">
+    <div class="left_part">
+      <div class="dop_title">
+        Биография
+      </div>
+      <div class="bio">
+         <%= @expert.bio %><br />
+        <br />
+        <div class="title">
+          Другие статьи автора
+        </div>
+        <ul>
+          <li><a href="">Как я стала мамой</a></li>
+          <li><a href="">Про манекенщицу, трех дочек и детский сад в Сомали</a></li>
+        </ul>
+      </div>
+      <%= render 'post_share' %>
+    </div>
+    
+    <div class="right_part">
+      <div class="dop_title">
+        Активность на нашем сайте
+      </div>
+      <div class="post_category_menu">
+        <ul>
+          <li class="">
+            <a href="">
+              <span class="count"><%= @expert.activity_approvals.count %></span>
+              Кружки
+            </a>
+          </li>
+          
+          <li class="active">
+            <a href="">
+              <span class="count"><%= @expert.mentions %></span>
+              Упоминания
+            </a>
+          </li>
+        </ul>
+        <div class="clear"></div>
+      </div>
+      
+      
+      
+      <div class="catalog">
+        <div class="preview_catalog">
+          <div class="thumb">
+            <a href=""><img src="samp/catalog.jpg" alt="" /></a>
+          </div>
+          <div class="info">
+            <div class="mark">
+              <span class="arrow"></span>Участник фестиваля-2012!
+            </div>
+            <div class="name">
+              <a href="">Музей занимательных наук и практик "Экспериментаниум"</a>
+            </div>
+             Детям 1—16 лет<br />
+             Учреждение: Мультиспорт
+            <div class="rating">
+            </div>
+          </div>
+        </div>
+        
+        <div class="preview_catalog">
+          <div class="thumb">
+            <a href=""><img src="samp/catalog.jpg" alt="" /></a>
+          </div>
+          <div class="info">
+            <div class="mark">
+              <span class="arrow"></span>Участник фестиваля-2012!
+            </div>
+            <div class="name">
+              <a href="">Музей занимательных наук и практик "Экспериментаниум"</a>
+            </div>
+             Детям 1—16 лет<br />
+             Учреждение: Мультиспорт
+            <div class="rating">
+            </div>
+          </div>
+        </div>
+        
+        <div class="preview_catalog">
+          <div class="thumb">
+            <a href=""><img src="samp/catalog.jpg" alt="" /></a>
+          </div>
+          <div class="info">
+            <div class="name">
+              <a href="">Музей занимательных наук и практик "Экспериментаниум"</a>
+            </div>
+             Детям 1—16 лет<br />
+             Учреждение: Мультиспорт
+            <div class="rating">
+            </div>
+          </div>
+        </div>
+        
+        <div class="preview_catalog">
+          <div class="thumb">
+            <a href=""><img src="samp/catalog.jpg" alt="" /></a>
+          </div>
+          <div class="info">
+            <div class="mark">
+              <span class="arrow"></span>Участник фестиваля-2012!
+            </div>
+            <div class="name">
+              <a href="">Музей занимательных наук и практик "Экспериментаниум"</a>
+            </div>
+             Детям 1—16 лет<br />
+             Учреждение: Мультиспорт
+            <div class="rating">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
