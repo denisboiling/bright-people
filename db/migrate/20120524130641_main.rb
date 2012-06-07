@@ -183,6 +183,12 @@ class Main < ActiveRecord::Migration
     t.timestamps
   end
 
+  create_table :pictures do |t|
+    t.has_attached_file :picture
+    t.string :caption
+    t.timestamps
+  end
+
   create_table :interviews do |t|
     t.string :title
     t.integer :author_id
