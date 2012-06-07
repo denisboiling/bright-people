@@ -7,7 +7,11 @@ class ArticlesController < ApplicationController
 
   def index
     @categories = ArticleCategory.all
-    @articles = Article.page(params[:page]).per(5)
+    
+    category_ids = (params[:category_id] or "").split(',').map(&:to_i)
+    @articles = Article.scoped
+    @articles = @articles.where(article_category_id: category_ids) unless category_ids.blank?
+    @articles = @articles.page(params[:page]).per(5)
   end
 
   def show
