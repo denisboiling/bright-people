@@ -30,11 +30,6 @@ class Expert < ActiveRecord::Base
     0
   end
   
-  # stub method, should be replaced
-  def bio
-    "biography"
-  end
-  
   class << self
     def for_main
       self.random(5)
