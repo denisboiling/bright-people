@@ -50,7 +50,7 @@
     </div>
     <%= f.input :content, input_html: {size: 10} %>
     <%= f.input :picture, as: :file, hint: f.template.image_tag(f.object.picture.url(:medium)) %>
-    <%= f.input :article_category, as: :select, collection: ArticleCategory.all %>
+    <%= f.input :category, as: :select, collection: ArticleCategory.all %>
     <%= f.input :article_tag_list %>
   <% end %>
   <%= f.buttons %>

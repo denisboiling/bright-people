@@ -5,7 +5,11 @@ ru:
     models:
       user: Пользователи
       organization: Организация
-      activity: Кружки
+      activity:
+        one: Кружок
+        few: Кружка
+        many: Кружков
+        other: Кружки
       expert: Экспертный совет
       metro_station: Станция метро
       attach: Фотография
@@ -52,9 +56,13 @@ ru:
         url: Ссылка на видео
       interview:
         title: Заголовок
+        short_description: Краткое описание
+        review: Ревью
+        review_title: Заголовок ревью
         author: Автор
+        picture: Прикрепленная фотография
         content: Контент
-        interview_tag_list: Таги
+        interview_tag_list: Тэги
       contest:
         name: Название
         category: Категория
