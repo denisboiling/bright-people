@@ -14,10 +14,6 @@ before "deploy:finalize_update", "shared:symlinks"
 
 before "db:prepare", "unicorn:stop"
 
-before "deploy:assets:precompile", "db:prepare"
-before "deploy:assets:precompile", "deploy:migrate"
-
-
 after "deploy:migrate", "db:load_seed"
 after "db:load_seed", "db:load_sample"
 
