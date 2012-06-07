@@ -16,10 +16,9 @@ BrightPeople::Application.routes.draw do
   resources :favourites, only: [:index, :create, :destroy]
   resource :comments, only: :create
 
-  resources :activities, only: [:index, :show, :search] do
-    put 'vote'
-  end
+  resources :activities, only: [:index, :show, :search]
   match '/activities/search' => 'activities#search', :via => :post, :as => :activity_search
+  match '/activities/vote' => 'activities#vote', :via => :put
 
   resources :articles, only: [:index, :show] do
     collection do

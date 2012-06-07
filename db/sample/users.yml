@@ -5,6 +5,7 @@ user_<%= i %>:
   email: <%= Faker::Internet.email %>
   role_id: 1
   name: <%= Faker::Name.name %>
+  description: "<%= Faker::Lorem.sentences(3).join(' ') %>"
 <% end %>
 
 user:

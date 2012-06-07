@@ -1,81 +1,82 @@
-<div id="center">
-  <div class="pages">
-    <div class="common">
-      <h1><%= @article.title %></h1>
-      <strong><%= @article.author %>. <%= Russian::strftime(@article.created_at, "%A, %e %B %Y г.") %></strong>
-      <div class="post_preview">
-        <div class="thumb">
-          <img alt="" src="/assets/samp/post_samp_prev.jpg" style="background-image: url('/assets/samp/post_samp_prev.jpg');">
-        </div>
-        <div class="short_desc">
-          <%= @article.short_description %>
-        </div>
-        <div class="clear"></div>
+
+<div class="pages">
+  <div class="common">
+    <h1><%= @article.title %></h1>
+    <strong><%= @article.author.name %>. <%= Russian::strftime(@article.created_at, "%A, %e %B %Y г.") %></strong>
+    <div class="post_preview">
+      <div class="thumb">
+        <img alt="" src="/assets/samp/post_samp_prev.jpg" style="background-image: url('/assets/samp/post_samp_prev.jpg');">
       </div>
-      <div class="post_info">
-        <div class="other_link">
-          <div class="title">Об авторе</div>
-          <br>
-          <br>
-          <div class="title">Другие статьи автора</div>
-          <ul>
-            <li><a href="">Как я стала мамой</a></li>
-            <li><a href="">Про манекенщицу, трех дочек и детский сад в Сомали</a></li>
-          </ul>
-        </div>
-        <div class="post_share">
-          <div class="title">Делись с друзьями</div>
-          sdf dfg f g
-        </div>
-      </div>
-      <div class="description">
-        <%= @article.content %>
+      <div class="short_desc">
+        <%= @article.short_description %>
       </div>
       <div class="clear"></div>
     </div>
-    <div class="sidebar">
-      <div class="alongside">
-        <div class="title">Лучшие места для детей в Москве</div>
-          <ul>
-            <li>
-              <span class="thumb">
-                <a href="">
-                <img alt="" src="/assets/samp/samp_1.jpg" style="background-image: url("/assets/samp/samp_1.jpg");">
-                </a>
-              </span>
-              <span class="name">
-                <a href="">Центр детских проектов и разработок "Шардам"</a>
-              </span>
-              <span class="geo">Северо-Восток</span>
-            </li>
-            <li>
-              <span class="thumb">
-                <a href="">
-                <img alt="" src="/assets/samp/samp_1.jpg" style="background-image: url("/assets/samp/samp_1.jpg");">
-                </a>
-              </span>
-              <span class="name">
-                <a href="">Центр детских проектов и разработок "Шардам"</a>
-              </span>
-              <span class="geo">Северо-Восток</span>
-            </li>
-            <li>
-              <span class="thumb">
-                <a href="">
-                <img alt="" src="/assets/samp/samp_1.jpg" style="background-image: url("/assets/samp/samp_1.jpg");">
-                </a>
-              </span>
-              <span class="name">
-                <a href="">Центр детских проектов и разработок "Шардам"</a>
-              </span>
-              <span class="geo">Северо-Восток</span>
-            </li>
-          </ul>
+    <div class="post_info">
+      <div class="other_link">
+        <div class="title">Об авторе</div>
+         <%= @article.author.description %>
+        <div class="title">Другие статьи автора</div>
+        <ul>
+          <% article = @article.author.articles.shuffle.first %>
+          <li><%= link_to article.title, article %>
+          <% article = @article.author.articles.shuffle.last %>
+          <li><%= link_to article.title, article %>
+        </ul>
       </div>
+      <div class="post_share">
+        <div class="title">Делись с друзьями</div>
+        sdf dfg f g
+      </div>
+    </div>
+    <div class="description">
+      <%= @article.content %>
     </div>
     <div class="clear"></div>
   </div>
+  <div class="sidebar">
+    <div class="alongside">
+      <div class="title">Лучшие места для детей в Москве</div>
+        <ul>
+          <li>
+            <span class="thumb">
+              <a href="">
+              <img alt="" src="/assets/samp/samp_1.jpg" style="background-image: url("/assets/samp/samp_1.jpg");">
+              </a>
+            </span>
+            <span class="name">
+              <a href="">Центр детских проектов и разработок "Шардам"</a>
+            </span>
+            <span class="geo">Северо-Восток</span>
+          </li>
+          <li>
+            <span class="thumb">
+              <a href="">
+              <img alt="" src="/assets/samp/samp_1.jpg" style="background-image: url("/assets/samp/samp_1.jpg");">
+              </a>
+            </span>
+            <span class="name">
+              <a href="">Центр детских проектов и разработок "Шардам"</a>
+            </span>
+            <span class="geo">Северо-Восток</span>
+          </li>
+          <li>
+            <span class="thumb">
+              <a href="">
+              <img alt="" src="/assets/samp/samp_1.jpg" style="background-image: url("/assets/samp/samp_1.jpg");">
+              </a>
+            </span>
+            <span class="name">
+              <a href="">Центр детских проектов и разработок "Шардам"</a>
+            </span>
+            <span class="geo">Северо-Восток</span>
+          </li>
+        </ul>
+    </div>
+  </div>
+  <div class="clear"></div>
 </div>
+
 
 <!--
 <h1><%= @article.title %></h1>
