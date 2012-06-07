@@ -7,3 +7,6 @@ photo_<%= i %>:
 photo_<%= i %>:
   activity_id: 2
 <% end %>
+
+photo_11:
+  activity_id: 3
