@@ -5,7 +5,7 @@ class Article < ActiveRecord::Base
 
   validates :title, :content, :author, :article_category_id, presence: :true
 
-  belongs_to :article_category
+  belongs_to :category, class_name: 'ArticleCategory', foreign_key: :article_category_id
   belongs_to :author, class_name: 'User'
 
   has_many :comments, as: :relation
