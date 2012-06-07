@@ -75,6 +75,11 @@
       </div>
   </div>
 </div>
+
+
+<div class="color_line_left">
+<div class="color_line_right">
+
 <div class="main_content">
   <div>
     <div class="adv"><a href=""><img src="/assets/samp/adv_pic.jpg" alt="" /></a></div>
@@ -88,22 +93,58 @@
       </div>
       <div class="clear"></div>
     </div>
-    <div class="timer">
-      <div class="title">До начала фестиваля «Яркие люди» остается:</div>
-    </div>
+
+        <div class="timer">
+        	<div class="title">До начала фестиваля «Яркие люди» остается:</div>
+            
+            <div class="timer_block">
+            <div class="timer_wrapper">
+            	<div id="counter"></div>
+                <div class="date_wrapper">
+                    <div class="date">Дни</div>
+                    <div class="date">Часы</div>
+                    <div class="date">Минуты</div>
+                </div>
+            </div>
+<script type="text/javascript">
+$(function(){
+	var _date = new Date();
+	_date.setMonth(7);
+	_date.setDate(18);
+	_date.setHours(0);
+	_date.setMinutes(0);
+	_date.setSeconds(0);
+	$('#counter').countdown({
+		image: '/assets/counter.png',
+		startTime: _date
+	});
+});
+</script>
+        </div>
+            
+        </div>
+
 
     <div class="clear"></div>
   </div>
   <div class="subscription">
     <div class="title">
       Подписка
-      <span>на новые материалы из всех рубрик на</span>
+      <span>на материалы из всех рубрик</span>
     </div>
     <div class="subscript_form">
-      <form action="">
-        <input type="text" name="" />
-        <input type="submit" value="Ok!" />
-      </form>
+                <!-- Begin MailChimp Signup Form -->
+                <div id="mc_embed_signup">
+                <form action="http://bright-people.us5.list-manage.com/subscribe/post?u=79722e9c6e3607f42dfb277bd&amp;id=8ae74f1ca8" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+                    <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email адрес" required>
+                    <input type="submit" value="Ok!" name="subscribe" id="mc-embedded-subscribe" class="button">
+                </form>
+                </div>
+                <!--End mc_embed_signup-->
     </div>
   </div>
+</div>
+
+
+</div>    
 </div>

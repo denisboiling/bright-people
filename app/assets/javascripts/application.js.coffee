@@ -18,3 +18,4 @@ $ ->
   window.setup_slider()
   window.setup_raty()
   window.setup_hidden_checkbox()
+  window.setup_load_activity_comments()

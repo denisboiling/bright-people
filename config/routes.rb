@@ -16,7 +16,9 @@ BrightPeople::Application.routes.draw do
   resources :favourites, only: [:index, :create, :destroy]
   resource :comments, only: :create
 
-  resources :activities, only: [:index, :show, :search]
+  resources :activities, only: [:index, :show, :search] do
+    get :get_comments
+  end
   match '/activities/search' => 'activities#search', :via => :post, :as => :activity_search
   match '/activities/vote' => 'activities#vote', :via => :put
 
