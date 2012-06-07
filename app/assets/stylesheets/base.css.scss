@@ -10,7 +10,7 @@
 
 /* The stage is the wrapper. The image fills 100% the height of the stage */
 .pika-textnav { display:none}
-.pika-stage {position: relative; text-align:center; }
+.pika-stage {position: relative; text-align:center; width:532px; height:370px; }
 .pika-stage img { height:100%; opacity:1 !important;}
 .pika-stage .caption {position: absolute; background: #000; background: rgba(0,0,0,0.75);  border: 1px solid #141414; font-size: 11px; 
                         color: #fafafa; padding: 10px; text-align: right; bottom: 50px; right: 10px;}
