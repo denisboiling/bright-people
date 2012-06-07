@@ -18,4 +18,6 @@ $ ->
   window.setup_slider()
   window.setup_raty()
   window.setup_hidden_checkbox()
+  window.setup_prev_next_expert_arrows()
+  window.setup_ajax_articles_loading()
   window.setup_load_activity_comments()
