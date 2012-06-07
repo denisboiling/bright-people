@@ -2,7 +2,7 @@
   <% if activity.approved? %>
     <div class="preview_catalog approved">
       <div class="thumb">
-        <%= link_to image_tag(activity.logo.url), activity_path(activity) %>
+        <%= link_to image_tag(activity.logo.url(:approved)), activity_path(activity) %>
       </div>
       <div class="info">
         <span class="flag">Одобрено экспертом</span>
