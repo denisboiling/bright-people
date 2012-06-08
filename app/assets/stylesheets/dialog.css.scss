@@ -1,0 +1,44 @@
+/* DIALOG */
+.dialog_block { -moz-border-radius:20px; border-radius:20px; -webkit-border-radius:20px; -khtml-border-radius:20px; overflow:hidden; background:#fff; padding:30px; position:fixed; z-index:1000; width:510px; left:50%; margin-left:-285px; top:20%; -moz-box-shadow:0px 3px 10px rgba(0,0,0,0.5);
+	-webkit-box-shadow:0px 3px 10px rgba(0,0,0,0.5);
+	box-shadow:0px 3px 10px rgba(0,0,0,0.5); font-family:Arial, Helvetica, sans-serif;}
+
+.dialog_block .close { background:url(/assets/dialog_close.png); height:45px; width:45px; display:block; position:absolute; right:0px; top:-10px; cursor:pointer}
+
+.dialog_block .dialog_header { border-bottom:1px solid #f6f6f6; padding:0px 0px 20px 0px; position:relative}
+.dialog_block .dialog_content { padding:10px 0px} 
+
+.dialog_block .dialog_title { color:#000; font-size:16px; font-weight:bold;}
+
+.dialog_block .field { padding:4px 0px; min-height:36px;}
+.dialog_block .field label { color:#2c2c2c; font-weight:bold; float:left; width:120px; padding-right:20px}
+
+.dialog_block .field input[type="text"] {  behavior: url(border-radius.htc); -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; background:#fff; border:none; margin:0px; padding:7px 10px; font-size:14px; color:#333333; width:344px; border:1px solid #cccccb; font-family:Arial, Helvetica, sans-serif}
+
+.dialog_block .field textarea {  behavior: url(border-radius.htc); -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; background:#fff; border:none; margin:0px; padding:7px 10px; font-size:14px; color:#333333; width:344px; border:1px solid #cccccb; font-family:Arial, Helvetica, sans-serif}
+
+.dialog_block .button { padding-left:140px; padding-top:10px}
+.dialog_block .button input { -moz-border-radius:8px; border-radius:8px; -webkit-border-radius:8px; -khtml-border-radius:8px; padding:5px 25px 5px 25px; color:#fff; font-weight:bold; text-decoration:none; display:inline-block; background:#0aaceb; border:none; margin:0; font-size:16px; font-family:Arial, Helvetica, sans-serif; cursor:pointer}
+
+.tzSelect{
+	height:34px;
+	display:inline-block;
+	min-width:364px;
+	position:relative;
+	
+}
+
+.tzSelect .selectBox{position:absolute; padding:7px 10px; font-size:14px; color:#333333; width:344px; border:1px solid #cccccb; background:#fff url(../images/select_arrow.png) no-repeat right center; behavior: url(border-radius.htc); -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; }
+
+.tzSelect .selectBox.expanded{ border-bottom:none; -moz-border-radius:6px 6px 0 0; border-radius:6px 6px 0 0; -webkit-border-radius:6px 6px 0 0; -khtml-border-radius:6px 6px 0 0;}
+
+.tzSelect .dropDown{position:absolute;top:36px;left:0;width:100%; border:1px solid #cccccb; background:#fff; border-top:none}
+
+
+.tzSelect li{ padding:7px 10px; font-size:14px; color:#333333; cursor:pointer;position:relative;}
+
+.tzSelect li:hover{ background:#0aaceb; color:#fff;}
+
+.tzSelect li span{ margin-left:65px;}
+.tzSelect li i{display:block;font-size:12px;}
+.tzSelect li img{ left:0px; position:absolute;top:0px; height:34px; width:60px;}

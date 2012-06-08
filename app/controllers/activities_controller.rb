@@ -28,6 +28,11 @@ class ActivitiesController < ApplicationController
     comments = @activity.activity_comments.send(scope).page(params[:page]).per(5)
     render partial: 'activity_comment', locals: {comments: comments}
   end
+  
+  def approve
+    @activity = Activity.find(params[:activity_id])
+    # TODO: approve
+  end
 
   private
 
