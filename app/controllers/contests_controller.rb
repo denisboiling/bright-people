@@ -11,4 +11,9 @@ class ContestsController < ApplicationController
   def show
     @contest = Contest.find(params[:id])
   end
+
+  def rules
+    @contest = Contest.find(params[:id])
+    render 'rules'
+  end
 end
