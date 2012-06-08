@@ -4,7 +4,7 @@ class ActivityApproval < ActiveRecord::Base
 
   attr_accessible :expert, :activity
 
-  after_create :approved_activity!
+  after_create :approve_activity!
 
   private
   
