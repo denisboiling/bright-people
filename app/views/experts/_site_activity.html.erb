@@ -22,13 +22,13 @@
   </div>
   
   <div class="catalog activities_catalog expert_tab_content">
-    <% expert.approved_activities.each do |activity| %>
+    <% expert.approved_activities.first(16).each do |activity| %>
       <%= render 'activities/preview_catalog_item', activity: activity %>
     <% end %>
   </div>
   
   <div class="catalog mentions_catalog expert_tab_content hidden">
-    <% expert.mentions.each do |relation| %>
+    <% expert.mentions.first(16).each do |relation| %>
       <%= render "mention_#{relation.class.name.underscore}",
                  :"#{relation.class.name.underscore}" => relation %>
     <% end %>
