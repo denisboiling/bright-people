@@ -8,10 +8,17 @@ class Comment < ActiveRecord::Base
   has_many :comment_notifies, class_name: 'UserCommentNofity'
 
   after_create :create_user_notify
+  after_create :update_comments_count!
 
   # Create user notify when somebody commenting his comment
   def create_user_notify
     UserCommentNofity.create_notify(self)
+  end
+  
+  def update_comments_count!
+    return unless relation_type == 'Article'
+    relation.comments_count = relation.comments.count
+    relation.save!
   end
 
   class << self
