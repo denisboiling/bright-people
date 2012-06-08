@@ -15,7 +15,7 @@ user_<%= i %>:
   email: <%= Faker::Internet.email %>
   role_id: 4
   name: <%= Faker::Name.name %>
-  description: "<%= Faker::Lorem.sentences(3).join(' ') %>"
+  description: <%= Faker::Lorem.words.join(' ') %>
   about: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
 <% end %>
 

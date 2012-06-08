@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-ActiveAdmin.register Expert do
+ActiveAdmin.register User do
   menu label: 'Экспертный совет'
 
   filter :name

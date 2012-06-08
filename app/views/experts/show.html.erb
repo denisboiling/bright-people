@@ -1,27 +1,27 @@
 <div class="pages">
   
   <div class="expert_nav">
-    <% if @prev = @expert.prev %>
+    <% if @prev = @expert.prev_expert %>
     <div class="prev_exp" data-url="<%= expert_path(@prev) %>">
       <div class="exp_cell">
         <div class="thumb">
-          <%= link_to image_tag(@prev.photo), @prev %>
+          <%= link_to image_tag(@prev.avatar), expert_path(@prev) %>
         </div>
         <div class="name">
-          <%= link_to @prev.name, @prev %>
+          <%= link_to @prev.name, expert_path(@prev) %>
         </div>
       </div>
     </div>
     <% end %>
     
-    <% if @next = @expert.next %>
+    <% if @next = @expert.next_expert %>
     <div class="next_exp" data-url="<%= expert_path(@next) %>">
       <div class="exp_cell">
         <div class="thumb">
-          <%= link_to image_tag(@next.photo), @next %>
+          <%= link_to image_tag(@next.avatar), expert_path(@next) %>
         </div>
         <div class="name">
-          <%= link_to @next.name, @next %>
+          <%= link_to @next.name, expert_path(@next) %>
         </div>
       </div>
     </div>
@@ -36,7 +36,7 @@
   <div class="expert_big_info">
     <div class="name"><%= @expert.name %></div>
     <div class="thumb">
-      <%= link_to image_tag(@expert.photo(:medium)), @expert %>
+      <%= link_to image_tag(@expert.avatar(:medium)), expert_path(@expert) %>
     </div>
     <div class="doljnost"><%= @expert.description %></div>
     <div class="clear"></div>
@@ -61,14 +61,14 @@
         <ul>
           <li class="">
             <a href="">
-              <span class="count"><%= @expert.activity_approvals.count %></span>
+              <span class="count"><%= @expert.approvals_count %></span>
               Кружки
             </a>
           </li>
           
           <li class="active">
             <a href="">
-              <span class="count"><%= @expert.mentions %></span>
+              <span class="count"><%= @expert.expert_mentions %></span>
               Упоминания
             </a>
           </li>

@@ -1,9 +1,9 @@
 class ExpertsController < ApplicationController
   def index
-    @experts = Expert.all
+    @experts = Role.expert.users
   end
 
   def show
-    @expert = Expert.find(params[:id])
+    @expert = Role.expert.users.find(params[:id])
   end
 end

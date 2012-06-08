@@ -39,16 +39,16 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :remember_me
   attr_accessible :vkontakte_id, :facebook_id, :odnoklassniki_id
 
-  def expert_approvals
+  def approvals_count
     activity_approvals.count
   end
   
   def prev_expert
-    Expert.all.split(self).first.last
+    Role.expert.users.split(self).first.last
   end
   
   def next_expert
-    Expert.all.split(self).last.first
+    Role.expert.users.split(self).last.first
   end
   
   # stub method, should be replaced
