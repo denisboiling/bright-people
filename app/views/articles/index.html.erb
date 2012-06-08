@@ -2,16 +2,7 @@
 <div class="post_list">
   <h1>Статьи</h1>
    С блекджеком и шлюхами
-  <div class="post_category_menu">
-    <ul>
-      <li><a href="">Все</a></li>
-      <li><a href="">Статьи</a></li>
-      <li class="active"><a href="">Интервью</a></li>
-      <li><a href="">Новости Москвы</a></li>
-    </ul>
-    <div class="clear">
-    </div>
-  </div>
+  <%= render 'shared/articles_menu', current: 'articles' %>
   
   <div class="sorter_wraper">
     <div class="cell">
