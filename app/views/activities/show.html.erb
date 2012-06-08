@@ -199,18 +199,7 @@
       </div>
     <% end %>
 
-      <div class="alongside">
-        <div class="title">Еще места рядом</div>
-      <ul>
-        <% @activity.place_near.each do |activity| %>
-        <li>
-          <span class="thumb"><%= link_to image_tag(activity.logo.url), activity_path(activity) %></span>
-          <span class="name"><%= link_to activity.title, activity_path(activity) %></span>
-          <span class="geo"><%= activity.region.title %></span>
-        </li>
-      <% end %>
-      </ul>
-    </div>
+    <%= render 'shared/sidebar' %>
   </div>
   <div class="clear"></div>
 </div>
