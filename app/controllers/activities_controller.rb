@@ -35,6 +35,7 @@ class ActivitiesController < ApplicationController
     @activity = Activity.find(params[:id])
   end
 
+  # OPTIMIZE:
   def search
     activities = Activity.by_kind(@kind)
     activities = activities.approved if params[:only_approved].present?

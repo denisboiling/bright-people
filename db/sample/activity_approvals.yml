@@ -9,3 +9,9 @@ ap_main_no_edu_ac:
   user_id: <%= rand(11..20) %>
   activity_id: 2
 
+<% 3.upto(rand(20)).each do |i| %>
+rand_approved_<%= i %>:
+  text: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
+  expert_id: <%= rand(10) + 1 %>
+  activity_id: <%= i %>
+<% end %>
