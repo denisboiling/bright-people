@@ -1,12 +1,12 @@
 # approval main activities
 ap_main_edu_ac:
   text: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
-  expert_id: <%= rand(10) + 1 %>
+  user_id: <%= rand(20) + 1 %>
   activity_id: 1
 
 ap_main_no_edu_ac:
   text: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
-  expert_id: <%= rand(10) + 1 %>
+  user_id: <%= rand(11..20) %>
   activity_id: 2
 
 <% 3.upto(rand(20)).each do |i| %>

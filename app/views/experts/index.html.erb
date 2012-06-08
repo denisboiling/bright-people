@@ -1,7 +1,7 @@
 <div class="pages">
   <div class="expert_title">
     <h1>Экспертный совет ярких людей</h1>
-     <%= Expert.count %> ярких людей современной России оценивают Москву для детей
+     <%= Role.expert.users.count %> ярких людей современной России оценивают Москву для детей
   </div>
   
   <div class="expert_list_wrapper">
@@ -9,11 +9,11 @@
       
     <% @experts.each do |expert| %>
       <div class="exp_preview">
-        <span class="mark"><%= expert.mark %></span>
+        <span class="mark"><%= expert.approvals_count %></span>
         <div class="thumb">
-          <%= link_to image_tag(expert.photo), expert %>
+          <%= link_to image_tag(expert.avatar), expert_path(expert) %>
         </div>
-        <span class="name"><%= link_to expert.name, expert %></span>
+        <span class="name"><%= link_to expert.name, expert_path(expert) %></span>
         <span class="info"><%= expert.description %></span>
       </div>
     <% end %>
