@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
   
   def mentions
     comments.map(&:relation)
-            .select {|r| r.class.name.in? ['Article'] }
+            .select {|r| r.class.name.in? Comment.possible_relations }
             .uniq
   end
   
