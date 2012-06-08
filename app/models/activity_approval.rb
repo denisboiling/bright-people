@@ -1,8 +1,8 @@
 class ActivityApproval < ActiveRecord::Base
-  belongs_to :expert
+  belongs_to :user
   belongs_to :activity
 
-  attr_accessible :expert, :activity
+  attr_accessible :user, :activity
 
   after_create :approve_activity!
 

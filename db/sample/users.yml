@@ -8,6 +8,17 @@ user_<%= i %>:
   description: "<%= Faker::Lorem.sentences(3).join(' ') %>"
 <% end %>
 
+# experts
+<% 11.upto(20).each do |i| %>
+user_<%= i %>:
+  id: <%= i %>
+  email: <%= Faker::Internet.email %>
+  role_id: 4
+  name: <%= Faker::Name.name %>
+  description: "<%= Faker::Lorem.sentences(3).join(' ') %>"
+  about: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
+<% end %>
+
 user:
   id: 222  
   email: user@example.com
