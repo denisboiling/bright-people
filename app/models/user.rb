@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   has_many :news, foreign_key: :author_id
   
   has_many :activity_approvals
-  has_many :approved, through: :activity_approvals, class_name: 'Activity'
+  has_many :approved_activities, through: :activity_approvals, source: :activity
 
   has_attached_file :avatar,
                     styles: { medium: "300x300^#", thumb: "125x125^#" },

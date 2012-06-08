@@ -1,0 +1,31 @@
+<div class="right_part">
+  <div class="dop_title">
+    Активность на нашем сайте
+  </div>
+  <div class="post_category_menu">
+    <ul>
+      <li class="active activities_tab">
+        <a href="#">
+          <span class="count"><%= @expert.approvals_count %></span>
+          Кружки
+        </a>
+      </li>
+      
+      <li class="mentions_tab">
+        <a href="#">
+          <span class="count"><%= @expert.expert_mentions %></span>
+          Упоминания
+        </a>
+      </li>
+    </ul>
+    <div class="clear"></div>
+  </div>
+  
+  <div class="catalog activities_catalog">
+    <% expert.approved_activities.each do |activity| %>
+      <%= render 'activities/preview_catalog_item', activity: activity %>
+    <% end %>
+  </div>
+  
+</div>
+<div class="clear"></div>

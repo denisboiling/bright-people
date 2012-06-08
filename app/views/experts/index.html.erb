@@ -1,15 +1,14 @@
 <div class="pages">
-  <div class="expert_title">
-    <h1>Экспертный совет ярких людей</h1>
-     <%= Role.expert.users.count %> ярких людей современной России оценивают Москву для детей
-  </div>
+  <%= render 'title' %>
   
   <div class="expert_list_wrapper">
     <div class="expert_list">
       
     <% @experts.each do |expert| %>
       <div class="exp_preview">
+        <% if expert.approvals_count != 0 %>
         <span class="mark"><%= expert.approvals_count %></span>
+        <% end %>
         <div class="thumb">
           <%= link_to image_tag(expert.avatar), expert_path(expert) %>
         </div>
