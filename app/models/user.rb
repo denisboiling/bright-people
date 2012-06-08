@@ -52,9 +52,10 @@ class User < ActiveRecord::Base
     User.experts.split(self).last.first
   end
   
-  # stub method, should be replaced
-  def expert_mentions
-    0
+  def mentions
+    comments.map(&:relation)
+            .select {|r| r.class.name.in? ['Article'] }
+            .uniq
   end
   
   class << self
