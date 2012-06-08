@@ -26,6 +26,7 @@
         </label>
         <a data-wysihtml5-dialog-action="save">OK</a> <a data-wysihtml5-dialog-action="cancel">Cancel</a>
       </div>
+      <a data-wysihtml5-action="change_view" style="float:right">switch to html view</a>
     </div>
     <%= f.input :short_description, input_html: {size: 5} %>
     <div id="wysihtml5-toolbar-interview" style="display: none;">
@@ -49,12 +50,12 @@
         </label>
         <a data-wysihtml5-dialog-action="save">OK</a> <a data-wysihtml5-dialog-action="cancel">Cancel</a>
       </div>
+      <a data-wysihtml5-action="change_view" style="float:right">switch to html view</a>
     </div>
     <%= f.input :content, input_html: {size: 10} %>
     <%= f.input :picture, as: :file, hint: f.template.image_tag(f.object.picture.url(:medium)) %>
     <%= f.input :interview_tag_list %>
   <% end %>
   <%= f.buttons %>
-  <%= link_to "view on site", interview_path(@interview), {:target => "_blank"} %>
 <% end %>
 

@@ -117,5 +117,21 @@ class Activity < ActiveRecord::Base
     def for_main
       self.random(4)
     end
+
+    # def nice_approval(_scope)
+    #   arr = []
+    #   i = 1
+    #   _count = _scope.count
+    #   while i < _count do
+    #     current = _scope[i]
+    #     if (i+1)%5 == 0 && current.approved?
+    #       puts "approved"
+    #       arr << 
+    #     else
+    #       arr << current
+    #     end
+    #     i += 1
+    #   end
+    # end
   end
 end
