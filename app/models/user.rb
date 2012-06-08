@@ -30,6 +30,7 @@ class User < ActiveRecord::Base
 
   validates :role, presence: true
   
+  scope :experts, where(role_id: Role.expert.id)
   
   # Callbacks
   before_validation(on: :create) do
@@ -44,11 +45,11 @@ class User < ActiveRecord::Base
   end
   
   def prev_expert
-    Role.expert.users.split(self).first.last
+    User.experts.split(self).first.last
   end
   
   def next_expert
-    Role.expert.users.split(self).last.first
+    User.experts.split(self).last.first
   end
   
   # stub method, should be replaced
@@ -58,7 +59,7 @@ class User < ActiveRecord::Base
   
   class << self
     def experts_for_main
-      Role.expert.users.random(5)
+      User.experts.random(5)
     end
   end
 

@@ -10,7 +10,6 @@ ru:
         few: Кружка
         many: Кружков
         other: Кружки
-      expert: Экспертный совет
       metro_station: Станция метро
       attach: Фотография
       interview:
@@ -43,11 +42,11 @@ ru:
         experts_rating: Рейтинг экспертов
         organization: Организация
         metro_station: Станция метро
-      expert:
+      user:
         name: Имя
         description: Описание
         about: Биография
-        photo: Фотография
+        avatar: Фотография
         created_at: Дата создания
         updated_at: Дата обновления
       activity_photo:
