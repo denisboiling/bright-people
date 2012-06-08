@@ -1,32 +1,60 @@
-<div id="center">
-  <div class="pages">
-    <div class="common">
-      <h1>Конкурсы ярких людей</h1>
-      <div class="post_category_menu"></div>
-        <ul>
-          <li><%= link_to "Все", contests_path %></li>
-          <% ContestCategory.all.each do |category| %>
-            | <li><%= link_to category.name, contests_path(category: category.id) %></li>
+<div class="pages">
+  <div class="common">
+    <h1>Конкурсы ярких людей</h1>
+    <div class="post_category_menu">
+      <ul>
+        <% if params[:category].nil? %>
+          <li class="active"><%= link_to "<span class=\"count\">".html_safe+Contest.count.to_s+"</span>".html_safe+"Все", contests_path %></li>
+        <% else %>
+          <li><%= link_to "<span class=\"count\">".html_safe+Contest.count.to_s+"</span>".html_safe+"Все", contests_path %></li>
+        <% end %>
+        <% ContestCategory.all.each do |category| %>
+          <% if params[:category]==category.id.to_s %>
+            <li class="active"><%= link_to "<span class=\"count\">".html_safe+Contest.where(:category_id => category.id).count.to_s+"</span>".html_safe+category.name, contests_path(category: category.id) %></li>
+          <% else %>
+            <li><%= link_to "<span class=\"count\">".html_safe+Contest.where(:category_id => category.id).count.to_s+"</span>".html_safe+category.name, contests_path(category: category.id) %></li>
           <% end %>
-        </ul>
-        <div class="clear"></div>
-      <div class="contest_list"></div>
+        <% end %>
+      </ul>
+      <div class="clear"></div>
+    </div>
+    <div class="contest_list">
+        <% @contests.each do |contest| %>
+          <div class="preview_tender">
+            <div class="thumb">
+              <%= image_tag contest.picture.url %>
+            </div>
+            <div class="info">
+              <div class="name">
+                <%= link_to contest.name, contest %>
+              </div>
+              <div class="date">
+                Конкурс проводится с <%= Russian::strftime(contest.started_at, "%e %B") %> по <%= Russian::strftime(contest.ended_at, "%e %B %Y г.")%>
+              </div>
+              <div class="desc">
+                <%= contest.description %><span class="fade"></span>
+              </div>
+            </div>
+            <div class="contest_action">
+              <ul>
+                <li class="participate"><%= link_to "Принять участие", new_contest_membership_path(contest) %></li>
+                <li class="watch"><%= link_to "Посмотреть работы участников", contest_memberships_path(contest) %></li>
+              </ul>
+            </div>
+            <div class="clear"></div>
+          </div>
+        <% end %>
+      </div>
     </div>
     <div class="sidebar">
+      <div class="alongside">
+        <div class="title">Еще места рядом</div>
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
     </div>
     <div class="clear"></div>
   </div>
-</div>
-
-<!--
-<%= link_to "Все", contests_path %>
-<% ContestCategory.all.each do |category| %>
- | <%= link_to category.name, contests_path(category: category.id) %>
-<% end %>
-
-<% @contests.each do |contest| %>
-  <h1><%= link_to contest.name, contest %></h1>
-  <strong>started at:</strong><%= contest.started_at %><br />
-  <strong>ended at:</strong><%= contest.ended_at %><br />
-<% end %>
--->

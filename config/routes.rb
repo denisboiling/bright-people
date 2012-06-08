@@ -55,6 +55,8 @@ BrightPeople::Application.routes.draw do
     end
   end
 
+  get "/contests/:id/rules" => "contests#rules"
+
   # User dashboard
   namespace :dashboard do
     resources :notifications, only: [:index, :destroy, :update]
