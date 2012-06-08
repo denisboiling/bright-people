@@ -10,7 +10,7 @@ class ActivityApproval < ActiveRecord::Base
 
   # When expert create approval we marked activity
   # as approved
-  def approved_activity!
+  def approve_activity!
     activity.update_attribute(:approved, true)
   end
 end

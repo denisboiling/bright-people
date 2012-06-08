@@ -55,7 +55,7 @@ class Activity < ActiveRecord::Base
   belongs_to :region
 
   has_one :approval, class_name: 'ActivityApproval'
-  has_one :expert, through: :approval, class_name: 'Expert'
+  has_one :user, through: :approval, class_name: 'User'
 
   has_attached_file :logo, styles: { medium: "300x300>", thumb: '125x125', approved: '422x125#' },
                            path: ":rails_root/public/system/activities/:attachment/:id/:style/:filename",
@@ -138,20 +138,15 @@ class Activity < ActiveRecord::Base
       self.random(4)
     end
 
-    # def nice_approval(_scope)
-    #   arr = []
-    #   i = 1
-    #   _count = _scope.count
-    #   while i < _count do
-    #     current = _scope[i]
-    #     if (i+1)%5 == 0 && current.approved?
-    #       puts "approved"
-    #       arr << 
-    #     else
-    #       arr << current
-    #     end
-    #     i += 1
-    #   end
-    # end
+    # TODO: replace!!!!
+    def nice_approval(_scope)
+      arr = []
+      _scope.each_with_index do |_activity, index|
+        next if (index+1)%5 == 0 && _activity.approved?
+        arr << _activity
+      end
+      arr
+    end
+
   end
 end
