@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
 
   validates :role, presence: true
   
-  scope :experts, where(role_id: Role.expert.id)
+  scope :experts, lambda { where(role_id: Role.expert.id) }
   
   # Callbacks
   before_validation(on: :create) do
