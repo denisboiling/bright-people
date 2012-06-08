@@ -1,4 +1,4 @@
-<% 1.upto(30).each do |i| %>
+<% 1.upto(10).each do |i| %>
 news_<%= i %>:
   id: <%= i %>
   title: <%= Faker::Lorem.words.join(' ') %>

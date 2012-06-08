@@ -100,14 +100,6 @@ class Main < ActiveRecord::Migration
     t.timestamps
   end
 
-  create_table(:experts) do |t|
-    t.string :name, :description
-    t.text :about
-    t.has_attached_file :photo
-
-    t.timestamps
-  end
-
   create_table(:metro_stations) do |t|
     t.string :title
 
@@ -162,6 +154,7 @@ class Main < ActiveRecord::Migration
     t.integer :role_id, null: false
 
     t.string :description
+    t.text :about
 
     t.string :avatar_file_name, :avatar_content_type
     t.integer :avatar_file_size
@@ -308,7 +301,7 @@ class Main < ActiveRecord::Migration
   end
 
   create_table :activity_approvals do |t|
-    t.integer :activity_id, :expert_id, null: false
+    t.integer :activity_id, :user_id, null: false
     t.text :text, null: false
 
     t.timestamps

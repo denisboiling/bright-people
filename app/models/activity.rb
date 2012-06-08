@@ -102,6 +102,26 @@ class Activity < ActiveRecord::Base
   def min_age
     age_tags.minimum(:start_year)
   end
+  
+  # returns list of year pairs
+  def compact_ages
+    result = []
+    current = {}
+    ages = age_tags.order(:start_year)
+    ages.each do |age|
+      if last = result.pop
+        if age.start_year <= last[:end_year]
+          last[:end_year] = age.end_year if age.end_year > last[:end_year]
+        else
+          result.push last
+          result.push start_year: age.start_year, end_year: age.end_year
+        end
+      else
+        result.push start_year: age.start_year, end_year: age.end_year
+      end
+    end
+    result
+  end
 
   # For near places
   def place_near
@@ -117,5 +137,21 @@ class Activity < ActiveRecord::Base
     def for_main
       self.random(4)
     end
+
+    # def nice_approval(_scope)
+    #   arr = []
+    #   i = 1
+    #   _count = _scope.count
+    #   while i < _count do
+    #     current = _scope[i]
+    #     if (i+1)%5 == 0 && current.approved?
+    #       puts "approved"
+    #       arr << 
+    #     else
+    #       arr << current
+    #     end
+    #     i += 1
+    #   end
+    # end
   end
 end

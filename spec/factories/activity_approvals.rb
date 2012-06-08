@@ -3,6 +3,6 @@ FactoryGirl.define do
     text { Faker::Lorem.paragraphs(3).join('\n') }
 
     association :activity, factory: :activity
-    association :expert, factory: :expert
+    association :user, factory: :expert
   end
 end
