@@ -9,7 +9,9 @@
       
     <% @experts.each do |expert| %>
       <div class="exp_preview">
+        <% if expert.approvals_count != 0 %>
         <span class="mark"><%= expert.approvals_count %></span>
+        <% end %>
         <div class="thumb">
           <%= link_to image_tag(expert.avatar), expert_path(expert) %>
         </div>
