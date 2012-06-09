@@ -13,7 +13,7 @@ window.setup_raty = ->
     $.ajax
       type: 'PUT'
       url: '/activities/vote'
-      data: {rating: rating, activity_id: activity}
+      data: {rating: rating, id: activity}
       success: (data) ->
         $("span#vote-count").replaceWith(data)
 
