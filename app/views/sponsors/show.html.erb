@@ -1,1 +1,24 @@
-Страница одного попечителя
+<div id="center">
+  <div class="pages">
+    <div class="common">
+      <h1><%= @sponsor.first_name + " " + @sponsor.last_name %></h1>
+      <div class="post_info">
+        <div class="thumb">
+          <%= image_tag @sponsor.photo.url(:medium) %>
+        </div>
+        <div class="post_share">
+          <div class="title">Делись с друзьями</div>
+          sdf dfg f g
+        </div>
+      </div>
+      <div class="description">
+        <%= @sponsor.description %>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="sidebar">
+      <%= render 'shared/sidebar' %>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
