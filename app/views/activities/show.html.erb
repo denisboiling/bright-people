@@ -31,7 +31,7 @@
         </div>
         <div class="rating_block">
           <span class="name">Рейтинг родителей</span>
-          <div class="<%= can?(:vote, @activity) ? 'rating' : 'rating_readonly' %>" data-rating="<%= @activity.users_rating %>" data-activity-id="<%= @activity.id %>">Звезды</div>
+          <div class="rating" data-rating="<%= @activity.users_rating %>" data-activity-id="<%= @activity.id %>" data-lock=<%= !can?(:vote, @activity) %>>Звезды</div>
           <%= render partial: 'vote_count' %><br />
           <!-- <a href="">Отменить</a> -->
         </div>
@@ -193,12 +193,11 @@
 
   <div class="sidebar">
     <% if @activity.approved? %>
-      <% user = @activity.user %>
+      <% expert = @activity.expert %>
       <div class="expert_opinion">
         <div class="title">Мнение эксперта</div>
         <div class="thumb"><%= link_to image_tag(expert.avatar.url), expert_path(expert) %></div>
         <div class="name"><%= expert.name %></div>
-
         <div class="info"><%= expert.description %></div>
         <div class="quote">
           <%= @activity.approval.text %>
@@ -223,3 +222,7 @@
   </div>
   <div class="clear"></div>
 </div>
+
+<%= dialog "Нужно зарегистрироваться", id: :register_dialog do %>
+  НУЖНО ЗАРЕГИСТРИРОВАТЬСЯ!!!
+<% end %>

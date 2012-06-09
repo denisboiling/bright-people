@@ -9,7 +9,6 @@ window.setup_raty = ->
         score: rating
         half  : true
 
-
   send_rating =(rating,activity) ->
     $.ajax
       type: 'PUT'
@@ -21,8 +20,12 @@ window.setup_raty = ->
   if $(".rating")
     rating = $(".rating").attr('data-rating')
     id = $(".rating").attr('data-activity-id')
+    lock = $(".rating").attr('data-lock')
     $(".rating").raty
       path: '/assets/raty'
       score: rating
       click: (score, evt) ->
-        send_rating(score, id)
+        if lock == "true"
+          $("#register_dialog").removeClass('hidden')
+        else
+          send_rating(score, id)
