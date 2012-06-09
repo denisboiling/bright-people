@@ -1,4 +1,4 @@
-class UserCommentNofity < ActiveRecord::Base
+class UserCommentNotify < ActiveRecord::Base
   belongs_to :comment
   belongs_to :child_comment, class_name: 'Comment', foreign_key: :child_comment_id
 
