@@ -7,6 +7,14 @@ class NewsController < ApplicationController
 
   def index
     @news = News.all
+
+    sort = params[:sort]
+    sort ||= 'created_at'
+
+    @news = News.order(sort)
+    @news = @news.page(params[:page]).per(5)
+
+    render partial: 'news_list', locals: { news: @news } if params[:remote]
   end
 
   def show

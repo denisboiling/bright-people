@@ -1,14 +1,3 @@
-<!--<% @interviews.each do |inter| %>
-    <% if inter.is_enabled == false %>
-      <% if can? :view_disabled, inter %>
-        <p><%= link_to inter.title, interview_path(inter), {:style => "color:red"} %></p>
-      <% end %>
-    <% else %>
-      <p><%= link_to inter.title, interview_path(inter) %></p>
-    <% end %>
-<% end %>-->
-
-
 <div class="post_list">
   <h1>Интервью</h1>
     С преферансом и куртизанками
