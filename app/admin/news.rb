@@ -14,15 +14,7 @@ ActiveAdmin.register News do
     default_actions
   end
 
-  form html: { enctype: 'multipart/form-data' } do |f|
-    f.inputs 'Основное' do
-      f.input :title
-      f.input :content, input_html: {size: 10}
-      f.input :picture, as: :file, hint: f.template.image_tag(f.object.picture.url(:medium))
-      f.input :news_tag_list
-    end
-    f.buttons
-  end
+  form :partial => "form"
 
   show do
     attributes_table :title, :author, :content, :created_at, :updated_at, :picture, :news_tag_list

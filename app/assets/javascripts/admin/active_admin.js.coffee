@@ -82,6 +82,11 @@ setup_wysihtml5_editor = ->
                               toolbar: "wysihtml5-toolbar-article",
                               parserRules: wysihtml5ParserRules,
                               stylesheets: ["/../assets/editor_style.css"]
+  if $('#news_content').length != 0
+    new wysihtml5.Editor "news_content", 
+                              toolbar: "wysihtml5-toolbar-news",
+                              parserRules: wysihtml5ParserRules,
+                              stylesheets: ["/../assets/editor_style.css"]
 
 
 setup_video_removing = ->
