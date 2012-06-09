@@ -1,0 +1,51 @@
+<%= form_tag activities_path(kind: @kind), method: :get, remote: true, id: :remote_form do %>
+  <%= hidden_field_tag :order_by, 'created_at', id: :order_by %>
+  <div class="filter_sorter">
+    <div class="filter_wraper">
+      <h1>Детские кружки Москвы</h1>
+      <div class="cell">
+        <strong>По возрасту</strong>
+        <ul>
+          <% AgeTag.all.each do |age_tag| %>
+            <li>
+              <%= check_box_tag "age[]", age_tag.id, false, id: (dom_id age_tag), class: :remote_action %>
+              <span class="sim_check"></span>
+              <%= label_tag (dom_id age_tag), age_tag.title, class: :hidden_checkbox %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="cell">
+        <strong>По категории</strong>
+        <ul>
+          <% @directions.each do |tag| %>
+            <li>
+              <%= check_box_tag "tag[]", tag.id, false, id: (dom_id tag), class: :remote_action %>
+              <span class="sim_check"></span>
+              <%= label_tag (dom_id tag), tag.name, class: :hidden_checkbox %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="cell">
+        <div class="clear_block">
+          <a id="clear_all_options" href="">Сбросить все</a>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+  $(".filter_sorter li label").live('click',function(){
+  var idCheck = $(this).attr("for");
+
+  if($('#'+idCheck).attr('checked')){
+  $(this).prev("span").removeClass("active");
+  } else {
+  $(this).prev("span").addClass("active");
+  }
+  });
+  });
+</script>
