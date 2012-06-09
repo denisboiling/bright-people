@@ -28,6 +28,8 @@ class User < ActiveRecord::Base
   
   attr_accessible :email, :remember_me, :password, :password_confirmation, :avatar, :description
 
+  before_validation :download_external_avatar
+  
   validates :role, presence: true
   
   scope :experts, lambda { where(role_id: Role.expert.id) }
@@ -39,6 +41,24 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :name, :password, :remember_me
   attr_accessible :vkontakte_id, :facebook_id, :odnoklassniki_id
+  
+  attr_accessor :external_avatar_url
+  attr_accessible :external_avatar_url
+  
+  def download_external_avatar
+    return unless external_avatar_url
+    
+    basename = external_avatar_url.split('/').last
+    extname = File.extname basename
+    name = File.basename basename, extname
+    
+    file = Tempfile.new([name, extname])
+    file.binmode
+    file << open(external_avatar_url).read
+    file.close
+    file.open
+    self.avatar = file
+  end
 
   def approvals_count
     activity_approvals.count
@@ -71,7 +91,7 @@ class User < ActiveRecord::Base
       user
     else
       self.create! vkontakte_id: user_id, password: Devise.friendly_token[0,8],
-                   name: data.info.name
+                   name: data.info.name, external_avatar_url: data.extra.raw_info.photo_big
     end
   end
 
