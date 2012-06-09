@@ -22,4 +22,7 @@ class UsersController < ApplicationController
     else
     end
   end
+  
+  def comments
+  end
 end

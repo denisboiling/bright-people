@@ -2,7 +2,7 @@
   <ul>
     <%= content_tag :li, link_to("Профиль", profile_path),
                          class: "profile_ico#{(current == 'profile' ? ' active' : '')}" %>
-    <%= content_tag :li, link_to("Комментарии", articles_path),
+    <%= content_tag :li, link_to("Комментарии", profile_comments_path),
                          class: "comment_ico#{(current == 'comments' ? ' active' : '')}" %>
     <%= content_tag :li, link_to("Избранное", favourites_path),
                          class: "fav_ico#{(current == 'favourites' ? ' active' : '')}" %>
