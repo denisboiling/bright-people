@@ -1,6 +1,6 @@
 <div class="post_category_menu">
   <ul>
-    <%= content_tag :li, link_to("Профиль", articles_path),
+    <%= content_tag :li, link_to("Профиль", profile_path),
                          class: "profile_ico#{(current == 'profile' ? ' active' : '')}" %>
     <%= content_tag :li, link_to("Комментарии", articles_path),
                          class: "comment_ico#{(current == 'comments' ? ' active' : '')}" %>
