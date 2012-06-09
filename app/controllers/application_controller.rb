@@ -23,4 +23,8 @@ class ApplicationController < ActionController::Base
       cookies.delete :current_user
     end
   end
+  
+  def current_ability
+    @current_ability ||= Ability.new(current_user, current_admin_user)
+  end
 end

@@ -1,4 +1,6 @@
 class ActivitiesController < ApplicationController
+  load_and_authorize_resource
+  
   # TODO: bugaggagga make it better, and try understand what every line do ;)
   before_filter :get_kind, only: :index
   before_filter :get_directions, only: :index
@@ -27,6 +29,14 @@ class ActivitiesController < ApplicationController
     scope = params[:type] == 'parents' ? 'parents' : 'childrens'
     comments = @activity.activity_comments.send(scope).page(params[:page]).per(5)
     render partial: 'activity_comment', locals: {comments: comments}
+  end
+  
+  def approve
+    @activity = Activity.find(params[:activity_id])
+    ActivityApproval.create! user_id: params[:expert_id],
+                             activity_id: @activity.id,
+                             text: params[:content]
+    redirect_to @activity
   end
 
   private

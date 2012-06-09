@@ -27,3 +27,10 @@ window.setup_activities_list = ->
     $("div.selected_metro").append("<a class='clear_link' href='' " + 'data-val=' + val + ">" + text + "</a> ")
     $("select#metro").append(selected)
     $("#remote_form").submit()
+
+window.setup_activities_approval = ->
+  $('.approve_activity_link').bind 'click', (event) ->
+    event.preventDefault()
+    $('.activity_approve_dialog').removeClass('hidden')
+    $('.activity_approve_dialog .close').bind 'click', ->
+      $(this).closest('.activity_approve_dialog').addClass('hidden')

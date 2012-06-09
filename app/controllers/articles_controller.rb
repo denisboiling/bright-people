@@ -8,10 +8,14 @@ class ArticlesController < ApplicationController
   def index
     @categories = ArticleCategory.all
     
+    sort = params[:sort]
+    sort ||= 'created_at'
+    
     categories_ids = (params[:categories_ids] or "").split(',').map(&:to_i)
-    @articles = Article.scoped
+    @articles = Article.order(sort)
     @articles = @articles.where(article_category_id: categories_ids) unless categories_ids.empty?
     @articles = @articles.page(params[:page]).per(5)
+    
     render partial: 'articles_list', locals: { articles: @articles } if params[:remote]
   end
 

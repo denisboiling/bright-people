@@ -1,4 +1,6 @@
-  <div class="pages">
+<%= render 'approve_dialog', activity: @activity %>
+
+<div class="pages">
 
     <div class="common">
 
@@ -19,11 +21,7 @@
         </div>
 
         <div class="left_part">
-          <% if @activity.approved? %>
-            <div class="approved_mark">
-              <img src="/assets/detail_aprroved.png" alt="" />Одобрено экспертом
-            </div>
-          <% end %>
+          <%= render 'approved' %>
 
           <div class="age_block">
             <span class="name">Возраст<br />детей</span><br />
@@ -189,7 +187,7 @@
       <% expert = @activity.expert %>
       <div class="expert_opinion">
         <div class="title">Мнение эксперта</div>
-        <div class="thumb"><%= link_to image_tag(expert.photo.url), expert_path(expert) %></div>
+        <div class="thumb"><%= link_to image_tag(expert.avatar.url), expert_path(expert) %></div>
         <div class="name"><%= expert.name %></div>
 
         <div class="info"><%= expert.description %></div>
