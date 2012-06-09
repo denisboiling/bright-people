@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     return unless Comment.possible_relations.include?(params[:relation_type])
     
     user =
-      if current_admin_user
+      if current_admin_user and params[:expert_id]
         expert_id = params[:expert_id]
         User.experts.find(expert_id)
       else
