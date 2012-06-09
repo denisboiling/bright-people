@@ -191,6 +191,7 @@ class Main < ActiveRecord::Migration
     t.boolean :is_enabled
     t.text :content, :short_description
     t.has_attached_file :picture
+    t.integer :comments_count, default: 0
     t.timestamps
   end
 
@@ -205,6 +206,7 @@ class Main < ActiveRecord::Migration
     t.integer :author_id
     t.text :content
     t.has_attached_file :picture
+    t.integer :comments_count, default: 0
     t.timestamps
   end
 

@@ -1,0 +1,15 @@
+<% news.each do |n| %>
+  <div class="preview_cell">
+    <div class="info">
+      <div class="thumb">
+        <%= link_to image_tag(n.picture), n %>
+      </div>
+      <div class="name">
+        <%= link_to n.title, n %>
+      </div>
+      <div class="date">
+        <%= n.created_at.to_s(:main) %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -26,3 +26,5 @@ $ ->
   window.setup_load_activity_comments()
   window.setup_expert_tabs()
   window.setup_new_participant_form_button()
+  window.setup_ajax_interviews_loading()
+  window.setup_ajax_news_loading()
