@@ -3,20 +3,7 @@
   <div class="common">
     <h1>Личное пространство</h1>
     Здесь мы храним для вас все ваши комментарии, избранные страницы и прочее
-    <div class="post_category_menu">
-      <ul>
-        <li class="profile_ico">
-          <a href="/profile">Профиль</a>
-        </li>
-        <li class="comment_ico">
-          <a href="">Комментарии</a>
-        </li>
-        <li class="fav_ico active">
-          <a href="/favourites">Избранное</a>
-        </li>
-      </ul>
-      <div class="clear"></div>
-    </div>
+    <%= render 'users/profile_menu', current: 'favourites' %>
     <div class="title">Избранные материалы яркого журнала</div>
     <% @favourites.each do |favourite| %>
       <div class="profile_magazine">

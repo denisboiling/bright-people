@@ -1,0 +1,11 @@
+<div class="post_category_menu">
+  <ul>
+    <%= content_tag :li, link_to("Профиль", articles_path),
+                         class: "profile_ico#{(current == 'profile' ? ' active' : '')}" %>
+    <%= content_tag :li, link_to("Комментарии", articles_path),
+                         class: "comment_ico#{(current == 'comments' ? ' active' : '')}" %>
+    <%= content_tag :li, link_to("Избранное", favourites_path),
+                         class: "fav_ico#{(current == 'favourites' ? ' active' : '')}" %>
+  </ul>
+  <div class="clear"></div>
+</div>
