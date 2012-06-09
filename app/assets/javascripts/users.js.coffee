@@ -13,10 +13,3 @@ window.setup_email_dialog = ->
     $('#update_email_dialog').addClass('hidden')
   
   $('#update_email_dialog').removeClass('hidden')
-
-window.setup_require_signin_actions = ->
-  $('a.signin_required').live 'click', (event) ->
-    unless $.cookie('current_user')
-      event.preventDefault()
-      $('#signin_dialog').dialog modal: true
-    
