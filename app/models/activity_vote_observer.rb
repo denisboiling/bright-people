@@ -1,5 +1,6 @@
 class ActivityVoteObserver < ActiveRecord::Observer
-  def after_create(vote)
+  # TODO: move to delayed job
+  def after_save(vote)
     vote.activity.update_rating!
   end
 end

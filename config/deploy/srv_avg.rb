@@ -17,6 +17,8 @@ before "db:prepare", "unicorn:stop"
 after "deploy:migrate", "db:load_seed"
 after "db:load_seed", "db:load_sample"
 
+after "deploy:update_code", "delayed_job:restart"
+
 before "db:prepare", "thinking_sphinx:stop"
 after "deploy:migrate", "thinking_sphinx:configure"
 after "db:load_sample", "thinking_sphinx:rebuild"
@@ -28,6 +30,13 @@ namespace :deploy do
   task :chown, :roles => :app do
     run "sudo chown -R www-data:www-data #{shared_path}/system"
   end
+end
+
+namespace :delayed_job do
+    desc "Restart the delayed_job process"
+    task :restart, :roles => :app do
+        run "cd #{latest_release}; RAILS_ENV=#{rails_env} script/delayed_job restart"
+    end
 end
 
 

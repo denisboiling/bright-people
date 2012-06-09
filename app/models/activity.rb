@@ -55,6 +55,7 @@ class Activity < ActiveRecord::Base
   belongs_to :region
 
   has_one :approval, class_name: 'ActivityApproval'
+
   has_one :expert, through: :approval, source: :user
 
   has_attached_file :logo, styles: { medium: "300x300>", thumb: '125x125', approved: '422x125#' },
@@ -133,25 +134,25 @@ class Activity < ActiveRecord::Base
     update_attribute(:approved, true) if approval.present?
   end
 
+  # Is activity is educational?
+  def is_edu?
+    is_educational
+  end
+
   class << self
     def for_main
       self.random(4)
     end
 
-    # def nice_approval(_scope)
-    #   arr = []
-    #   i = 1
-    #   _count = _scope.count
-    #   while i < _count do
-    #     current = _scope[i]
-    #     if (i+1)%5 == 0 && current.approved?
-    #       puts "approved"
-    #       arr << 
-    #     else
-    #       arr << current
-    #     end
-    #     i += 1
-    #   end
-    # end
+    # TODO: replace!!!!
+    def nice_approval(_scope)
+      arr = []
+      _scope.each_with_index do |_activity, index|
+        next if (index+1)%5 == 0 && _activity.approved?
+        arr << _activity
+      end
+      arr
+    end
+
   end
 end

@@ -359,6 +359,7 @@ DEPENDENCIES
   cocoon
   coffee-rails (~> 3.2.1)
   cucumber-rails
+  daemons
   database_cleaner
   debugger
   delayed_job

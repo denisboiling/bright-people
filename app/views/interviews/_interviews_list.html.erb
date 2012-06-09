@@ -7,6 +7,9 @@
       <div class="name">
         <%= link_to interview.title, interview %>
       </div>
+      <div class="comments_count">
+        <%= interview.comments_count %>
+      </div>
       <div class="date">
         <%= interview.created_at.to_s(:main) %>
       </div>
