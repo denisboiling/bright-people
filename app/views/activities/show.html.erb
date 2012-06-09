@@ -19,11 +19,7 @@
       </div>
 
       <div class="left_part">
-        <% if @activity.approved? %>
-          <div class="approved_mark">
-            <img src="/assets/detail_aprroved.png" alt="" />Одобрено экспертом
-          </div>
-        <% end %>
+        <%= render 'approved' %>
 
         <div class="age_block">
           <span class="name">Возраст<br />детей</span><br />

@@ -11,6 +11,8 @@ window.setup_slider = ->
   $("div.magazine_tab div.mag_tabs:first").show()
   $("div.magazine_control li a").live "click", ->
     currentTab = $(this).attr("rel")
+    $("div.magazine_control li a").removeClass("active")
+    $(this).addClass("active")
     $("div.magazine_tab div.mag_tabs").hide()
     $("div.magazine_tab").find("#" + currentTab).show()
     false
