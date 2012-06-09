@@ -3,5 +3,5 @@
     <img src="/assets/detail_aprroved.png" alt="" />Одобрено экспертом
   </div>
 <% elsif current_admin_user %>
-    <%= link_to "ОДОБРИТЬ!", '#', class: 'approve_activity_link' %>
+    <%= link_to image_tag('approved_button.png'), '#', class: 'approve_activity_link' %>
 <% end %>
