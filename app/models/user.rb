@@ -24,10 +24,8 @@ class User < ActiveRecord::Base
                     url: "/system/users/:attachment/:id/:style/:filename",
                     default_style: :thumb
   
-  #validates_attachment_presence :avatar
-  
   attr_accessible :email, :remember_me, :password, :password_confirmation, :avatar, :description
-
+  
   validates :role, presence: true
   
   scope :experts, lambda { where(role_id: Role.expert.id) }
@@ -39,6 +37,16 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :name, :password, :remember_me
   attr_accessible :vkontakte_id, :facebook_id, :odnoklassniki_id
+  
+  def ensure_external_avatar!(external_avatar_url)
+    file = Tempfile.new('avatar')
+    file.binmode
+    file << open(external_avatar_url).read
+    file.close
+    file.open
+    self.avatar = file
+    self.save!
+  end
 
   def approvals_count
     activity_approvals.count
@@ -70,8 +78,12 @@ class User < ActiveRecord::Base
     if user
       user
     else
-      self.create! vkontakte_id: user_id, password: Devise.friendly_token[0,8],
-                   name: data.info.name
+      user = self.create! vkontakte_id: user_id,
+                          password: Devise.friendly_token[0,8],
+                          name: data.info.name
+      photo_url = data.extra.raw_info.photo_big
+      user.delay.ensure_external_avatar!(photo_url) if photo_url
+      user
     end
   end
 
@@ -82,8 +94,13 @@ class User < ActiveRecord::Base
     if user
       user
     else
-      self.create! facebook_id: user_id, email: email, password: Devise.friendly_token[0,8],
-                   name: data.info.name
+      user = self.create! facebook_id: user_id,
+                          email: email,
+                          password: Devise.friendly_token[0,8],
+                          name: data.info.name
+      photo_url = data.info.image
+      user.delay.ensure_external_avatar!(photo_url) if photo_url
+      user
     end
   end
 
@@ -93,8 +110,12 @@ class User < ActiveRecord::Base
     if user
       user
     else
-      self.create! odnoklassniki_id: user_id, password: Devise.friendly_token[0,8],
-                   name: data.extra.raw_info.name
+      user = self.create! odnoklassniki_id: user_id,
+                          password: Devise.friendly_token[0,8],
+                          name: data.extra.raw_info.name
+      photo_url = data.extra.raw_info.pic_2
+      user.delay.ensure_external_avatar!(photo_url) if photo_url
+      user
     end
   end
 
