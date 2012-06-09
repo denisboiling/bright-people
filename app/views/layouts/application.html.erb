@@ -13,6 +13,10 @@
         <%= render partial: 'shared/header' %>
       </div>
 
+      <% if current_user and current_user.email.blank? %>
+        <%= render 'users/email_dialog', user: current_user %>
+      <% end %>
+      
       <%= yield(:before_center) %>
       
       <div id="center">

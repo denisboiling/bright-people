@@ -18,6 +18,7 @@ BrightPeople::Application.routes.draw do
 
   resources :activities, only: [:index, :show, :search] do
     get :get_comments
+    put :approve
   end
   match '/activities/search' => 'activities#search', :via => :post, :as => :activity_search
   match '/activities/vote' => 'activities#vote', :via => :put
@@ -54,6 +55,8 @@ BrightPeople::Application.routes.draw do
       put :vote
     end
   end
+
+  get "/contests/:id/rules" => "contests#rules"
 
   # User dashboard
   namespace :dashboard do

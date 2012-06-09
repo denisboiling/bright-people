@@ -71,3 +71,17 @@
     </div>
   </div>
 <% end %>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".filter_sorter li label").live('click',function(){
+    var idCheck = $(this).attr("for");
+
+    if($('#'+idCheck).attr('checked')){
+  			$(this).prev("span").removeClass("active");
+  		} else {
+  			$(this).prev("span").addClass("active");
+  		}
+  });
+});
+</script>

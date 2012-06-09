@@ -1,77 +1,77 @@
-  <div class="pages">
+<div class="pages">
 
-    <div class="common">
+  <div class="common">
 
-      <div class="detail_page">
+    <div class="detail_page">
 
-        <h1><%= @activity.title %>
-          <% if @activity.participant? %>
-            <span class="mark">Участник фестиваля!</span>
-          <% end %>
-        </h1>
+      <h1><%= @activity.title %>
+        <% if @activity.participant? %>
+          <span class="mark">Участник фестиваля!</span>
+        <% end %>
+      </h1>
 
-        <div class="base">На базе учреждения: <%= @activity.organization.title %></div>
-        <div class="cat_list">
-          Категории:
-          <% @activity.direction_tags.each do |tag| %>
-            <%= link_to tag.name, '#' %>
-          <% end %>
+      <div class="base">На базе учреждения: <%= link_to @activity.organization.title, organization_path(@activity.organization) %></div>
+      <div class="cat_list">
+        Категории:
+        <% @activity.direction_tags.each do |tag| %>
+          <%= link_to tag.name, activities_path(tag: tag.id) %>
+        <% end %>
+      </div>
+
+      <div class="left_part">
+        <% if @activity.approved? %>
+          <div class="approved_mark">
+            <img src="/assets/detail_aprroved.png" alt="" />Одобрено экспертом
+          </div>
+        <% end %>
+
+        <div class="age_block">
+          <span class="name">Возраст<br />детей</span><br />
+          <span class="age">от <%= t(:age, :count => @activity.min_age) %></span>
         </div>
-
-        <div class="left_part">
-          <% if @activity.approved? %>
-            <div class="approved_mark">
-              <img src="/assets/detail_aprroved.png" alt="" />Одобрено экспертом
-            </div>
-          <% end %>
-
-          <div class="age_block">
-            <span class="name">Возраст<br />детей</span><br />
-            <span class="age">от <%= t(:age, :count => @activity.min_age) %></span>
-          </div>
-          <div class="rating_block">
-            <span class="name">Рейтинг родителей</span>
-            <div class="rating" data-rating="<%= @activity.users_rating %>" data-activity-id="<%= @activity.users_rating %>">Звезды</div>
-            <%= render partial: 'vote_count' %><br />
-            <a href="">Отменить</a>
-          </div>
-          <div class="clear"></div>
-
-          <div class="info_block">
-            <table>
-              <tr>
-                <th><span>Метро</span></th>
-                <td><%= @activity.metro_station.title %><br />
-              </tr>
-              <tr>
-                <th><span>Адрес</span></th>
-                <td><a class="to_map_link" href=""><%= @activity.address %><span></span></a></td>
-              </tr>
-              <tr>
-                <th><span>Сайт</span></th>
-                <td><%= link_to @activity.site, @activity.site %></td>
-              </tr>
-              <tr>
-                <th><span>Телефон</span></th>
-                <td><%= @activity.phone %></td>
-              </tr>
-            </table>
-          </div>
+        <div class="rating_block">
+          <span class="name">Рейтинг родителей</span>
+          <div class="rating" data-rating="<%= @activity.users_rating %>" data-activity-id="<%= @activity.id %>" data-lock=<%= !can?(:vote, @activity) %>>Звезды</div>
+          <%= render partial: 'vote_count' %><br />
+          <!-- <a href="">Отменить</a> -->
         </div>
+        <div class="clear"></div>
 
-        <div class="right_part">
+        <div class="info_block">
+          <table>
+            <tr>
+              <th><span>Метро</span></th>
+              <td><%= @activity.metro_station.title %><br />
+            </tr>
+            <tr>
+              <th><span>Адрес</span></th>
+              <td><a class="to_map_link" href=""><%= @activity.address %><span></span></a></td>
+            </tr>
+            <tr>
+              <th><span>Сайт</span></th>
+	      <td><a href=<%= @activity.site %> target="_blank" ><%= @activity.site %></td>
+            </tr>
+            <tr>
+              <th><span>Телефон</span></th>
+              <td><%= @activity.phone %></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="right_part">
         <div class="pikachoose">
-	  <% if @activity.photos.count == 1 %>
-	    <div class="mask"></div>
-	    <%= link_to image_tag(@activity.photos.last.attach.url(:slider)), '#' %>
-	  <% elsif  @activity.photos.count > 1 %>
-	    <div class="mask"></div>
+          <% if @activity.photos.count == 1 %>
+            <div class="mask"></div>
+            <%= link_to image_tag(@activity.photos.last.attach.url(:slider)), '#' %>
+          <% elsif  @activity.photos.count > 1 %>
+            <div class="mask"></div>
             <ul id="pikame" class="jcarousel-skin-pika">
               <% @activity.photos.each do |photo| %>
-		<li><%= link_to image_tag(photo.attach.url(:slider)), '#' %></li>
+                <li><%= link_to image_tag(photo.attach.url(:slider)), '#' %></li>
               <% end %>
             </ul>
-	  <% end %>
+          <% end %>
         </div>
         <script language="javascript">
           $(document).ready(
@@ -82,116 +82,50 @@
 
       </div>
       <div class="clear"></div>
+      
+      <% if @activity.is_edu? %>
+	<%= render 'about_activity', activity: @activity %>
+      <% end %>
 
-      <div class="title_block">О кружке</div>
-      <div><%= simple_format @activity.description %></div>
+      <% if @activity.activity_comments.parents.present? %>
+        <div class="title_block">Отзывы родителей</div>
+        <div class="comment">
+          <ul class="parent_comment">
+            <%= render 'activity_comment', comments: @activity.activity_comments.parents.first(5) %>
+          </ul>
 
-      <div class="dop_info">
-        <span class="dop_title">Стоимость и длительность</span>
-        <%= simple_format @activity.cost %>
-      </div>
-      <div class="dop_info">
-        <span class="dop_title">Чем заняться родителю</span>
-        <%= simple_format @activity.parent_activities %>
-      </div>
-      <div class="dop_info">
-        <span class="dop_title">Дополнительно</span>
-        <%= simple_format @activity.additional_information %>
-      </div>
-      <div class="clear"></div>
+          <div class="more_comment">
+            <a href="#" data-type="parents" data-page="1" class="load_comments">Загрузить еще 5 отзывов</a>
+          </div>
 
-      <div class="title_block">Расписание занятий</div>
-      <div class="schedule">
-        <table>
-          <thead>
-            <tr>
-              <th class="first">Пн</th>
-              <th>Вт</th>
-              <th>Ср</th>
-              <th>Чт</th>
-              <th>Пт</th>
-              <th>Сб</th>
-              <th class="last">Вс</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td></td>
-              <td class="work_time">20:30—21:30</td>
-              <td class="work_time">20:30—21:30</td>
-              <td></td>
-              <td></td>
-              <td class="work_time">20:30—21:30</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td class="work_time">20:30—21:30</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td class="work_time">20:30—21:30</td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="title_block">Здесь работают</div>
-
-      <div id="ruk_slider">
-        <div class="slides_container">
-          <% @activity.teachers.each do |teacher| %>
-            <div class="slide">
-              <div class="thumb">
-                <span class="mask"></span>
-                <%= image_tag teacher.photo.url %>
-              </div>
-              <div class="info">
-                <div class="name"><%= teacher.name %></div>
-                <%= teacher.description %>
-              </div>
-            </div>
-          <% end %>
         </div>
-        <a href="" class="next">Вперед</a>
-        <a href="" class="prev">Назад</a>
-      </div>
+      <% end %>
 
-      <div class="title_block">Отзывы родителей</div>
-      <div class="comment">
-        <ul class="parent_comment">
-          <%= render 'activity_comment', comments: @activity.activity_comments.parents.first(5) %>
-        </ul>
 
-        <div class="more_comment">
-          <a href="#" data-type="parents" data-page="1" class="load_comments">Загрузить еще 5 отзывов</a>
+      <% if @activity.activity_comments.childrens.present? %>
+        <div class="title_block">Отзывы детей</div>
+        <div class="comment">
+          <ul class="children_comment">
+            <%= render 'activity_comment', comments: @activity.activity_comments.childrens.first(5) %>
+          </ul>
+
+          <div class="more_comment">
+            <a href="#" data-type="childrens" data-page="1" class="load_comments">Загрузить еще 5 отзывов</a>
+          </div>
         </div>
+      <% end %>
 
-      </div>
-
-      <div class="title_block">Отзывы детей</div>
-      <div class="comment">
-        <ul class="children_comment">
-          <%= render 'activity_comment', comments: @activity.activity_comments.childrens.first(5) %>
-        </ul>
-
-	<div class="more_comment">
-          <a href="#" data-type="childrens" data-page="1" class="load_comments">Загрузить еще 5 отзывов</a>
-        </div>
-      </div>
     </div>
     <div class="share_block">Делись с друзьями</div>
   </div>
-  
+
   <div class="sidebar">
     <% if @activity.approved? %>
       <% expert = @activity.expert %>
       <div class="expert_opinion">
         <div class="title">Мнение эксперта</div>
-        <div class="thumb"><%= link_to image_tag(expert.photo.url), expert_path(expert) %></div>
+        <div class="thumb"><%= link_to image_tag(expert.avatar.url), expert_path(expert) %></div>
         <div class="name"><%= expert.name %></div>
-
         <div class="info"><%= expert.description %></div>
         <div class="quote">
           <%= @activity.approval.text %>
@@ -199,19 +133,24 @@
       </div>
     <% end %>
 
-      <div class="alongside">
-        <div class="title">Еще места рядом</div>
+
+    <div class="alongside">
+      <div class="title">Еще места рядом</div>
       <ul>
         <% @activity.place_near.each do |activity| %>
-        <li>
-          <span class="thumb"><%= link_to image_tag(activity.logo.url), activity_path(activity) %></span>
-          <span class="name"><%= link_to activity.title, activity_path(activity) %></span>
-          <span class="geo"><%= activity.region.title %></span>
-        </li>
-      <% end %>
+          <li>
+            <span class="thumb"><%= link_to image_tag(activity.logo.url), activity_path(activity) %></span>
+            <span class="name"><%= link_to activity.title, activity_path(activity) %></span>
+            <span class="geo"><%= activity.region.title %></span>
+          </li>
+        <% end %>
       </ul>
     </div>
+
   </div>
   <div class="clear"></div>
 </div>
 
+<%= dialog "Нужно зарегистрироваться", id: :register_dialog do %>
+  НУЖНО ЗАРЕГИСТРИРОВАТЬСЯ!!!
+<% end %>

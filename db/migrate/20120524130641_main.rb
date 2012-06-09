@@ -89,6 +89,7 @@ class Main < ActiveRecord::Migration
     t.text :content, :short_description
     t.integer :article_category_id, :picture_file_size
     t.datetime :picture_updated_at
+    t.integer :comments_count
 
     t.timestamps
   end
@@ -190,6 +191,7 @@ class Main < ActiveRecord::Migration
     t.boolean :is_enabled
     t.text :content, :short_description
     t.has_attached_file :picture
+    t.integer :comments_count, default: 0
     t.timestamps
   end
 
@@ -204,6 +206,7 @@ class Main < ActiveRecord::Migration
     t.integer :author_id
     t.text :content
     t.has_attached_file :picture
+    t.integer :comments_count, default: 0
     t.timestamps
   end
 
@@ -235,6 +238,7 @@ class Main < ActiveRecord::Migration
   create_table :contests do |t|
     t.string :name
     t.text :description
+    t.text :rules
     t.datetime :started_at
     t.datetime :ended_at
     t.integer :category_id

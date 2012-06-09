@@ -2,5 +2,5 @@
 membership_<%= i %>:
   id: <%= i %>
   name: <%= Faker::Lorem.words.join(' ') %>
-  description: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
+  description: "<%= Faker::Lorem.sentences(3).join(' ') %>"
 <% end %>

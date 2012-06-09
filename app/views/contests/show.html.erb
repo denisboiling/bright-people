@@ -1,3 +1,40 @@
+<div class="pages">
+  <div class="common">
+    <h1><%= @contest.name %></h1>
+    <div class="post_category_menu">
+      <ul>
+        <li class="active"><%= link_to "О конкурсе", contest_path(@contest) %></li>
+        <li><%= link_to "Правила", url_for("/contests/"+@contest.id.to_s+"/rules") %></li>
+        <li><%= link_to "Конкурсные работы", contest_memberships_path(@contest) %></li>
+        <li><%= link_to "Принять участие", new_contest_membership_path(@contest) %></li>
+      </ul>
+      <div class="clear"></div>
+    </div>
+    <div class="about_contest">
+      <div class="thumb"><%= image_tag @contest.picture.url(:medium) %></div>
+      <div class="left_part">
+        <div class="title"><%= @l = @contest.description.split(/[!\.\?]/).first %><%= @contest.description[@l.length,1] %></div>
+        <%= @contest.description %>
+      </div>
+      <div class="right_part">
+        <div class="contest_action">
+          <ul>
+            <li class="participate"><%= link_to "Принять участие", new_contest_membership_path(@contest) %></li>
+            <li class="watch"><%= link_to "Конкурсные работы", contest_memberships_path(@contest) %></li>
+            <li class="terms"><%= link_to "Правила", url_for("/contests/"+@contest.id.to_s+"/rules") %></li>
+          </ul>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="sidebar">
+    <%= render 'shared/sidebar' %>
+  </div>
+  <div class="clear"></div>
+</div>
+
+<!--
 <h1><%= @contest.name %></h1>
 <%= image_tag(@contest.picture.url(:medium)) if @contest.picture.exists? %>
 <p><%= @contest.description %></p>
@@ -5,3 +42,4 @@
 <%= link_to "принять участие",
             new_contest_membership_path(contest_id: @contest.id),
             class: 'signin_required' %>
+-->

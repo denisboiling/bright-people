@@ -1,0 +1,7 @@
+<% if @activity.approved? %>
+  <div class="approved_mark">
+    <img src="/assets/detail_aprroved.png" alt="" />Одобрено экспертом
+  </div>
+<% elsif current_admin_user %>
+    <%= link_to "ОДОБРИТЬ!", '#', class: 'approve_activity_link' %>
+<% end %>

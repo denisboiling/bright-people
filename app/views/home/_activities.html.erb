@@ -8,9 +8,9 @@
     <% Activity.for_main.each do |activity| %>
       <div class="preview_agencies">
         <div class="info">
-	    <div class="thumb"><%= link_to image_tag(activity.logo.url), '#'%></div>
-	    <div class="name"><%= link_to activity.title, '#'%></div>
-          <div class="geo">Юго-Восток</div>
+	    <div class="thumb"><%= link_to image_tag(activity.logo.url), activity_path(activity) %></div>
+	    <div class="name"><%= link_to activity.title, activity_path(activity) %></div>
+          <div class="geo"><%= activity.region.title %></div>
         </div>
       </div>
     <% end %>

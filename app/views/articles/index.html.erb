@@ -2,20 +2,18 @@
 <div class="post_list">
   <h1>Статьи</h1>
    С блекджеком и шлюхами
-  <div class="post_category_menu">
-    <ul>
-      <li><a href="">Все</a></li>
-      <li><a href="">Статьи</a></li>
-      <li class="active"><a href="">Интервью</a></li>
-      <li><a href="">Новости Москвы</a></li>
-    </ul>
-    <div class="clear">
-    </div>
-  </div>
+  <%= render 'shared/articles_menu', current: 'articles' %>
   
   <div class="sorter_wraper">
     <div class="cell">
-       Сортировать по <span class="sort_date">дате добавления</span> или <span class="sort_comment">количеству комментариев</span>
+       Сортировать по
+      <span class="sort_date">
+        <%= link_to "дате добавления", '#' %>
+      </span>
+      или
+      <span class="sort_comment">
+        <%= link_to "количеству комментариев", '#' %>
+      </span>
     </div>
     <div class="clear">
     </div>
@@ -42,28 +40,7 @@
         </div>
       </div>
     </div>
-    <div class="alongside">
-      <div class="title">
-        Еще места рядом
-      </div>
-      <ul>
-        <li>
-        <span class="thumb"><a href=""><img src="samp/samp_1.jpg" alt="" /></a></span>
-        <span class="name"><a href="">Центр детских проектов и разработок "Шардам"</a></span>
-        <span class="geo">Северо-Восток</span>
-        </li>
-        <li>
-        <span class="thumb"><a href=""><img src="samp/samp_1.jpg" alt="" /></a></span>
-        <span class="name"><a href="">Центр детских проектов и разработок "Шардам"</a></span>
-        <span class="geo">Северо-Восток</span>
-        </li>
-        <li>
-        <span class="thumb"><a href=""><img src="samp/samp_1.jpg" alt="" /></a></span>
-        <span class="name"><a href="">Центр детских проектов и разработок "Шардам"</a></span>
-        <span class="geo">Северо-Восток</span>
-        </li>
-      </ul>
-    </div>
+    <%= render 'shared/sidebar' %>
   </div>
   
   <div class="common">

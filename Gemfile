@@ -36,6 +36,9 @@ gem 'hierarchy', github: 'RISCfuture/hierarchy'
 gem 'kaminari'
 gem 'whenever'
 gem 'randumb'
+gem 'delayed_job'
+gem 'delayed_job_active_record'
+gem 'daemons'
 
 group :development do
   gem 'letter_opener'
