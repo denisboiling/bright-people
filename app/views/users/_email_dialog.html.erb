@@ -1,0 +1,4 @@
+<%= dialog "Введите адрес электронной почты",
+           id: :update_email_dialog, hide_close: true do %>
+  <%= render 'users/email_form', user: user %>
+<% end %>
