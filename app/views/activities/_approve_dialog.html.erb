@@ -1,0 +1,17 @@
+<%= dialog "Одобрить кружок", id: :activity_approve_dialog do %>
+  <%= form_tag activity_approve_path(activity), method: :put do %>
+    <div class="field">
+      <label>Специалист</label>
+      <%= select_tag :expert_id, options_from_collection_for_select(User.experts, :id, :name) %>
+    </div>
+    
+    <div class="field">
+      <label>Ваш вопрос</label>
+      <%= text_area_tag :content %>
+    </div>
+    
+    <div class="button">
+      <input name="" type="submit" value="Отправить" />
+    </div>
+  <% end %>
+<% end %>

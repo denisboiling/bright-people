@@ -1,9 +1,13 @@
 <%= form_for user, method: :put, remote: true, url: update_user_email_path,
                    html: {id: :update_email_form} do |f| %>
-  <%= f.label :email, "Введите свой эл. адрес:" %>
-  <%= f.text_field :email %>
+  <div class="field">
+    <%= f.label :email, "Ваш email" %>
+    <%= f.text_field :email %>
+  </div>
   <% user.errors.each do |field, message| %>
     <p><strong><%= field %>:</strong> <%= message %></p>
   <% end %>
-  <%= f.submit %>
+  <div class="button">
+    <%= f.submit "Отправить" %>
+  </div>
 <% end %>

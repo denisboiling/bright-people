@@ -89,6 +89,7 @@ class Main < ActiveRecord::Migration
     t.text :content, :short_description
     t.integer :article_category_id, :picture_file_size
     t.datetime :picture_updated_at
+    t.integer :comments_count
 
     t.timestamps
   end
