@@ -2,7 +2,7 @@ class ActivityApproval < ActiveRecord::Base
   belongs_to :user
   belongs_to :activity
 
-  attr_accessible :user, :activity
+  attr_accessible :user_id, :activity_id, :text
 
   after_create :approve_activity!
 
@@ -10,7 +10,7 @@ class ActivityApproval < ActiveRecord::Base
 
   # When expert create approval we marked activity
   # as approved
-  def approved_activity!
+  def approve_activity!
     activity.update_attribute(:approved, true)
   end
 end

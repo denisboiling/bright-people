@@ -1,4 +1,6 @@
 class ActivitiesController < ApplicationController
+  load_and_authorize_resource
+  
   # TODO: bugaggagga make it better, and try understand what every line do ;)
   before_filter :get_kind, only: :index
   before_filter :get_directions, only: :index
@@ -31,7 +33,10 @@ class ActivitiesController < ApplicationController
   
   def approve
     @activity = Activity.find(params[:activity_id])
-    # TODO: approve
+    ActivityApproval.create! user_id: params[:expert_id],
+                             activity_id: @activity.id,
+                             text: params[:content]
+    redirect_to @activity
   end
 
   private
