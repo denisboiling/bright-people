@@ -18,12 +18,14 @@
           <br>
           <a href="">Отменить</a>
         </div>
-        <div class="rating_info_start">
-          <span class="arrow"></span>
-          Возможность голосовать появится
-          <br>
-          <%= Russian::strftime(@membership.contest.started_at, "%e %B %Y г.")%>
-        </div>
+        <% if Time.now < @membership.contest.started_at %>
+          <div class="rating_info_start">
+            <span class="arrow"></span>
+            Возможность голосовать появится
+            <br>
+            <%= Russian::strftime(@membership.contest.started_at, "%e %B %Y г.")%>
+          </div>
+        <% end %>
         <div class="clear"></div>
         <div class="title"><%= @membership.name %></div>
         <div class="author"><%= @membership.user.name %></div>
@@ -37,7 +39,9 @@
       </div>
     </div>
   </div>
-  <div class="sidebar"></div>
+  <div class="sidebar">
+    <%= render 'shared/sidebar' %>
+  </div>
   <div class="clear"></div>
 </div>
 

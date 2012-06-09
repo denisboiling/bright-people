@@ -8,6 +8,7 @@
 #= require jquery.jcarousel.min
 #= require jquery.countdown
 #= require_directory .
+#= require new_participant
 
 $ ->
   window.setup_email_dialog()
@@ -23,3 +24,4 @@ $ ->
   window.setup_ajax_articles_loading()
   window.setup_load_activity_comments()
   window.setup_expert_tabs()
+  window.setup_new_participant_form_button()

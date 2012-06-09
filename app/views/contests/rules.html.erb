@@ -13,22 +13,22 @@
     <div class="about_contest">
       <div class="thumb"><%= image_tag @contest.picture.url(:medium) %></div>
       <div class="left_part">
-        <div class="title"><%= @l = @contest.description.split(/[!\.\?]/).first %><%= @contest.description[@l.length,1] %></div>
-        <%= @contest.description %>
+        <%= @contest.rules %>
       </div>
       <div class="right_part">
         <div class="contest_action">
           <ul>
             <li class="participate"><%= link_to "Принять участие", new_contest_membership_path(@contest) %></li>
             <li class="watch"><%= link_to "Конкурсные работы", contest_memberships_path(@contest) %></li>
-            <li class="terms"><%= link_to "Правила", url_for("/contests/"+@contest.id.to_s+"/rules") %></li>
           </ul>
         </div>
       </div>
       <div class="clear"></div>
     </div>
   </div>
-  <div class="sidebar"></div>
+  <div class="sidebar">
+    <%= render 'shared/sidebar' %>
+  </div>
   <div class="clear"></div>
 </div>
 
