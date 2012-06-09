@@ -45,7 +45,7 @@
             </tr>
             <tr>
               <th><span>Адрес</span></th>
-              <td><a class="to_map_link" href=""><%= @activity.address %><span></span></a></td>
+              <td><%= y_link(@activity.coords, @activity.address) %></td>
             </tr>
             <tr>
               <th><span>Сайт</span></th>
@@ -82,7 +82,10 @@
 
       </div>
       <div class="clear"></div>
-      
+
+      <div class="title_block">О кружке</div>
+      <div><%= simple_format @activity.description %></div>      
+
       <% if @activity.is_edu? %>
 	<%= render 'about_activity', activity: @activity %>
       <% end %>

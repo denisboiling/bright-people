@@ -10,10 +10,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
-    @user = current_user
-  end
-
   def edit
     @user = current_user
   end
@@ -22,8 +18,11 @@ class UsersController < ApplicationController
     @user = current_user
     if(@user.update_attributes(params[:user]))
       sign_in @user
-      redirect_to url_for('/profile')
+      redirect_to profile_path
     else
     end
+  end
+  
+  def comments
   end
 end
