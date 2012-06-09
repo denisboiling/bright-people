@@ -39,11 +39,7 @@ class User < ActiveRecord::Base
   attr_accessible :vkontakte_id, :facebook_id, :odnoklassniki_id
   
   def ensure_external_avatar!(external_avatar_url)
-    basename = external_avatar_url.split('/').last
-    extname = File.extname basename
-    name = File.basename basename, extname
-    
-    file = Tempfile.new([name, extname])
+    file = Tempfile.new('avatar')
     file.binmode
     file << open(external_avatar_url).read
     file.close
@@ -85,7 +81,8 @@ class User < ActiveRecord::Base
       user = self.create! vkontakte_id: user_id,
                           password: Devise.friendly_token[0,8],
                           name: data.info.name
-      user.delay.ensure_external_avatar!(data.extra.raw_info.photo_big)
+      photo_url = data.extra.raw_info.photo_big
+      user.delay.ensure_external_avatar!(photo_url) if photo_url
       user
     end
   end
@@ -97,8 +94,13 @@ class User < ActiveRecord::Base
     if user
       user
     else
-      self.create! facebook_id: user_id, email: email, password: Devise.friendly_token[0,8],
-                   name: data.info.name
+      user = self.create! facebook_id: user_id,
+                          email: email,
+                          password: Devise.friendly_token[0,8],
+                          name: data.info.name
+      photo_url = data.info.image
+      user.delay.ensure_external_avatar!(photo_url) if photo_url
+      user
     end
   end
 
@@ -108,8 +110,12 @@ class User < ActiveRecord::Base
     if user
       user
     else
-      self.create! odnoklassniki_id: user_id, password: Devise.friendly_token[0,8],
-                   name: data.extra.raw_info.name
+      user = self.create! odnoklassniki_id: user_id,
+                          password: Devise.friendly_token[0,8],
+                          name: data.extra.raw_info.name
+      photo_url = data.extra.raw_info.pic_2
+      user.delay.ensure_external_avatar!(photo_url) if photo_url
+      user
     end
   end
 
