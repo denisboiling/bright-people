@@ -31,6 +31,4 @@ window.setup_activities_list = ->
 window.setup_activities_approval = ->
   $('.approve_activity_link').bind 'click', (event) ->
     event.preventDefault()
-    $('.activity_approve_dialog').removeClass('hidden')
-    $('.activity_approve_dialog .close').bind 'click', ->
-      $(this).closest('.activity_approve_dialog').addClass('hidden')
+    $('#activity_approve_dialog').removeClass('hidden')

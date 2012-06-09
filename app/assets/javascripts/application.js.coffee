@@ -11,6 +11,7 @@
 #= require new_participant
 
 $ ->
+  window.setup_dialogs()
   window.setup_email_dialog()
   window.setup_activities_list()
   window.setup_activities_approval()
