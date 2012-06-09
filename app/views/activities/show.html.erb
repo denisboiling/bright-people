@@ -10,7 +10,7 @@
         <% end %>
       </h1>
 
-      <div class="base">На базе учреждения: <%= @activity.organization.title %></div>
+      <div class="base">На базе учреждения: <%= link_to @activity.organization.title, organization_path(@activity.organization) %></div>
       <div class="cat_list">
         Категории:
         <% @activity.direction_tags.each do |tag| %>

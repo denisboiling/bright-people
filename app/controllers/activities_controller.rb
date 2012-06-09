@@ -9,7 +9,9 @@ class ActivitiesController < ApplicationController
   def index
     @activities = search
     if request.xhr?
-      render partial: 'activities/activities', locals: {activities: @activities}
+      render partial: "activities/m_#{@kind}", locals: {activities: @activities}
+    else
+      render @kind
     end
   end
 
