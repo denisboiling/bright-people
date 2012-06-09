@@ -1,0 +1,25 @@
+<div class="preview_catalog">
+  <div class="thumb">
+    <%= link_to image_tag(activity.logo.url), activity %>
+  </div>
+  <div class="info">
+    <%  %>
+    <div class="mark">
+      <span class="arrow"></span>Участник фестиваля-2012!
+    </div>
+    <div class="name">
+      <%= link_to activity.title, activity %>
+    </div>
+    
+    <% unless (ages = activity.compact_ages).empty? %>
+    Детям <%= ages.map { |int| "#{int[:start_year]}-#{int[:end_year]} лет" }.join(',') %>
+    <br />
+    <% end %>
+    
+    <% if activity.organization %>
+    Учреждение: <%= link_to activity.organization.title, activity.organization %> 
+    <% end %>
+    
+    <div class="rating_readonly" data-rating="<%= activity.users_rating %>"></div>
+  </div>
+</div>

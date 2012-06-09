@@ -5,22 +5,11 @@
 window.setup_email_dialog = ->
   return unless $.cookie('email_dialog')
   
-  $('#email_dialog').dialog
-    modal: true,
-    closeOnEscape: false,
-    open: (event, ui) -> # hide close button
-      $(this).parent().find(".ui-dialog-titlebar-close").hide()
-  
-  $('#update_email_form').live 'ajax:error', (event, xhr) ->
+  $('#update_email_dialog form').live 'ajax:error', (event, xhr) ->
     html = xhr.responseText
-    $('#email_dialog').html(html)
+    $('#update_email_dialog .dialog_form').html(html)
   
-  $('#update_email_form').live 'ajax:success', (event, xhr) ->
-    $('#email_dialog').dialog('close')
-
-window.setup_require_signin_actions = ->
-  $('a.signin_required').live 'click', (event) ->
-    unless $.cookie('current_user')
-      event.preventDefault()
-      $('#signin_dialog').dialog modal: true
-    
+  $('#update_email_dialog form').live 'ajax:success', (event, xhr) ->
+    $('#update_email_dialog').addClass('hidden')
+  
+  $('#update_email_dialog').removeClass('hidden')

@@ -1,0 +1,18 @@
+<% activities.each do |activity| %>
+  <div class="preview_catalog">
+    <div class="thumb">
+      <%= link_to image_tag(activity.logo.url(:approved)), activity_path(activity) %>
+    </div>
+    <div class="info">
+      <% if activity.participant? %>
+        <div class="mark"><span class="arrow"></span>Участник фестиваля-2012!</div>
+      <% end %>
+
+      <div class="name"><%= link_to activity.title, activity_path(activity) %></div>
+      Детям <%= activity.age %> лет<br />
+      Учреждение: <%= activity.organization.title %>
+      <div class="rating_readonly" data-rating="<%= activity.users_rating %>"></div>
+    </div>
+  </div>
+
+<% end %>

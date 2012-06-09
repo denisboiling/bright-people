@@ -55,9 +55,10 @@ class Activity < ActiveRecord::Base
   belongs_to :region
 
   has_one :approval, class_name: 'ActivityApproval'
-  has_one :expert, through: :approval, class_name: 'Expert'
 
-  has_attached_file :logo, styles: { medium: "300x300>", thumb: '125x125' },
+  has_one :expert, through: :approval, source: :user
+
+  has_attached_file :logo, styles: { medium: "300x300>", thumb: '125x125', approved: '422x125#' },
                            path: ":rails_root/public/system/activities/:attachment/:id/:style/:filename",
                            url: "/system/activities/:attachment/:id/:style/:filename",
                            default_style: :thumb
@@ -102,6 +103,26 @@ class Activity < ActiveRecord::Base
   def min_age
     age_tags.minimum(:start_year)
   end
+  
+  # returns list of year pairs
+  def compact_ages
+    result = []
+    current = {}
+    ages = age_tags.order(:start_year)
+    ages.each do |age|
+      if last = result.pop
+        if age.start_year <= last[:end_year]
+          last[:end_year] = age.end_year if age.end_year > last[:end_year]
+        else
+          result.push last
+          result.push start_year: age.start_year, end_year: age.end_year
+        end
+      else
+        result.push start_year: age.start_year, end_year: age.end_year
+      end
+    end
+    result
+  end
 
   # For near places
   def place_near
@@ -113,9 +134,25 @@ class Activity < ActiveRecord::Base
     update_attribute(:approved, true) if approval.present?
   end
 
+  # Is activity is educational?
+  def is_edu?
+    is_educational
+  end
+
   class << self
     def for_main
       self.random(4)
     end
+
+    # TODO: replace!!!!
+    def nice_approval(_scope)
+      arr = []
+      _scope.each_with_index do |_activity, index|
+        next if (index+1)%5 == 0 && _activity.approved?
+        arr << _activity
+      end
+      arr
+    end
+
   end
 end

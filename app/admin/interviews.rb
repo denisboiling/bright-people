@@ -13,7 +13,6 @@ ActiveAdmin.register Interview do
     column :title
     column :is_enabled
     column :review_title
-    column :review
     column :author
     default_actions
   end

@@ -5,9 +5,10 @@ FactoryGirl.define do
     password 'password'
   end
 
-  factory :specialist, parent: :user do
-    description { Faker::Lorem.sentences.join("\n") }
-    after(:create) {|user| user.specialist! }
+  factory :expert, parent: :user do
+    name { Faker::Name.name }
+    description { Faker::Lorem.words.join(' ') }
+    about { Faker::Lorem.paragraphs(3).join('\n') }
+    avatar Rack::Test::UploadedFile.new('spec/files/spacer.gif', 'image/gif')
   end
-
 end

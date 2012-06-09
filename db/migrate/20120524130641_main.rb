@@ -89,6 +89,7 @@ class Main < ActiveRecord::Migration
     t.text :content, :short_description
     t.integer :article_category_id, :picture_file_size
     t.datetime :picture_updated_at
+    t.integer :comments_count
 
     t.timestamps
   end
@@ -96,14 +97,6 @@ class Main < ActiveRecord::Migration
   create_table(:direction_tags) do |t|
     t.string :name
     t.boolean :is_educational
-
-    t.timestamps
-  end
-
-  create_table(:experts) do |t|
-    t.string :name, :description
-    t.text :about
-    t.has_attached_file :photo
 
     t.timestamps
   end
@@ -162,6 +155,7 @@ class Main < ActiveRecord::Migration
     t.integer :role_id, null: false
 
     t.string :description
+    t.text :about
 
     t.string :avatar_file_name, :avatar_content_type
     t.integer :avatar_file_size
@@ -197,6 +191,7 @@ class Main < ActiveRecord::Migration
     t.boolean :is_enabled
     t.text :content, :short_description
     t.has_attached_file :picture
+    t.integer :comments_count, default: 0
     t.timestamps
   end
 
@@ -211,6 +206,7 @@ class Main < ActiveRecord::Migration
     t.integer :author_id
     t.text :content
     t.has_attached_file :picture
+    t.integer :comments_count, default: 0
     t.timestamps
   end
 
@@ -242,6 +238,7 @@ class Main < ActiveRecord::Migration
   create_table :contests do |t|
     t.string :name
     t.text :description
+    t.text :rules
     t.datetime :started_at
     t.datetime :ended_at
     t.integer :category_id
@@ -288,7 +285,7 @@ class Main < ActiveRecord::Migration
   add_index :contest_votes, :contest_id
   add_index :contest_votes, :membership_id
 
-  create_table :user_comment_nofities do |t|
+  create_table :user_comment_notifies do |t|
     t.integer :comment_id, :child_comment_id, null: false
     t.boolean :read, null: false, default: false
     t.timestamps
@@ -308,7 +305,7 @@ class Main < ActiveRecord::Migration
   end
 
   create_table :activity_approvals do |t|
-    t.integer :activity_id, :expert_id, null: false
+    t.integer :activity_id, :user_id, null: false
     t.text :text, null: false
 
     t.timestamps

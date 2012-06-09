@@ -4,11 +4,14 @@
       <%= link_to 'Все эксперты', experts_path, class: :title_link %>
     </div>
 
-    <% Expert.for_main.each do |expert| %>
+    <% @experts.each do |expert| %>
       <div class="exp_preview">
         <%= link_to expert_path(expert) do %>
+        <% if expert.approvals_count != 0 %>
+        <span class="mark"><%= expert.approvals_count %></span>
+        <% end %>
           <div class="thumb">
-            <%= image_tag(expert.photo.url) %>
+            <%= image_tag(expert.avatar.url) %>
           </div>
           <span class="name"><%= expert.name %></span>
         <% end %>

@@ -16,11 +16,6 @@
       <div class="other_link">
         <div class="title"><%= @interview.review_title %></div>
           <%= @interview.review %>
-        <div class="title">Ссылки по теме</div>
-        <ul>
-          <li><a href="">Как я стала мамой</a></li>
-          <li><a href="">Про манекенщицу, трех дочек и детский сад в Сомали</a></li>
-        </ul>
       </div>
       <div class="post_share">
         <div class="title">Делись с друзьями</div>
@@ -31,46 +26,20 @@
       <%=raw @interview.content %>
     </div>
     <div class="clear"></div>
+    <div class="comment treeview">
+      <ul>
+        <% @comments.each do |comment| %>
+          <%= render 'shared/comment', comment: comment %>
+        <% end %>
+      </ul>
+    </div>
+    <div class="add_comment">
+      <%= render 'shared/comment_form' %>
+    </div>
+    <div class="clear"></div>
   </div>
   <div class="sidebar">
-    <div class="alongside">
-      <div class="title">Лучшие места для детей в Москве</div>
-        <ul>
-          <li>
-            <span class="thumb">
-              <a href="">
-              <img alt="" src="/assets/samp/samp_1.jpg" style="background-image: url("/assets/samp/samp_1.jpg");">
-              </a>
-            </span>
-            <span class="name">
-              <a href="">Центр детских проектов и разработок "Шардам"</a>
-            </span>
-            <span class="geo">Северо-Восток</span>
-          </li>
-          <li>
-            <span class="thumb">
-              <a href="">
-              <img alt="" src="/assets/samp/samp_1.jpg" style="background-image: url("/assets/samp/samp_1.jpg");">
-              </a>
-            </span>
-            <span class="name">
-              <a href="">Центр детских проектов и разработок "Шардам"</a>
-            </span>
-            <span class="geo">Северо-Восток</span>
-          </li>
-          <li>
-            <span class="thumb">
-              <a href="">
-              <img alt="" src="/assets/samp/samp_1.jpg" style="background-image: url("/assets/samp/samp_1.jpg");">
-              </a>
-            </span>
-            <span class="name">
-              <a href="">Центр детских проектов и разработок "Шардам"</a>
-            </span>
-            <span class="geo">Северо-Восток</span>
-          </li>
-        </ul>
-    </div>
+    <%= render 'shared/sidebar' %>
   </div>
   <div class="clear"></div>
 </div>

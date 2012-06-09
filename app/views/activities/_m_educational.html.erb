@@ -2,7 +2,7 @@
   <% if activity.approved? %>
     <div class="preview_catalog approved">
       <div class="thumb">
-        <%= link_to image_tag(activity.logo.url), activity_path(activity) %>
+        <%= link_to image_tag(activity.logo.url(:approved)), activity_path(activity) %>
       </div>
       <div class="info">
         <span class="flag">Одобрено экспертом</span>
@@ -16,7 +16,7 @@
         Детям <%= activity.age %> лет<br />
         Учреждение: <%= activity.organization.title %>
         </div>
-        <div class="rating readonly" data-rating="<%= activity.users_rating %>"></div>
+        <div class="rating_readonly" data-rating="<%= activity.users_rating %>"></div>
       </div>
     </div>
   <% else %>
@@ -35,7 +35,7 @@
         Детям <%= activity.age %> лет<br />
         Учреждение: <%= activity.organization.title %>
         </div>
-        <div class="rating readonly" data-rating="<%= activity.users_rating %>"></div>
+        <div class="rating_readonly" data-rating="<%= activity.users_rating %>"></div>
       </div>
     </div>
   <% end %>

@@ -1,16 +1,17 @@
 class ActivitiesController < ApplicationController
+  load_and_authorize_resource
+
   # TODO: bugaggagga make it better, and try understand what every line do ;)
   before_filter :get_kind, only: :index
   before_filter :get_directions, only: :index
-  before_filter :load_object, only: [:show, :get_comments]
+  before_filter :load_object, only: [:show, :get_comments, :vote]
 
   def index
+    @activities = search
     if request.xhr?
-      @activities = search
-      render partial: 'activities/activities', locals: {activities: @activities}
+      render partial: "activities/m_#{@kind}", locals: {activities: @activities}
     else
-      @activities = Activity.by_kind(@kind)
-      # @activities = @activities.page(params[:page]).per(10)
+      render @kind
     end
   end
 
@@ -18,7 +19,6 @@ class ActivitiesController < ApplicationController
   end
 
   def vote
-    @activity = Activity.find(params[:activity_id])
     ActivityVote.update_rating(current_user, @activity, params[:rating].to_f)
     render partial: 'vote_count'
   end
@@ -29,12 +29,21 @@ class ActivitiesController < ApplicationController
     render partial: 'activity_comment', locals: {comments: comments}
   end
 
+  def approve
+    @activity = Activity.find(params[:activity_id])
+    ActivityApproval.create! user_id: params[:expert_id],
+    activity_id: @activity.id,
+    text: params[:content]
+    redirect_to @activity
+  end
+
   private
 
   def load_object
     @activity = Activity.find(params[:id])
   end
 
+  # OPTIMIZE:
   def search
     activities = Activity.by_kind(@kind)
     activities = activities.approved if params[:only_approved].present?
@@ -48,7 +57,7 @@ class ActivitiesController < ApplicationController
                  when 'users_rating' then activities.order('users_rating DESC')
                  else
                    activities.order('created_at DESC')
-    end
+                 end
 
     return activities
   end

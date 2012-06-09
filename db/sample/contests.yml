@@ -3,6 +3,7 @@ one:
   description: |
     Описание фотоконкурса!
     Правила и призы.
+  rules: <%= Faker::Lorem.paragraphs(1).join('.') %>
   started_at: <%= DateTime.now + 1.week + 3.days %>
   ended_at: <%= DateTime.now + 2.weeks + 2.days %>
   active: <%= rand(2) == 1 ? true : false %>
@@ -11,6 +12,7 @@ two:
   name: 'Конкурс рисунков: "Пусть всегда будет солнце!"'
   description: |
     Какое-то описание
+  rules: <%= Faker::Lorem.paragraphs(1).join('.') %>
   started_at: <%= DateTime.now - 1.week - 3.days %>
   ended_at: <%= DateTime.now + 2.weeks + 1.day %>
   active: <%= rand(2) == 1 ? true : false %>
@@ -19,6 +21,7 @@ three:
   name: 'Конкурс рисунков: "Моя семья!"'
   description: |
     Конкурс рисунков, ололо.
+  rules: <%= Faker::Lorem.paragraphs(1).join('.') %>
   started_at: <%= DateTime.now - 3.weeks + 3.days %>
   ended_at: <%= DateTime.now - 2.weeks + 1.day %>
   active: <%= rand(2) == 1 ? true : false %>
