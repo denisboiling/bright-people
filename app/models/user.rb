@@ -19,12 +19,12 @@ class User < ActiveRecord::Base
   has_many :approved_activities, through: :activity_approvals, source: :activity
 
   has_attached_file :avatar,
-                    styles: { medium: "300x300^#", thumb: "125x125^#" },
+                    styles: { medium: "300x300^#", thumb: "125x125^#", comment: "84x84^#" },
                     path: ":rails_root/public/system/users/:attachment/:id/:style/:filename",
                     url: "/system/users/:attachment/:id/:style/:filename",
                     default_style: :thumb
   
-  validates_attachment_presence :avatar
+  #validates_attachment_presence :avatar
   
   attr_accessible :email, :remember_me, :password, :password_confirmation, :avatar, :description
 
