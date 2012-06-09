@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe UserCommentNofity do
+describe UserCommentNotify do
   # TODO: replace test without question
   # let(:user) { FactoryGirl.create(:user) }
   # let(:comment) {FactoryGirl.create(:comment_question, user: user)}

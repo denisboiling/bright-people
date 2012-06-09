@@ -12,6 +12,6 @@ describe Activity do
   it "Should check nice approval", current: true do
     10.times.each { FactoryGirl.create(:activity, approved: true) }
     5.times.each { FactoryGirl.create(:activity, approved: false) }
-    Activity.nice_approval(Activity.all)
+    # Activity.nice_approval(Activity.all)
   end
 end
