@@ -25,7 +25,7 @@ a:hover { font-family: Verdana, Geneva, sans-serif; color:#464646; font-size:14p
 .clear          { clear:both}
 .hidden { display:none}
 
-#wrapper  {  min-width:960px; max-width:1235px; margin:auto; position:relative}
+#wrapper  {  min-width:960px; max-width:1235px; margin:auto; overflow:hidden; position:relative}
 .wrapper        { width:960px; margin:auto; position:relative}
 
 a, img, input, button, textarea, select { outline: none; resize:none }
@@ -35,32 +35,39 @@ h1 { font-size:22px; color:#4f4f4f}
 
 
 /* HEADER */
-#header { color:#fff}
-#header .header_line { background:#b00035; position:relative; height:85px}
-#header .header_line .left_bg { width:50%; position:absolute; z-index:0; height:85px; left:0px; }
-#header .header_line .right_bg { width:50%; position:absolute; z-index:0; height:85px; right:0px; }
-#header .header_line .header_mkb { float:left; margin-left:65px}
-#header .header_line .header_left_text { float:left; font-size:16px; padding-top:20px; width:210px; text-align:right}
-#header .header_line .header_right_text { float:right; font-size:24px; padding-top:25px; width:210px; text-align:left}
+#header { color:#fff; }
 
-#header .logo_warapper { min-width:960px; max-width:1050px; margin:auto; padding-top:20px;}
-#header .logo_warapper .social_login { float:right; margin-top:10px;}
-#header .logo_warapper .social_login .login { margin-right:10px}
+.header_wrapper { margin:auto; position:relative; min-width:960px; padding:25px 0px 15px 0px}
 
-#header .logo_warapper .event_date { color:#676767; font-size:16px; text-align:center; float:left; margin-top:10px; line-height:1.1}
-#header .logo_warapper .logo {  margin:auto; margin-bottom:20px; width:590px; }
-
+#header .header_flash_wrapper  { background:url(/assets/header_cap.jpg) no-repeat center top; height:204px;}
 
 #main_page .color_line_left { background:url(/assets/color_line.jpg) repeat-y left 100px}
 #main_page .color_line_right { background:url(/assets/color_line.jpg) repeat-y right}
 
-#search { padding-top:10px}
-#search input[type="text"] { width:130px; height:20px; padding:2px; border:1px solid #b2c4d3}
-#search input[type="submit"] { background: url(/assets/search_ico.png) no-repeat center center; width:24px; height:24px; border:none; margin-left:4px; overflow:hidden; text-indent:-300px; cursor:pointer}
+#search_block { position:absolute; left:50px; top:36px; z-index:120; }
+#search_block .search_button { padding:18px 15px; dislay:block; background:#fff;}
+#search_block .search_button.active { -moz-box-shadow:0px -3px 6px rgba(0,0,0,0.5);
+        -webkit-box-shadow:0px -3px 6px rgba(0,0,0,0.5);
+        box-shadow:0px -3px 6px rgba(0,0,0,0.5);}
+
+.show_search { background:#fff; width:100%; position:absolute; z-index:110; top:73px; -moz-box-shadow:0px -4px 6px rgba(0,0,0,0.5);
+        -webkit-box-shadow:0px -4px 6px rgba(0,0,0,0.5);
+        box-shadow:0px -4px 6px rgba(0,0,0,0.5);}
+.show_search .search_wrapper { padding:20px 50px;}
+
+.show_search .search_wrapper input[type="text"] { padding:20px 25px; width:700px; border:1px solid #cccccb; background:#fff; behavior: url(border-radius.htc); -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; display:inline-block;}
+
+.show_search .search_wrapper input[type="submit"] { background:#2b965b; color:#fff; border:none; font-size:18px; font-family:Futura; -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; padding:17px 25px 17px 25px; margin-top:2px; text-decoration:none; display:inline-block; }
+
+.show_search .search_wrapper .close { background:url(/assets/close_red_big.png) no-repeat; display:block; width:32px; height:32px; overflow:hidden; text-indent:-900px; position:absolute; left: 920px; top:35px}
+
+#login_block { position:absolute; right:50px; top:35px;}
+
+
+.show_search .search_wrapper {}
 
 /* MAIN MENU */
-#header .menu_bg { background:url(/assets/menu_shadow_bg.png) no-repeat center top; padding:25px 0px 15px 0px; height:40px; }
-#header #menu { text-align:center; position:relative;  }
+#header #menu { text-align:center; position:relative; width:840px; margin:auto  }
 #header #menu li { display:inline-block; margin: 0px 7px;  border-bottom:2px solid #e3e3e3; padding-top:2px}
 #header #menu li a { font-size:17px; font-weight:500; color:#4f4f4f; text-decoration:none; display:block; padding:0px 2px 1px 2px; letter-spacing:-1px; }
 #header #menu li.current { padding:0px 2px; border:3px solid #d21a18; -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px;}

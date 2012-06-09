@@ -1,69 +1,1 @@
-<div class="color_line_left">
-<div class="color_line_right">
-
-<div class="header_line">
-  <div class="left_bg"></div>
-  <div class="right_bg"></div>
-  <div class="wrapper">
-    <div class="header_left_text">Генеральный спонсор&nbsp;&nbsp;&nbsp;<br />&laquo;Ярких людей 2012&raquo;</div>
-    <div class="header_mkb"><a href="http://mkb.ru/"><img src="/assets/header_bank_bg.png" alt="" /></a></div>
-    <div class="header_right_text">Нам 20 лет</div>
-  </div>
-</div>
-
-<div class="logo_warapper">
-  <div class="event_date">
-    Детский фестиваль<br />
-    18 августа 2012<br />
-    в Парке Горького
-  </div>
-  
-  <div class="social_login">
-
-    <% unless current_user %>
-      <a class="login" href=""><img src="/assets/ico_login.png" alt="" /></a>
-      <%= link_to image_tag('ico_fb.png'), user_omniauth_authorize_path(:facebook) %>
-      <%= link_to image_tag('ico_vk.png'), user_omniauth_authorize_path(:vkontakte) %>
-      <%= link_to image_tag('ico_od.png'), user_omniauth_authorize_path(:odnoklassniki) %>
-    <% end %>
-
-    <div id="search">
-      <%= form_tag search_path, method: :get do %>
-	<%= text_field_tag :q, params[:q], class: 'main_search_field' %>
-	<%= submit_tag 'Поиск' %>
-      <% end %>
-    </div>
-
-  </div>
-  <div class="logo"><a href="/"><img src="/assets/logo.png" alt="" /></a></div>
-
-  <div class="clear"></div>
-</div>
-
-
-
-<div class="menu_bg">
-  <div id="menu">
-    <ul class="">
-      <li><%= link_to 'Москва для детей', '#' %></li>
-      <li><%= link_to 'Вопрос специалисту', '#' %></li>
-      <li><%= link_to 'Журнал', '#' %></li>
-      <li class="current"><%= link_to 'Фестиваль', '#' %>
-      <div class="sub_menu">
-        <ul>
-          <li><a href="">Новости фестиваля</a></li>
-          <li><a href="">Участники</a></li>
-          <li><a href="">О фестивале</a></li>
-          <li><a href="">Оргкомитет</a></li>
-        </ul>
-      </div>
-      </li>
-      <li><%= link_to 'Конкурсы', contests_path %></li>
-      <li><%= link_to 'Экспертный совет', experts_path %></li>
-      <li><%= link_to 'Спецпроект', special_projects_path %></li>
-    </ul>
-  </div>
-</div>
-
-</div>    
-</div>
+<div class="header_flash_wrapper">  </div><div class="color_line_left"><div class="color_line_right"><div class="header_wrapper">    <div id="search_block">      <a class="search_button" href="#"><img src="/assets/ico_search.png" alt="" /></a>    </div>      <div class="show_search hidden">      <div class="search_wrapper">        <%= form_tag search_path, method: :get do %>          <%= text_field_tag :q, params[:q], class: 'main_search_field' %>          <%= submit_tag 'Поиск' %>          <a class="close" href="#">Закрыть</a>        <% end %>      </div>    </div>        <script type="text/javascript">    $(document).ready(function(){      $("#search_block a.search_button").live('click',function(){        if($(this).hasClass('active')) {          $(this).removeClass("active");          $(".show_search").addClass("hidden");        }        else {          $(this).addClass("active");          $(".show_search").removeClass("hidden");        }      });      $(".show_search .close").live('click',function(){        $("#search_block a.search_button").removeClass("active");        $(".show_search").addClass("hidden");      });          });    </script>    <div id="login_block">      <% unless current_user %>        <a class="login_button" href="#"><img src="/assets/ico_login.png" alt="" /></a>                <div class="hidden">          <%= link_to image_tag('ico_fb.png'), user_omniauth_authorize_path(:facebook) %>          <%= link_to image_tag('ico_vk.png'), user_omniauth_authorize_path(:vkontakte) %>          <%= link_to image_tag('ico_od.png'), user_omniauth_authorize_path(:odnoklassniki) %>        </div>            <% end %>    </div>  <div id="menu">    <ul class="">      <li><%= link_to 'Кружки и студии', '#' %></li>      <li><%= link_to 'Яркий журнал', '#' %></li>      <li class="current"><%= link_to 'Фестиваль', '#' %>      <div class="sub_menu">        <ul>          <li><a href="">Новости фестиваля</a></li>          <li><a href="">Участники</a></li>          <li><a href="">О фестивале</a></li>          <li><a href="">Оргкомитет</a></li>        </ul>      </div>      </li>      <li><%= link_to 'Конкурсы', contests_path %></li>      <li><%= link_to 'Экспертный совет', experts_path %></li>      <li><%= link_to 'Спецпроект', special_projects_path %></li>    </ul>  </div>  </div></div>    </div>
