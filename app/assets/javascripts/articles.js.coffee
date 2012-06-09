@@ -10,8 +10,11 @@ window.setup_ajax_articles_loading = ->
     else
       1
   
+  window._sort = 'created_at'
+  
   update_articles = ->
     data =
+      sort: window._sort
       remote: true,
       page: window._page,
       categories_ids: window._articles_categories.join(',')
@@ -37,3 +40,13 @@ window.setup_ajax_articles_loading = ->
     if window._articles_categories.length != 0
       url += "&categories_ids=#{window._articles_categories.join(',')}"
     window.location.href = url
+  
+  $('.sort_date a').bind 'click', (event) ->
+    event.preventDefault()
+    window._sort = 'created_at'
+    update_articles()
+  
+  $('.sort_comment a').bind 'click', (event) ->
+    event.preventDefault()
+    window._sort = 'comments_count'
+    update_articles()

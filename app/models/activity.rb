@@ -55,7 +55,8 @@ class Activity < ActiveRecord::Base
   belongs_to :region
 
   has_one :approval, class_name: 'ActivityApproval'
-  has_one :user, through: :approval, class_name: 'User'
+
+  has_one :expert, through: :approval, source: :user
 
   has_attached_file :logo, styles: { medium: "300x300>", thumb: '125x125', approved: '422x125#' },
                            path: ":rails_root/public/system/activities/:attachment/:id/:style/:filename",
