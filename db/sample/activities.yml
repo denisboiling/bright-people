@@ -13,7 +13,7 @@ main_education_activity:
   parent_activities: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
   additional_information: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
   region_id: <%= rand(10) + 1 %>
-
+  participant: true
 
 main_not_edication_activity:
   title: Main test not education activity
@@ -30,6 +30,7 @@ main_not_edication_activity:
   parent_activities: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
   additional_information: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
   region_id: <%= rand(10) + 1 %>
+  participant: true
 
 <% 3.upto(12).each do |i| %>
 activity_<%= i %>:
@@ -47,6 +48,7 @@ activity_<%= i %>:
   parent_activities: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
   additional_information: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
   region_id: <%= rand(10) + 1 %>
+  participant: <%= rand(2) == 1 ? true : false %>
 <% end %>
 
 <% 13.upto(20).each do |i| %>
@@ -65,5 +67,6 @@ activity_<%= i %>:
   parent_activities: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
   additional_information: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
   region_id: <%= rand(10) + 1 %>
+  participant: <%= rand(2) == 1 ? true : false %>
 <% end %>
 
