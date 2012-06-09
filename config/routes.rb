@@ -4,9 +4,8 @@ BrightPeople::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
-  # TODO: move to dashboard
-  get '/profile' => 'users#show'
-  get '/profile/edit' => 'users#edit'
+  get '/profile' => 'users#edit', as: :profile
+  get '/profile/comments' => 'users#comments', as: :profile_comments
 
   resources :users, only: [:show, :update]
   resources :organizations, only: [:show]

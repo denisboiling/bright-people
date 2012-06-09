@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_many :contest_memberships
   has_many :favourites
   has_many :comments
-  has_many :comment_notifies, class_name: 'UserCommentNofity', through: :comments
+  has_many :comment_notifies, class_name: 'UserCommentNotify', through: :comments
   has_many :interviews, foreign_key: :author_id
   has_many :articles, foreign_key: :author_id
   has_many :news, foreign_key: :author_id

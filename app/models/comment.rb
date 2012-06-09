@@ -5,14 +5,14 @@ class Comment < ActiveRecord::Base
   belongs_to :user
 
   belongs_to :relation, polymorphic: true
-  has_many :comment_notifies, class_name: 'UserCommentNofity'
+  has_many :comment_notifies, class_name: 'UserCommentNotify'
 
   after_create :create_user_notify
   after_create :update_comments_count!
 
   # Create user notify when somebody commenting his comment
   def create_user_notify
-    UserCommentNofity.create_notify(self)
+    UserCommentNotify.create_notify(self)
   end
   
   def update_comments_count!
