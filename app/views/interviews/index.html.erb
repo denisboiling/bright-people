@@ -1,4 +1,4 @@
-<% @interviews.each do |inter| %>
+<!--<% @interviews.each do |inter| %>
     <% if inter.is_enabled == false %>
       <% if can? :view_disabled, inter %>
         <p><%= link_to inter.title, interview_path(inter), {:style => "color:red"} %></p>
@@ -6,4 +6,36 @@
     <% else %>
       <p><%= link_to inter.title, interview_path(inter) %></p>
     <% end %>
-<% end %>
+<% end %>-->
+
+
+<div class="post_list">
+  <h1>Интервью</h1>
+    С преферансом и куртизанками
+  <%= render 'shared/articles_menu', current: 'interviews' %>
+  
+  <div class="sorter_wraper">
+    <div class="cell">
+       Сортировать по
+      <span class="sort_date">
+        <%= link_to "дате добавления", '#' %>
+      </span>
+      или
+      <span class="sort_comment">
+        <%= link_to "количеству комментариев", '#' %>
+      </span>
+    </div>
+    <div class="clear">
+    </div>
+  </div>
+  
+  <div class="common">
+    <div class="interviews_container">
+      <%= render 'interviews_list', interviews: @interviews %>
+    </div>
+    <%= paginate @interviews %>
+    <div class="clear"></div>
+    
+  </div>
+  
+</div>
