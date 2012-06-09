@@ -7,6 +7,14 @@ class InterviewsController < ApplicationController
 
   def index
     @interviews = Interview.all
+
+    sort = params[:sort]
+    sort ||= 'created_at'
+
+    @interviews = Interview.order(sort)
+    @interviews = @interviews.page(params[:page]).per(5)
+
+    render partial: 'interviews_list', locals: { interviews: @interviews } if params[:remote]
   end
 
   def show

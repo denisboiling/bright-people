@@ -1,18 +1,18 @@
-<div id="<%= dom_id comment %>" class="comment">
-  Коммент от:
-  <p>
-    <%= image_tag comment.user.avatar.url %><%= comment.user.name %>
-  </p>
-  Текст комментария:
-  <p>
-    <%= simple_format comment.text %>
-  </p>
-  <div class="subcomment">
-    <%= link_to 'Комментировать', '', :class => 'create_comment', 'data-id' => comment.id %>
-    
+<li>
+  <div class="thumb">
+    <span class="mask"></span>
+    <%= image_tag comment.user.avatar.url(:comment) %>
+  </div>
+  <div class="info">
+    <%= comment.user.name %>
+    <span class="date"><%= Russian::strftime(comment.created_at, "%e %B %Y г., %R") %></span>
+    <div class="quote"><%= comment.text %></div>
+    <%= link_to 'Ответить на комментарий', '', :class => 'create_comment reply', 'data-id' => comment.id if !current_user.nil?%>
+  </div>
+  <div class="clear"></div>
+  <ul>
     <% comment.children.each do |child| %>
       <%= render 'shared/comment', comment: child %>
     <% end %>
-  </div>
-</div>
-
+  </ul>
+</li>
