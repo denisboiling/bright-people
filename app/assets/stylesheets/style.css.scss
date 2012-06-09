@@ -157,8 +157,10 @@ h1 { font-size:22px; color:#4f4f4f}
 .main_content .subscription input[type="submit"] { background:#7c7c7c; border:none; margin:0px; color:#fff; font-weight:bold; font-size:16px; -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; behavior: url(border-radius.htc); padding:5px 20px; margin-left:10px;}
 
 .bright_magazine { background:#ecece7; padding:10px 20px }
-.bright_magazine .magazine_control { float:left; width:140px;}
+.bright_magazine .magazine_control { float:left; width:155px;}
 .bright_magazine .magazine_control .title{ font-family:Futura; font-size:20px; color:#00b9e1; padding-top:20px; letter-spacing:-1px}
+
+.bright_magazine .magazine_control a.active { font-weight:bold}
 
 .bright_magazine .magazine_control .text { line-height:1.2; font-size:14px; color:#4f4f4f}
 
@@ -168,7 +170,7 @@ h1 { font-size:22px; color:#4f4f4f}
 .bright_magazine .magazine_control li.green a { background:url(/assets/magaz_arrow_green.png) no-repeat 0px 3px;}
 .bright_magazine .magazine_control li.yellow a { background:url(/assets/magaz_arrow_yellow.png) no-repeat 0px 3px; }
 
-.bright_magazine .magazine_tab { margin-left:150px; overflow:hidden; height:320px; background:url(/assets/bright_magazine_top_line.jpg) repeat-x 20px 35px; padding-right:1% }
+.bright_magazine .magazine_tab { margin-left:155px; overflow:hidden; height:320px; background:url(/assets/bright_magazine_top_line.jpg) repeat-x 20px 35px; padding-right:1% }
 .bright_magazine .magazine_tab .mag_tabs { display:none}
 .preview_cell { float:left; width:19%; margin-left:1%; height:290px; -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; margin-bottom:20px; margin-top:10px}
 
