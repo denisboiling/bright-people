@@ -293,7 +293,7 @@ class Main < ActiveRecord::Migration
 
   create_table :sponsors do |t|
     t.string :first_name, :last_name, null: false
-
+    t.text :description
     t.has_attached_file :photo
     t.timestamps
   end
