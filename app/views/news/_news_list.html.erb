@@ -7,6 +7,9 @@
       <div class="name">
         <%= link_to n.title, n %>
       </div>
+      <div class="comments_count">
+        <%= n.comments_count %>
+      </div>
       <div class="date">
         <%= n.created_at.to_s(:main) %>
       </div>
