@@ -134,6 +134,11 @@ class Activity < ActiveRecord::Base
     update_attribute(:approved, true) if approval.present?
   end
 
+  # Is activity is educational?
+  def is_edu?
+    is_educational
+  end
+
   class << self
     def for_main
       self.random(4)
