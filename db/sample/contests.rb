@@ -11,7 +11,7 @@ Contest.all.each do |contest|
   contest.save!
   
   rand(2..3).times do
-    membership = ContestMembership.where(:contest_id => nil).first
+    membership = ContestMembership.where(contest_id: nil).first
     break unless membership
     
     membership.contest_id = contest.id
@@ -20,3 +20,4 @@ Contest.all.each do |contest|
     membership.save!
   end
 end
+ContestMembership.where(contest_id: nil).delete_all

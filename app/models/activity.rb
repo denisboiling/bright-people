@@ -83,6 +83,11 @@ class Activity < ActiveRecord::Base
     indexes title, sortable: true
     indexes description
   end
+  
+  # to fit common views
+  def picture
+    logo
+  end
 
   # OPTIMIZE:
   def update_rating!
