@@ -25,7 +25,7 @@ end
 # TODO: bad bad bad
 namespace :deploy do
   task :fix_i18n, :roles => :app do
-    run "cd #{latest_release}/config/locales && find . -type f -exec echo >> {} \\;"
+    run "cd #{latest_release}/config/locales && echo >> *.yml"
   end
 end
 
