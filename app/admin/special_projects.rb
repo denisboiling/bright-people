@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 ActiveAdmin.register SpecialProject do
-  menu label: 'Спецпроекты'
 
   filter :title
   filter :author

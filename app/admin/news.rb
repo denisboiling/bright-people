@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 ActiveAdmin.register News do
-  menu label: 'Новости'
+
+  filter :title
+  filter :content
 
   index do
     id_column

@@ -1,6 +1,21 @@
 ru:
   activerecord:
     models:
+      special_project:
+        one: Специальный проэкт
+        few: Специальных проэкта
+        many: Специальные проэкты
+        other: Специальные проэкты
+      teacher:
+        one: Учитель
+        few: Учителя
+        many: Учителей
+        other: Учителя
+      article:
+        one: Статья
+        few: Статьи
+        many: Статей
+        other: Статьи
       user:
         one: Пользователь
         few: Пользователя
@@ -44,6 +59,11 @@ ru:
         many: Новостей
         other: Новости
     attributes:
+      article:
+        title: Название
+        author: Автор
+        created_at: Дата создания
+        updated_at: Дата обновления
       activity_comment:
         commentator: Комментатор
         content: Контент
@@ -52,6 +72,7 @@ ru:
         author: Автор
         created_at: Дата создания
         updated_at: Дата обновления
+        content: Содержание
       admin_user:
         email: E-mail
         password: Пароль
@@ -93,3 +114,11 @@ ru:
       contest:
         name: Название
         category: Категория
+      teacher:
+        name: Имя
+        created_at: Дата создания
+        updated_at: Дата обновления
+        activity: Кружок
+      special_project:
+        title: Название
+        author: Автор

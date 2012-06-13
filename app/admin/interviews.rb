@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 ActiveAdmin.register Interview do
-  menu label: 'Интервью'
+
+  scope :all, :default => true
+  scope :published
+  scope :not_published
 
   filter :title
   filter :author
@@ -11,7 +14,6 @@ ActiveAdmin.register Interview do
         link_to image_tag(interview.picture.url(:thumb), alt: interview.title), admin_interview_path(interview)
     end
     column :title
-    column :is_enabled
     column :review_title
     column :author
     default_actions

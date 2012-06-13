@@ -3,6 +3,7 @@ ActiveAdmin.register Teacher do
   menu label: 'Преподаватели'
 
   filter :name
+  filter :activity
 
   index do
     id_column
