@@ -4,9 +4,6 @@ BrightPeople::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
-  get '/profile' => 'users#edit', as: :profile
-  get '/profile/comments' => 'users#comments', as: :profile_comments
-
   resources :users, only: [:show, :update]
   resources :organizations, only: [:show]
   resource :search, only: [:show]
@@ -58,8 +55,10 @@ BrightPeople::Application.routes.draw do
   get "/contests/:id/rules" => "contests#rules"
 
   # User dashboard
-  namespace :dashboard do
-    resources :notifications, only: [:index, :destroy, :update]
+  scope 'dashboard' do
+    get 'notifications' => 'users#notifications', as: :dashboard_notifications
+    get 'favourites' => 'favourites#index', as: :dashboard_favourites
+    get 'profile' => 'users#edit', as: :dashboard_profile
   end
 
   # Admin panel

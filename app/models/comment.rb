@@ -16,7 +16,7 @@ class Comment < ActiveRecord::Base
   end
   
   def update_comments_count!
-    return unless relation_type == 'Article' or relation_type == 'Interview' or relation_type == 'News'
+    return unless relation_type == 'Article' or relation_type == 'Interview' or relation_type == 'News' or relation_type == 'ContestMembership'
     relation.comments_count = relation.comments.count
     relation.save!
   end

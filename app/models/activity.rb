@@ -72,6 +72,9 @@ class Activity < ActiveRecord::Base
   accepts_nested_attributes_for :videos, allow_destroy: true, reject_if: :all_blank
 
   scope :distinct, select('DISTINCT(activities.id), activities.*')
+  scope :educationals, where(is_educational: true)
+  scope :entertainments, where(is_educational: false)
+  
   scope :by_kind, lambda{|kind| where(is_educational: kind == 'educational' ? true : false)}
   scope :by_age, lambda{|ages| joins(:age_tags).where('age_tags.id IN (?)', ages)}
   scope :by_tag, lambda{|tags| joins(:direction_tags).where('direction_tags.id IN (?)', tags)}

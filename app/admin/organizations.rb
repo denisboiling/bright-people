@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 ActiveAdmin.register Organization do
-  menu label: 'Организации'
 
   controller do
     autocomplete :organization, :title, full: true
@@ -13,7 +12,6 @@ ActiveAdmin.register Organization do
     column :title
     column :address
     column :created_at
-    column :updated_at
     default_actions
   end
 

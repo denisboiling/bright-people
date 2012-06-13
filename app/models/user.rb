@@ -28,7 +28,8 @@ class User < ActiveRecord::Base
   
   validates :role, presence: true
   
-  scope :experts, lambda { where(role_id: Role.expert.id) }
+  scope :experts, where(role_id: 4)
+  scope :usuals, where(role_id: 1)
   
   # Callbacks
   before_validation(on: :create) do
@@ -37,6 +38,10 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :name, :password, :remember_me
   attr_accessible :vkontakte_id, :facebook_id, :odnoklassniki_id
+  
+  def notifications
+    Comment.joins(:comment_notifies).where(user_id: self.id)
+  end
   
   def ensure_external_avatar!(external_avatar_url)
     file = Tempfile.new('avatar')
