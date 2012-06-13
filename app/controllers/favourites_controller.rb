@@ -8,9 +8,10 @@ class FavouritesController < ApplicationController
   def create
     @favourite = Favourite.new
     @favourite.user_id = current_user.id
-    @favourite.url = params[:url]
-    @favourite.save
-    render nothing: true
+    @favourite.relation_id = params[:id]
+    @favourite.relation_type = params[:type]
+    @favourite.save!
+    head :ok
   end
 
   def destroy

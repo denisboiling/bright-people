@@ -7,7 +7,7 @@ class Ability
     can :read, Activity
     can :approve, Activity if admin_user
 
-    can :access, :dashboard if user.persisted?
+    can :manage, :dashboard if user.persisted?
     can :create, :comment if user.persisted?
 
     # TODO: replace role_id with role method as admin?

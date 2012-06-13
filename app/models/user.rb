@@ -39,6 +39,10 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :remember_me
   attr_accessible :vkontakte_id, :facebook_id, :odnoklassniki_id
   
+  def notifications
+    Comment.joins(:comment_notifies).where(user_id: self.id)
+  end
+  
   def ensure_external_avatar!(external_avatar_url)
     file = Tempfile.new('avatar')
     file.binmode
