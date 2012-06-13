@@ -229,8 +229,8 @@ class Main < ActiveRecord::Migration
   update "ALTER TABLE \"comments\" ADD \"path\" LTREE NULL DEFAULT ''"
 
   create_table :favourites do |t|
-
-    t.string :url
+    t.integer :relation_id
+    t.string :relation_type
     t.integer :user_id
     t.timestamps
   end
