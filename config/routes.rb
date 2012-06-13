@@ -4,7 +4,6 @@ BrightPeople::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
-  resources :users, only: [:show, :update]
   resources :organizations, only: [:show]
   resource :search, only: [:show]
   resources :experts, only: [:index, :show]
@@ -59,6 +58,7 @@ BrightPeople::Application.routes.draw do
     get 'notifications' => 'users#notifications', as: :dashboard_notifications
     get 'favourites' => 'favourites#index', as: :dashboard_favourites
     get 'profile' => 'users#edit', as: :dashboard_profile
+    put 'profile' => 'users#update'
   end
 
   # Admin panel
