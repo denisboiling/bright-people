@@ -71,7 +71,7 @@ BrightPeople::Application.routes.draw do
     end
   end
 
-  ActiveAdmin.routes(self)
+
 
   # Some staff match routes
   match '/staff/delete_photo_by_activity' => 'staff#delete_photo_by_activity', :via => :delete
@@ -79,5 +79,6 @@ BrightPeople::Application.routes.draw do
 
   root :to => 'home#show'
 
-
+  # TODO: dirty and don't why why migrate is broken?
+  ActiveAdmin.routes(self) if ActiveRecord::Base.connection.table_exists?(:activity_comments)
 end
