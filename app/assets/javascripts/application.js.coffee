@@ -27,3 +27,4 @@ $ ->
   window.setup_ajax_interviews_loading()
   window.setup_ajax_news_loading()
   window.setup_ajax_contest_memberships_loading()
+  window.setup_new_membership_creation()
