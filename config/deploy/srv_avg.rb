@@ -16,10 +16,14 @@ before "deploy:finalize_update", "shared:symlinks"
 after "deploy:restart","deploy:cleanup"
 
 namespace :delayed_job do
-    desc "Restart the delayed_job process"
-    task :restart, :roles => :app do
-        run "cd #{latest_release}; RAILS_ENV=#{rails_env} script/delayed_job restart"
-    end
+  desc "Restart the delayed_job process"
+  task :restart, :roles => :app do
+    run "cd #{latest_release}; RAILS_ENV=#{rails_env} script/delayed_job restart"
+  end
+
+  task :stop, :roles => :app do
+    run "cd #{latest_release}; RAILS_ENV=#{rails_env} script/delayed_job stop"
+  end
 end
 
 # TODO: bad bad bad
