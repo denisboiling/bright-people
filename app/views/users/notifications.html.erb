@@ -1,0 +1,19 @@
+<%= render 'profile_menu', current: 'comments' %>
+
+<div class="profile_comment">
+  <div class="title">Ваши комментарии к материалам сайта</div>
+  <ul>
+  <% @comments.each do |comment| %>
+    <li>
+      <div class="thumb"><%= image_tag comment.relation.picture %></div>
+      <div class="info">
+        <div class="name">
+          <%= link_to comment.relation.title, comment.relation %> Отправлен
+          <%= Russian.strftime(comment.created_at, '%d %b %Y г. в %H:%M') %>
+        </div>
+        <div class="desc"><%= comment.text %></div>
+      </div>
+    </li>
+  <% end %>
+  </ul>
+</div>
