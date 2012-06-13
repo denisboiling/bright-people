@@ -15,7 +15,7 @@ module BrightPeople
     config.active_record.observers = [:activity_vote_observer, :contest_vote_observer]
     config.i18n.default_locale = :ru
     config.i18n.locale = :ru
-    config.encoding = "utf-8"
+    config.encoding = 'utf-8'
     config.filter_parameters += [:password]
     config.active_record.whitelist_attributes = true
     config.assets.enabled = true
