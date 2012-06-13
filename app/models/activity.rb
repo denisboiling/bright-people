@@ -103,26 +103,6 @@ class Activity < ActiveRecord::Base
   def min_age
     age_tags.minimum(:start_year)
   end
-  
-  # returns list of year pairs
-  def compact_ages
-    result = []
-    current = {}
-    ages = age_tags.order(:start_year)
-    ages.each do |age|
-      if last = result.pop
-        if age.start_year <= last[:end_year]
-          last[:end_year] = age.end_year if age.end_year > last[:end_year]
-        else
-          result.push last
-          result.push start_year: age.start_year, end_year: age.end_year
-        end
-      else
-        result.push start_year: age.start_year, end_year: age.end_year
-      end
-    end
-    result
-  end
 
   # For near places
   def place_near
