@@ -76,6 +76,7 @@ class Activity < ActiveRecord::Base
   scope :by_age, lambda{|ages| joins(:age_tags).where('age_tags.id IN (?)', ages)}
   scope :by_tag, lambda{|tags| joins(:direction_tags).where('direction_tags.id IN (?)', tags)}
   scope :by_metro, lambda{|metros| where('metro_station_id in (?)', metros)}
+  scope :by_region, lambda{|regions| where('region_id in (?)', regions)}
   scope :approved, where(approved: true)
 
 
