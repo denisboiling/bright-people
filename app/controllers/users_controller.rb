@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource :dashboard, class: false
+  
   def update_email
     user = current_user
     user.email = params[:user][:email]
@@ -23,6 +25,6 @@ class UsersController < ApplicationController
     end
   end
   
-  def comments
+  def notifications
   end
 end
