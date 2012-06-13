@@ -10,7 +10,7 @@ Contest.all.each do |contest|
   contest.category = category
   contest.save!
   
-  rand(2..3).times do
+  20.times do
     membership = ContestMembership.where(:contest_id => nil).first
     break unless membership
     
