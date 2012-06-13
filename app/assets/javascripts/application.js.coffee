@@ -28,3 +28,4 @@ $ ->
   window.setup_ajax_contest_memberships_loading()
   window.setup_new_membership_creation()
   window.setup_profile_ajax()
+  window.setup_logout_link()
