@@ -76,7 +76,19 @@ h1 { font-size:22px; color:#4f4f4f}
 .show_login .login_wrapper .close { background:url(/assets/close_red_big.png) no-repeat; display:block; width:32px; height:32px; overflow:hidden; text-indent:-900px; position:absolute; left: 960px; top:35px}
 .show_login .login_wrapper .login_text { padding-top:16px; display:inline-block}
 
+
+#login_block .is_login {}
+#login_block .is_login .login_user_flag { font-size:11px; background:url(/assets/user_name_login_flag.png); text-decoration:none; white-space:nowrap; line-height:21px; width:85px; height:21px; display:inline-block; position:relative; color:#fff; padding:0px 6px 0px 25px; overflow:hidden}
+#login_block .is_login .login_user_flag .mask {  position:absolute; right:0px; top:0px; background:url(/assets/user_name_login_mask.png); width:36px; height:21px; display:block;}
+#login_block .is_login .logout { color:#c51917; font-size:11px; line-height:21px;}
+
+
 .show_search .search_wrapper {}
+
+
+
+
+
 
 /* MAIN MENU */
 #header #menu { text-align:center; position:relative; width:840px; margin:auto  }
