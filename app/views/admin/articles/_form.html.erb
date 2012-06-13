@@ -1,8 +1,9 @@
 <%= semantic_form_for [:admin, @article], html: { multipart: true } do |f| %>
   <%= f.inputs 'Основное' do %>
-    <%= f.input :title %>
-    <%= f.input :author, as: :select, collection: User.all %>
-    <div id="wysihtml5-toolbar-article-short" style="display: none;">
+  <%= f.input :title %>
+  <%= f.input :category, as: :select, collection: ArticleCategory.all %>
+  <%= f.input :author, as: :select, collection: User.all %>
+  <div id="wysihtml5-toolbar-article-short" style="display: none;">
       <a data-wysihtml5-command="bold">bold</a>
       <a data-wysihtml5-command="italic">italic</a>
       <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h3">intermediate header</a>
@@ -52,7 +53,7 @@
     </div>
     <%= f.input :content, input_html: {size: 10} %>
     <%= f.input :picture, as: :file, hint: f.template.image_tag(f.object.picture.url(:medium)) %>
-    <%= f.input :category, as: :select, collection: ArticleCategory.all %>
+
     <%= f.input :article_tag_list %>
   <% end %>
   <%= f.buttons %>

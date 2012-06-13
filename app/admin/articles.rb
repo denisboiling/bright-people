@@ -20,10 +20,6 @@ ActiveAdmin.register Article do
   form :partial => "form"
 
   show do
-    attributes_table :title, :author, :content, :short_description, :created_at, :updated_at, :picture, :article_category, :article_tag_list
-
-    panel 'Фотография' do
-     image_tag(article.picture.url)
-    end
+    attributes_table :title, :author, :content, :short_description, :created_at, :updated_at, :category, :article_tag_list
   end
 end
