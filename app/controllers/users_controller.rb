@@ -26,6 +26,6 @@ class UsersController < ApplicationController
   end
   
   def notifications
-    @comments = current_user.notifications
+    @comments = current_user.notifications.order('created_at DESC').page(1).per(16)
   end
 end
