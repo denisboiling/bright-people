@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 ActiveAdmin.register User do
-  menu label: 'Пользователи'
-
   scope :all, :default => true
   scope :experts
   scope :usuals
@@ -22,6 +20,7 @@ ActiveAdmin.register User do
   form html: { enctype: 'multipart/form-data' } do |f|
     f.inputs 'Основное' do
       f.input :email
+      f.input :password
       f.input :role, as: :select, collection: Role.all
       f.input :name
       f.input :description, input_html: {size: 10}
