@@ -96,6 +96,8 @@ ru:
         description: Описание
         about: Биография
         avatar: Фотография
+        role: Роль
+        password: Пароль
         created_at: Дата создания
         updated_at: Дата обновления
       activity_photo:

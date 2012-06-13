@@ -23,10 +23,13 @@ ActiveAdmin.register User do
       f.input :password
       f.input :role, as: :select, collection: Role.all
       f.input :name
-      f.input :description, input_html: {size: 10}
-      f.input :about
       f.input :avatar, as: :file,
       hint: f.template.image_tag(f.object.avatar.url(:medium))
+    end
+
+    f.inputs 'Для эксперта' do
+      f.input :description, input_html: {size: 10}
+      f.input :about
     end
     f.buttons
   end
