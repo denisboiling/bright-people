@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 ActiveAdmin.register Activity do
 
+  scope :all, :default => true
+  scope :educationals
+  scope :entertainments
+
   controller do
     autocomplete :activity, :title, full: true
 
@@ -10,14 +14,6 @@ ActiveAdmin.register Activity do
       end
     end
   end
-
-  # member_action :create, :method => :post do
-  #   # create! do |format|
-  #   #   format.html { redirect_to '/'}
-  #   # end
-  #   create! { '/' }
-  # end
-
 
   filter :title, as: :autocomplete, input_html: {'data-autocomplete' => '/admin/activities/autocomplete_activity_title', object: 'activity'}
 

@@ -1,4 +1,4 @@
-<% 1.upto(10).each do |i| %>
+<% 1.upto(8).each do |i| %>
 region_<%= i %>:
   id: <%= i %>
   title: <%= Faker::Address.us_state %>
