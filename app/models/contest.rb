@@ -12,7 +12,11 @@ class Contest < ActiveRecord::Base
                               url: "/system/contests/:attachment/:id/:style/:filename",
                               default_style: :thumb
 
-
+  # to fit common views
+  def title
+    name
+  end
+                              
   # def active?
   #   active == true
   #   # now = DateTime.now

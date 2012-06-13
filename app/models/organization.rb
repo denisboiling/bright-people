@@ -12,4 +12,8 @@ class Organization < ActiveRecord::Base
   define_index do
     indexes title, sortable: true
   end
+  
+  def picture
+    'url-to-generic-image-for-organization.png'
+  end
 end
