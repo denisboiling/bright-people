@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 ActiveAdmin.register News do
-  menu label: 'Новости'
+
+  filter :title
+  filter :content
 
   index do
     id_column
@@ -10,7 +12,6 @@ ActiveAdmin.register News do
     column :title
     column :author
     column :created_at
-    column :updated_at
     default_actions
   end
 

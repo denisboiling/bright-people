@@ -14,6 +14,9 @@ class Interview < ActiveRecord::Base
                     url: "/system/interviews/:attachment/:id/:style/:filename",
                     default_style: :thumb
 
+  scope :published, where(is_enabled: true)
+  scope :not_published, where(is_enabled: false)
+  
   class << self
     def for_main
       order('created_at DESC').first(5)
