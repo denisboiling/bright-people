@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   devise :omniauthable, :registerable, :rememberable, :trackable, :validatable,
-         :database_authenticatable
+                        :database_authenticatable
 
   belongs_to :role
 
@@ -14,23 +14,23 @@ class User < ActiveRecord::Base
   has_many :interviews, foreign_key: :author_id
   has_many :articles, foreign_key: :author_id
   has_many :news, foreign_key: :author_id
-  
+
   has_many :activity_approvals
   has_many :approved_activities, through: :activity_approvals, source: :activity
 
-  has_attached_file :avatar,
-                    styles: { medium: "300x300^#", thumb: "125x125^#", comment: "84x84^#" },
-                    path: ":rails_root/public/system/users/:attachment/:id/:style/:filename",
-                    url: "/system/users/:attachment/:id/:style/:filename",
-                    default_style: :thumb
-  
-  attr_accessible :email, :remember_me, :password, :password_confirmation, :avatar, :description
-  
+  has_attached_file :avatar, styles: { medium: "300x300^#", thumb: "125x125^#", comment: "84x84^#" },
+                             path: ":rails_root/public/system/users/:attachment/:id/:style/:filename",
+                             url: "/system/users/:attachment/:id/:style/:filename",
+                             default_style: :thumb
+
+  attr_accessible :email, :remember_me, :password, :password_confirmation, :avatar, :description, :about
+  attr_accessible :email, :remember_me, :password, :password_confirmation, :avatar, :description, :about, :role_id, :name, as: :admin
+
   validates :role, presence: true
-  
+
   scope :experts, where(role_id: 4)
   scope :usuals, where(role_id: 1)
-  
+
   # Callbacks
   before_validation(on: :create) do
     self.role = Role.user if role.blank?
@@ -38,11 +38,11 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :name, :password, :remember_me
   attr_accessible :vkontakte_id, :facebook_id, :odnoklassniki_id
-  
+
   def notifications
     Comment.joins(:comment_notifies).where(user_id: self.id)
   end
-  
+
   def ensure_external_avatar!(external_avatar_url)
     file = Tempfile.new('avatar')
     file.binmode
@@ -56,21 +56,21 @@ class User < ActiveRecord::Base
   def approvals_count
     activity_approvals.count
   end
-  
+
   def prev_expert
     User.experts.split(self).first.last
   end
-  
+
   def next_expert
     User.experts.split(self).last.first
   end
-  
+
   def mentions
     comments.map(&:relation)
-            .select {|r| r.class.name.in? Comment.possible_relations }
-            .uniq
+      .select {|r| r.class.name.in? Comment.possible_relations }
+      .uniq
   end
-  
+
   class << self
     def experts_for_main
       User.experts.random(5)
@@ -84,8 +84,8 @@ class User < ActiveRecord::Base
       user
     else
       user = self.create! vkontakte_id: user_id,
-                          password: Devise.friendly_token[0,8],
-                          name: data.info.name
+      password: Devise.friendly_token[0,8],
+      name: data.info.name
       photo_url = data.extra.raw_info.photo_big
       user.delay.ensure_external_avatar!(photo_url) if photo_url
       user
@@ -100,9 +100,9 @@ class User < ActiveRecord::Base
       user
     else
       user = self.create! facebook_id: user_id,
-                          email: email,
-                          password: Devise.friendly_token[0,8],
-                          name: data.info.name
+      email: email,
+      password: Devise.friendly_token[0,8],
+      name: data.info.name
       photo_url = data.info.image
       user.delay.ensure_external_avatar!(photo_url) if photo_url
       user
@@ -116,8 +116,8 @@ class User < ActiveRecord::Base
       user
     else
       user = self.create! odnoklassniki_id: user_id,
-                          password: Devise.friendly_token[0,8],
-                          name: data.extra.raw_info.name
+      password: Devise.friendly_token[0,8],
+      name: data.extra.raw_info.name
       photo_url = data.extra.raw_info.pic_2
       user.delay.ensure_external_avatar!(photo_url) if photo_url
       user
