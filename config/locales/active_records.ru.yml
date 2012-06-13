@@ -16,11 +16,6 @@ ru:
         few: Организации
         many: Организации
         other: Организация
-      news:
-        one: Новость
-        few: Новости
-        many: Новостей
-        other: Новости
       activity:
         one: Кружок
         few: Кружка
@@ -43,6 +38,11 @@ ru:
         few: Кружка
         many: Кружков
         other: Кружки
+      news:
+        one: Новость
+        few: Новости
+        many: Новостей
+        other: Новости
     attributes:
       activity_comment:
         commentator: Комментатор
@@ -92,4 +92,4 @@ ru:
         interview_tag_list: Тэги
       contest:
         name: Название
-        category: Категория      
+        category: Категория

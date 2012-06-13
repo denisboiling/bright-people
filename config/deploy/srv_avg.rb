@@ -22,6 +22,13 @@ namespace :delayed_job do
     end
 end
 
+# TODO: bad bad bad
+namespace :deploy do
+  task :fix_i18n, :roles => :app do
+    run "cd #{latest_release}/config/locales && find . -type f -exec echo >> {} \\;"
+  end
+end
+
 
 desc "tail production log files"
 task :tail_logs, :roles => :app do
