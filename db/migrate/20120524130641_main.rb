@@ -267,6 +267,7 @@ class Main < ActiveRecord::Migration
     t.text :description
 
     t.float :rating, default: 0.0, null: false
+    t.integer :comments_count, default: 0
 
     t.timestamps
   end
