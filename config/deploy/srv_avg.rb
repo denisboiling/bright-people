@@ -12,25 +12,8 @@ require "rvm/capistrano"
 
 before "deploy:finalize_update", "shared:symlinks"
 
-before "db:prepare", "unicorn:stop"
-
-after "deploy:migrate", "db:load_seed"
-after "db:load_seed", "db:load_sample"
-
-after "deploy:update_code", "delayed_job:restart"
-
-before "db:prepare", "thinking_sphinx:stop"
-after "deploy:migrate", "thinking_sphinx:configure"
-after "db:load_sample", "thinking_sphinx:rebuild"
-
 # Clear old releases
 after "deploy:restart","deploy:cleanup"
-
-namespace :deploy do
-  task :chown, :roles => :app do
-    run "sudo chown -R www-data:www-data #{shared_path}/system"
-  end
-end
 
 namespace :delayed_job do
     desc "Restart the delayed_job process"
@@ -64,13 +47,11 @@ namespace :db do
 end
 
 namespace :shared do
-
   task :symlinks, :roles => :app do
     run "ln -nfs #{shared_path}/config/database.yml #{latest_release}/config/database.yml"
     run "ln -nfs #{shared_path}/config/rvmrc #{latest_release}/.rvmrc"
     run "ln -nfs #{shared_path}/config/sphinx.yml #{latest_release}/config/sphinx.yml"
   end
-
 end
 
 require 'capistrano-unicorn'
