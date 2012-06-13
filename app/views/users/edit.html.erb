@@ -1,3 +1,5 @@
+<%= render 'profile_menu', current: 'profile' %>
+
 <%= form_for @user, method: :put, html: {id: :update_profile_form} do |f| %>
   <div class="field">
     <%= f.label :email, 'Email' %>

@@ -26,5 +26,6 @@ class UsersController < ApplicationController
   end
   
   def notifications
+    @comments = current_user.notifications
   end
 end
