@@ -3,6 +3,17 @@ class ContestMembershipsController < ApplicationController
 
   def index
     @memberships = @contest.memberships
+
+    sort = params[:sort]
+    sort ||= 'created_at'
+
+    @memberships = ContestMembership.order(sort)
+    @memberships = @memberships.reject { |item| item.contest_id != @contest.id }
+#   @memberships = @memberships.page(params[:page]).per(10)
+    @memberships = Kaminari.paginate_array(@memberships).page(params[:page]).per(5)
+
+    render partial: 'memberships_list', locals: { memberships: @memberships, contest: @contest } if params[:remote]
+#   @memberships = @contest.memberships
   end
 
   def show
