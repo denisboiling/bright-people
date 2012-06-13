@@ -4,7 +4,7 @@ class Teacher < ActiveRecord::Base
   belongs_to :activity
 
   has_attached_file :photo,
-  styles: { thumb: "120x120#" },
+  styles: { thumb: "120x120^#" },
   path: ":rails_root/public/system/teachers/:attachment/:id/:style/:filename",
   url: "/system/teachers/:attachment/:id/:style/:filename",
   default_style: :thumb

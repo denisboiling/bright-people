@@ -14,5 +14,16 @@ class Ability
     can :view_disabled, :interview, :is_enabled => false if user.role_id = 2 || user.role_id = 3
 
     can :vote, Activity if user.id
+    can :vote, ContestMembership do |membership|
+      if !user.id
+        false
+      else
+         if ContestVote.where({:user_id => user.id, :membership_id => membership.id}).empty?
+           true
+         else
+           false
+         end
+      end
+    end
   end
 end
