@@ -1,4 +1,5 @@
 window.setup_raty = ->
+  return if $('.rating').length == 0
   
   if $(".rating_readonly").length > 0
     for obj in $(".rating_readonly")
@@ -9,7 +10,7 @@ window.setup_raty = ->
         score: rating
         half  : true
 
-  send_rating =(rating,activity) ->
+  send_rating = (rating,activity) ->
     $.ajax
       type: 'PUT'
       url: if document.URL.match(/\/[A-Za-z0-9]+\//)[0] == "/activities/" then '/activities/vote' else document.URL+ (if activity then ('/' + activity) else "") + '/vote'
