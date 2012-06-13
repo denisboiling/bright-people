@@ -7,11 +7,11 @@
 .profile_change_wrapper .current_ava .thumb img { width:84px; height:84px; border-radius:42px;}
 
 .profile_change_wrapper .profile_change_avatar .button  { float:left; margin-right:20px; padding-top:40px}
-.profile_change_wrapper .profile_change_avatar .button a { -moz-border-radius:8px; border-radius:8px; -webkit-border-radius:8px; -khtml-border-radius:8px; padding:6px 20px 6px 25px; color:#fff; font-weight:bold; text-decoration:none; display:inline-block; background:#eb0a0a url(../images/close_white.png) no-repeat 7px 9px;}
+.profile_change_wrapper .profile_change_avatar .button a { -moz-border-radius:8px; border-radius:8px; -webkit-border-radius:8px; -khtml-border-radius:8px; padding:6px 20px 6px 25px; color:#fff; font-weight:bold; text-decoration:none; display:inline-block; background:#eb0a0a url(/assets/close_white.png) no-repeat 7px 9px;}
 
 .profile_change_wrapper .profile_change_avatar .field { float:left; margin-right:20px; padding-top:40px}
 .profile_change_wrapper .profile_change_avatar .field .download_button_wrapper { cursor:pointer; margin-left:10px; width:186px; height:36px; overflow:hidden; display:block; position:relative}
-.profile_change_wrapper .profile_change_avatar .field .mask_button { text-align:center; display:block; background:url(../images/download_avatar.png) no-repeat; width:186px; height:36px; line-height:36px; cursor:pointer}
+.profile_change_wrapper .profile_change_avatar .field .mask_button { text-align:center; display:block; background:url(/assets/download_avatar.png) no-repeat; width:186px; height:36px; line-height:36px; cursor:pointer}
 .profile_change_wrapper .profile_change_avatar .field .download_button_wrapper input {  position:absolute; z-index:10; top:0; margin-left:-10px; margin-top:-10px; background:none; border:none; font-size:2000px; cursor:pointer}
 
 
@@ -21,4 +21,4 @@
 .profile_change_wrapper .profile_change_name .field input  { margin-left:10px; background:#fff; border:1px solid #b2c4d3; margin:0px; padding:6px 10px; font-size:14px; color:#7c7c7c; width:180px}
 
 .profile_change_wrapper .profile_change_name .button  { float:left; margin-right:20px; padding-top:0px}
-.profile_change_wrapper .profile_change_name .button input { border:none; -moz-border-radius:8px; border-radius:8px; -webkit-border-radius:8px; -khtml-border-radius:8px; padding:6px 20px 6px 25px; color:#fff; font-weight:bold; text-decoration:none; display:inline-block; background:#18acf0 url(../images/check_ico.png) no-repeat 7px 5px;}
+.profile_change_wrapper .profile_change_name .button input { border:none; -moz-border-radius:8px; border-radius:8px; -webkit-border-radius:8px; -khtml-border-radius:8px; padding:6px 20px 6px 25px; color:#fff; font-weight:bold; text-decoration:none; display:inline-block; background:#18acf0 url(/assets/check_ico.png) no-repeat 7px 5px;}
