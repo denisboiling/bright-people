@@ -2,7 +2,6 @@
   <%= f.inputs 'Основное' do %>
     <%= f.input :organization, as: :select, collection: Organization.all, include_blank: false %>
     <%= f.input :title %>
-    <%= f.input :description, input_html: { size: 10 } %>
     <%= f.input :users_rating %>
   <% end %>
 
@@ -35,9 +34,16 @@
     <% end %>
 
     <%= f.inputs "Дополнительно" do %>
+      <%= render 'shared/editor_toolbar', element_id: 'activity_description' %>
       <%= f.input :description, input_html: { size: 10 } %>
+
+      <%= render 'shared/editor_toolbar', element_id: 'activity_additional_information' %>
       <%= f.input :additional_information, input_html: { size: 10 } %>
+
+      <%= render 'shared/editor_toolbar', element_id: 'activity_parent_activities' %>
       <%= f.input :parent_activities, input_html: { size: 10 } %>
+
+      <%= render 'shared/editor_toolbar', element_id: 'activity_cost' %>
       <%= f.input :cost, input_html: { size: 10 } %>
     <% end %>
 
