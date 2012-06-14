@@ -97,6 +97,10 @@ ru:
         experts_rating: Рейтинг экспертов
         organization: Организация
         metro_station: Станция метро
+        region: Округ
+        cost: Стоимость и длительность
+        parent_activities: Чем заняться родителю
+        additional_information: Дополнительно
       user:
         name: Имя
         description: Описание
