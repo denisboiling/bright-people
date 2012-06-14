@@ -8,12 +8,6 @@ ActiveAdmin.register Activity do
 
   controller do
     autocomplete :activity, :title, full: true
-
-    def create
-      create! do |format|
-        redirect_to '/admin/users' and return
-      end
-    end
   end
 
   filter :title, as: :autocomplete, input_html: {'data-autocomplete' => '/admin/activities/autocomplete_activity_title', object: 'activity'}

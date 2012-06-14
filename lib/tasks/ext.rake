@@ -1,5 +1,12 @@
 require 'active_record/fixtures'
 
+namespace :ext do
+  desc 'Clear development workspaces'
+  task :clear do
+    %w[tmp log].each {|d| FileUtils.rm_rf(Rails.root.join(d)) and FileUtils.mkdir(Rails.root.join(d))}
+  end
+end
+
 namespace :db do
   # TODO: https://gist.github.com/1340242
   # namespace :test do |schema|

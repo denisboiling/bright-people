@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 ActiveAdmin.register User do
+  menu label: 'Пользователи'
+  
   scope :all, :default => true
   scope :experts
   scope :usuals
