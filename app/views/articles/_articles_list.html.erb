@@ -4,19 +4,21 @@
     <% arr << article if article.best %>
   <% end %>
   <% arr.sort! {|a,b| b.created_at<=>a.created_at} %>
-  <% if arr.count > 0 %> 
-    <div class="title"><span>Лучшее</span></div>
-  <% end %>
-  <% (arr.count > 3 ? 3 : arr.count).times do |i| %>
-    <div class="journal_preview">
-      <div class="thumb"><%= link_to image_tag(arr[i-1].picture.url), arr[i-1]%></div>
-      <div class="info">
-        <%= truncate(arr[i-1].short_description, :separator => '.', :omission => '', :length => 60) %>
-        <br>
-        <span class="date"><%= Russian::strftime(arr[i-1].created_at, "%e %B %Y") %></span>
+  <% if articles.current_page == 1 %>
+    <% if arr.count > 0 %> 
+      <div class="title"><span>Лучшее</span></div>
+    <% end %>
+    <% (arr.count > 3 ? 3 : arr.count).times do |i| %>
+      <div class="journal_preview">
+        <div class="thumb"><%= link_to image_tag(arr[i-1].picture.url), arr[i-1]%></div>
+        <div class="info">
+          <%= truncate(arr[i-1].short_description, :separator => '.', :omission => '', :length => 60) %>
+          <br>
+          <span class="date"><%= Russian::strftime(arr[i-1].created_at, "%e %B %Y") %></span>
+        </div>
+        <div class="clear"></div>
       </div>
-      <div class="clear"></div>
-    </div>
+    <% end %>
   <% end %>
   <div class="title"><span>Новости</span></div>
     <% articles.each do |a| %>
