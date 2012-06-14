@@ -1,3 +1,4 @@
+#= require ya.maps
 #= require jquery
 #= require jquery-ui
 #= require jquery_ujs
@@ -7,6 +8,8 @@
 #= require jquery.pikachoose
 #= require jquery.jcarousel.min
 #= require jquery.countdown
+#= require js
+#= require select_script
 #= require_directory .
 
 $ ->
@@ -29,3 +32,4 @@ $ ->
   window.setup_new_membership_creation()
   window.setup_profile_ajax()
   window.setup_logout_link()
+  window.setup_organization_map()
