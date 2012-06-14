@@ -27,8 +27,9 @@
       </div>
       <div class="right_part">
         <div class="map_wrapper">
-          <iframe width="525" id="org_map" scrolling="no" height="335" frameborder="0" marginwidth="0" marginheight="0">
-          </iframe>
+          <!--<iframe width="525" scrolling="no" height="335" frameborder="0" marginwidth="0" marginheight="0" src="http://static-maps.yandex.ru/1.x/?ll=<%=@organization.location.y%>,<%=@organization.location.x%>&l=map&z=15&size=525,335">
+          </iframe>-->
+          <div id="org_map" data-x="<%= @organization.location.x %>" data-y="<%= @organization.location.y %>" style="width: 525px; height: 335px"></div>
         </div>
       </div>
       <div class="clear"></div>

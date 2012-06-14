@@ -1,3 +1,4 @@
+#= require ya.maps
 #= require jquery
 #= require jquery-ui
 #= require jquery_ujs
@@ -29,3 +30,4 @@ $ ->
   window.setup_new_membership_creation()
   window.setup_profile_ajax()
   window.setup_logout_link()
+  window.setup_organization_map()
