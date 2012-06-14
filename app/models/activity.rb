@@ -73,11 +73,13 @@ class Activity < ActiveRecord::Base
                   :additional_information, :parent_activities, :schedule,
                   :photos_attributes, :videos_attributes, :logo, :expert_id, :region_id, :cost,
                   :monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday,
-                  :coords, :activity_comments_attributes, :teachers_attributes, as: :admin
+                  :coords, :activity_comments_attributes, :teachers_attributes, :published, :replace_teacher_text, as: :admin
 
   scope :distinct, select('DISTINCT(activities.id), activities.*')
   scope :educationals, where(is_educational: true)
   scope :entertainments, where(is_educational: false)
+  scope :published, where(published: true)
+  scope :not_published, where(published: false)
 
   scope :by_kind, lambda{|kind| where(is_educational: kind == 'educational' ? true : false)}
   scope :by_age, lambda{|ages| joins(:age_tags).where('age_tags.id IN (?)', ages)}
