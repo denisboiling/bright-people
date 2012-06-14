@@ -16,4 +16,14 @@ class Organization < ActiveRecord::Base
   def picture
     'url-to-generic-image-for-organization.png'
   end
+
+  def teachers
+    arr = Array.new
+    self.activities.each do |activity|
+      activity.teachers.each do |t|
+        arr << t
+      end
+    end
+    arr.uniq
+  end
 end
