@@ -4,13 +4,13 @@ BrightPeople::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
-  resources :users, only: [:show, :update]
   resources :organizations, only: [:show]
-  resource :search, only: [:show]
   resources :experts, only: [:index, :show]
   resources :sponsors, only: [:index, :show]
   resources :favourites, only: [:index, :create, :destroy]
+
   resource :comments, only: :create
+  resource :search, only: [:show]
 
   resources :activities, only: [:index, :show, :search] do
     get :get_comments
@@ -25,18 +25,6 @@ BrightPeople::Application.routes.draw do
     end
   end
   resources :article_categories, only: [:show]
-
-  resources :interviews, only: [:index, :show] do
-    collection do
-      get :tag
-    end
-  end
-
-  resources :news, only: [:index, :show] do
-    collection do
-      get :tag
-    end
-  end
 
   resources :special_projects, only: [:index, :show] do
     collection do
@@ -59,6 +47,7 @@ BrightPeople::Application.routes.draw do
     get 'notifications' => 'users#notifications', as: :dashboard_notifications
     get 'favourites' => 'favourites#index', as: :dashboard_favourites
     get 'profile' => 'users#edit', as: :dashboard_profile
+    put 'profile' => 'users#update'
   end
 
   # Admin panel
@@ -71,13 +60,12 @@ BrightPeople::Application.routes.draw do
     end
   end
 
-  ActiveAdmin.routes(self)
-
   # Some staff match routes
   match '/staff/delete_photo_by_activity' => 'staff#delete_photo_by_activity', :via => :delete
   match '/staff/delete_video_by_activity' => 'staff#delete_video_by_activity', :via => :delete
 
   root :to => 'home#show'
 
-
+  # TODO: dirty and don't why why migrate is broken?
+  ActiveAdmin.routes(self) if ActiveRecord::Base.connection.table_exists?(:activity_comments)
 end

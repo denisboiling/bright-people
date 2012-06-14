@@ -1,11 +1,6 @@
 <div class="post_category_menu">
   <ul>
-    <%= content_tag :li, link_to("Статьи", articles_path),
-                         class: (current == 'articles' ? 'active' : '') %>
-    <%= content_tag :li, link_to("Интервью", interviews_path),
-                         class: (current == 'interviews' ? 'active' : '') %>
-    <%= content_tag :li, link_to("Новости Москвы", news_index_path),
-                         class: (current == 'news' ? 'active' : '') %>
+    <%= content_tag :li, link_to("Статьи", articles_path), class: (current == 'articles' ? 'active' : '') %>
   </ul>
   <div class="clear"></div>
 </div>

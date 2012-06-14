@@ -1,42 +1,46 @@
 <%= render 'profile_menu', current: 'profile' %>
 
-<div class="profile_change_wrapper">
-  <%= form_for @user, method: :put, html: { id: :update_profile_form } do |f| %>
-  <div class="profile_change_avatar">
-    <div class="info_label">
-      <strong>Смена аватара</strong><br />
-      Вы можете загрузить аватар форматов *.jpeg, *.png или *.gif весом не более 2 мб.
-    </div>
-    <div class="current_ava">
-      <span>Текущий  аватар</span><br />
-      <div class="thumb"><%= image_tag @user.avatar %></div>
-    </div>
-    <div class="field">
-      <div class="download_button_wrapper">
-        <span class="mask_button">Выбрать изображение</span>
-        <%= f.file_field :avatar %>
+
+<div id="profile_form_wrapper">
+  <%= form_for @user, url: dashboard_profile_path,
+                    method: :put,
+                    html: { id: :update_profile_form, multipart: true } do |f| %>
+  <div class="profile_change_wrapper">
+    <div class="profile_change_avatar">
+      <div class="info_label">
+        <strong>Смена аватара</strong><br />
+        Вы можете загрузить аватар форматов *.jpeg, *.png или *.gif весом не более 2 мб.
       </div>
+      <div class="current_ava">
+        <span>Текущий  аватар</span><br />
+        <div class="thumb"><%= image_tag @user.avatar %></div>
+      </div>
+      <div class="field">
+        <div class="download_button_wrapper">
+          <span class="mask_button">Выбрать изображение</span>
+          <%= f.file_field :avatar %>
+        </div>
+      </div>
+      <div class="button">
+        <a href="">Удалить аватар</a>
+      </div>
+      <div class="clear"></div>
     </div>
-    <div class="button">
-      <a href="">Удалить аватар</a>
+    <div class="profile_change_name">
+      <div class="info_label">
+        <strong>Смена имени</strong><br />
+        Вы можете поменять имя, правда фиг знает, зачем, но оно должно быть не длинне N символов
+      </div>
+      <div class="field">
+        <%= f.text_field :name %>
+        <br />Текущее имя. Замените его и нажмите "Сохранить"
+      </div>
+      <div class="button">
+        <%= f.submit "Сохранить" %>
+      </div>
+      <div class="clear"></div>
     </div>
-    <div class="clear"></div>
-  </div>
-  <div class="profile_change_name">
-    <div class="info_label">
-      <strong>Смена имени</strong><br />
-      Вы можете поменять имя, правда фиг знает, зачем, но оно должно быть не длинне N символов
-    </div>
-    <div class="field">
-      <%= f.text_field :name %>
-      <br />Текущее имя. Замените его и нажмите "Сохранить"
-    </div>
-    <div class="button">
-      <%= f.submit "Сохранить" %>
-      <input type="submit" name="" value="Сохранить" />
-    </div>
-    <div class="clear"></div>
+  
   </div>
   <% end %>
 </div>
-
