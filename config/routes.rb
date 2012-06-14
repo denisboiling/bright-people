@@ -6,11 +6,12 @@ BrightPeople::Application.routes.draw do
 
   resources :users, only: [:show, :update]
   resources :organizations, only: [:show]
-  resource :search, only: [:show]
   resources :experts, only: [:index, :show]
   resources :sponsors, only: [:index, :show]
   resources :favourites, only: [:index, :create, :destroy]
+
   resource :comments, only: :create
+  resource :search, only: [:show]
 
   resources :activities, only: [:index, :show, :search] do
     get :get_comments
@@ -25,18 +26,6 @@ BrightPeople::Application.routes.draw do
     end
   end
   resources :article_categories, only: [:show]
-
-  resources :interviews, only: [:index, :show] do
-    collection do
-      get :tag
-    end
-  end
-
-  resources :news, only: [:index, :show] do
-    collection do
-      get :tag
-    end
-  end
 
   resources :special_projects, only: [:index, :show] do
     collection do
@@ -70,8 +59,6 @@ BrightPeople::Application.routes.draw do
       get :autocomplete_organization_title, :on => :collection
     end
   end
-
-
 
   # Some staff match routes
   match '/staff/delete_photo_by_activity' => 'staff#delete_photo_by_activity', :via => :delete

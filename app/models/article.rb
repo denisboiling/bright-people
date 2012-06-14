@@ -17,12 +17,12 @@ class Article < ActiveRecord::Base
 
   validates :title, :content, :author, :article_category_id, presence: :true
 
-  scope :published, where(is_enabled: true)
-  scope :not_published, where(is_enabled: false)
+  scope :published, where(published: true)
+  scope :not_published, where(published: false)
 
   class << self
     def for_main
-      order('created_at DESC').first(5)
+      published.order('created_at DESC').first(5)
     end
   end
 end

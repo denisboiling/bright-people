@@ -12,7 +12,7 @@ main_education_activity:
   cost: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
   parent_activities: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
   additional_information: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
-  region_id: <%= rand(10) + 1 %>
+  region_id: <%= rand(1..8) %>
   participant: true
 
 main_not_edication_activity:
@@ -29,7 +29,7 @@ main_not_edication_activity:
   cost: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
   parent_activities: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
   additional_information: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
-  region_id: <%= rand(10) + 1 %>
+  region_id: <%= rand(1..8) %>
   participant: true
 
 <% 3.upto(12).each do |i| %>
@@ -47,7 +47,7 @@ activity_<%= i %>:
   cost: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
   parent_activities: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
   additional_information: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
-  region_id: <%= rand(10) + 1 %>
+  region_id: <%= rand(1..8) %>
   participant: <%= rand(2) == 1 ? true : false %>
 <% end %>
 
@@ -66,7 +66,7 @@ activity_<%= i %>:
   cost: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
   parent_activities: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
   additional_information: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
-  region_id: <%= rand(10) + 1 %>
+  region_id: <%= rand(1..8) %>
   participant: <%= rand(2) == 1 ? true : false %>
 <% end %>
 

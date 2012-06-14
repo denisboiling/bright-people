@@ -5,4 +5,5 @@ article_<%= i %>:
   content: "<%= Faker::Lorem.paragraphs(5).join('\n') %>"
   short_description: "<%= Faker::Lorem.paragraphs(1).join('\n') %>"
   article_category_id: <%= rand(1..6) %>
+  published: true
 <% end %>

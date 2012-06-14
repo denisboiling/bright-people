@@ -28,8 +28,7 @@ class Activity < ActiveRecord::Base
     end
   end
 
-  validates :title, presence: true
-  validates :description, presence: true
+  validates :title, :region, :description, presence: true
 
   belongs_to :organization
   belongs_to :metro_station
@@ -58,7 +57,7 @@ class Activity < ActiveRecord::Base
 
   has_one :expert, through: :approval, source: :user
 
-  has_attached_file :logo, styles: { medium: "300x300>", thumb: '125x125', approved: '422x125#' },
+  has_attached_file :logo, styles: { medium: "300x300>", thumb: '125x125^#', approved: '422x125^#' },
                            path: ":rails_root/public/system/activities/:attachment/:id/:style/:filename",
                            url: "/system/activities/:attachment/:id/:style/:filename",
                            default_style: :thumb
