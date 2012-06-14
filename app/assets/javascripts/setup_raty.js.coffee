@@ -1,6 +1,7 @@
 window.setup_raty = ->
+  return if $('.rating').length == 0
   
-  if $(".rating_readonly")
+  if $(".rating_readonly").length > 0
     for obj in $(".rating_readonly")
       rating =  $(obj).attr('data-rating')
       $(obj).raty
@@ -9,17 +10,17 @@ window.setup_raty = ->
         score: rating
         half  : true
 
-  send_rating =(rating,activity) ->
+  send_rating = (rating,activity) ->
     $.ajax
       type: 'PUT'
-      url: '/activities/vote'
-      data: {rating: rating, id: activity}
+      url: if document.URL.match(/\/[A-Za-z0-9]+\//)[0] == "/activities/" then '/activities/vote' else document.URL+ (if activity then ('/' + activity) else "") + '/vote'
+      data: {rating: rating, id: (if !activity then document.URL.match(/(\d+)$/)[0] else activity), contest_id: document.URL.match(/(\d+)/)[0]}
       success: (data) ->
         $("span#vote-count").replaceWith(data)
 
-  if $(".rating")
+  if $(".rating").length > 0
     rating = $(".rating").attr('data-rating')
-    id = $(".rating").attr('data-activity-id')
+    id = if document.URL.match(/\/[A-Za-z0-9]+\//)[0] == "/activities/" then $(".rating").attr('data-activity-id') else $(".rating").attr('data-membership-id')
     lock = $(".rating").attr('data-lock')
     $(".rating").raty
       path: '/assets/raty'

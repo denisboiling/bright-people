@@ -1,8 +1,8 @@
 class FavouritesController < ApplicationController
+  load_and_authorize_resource :dashboard, class: false
+  
   def index
-    if current_user
-      @favourites = Favourite.all(conditions: { user_id: current_user.id })
-    end
+    @favourites = Favourite.all(conditions: { user_id: current_user.id })
   end
 
   def create

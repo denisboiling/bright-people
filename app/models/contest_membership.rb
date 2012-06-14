@@ -15,6 +15,10 @@ class ContestMembership < ActiveRecord::Base
                     path: ":rails_root/public/system/:attachment/:id/:style/:filename",
                     url: "/system/:attachment/:id/:style/:filename"
 
+  def title
+    name
+  end
+  
   def update_rating!
     votes = ContestVote.where(membership_id: id, contest_id: contest_id)
     rate = votes.average('rate')

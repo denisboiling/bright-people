@@ -18,11 +18,8 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    if(@user.update_attributes(params[:user]))
-      sign_in @user
-      redirect_to profile_path
-    else
-    end
+    @user.update_attributes(params[:user])
+    redirect_to dashboard_profile_path
   end
   
   def notifications

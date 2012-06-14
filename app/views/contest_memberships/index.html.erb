@@ -38,12 +38,10 @@
   <div class="clear"></div>
 </div>
 
-<!--
-
-<h1>Members:</h1>
-<% @memberships.each do |membership| %>
-  <%= link_to image_tag(membership.picture.url(:thumb)),
-              contest_membership_path(membership, contest_id: @contest.id) %>
+<%= dialog "Нужно зарегистрироваться", id: :register_dialog do %>
+  <% if !@contest.active? %>
+    Голосование еще не началось!
+  <% else %>
+    Вы уже голосовали!
+  <% end %>
 <% end %>
-
--->

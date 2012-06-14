@@ -12,4 +12,18 @@ class Organization < ActiveRecord::Base
   define_index do
     indexes title, sortable: true
   end
+  
+  def picture
+    'url-to-generic-image-for-organization.png'
+  end
+
+  def teachers
+    arr = Array.new
+    self.activities.each do |activity|
+      activity.teachers.each do |t|
+        arr << t
+      end
+    end
+    arr.uniq
+  end
 end
