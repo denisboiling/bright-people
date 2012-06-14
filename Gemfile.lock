@@ -376,6 +376,7 @@ DEPENDENCIES
   kaminari
   launchy
   letter_opener
+  nokogiri
   omniauth (= 1.1.0)
   omniauth-facebook
   omniauth-odnoklassniki
