@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Activity do
-  it "Should be approved when user approved" do
+  it "Should be approved when expert approved" do
     activity = FactoryGirl.create(:activity)
     user = FactoryGirl.create(:expert)
     activity.approved.should == false
