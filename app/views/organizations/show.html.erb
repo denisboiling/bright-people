@@ -1,6 +1,93 @@
-<h1><%= @organization.title %></h1>
+<div class="pages">
+  <div class="common">
+    <div class="detail_page">
+      <h1><%= @organization.title %></h1>
+      <div class="cat_list">
+        <% arr = Array.new %>
+        <% @organization.activities.each do |a| a.direction_tags.each do |t| arr << t end end %>
+        <% arr.each do |tag| %>
+          <%= link_to tag.name, activities_path(tag: tag.id) %>
+        <% end %>
+      </div>
+      <div class="left_part">
+        <div class="info_block">
+          <table>
+            <tbody>
+              <tr>
+                <th><span>Метро</span></th>
+                <td><%= @organization.metro_station.title %></td>
+              </tr>
+              <tr>
+                <th><span>Адрес</span></th>
+                <td><%= y_link "#{@organization.location.x},#{@organization.location.y}", @organization.address, class: "to_map_link"%><span></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="right_part">
+        <div class="map_wrapper">
+          <iframe width="525" id="org_map" scrolling="no" height="335" frameborder="0" marginwidth="0" marginheight="0">
+          </iframe>
+        </div>
+      </div>
+      <div class="clear"></div>
+      <div class="title_block">Все кружки учреждения:</div>
+      <div class="catalog">
+        <% @organization.activities.each do |activity| %>
+          <div class="preview_catalog">
+            <div class="thumb">
+              <%= link_to image_tag(activity.logo.url), activity %>
+            </div>
+            <div class="info">
+              <% if activity.participant %>
+                <div class="mark"><span class="arrow"></span>Участник фестиваля-2012!</div>
+              <% end %>
+              <% if activity.approved %>
+                <span class="flag">Одобрено экспертом</span>
+              <% end %>
+              <div class="name"><%= link_to activity.title, activity %></div>
+              Детям  <%= activity.age%> лет
+              <br>
+              <div class="rating"></div>
+            </div>
+          </div>
+        <% end %>
+        <div class="clear"></div>
+      </div>
+      <div class="title_block">Здесь работают <%= @organization.teachers.count %> пиплов</div>
+      <div id="ruk_slider">
+        <div class="slides_container">
+          <% @organization.teachers.each do |teacher| %>
+            <div class="slide">
+              <div class="thumb">
+                <span class="mask"></span>
+                <%= image_tag teacher.photo.url %>
+              </div>
+              <div class="info">
+                <div class="name"><%= teacher.name %></div>
+                <%= teacher.description %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <a class="next" href="">Вперед</a>
+        <a class="prev" href="">Назад</a>
+      </div>
+    </div>
+    <div class="share_block entertainment">Делись с друзьями</div>
+  </div>
+  <div class="sidebar"><%= render 'shared/sidebar'%></div>
+  <div class="clear"></div>
+</div>
+
+
+<!--
+
 <h2><%= @organization.address %></h2>
 
 <% @organization.activities.each do |activity| %>
   <%= link_to activity.title, activity %>
 <% end %>
+
+-->
