@@ -5,5 +5,6 @@ FactoryGirl.define do
     address { Faker::Address.street_address  }
 
     association :organization, factory: :organization
+    association :region, factory: :region
   end
 end
