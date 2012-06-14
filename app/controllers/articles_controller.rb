@@ -20,7 +20,7 @@ class ArticlesController < ApplicationController
     @articles = @articles.where(article_category_id: categories_ids) unless categories_ids.empty?
     @articles = @articles.page(params[:page]).per(5)
 
-    render partial: 'articles_list', locals: { articles: @articles } if params[:remote]
+    render partial: 'articles_list', locals: { articles: @articles, remote: true } if params[:remote]
   end
 
   def show

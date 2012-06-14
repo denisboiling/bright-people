@@ -1,66 +1,64 @@
-<div class="post_list">
-  <h1>Статьи</h1>
-  <%= render 'shared/articles_menu', current: 'articles' %>
-  
-  <div class="sorter_wraper">
-    <div class="cell">
-       Сортировать по
-      <span class="sort_date">
-        <%= link_to "дате добавления", '#' %>
-      </span>
-      или
-      <span class="sort_comment">
-        <%= link_to "количеству комментариев", '#' %>
-      </span>
-    </div>
-    <div class="clear">
-    </div>
+<div class="pages">
+  <div class="journal_title">
+    <h1>Добро пожаловать на страницы Яркого Журнала</h1>
+    <span>Наша редакция собирает для вас лучшее из детского мира Москвы</span>
   </div>
   
-  <div class="sidebar">
-    <div class="filter_sorter">
-      <div class="filter_wraper">
-        <div class="cell">
-          <strong>Показывать только материалы по следующим темам:</strong>
+  <div class="personality_slider">
+    <div class="slides_container">
+      <% Article.where(:article_category_id => ArticleCategory.find_by_title('Личности').id).each do |article| %>
+        <div class="slide">
+          <%= link_to image_tag(article.picture.url(:slider)), article%>
+          <div class="info">
+            <div class="name"><%= article.title %></div>
+            <%= article.short_description %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <img class="person_slide_lenta" alt="" src="assets/personality_lenta.png">
+    <%= link_to image_tag("page_slider_arrow_right.png"), '#', class: "next" %>
+    <%= link_to image_tag("page_slider_arrow_left.png"), '#', class: "prev" %>
+  </div>
+
+  <div class="personality_column">
+    <% a = @articles.sort {|a,b| a.created_at <=> b.created_at } %>
+    <% a = a.pop(3) %>
+    <% a.each do |article| %>
+      <div class="personality_preview">
+        <div class="personality_wrapper">
+          <%= link_to article.category.title, '#', class: "cat" %>
+          <div class="thumb"><span class="mask"></span><%= link_to image_tag(article.picture.url), article %></div>
+          <span class="name"><%= article.title %></span>
+          <span class="date"><%= Russian::strftime(article.created_at, "%e %B %Y") %></span>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="clear"></div>
+
+  <div class="common">
+    <div class="rubric">
+      <div class="rubric_wrapp">
+        <div class="title">Рубрики</div>
+        <div class="rubric_list">
           <ul>
             <% @categories.each do |category| %>
-            <li class="articles_category">
-              <input type="checkbox"
-                     id="category_<%= category.id %>_checkbox"
-                     data-id="<%= category.id %>"/>
-              <span class="sim_check"></span>
-              <label for="category_<%= category.id %>_checkbox">
-                <%= category.title %>
-              </label>
-            </li>
+              <li><%= link_to category.title, '#' %></li>
             <% end %>
           </ul>
         </div>
       </div>
     </div>
+    <div class="journal_post">
+      <%= render 'articles_list', articles: @articles, remote: false %>
+    </div>
+  </div>
+
+  <div class="sidebar">
     <%= render 'shared/sidebar' %>
   </div>
-  
-  <div class="common">
-    <div class="articles_container">
-      <%= render 'articles_list', articles: @articles %>
-    </div>
-    <div class="clear"></div>
-    
-  </div>
-  
+
+  <div class="clear"></div>
 </div>
-
-<script type="text/javascript">
-$(document).ready(function(){
-  $(".filter_sorter li label").live('click',function(){
-    var idCheck = $(this).attr("for");
-
-    if($('#'+idCheck).attr('checked')){
-  			$(this).prev("span").removeClass("active");
-  		} else {
-  			$(this).prev("span").addClass("active");
-  		}
-  });
-});
-</script>
