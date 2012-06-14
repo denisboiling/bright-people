@@ -1,7 +1,7 @@
 class Organization < ActiveRecord::Base
   include LocationExt
 
-  attr_accessible :title, :address, :metro_station_id
+  attr_accessible :title, :address, :metro_station_id, :coords, as: :admin
 
   validates :title, presence: true
   validates :address, presence: true

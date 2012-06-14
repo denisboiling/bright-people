@@ -1,9 +1,8 @@
 #= require active_admin/base
-
 #= require cocoon
 #= require autocomplete-rails
+#= require wysihtml5-0.3.0.min
 #= require advanced
-#= require wysihtml5-0.3.0
 #= require jquery-ui-timepicker-addon
 #= require jquery-ui-timepicker-ru
 
@@ -53,42 +52,6 @@ setup_schedule = ->
     $li = $(this).closest('li')
     add_interval($li)
 
-setup_wysihtml5_editor = ->
-  if $('#activity_additional_information').length != 0
-    new wysihtml5.Editor "activity_additional_information",
-                        toolbar:      "wysihtml5-toolbar-additional-information",
-                        parserRules:  wysihtml5ParserRules
-  if $('#activity_parent_activities').length != 0
-    new wysihtml5.Editor "activity_parent_activities", 
-                              toolbar: "wysihtml5-toolbar-parent-activities",
-                              parserRules: wysihtml5ParserRules
-  if $('#article_short_description').length != 0
-    new wysihtml5.Editor "article_short_description", 
-                              toolbar: "wysihtml5-toolbar-article-short",
-                              parserRules: wysihtml5ParserRules,
-                              stylesheets: ["/../assets/editor_style.css"]
-  if $('#interview_short_description').length != 0
-    new wysihtml5.Editor "interview_short_description", 
-                              toolbar: "wysihtml5-toolbar-interview-short",
-                              parserRules: wysihtml5ParserRules,
-                              stylesheets: ["/../assets/editor_style.css"]
-  if $('#interview_content').length != 0
-    new wysihtml5.Editor "interview_content", 
-                              toolbar: "wysihtml5-toolbar-interview",
-                              parserRules: wysihtml5ParserRules,
-                              stylesheets: ["/../assets/editor_style.css"]
-  if $('#article_content').length != 0
-    new wysihtml5.Editor "article_content", 
-                              toolbar: "wysihtml5-toolbar-article",
-                              parserRules: wysihtml5ParserRules,
-                              stylesheets: ["/../assets/editor_style.css"]
-  if $('#news_content').length != 0
-    new wysihtml5.Editor "news_content", 
-                              toolbar: "wysihtml5-toolbar-news",
-                              parserRules: wysihtml5ParserRules,
-                              stylesheets: ["/../assets/editor_style.css"]
-
-
 setup_video_removing = ->
     $('a.remove_activity_video').live 'click', () ->
     id = $(this).attr('data-photo-id')
@@ -117,8 +80,6 @@ setup_video_removing = ->
     return false
 
 $ ->
-  console.log 'ololoo'
   setup_video_removing()
-  setup_wysihtml5_editor()
   if document.URL.substr(0, 39) is "http://bp.balticit.ru/admin/activities"
     setup_schedule()

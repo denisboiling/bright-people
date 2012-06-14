@@ -2,9 +2,11 @@ load 'deploy/assets'
 
 set :deploy_to, "/var/www/#{application}"
 set :rails_env, "production"
-set :branch, "ezo"
+set :branch, "master"
 
 load 'config/deploy/srv_avg'
+
+before "deploy:update_code", "backup:create"
 
 if ENV['CLEAR']
   before "db:prepare", "unicorn:stop"
@@ -13,6 +15,7 @@ if ENV['CLEAR']
   before "deploy:assets:precompile", "db:prepare"
   after "deploy:migrate", "db:load_seed"
 end
+
 
 before "deploy:assets:precompile", "deploy:migrate"
 after "deploy:migrate", "thinking_sphinx:configure"

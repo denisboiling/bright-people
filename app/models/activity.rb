@@ -1,14 +1,9 @@
 class Activity < ActiveRecord::Base
   include LocationExt
 
-  attr_accessible :title, :description, :organization_id, :users_rating,
-  :metro_station_id, :address, :is_educational,
-  :additional_information, :parent_activities, :schedule,
-  :photos_attributes, :videos_attributes, :logo, :expert_id, :region_id, :cost
-
   SCHEDULE_DAYS = [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday]
 
-  attr_accessible *SCHEDULE_DAYS
+  # attr_accessible *SCHEDULE_DAYS
 
   store :schedule
 
@@ -69,11 +64,21 @@ class Activity < ActiveRecord::Base
 
   accepts_nested_attributes_for :photos, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :videos, allow_destroy: true, reject_if: :all_blank
+  accepts_nested_attributes_for :activity_comments, allow_destroy: true, reject_if: :all_blank
+  accepts_nested_attributes_for :teachers, allow_destroy: true, reject_if: :all_blank
+
+
+  attr_accessible :title, :description, :organization_id, :users_rating,
+                  :metro_station_id, :address, :is_educational,
+                  :additional_information, :parent_activities, :schedule,
+                  :photos_attributes, :videos_attributes, :logo, :expert_id, :region_id, :cost,
+                  :monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday,
+                  :coords, :activity_comments_attributes, :teachers_attributes, as: :admin
 
   scope :distinct, select('DISTINCT(activities.id), activities.*')
   scope :educationals, where(is_educational: true)
   scope :entertainments, where(is_educational: false)
-  
+
   scope :by_kind, lambda{|kind| where(is_educational: kind == 'educational' ? true : false)}
   scope :by_age, lambda{|ages| joins(:age_tags).where('age_tags.id IN (?)', ages)}
   scope :by_tag, lambda{|tags| joins(:direction_tags).where('direction_tags.id IN (?)', tags)}
@@ -86,7 +91,7 @@ class Activity < ActiveRecord::Base
     indexes title, sortable: true
     indexes description
   end
-  
+
   # to fit common views
   def picture
     logo

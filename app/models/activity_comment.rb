@@ -1,6 +1,4 @@
 class ActivityComment < ActiveRecord::Base
-  attr_accessible :content, :commentator, :picture, :is_parent, :activity_id
-
   belongs_to :activity
 
   has_attached_file :picture, styles: { thumb: "84x84^#" },
@@ -11,4 +9,5 @@ class ActivityComment < ActiveRecord::Base
   scope :parents, where(is_parent: true).order('created_at DESC')
   scope :childrens, where(is_parent: false).order('created_at DESC')
 
+  attr_accessible :content, :commentator, :picture, :is_parent, :activity_id, as: :admin
 end
