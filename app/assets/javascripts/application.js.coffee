@@ -8,6 +8,8 @@
 #= require jquery.pikachoose
 #= require jquery.jcarousel.min
 #= require jquery.countdown
+#= require js
+#= require select_script
 #= require_directory .
 
 $ ->
