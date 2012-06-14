@@ -69,6 +69,7 @@ ru:
         created_at: Дата создания
         updated_at: Дата обновления
         picture: Лого
+        published: Опубликовать
       activity_comment:
         commentator: Комментатор
         content: Контент
