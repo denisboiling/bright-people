@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require 'active_record/fixtures'
 
 namespace :ext do
@@ -25,6 +26,16 @@ namespace :db do
   #   "-u#{config['username'] || config['user']} #{pwd} #{config['database']}"
   # end
 
+  task :load_metro => :environment do
+    require 'open-uri'
+    require 'nokogiri'
+
+    doc = Nokogiri::HTML(open(URI.parse(URI.encode('http://ru.wikipedia.org/wiki/Список_станций_Московского_метрополитена'))))
+    doc.xpath('//tr[@align="center"]/td[1]/a').each do |node|
+      MetroStation.find_or_create_by_title(node.text)
+      puts node.text
+    end
+  end
 
   desc 'db:drop db:create db:migrate db:seed db:load_sample'
   task :setup_sample => :environment do
