@@ -102,6 +102,7 @@ ru:
         created_at: Дата создания
         updated_at: Дата обновления
       activity:
+        published: Опубликовать
         replace_teacher_text: Текст вместо учитилей
         title: Название
         address: Адрес
