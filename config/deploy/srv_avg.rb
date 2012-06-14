@@ -15,6 +15,19 @@ before "deploy:finalize_update", "shared:symlinks"
 # Clear old releases
 after "deploy:restart","deploy:cleanup"
 
+namespace :backup do
+  desc "Create backup with astrails-safe"
+  task :create, :roles => :app do
+    run "astrails-safe /home/www-data/backup_db"
+    run "astrails-safe /home/www-data/backup_files"
+  end
+
+  task :install, :roles => :app do
+    run "gem install astrails-safe"
+  end
+
+end
+
 namespace :delayed_job do
   desc "Restart the delayed_job process"
   task :restart, :roles => :app do
