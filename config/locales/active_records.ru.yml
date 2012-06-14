@@ -12,7 +12,7 @@ ru:
         many: Учителей
         other: Учителя
       article:
-        one: Статья
+        one: Статью
         few: Статьи
         many: Статей
         other: Статьи
@@ -62,8 +62,14 @@ ru:
       article:
         title: Название
         author: Автор
+        article_tag_list: Тэги
+        category: Категория
+        short_description: Краткое описание
+        content: Контент
         created_at: Дата создания
         updated_at: Дата обновления
+        picture: Лого
+        published: Опубликовать
       activity_comment:
         commentator: Комментатор
         content: Контент
@@ -96,6 +102,8 @@ ru:
         description: Описание
         about: Биография
         avatar: Фотография
+        role: Роль
+        password: Пароль
         created_at: Дата создания
         updated_at: Дата обновления
       activity_photo:

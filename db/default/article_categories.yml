@@ -1,0 +1,24 @@
+new_place:
+  id: 1
+  title: Новые места
+
+teachers:
+  id: 2
+  title: Учителя
+
+persons:
+  id: 3
+  title: Личности
+
+expert_column:
+  id: 4
+  title: Колонки экспертов
+
+international_experience:
+  id: 5
+  title: Зарубежный опыт
+
+news:
+  id: 6
+  title: Новости
+  

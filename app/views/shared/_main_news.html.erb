@@ -1,8 +1,0 @@
-<div class="preview_cell">
-  <div class="info">
-    <div class="cat_name"><span>Интервью</span></div>
-    <div class="thumb"><%= link_to image_tag(object.picture.url), news_path(object) %></div>
-    <div class="name"><%= link_to object.title, news_path(object) %></div>
-    <div class="date"><%= object.created_at.to_s(:main) %></div>
-  </div>
-</div>

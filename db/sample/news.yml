@@ -1,6 +1,0 @@
-<% 1.upto(10).each do |i| %>
-news_<%= i %>:
-  id: <%= i %>
-  title: <%= Faker::Lorem.words.join(' ') %>
-  content: "<%= Faker::Lorem.paragraphs(5).join('\n') %>"
-<% end %>
