@@ -11,7 +11,7 @@
 setup_picture_urls = ->
   return if $("span.get_host_url").length == 0
   $("span.get_host_url").each ->
-    $(this).text("http://#{window.location.host}#{$(this).text()}")
+    $(this).text("http://images.bright-people.ru#{$(this).text()}")
 
 setup_schedule = ->
   return if $("ul.schedule_days").length == 0
