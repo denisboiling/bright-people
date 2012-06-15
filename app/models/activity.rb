@@ -52,7 +52,7 @@ class Activity < ActiveRecord::Base
 
   has_one :expert, through: :approval, source: :user
 
-  has_attached_file :logo, styles: { medium: "300x300>", thumb: '125x125^#', approved: '422x125^#' },
+  has_attached_file :logo, styles: { medium: "300x300>", thumb: '125x125^>', approved: '422x125^>#', index: '186x114^>#' },
                            path: ":rails_root/public/system/activities/:attachment/:id/:style/:filename",
                            url: "/system/activities/:attachment/:id/:style/:filename",
                            default_style: :thumb
