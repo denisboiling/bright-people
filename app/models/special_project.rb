@@ -1,5 +1,5 @@
 class SpecialProject < ActiveRecord::Base
-  attr_accessible :title, :content, :author, :special_project_tag_list, :picture
+  attr_accessible :title, :content, :author, :special_project_tag_list, :picture, as: :admin
 
   acts_as_taggable_on :special_project_tags
 

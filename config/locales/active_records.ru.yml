@@ -150,6 +150,9 @@ ru:
       special_project:
         title: Название
         author: Автор
+        content: Контент
+        picture: Картинка
+        special_project_tag_list: Тэги
       region:
         title: Название
         created_at: Дата создания

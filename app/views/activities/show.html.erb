@@ -5,113 +5,115 @@
     <div class="detail_page">
 
       <h1><%= @activity.title %>
-        <% if @activity.participant? %>
-          <span class="mark">Участник фестиваля!</span>
-        <% end %>
+	<% if @activity.participant? %>
+	  <span class="mark">Участник фестиваля!</span>
+	<% end %>
       </h1>
 
       <div class="base">На базе учреждения: <%= link_to @activity.organization.title, organization_path(@activity.organization) %></div>
       <div class="cat_list">
-        Категории:
-        <% @activity.direction_tags.each do |tag| %>
-          <%= link_to tag.name, activities_path(tag: tag.id) %>
-        <% end %>
+	Категории:
+	<% @activity.direction_tags.each do |tag| %>
+	  <%= link_to tag.name, activities_path(tag: tag.id) %>
+	<% end %>
       </div>
 
       <div class="left_part">
-        <%= render 'approved' %>
+	<%= render 'approved' %>
 
-        <div class="age_block">
-          <span class="name">Возраст<br />детей</span><br />
-          <span class="age">от <%= t(:age, :count => @activity.min_age) %></span>
-        </div>
-        <div class="rating_block">
-          <span class="name">Рейтинг родителей</span>
-          <div class="rating" data-rating="<%= @activity.users_rating %>" data-activity-id="<%= @activity.id %>" data-lock=<%= !can?(:vote, @activity) %>>Звезды</div>
-          <%= render partial: 'vote_count' %><br />
-          <!-- <a href="">Отменить</a> -->
-        </div>
-        <div class="clear"></div>
+	<% if _min_age = @activity.min_age %>
+	  <div class="age_block">
+	    <span class="name">Возраст<br />детей</span><br />
+	    <span class="age">от <%= t(:age, :count => @activity.min_age) %></span>
+	  </div>
+	<% end %>
 
-        <div class="info_block">
-          <table>
-            <tr>
-              <th><span>Метро</span></th>
-              <td><%= @activity.metro_station.title %><br />
-            </tr>
-            <tr>
-              <th><span>Адрес</span></th>
-              <td><%= y_link(@activity.coords, @activity.address) %></td>
-            </tr>
-            <tr>
-              <th><span>Сайт</span></th>
+	<div class="rating_block">
+	  <span class="name">Рейтинг родителей</span>
+	  <div class="rating" data-rating="<%= @activity.users_rating %>" data-activity-id="<%= @activity.id %>" data-lock=<%= !can?(:vote, @activity) %>>Звезды</div>
+	  <%= render partial: 'vote_count' %><br />
+	</div>
+	<div class="clear"></div>
+
+	<div class="info_block">
+	  <table>
+	    <tr>
+	      <th><span>Метро</span></th>
+	      <td><%= @activity.metro_station.title %><br />
+	    </tr>
+	    <tr>
+	      <th><span>Адрес</span></th>
+	      <td><%= y_link(@activity.coords, @activity.address) %></td>
+	    </tr>
+	    <tr>
+	      <th><span>Сайт</span></th>
 	      <td><a href=<%= @activity.site %> target="_blank" ><%= @activity.site %></td>
-            </tr>
-            <tr>
-              <th><span>Телефон</span></th>
-              <td><%= @activity.phone %></td>
-            </tr>
-          </table>
-        </div>
+	    </tr>
+	    <tr>
+	      <th><span>Телефон</span></th>
+	      <td><%= @activity.phone %></td>
+	    </tr>
+	  </table>
+	</div>
       </div>
 
       <div class="right_part">
-        <div class="pikachoose">
-          <% if @activity.photos.count == 1 %>
-            <div class="mask"></div>
-            <%= link_to image_tag(@activity.photos.last.attach.url(:slider)), '#' %>
-          <% elsif  @activity.photos.count > 1 %>
-            <div class="mask"></div>
-            <ul id="pikame" class="jcarousel-skin-pika">
-              <% @activity.photos.each do |photo| %>
-                <li><%= link_to image_tag(photo.attach.url(:slider)), '#' %></li>
-              <% end %>
-            </ul>
-          <% end %>
-        </div>
-        <script language="javascript">
-          $(document).ready(
-          function (){
-          $("#pikame").PikaChoose({carousel:true, autoPlay:false});
-          });
-        </script>
+	<div class="pikachoose">
+	  <% if @activity.photos.count == 1 %>
+	    <div class="mask"></div>
+	    <%= link_to image_tag(@activity.photos.last.attach.url(:slider)), '#' %>
+	  <% elsif  @activity.photos.count > 1 %>
+	    <div class="mask"></div>
+	    <ul id="pikame" class="jcarousel-skin-pika">
+	      <% @activity.photos.each do |photo| %>
+		<li><%= link_to image_tag(photo.attach.url(:slider)), '#' %></li>
+	      <% end %>
+	    </ul>
+	  <% end %>
+	</div>
+	<script language="javascript">
+	  $(document).ready(
+	  function (){
+	  $("#pikame").PikaChoose({carousel:true, autoPlay:false});
+	  });
+	</script>
 
       </div>
       <div class="clear"></div>
 
       <div class="title_block">О кружке</div>
-      <div><%= simple_format @activity.description %></div>      
+      <div><%= simple_format @activity.description %></div>
 
       <% if @activity.is_edu? %>
 	<%= render 'about_activity', activity: @activity %>
       <% end %>
 
       <% if @activity.activity_comments.parents.present? %>
-        <div class="title_block">Отзывы родителей</div>
-        <div class="comment">
-          <ul class="parent_comment">
-            <%= render 'activity_comment', comments: @activity.activity_comments.parents.first(5) %>
-          </ul>
+	<div class="title_block">Отзывы родителей</div>
+	<div class="comment">
+	  <ul class="parent_comment">
+	    <%= render 'activity_comment', comments: @activity.activity_comments.parents.first(5) %>
+	  </ul>
 
-          <div class="more_comment">
-            <a href="#" data-type="parents" data-page="1" class="load_comments">Загрузить еще 5 отзывов</a>
-          </div>
+	  <div class="more_comment">
+	    <a href="#" data-type="parents" data-page="1" class="load_comments">Загрузить еще 5 отзывов</a>
+	  </div>
 
-        </div>
+	</div>
       <% end %>
 
 
       <% if @activity.activity_comments.childrens.present? %>
-        <div class="title_block">Отзывы детей</div>
-        <div class="comment">
-          <ul class="children_comment">
-            <%= render 'activity_comment', comments: @activity.activity_comments.childrens.first(5) %>
-          </ul>
+	<div class="title_block">Отзывы детей</div>
+	<div class="comment">
+	  <ul class="children_comment">
+	    <%= render 'activity_comment', comments: @activity.activity_comments.childrens.first(5) %>
+	  </ul>
 
-          <div class="more_comment">
-            <a href="#" data-type="childrens" data-page="1" class="load_comments">Загрузить еще 5 отзывов</a>
-          </div>
-        </div>
+	  <div class="more_comment">
+	    <a href="#" data-type="childrens" data-page="1" class="load_comments">Загрузить еще 5 отзывов</a>
+	  </div>
+	</div>
       <% end %>
 
     </div>
@@ -122,13 +124,13 @@
     <% if @activity.approved? %>
       <% expert = @activity.expert %>
       <div class="expert_opinion">
-        <div class="title">Мнение эксперта</div>
-        <div class="thumb"><span class="mark"><%= expert.activity_approvals.count %></span><%= link_to image_tag(expert.avatar.url), expert_path(expert) %></div>
-        <div class="name"><%= expert.name %></div>
-        <div class="info"><%= expert.description %></div>
-        <div class="quote">
-          <%= @activity.approval.text %>
-        </div>
+	<div class="title">Мнение эксперта</div>
+	<div class="thumb"><span class="mark"><%= expert.activity_approvals.count %></span><%= link_to image_tag(expert.avatar.url), expert_path(expert) %></div>
+	<div class="name"><%= expert.name %></div>
+	<div class="info"><%= expert.description %></div>
+	<div class="quote">
+	  <%= @activity.approval.text %>
+	</div>
       </div>
     <% end %>
 
@@ -136,13 +138,13 @@
     <div class="alongside">
       <div class="title">Еще места рядом</div>
       <ul>
-        <% @activity.place_near.each do |activity| %>
-          <li>
-            <span class="thumb"><%= link_to image_tag(activity.logo.url), activity_path(activity) %></span>
-            <span class="name"><%= link_to activity.title, activity_path(activity) %></span>
-            <span class="geo"><%= activity.region.title %></span>
-          </li>
-        <% end %>
+	<% @activity.place_near.each do |activity| %>
+	  <li>
+	    <span class="thumb"><%= link_to image_tag(activity.logo.url), activity_path(activity) %></span>
+	    <span class="name"><%= link_to activity.title, activity_path(activity) %></span>
+	    <span class="geo"><%= activity.region.title %></span>
+	  </li>
+	<% end %>
       </ul>
     </div>
 
