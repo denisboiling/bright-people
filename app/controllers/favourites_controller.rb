@@ -11,11 +11,12 @@ class FavouritesController < ApplicationController
     @favourite.relation_id = params[:id]
     @favourite.relation_type = params[:type]
     @favourite.save!
-    head :ok
+    render json: { id: @favourite.id }
   end
 
   def destroy
-    Favourite.find(params[:id]).destroy
+    favourite = Favourite.find(params[:id])
+    favourite.destroy if favourite.user == current_user
     redirect_to favourites_path
   end
 end
