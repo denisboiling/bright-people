@@ -5,6 +5,7 @@
     <div class="detail_page">
 
       <h1><%= @activity.title %>
+        <%= favourite_block @activity %>
         <% if @activity.participant? %>
           <span class="mark">Участник фестиваля!</span>
         <% end %>
