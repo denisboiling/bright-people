@@ -2,13 +2,17 @@
 ActiveAdmin.register Picture do
   menu label: 'Картинки'
 
+  filter :caption
+
   index do
     id_column
     column "Фотография" do |picture|
         link_to image_tag(picture.picture.url(:thumb), alt: picture.caption), admin_picture_path(picture)
     end
     column :caption
-    column("Url") {|picture| picture.picture.url}
+    column "URL картинки" do |picture|
+      link_to picture.picture_file_name, picture.picture.url(:original, timestamp: false)
+    end
     default_actions
   end
 
@@ -24,7 +28,9 @@ ActiveAdmin.register Picture do
   show do
     attributes_table_for resource do
       row :caption
-      row("Url")  { resource.picture.url }
+      row "URL картинки" do
+        link_to resource.picture_file_name, resource.picture.url(:original, timestamp: false)
+      end
     end
 
     panel 'Картинка' do
