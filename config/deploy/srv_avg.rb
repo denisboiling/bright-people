@@ -15,7 +15,7 @@ before "deploy:finalize_update", "shared:symlinks"
 # Clear old releases
 after "deploy:restart","deploy:cleanup"
 
-namespace :rake do
+namespace :rake_exec do
   desc "Run a rake task on a remote server."
   # run like: cap staging rake:invoke task=a_certain_task
   task :invoke do

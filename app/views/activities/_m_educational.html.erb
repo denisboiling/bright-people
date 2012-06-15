@@ -22,7 +22,7 @@
   <% else %>
     <div class="preview_catalog">
       <div class="thumb">
-        <%= link_to image_tag(activity.logo.url), activity_path(activity) %>
+        <%= link_to image_tag(activity.logo.url(:index)), activity_path(activity) %>
       </div>
       <div class="info">
         <% if activity.participant? %>
