@@ -4,8 +4,8 @@ window.setup_search_tabs = ->
   $(".search_filter a").first().prepend('<span class=\"mask\"></span>')
 
   $(".pager .page a").on 'click', (event) -> 
-    event.preventDefault()
     if $(".search_filter .active").text() != 'Все разделы'
+      event.preventDefault()
       data =
         q: $(".search_title span").text().split('\"')[1]
         category: category
