@@ -27,7 +27,7 @@ ActiveAdmin.register Activity do
   form partial: "form"
 
   show do
-    attributes_table :id, :title, :published, :address, :metro_station,
+    attributes_table :id, :title, :published, :address, :metro_station, :organization,
                      :users_rating, :created_at, :updated_at
 
     panel 'Посмотреть страницу' do

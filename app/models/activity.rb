@@ -114,9 +114,9 @@ class Activity < ActiveRecord::Base
     self.save!
   end
 
-  # Return min age from age_tags
+  # Return min age from age_tags. When minium is nil return 0
   def min_age
-    age_tags.minimum(:start_year)
+    age_tags.minimum(:start_year) || 0
   end
 
   # For near places

@@ -2,15 +2,15 @@
   <%= f.inputs 'Основное' do %>
     <%= f.input :title %>
     <%= f.input :published %>
-    <%= f.input :organization %>
+    <%= f.input :organization, include_blank: false, input_html: { class: 'chosen_autocomplete' } %>
 
     <%= render 'shared/editor_toolbar', element_id: 'activity_description' %>
     <%= f.input :description, input_html: { size: 10 } %>
   <% end %>
 
   <%= f.inputs "Адрес" do %>
-    <%= f.input :metro_station, as: :select, collection: MetroStation.all %>
-    <%= f.input :region, as: :select, collection: Region.all, include_blank: false %>
+    <%= f.input :metro_station, input_html: { class: 'chosen_autocomplete' } %>
+    <%= f.input :region, include_blank: false, input_html: { class: 'chosen_autocomplete' } %>
     <%= f.input :address %>
     <%= f.input :coords, as: :hidden, input_html: { class: 'hidden_coords'} %>
     <%= f.input :coords, input_html: { class: 'edit_map' }, label: false %>

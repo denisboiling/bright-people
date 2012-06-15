@@ -5,8 +5,9 @@
 #= require advanced
 #= require jquery-ui-timepicker-addon
 #= require jquery-ui-timepicker-ru
-
+#= require chosen.jquery.min
 #= require admin/edit_map
+
 setup_schedule = ->
   days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday',
           'saturday', 'sunday']
@@ -52,6 +53,10 @@ setup_schedule = ->
     $li = $(this).closest('li')
     add_interval($li)
 
+setup_chosen = ->
+  if $("select.chosen_autocomplete").length >= 1
+    $("select.chosen_autocomplete").chosen()
+
 setup_video_removing = ->
     $('a.remove_activity_video').live 'click', () ->
     id = $(this).attr('data-photo-id')
@@ -81,5 +86,6 @@ setup_video_removing = ->
 
 $ ->
   setup_video_removing()
+  setup_chosen()
   if document.URL.substr(0, 39) is "http://bp.balticit.ru/admin/activities"
     setup_schedule()
