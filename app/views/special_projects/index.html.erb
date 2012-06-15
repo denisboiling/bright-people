@@ -1,3 +1,21 @@
-<% @special_projects.each do |special_project| %>
-    <p><%= link_to special_project.title, special_project %></p>
-<% end %>
+<div class="pages">
+  <div class="common">
+    <div class="sorter_wraper">
+      <div class="cell">
+         Сортировать по <span class="sort_date">
+          <%= link_to "дате добавления", special_projects_path(page: params[:page], sort: :created) %>
+         </span>
+         или <span class="sort_comment">
+         <%= link_to "количеству комментариев", special_projects_path(page: params[:page], sort: :comments_count) %>
+         </span>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <%= render 'items', special_projects: @special_projects %>
+    <%= paginate @special_projects %>
+  </div>
+  <div class="sidebar">
+    <%= render 'shared/sidebar' %>
+  </div>
+  <div class="clear"></div>
+</div>
