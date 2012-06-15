@@ -8,6 +8,11 @@
 #= require chosen.jquery.min
 #= require admin/edit_map
 
+setup_picture_urls = ->
+  return if $("span.get_host_url").length == 0
+  $("span.get_host_url").each ->
+    $(this).text("http://#{window.location.host}#{$(this).text()}")
+
 setup_schedule = ->
   return if $("ul.schedule_days").length == 0
   days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday',
@@ -89,5 +94,6 @@ $ ->
   setup_video_removing()
   setup_chosen()
   setup_schedule()
+  setup_picture_urls()
   # if document.URL.substr(0, 39) is "http://bp.balticit.ru/admin/activities"
 

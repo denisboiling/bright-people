@@ -11,7 +11,9 @@ ActiveAdmin.register Picture do
     end
     column :caption
     column "URL картинки" do |picture|
-      link_to picture.picture_file_name, picture.picture.url(:original, timestamp: false)
+      span class: 'get_host_url' do
+        picture.picture.url(:original, timestamp: false)
+      end
     end
     default_actions
   end
@@ -29,7 +31,9 @@ ActiveAdmin.register Picture do
     attributes_table_for resource do
       row :caption
       row "URL картинки" do
-        link_to resource.picture_file_name, resource.picture.url(:original, timestamp: false)
+        span class: 'get_host_url' do
+          resource.picture.url(:original, timestamp: false)
+        end
       end
     end
 
