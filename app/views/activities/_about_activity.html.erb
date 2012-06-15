@@ -1,15 +1,12 @@
-<div class="dop_info">
-  <span class="dop_title">Стоимость и длительность</span>
-  <%= simple_format @activity.cost %>
-</div>
-<div class="dop_info">
-  <span class="dop_title">Чем заняться родителю</span>
-  <%= simple_format @activity.parent_activities %>
-</div>
-<div class="dop_info">
-  <span class="dop_title">Дополнительно</span>
-  <%= simple_format activity.additional_information %>
-</div>
+<% %w(cost parent_activities additional_information).each do |method| %>
+  <% if @activity.send(method.to_sym).present? %>
+    <div class="dop_info">
+      <span class="dop_title"><%= Activity.human_attribute_name method %></span>
+      <%= simple_format @activity.send(method.to_sym) %>
+    </div>
+  <% end %>
+<% end %>
+
 <div class="clear"></div>
 
 <% if @activity.max_schedule_items %>

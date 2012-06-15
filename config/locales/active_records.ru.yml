@@ -102,6 +102,12 @@ ru:
         created_at: Дата создания
         updated_at: Дата обновления
       activity:
+        is_educational: Образовательный
+        logo: Логотип
+        direction_tags: Категории
+        age_tags: Возрастные категории
+        site: Сайт
+        phone: Телефон
         published: Опубликовать
         replace_teacher_text: Текст вместо учитилей
         title: Название

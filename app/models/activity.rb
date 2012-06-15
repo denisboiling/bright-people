@@ -73,7 +73,8 @@ class Activity < ActiveRecord::Base
                   :additional_information, :parent_activities, :schedule,
                   :photos_attributes, :videos_attributes, :logo, :expert_id, :region_id, :cost,
                   :monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday,
-                  :coords, :activity_comments_attributes, :teachers_attributes, :published, :replace_teacher_text, as: :admin
+                  :coords, :activity_comments_attributes, :teachers_attributes, :published,
+                  :phone, :site, :direction_tag_ids, :age_tag_ids, :replace_teacher_text, :logo, as: :admin
 
   scope :distinct, select('DISTINCT(activities.id), activities.*')
   scope :educationals, where(is_educational: true)
@@ -137,8 +138,8 @@ class Activity < ActiveRecord::Base
   # OPTIMIZE: a lot of SQL query
   # Find max count of schedules per day
   def max_schedule_items
-    _max = schedule.map {|k,v| Activity.first.schedule[k].size}.max
-    _max = 0 ? _max : nil
+    _max = self[:schedule].map {|k,v| self[:schedule][k].size}.max
+    _max = 0 ? nil : _max
   end
 
   class << self

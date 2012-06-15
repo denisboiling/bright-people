@@ -37,10 +37,12 @@
 
 	<div class="info_block">
 	  <table>
-	    <tr>
-	      <th><span>Метро</span></th>
-	      <td><%= @activity.metro_station.title %><br />
-	    </tr>
+	    <% if @activity.metro_station %>
+	      <tr>
+		<th><span>Метро</span></th>
+		<td><%= @activity.metro_station.title %><br />
+	      </tr>
+	    <% end %>
 	    <tr>
 	      <th><span>Адрес</span></th>
 	      <td><%= y_link(@activity.coords, @activity.address) %></td>

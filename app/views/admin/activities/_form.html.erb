@@ -1,8 +1,14 @@
 <%= semantic_form_for [:admin, @activity], html: { multipart: true } do |f| %>
   <%= f.inputs 'Основное' do %>
     <%= f.input :title %>
+    <%= f.input :is_educational, as: :select, include_blank: false %>
     <%= f.input :published %>
     <%= f.input :organization, include_blank: false, input_html: { class: 'chosen_autocomplete' } %>
+    <%= f.input :phone %>
+    <%= f.input :site %>
+    <%= f.input :direction_tags, input_html: { size: 10 } %>
+    <%= f.input :age_tags, input_html: { size: 4 } %>
+    <%= f.input :logo, as: :file, hint: f.template.image_tag(f.object.logo.url) %>
 
     <%= render 'shared/editor_toolbar', element_id: 'activity_description' %>
     <%= f.input :description, input_html: { size: 10 } %>
