@@ -22,6 +22,6 @@ class SearchesController < ApplicationController
     @results = ThinkingSphinx.search(params[:q], star: true, classes: range)
     @results = @results.page(params[:page]) if params[:page]
     @request = params[:q]
-    render partial: 'searches/result', locals: { results: @results.page(params[:page] || 1) } if params[:remote]
+    render partial: 'searches/result', locals: { results: @results } if params[:remote]
   end
 end
