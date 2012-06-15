@@ -12,11 +12,14 @@ class Organization < ActiveRecord::Base
   define_index do
     indexes title, sortable: true
   end
-  
+
+  default_scope order: 'title ASC'
+
   def picture
     'url-to-generic-image-for-organization.png'
   end
 
+  # TODO: replace, ugly
   def teachers
     arr = Array.new
     self.activities.each do |activity|
