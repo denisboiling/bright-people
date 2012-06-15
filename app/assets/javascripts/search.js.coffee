@@ -3,9 +3,10 @@ window.setup_search_tabs = ->
   $(".search_filter a").first().addClass('active')
   $(".search_filter a").first().prepend('<span class=\"mask\"></span>')
 
-  $(".pager .page a").on 'click', (event) -> 
+  $(".pager .page a").live 'click', (event) -> 
     if $(".search_filter .active").text() != 'Все разделы'
       event.preventDefault()
+      category = $(".search_filter .active").text()
       data =
         q: $(".search_title span").text().split('\"')[1]
         category: category
@@ -21,7 +22,7 @@ window.setup_search_tabs = ->
           $(".pager .page").removeClass('current')
           $(this).parent().addClass('current')
 
-  $(".search_filter a").on 'click', (event) ->
+  $(".search_filter a").live 'click', (event) ->
     event.preventDefault()
 
     if $(this).text() == 'Все разделы'

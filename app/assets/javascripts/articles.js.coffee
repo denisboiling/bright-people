@@ -23,7 +23,7 @@ window.setup_ajax_articles_loading = ->
       success: (response) ->
         $('.journal_post').html(response)
   
-  $('.rubric_list a').on 'click', (event) ->
+  $('.rubric_list a').live 'click', (event) ->
     event.preventDefault()
     window._articles_category = if window._articles_category == $(this).text() then "" else $(this).text()
     update_articles()
