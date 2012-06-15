@@ -15,12 +15,15 @@ class ArticlesController < ApplicationController
     sort = params[:sort]
     sort ||= 'created_at'
 
-    categories_ids = (params[:categories_ids] or "").split(',').map(&:to_i)
+    category = params[:category]
+    cat_id = ArticleCategory.find_by_title(params[:category]).id if !category.nil? and !category.empty?
+    cat_id ||= 0
     @articles = Article.published.order(sort)
-    @articles = @articles.where(article_category_id: categories_ids) unless categories_ids.empty?
+    @articles = @articles.where(article_category_id: cat_id) if cat_id != 0
     @articles = @articles.page(params[:page]).per(5)
-
-    render partial: 'articles_list', locals: { articles: @articles } if params[:remote]
+    
+    r = ( category.nil? or category.empty? ) ? false : true
+    render partial: 'articles_list', locals: { articles: @articles, remote: r } if params[:remote]
   end
 
   def show

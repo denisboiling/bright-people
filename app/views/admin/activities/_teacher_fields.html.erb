@@ -1,0 +1,7 @@
+<div class="nested-fields">
+  <%= f.inputs do %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :photo, as: :file, hint: f.template.image_tag(f.object.photo.url) %>
+  <% end %>
+</div>
