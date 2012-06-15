@@ -1,0 +1,6 @@
+<% results.each do |result| %>
+  <div class="search_cell">
+    <%= render "shared/#{result.class.name.downcase}", object: result %>
+  </div>
+<% end %>
+<%= paginate results %>

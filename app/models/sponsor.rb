@@ -5,4 +5,11 @@ class Sponsor < ActiveRecord::Base
                             default_style: :thumb
 
   attr_accessible :name, :photo, :description
+
+  define_index do
+    indexes first_name, sortable: true
+    indexes last_name, sortable: true
+    indexes description
+  end
+
 end

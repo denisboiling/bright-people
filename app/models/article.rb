@@ -22,6 +22,11 @@ class Article < ActiveRecord::Base
   scope :published, where(published: true)
   scope :not_published, where(published: false)
 
+  define_index do
+    indexes title, sortable: true
+    indexes content
+  end
+
   class << self
     def for_main
       published.order('created_at DESC').first(5)

@@ -12,6 +12,12 @@ class Contest < ActiveRecord::Base
                               url: "/system/contests/:attachment/:id/:style/:filename",
                               default_style: :thumb
 
+  define_index do
+    indexes name, sortable: true
+    indexes description
+    indexes memberships.description, as: :membership_description
+  end
+
   # to fit common views
   def title
     name

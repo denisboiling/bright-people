@@ -33,3 +33,4 @@ $ ->
   window.setup_profile_ajax()
   window.setup_logout_link()
   window.setup_organization_map()
+  window.setup_search_tabs()

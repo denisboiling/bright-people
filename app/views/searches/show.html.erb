@@ -1,5 +1,31 @@
-<%= render partial: 'shared/search' %>
+<div class="pages">
+  <div class="search_title">
+    <h1>Результаты поиска</h1>
+    <span>Мы нашли <%= @results.count %> упоминаний "<%= @request %>" на нашем сайте</span>
+  </div>
+  
+  <div class="common">
+    <div class="search_filter">
+      <div class="name">Результаты поиска по разделам</div>
+      <ul>
+        <li><%= link_to 'Все разделы', '' %></li>
+        <li><%= link_to 'Москва для детей', '' %></li>
+        <li><%= link_to 'Журнал', '' %></li>
+        <li><%= link_to 'Конкурсы', '' %></li>
+        <li><%= link_to 'Экспертный совет', '' %></li>
+        <li><%= link_to 'Спецпроекты', '' %></li>
+      </ul>
+    </div>
+    <div class="search_list">
+      <%= render 'searches/result', results: @results %>
+    </div>
+  </div>
 
-<% @results.each do |result| %>
-  <%= render "shared/#{result.class.name.downcase}", object: result %>
-<% end %>
+  <div class="sidebar">
+    <%= render 'shared/sidebar' %>
+  </div>
+  <div class="clear"></div>
+
+
+
+</div>
