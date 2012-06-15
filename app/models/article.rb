@@ -9,7 +9,7 @@ class Article < ActiveRecord::Base
 
   has_many :comments, as: :relation
 
-  has_attached_file :picture, styles: { medium: "440x275^>", slider: "520x320^>", thumb: "160x100>" },
+  has_attached_file :picture, styles: { medium: "440x275#", slider: "520x320^>", thumb: "160x100>" },
                               path: ":rails_root/public/system/articles/:attachment/:id/:style/:filename",
                               url: "/system/articles/:attachment/:id/:style/:filename",
                               default_style: :thumb
