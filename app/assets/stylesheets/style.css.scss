@@ -268,7 +268,7 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 .workshop_list .filter_sorter { -moz-border-radius:8px; border-radius:8px; -webkit-border-radius:8px; -khtml-border-radius:8px; border:1px solid #dbdbdb; }
 
 .workshop_list .filter_wraper  { padding:16px 0px;}
-.workshop_list .filter_wraper .cell { float:left; padding:0px 20px; border-right:1px solid #dbdbdb; height:235px }
+.workshop_list .filter_wraper .cell { float:left; padding:0px 20px; border-right:1px solid #dbdbdb; height:235px; position:relative }
 .workshop_list .sorter_wraper { border-top:1px solid #dbdbdb; } 
 .workshop_list .sorter_wraper .cell { float:left; padding:10px 20px; border-right:1px solid #dbdbdb; }
 .workshop_list .filter_wraper ul { float:left; width:140px }
@@ -293,14 +293,18 @@ span.sim_check.active { background-position:0px 0px; }
 
 .filter_wraper li, .sorter_wraper { line-height:30px}
 
-.sorter_wraper .sort_name { background:url(/assets/sort_ico_name.png) no-repeat 0 5px; padding-left:20px; font-weight:bold}
-.sorter_wraper .sort_date { background:url(/assets/sort_ico_date.png) no-repeat 0 2px; padding-left:20px; font-weight:bold}
-.sorter_wraper .sort_rating { background:url(/assets/sort_ico_rating.png) no-repeat 0 2px; padding-left:20px; font-weight:bold}
-.sorter_wraper .sort_comment { background:url(/assets/sort_ico_comment.png) no-repeat 0 2px; padding-left:20px; font-weight:bold}
+.sorter_wraper .sort_name { background:url(/assets/sort_ico_name.png) no-repeat 0 5px; padding-left:20px; text-decoration:none }
+.sorter_wraper .sort_date { background:url(/assets/sort_ico_date.png) no-repeat 0 2px; padding-left:20px; }
+.sorter_wraper .sort_rating { background:url(/assets/sort_ico_rating.png) no-repeat 0 2px; padding-left:20px; }
+.sorter_wraper .sort_comment { background:url(/assets/sort_ico_comment.png) no-repeat 0 2px; padding-left:20px; }
+
+.sorter_wraper .active{ font-weight:bold; text-decoration:underline}
 
 .filter_wraper .clear_link { background:url(/assets/close_red.png) no-repeat 0px 2px; padding-left:20px; text-decoration:none; color:#000}
 .filter_wraper .clear_block { border-top:1px solid #dbdbdb; padding-top:14px}
-.filter_wraper .clear_block { border:none; padding:0}
+.workshop_list .filter_wraper .clear_block { width:155px}
+.workshop_list .filter_wraper .clear_block a { position:absolute; bottom:0}
+.entertainment_list .filter_wraper .clear_block { border:none; padding:0}
 .filter_wraper .clear_block a { -moz-border-radius:8px; border-radius:8px; -webkit-border-radius:8px; -khtml-border-radius:8px; padding:5px 20px 5px 25px; color:#fff; font-weight:bold; text-decoration:none; display:inline-block; background:#0aaceb url(/assets/close_white.png) no-repeat 7px 9px;}
 
 .selected_metro { max-width:280px}
