@@ -12,8 +12,7 @@ class SpecialProjectsController < ApplicationController
       when 'created'
         @special_projects.order('created_at DESC')
       when 'comments_count'
-        # TODO
-        @special_projects
+        @special_projects.order('comments_count')
       else
         @special_projects
       end
