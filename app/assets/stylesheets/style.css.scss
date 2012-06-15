@@ -153,12 +153,15 @@ h1 { font-size:22px; color:#4f4f4f}
 .timer_wrapper div.date { font-family:Futura; width:105px; float:left; margin-right:8px; text-align:center; color:#cc0636; font-size:15px; font-weight:bold; text-transform:uppercase; padding-top:5px}
 .timer_wrapper .cntSeparator { padding-top:22px; font-weight:bold; color:#af0035; font-size:20px}
 
-.main_content .bank_info { float:right; width:395px; margin-left:3% }
+.main_content .bank_info { float:right; width:410px; margin-left:3% }
 .main_content .bank_info  .order_bank_catd { background:url(../assets/samp/cards.jpg) no-repeat; padding-top:180px; float:left; width:180px; font-size:12px; text-align:center}
-.main_content .bank_info .bank_text { color:#525252; font-size:14px; float:left; width:205px; text-align:left; margin-left:10px}
-.main_content .bank_info .bank_text .signature { background:url(../assets/samp/signature.jpg) no-repeat 40px 0px; padding:10px 30px 10px 0px; font-size:11px}
+
+.main_content .bank_info .bank_text { color:#525252; font-size:12px; float:left; width:220px; text-align:left; margin-left:10px}
+.main_content .bank_info .bank_text .signature { background:url(../assets/samp/signature.jpg) no-repeat 50px -4px; padding:0px 0px 20px 0px;text-align:right; font-size:10px}
+
 .main_content .adv { float:right; margin-left:3%}
 
+.main_content .bank_info .to_bank_link { margin-top:-34px; border:3px solid #d21a18; -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; behavior: url(border-radius.htc); text-decoration:none; font-weight:bold; color:#d21a18; padding:1px 5px; display:inline-block}
 
 
 .main_content .subscription { behavior: url(border-radius.htc); -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; background:#ebebeb; padding:20px; margin-right:250px; margin-top:-79px; height: 40px;}
@@ -256,6 +259,7 @@ h1 { font-size:22px; color:#4f4f4f}
 .search_cell .short_desc { padding:4px 0px}
 .search_cell .info, .search_cell .info a{ color:#6c6c6c; font-size:11px;}
 .search_cell .info em { font-style:italic}
+.search_cell .match { font-weight:bold}
 
 
 /* COUNCIL BLOCK IN MAIN */
@@ -745,7 +749,7 @@ span.sim_check.active { background-position:0px 0px; }
 
 .expert_list_wrapper { background:url(/assets/slider_mask.png) center}
 .expert_list { margin:auto; width:960px;}
-.expert_list .exp_preview { height: 200px; position:relative; float:left; width:143px; margin-top:20px; margin-right:11px; text-align:center; }
+.expert_list .exp_preview { height: 300px; position:relative; float:left; width:143px; margin-top:20px; margin-right:11px; text-align:center; }
 .expert_list .exp_preview.last { margin-right:0px;}
 .expert_list .exp_preview .mark { background:url(/assets/exp_mark.png) no-repeat; display:block; width:19px; height:24px; text-align:center; line-height:24px; padding:0px 10px 0px 5px; color:#fff; position:absolute; top:50px;}
 .expert_list .exp_preview .thumb { margin:auto; overflow:hidden;height:122px;width:122px; -moz-border-radius:60px; border-radius:60px; -webkit-border-radius:60px; -khtml-border-radius:60px; behavior: url(border-radius.htc); margin-bottom:5px}
