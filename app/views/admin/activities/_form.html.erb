@@ -78,7 +78,7 @@
     <% end %>
 
     <%= f.inputs 'Расписание' do %>
-      <ul>
+      <ul class="schedule_days">
         <% Activity::SCHEDULE_DAYS.each do |day| %>
           <li data-day-name="<%= day %>">
             <%= link_to day, '#', class: :schedule_day_link %>

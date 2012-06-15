@@ -9,6 +9,7 @@
 #= require admin/edit_map
 
 setup_schedule = ->
+  return if $("ul.schedule_days").length == 0
   days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday',
           'saturday', 'sunday']
   
@@ -87,5 +88,6 @@ setup_video_removing = ->
 $ ->
   setup_video_removing()
   setup_chosen()
-  if document.URL.substr(0, 39) is "http://bp.balticit.ru/admin/activities"
-    setup_schedule()
+  setup_schedule()
+  # if document.URL.substr(0, 39) is "http://bp.balticit.ru/admin/activities"
+
