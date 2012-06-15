@@ -8,8 +8,10 @@
 	  <% AgeTag.all.each do |age_tag| %>
 	    <li>
 	      <%= check_box_tag "age[]", age_tag.id, false, id: (dom_id age_tag), class: :remote_action %>
-	      <span class="sim_check"></span>
-	      <%= label_tag (dom_id age_tag), age_tag.title, class: :hidden_checkbox %>
+
+	      <%= label_tag (dom_id age_tag), class: :hidden_checkbox do %>
+                <span class="sim_check"></span> <%= age_tag.title %>
+              <% end %>
 	    </li>
 	  <% end %>
 	</ul>
@@ -22,6 +24,9 @@
 	      <%= check_box_tag "tag[]", tag.id, false, id: (dom_id tag), class: :remote_action %>
 	      <span class="sim_check"></span>
 	      <%= label_tag (dom_id tag), tag.name, class: :hidden_checkbox %>
+	      
+	      
+	      
 	    </li>
 	  <% end %>
 	</ul>
