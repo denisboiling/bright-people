@@ -1,43 +1,79 @@
 <%= semantic_form_for [:admin, @activity], html: { multipart: true } do |f| %>
   <%= f.inputs 'Основное' do %>
-    <%= f.input :organization, as: :select, collection: Organization.all, include_blank: false %>
     <%= f.input :title %>
+    <%= f.input :published %>
+    <%= f.input :organization %>
+
+    <%= render 'shared/editor_toolbar', element_id: 'activity_description' %>
     <%= f.input :description, input_html: { size: 10 } %>
-    <%= f.input :users_rating %>
   <% end %>
 
-    <%= f.inputs "Адрес" do %>
-      <%= f.input :metro_station, as: :select, collection: MetroStation.all %>
-      <%= f.input :region, as: :select, collection: Region.all, include_blank: false %>
-      <%= f.input :address %>
-      <%= f.input :coords, as: :hidden, input_html: { class: 'hidden_coords'} %>
-      <%= f.input :coords, input_html: { class: 'edit_map' }, label: false %>
-    <% end %>
+  <%= f.inputs "Адрес" do %>
+    <%= f.input :metro_station, as: :select, collection: MetroStation.all %>
+    <%= f.input :region, as: :select, collection: Region.all, include_blank: false %>
+    <%= f.input :address %>
+    <%= f.input :coords, as: :hidden, input_html: { class: 'hidden_coords'} %>
+    <%= f.input :coords, input_html: { class: 'edit_map' }, label: false %>
+  <% end %>
 
-    <%= f.inputs "Медиа контент" do %>
-      <div class="activity_photos">
+  <%= f.inputs "Отзовы" do %>
+    <div class="activity_comments">
+      <%= f.semantic_fields_for :activity_comments do |activity_comment| %>
+        <%= render 'admin/activities/activity_comment_fields', f: activity_comment %>
+      <% end %>
+    </div>
+    <%= link_to_add_association 'Добавить отзыв', f, :activity_comments,
+                                                     'data-association-insertion-method' => 'append',
+                                                     'data-association-insertion-node' => '.activity_comments' %>
+  <% end %>
+
+  <%= f.inputs "Преподователи" do %>
+    <div class="activity_teachers">
+      <%= f.semantic_fields_for :teachers do |teacher| %>
+        <%= render 'admin/activities/teacher_fields', f: teacher %>
+      <% end %>
+    </div>
+    <%= link_to_add_association 'Добавить учителя', f, :teachers,
+                                                     'data-association-insertion-method' => 'append',
+                                                     'data-association-insertion-node' => '.activity_teachers' %>
+
+    <br /><br /><br />
+    
+    <%= render 'shared/editor_toolbar', element_id: 'activity_replace_teacher_text' %>
+    <%= f.input :replace_teacher_text, input_html: { size: 10 } %>
+  <% end %>
+
+
+  <%= f.inputs "Медиа контент" do %>
+    <div class="activity_photos">
       <%= f.semantic_fields_for :photos do |photo| %>
         <%= render 'admin/activities/photo_fields', f: photo %>
       <% end %>
-      </div>
-      <%= link_to_add_association 'Добавить фотографию', f, :photos,
+    </div>
+    <%= link_to_add_association 'Добавить фотографию', f, :photos,
                                   'data-association-insertion-method' => 'append',
                                   'data-association-insertion-node' => '.activity_photos' %>
 
-      <div class="activity_videos">
+    <div class="activity_videos">
       <%= f.semantic_fields_for :videos do |video| %>
         <%= render 'admin/activities/video_fields', f: video %>
       <% end %>
-      </div>
-      <%= link_to_add_association 'Добавить ссылку на видео', f, :videos,
+    </div>
+    <%= link_to_add_association 'Добавить ссылку на видео', f, :videos,
                                   'data-association-insertion-method' => 'append',
                                   'data-association-insertion-node' => '.activity_videos' %>
-    <% end %>
+  <% end %>
 
     <%= f.inputs "Дополнительно" do %>
-      <%= f.input :description, input_html: { size: 10 } %>
+
+
+      <%= render 'shared/editor_toolbar', element_id: 'activity_additional_information' %>
       <%= f.input :additional_information, input_html: { size: 10 } %>
+
+      <%= render 'shared/editor_toolbar', element_id: 'activity_parent_activities' %>
       <%= f.input :parent_activities, input_html: { size: 10 } %>
+
+      <%= render 'shared/editor_toolbar', element_id: 'activity_cost' %>
       <%= f.input :cost, input_html: { size: 10 } %>
     <% end %>
 
@@ -54,6 +90,5 @@
     
   <%= f.buttons do %>
     <%= f.commit_button %>
-    <%= f.action :submit, :button_html => { :label => "create case", :name => 'preview', :value => "Предварительный просмотр" } %>
   <% end %>
 <% end %>

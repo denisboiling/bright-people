@@ -15,6 +15,27 @@ before "deploy:finalize_update", "shared:symlinks"
 # Clear old releases
 after "deploy:restart","deploy:cleanup"
 
+namespace :rake do
+  desc "Run a rake task on a remote server."
+  # run like: cap staging rake:invoke task=a_certain_task
+  task :invoke do
+    run("cd #{latest_release}; RAILS_ENV=#{rails_env} rake #{ENV['task']}")
+  end
+end
+
+namespace :backup do
+  desc "Create backup with astrails-safe"
+  task :create, :roles => :app do
+    run "astrails-safe /home/www-data/backup_db"
+    run "astrails-safe /home/www-data/backup_files"
+  end
+
+  task :install, :roles => :app do
+    run "gem install astrails-safe"
+  end
+
+end
+
 namespace :delayed_job do
   desc "Restart the delayed_job process"
   task :restart, :roles => :app do

@@ -39,6 +39,7 @@ gem 'randumb'
 gem 'delayed_job'
 gem 'delayed_job_active_record'
 gem 'daemons'
+gem 'nokogiri'
 
 group :development do
   gem 'letter_opener'
@@ -51,7 +52,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', require: false
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'spork', github: 'sporkrb/spork'

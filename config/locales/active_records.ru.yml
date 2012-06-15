@@ -1,6 +1,16 @@
 ru:
   activerecord:
     models:
+      region:
+        one: Регион
+        few: Региона
+        many: Регионы
+        other: Регионы
+      metro_station:
+        one: Станция метро
+        few: Станции метро
+        many: Станции метро
+        other: Станции метро
       special_project:
         one: Специальный проэкт
         few: Специальных проэкта
@@ -73,6 +83,8 @@ ru:
       activity_comment:
         commentator: Комментатор
         content: Контент
+        picture: Картинка
+        is_parent: Родительский
       news:
         title: Название
         author: Автор
@@ -90,6 +102,8 @@ ru:
         created_at: Дата создания
         updated_at: Дата обновления
       activity:
+        published: Опубликовать
+        replace_teacher_text: Текст вместо учитилей
         title: Название
         address: Адрес
         description: Описание
@@ -97,6 +111,10 @@ ru:
         experts_rating: Рейтинг экспертов
         organization: Организация
         metro_station: Станция метро
+        region: Округ
+        cost: Стоимость и длительность
+        parent_activities: Чем заняться родителю
+        additional_information: Дополнительно
       user:
         name: Имя
         description: Описание
@@ -127,6 +145,16 @@ ru:
         created_at: Дата создания
         updated_at: Дата обновления
         activity: Кружок
+        description: Описание
+        photo: Фотография
       special_project:
         title: Название
         author: Автор
+      region:
+        title: Название
+        created_at: Дата создания
+        updated_at: Дата обновления
+      metro_station:
+        title: Название
+        created_at: Дата создания
+        updated_at: Дата обновления
