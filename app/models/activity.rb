@@ -134,6 +134,13 @@ class Activity < ActiveRecord::Base
     is_educational
   end
 
+  # OPTIMIZE: a lot of SQL query
+  # Find max count of schedules per day
+  def max_schedule_items
+    _max = schedule.map {|k,v| Activity.first.schedule[k].size}.max
+    _max = 0 ? _max : nil
+  end
+
   class << self
     def for_main
       self.random(4)
