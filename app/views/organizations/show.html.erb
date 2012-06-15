@@ -27,8 +27,6 @@
       </div>
       <div class="right_part">
         <div class="map_wrapper">
-          <!--<iframe width="525" scrolling="no" height="335" frameborder="0" marginwidth="0" marginheight="0" src="http://static-maps.yandex.ru/1.x/?ll=<%=@organization.location.y%>,<%=@organization.location.x%>&l=map&z=15&size=525,335">
-          </iframe>-->
           <div id="org_map" data-x="<%= @organization.location.x %>" data-y="<%= @organization.location.y %>" style="width: 525px; height: 335px"></div>
         </div>
       </div>
@@ -56,39 +54,30 @@
         <% end %>
         <div class="clear"></div>
       </div>
-      <div class="title_block">Здесь работают <%= @organization.teachers.count %> пиплов</div>
-      <div id="ruk_slider">
-        <div class="slides_container">
-          <% @organization.teachers.each do |teacher| %>
-            <div class="slide">
-              <div class="thumb">
-                <span class="mask"></span>
-                <%= image_tag teacher.photo.url %>
+      <% if @organization.teachers.count > 0 %>
+        <div class="title_block">Здесь работают <%= @organization.teachers.count %> пиплов</div>
+        <div id="ruk_slider">
+          <div class="slides_container">
+            <% @organization.teachers.each do |teacher| %>
+              <div class="slide">
+                <div class="thumb">
+                  <span class="mask"></span>
+                  <%= image_tag teacher.photo.url %>
+                </div>
+                <div class="info">
+                  <div class="name"><%= teacher.name %></div>
+                  <%= teacher.description %>
+                </div>
               </div>
-              <div class="info">
-                <div class="name"><%= teacher.name %></div>
-                <%= teacher.description %>
-              </div>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
+          <a class="next" href="">Вперед</a>
+          <a class="prev" href="">Назад</a>
         </div>
-        <a class="next" href="">Вперед</a>
-        <a class="prev" href="">Назад</a>
-      </div>
+      <% end %>
     </div>
     <div class="share_block entertainment">Делись с друзьями</div>
   </div>
   <div class="sidebar"><%= render 'shared/sidebar'%></div>
   <div class="clear"></div>
 </div>
-
-
-<!--
-
-<h2><%= @organization.address %></h2>
-
-<% @organization.activities.each do |activity| %>
-  <%= link_to activity.title, activity %>
-<% end %>
-
--->

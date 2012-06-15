@@ -1,17 +1,15 @@
-<% if !current_user.nil? %>
-  <div class="user_info">
-    Ваш комментарий
-    <div class="thumb">
-      <span class="mask"></span>
-      <%= image_tag current_user.avatar.url(:comment) %>
-    </div>
+<div class="user_info">
+  Ваш комментарий
+  <div class="thumb">
+    <span class="mask"></span>
+    <%= image_tag current_user ? current_user.avatar.url(:comment) : url_for("/assets/tender_ico.png") %>
   </div>
-  <div class="field">
-    <span class="arrow"></span>
-    <textarea name="comment"></textarea>
-  </div>
-  <div class="clear"></div>
-  <div class="button">
-    <input type="submit" class="submit_comment" value="Отправить">
-  </div>
-<% end %>
+</div>
+<div class="field">
+  <span class="arrow"></span>
+  <textarea name="comment"></textarea>
+</div>
+<div class="clear"></div>
+<div class="button">
+  <input type="submit" class="submit_comment" value="Отправить">
+</div>

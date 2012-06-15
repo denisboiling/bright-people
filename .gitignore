@@ -18,6 +18,7 @@ public/system
 /config/sphinx.yml
 db/schema.rb
 db/structure.sql
+db/sphinx*
 rerun.txt
 public/assets
 REVISION

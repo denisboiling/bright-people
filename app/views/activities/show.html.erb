@@ -5,9 +5,10 @@
     <div class="detail_page">
 
       <h1><%= @activity.title %>
-	<% if @activity.participant? %>
-	  <span class="mark">Участник фестиваля!</span>
-	<% end %>
+        <%= favourite_block @activity %>
+        <% if @activity.participant? %>
+          <span class="mark">Участник фестиваля!</span>
+        <% end %>
       </h1>
 
       <div class="base">На базе учреждения: <%= link_to @activity.organization.title, organization_path(@activity.organization) %></div>

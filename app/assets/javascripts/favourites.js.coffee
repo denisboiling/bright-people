@@ -1,7 +1,27 @@
 window.setup_favourite_button = ->
-  $("#favourite_link").live 'click', (event) ->
+  $('.favourite_block_is a').live 'click', ->
+    window.location.href = '/dashboard/favourites'
+    false
+  
+  $('.favourite_block_add a').live 'click', (event) ->
     event.preventDefault()
-    $.ajax
-      type: 'POST',
-      url: '/favourites',
-      data: { url: document.URL }
+
+  $('.favourite_block_is').live 'click', ->
+    $elt = $(this)
+    id = $elt.attr('data-id')
+    $.ajax url: "/favourites/#{id}", data: { _method: 'DELETE' }, type: 'POST', success: ->
+      $elt.removeClass('favourite_block_is')
+      $elt.addClass('favourite_block_add')
+      $elt.removeAttr('data-id')
+      $elt.find('a').text('В избранное')
+  
+  $('.favourite_block_add').live 'click', ->
+    $elt = $(this)
+    relation_id = $elt.attr('data-relation-id')
+    relation_type = $elt.attr('data-relation-type')
+    data = id: relation_id, type: relation_type
+    $.ajax url: "/favourites", type: 'POST', data: data, success: (data)->
+      $elt.removeClass('favourite_block_add')
+      $elt.addClass('favourite_block_is')
+      $elt.attr('data-id', data.id)
+      $elt.find('a').text('Избранное')

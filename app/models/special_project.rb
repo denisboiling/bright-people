@@ -13,6 +13,11 @@ class SpecialProject < ActiveRecord::Base
                     url: "/system/special_projects/:attachment/:id/:style/:filename",
                     default_style: :thumb
 
+  define_index do
+    indexes title, sortable: true
+    indexes content
+  end
+
   class << self
     def for_main
       order('created_at DESC').first(5)

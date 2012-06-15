@@ -1,0 +1,52 @@
+.orgkomitet {}
+.orgkomitet .left_part { float:left; width:40%;  padding-right:4%;}
+.orgkomitet .right_part { float:right; width:52%;  padding-left:4%; }
+
+.orgkomitet .title { font-size:16px; font-family:Futura; color:#000000; padding-bottom:10px}
+
+.org_people { padding:20px 0; border-bottom:1px solid #ccc; margin-bottom:20px}
+.org_people_preview { width:33%; float:left; }
+
+.org_people_preview .org_people_wrapper { width:205px; position:relative; margin:auto; text-align:center}
+
+
+.org_people_preview .thumb { position:relative; float:left; width:205px; height:205px; overflow:hidden;}
+.org_people_preview .thumb .mask { width:205px; height:205px; background:url(/assets/mask_flower_big.png) no-repeat center center; display:block; position:absolute}
+.org_people_preview .name { font-weight:bold; color:#f3452e; font-size:17px; font-family:Futura; display:block; }
+.org_people_preview .info { color:#33343a; font-size:12px; display:block; padding:4px 0 10px 0 }
+.org_people_preview .desc { color:#33343a; font-size:12px; display:block;  }
+
+
+
+.other_people_preview { min-height:90px; padding-bottom:10px}
+.other_people_preview .name { font-weight:bold; color:#f3452e; font-size:15px; font-family:Futura; display:block; }
+.other_people_preview .thumb { position:relative; float:left; width:85px; height:85px; overflow:hidden;}
+.other_people_preview .thumb .mask { width:85px;; height:85px; background:url(/assets/mask_flower_small.png) no-repeat center center; display:block; position:absolute}
+.other_people_preview .info { color:#33343a; font-size:12px; margin-left:100px}
+.other_people_preview .contact { color:#156069; font-size:12px; padding-top:4px}
+.other_people_preview .contact .toemail { display:inline-block; line-height:24px; background:url(/assets/mail_ico.png) no-repeat left center; padding-left:20px; text-decoration:underline; margin-right:10px}
+.other_people_preview .contact .phone { display:inline-block; line-height:24px; background:url(/assets/mobile_ico.png) no-repeat left center; padding-left:20px; text-decoration:underline; margin-right:10px}
+
+.about_fest { padding:20px 0px}
+.about_fest .title { font-size:16px; font-family:Futura; color:#000000; padding-bottom:10px}
+.about_fest .left_part { float:left; width:46%; border-right:1px solid #ccc; padding-right:4%; margin-left:-1px}
+.about_fest .right_part { float:right; width:46%; border-left:1px solid #ccc; padding-left:4%; margin-left:-1px}
+
+
+#slider_about_fest { position:relative; margin-top:20px}
+
+#slider_about_fest .slides_container {
+	width:100%;
+	height:269px;
+}
+#slider_about_fest .slides_container div.slide {
+	width:100%;
+	height:269px;
+	display:block;
+}
+
+#slider_about_fest .prev, #slider_about_fest .next { display:block; width:34px; height:56px; overflow:hidden; text-indent:-500px; position:absolute; z-index:15; top:110px}
+#slider_about_fest .prev { background:url(/assets/page_slider_arrow_left.png) no-repeat; left:30px}
+#slider_about_fest .next { background:url(/assets/page_slider_arrow_right.png) no-repeat; right:30px;}
+
+#slider_about_fest  .pagination { display:none}
