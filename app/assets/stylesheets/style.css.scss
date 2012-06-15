@@ -363,6 +363,7 @@ h1 { font-size:22px; color:#4f4f4f}
 
 .filter_wraper strong { display:block; color:#828282}
 .filter_wraper #metro { display:none}
+.filter_wraper #region { display:none}
 
 
 span.sim_check.active { background-position:0px 0px; }
@@ -381,9 +382,8 @@ span.sim_check.active { background-position:0px 0px; }
 
 .selected_metro { max-width:280px}
 .selected_metro .clear_link {margin-right:10px;}
-
-
-
+.selected_region { max-width:280px}
+.selected_region .clear_link {margin-right:10px;}
 
 /* CATALOGS */
 .catalog {}
