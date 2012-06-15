@@ -1,6 +1,11 @@
 ru:
   activerecord:
     models:
+      sponsor:
+        one: Попечитель
+        few: Попечительский совет
+        many: Попечистельский совет
+        other: Попечительский совет
       picture:
         one: Картинка
         few: Картинки
@@ -177,3 +182,8 @@ ru:
         caption: Название
         created_at: Дата создания
         updated_at: Дата обновления
+      sponsor:
+        photo: Фотография
+        first_name: Имя
+        last_name: Фамилия
+        description: Описание
