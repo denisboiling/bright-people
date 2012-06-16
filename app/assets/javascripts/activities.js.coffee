@@ -27,7 +27,7 @@ window.setup_activities_list = ->
     text = $(selected).text()
     selected_div = $("div." + $(this).attr('data-selected'))
     select_select = $("#" + $(this).attr('data-select'))
-    $(selected_div).append("<a class='clear_link' href='' data-val=#{val}>#{text}</a>")
+    $(selected_div).append("<a class='clear_link' href='' data-val=#{val}>#{text}</a> ")
     $(select_select).append(selected)
     $("#remote_form").submit()
 
