@@ -4,7 +4,7 @@ class Sponsor < ActiveRecord::Base
                             url: "/system/sponsors/:attachment/:id/:style/:filename",
                             default_style: :thumb
 
-  attr_accessible :name, :photo, :description
+  attr_accessible :first_name, :last_name, :photo, :description, as: :admin
 
   define_index do
     indexes first_name, sortable: true
