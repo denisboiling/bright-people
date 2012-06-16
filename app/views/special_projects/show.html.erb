@@ -3,48 +3,20 @@
     <h1><%= @special_project.title %></h1>
     <strong>
       <%= @special_project.author %>.
-      <%= Russian::strftime @special_project.created_at, '%A, %d %B %G г.' %>
+      <%= Russian::strftime @special_project.created_at, '%A, %e %B %Y г.' %>
     </strong>
 
     <div class="post_preview">
-      <div class="thumb"><img alt="" src="samp/post_samp_prev.jpg"></div>
+      <div class="thumb"><%= image_tag(@special_project.picture(:medium)) %></div>
 
       <div class="short_desc">
-        Однажды Анна Афонина из Петербурга написала в нашу рубрику про
-        путешествия письмо с предложением рассказать про остров Самуи. Письмо
-        было пропитано какой-то очень приятной энергией и словно
-        старой-доброй почтой прилетело с того самого острова. Аня писала про
-        трех дочек-погодок шести, пяти и четырех лет. Про то, что уже
-        несколько зим проводит в Тайланде, что нашла там то, что искала —
-        любовь, океан, гармонию и красоту.
+        <%= @special_project.short_description %>
       </div>
 
       <div class="clear"></div>
     </div>
 
     <div class="post_info">
-      <div class="other_link">
-        <div class="title">
-          Об авторе
-        </div>Катя Корзо – уроженка Ленинграда, Леонид Фёдоров как музыкант
-        сделал свои первые шаги ещё в 70-е годы, в составах начинающих
-        любительских рок-групп. В 1983 году он основал собственный
-        рок-коллектив «Аукцион», в дальнейшем переименованный в
-        «АукцЫон».<br>
-        <br>
-
-        <div class="title">
-          Другие статьи автора
-        </div>
-
-        <ul>
-          <li><a href="">Как я стала мамой</a></li>
-
-          <li><a href="">Про манекенщицу, трех дочек и детский сад в
-          Сомали</a></li>
-        </ul>
-      </div>
-
       <div class="post_share">
         <div class="title">
           Делись с друзьями
@@ -53,44 +25,14 @@
     </div>
 
     <div class="description">
-      Поверьте, причин для плача у крохи предостаточно и без ваших
-      «неправильных» действий. Плач новорожденного ребенка – это его
-      единственная возможность подать вам сигнал. Таким образом, он сообщает
-      о том, что голоден, хочет спать или испытывает дискомфорт. Проверьте,
-      сухой ли подгузник, удобно ли малышу. Может быть, ему жарко или душно…
-      Совсем скоро вы начнете понимать его, как никто другой.<br>
-      <br>
-      Наиболее распространенная причина плача в первые месяцы жизни –
-      кишечные колики. Ими страдаю 70% детей до трех месяцев. Во время
-      кормления или сразу после него ваш малыш вдруг начинает поджимать ножки
-      к животику, краснеет и кричит? Не забывайте перед кормлением
-      выкладывать кроху на живот. Положите на животик малыша теплую пеленку.
+      <%=raw @special_project.content %>
     </div>
 
     <div class="clear"></div>
   </div>
 
-  <div class="sidebar alongside">
-    <div class="title">
-      Лучшие места для детей в Москве
-    </div>
-
-    <ul>
-      <li><span class="thumb"><a href=""><img alt="" src=
-      "samp/samp_1.jpg"></a></span> <span class="name"><a href="">Центр
-      детских проектов и разработок "Шардам"</a></span> <span class=
-      "geo">Северо-Восток</span></li>
-
-      <li><span class="thumb"><a href=""><img alt="" src=
-      "samp/samp_1.jpg"></a></span> <span class="name"><a href="">Центр
-      детских проектов и разработок "Шардам"</a></span> <span class=
-      "geo">Северо-Восток</span></li>
-
-      <li><span class="thumb"><a href=""><img alt="" src=
-      "samp/samp_1.jpg"></a></span> <span class="name"><a href="">Центр
-      детских проектов и разработок "Шардам"</a></span> <span class=
-      "geo">Северо-Восток</span></li>
-    </ul>
+  <div class="sidebar">
+    <%= render 'shared/sidebar' %>
   </div>
 
   <div class="clear"></div>
