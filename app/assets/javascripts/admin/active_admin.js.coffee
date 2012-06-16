@@ -30,8 +30,7 @@ setup_schedule = ->
   
   update_fields = (values) ->
     for day in days
-      chunks = values[day] if values
-      chunks ?= []
+      chunks = []
       $("li[data-day-name=#{day}] .time_block").each ->
         start = $(this).find('.time_start').val()
         end = $(this).find('.time_end').val()
