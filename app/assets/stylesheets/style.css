@@ -256,9 +256,18 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 .council .trustee .title { font-family:Futura; border-bottom:1px solid #c69141; color:#7a5113; text-align:center; letter-spacing:-1px}
 
 
+.socialnet { margin-left:780px}
+.socialnet .soc_widget_tab { border-bottom:2px solid #dcdcdc; }
+.socialnet .soc_widget_tab .fb_ico { background:url(/assets/fb_tab.png) no-repeat left center; padding-left:16px; text-decoration:none; color:#5a7ea5; font-weight:bold; margin-left:5px;}
+.socialnet .soc_widget_tab .vk_ico { background:url(/assets/vk_tab.png) no-repeat left center; padding-left:26px; text-decoration:none; color:#5a7ea5; font-weight:bold; margin-left:5px;}
 
+.socialnet .soc_widget_tab a span { display:inline-block; padding-bottom:8px;  margin-bottom:-2px}
+.socialnet .soc_widget_tab a.active span { background:url(/assets/social_tab_arrow.jpg) no-repeat center bottom;}
 
+.socialnet .soc_widget { display:none; padding:10px 0px}
+.socialnet #show_widget_fb { display:block}
 
+#vk_groups, #vk_groups iframe { width: 100% !important; }
 
 
 /* FILTER SORTER */
@@ -794,4 +803,8 @@ span.sim_check.active { background-position:0px 0px; }
 	.pages .sidebar { display:none}
 	.expert_page .preview_catalog { width:50%}
 	.preview_specialist { width:24%;}
+
+}
+@media screen and (max-width: 1150px) {
+.socialnet .soc_widget_tab a span { width:0px; overflow:hidden}
 }
