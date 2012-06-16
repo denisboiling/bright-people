@@ -90,8 +90,7 @@ class Main < ActiveRecord::Migration
     t.integer :article_category_id, :picture_file_size
     t.datetime :picture_updated_at
     t.integer :comments_count
-    t.boolean :best, default: false, null: false
-
+    t.boolean :published, null: false, default: false
     t.timestamps
   end
 
