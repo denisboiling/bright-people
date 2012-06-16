@@ -13,16 +13,9 @@ class ArticlesController < ApplicationController
   # OPTIMIZE: brrr
   def index
     @categories = ArticleCategory.all
-
-    sort = params[:sort]
-    sort ||= 'created_at'
     
     category = nil
     category = ArticleCategory.find(params[:category_id]) if params[:category_id]
-    
-    @articles = Article.published.order(sort)
-    @articles = @articles.where(article_category_id: category.id) if category
-    @articles = @articles.page(params[:page]).per(5)
     
     @persons_category = ArticleCategory.find_by_title("Личности")
     @teachers_category = ArticleCategory.find_by_title("Учителя")
@@ -30,6 +23,10 @@ class ArticlesController < ApplicationController
     @expert_category = ArticleCategory.find_by_title("Колонка эксперта")
     
     if category and params[:remote]
+      @articles = Article.published.order('created_at DESC')
+      @articles = @articles.where(article_category_id: category.id) if category
+      @articles = @articles.page(params[:page]).per(5)
+      
       render partial: 'page', locals: { articles: @articles, category: category }
     else
       @news_category = ArticleCategory.find_by_title("Новости")
