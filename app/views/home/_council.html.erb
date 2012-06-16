@@ -44,11 +44,12 @@
         <div class="inner">
           <% Sponsor.all.each do |sponsor| %>
             <article>
-              <%= link_to image_tag(sponsor.photo.url(:main)), sponsor_path(sponsor), class: :thumb %>
               <div class="info">
-                <%= sponsor.first_name %><br /><span><%= sponsor.last_name.upcase %></span><br />
-                <%= link_to 'Весь совет', sponsors_path, class: :all_trustee %>
+                <%= sponsor.first_name %><br /><span><%= sponsor.last_name.upcase %></span>
+                
               </div>
+              <%= link_to image_tag(sponsor.photo.url(:main)), sponsor_path(sponsor), class: :thumb %>
+              
             </article>
           <% end %>
 

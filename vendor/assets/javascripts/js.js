@@ -25,14 +25,15 @@ $(document).ready(function(){
     // ]]> 
 	
 	
+	$("div.socialnet #show_widget_vk").css("position", "absolute").css("width", "0px");
 	$("div.soc_widget_tab a").live('click', function(){
 		var currentTab = $(this).attr('rel');
 		
 		$("div.soc_widget_tab a").removeClass("active");
 		$(this).addClass("active");
 		
-		$("div.socialnet div.soc_widget").hide();
-		$("div.socialnet").find("#"+currentTab).show();
+		$("div.socialnet div.soc_widget").css("position", "absolute").css("width", "0px");
+		$("div.socialnet").find("#"+currentTab).css("position", "relative").css("width", "100%");
 		return false;
 	});
 	
