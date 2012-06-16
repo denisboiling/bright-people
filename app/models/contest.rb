@@ -7,7 +7,7 @@ class Contest < ActiveRecord::Base
 
   validates :name, :started_at, :ended_at, :description, :rules ,presence: true
 
-  has_attached_file :picture, styles: { medium: "300x300>", thumb: "325x100" },
+  has_attached_file :picture, styles: { medium: "300x300^#", thumb: "325x100^#" },
                               path: ":rails_root/public/system/contests/:attachment/:id/:style/:filename",
                               url: "/system/contests/:attachment/:id/:style/:filename",
                               default_style: :thumb
