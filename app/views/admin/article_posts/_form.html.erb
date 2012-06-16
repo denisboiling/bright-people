@@ -1,9 +1,13 @@
+<!-- TODO: replace this shit -->
 <% if @article_post.new_record? %>
   <%= semantic_form_for [:admin, @article_post], url: admin_article_posts_path, html: { multipart: true } do |f| %>
   <%= f.inputs 'Основное' do %>
     <%= f.input :title %>
     <%= f.input :category, as: :select, collection: ArticleCategory.all, include_blank: false %>
     <%= f.input :author, as: :select, collection: User.all, include_blank: false %>
+
+    <%= render 'shared/editor_toolbar', element_id: 'article_biography' %>
+    <%= f.input :biography, input_html: {size: 10} %>
 
     <%= render 'shared/editor_toolbar', element_id: 'article_short_description' %>
     <%= f.input :short_description, input_html: {size: 10} %>
@@ -25,6 +29,9 @@
     <%= f.input :title %>
     <%= f.input :category, as: :select, collection: ArticleCategory.all, include_blank: false %>
     <%= f.input :author, as: :select, collection: User.all, include_blank: false %>
+
+    <%= render 'shared/editor_toolbar', element_id: 'article_biography' %>
+    <%= f.input :biography, input_html: {size: 10} %>
 
     <%= render 'shared/editor_toolbar', element_id: 'article_short_description' %>
     <%= f.input :short_description, input_html: {size: 5} %>

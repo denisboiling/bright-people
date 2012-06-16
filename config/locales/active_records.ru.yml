@@ -82,6 +82,7 @@ ru:
       article:
         title: Название
         author: Автор
+        biography: Биография
         article_tag_list: Тэги
         category: Категория
         short_description: Краткое описание

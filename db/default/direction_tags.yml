@@ -22,6 +22,14 @@ traning:
   name: Тренироваться  
   is_educational: true
 
+perform:
+  name: Выступать
+  is_educational: true
+
+for_child:
+  name: Для самых маленьких
+  is_educational: true
+
 art:
   name: Искуство
   is_educational: false
