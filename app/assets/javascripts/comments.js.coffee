@@ -13,12 +13,13 @@ window.add_comment = ->
       $("#register_dialog").removeClass('hidden')
     else
       parent_id = $(this).attr('data-id')
-      relation = document.URL.match(/\/[A-Za-z0-9]+\//)[0].match(/[A-Za-z0-9]+/)[0]
+      relation = document.URL.match(/\/[_A-Za-z0-9]+\//)[0].match(/[_A-Za-z0-9]+/)[0]
       switch (relation)
         when "news" then relation = "News"
         when "articles" then relation = "Article"
         when "interviews" then relation = "Interview"
         when "contests" then relation = "ContestMembership"
+        when "special_projects" then relation = "SpecialProject"
       relation_id = document.URL.match(/(\d+)$/)[0]
       if parent_id
         subcomment = $(this).parent().parent()

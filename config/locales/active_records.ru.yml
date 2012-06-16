@@ -22,10 +22,10 @@ ru:
         many: Станции метро
         other: Станции метро
       special_project:
-        one: Специальный проэкт
-        few: Специальных проэкта
-        many: Специальные проэкты
-        other: Специальные проэкты
+        one: Специальный проект
+        few: Специальных проекта
+        many: Специальные проекты
+        other: Специальные проекты
       teacher:
         one: Учитель
         few: Учителя
@@ -166,6 +166,7 @@ ru:
       special_project:
         title: Название
         author: Автор
+        short_description: Краткое описание
         content: Контент
         picture: Картинка
         special_project_tag_list: Тэги
