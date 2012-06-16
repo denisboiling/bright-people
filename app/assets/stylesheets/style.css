@@ -155,12 +155,12 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 .timer_wrapper .cntSeparator { padding-top:22px; font-weight:bold; color:#af0035; font-size:20px}
 
 .main_content .bank_info { float:right; width:410px; margin-left:3% }
-.main_content .bank_info  .order_bank_catd { background:url(../assets/samp/cards.jpg) no-repeat; padding-top:180px; float:left; width:180px; font-size:12px; text-align:center}
-.main_content .bank_info .bank_text { color:#525252; font-size:12px; float:left; width:220px; text-align:left; margin-left:10px}
-.main_content .bank_info .bank_text .signature { background:url(../assets/samp/signature.jpg) no-repeat 50px -4px; padding:0px 0px 20px 0px;text-align:right; font-size:10px}
+.main_content .bank_info  .order_bank_catd { background:url(../assets/samp/cards.jpg) no-repeat; padding-top:180px; float:left; width:180px; font-size:11px; text-align:center}
+.main_content .bank_info .bank_text { color:#525252; font-size:12px; float:left; width:220px; text-align:left; margin-left:10px; background:url(../assets/samp/signature.jpg) no-repeat right 130px;}
+
 .main_content .adv { float:right; margin-left:3%}
 
-.main_content .bank_info .to_bank_link { margin-top:-34px; border:3px solid #d21a18; -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; behavior: url(border-radius.htc); text-decoration:none; font-weight:bold; color:#d21a18; padding:1px 5px; display:inline-block}
+.main_content .bank_info .to_bank_link { margin-top:13px; background:#fff; border:3px solid #d21a18; -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; behavior: url(border-radius.htc); text-decoration:none; font-weight:bold; color:#d21a18; padding:1px 5px; display:inline-block}
 
 
 .main_content .subscription { behavior: url(border-radius.htc); -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; background:#ebebeb; padding:20px; margin-right:250px; margin-top:-79px; height: 40px;}
@@ -288,7 +288,7 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 .filter_sorter span.sim_check { background:url(/assets/checkbox_bg.png) no-repeat 0px bottom; width:25px; height:26px; display:inline-block; margin-top:1px }
 
 .filter_wraper strong { display:block; color:#828282}
-.filter_wraper #metro { display:none}
+.filter_wraper #metro, .filter_wraper #region { display:none}
 
 
 span.sim_check.active { background-position:0px 0px; }
@@ -309,8 +309,8 @@ span.sim_check.active { background-position:0px 0px; }
 .entertainment_list .filter_wraper .clear_block { border:none; padding:0}
 .filter_wraper .clear_block a { -moz-border-radius:8px; border-radius:8px; -webkit-border-radius:8px; -khtml-border-radius:8px; padding:5px 20px 5px 25px; color:#fff; font-weight:bold; text-decoration:none; display:inline-block; background:#0aaceb url(/assets/close_white.png) no-repeat 7px 9px;}
 
-.selected_metro { max-width:280px}
-.selected_metro .clear_link {margin-right:10px;}
+.selected_metro, .selected_region { max-width:280px}
+.selected_metro .clear_link, .selected_region .clear_link {margin-right:10px;}
 
 
 
@@ -747,6 +747,9 @@ span.sim_check.active { background-position:0px 0px; }
 .journal_preview .thumb img { width:160px; height:100px; border-radius:6px; }
 .journal_preview .info { margin-left:180px; color:#4f4f4f}
 .journal_preview .info .date { color:#74746f; font-size:12px; font-weight:bold;}
+
+
+.special_project_list .preview_cell { width:23%; height:290px;}
 
 /* FOOTER */
 #main_page #footer { background:#ECECE7}

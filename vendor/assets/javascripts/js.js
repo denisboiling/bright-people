@@ -18,6 +18,12 @@ $(document).ready(function(){
 
 
 	
+    // <![CDATA[ 
+    var so = new SWFObject("/assets/header.swf", "bnr_1", "100%", "204"); 
+    so.addParam("wmode", "transparent");
+    so.write("flashcontent_1"); 		
+    // ]]> 
+	
 	// Opera FIX
 	$('.thumb img').each(
         function(i,e){
