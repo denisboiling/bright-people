@@ -2,7 +2,7 @@
   <% if (article.author.role.name == 'expert') %>
   <div class="personality_preview">
     <div class="personality_wrapper">
-      <%= link_to category.title, '#', class: "cat" %>
+      <%= link_to category.title, '#', class: "cat", 'data-id' => category.id %>
       <span class="mark"><%= article.author.approvals_count %></span>
       <div class="thumb">
         <%= link_to image_tag(article.author.avatar), expert_path(article.author) %>
@@ -14,7 +14,7 @@
   <% else %>
   <div class="personality_preview">
     <div class="personality_wrapper">
-      <%= link_to category.title, '#', class: "cat" %>
+      <%= link_to category.title, '#', class: "cat", 'data-id' => category.id %>
       <div class="thumb">
         <span class="mask"></span>
         <%= link_to image_tag(article.picture.url), article %>

@@ -16,12 +16,12 @@ class ArticlesController < ApplicationController
 
     sort = params[:sort]
     sort ||= 'created_at'
-
-    category = params[:category]
-    cat_id = ArticleCategory.find_by_title(params[:category]).id if !category.nil? and !category.empty?
-    cat_id ||= 0
+    
+    category = nil
+    category = ArticleCategory.find(params[:category_id]) if params[:category_id]
+    
     @articles = Article.published.order(sort)
-    @articles = @articles.where(article_category_id: cat_id) if cat_id != 0
+    @articles = @articles.where(article_category_id: category.id) if category
     @articles = @articles.page(params[:page]).per(5)
     
     @persons_category = ArticleCategory.find_by_title("Личности")
@@ -29,8 +29,12 @@ class ArticlesController < ApplicationController
     @foreign_category = ArticleCategory.find_by_title("Зарубежный опыт")
     @expert_category = ArticleCategory.find_by_title("Колонка эксперта")
     
-    r = ( category.nil? or category.empty? ) ? false : true
-    render partial: 'articles_list', locals: { articles: @articles, remote: r } if params[:remote]
+    if category and params[:remote]
+      render partial: 'page', locals: { articles: @articles, category: category }
+    else
+      @news_category = ArticleCategory.find_by_title("Новости")
+      @best_articles = []
+    end
   end
 
   def show
