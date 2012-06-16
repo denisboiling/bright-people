@@ -39,6 +39,20 @@
         <%= f.submit "Сохранить" %>
       </div>
       <div class="clear"></div>
+      <script type="text/javascript">
+      $(document).ready(function(){
+      
+        var user_name = $("#user_name").val();
+        $("#user_name").bind("focus", function() {
+                if (this.value == user_name)
+                        this.value = "";
+        }).bind("blur", function() {
+                if (this.value == "")
+                this.value = user_name;
+        });
+      
+      });
+      </script>
     </div>
   
   </div>
