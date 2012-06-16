@@ -1,9 +1,13 @@
 <div id="nested_slider">
   <div class="slider_control">
     <ul>
-      <li class="sl_fest"><a rel="slider_fest" class="active" href="#">О фестивале</a></li>
+      <li class="sl_fest">
+	<%= link_to 'О фестивале', page_path('about_festival'), class: :active, rel: :slider_fest %>
+      </li>
       <li class="sl_user"><a rel="slider_user" href="#">Участники</a></li>
-      <li class="sl_org"><a rel="slider_org" href="#">Оргкомитет</a></li>
+      <li class="sl_org">
+	<%= link_to 'Оргкомитет', page_path('org_komitet'), class: :active, rel: :slider_org %>
+      </li>
     </ul>
   </div>
   
@@ -101,8 +105,7 @@
 <br />
 Гости мероприятия смогут не только весело провести время, но и открыть двери в мир творческих профессий и искусства.<br />
 
-        
-        <a href="" class="to_bank_link">Подробнее</a>
+        <%= link_to 'Подробнее', page_path('about_bank'), class: :to_bank_link %>
         
       </div>
       <div class="clear"></div>
