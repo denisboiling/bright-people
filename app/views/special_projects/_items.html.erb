@@ -1,0 +1,18 @@
+<% special_projects.each do |special_project| %>
+<div class="preview_cell">
+  <div class="info">
+    <div class="cat_name">
+      <span>Спецпроект</span>
+    </div>
+    <div class="thumb">
+      <%= link_to image_tag(special_project.picture), special_project %>
+    </div>
+    <div class="name">
+      <%= link_to special_project.title, special_project %>
+    </div>
+    <div class="date">
+      <%= special_project.created_at.to_formatted_s(:main) %>
+    </div>
+  </div>
+</div>
+<% end %>
