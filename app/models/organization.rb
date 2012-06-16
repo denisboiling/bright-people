@@ -6,6 +6,8 @@ class Organization < ActiveRecord::Base
   validates :title, presence: true
 
   has_many :activities
+  has_many :teachers, through: :activities
+
   belongs_to :metro_station
 
   define_index do
@@ -16,16 +18,5 @@ class Organization < ActiveRecord::Base
 
   def picture
     'url-to-generic-image-for-organization.png'
-  end
-
-  # TODO: replace, ugly
-  def teachers
-    arr = Array.new
-    self.activities.each do |activity|
-      activity.teachers.each do |t|
-        arr << t
-      end
-    end
-    arr.uniq
   end
 end
