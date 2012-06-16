@@ -12,4 +12,7 @@
 <div class="clear"></div>
 <div class="button">
   <input type="submit" class="submit_comment" value="Отправить">
+  <% if current_admin_user %>
+  &nbsp; от имени эксперта: <%= select_tag :expert_id, options_from_collection_for_select(User.experts, :id, :name) %>
+  <% end %>
 </div>
