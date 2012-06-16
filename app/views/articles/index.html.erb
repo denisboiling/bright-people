@@ -6,7 +6,7 @@
   
   <div class="personality_slider">
     <div class="slides_container">
-      <% Article.where(:article_category_id => ArticleCategory.find_by_title('Личности').id).each do |article| %>
+      <% @persons_category.articles.each do |article| %>
         <div class="slide">
           <%= link_to image_tag(article.picture.url(:slider)), article%>
           <div class="info">
@@ -22,18 +22,22 @@
   </div>
 
   <div class="personality_column">
-    <% a = @articles.sort {|a,b| a.created_at <=> b.created_at } %>
-    <% a = a.pop(3) %>
-    <% a.each do |article| %>
+    <% [@teachers_category, @foreign_category].each do |category| %>
+      <% if article = category.articles.sample %>
       <div class="personality_preview">
         <div class="personality_wrapper">
-          <%= link_to article.category.title, '#', class: "cat" %>
-          <div class="thumb"><span class="mask"></span><%= link_to image_tag(article.picture.url), article %></div>
-          <span class="name"><%= article.title %></span>
+          <%= link_to category.title, '#', class: "cat" %>
+          <div class="thumb">
+            <span class="mask"></span>
+            <%= link_to image_tag(article.picture.url), article %>
+          </div>
+          <span class="name"><%= link_to article.title, article %></span>
           <span class="date"><%= Russian::strftime(article.created_at, "%e %B %Y") %></span>
         </div>
       </div>
+      <% end %>
     <% end %>
+    <%= render 'expert_column', category: @expert_category %>
   </div>
 
   <div class="clear"></div>

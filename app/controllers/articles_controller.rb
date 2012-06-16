@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class ArticlesController < ApplicationController
   before_filter :load_object, only: :show
   before_filter :check_permission, only: :show
@@ -21,6 +23,11 @@ class ArticlesController < ApplicationController
     @articles = Article.published.order(sort)
     @articles = @articles.where(article_category_id: cat_id) if cat_id != 0
     @articles = @articles.page(params[:page]).per(5)
+    
+    @persons_category = ArticleCategory.find_by_title("Личности")
+    @teachers_category = ArticleCategory.find_by_title("Учителя")
+    @foreign_category = ArticleCategory.find_by_title("Зарубежный опыт")
+    @expert_category = ArticleCategory.find_by_title("Колонка эксперта")
     
     r = ( category.nil? or category.empty? ) ? false : true
     render partial: 'articles_list', locals: { articles: @articles, remote: r } if params[:remote]
