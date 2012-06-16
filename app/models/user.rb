@@ -128,4 +128,9 @@ class User < ActiveRecord::Base
     false
   end
 
+  # User already voted for this activity 
+  def already_vote?(_activity)
+    activity_votes.where(activity_id: _activity.id).present?
+  end
+
 end
