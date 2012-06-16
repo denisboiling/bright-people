@@ -787,6 +787,41 @@ span.sim_check.active { background-position:0px 0px; }
 #footer .phone_info { font-size:11px; opacity:0.6; padding-bottom:10px;}
 #footer .phone_info span { font-size:17px; font-weight:600;}
 
+/* BANK PAGE */
+
+.bank_page { background:url(/assets/bank_bg_center.png) repeat-x;}
+.bank_page .left_corner { background:url(/assets/bank_bg_left_corner.png) no-repeat left top;}
+.bank_page .right_corner { background:url(/assets/bank_bg_right_corner.png) no-repeat right top;}
+.bank_page .confeti { background:url(/assets/confeti.png) no-repeat center 87px; padding-top:50px}
+
+.title { padding-bottom:25px}
+.title h1 { color:#bb224c; font-size:40px; text-align:center}
+
+
+.bank_page .thumb { text-align:center}
+.bank_page .bank_info { float:left; width:25%}
+.bank_page .bank_info .observer_info_wrapper { width:210px; margin:auto}
+.bank_page .bank_info .card { background:url(/assets/bank_divider.png) no-repeat center top; padding-top:10px; text-align:center; padding-bottom:20px}
+.bank_page .bank_info .who { padding-top:45px}
+
+.bank_page .director_info { float:left; width:45%}
+.bank_page .director_info .observer_info_wrapper { width:90%; margin:auto}
+
+.bank_page .observer_info { float:right; width:30%}
+.bank_page .observer_info .observer_info_wrapper { width:270px; margin:auto}
+
+.bank_page .who { display:block; color:#bb224c; font-size:14px; text-align:center; font-weight:bold; letter-spacing:-1px; padding:10px 0px}
+
+
+.bank_page .blog_title { background:url(/assets/bank_divider.png) no-repeat center top; padding-top:10px; text-align:center; text-transform:uppercase; font-size:16px; padding-bottom:20px; font-weight:bold}
+.bank_page .blog_cell { background:url(/assets/bank_divider.png) no-repeat center top; padding-top:10px; text-align:center; padding-bottom:20px}
+.bank_page .blog_cell.first { background:none}
+.bank_page .blog_cell a { font-weight: bold; color:#bb224c; text-decoration:none}
+.bank_page .blog_cell .date { font-size:12px;}
+
+/* END BANK PAGE */
+
+
 
 @media screen and (max-width: 1080px) {
 	.preview_cell { float:left; width:23%; margin-left:1%; margin-right:1%}
