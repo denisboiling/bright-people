@@ -4,22 +4,7 @@
     <span>Наша редакция собирает для вас лучшее из детского мира Москвы</span>
   </div>
   
-  <div class="personality_slider">
-    <div class="slides_container">
-      <% @persons_category.articles.each do |article| %>
-        <div class="slide">
-          <%= link_to image_tag(article.picture.url(:slider)), article%>
-          <div class="info">
-            <div class="name"><%= article.title %></div>
-            <%= article.short_description %>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <img class="person_slide_lenta" alt="" src="assets/personality_lenta.png">
-    <%= link_to image_tag("page_slider_arrow_right.png"), '#', class: "next" %>
-    <%= link_to image_tag("page_slider_arrow_left.png"), '#', class: "prev" %>
-  </div>
+  <%= render 'persons' %>
 
   <div class="personality_column">
     <% [@teachers_category, @foreign_category].each do |category| %>
