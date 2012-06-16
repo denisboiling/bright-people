@@ -30,7 +30,6 @@ window.setup_raty = ->
       readonly = true
     else
       readonly = false
-    console.log readonly
     $(".rating").raty
       path: '/assets/raty'
       score: rating
