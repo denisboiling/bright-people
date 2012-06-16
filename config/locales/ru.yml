@@ -9,5 +9,10 @@ ru:
     few: '%{count} голоса'
     many: '%{count} голосов'
     other: '%{count} голосов'
+  people:
+    one: '%{count} человек'
+    few: '%{count} человека'
+    many: '%{count} людей'
+    other: '%{count} людей'
   yes: Да
   no: Нет
