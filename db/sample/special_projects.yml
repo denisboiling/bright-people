@@ -2,6 +2,7 @@
 special_project_<%= i %>:
   id: <%= i %>
   title: <%= Faker::Lorem.words.join(' ') %>
+  short_description: "<%= Faker::Lorem.paragraph %>"
   content: "<%= Faker::Lorem.paragraphs(5).join('\n') %>"
   author: <%= Faker::Name.name %>
 <% end %>

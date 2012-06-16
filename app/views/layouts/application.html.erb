@@ -16,6 +16,7 @@
       <% if current_user and current_user.email.blank? %>
         <%= render 'users/email_dialog', user: current_user %>
       <% end %>
+      <%= render 'users/register_dialog' unless current_user %>
       
       <%= yield(:before_center) %>
       
