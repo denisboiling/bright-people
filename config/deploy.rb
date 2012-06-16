@@ -3,6 +3,7 @@ require 'bundler/capistrano'
 require 'thinking_sphinx/deploy/capistrano'
 
 set :whenever_command, "bundle exec whenever"
+set :whenever_identifier, defer { "#{application}_#{stage}" }
 require 'whenever/capistrano'
 
 set :stages, %w(srv srv-dev)
