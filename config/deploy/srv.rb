@@ -14,9 +14,10 @@ if ENV['CLEAR']
   after "deploy:migrate", "db:load_seed"
 end
 
-before "deploy:migrate", "unicorn:stop"
 before "deploy:assets:precompile", "deploy:migrate"
 after "deploy:migrate", "thinking_sphinx:configure"
 
 after "deploy:update_code", "delayed_job:restart"
 after "deploy:update_code", "thinking_sphinx:rebuild"
+
+before "deploy:restart", "unicorn:stop"
