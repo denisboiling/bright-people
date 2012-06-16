@@ -8,3 +8,11 @@ Article.all.each do |article|
   article.update_attribute(:picture, File.new(photos.shuffle.first))
   article.update_attribute(:author_id, users.shuffle.first.id)
 end
+
+arr = Array.new
+
+arr = Article.all.pop(3)
+arr.each do |a|
+  a.best = true
+  a.save!
+end

@@ -6,7 +6,17 @@ class SpecialProjectsController < ApplicationController
   end
 
   def index
-    @special_projects = SpecialProject.all
+    @special_projects = SpecialProject.scoped
+    @special_projects =
+      case params[:sort]
+      when 'created'
+        @special_projects.order('created_at DESC')
+      when 'comments_count'
+        @special_projects.order('comments_count')
+      else
+        @special_projects
+      end
+    @special_projects = @special_projects.page(params[:page]).per(15)
   end
 
   def show

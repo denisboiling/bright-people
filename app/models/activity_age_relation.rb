@@ -6,6 +6,8 @@ class ActivityAgeRelation < ActiveRecord::Base
   validates :activity, :age_tag, presence: true
 
   after_create :overall_age
+  after_update :overall_age
+  after_destroy :overall_age
 
   def overall_age
     activity.update_attribute(:age,

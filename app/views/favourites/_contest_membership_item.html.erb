@@ -1,0 +1,10 @@
+<div class="profile_magazine" data-id="<%= object.id %>" data-type="ContestMembership">
+  <div class="info">
+    <%= link_to "delete", favourite, method: :delete, confirm: "You sure?", :class => "close" %>
+    <div class="thumb">
+      <%= link_to image_tag(object.picture), contest_membership_path(object.contest, object) %>
+    </div>
+    <div class="name"><%= link_to object.title, contest_membership_path(object.contest, object) %></div>
+    <div class="date"><%= object.created_at.to_formatted_s(:main) %></div>
+  </div>
+</div>

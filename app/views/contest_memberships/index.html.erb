@@ -12,18 +12,23 @@
     </div>
     <div class="work_list">
       <div class="sorter_wraper">
-        <div class="cell">Сортировать по <span class="sort_date">дате добавления</span>, <span class="sort_comment">количеству комментариев</span> или <span class="sort_rating">рейтингу</span></div>
-      </div>
-      <% @memberships.each do |membership| %>
-        <div class="preview_work">
-          <div class="info">
-            <div class="thumb"><%= link_to image_tag(membership.picture.url(:thumb)), contest_membership_path(membership, contest_id: @contest.id) %></div>
-            <div class="name"><%= link_to membership.name, contest_membership_path(membership, contest_id: @contest.id) %></div>
-            <div class="author"><%= membership.user.name %></div>
-            <div class="rating"></div>
-          </div>
+        <div class="cell">Сортировать по
+          <span class="sort_date">
+            <%= link_to "дате добавления", '#' %>
+          </span>,
+          <span class="sort_rating">
+            <%= link_to "рейтингу", '#' %>
+          </span>
+          или
+          <span class="sort_comment">
+            <%= link_to "количеству комментариев", '#' %>
+          </span>
         </div>
-      <% end %>
+      </div>
+      <div class="memberships_container">
+        <%= render 'memberships_list', memberships: @memberships, contest: @contest %>
+      </div>
+      <%= paginate @memberships %>
       <div class="clear"></div>
     </div>
   </div>
@@ -33,12 +38,10 @@
   <div class="clear"></div>
 </div>
 
-<!--
-
-<h1>Members:</h1>
-<% @memberships.each do |membership| %>
-  <%= link_to image_tag(membership.picture.url(:thumb)),
-              contest_membership_path(membership, contest_id: @contest.id) %>
+<%= dialog "Нужно зарегистрироваться", id: :register_dialog do %>
+  <% if !@contest.active? %>
+    Голосование еще не началось!
+  <% else %>
+    Вы уже голосовали!
+  <% end %>
 <% end %>
-
--->

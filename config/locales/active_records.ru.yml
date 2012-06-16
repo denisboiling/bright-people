@@ -1,0 +1,189 @@
+ru:
+  activerecord:
+    models:
+      sponsor:
+        one: Попечитель
+        few: Попечительский совет
+        many: Попечистельский совет
+        other: Попечительский совет
+      picture:
+        one: Картинка
+        few: Картинки
+        many: Картинок
+        other: Картинки
+      region:
+        one: Регион
+        few: Региона
+        many: Регионы
+        other: Регионы
+      metro_station:
+        one: Станция метро
+        few: Станции метро
+        many: Станции метро
+        other: Станции метро
+      special_project:
+        one: Специальный проэкт
+        few: Специальных проэкта
+        many: Специальные проэкты
+        other: Специальные проэкты
+      teacher:
+        one: Учитель
+        few: Учителя
+        many: Учителей
+        other: Учителя
+      article:
+        one: Статью
+        few: Статьи
+        many: Статей
+        other: Статьи
+      user:
+        one: Пользователь
+        few: Пользователя
+        many: Пользователей
+        other: Пользователи
+      activity_comment:
+        one: Отзов
+        few: Отзова
+        many: Отзовов
+        other: Отзывы
+      organization:
+        one: Организация
+        few: Организации
+        many: Организации
+        other: Организация
+      activity:
+        one: Кружок
+        few: Кружка
+        many: Кружков
+        other: Кружки
+      metro_station: Станция метро
+      attach: Фотография
+      interview:
+        one: Интервью
+        few: Интервью
+        many: Интервью
+        other: Интервью
+      contest:
+        one: Конкурс
+        few: Конкурса
+        many: Конкурсов
+        other: Конкурсы
+      activity:
+        one: Кружок
+        few: Кружка
+        many: Кружков
+        other: Кружки
+      news:
+        one: Новость
+        few: Новости
+        many: Новостей
+        other: Новости
+    attributes:
+      article:
+        title: Название
+        author: Автор
+        article_tag_list: Тэги
+        category: Категория
+        short_description: Краткое описание
+        content: Контент
+        created_at: Дата создания
+        updated_at: Дата обновления
+        picture: Лого
+        published: Опубликовать
+      activity_comment:
+        commentator: Комментатор
+        content: Контент
+        picture: Картинка
+        is_parent: Родительский
+      news:
+        title: Название
+        author: Автор
+        created_at: Дата создания
+        updated_at: Дата обновления
+        content: Содержание
+      admin_user:
+        email: E-mail
+        password: Пароль
+        remember_me: Запомнить меня
+      organization:
+        title: Название
+        address: Адрес
+        metro_station: Станция метро
+        created_at: Дата создания
+        updated_at: Дата обновления
+      activity:
+        is_educational: Образовательный
+        logo: Логотип
+        direction_tags: Категории
+        age_tags: Возрастные категории
+        site: Сайт
+        phone: Телефон
+        published: Опубликовать
+        replace_teacher_text: Текст вместо учитилей
+        title: Название
+        address: Адрес
+        description: Описание
+        users_rating: Рейтинг пользователей
+        experts_rating: Рейтинг экспертов
+        organization: Организация
+        metro_station: Станция метро
+        region: Округ
+        cost: Стоимость и длительность
+        parent_activities: Чем заняться родителю
+        additional_information: Дополнительно
+      user:
+        name: Имя
+        description: Описание
+        about: Биография
+        avatar: Фотография
+        role: Роль
+        password: Пароль
+        created_at: Дата создания
+        updated_at: Дата обновления
+      activity_photo:
+        attach: Фотография
+      video_url:
+        url: Ссылка на видео
+      interview:
+        title: Заголовок
+        short_description: Краткое описание
+        review: Ревью
+        review_title: Заголовок ревью
+        author: Автор
+        picture: Прикрепленная фотография
+        content: Контент
+        interview_tag_list: Тэги
+      contest:
+        name: Название
+        category: Категория
+      teacher:
+        name: Имя
+        created_at: Дата создания
+        updated_at: Дата обновления
+        activity: Кружок
+        description: Описание
+        photo: Фотография
+      special_project:
+        title: Название
+        author: Автор
+        content: Контент
+        picture: Картинка
+        special_project_tag_list: Тэги
+      region:
+        title: Название
+        created_at: Дата создания
+        updated_at: Дата обновления
+      metro_station:
+        title: Название
+        created_at: Дата создания
+        updated_at: Дата обновления
+      picture:
+        picture: Картинка
+        caption: Название
+        created_at: Дата создания
+        updated_at: Дата обновления
+      sponsor:
+        photo: Фотография
+        first_name: Имя
+        last_name: Фамилия
+        description: Описание

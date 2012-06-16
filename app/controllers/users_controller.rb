@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource :dashboard, class: false
+  
   def update_email
     user = current_user
     user.email = params[:user][:email]
@@ -16,13 +18,11 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    if(@user.update_attributes(params[:user]))
-      sign_in @user
-      redirect_to profile_path
-    else
-    end
+    @user.update_attributes(params[:user])
+    redirect_to dashboard_profile_path
   end
   
-  def comments
+  def notifications
+    @comments = current_user.notifications.order('created_at DESC').page(1).per(16)
   end
 end

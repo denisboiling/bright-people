@@ -1,11 +1,19 @@
 # -*- coding: utf-8 -*-
-ActiveAdmin.register Article do
+ActiveAdmin.register Article, :as => "ArticlePost" do
   menu label: 'Статьи'
+
+  scope :all, :default => true
+  scope :published
+  scope :not_published
+
+  filter :title
+  filter :category
+  filter :author
 
   index do
     id_column
     column "Фотография" do |article|
-        link_to image_tag(article.picture.url(:thumb), alt: article.title), admin_article_path(article)
+        link_to image_tag(article.picture.url(:thumb), alt: article.title), admin_article_post_path(article)
     end
     column :title
     column :author
@@ -17,10 +25,23 @@ ActiveAdmin.register Article do
   form :partial => "form"
 
   show do
-    attributes_table :title, :author, :content, :short_description, :created_at, :updated_at, :picture, :article_category, :article_tag_list
+    attributes_table :title, :author, :created_at, :updated_at, :category, :article_tag_list, :published
 
-    panel 'Фотография' do
-#      image_tag(article.picture.url)
+    panel 'Посмотреть страницу' do
+      link_to article_post.title, article_path(article_post), target: '_blank'
     end
+
+    panel 'Краткое описание' do
+      simple_format article_post.short_description
+    end
+
+    panel 'Контент' do
+      simple_format article_post.content
+    end
+
+    panel 'Логотип' do
+      image_tag(article_post.picture.url(:original))
+    end
+
   end
 end

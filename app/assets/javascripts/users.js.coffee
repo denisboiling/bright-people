@@ -13,3 +13,10 @@ window.setup_email_dialog = ->
     $('#update_email_dialog').addClass('hidden')
   
   $('#update_email_dialog').removeClass('hidden')
+
+window.setup_logout_link = ->
+  $('.logout_link').bind 'click', (event) ->
+    event.preventDefault()
+    
+    $.ajax url: '/users/sign_out', type: 'DELETE', success: ->
+      window.location.reload()

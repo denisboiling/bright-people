@@ -76,7 +76,19 @@ h1 { font-size:22px; color:#4f4f4f}
 .show_login .login_wrapper .close { background:url(/assets/close_red_big.png) no-repeat; display:block; width:32px; height:32px; overflow:hidden; text-indent:-900px; position:absolute; left: 960px; top:35px}
 .show_login .login_wrapper .login_text { padding-top:16px; display:inline-block}
 
+
+#login_block .is_login {}
+#login_block .is_login .login_user_flag { font-size:11px; background:url(/assets/user_name_login_flag.png); text-decoration:none; white-space:nowrap; line-height:21px; width:85px; height:21px; display:inline-block; position:relative; color:#fff; padding:0px 6px 0px 25px; overflow:hidden}
+#login_block .is_login .login_user_flag .mask {  position:absolute; right:0px; top:0px; background:url(/assets/user_name_login_mask.png); width:36px; height:21px; display:block;}
+#login_block .is_login .logout { color:#c51917; font-size:11px; line-height:21px;}
+
+
 .show_search .search_wrapper {}
+
+
+
+
+
 
 /* MAIN MENU */
 #header #menu { text-align:center; position:relative; width:840px; margin:auto  }
@@ -141,12 +153,15 @@ h1 { font-size:22px; color:#4f4f4f}
 .timer_wrapper div.date { font-family:Futura; width:105px; float:left; margin-right:8px; text-align:center; color:#cc0636; font-size:15px; font-weight:bold; text-transform:uppercase; padding-top:5px}
 .timer_wrapper .cntSeparator { padding-top:22px; font-weight:bold; color:#af0035; font-size:20px}
 
-.main_content .bank_info { float:right; width:395px; margin-left:3% }
+.main_content .bank_info { float:right; width:410px; margin-left:3% }
 .main_content .bank_info  .order_bank_catd { background:url(../assets/samp/cards.jpg) no-repeat; padding-top:180px; float:left; width:180px; font-size:12px; text-align:center}
-.main_content .bank_info .bank_text { color:#525252; font-size:14px; float:left; width:205px; text-align:left; margin-left:10px}
-.main_content .bank_info .bank_text .signature { background:url(../assets/samp/signature.jpg) no-repeat 40px 0px; padding:10px 30px 10px 0px; font-size:11px}
+
+.main_content .bank_info .bank_text { color:#525252; font-size:12px; float:left; width:220px; text-align:left; margin-left:10px}
+.main_content .bank_info .bank_text .signature { background:url(../assets/samp/signature.jpg) no-repeat 50px -4px; padding:0px 0px 20px 0px;text-align:right; font-size:10px}
+
 .main_content .adv { float:right; margin-left:3%}
 
+.main_content .bank_info .to_bank_link { margin-top:-34px; border:3px solid #d21a18; -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; behavior: url(border-radius.htc); text-decoration:none; font-weight:bold; color:#d21a18; padding:1px 5px; display:inline-block}
 
 
 .main_content .subscription { behavior: url(border-radius.htc); -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; background:#ebebeb; padding:20px; margin-right:250px; margin-top:-79px; height: 40px;}
@@ -157,8 +172,10 @@ h1 { font-size:22px; color:#4f4f4f}
 .main_content .subscription input[type="submit"] { background:#7c7c7c; border:none; margin:0px; color:#fff; font-weight:bold; font-size:16px; -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; behavior: url(border-radius.htc); padding:5px 20px; margin-left:10px;}
 
 .bright_magazine { background:#ecece7; padding:10px 20px }
-.bright_magazine .magazine_control { float:left; width:140px;}
+.bright_magazine .magazine_control { float:left; width:155px;}
 .bright_magazine .magazine_control .title{ font-family:Futura; font-size:20px; color:#00b9e1; padding-top:20px; letter-spacing:-1px}
+
+.bright_magazine .magazine_control a.active { font-weight:bold}
 
 .bright_magazine .magazine_control .text { line-height:1.2; font-size:14px; color:#4f4f4f}
 
@@ -168,7 +185,7 @@ h1 { font-size:22px; color:#4f4f4f}
 .bright_magazine .magazine_control li.green a { background:url(/assets/magaz_arrow_green.png) no-repeat 0px 3px;}
 .bright_magazine .magazine_control li.yellow a { background:url(/assets/magaz_arrow_yellow.png) no-repeat 0px 3px; }
 
-.bright_magazine .magazine_tab { margin-left:150px; overflow:hidden; height:320px; background:url(/assets/bright_magazine_top_line.jpg) repeat-x 20px 35px; padding-right:1% }
+.bright_magazine .magazine_tab { margin-left:155px; overflow:hidden; height:320px; background:url(/assets/bright_magazine_top_line.jpg) repeat-x 20px 35px; padding-right:1% }
 .bright_magazine .magazine_tab .mag_tabs { display:none}
 .preview_cell { float:left; width:19%; margin-left:1%; height:290px; -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; margin-bottom:20px; margin-top:10px}
 
@@ -222,6 +239,29 @@ h1 { font-size:22px; color:#4f4f4f}
 .moscow_agencies .preview_agencies .name { padding-bottom:8px; line-height:1.3}
 .moscow_agencies .preview_agencies .geo { font-size:12px; }
 
+/* SEARCH PAGE */
+
+.search_title { text-align:center}
+.search_title span { color:#787878; font-size:16px; font-weight:bold}
+
+.search_filter { float:left; width:220px;}
+.search_filter .name { color:#787878; font-size:16px; font-weight:bold}
+.search_filter li { padding:4px;}
+.search_filter li a { display:inline-block; height:33px; padding:0px 10px; -moz-border-radius:4px 0px 0px 4px; border-radius:4px 0px 0px 4px; -webkit-border-radius:4px 0px 0px 4px; -khtml-border-radius:4px 0px 0px 4px; line-height:33px; text-decoration:none}
+
+.search_filter li a.active { display:inline-block; height:33px; padding:0px 10px; -moz-border-radius:4px 0px 0px 4px; border-radius:4px 0px 0px 4px; -webkit-border-radius:4px 0px 0px 4px; -khtml-border-radius:4px 0px 0px 4px; line-height:33px; background:#11a3e4; position:relative; color:#fff; font-weight:bold}
+.search_filter li a.active .mask { background:url(../assets/search_filter_arrow.png) no-repeat center top; width:16px; height:33px; display:block; position:absolute; right:-16px;}
+
+.search_list { margin-left:240px}
+
+.search_cell { padding:10px 0px; border-bottom:1px solid #ccc}
+.search_cell .name a { font-size:16px; color:#000000; font-weight:bold}
+.search_cell .short_desc { padding:4px 0px}
+.search_cell .info, .search_cell .info a{ color:#6c6c6c; font-size:11px;}
+.search_cell .info em { font-style:italic}
+.search_cell .match { font-weight:bold}
+
+
 /* COUNCIL BLOCK IN MAIN */
 .council { padding:20px 20px;}
 .council .title { font-family:Futura; border-bottom:2px solid #cdcdc9; color:#4f4f4f; font-size:20px; padding:10px 0px;}
@@ -240,8 +280,58 @@ h1 { font-size:22px; color:#4f4f4f}
 .council .trustee .title { font-family:Futura; border-bottom:1px solid #c69141; color:#7a5113; text-align:center; letter-spacing:-1px}
 
 
+/* bright journal */
+.journal_title { text-align:center; padding-bottom:20px;}
+.journal_title span { color:#787878; font-size:16px; }
+
+.personality_slider { width:520px; height:320px; float:left; position:relative; margin-bottom:20px}
+.personality_slider  .person_slide_lenta { position:absolute; z-index:100; right:-5px; top:-5px}
+.personality_slider .slides_container { width:520px; height:320px;}
+.personality_slider .slides_container .slide { height:320px; width:520px; -moz-border-radius:10px; border-radius:10px; -webkit-border-radius:10px; -khtml-border-radius:10px; display:block; position:relative; overflow:hidden}
+.personality_slider .slides_container .info { position:absolute; bottom:0; left:0; background:url(../assets/slider_control_bg.png); padding:5px 10px; width:500px; color:#e7e5e5; font-size:12px}
+.personality_slider .slides_container .info .name { color:#fff; font-weight:bold }
+
+.personality_slider .prev, .personality_slider .next { display:block; position:absolute; z-index:15; top:120px; }
+.personality_slider .prev { left:10px; }
+.personality_slider .next { right:10px; }
+
+.personality_slider .pagination { display:none; }
+
+.personality_column { margin-left:540px; height:320px; overflow:hidden; }
 
 
+.personality_preview { width:33%; float:left; height:320px; }
+
+.personality_preview .personality_wrapper { width:160px; position:relative; margin:auto; text-align:center; }
+
+.personality_preview .cat { font-size:18px; font-family:Futura; color:#f3452e; }
+.personality_preview .mark { background:url(../assets/exp_mark.png) no-repeat; display:block; width:19px; height:24px; text-align:center; line-height:24px; padding:0px 10px 0px 5px; color:#fff; position:absolute; top:70px; z-index: 10; }
+.personality_preview .thumb { position:relative; float:left; width:120px; height:120px; overflow:hidden; margin-left:20px; }
+.personality_preview .thumb .mask { width:120px; height:120px; background:url(../assets/rukov_mask.png) no-repeat center center; display:block; position:absolute; }
+.personality_preview .name { font-weight:bold; color:#007ba4; font-size:15px; display:block; }
+.personality_preview .info { color:#544d4d; display:block; }
+.personality_preview .date { color:#74746f; font-size:12px; display:block; font-weight:bold; }
+
+.personality_preview.exp .thumb { -moz-border-radius:60px; border-radius:60px; -webkit-border-radius:60px; -khtml-border-radius:60px;}
+.personality_preview.exp .thumb img { border-radius:60px; width:120px; height:120px;}
+
+
+.rubric { float:left; width:200px; min-height:100px; position:relative; }
+.rubric .title { font-family:Futura; font-size:18px; }
+.rubric_list a { font-size:16px; font-family:Futura; color:#f3452e; }
+
+.rubric .rubric_wrapp.fixed { position:fixed; top:20px; margin-left:-10px; background:#fff; padding:10px;  -moz-border-radius:10px; border-radius:10px; -webkit-border-radius:10px; -khtml-border-radius:10px; z-index:1000; }
+
+
+.journal_post { margin-left:20px; float:left; width: 600px;}
+.journal_post .title { font-family:Futura; font-size:18px; background:url(../assets/bright_magazine_top_line.jpg) repeat-x center; }
+.journal_post .title span { background:#fff; padding-right:5px}
+
+.journal_preview { padding:10px 0px}
+.journal_preview .thumb { float:left; width:160px; height:100px; -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; overflow:hidden}
+.journal_preview .thumb img { width:160px; height:100px; border-radius:6px; }
+.journal_preview .info { margin-left:180px; color:#4f4f4f}
+.journal_preview .info .date { color:#74746f; font-size:12px; font-weight:bold;}
 
 
 
@@ -273,6 +363,7 @@ h1 { font-size:22px; color:#4f4f4f}
 
 .filter_wraper strong { display:block; color:#828282}
 .filter_wraper #metro { display:none}
+.filter_wraper #region { display:none}
 
 
 span.sim_check.active { background-position:0px 0px; }
@@ -291,9 +382,8 @@ span.sim_check.active { background-position:0px 0px; }
 
 .selected_metro { max-width:280px}
 .selected_metro .clear_link {margin-right:10px;}
-
-
-
+.selected_region { max-width:280px}
+.selected_region .clear_link {margin-right:10px;}
 
 /* CATALOGS */
 .catalog {}
@@ -317,11 +407,11 @@ span.sim_check.active { background-position:0px 0px; }
 .entertainment_list .preview_catalog { width:25%;}
 
 /* CATALOGS  PAGER */
-.catalog .pager { text-align:center}
-.catalog .pager ul {}
-.catalog .pager li { display:inline-block; behavior: url(border-radius.htc); -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; margin:5px; border:1px solid #c1c1c1}
-.catalog .pager li a { display:block; height:30px; width:30px; text-align:center; color:#515151; font-size:18px; text-decoration:none; line-height:30px; }
-
+ .pager { text-align:center}
+ .pager ul {}
+ .pager li { display:inline-block; behavior: url(border-radius.htc); -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; margin:5px; border:1px solid #c1c1c1}
+ .pager li a { display:block; height:30px; width:30px; text-align:center; color:#515151; font-size:18px; text-decoration:none; line-height:30px; }
+ .pager li span {  display:block; height:30px; width:30px; text-align:center; color:red; font-size:18px; text-decoration:none; line-height:30px;}
 
 .pages { padding:10px}
 .pages .common { float:left; width:840px;}
@@ -360,7 +450,7 @@ span.sim_check.active { background-position:0px 0px; }
 .detail_page .rating_block, .detail_page .rating_block a { font-size:12px}
 .detail_page .rating_block .rating { padding:5px;}
 
-.title_block { background:url(/assets/magaz_arrow_red.png) no-repeat 0px 13px; padding:5px 0px 5px 20px; color:#0090c8; font-size:20px; font-family:Futura}
+.title_block { margin-top:20px; background:url(/assets/magaz_arrow_red.png) no-repeat 0px 13px; padding:5px 0px 5px 20px; color:#0090c8; font-size:20px; font-family:Futura}
 
 .detail_page .dop_info { float:left; width:32%; margin-right:1%; padding:10px 0px}
 .detail_page .dop_info span.dop_title { background:url(/assets/magaz_arrow_red.png) no-repeat 0px 7px;font-size:16px;padding:0 0 15px 20px; font-family:Futura; display:block}
@@ -388,7 +478,7 @@ span.sim_check.active { background-position:0px 0px; }
 
 #ruk_slider .pagination { display:none}
 
-.share_block { background:#e5e5e5; -moz-border-radius:10px; border-radius:10px; -webkit-border-radius:10px; -khtml-border-radius:10px; padding:15px 25px; font-family:Futura}
+.share_block { margin-top:20px; background:#e5e5e5; -moz-border-radius:10px; border-radius:10px; -webkit-border-radius:10px; -khtml-border-radius:10px; padding:15px 25px; font-family:Futura}
 .share_block.entertainment { background:#ffd0e3}
 
 .schedule table { width:100%; color:#525252; font-size:14px; border-collapse:collapse;}
@@ -491,7 +581,7 @@ span.sim_check.active { background-position:0px 0px; }
 .description { margin-left:260px; }
 
 .description h3 { color:#c14425; font-size:18px; font-family:Futura; padding:10px 0px}
-.description .question-class { color:#343434; font-weight:bold; padding:12px 0px 12px 40px; background:url(/assets/question-class.png) no-repeat 5px 0px;}
+.description .question-class { color:#343434; font-weight:bold; padding:12px 0px 12px 40px; background:url(/assets/question-class.png) no-repeat 5px 5px;}
 
 .description img {  -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px;}
 
@@ -657,9 +747,9 @@ span.sim_check.active { background-position:0px 0px; }
 .expert_page .dop_title {  color:#007ba4; background:url(/assets/magaz_arrow_red.png) no-repeat 0px 7px;font-size:16px;padding:0 0 15px 20px; font-family:Futura; display:block}
 
 
-.expert_list_wrapper { background:url(/assets/slider_mask.png) center}
+.expert_list_wrapper { background:url(/assets/expert_list_bg.jpg) no-repeat center 0px}
 .expert_list { margin:auto; width:960px;}
-.expert_list .exp_preview { height: 200px; position:relative; float:left; width:143px; margin-top:20px; margin-right:11px; text-align:center; }
+.expert_list .exp_preview { height: 300px; position:relative; float:left; width:150px; margin-top:20px; margin-right:10px; text-align:center; }
 .expert_list .exp_preview.last { margin-right:0px;}
 .expert_list .exp_preview .mark { background:url(/assets/exp_mark.png) no-repeat; display:block; width:19px; height:24px; text-align:center; line-height:24px; padding:0px 10px 0px 5px; color:#fff; position:absolute; top:50px;}
 .expert_list .exp_preview .thumb { margin:auto; overflow:hidden;height:122px;width:122px; -moz-border-radius:60px; border-radius:60px; -webkit-border-radius:60px; -khtml-border-radius:60px; behavior: url(border-radius.htc); margin-bottom:5px}
@@ -667,7 +757,7 @@ span.sim_check.active { background-position:0px 0px; }
 
 .expert_list .exp_preview .info {}
 .expert_list .exp_preview .name { color:#007ba4; font-weight:bold; padding:2px 10px; text-align:center; display:block; line-height:1.3}
-
+.expert_list .exp_preview .name a { color:#007ba4; font-weight:bold; text-decoration:none}
 
 
 /* FOOTER */
@@ -697,6 +787,10 @@ span.sim_check.active { background-position:0px 0px; }
 #footer .phone_info { font-size:11px; opacity:0.6; padding-bottom:10px;}
 #footer .phone_info span { font-size:17px; font-weight:600;}
 
+#login_block .is_login {}
+#login_block .is_login .login_user_flag { font-size:11px; background:url(/assets/user_name_login_flag.png); text-decoration:none; white-space:nowrap; line-height:21px; width:85px; height:21px; display:inline-block; position:relative; color:#fff; padding:0px 6px 0px 25px; overflow:hidden}
+#login_block .is_login .login_user_flag .mask {  position:absolute; right:0px; top:0px; background:url(/assets/user_name_login_mask.png); width:36px; height:21px; display:block;}
+#login_block .is_login .logout { color:#c51917; font-size:11px; line-height:21px;}
 
 @media screen and (max-width: 1080px) {
 	.preview_cell { float:left; width:23%; margin-left:1%; margin-right:1%}

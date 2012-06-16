@@ -28,6 +28,18 @@
         </ul>
       </div>
       <div class="cell">
+        <strong>По округу</strong>
+        <ul>
+          <% Region.all.each do |region| %>
+            <li>
+              <%= check_box_tag "region[]", region.id, false, id: (dom_id region), class: :remote_action %>
+              <span class="sim_check"></span>
+              <%= label_tag (dom_id region), region.title, class: :hidden_checkbox %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="cell">
         <div class="clear_block">
           <a id="clear_all_options" href="">Сбросить все</a>
         </div>

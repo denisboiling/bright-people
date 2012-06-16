@@ -1,71 +1,4 @@
 ru:
-  active_admin:
-    create_model: "Новый %{model}"
-  activerecord:
-    models:
-      user: Пользователи
-      organization: Организация
-      activity:
-        one: Кружок
-        few: Кружка
-        many: Кружков
-        other: Кружки
-      metro_station: Станция метро
-      attach: Фотография
-      interview:
-        one: Интервью
-        few: Интервью
-        many: Интервью
-        other: Интервью
-      contest:
-        one: Конкурс
-        few: Конкурса
-        many: Конкурсов
-        other: Конкурсы
-      activity:
-        one: Кружок
-        few: Кружка
-        many: Кружков
-        other: Кружки
-    attributes:
-      organization:
-        title: Название
-        address: Адрес
-        metro_station: Станция метро
-        created_at: Дата создания
-        updated_at: Дата обновления
-      activity:
-        title: Название
-        address: Адрес
-        description: Описание
-        users_rating: Рейтинг пользователей
-        experts_rating: Рейтинг экспертов
-        organization: Организация
-        metro_station: Станция метро
-      user:
-        name: Имя
-        description: Описание
-        about: Биография
-        avatar: Фотография
-        created_at: Дата создания
-        updated_at: Дата обновления
-      activity_photo:
-        attach: Фотография
-      video_url:
-        url: Ссылка на видео
-      interview:
-        title: Заголовок
-        short_description: Краткое описание
-        review: Ревью
-        review_title: Заголовок ревью
-        author: Автор
-        picture: Прикрепленная фотография
-        content: Контент
-        interview_tag_list: Тэги
-      contest:
-        name: Название
-        category: Категория
-        
   age:
     one: '%{count} года'
     few: '%{count} лет'
@@ -76,3 +9,5 @@ ru:
     few: '%{count} голоса'
     many: '%{count} голосов'
     other: '%{count} голосов'
+  yes: Да
+  no: Нет

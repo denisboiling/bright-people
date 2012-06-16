@@ -31,7 +31,7 @@
       <br>
       <% if !current_user.nil? %>
         <div class="participation_step">
-          <div class="thumb work_thumb"> типа картинка </div>
+          <div class="thumb work_thumb"><img id="preview" src="#"/></div>
           <div class="participation_form">
             <%= form_for(@membership, url: contest_memberships_path(contest_id: @contest.id)) do |f| %>
               <div class="field">
@@ -44,7 +44,7 @@
               </div>
               <div class="field">
                 <label>Загрузка работы</label>
-                <%= f.file_field :picture %>
+                <%= f.file_field :picture, :onchange => "readURL(this)" %>
               </div>
             <% end %>
           </div>
@@ -66,15 +66,17 @@
   <div class="clear"></div>
 </div>
 
-<!--
-<%= form_for(@membership, url: contest_memberships_path(contest_id: @contest.id)) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %><br />
-  <%= f.label :description %>
-  <%= f.text_area :description %><br />
-  <%= f.label :picture %>
-  <%= f.file_field :picture %><br />
-  <%= f.submit %>
-<% end %>
+<script type="text/javascript">
+//script for picture preview
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
 
--->
+      reader.onload = function (e) {
+        $('#preview').attr('src', e.target.result);
+      }
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+</script>

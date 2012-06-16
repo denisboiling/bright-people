@@ -1,7 +1,7 @@
 window.setup_ajax_articles_loading = ->
-  return if $('.articles_container').length == 0
+  return if $('.journal_post').length == 0
   
-  window._articles_categories = []
+  window._articles_category = "";
   
   regex = /page=(\d+)/
   window._page =
@@ -10,26 +10,22 @@ window.setup_ajax_articles_loading = ->
     else
       1
   
-  window._sort = 'created_at'
-  
   update_articles = ->
     data =
-      sort: window._sort
       remote: true,
       page: window._page,
-      categories_ids: window._articles_categories.join(',')
+      category: window._articles_category
     
     $.ajax
       url: '/articles',
       type: 'GET',
       data: data,
       success: (response) ->
-        $('.common .articles_container').html(response)
+        $('.journal_post').html(response)
   
-  $('.articles_category input[type=checkbox]').bind 'change', ->
-    window._articles_categories = []
-    for elt in $('.articles_category input[type=checkbox]') when $(elt).is(':checked')
-      window._articles_categories.push $(elt).attr('data-id')
+  $('.rubric_list a').live 'click', (event) ->
+    event.preventDefault()
+    window._articles_category = if window._articles_category == $(this).text() then "" else $(this).text()
     update_articles()
   
   # open pages with selected categories
@@ -37,16 +33,6 @@ window.setup_ajax_articles_loading = ->
     event.preventDefault()
     page = $(this).text()
     url = "/articles?page=#{page}"
-    if window._articles_categories.length != 0
-      url += "&categories_ids=#{window._articles_categories.join(',')}"
+    if window._articles_category
+      url += "&category=#{window._articles_category}"
     window.location.href = url
-  
-  $('.sort_date a').bind 'click', (event) ->
-    event.preventDefault()
-    window._sort = 'created_at'
-    update_articles()
-  
-  $('.sort_comment a').bind 'click', (event) ->
-    event.preventDefault()
-    window._sort = 'comments_count'
-    update_articles()

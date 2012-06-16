@@ -11,13 +11,15 @@
     </div>
     <div class="work_detail">
       <div class="left_part">
-        <div class="rating_block">
-          <span class="name">Рейтинг</span>
-          <div class="rating">Звезды</div>
-          <span><%= @membership.votes.count %><%= Russian::pluralize(@membership.votes.count, " голос", " голоса", " голосов") %></span>
-          <br>
-          <a href="">Отменить</a>
-        </div>
+        <% if current_user && @contest.active? %>
+          <div class="rating_block">
+            <span class="name">Рейтинг</span>
+            <div class="rating">Звезды</div>
+            <span><%= @membership.votes.count %><%= Russian::pluralize(@membership.votes.count, " голос", " голоса", " голосов") %></span>
+            <br>
+            <a href="">Отменить</a>
+          </div>
+        <% end %>
         <% if Time.now < @membership.contest.started_at %>
           <div class="rating_info_start">
             <span class="arrow"></span>
@@ -38,6 +40,18 @@
         </div>
       </div>
     </div>
+    <div class="clear"></div>
+    <div class="comment treeview">
+      <ul>
+        <% @comments.each do |comment| %>
+          <%= render 'shared/comment', comment: comment %>
+        <% end %>
+      </ul>
+    </div>
+    <div class="add_comment">
+      <%= render 'shared/comment_form' %>
+    </div>
+    <div class="clear"></div>
   </div>
   <div class="sidebar">
     <%= render 'shared/sidebar' %>

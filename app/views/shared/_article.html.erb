@@ -1,0 +1,10 @@
+<div class="name"><%= link_to object.excerpts.title.html_safe, object %></div>
+
+<div class="short_desc"><%= object.excerpts.content.html_safe %></div>
+
+<div class="info">
+  <em>В разделе</em>
+  <%= link_to 'Журнал', '#'%>
+  <em>от</em>
+  <%= Russian::strftime(object.created_at, "%e %B %Y") %>
+</div>

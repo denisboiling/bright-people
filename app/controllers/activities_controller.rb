@@ -5,6 +5,7 @@ class ActivitiesController < ApplicationController
   before_filter :get_kind, only: :index
   before_filter :get_directions, only: :index
   before_filter :load_object, only: [:show, :get_comments, :vote]
+  before_filter :check_published, only: :show
 
   def index
     @activities = search
@@ -50,6 +51,7 @@ class ActivitiesController < ApplicationController
     activities = activities.by_age(params[:age]) if params[:age].present?
     activities = activities.by_tag(params[:tag]) if params[:tag].present?
     activities = activities.by_metro(params[:metro]) if params[:metro].present?
+    activities = activities.by_region(params[:region]) if params[:region].present?
 
     activities = case params[:order_by]
                  when 'title' then activities.order('title ASC')
@@ -69,6 +71,11 @@ class ActivitiesController < ApplicationController
 
   def get_directions
     @directions = DirectionTag.send(@kind.to_sym)
+  end
+
+  def check_published
+    return if current_admin_user
+    redirect_to root_path unless @activity.published?
   end
 
 end

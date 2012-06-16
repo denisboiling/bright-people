@@ -1,5 +1,5 @@
 class SpecialProject < ActiveRecord::Base
-  attr_accessible :title, :content, :author, :special_project_tag_list, :picture
+  attr_accessible :title, :content, :author, :special_project_tag_list, :picture, as: :admin
 
   acts_as_taggable_on :special_project_tags
 
@@ -12,6 +12,11 @@ class SpecialProject < ActiveRecord::Base
                     path: ":rails_root/public/system/special_projects/:attachment/:id/:style/:filename",
                     url: "/system/special_projects/:attachment/:id/:style/:filename",
                     default_style: :thumb
+
+  define_index do
+    indexes title, sortable: true
+    indexes content
+  end
 
   class << self
     def for_main

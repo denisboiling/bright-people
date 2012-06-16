@@ -1,0 +1,13 @@
+ru:
+  active_admin:
+    create_model: "Новый %{model}"
+    scopes:
+      all: Все
+      educationals: Образовательные
+      entertainments: Развлекательные
+      parents: Родительские
+      childrens: Детские
+      experts: Эксперты
+      usuals: Обычные пользователи
+      published: Опубликованные
+      not_published: Не опубликованные

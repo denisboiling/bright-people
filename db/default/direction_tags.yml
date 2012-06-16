@@ -1,0 +1,39 @@
+create:
+  name: Творить
+  is_educational: true
+  
+master:
+  name: Мастерить
+  is_educational: true
+  
+study:
+  name: Изучать
+  is_educational: true
+  
+cook:
+  name: Готовить
+  is_educational: true
+  
+draw:
+  name: Рисовать
+  is_educational: true
+  
+traning:
+  name: Тренироваться  
+  is_educational: true
+
+art:
+  name: Искуство
+  is_educational: false
+
+nature:
+  name: Природа
+  is_educational: false
+
+science:
+  name: Наука
+  is_educational: false
+
+activities:
+  name: Активный отдых
+  is_educational: false

@@ -11,7 +11,7 @@ Feature: Fitler activities
       | First Activity | ["творить"]         | ["1-3 лет", "3-6 лет"] |
       | Second One     | ["мастерить"]       | ["1-3 лет"]            |
     And I am on the activities page
-  
+
   @javascript
   Scenario: Filter by direction tag
     When I follow "творить"

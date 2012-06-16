@@ -1,0 +1,8 @@
+<div class="nested-fields">
+  <%= f.inputs do %>
+    <%= f.input :commentator %>
+    <%= f.input :picture, as: :file, hint: f.template.image_tag(f.object.picture.url) %>
+    <%= f.input :content, input_html: { size: 10 } %>
+    <%= f.input :is_parent, as: :select, include_blank: false %>
+  <% end %>
+</div>

@@ -13,7 +13,6 @@ ActiveAdmin.register Organization do
     column :title
     column :address
     column :created_at
-    column :updated_at
     default_actions
   end
 

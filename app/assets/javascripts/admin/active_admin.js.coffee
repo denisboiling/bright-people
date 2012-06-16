@@ -1,14 +1,30 @@
 #= require active_admin/base
-
 #= require cocoon
 #= require autocomplete-rails
+#= require wysihtml5-0.3.0.min
 #= require advanced
-#= require wysihtml5-0.3.0
 #= require jquery-ui-timepicker-addon
 #= require jquery-ui-timepicker-ru
-
+#= require chosen.jquery.min
 #= require admin/edit_map
+
+setup_picture_urls = ->
+  return if $("span.get_host_url").length == 0
+  $("span.get_host_url").each ->
+    $(this).text("http://images.bright-people.ru#{$(this).text()}")
+
+setup_activity_categories = ->
+  return if $("select#activity_is_educational").length == 0
+  $("select#activity_is_educational").bind 'change', ->
+    chose =  $(this + '' + ':selected').val()
+    $.ajax '/admin/activities/get_categories',
+      type: 'GET'
+      data: {is_educational: chose }
+      success: (response) ->
+        $("select#activity_direction_tag_ids").html(response)
+  
 setup_schedule = ->
+  return if $("ul.schedule_days").length == 0
   days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday',
           'saturday', 'sunday']
   
@@ -53,36 +69,9 @@ setup_schedule = ->
     $li = $(this).closest('li')
     add_interval($li)
 
-setup_wysihtml5_editor = ->
-  if $('#activity_additional_information').length != 0
-    new wysihtml5.Editor "activity_additional_information",
-                        toolbar:      "wysihtml5-toolbar-additional-information",
-                        parserRules:  wysihtml5ParserRules
-  if $('#activity_parent_activities').length != 0
-    new wysihtml5.Editor "activity_parent_activities", 
-                              toolbar: "wysihtml5-toolbar-parent-activities",
-                              parserRules: wysihtml5ParserRules
-  if $('#article_short_description').length != 0
-    new wysihtml5.Editor "article_short_description", 
-                              toolbar: "wysihtml5-toolbar-article-short",
-                              parserRules: wysihtml5ParserRules,
-                              stylesheets: ["/../assets/editor_style.css"]
-  if $('#interview_short_description').length != 0
-    new wysihtml5.Editor "interview_short_description", 
-                              toolbar: "wysihtml5-toolbar-interview-short",
-                              parserRules: wysihtml5ParserRules,
-                              stylesheets: ["/../assets/editor_style.css"]
-  if $('#interview_content').length != 0
-    new wysihtml5.Editor "interview_content", 
-                              toolbar: "wysihtml5-toolbar-interview",
-                              parserRules: wysihtml5ParserRules,
-                              stylesheets: ["/../assets/editor_style.css"]
-  if $('#article_content').length != 0
-    new wysihtml5.Editor "article_content", 
-                              toolbar: "wysihtml5-toolbar-article",
-                              parserRules: wysihtml5ParserRules,
-                              stylesheets: ["/../assets/editor_style.css"]
-
+setup_chosen = ->
+  if $("select.chosen_autocomplete").length >= 1
+    $("select.chosen_autocomplete").chosen()
 
 setup_video_removing = ->
     $('a.remove_activity_video').live 'click', () ->
@@ -112,8 +101,10 @@ setup_video_removing = ->
     return false
 
 $ ->
-  console.log 'ololoo'
   setup_video_removing()
-  setup_wysihtml5_editor()
-  if document.URL.substr(0, 39) is "http://bp.balticit.ru/admin/activities"
-    setup_schedule()
+  setup_chosen()
+  setup_schedule()
+  setup_picture_urls()
+  setup_activity_categories()
+  # if document.URL.substr(0, 39) is "http://bp.balticit.ru/admin/activities"
+

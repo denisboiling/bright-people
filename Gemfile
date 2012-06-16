@@ -1,6 +1,6 @@
 source :rubygems
 
-gem 'rails', '3.2.5'
+gem 'rails', '3.2.6'
 gem 'pg'
 
 gem 'omniauth', '1.1.0'
@@ -39,6 +39,8 @@ gem 'randumb'
 gem 'delayed_job'
 gem 'delayed_job_active_record'
 gem 'daemons'
+gem 'nokogiri'
+gem 'high_voltage'
 
 group :development do
   gem 'letter_opener'
@@ -51,7 +53,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', require: false
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'spork', github: 'sporkrb/spork'

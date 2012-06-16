@@ -20,12 +20,15 @@ window.setup_activities_list = ->
     $("#remote_form").submit()
     false
 
-  $("select#select_metro").bind 'change', ->
-    selected = $("select option:selected").first()
+  $("select.faker-select").bind 'change', ->
+    id = $(this).attr('id')
+    selected = $("##{id} :selected")
     val = $(selected).val()
     text = $(selected).text()
-    $("div.selected_metro").append("<a class='clear_link' href='' " + 'data-val=' + val + ">" + text + "</a> ")
-    $("select#metro").append(selected)
+    selected_div = $("div." + $(this).attr('data-selected'))
+    select_select = $("#" + $(this).attr('data-select'))
+    $(selected_div).append("<a class='clear_link' href='' data-val=#{val}>#{text}</a>")
+    $(select_select).append(selected)
     $("#remote_form").submit()
 
 window.setup_activities_approval = ->

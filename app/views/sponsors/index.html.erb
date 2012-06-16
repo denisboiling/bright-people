@@ -1,1 +1,25 @@
-Страница попечителей
+<div class="post_list">
+  <h1>Спонсоры</h1>
+  
+  <div class="common">
+    <div class="news_container">
+      <% @sponsors.each do |sponsor| %>
+        <div class="preview_cell">
+          <div class="info">
+            <div class="thumb">
+              <%= link_to image_tag(sponsor.photo), sponsor %>
+            </div>
+            <div class="name">
+              <%= link_to sponsor.first_name+" "+sponsor.last_name, sponsor %>
+            </div>
+            <div class="date">
+              <%= sponsor.created_at.to_s(:main) %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  
+</div>

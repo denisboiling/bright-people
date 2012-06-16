@@ -10,13 +10,15 @@ class Comment < ActiveRecord::Base
   after_create :create_user_notify
   after_create :update_comments_count!
 
+  validates :text, presence: :true
+
   # Create user notify when somebody commenting his comment
   def create_user_notify
     UserCommentNotify.create_notify(self)
   end
   
   def update_comments_count!
-    return unless relation_type == 'Article' or relation_type == 'Interview' or relation_type == 'News'
+    return unless relation_type == 'SpecialProject' or relation_type == 'ContestMembership'
     relation.comments_count = relation.comments.count
     relation.save!
   end

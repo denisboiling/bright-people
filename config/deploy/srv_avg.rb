@@ -12,33 +12,55 @@ require "rvm/capistrano"
 
 before "deploy:finalize_update", "shared:symlinks"
 
-before "db:prepare", "unicorn:stop"
-
-after "deploy:migrate", "db:load_seed"
-after "db:load_seed", "db:load_sample"
-
-after "deploy:update_code", "delayed_job:restart"
-
-before "db:prepare", "thinking_sphinx:stop"
-after "deploy:migrate", "thinking_sphinx:configure"
-after "db:load_sample", "thinking_sphinx:rebuild"
-
 # Clear old releases
 after "deploy:restart","deploy:cleanup"
 
-namespace :deploy do
-  task :chown, :roles => :app do
-    run "sudo chown -R www-data:www-data #{shared_path}/system"
+namespace :rails do
+  desc "Open the rails console on one of the remote servers"
+  task :console, :roles => :app do
+    hostname = find_servers_for_task(current_task).first
+    exec "ssh -l #{user} #{hostname} -t 'source ~/.bashrc && cd #{latest_release} && RAILS_ENV=#{rails_env} bundle exec rails c'"
   end
 end
 
-namespace :delayed_job do
-    desc "Restart the delayed_job process"
-    task :restart, :roles => :app do
-        run "cd #{latest_release}; RAILS_ENV=#{rails_env} script/delayed_job restart"
-    end
+namespace :rake_exec do
+  desc "Run a rake task on a remote server."
+  # run like: cap staging rake:invoke task=a_certain_task
+  task :invoke do
+    run("cd #{latest_release}; RAILS_ENV=#{rails_env} rake #{ENV['task']}")
+  end
 end
 
+namespace :backup do
+  desc "Create backup with astrails-safe"
+  task :create, :roles => :app do
+    run "astrails-safe /home/www-data/backup_db"
+    run "astrails-safe /home/www-data/backup_files"
+  end
+
+  task :install, :roles => :app do
+    run "gem install astrails-safe"
+  end
+
+end
+
+namespace :delayed_job do
+  desc "Restart the delayed_job process"
+  task :restart, :roles => :app do
+    run "cd #{latest_release}; RAILS_ENV=#{rails_env} script/delayed_job restart"
+  end
+
+  task :stop, :roles => :app do
+    run "cd #{latest_release}; RAILS_ENV=#{rails_env} script/delayed_job stop"
+  end
+end
+
+# TODO: bad bad bad
+namespace :deploy do
+  task :fix_i18n, :roles => :app do
+    run "cd #{latest_release}/config/locales && echo >> *.yml"
+  end
+end
 
 desc "tail production log files"
 task :tail_logs, :roles => :app do
@@ -64,13 +86,11 @@ namespace :db do
 end
 
 namespace :shared do
-
   task :symlinks, :roles => :app do
     run "ln -nfs #{shared_path}/config/database.yml #{latest_release}/config/database.yml"
     run "ln -nfs #{shared_path}/config/rvmrc #{latest_release}/.rvmrc"
     run "ln -nfs #{shared_path}/config/sphinx.yml #{latest_release}/config/sphinx.yml"
   end
-
 end
 
 require 'capistrano-unicorn'
