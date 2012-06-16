@@ -13,6 +13,7 @@ class Ability
     # TODO: replace role_id with role method as admin?
     can :view_disabled, :interview, :is_enabled => false if user.role_id = 2 || user.role_id = 3
 
+    can :get_comments, Activity
     can :vote, Activity if user.id
     can :vote, ContestMembership do |membership|
       if !user.id

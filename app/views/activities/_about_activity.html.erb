@@ -1,69 +1,62 @@
-<div class="dop_info">
-  <span class="dop_title">Стоимость и длительность</span>
-  <%= simple_format @activity.cost %>
-</div>
-<div class="dop_info">
-  <span class="dop_title">Чем заняться родителю</span>
-  <%= simple_format @activity.parent_activities %>
-</div>
-<div class="dop_info">
-  <span class="dop_title">Дополнительно</span>
-  <%= simple_format activity.additional_information %>
-</div>
+<% %w(cost parent_activities additional_information).each do |method| %>
+  <% if @activity.send(method.to_sym).present? %>
+    <div class="dop_info">
+      <span class="dop_title"><%= Activity.human_attribute_name method %></span>
+      <%= simple_format @activity.send(method.to_sym) %>
+    </div>
+  <% end %>
+<% end %>
+
 <div class="clear"></div>
 
-<div class="title_block">Расписание занятий</div>
-<div class="schedule">
-  <table>
-    <thead>
-      <tr>
-        <th class="first">Пн</th>
-        <th>Вт</th>
-        <th>Ср</th>
-        <th>Чт</th>
-        <th>Пт</th>
-        <th>Сб</th>
-        <th class="last">Вс</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td></td>
-        <td class="work_time">20:30—21:30</td>
-        <td class="work_time">20:30—21:30</td>
-        <td></td>
-        <td></td>
-        <td class="work_time">20:30—21:30</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td class="work_time">20:30—21:30</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td class="work_time">20:30—21:30</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<% if @activity.max_schedule_items %>
+  <div class="title_block">Расписание занятий</div>
+  <div class="schedule">
+    <table>
+      <thead>
+	<tr>
+	  <th class="first">Пн</th>
+	  <th>Вт</th>
+	  <th>Ср</th>
+	  <th>Чт</th>
+	  <th>Пт</th>
+	  <th>Сб</th>
+	  <th class="last">Вс</th>
+	</tr>
+      </thead>
+      <tbody>
+	<!-- OPTIMIZE: brrr ulgy...ugly -->
+	<% @activity.max_schedule_items.times do |i| %>
+	  <tr>
+	    <% Activity::SCHEDULE_DAYS.each do |day| %>
+	      <% if _time = @activity.schedule[day][i] %>
+		<td class="work_time"><%= schedule_time(_time) %></td>
+	      <% else %>
+		<td></td>
+	      <% end %>
+	    <% end %>
+	  </tr>
+	<% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
 
 <% if activity.teachers.present? %>
   <div class="title_block">Здесь работают</div>
   <div id="ruk_slider">
     <div class="slides_container">
       <% activity.teachers.each do |teacher| %>
-        <div class="slide">
-          <div class="thumb">
-            <span class="mask"></span>
-            <%= image_tag teacher.photo.url %>
-          </div>
-          <div class="info">
-            <div class="name"><%= teacher.name %></div>
-            <%= teacher.description %>
-          </div>
-        </div>
+	<div class="slide">
+	  <div class="thumb">
+	    <span class="mask"></span>
+	    <%= image_tag teacher.photo.url %>
+	  </div>
+	  <div class="info">
+	    <div class="name"><%= teacher.name %></div>
+	    <%= teacher.description %>
+	  </div>
+	</div>
       <% end %>
     </div>
     <a href="" class="next">Вперед</a>

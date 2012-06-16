@@ -10,6 +10,8 @@ class Comment < ActiveRecord::Base
   after_create :create_user_notify
   after_create :update_comments_count!
 
+  validates :text, presence: :true
+
   # Create user notify when somebody commenting his comment
   def create_user_notify
     UserCommentNotify.create_notify(self)

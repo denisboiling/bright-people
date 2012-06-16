@@ -10,6 +10,12 @@ ActiveAdmin.register Activity do
 
   controller do
     autocomplete :activity, :title, full: true
+
+    # Get gategories by is_educational?
+    def get_categories
+      @categories = DirectionTag.where(is_educational: params[:is_educational])
+      render partial: 'get_categories'
+    end
   end
 
   filter :title, as: :autocomplete, input_html: {'data-autocomplete' => '/admin/activities/autocomplete_activity_title', object: 'activity'}
@@ -27,7 +33,7 @@ ActiveAdmin.register Activity do
   form partial: "form"
 
   show do
-    attributes_table :id, :title, :published, :address, :metro_station,
+    attributes_table :id, :title, :published, :address, :metro_station, :organization,
                      :users_rating, :created_at, :updated_at
 
     panel 'Посмотреть страницу' do
