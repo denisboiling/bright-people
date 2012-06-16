@@ -11,6 +11,9 @@
 #= require swfobject
 #= require select_script
 #= require ya.maps
+# TODO: load only in specific page
+#= require lightbox/jquery.smooth-scroll.min
+#= require lightbox/lightbox
 #= require_directory .
 
 $ ->

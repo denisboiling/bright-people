@@ -30,9 +30,14 @@ ActiveAdmin.register Picture do
   show do
     attributes_table_for resource do
       row :caption
-      row "URL картинки" do
+      row "URL оригинальной картинки" do
         span class: 'get_host_url' do
           resource.picture.url(:original, timestamp: false)
+        end
+      end
+      row "URL масштабированной картинки" do
+        span class: 'get_host_url' do
+          resource.picture.url(:medium, timestamp: false)
         end
       end
     end

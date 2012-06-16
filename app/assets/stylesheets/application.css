@@ -1,6 +1,8 @@
 /*
  *= require_self
  *= require jquery-ui/flick
+ *= require lightbox/lightbox
+ *= require lightbox/screen
  *= require_directory .
 */
 
