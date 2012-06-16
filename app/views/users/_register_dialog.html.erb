@@ -1,0 +1,5 @@
+<%= dialog "Неоходима авторизация", id: :register_dialog do %>
+  <%= link_to image_tag('ico_fb_big.png'), user_omniauth_authorize_path(:facebook) %>
+  <br/><br/>  <%= link_to image_tag('ico_vk_big.png'), user_omniauth_authorize_path(:vkontakte) %>
+  <br/><br/>  <%= link_to image_tag('ico_od_big.png'), user_omniauth_authorize_path(:odnoklassniki) %>
+<% end %>

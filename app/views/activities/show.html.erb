@@ -1,3 +1,5 @@
+<%= render 'activities/approve_dialog', activity: @activity %>
+
 <div class="pages">
 
   <div class="common">
@@ -160,7 +162,3 @@
   </div>
   <div class="clear"></div>
 </div>
-
-<%= dialog "Нужно зарегистрироваться", id: :register_dialog do %>
-  НУЖНО ЗАРЕГИСТРИРОВАТЬСЯ!!!
-<% end %>

@@ -1,26 +1,51 @@
-<h1><%= @special_project.title %></h1>
-<h3><%= @special_project.author %></h3>
-<p><%= @special_project.content %></p>
+<div class="pages">
+  <div class="common">
+    <h1><%= @special_project.title %></h1>
+    <strong>
+      <%= @special_project.author %>.
+      <%= Russian::strftime @special_project.created_at, '%A, %e %B %Y г.' %>
+    </strong>
 
-<h5>SpecialProject Tags</h5>
-<% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
-  <%= link_to tag.name, { :action => :tag, :id => tag.name }, :class => css_class %>
-<% end %>
+    <div class="post_preview">
+      <div class="thumb"><%= image_tag(@special_project.picture(:medium)) %></div>
 
-Комментарии <br />
+      <div class="short_desc">
+        <%= @special_project.short_description %>
+      </div>
 
-<div class="comments_list">
-  <% @comments.each do |comment| %>
-    <%= render 'shared/comment', comment: comment %>
-  <% end %>
+      <div class="clear"></div>
+    </div>
+
+    <div class="post_info">
+      <div class="post_share">
+        <div class="title">
+          Делись с друзьями
+        </div>sdf dfg f g
+      </div>
+    </div>
+
+    <div class="description">
+      <%=raw @special_project.content %>
+    </div>
+    
+    <div class="clear"></div>
+    <div class="comment treeview">
+      <ul>
+        <% @comments.each do |comment| %>
+          <%= render 'shared/comment', comment: comment %>
+        <% end %>
+      </ul>
+    </div>
+    <div class="add_comment">
+      <%= render 'shared/comment_form' %>
+    </div>
+
+    <div class="clear"></div>
+  </div>
+
+  <div class="sidebar">
+    <%= render 'shared/sidebar' %>
+  </div>
+
+  <div class="clear"></div>
 </div>
-
-<%= render 'shared/comment_form' %>
-
-<%= content_for :head do %>
-  <script>
-    var relation = 'SpecialProject';
-    var relation_id = <%= @special_project.id %>;
-    var can_create_comment = <%= can? :create, :comment %>
-  </script>
-<% end %>
