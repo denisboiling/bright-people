@@ -1,7 +1,7 @@
 class Article < ActiveRecord::Base
   attr_accessible :title, :content, :author_id, :article_category_id,
                   :article_tag_list, :picture, :short_description,
-                  :published, :biography, as: :admin
+                  :published, :biography, :best, as: :admin
 
 
   belongs_to :category, class_name: 'ArticleCategory', foreign_key: :article_category_id
