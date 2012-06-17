@@ -3,8 +3,10 @@
   <%= semantic_form_for [:admin, @article_post], url: admin_article_posts_path, html: { multipart: true } do |f| %>
   <%= f.inputs 'Основное' do %>
     <%= f.input :title %>
-    <%= f.input :category, as: :select, collection: ArticleCategory.all, include_blank: false %>
-    <%= f.input :author, as: :select, collection: User.all, include_blank: false %>
+    <%= f.input :best, as: :select, collection: [['Да', true],['Нет', false]], include_blank: false %>
+    <%= f.input :category, as: :select, collection: ArticleCategory.all, include_blank: false, input_html: { class: 'chosen_autocomplete' } %>
+    <%= f.input :author, as: :select, collection: User.all, include_blank: false, input_html: { class: 'chosen_autocomplete' } %>
+
 
     <%= render 'shared/editor_toolbar', element_id: 'article_biography' %>
     <%= f.input :biography, input_html: {size: 10} %>
@@ -27,8 +29,10 @@
   <%= semantic_form_for [:admin, @article_post], url: admin_article_post_path(@article_post), method: :put, html: { multipart: true } do |f| %>
   <%= f.inputs 'Основное' do %>
     <%= f.input :title %>
-    <%= f.input :category, as: :select, collection: ArticleCategory.all, include_blank: false %>
-    <%= f.input :author, as: :select, collection: User.all, include_blank: false %>
+
+    <%= f.input :best, as: :select, collection: [['Да', true],['Нет', false]], include_blank: false %>
+    <%= f.input :category, as: :select, collection: ArticleCategory.all, include_blank: false, input_html: { class: 'chosen_autocomplete' } %>
+    <%= f.input :author, as: :select, collection: User.all, include_blank: false, input_html: { class: 'chosen_autocomplete' } %>
 
     <%= render 'shared/editor_toolbar', element_id: 'article_biography' %>
     <%= f.input :biography, input_html: {size: 10} %>
