@@ -6,7 +6,9 @@
         <div class="info">
           <div class="name"><%= article.title %></div>
           <div class="short_desc"><%== article.short_description %></div>
-          <div class="comment_count"><%= article.comments.count %></div>
+	  <% if article.comments.count > 0 %>
+	    <div class="comment_count"><%= article.comments.count %></div>
+	  <% end %>
         </div>
       </div>
     <% end %>

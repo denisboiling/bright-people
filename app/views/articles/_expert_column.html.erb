@@ -4,7 +4,9 @@
   <div class="personality_preview exp">
     <div class="personality_wrapper">
       <%= link_to category.title, '#', class: "cat", 'data-id' => category.id %>
-      <span class="mark"><%= article.author.approvals_count %></span>
+      <% if article.author.approvals_count %>
+	<span class="mark"><%= article.author.approvals_count %></span>
+      <% end %>
       <div class="thumb">
         <%= link_to image_tag(article.author.avatar), expert_path(article.author) %>
       </div>
