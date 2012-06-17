@@ -39,8 +39,10 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 
 .header_wrapper { margin:auto; position:relative; min-width:960px; padding:25px 0px 15px 0px}
 
-#header .header_flash_wrapper  { background:url(/assets/header_cap.jpg) no-repeat center top; height:204px;}
+#header .header_flash_wrapper  { background:url(/assets/header_bg.jpg) no-repeat center top; height:204px;}
 #header .header_flash_wrapper a { display:block; height:204px}
+
+#header .header_flash_wrapper .cap { background:url(/assets/header_cap.jpg) no-repeat center top; height:204px;}
 
 #main_page .color_line_left { background:url(/assets/color_line.jpg) repeat-y left 100px}
 #main_page .color_line_right { background:url(/assets/color_line.jpg) repeat-y right}
@@ -283,6 +285,10 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 .workshop_list .sorter_wraper { border-top:1px solid #dbdbdb; } 
 .workshop_list .sorter_wraper .cell { float:left; padding:10px 20px; border-right:1px solid #dbdbdb; }
 .workshop_list .filter_wraper ul { float:left; }
+
+.workshop_list .cell select { height: 22px;
+    line-height: 28px;
+    width: 100%; font-size:16px;}
 
 .entertainment_list .sidebar { float:left; width:280px}
 .entertainment_list .filter_wraper { behavior: url(border-radius.htc); -moz-border-radius:8px; border-radius:8px; -webkit-border-radius:8px; -khtml-border-radius:8px; border:1px solid #dbdbdb; padding:16px;}
@@ -570,7 +576,7 @@ span.sim_check.active { background-position:0px 0px; }
 .profile_comment li .name a { font-size:16px; color:#000000; vertical-align:0}
 .profile_comment li .desc { padding-top:5px;}
 
-.profile_comment .title { font-size:20px; font-family:Futura;}
+.profile_title { font-size:20px; font-family:Futura; padding:15px 0px}
 
 
 
@@ -585,7 +591,7 @@ span.sim_check.active { background-position:0px 0px; }
 .profile_magazine .name { padding-bottom:8px; line-height:1.3}
 .profile_magazine .date { font-size:12px; font-weight:bold; }
 
-.profile_magazine .close { background:url(/assets/close_red_big.png) no-repeat 0px 0px; width:32px; height:32px; display:none; position:absolute; z-index:10; right:-10px; top:-10px;}
+.profile_magazine .close { background:url(/assets/close_red_big.png) no-repeat 0px 0px; width:32px; height:32px; display:none; overflow:hidden; text-indent:-1000px; position:absolute; z-index:10; right:-10px; top:-10px;}
 .profile_magazine:hover .close { display:block}
 
 
@@ -743,6 +749,8 @@ span.sim_check.active { background-position:0px 0px; }
 .personality_slider .slides_container .info { position:absolute; bottom:0; left:0; background:url(/assets/slider_control_bg.png); padding:5px 50px 5px 10px; width:460px; color:#e7e5e5; font-size:12px}
 .personality_slider .slides_container .info .name { color:#fff; font-weight:bold }
 
+.personality_slider .slides_container .info .short_desc { overflow:hidden; height:38px;}
+
 .personality_slider .slides_container .info .comment_count { text-align:center; color:#fff; font-weight:bold; line-height:22px; position:absolute; right:10px; top:24px; width:34px; height:30px; background:url(/assets/comment_count.png) no-repeat;}
 
 .personality_slider .prev, .personality_slider .next { display:block; position:absolute; z-index:15; top:120px}
@@ -759,15 +767,16 @@ span.sim_check.active { background-position:0px 0px; }
 .personality_preview .personality_wrapper { width:160px; position:relative; margin:auto; text-align:center}
 
 .personality_preview .cat { font-size:18px; font-family:Futura; color:#f3452e}
-.personality_preview .mark { background:url(/assets/exp_mark.png) no-repeat; display:block; width:19px; height:24px; text-align:center; line-height:24px; padding:0px 10px 0px 5px; color:#fff; position:absolute; top:70px; z-index: 10}
-.personality_preview .thumb { position:relative; float:left; width:120px; height:120px; overflow:hidden; margin-left:20px}
-.personality_preview .thumb .mask { width:120px; height:120px; background:url(/assets/rukov_mask.png) no-repeat center center; display:block; position:absolute}
+.personality_preview .mark { background:url(/assets/exp_mark.png) no-repeat; display:block; width:19px; height:24px; text-align:center; line-height:24px; padding:0px 10px 0px 5px; color:#fff; position:absolute; top:80px; z-index: 10}
+.personality_preview .thumb { margin:10px 0; -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; position:relative; float:left; /*width:120px; height:120px; margin-left:20px;*/ width:160px; height:100px; overflow:hidden; }
+.personality_preview .thumb img { border-radius:6px; width:160px; height:100px; }
+.personality_preview .thumb .mask { width:120px; height:120px; background:url(/assets/rukov_mask.png) no-repeat center center; display:none; position:absolute}
 .personality_preview .name { font-weight:bold; color:#007ba4; font-size:15px; display:block; }
 .personality_preview .name a { font-weight:bold; color:#007ba4; font-size:15px; text-decoration:none }
 .personality_preview .info { color:#544d4d;display:block; }
 .personality_preview .date { color:#74746f; font-size:12px; display:block; font-weight:bold; }
 
-.personality_preview.exp .thumb { -moz-border-radius:60px; border-radius:60px; -webkit-border-radius:60px; -khtml-border-radius:60px;}
+.personality_preview.exp .thumb { margin-left:20px; -moz-border-radius:60px; border-radius:60px; -webkit-border-radius:60px; -khtml-border-radius:60px; width:120px; height:120px;}
 .personality_preview.exp .thumb img { border-radius:60px; width:120px; height:120px;}
 
 

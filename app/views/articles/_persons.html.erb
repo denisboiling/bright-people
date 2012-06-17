@@ -5,7 +5,7 @@
         <%= link_to image_tag(article.picture.url(:slider)), article%>
         <div class="info">
           <div class="name"><%= article.title %></div>
-          <%= article.short_description %>
+          <div class="short_desc"><%= article.short_description %></div>
           <div class="comment_count"><%= article.comments.count %></div>
         </div>
       </div>
