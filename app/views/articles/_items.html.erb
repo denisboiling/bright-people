@@ -2,7 +2,7 @@
   <div class="journal_preview">
     <div class="thumb"><%= link_to image_tag(article.picture.url), article %></div>
     <div class="info">
-      <%= article.short_description %><br>
+      <%== article.short_description %><br>
       <span class="date"><%= Russian::strftime(article.created_at, "%e %B %Y") %></span>
     </div>
     <div class="clear"></div>
