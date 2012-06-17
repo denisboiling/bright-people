@@ -2,7 +2,7 @@
   Ваш комментарий
   <div class="thumb">
     <span class="mask"></span>
-    <%= image_tag current_user ? current_user.avatar.url(:comment) : url_for("/assets/tender_ico.png") %>
+    <%= image_tag(current_user.avatar.url(:comment)) if current_user && current_user.avatar.present? %>
   </div>
 </div>
 <div class="field">

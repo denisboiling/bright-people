@@ -89,7 +89,6 @@ class Activity < ActiveRecord::Base
   scope :by_region, lambda{|regions| where('region_id in (?)', regions)}
   scope :approved, where(approved: true)
 
-
   define_index do
     indexes title, sortable: true
     indexes description
@@ -122,7 +121,7 @@ class Activity < ActiveRecord::Base
 
   # For near places
   def place_near
-    region.activities.where('id != ?', self.id).first(4)
+    region.activities.published.where('id != ?', self.id).first(4)
   end
 
   # If activity already has approval, we approved it
@@ -137,15 +136,20 @@ class Activity < ActiveRecord::Base
 
   # OPTIMIZE: a lot of SQL query
   # Find max count of schedules per day
+  # TODO: remove rescue, it's unacceptably
   def max_schedule_items
-    _max = self[:schedule].map {|k,v| schedule[k].size}.max
-    _max == 0 ? nil : _max
+    begin
+      _max = self[:schedule].map {|k,v| schedule[k].size}.max
+      _max == 0 ? nil : _max
+    rescue
+      nil
+    end
   end
 
   class << self
-    def for_main
-      self.random(4)
-    end
+    # def for_main
+    #   self.random(4)
+    # end
 
     # TODO: replace!!!!
     def nice_approval(_scope)

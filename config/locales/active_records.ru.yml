@@ -85,6 +85,7 @@ ru:
         other: Новости
     attributes:
       article:
+        best: Лучшие
         title: Название
         author: Автор
         biography: Биография

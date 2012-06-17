@@ -46,7 +46,7 @@ class ActivitiesController < ApplicationController
 
   # OPTIMIZE:
   def search
-    activities = Activity.by_kind(@kind)
+    activities = Activity.by_kind(@kind).published
     activities = activities.approved if params[:only_approved].present?
     activities = activities.by_age(params[:age]) if params[:age].present?
     activities = activities.by_tag(params[:tag]) if params[:tag].present?

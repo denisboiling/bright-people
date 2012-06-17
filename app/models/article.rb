@@ -1,7 +1,7 @@
 class Article < ActiveRecord::Base
   attr_accessible :title, :content, :author_id, :article_category_id,
                   :article_tag_list, :picture, :short_description,
-                  :published, :biography, as: :admin
+                  :published, :biography, :best, as: :admin
 
 
   belongs_to :category, class_name: 'ArticleCategory', foreign_key: :article_category_id
@@ -22,6 +22,8 @@ class Article < ActiveRecord::Base
 
   scope :published, where(published: true)
   scope :not_published, where(published: false)
+  scope :bests, where(best: true)
+  scope :expect, lambda{|article| where('id != ?', article.id)}
 
   define_index do
     indexes title, sortable: true

@@ -33,7 +33,7 @@
         <div class="title">Рубрики</div>
         <div class="rubric_list">
           <ul>
-            <% @categories.each do |category| %>
+            <% ArticleCategory.all.each do |category| %>
               <li><%= link_to category.title, '#', 'data-id' => category.id %></li>
             <% end %>
           </ul>

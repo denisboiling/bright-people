@@ -4,60 +4,64 @@
     <div class="filter_wraper">
       <h1>Детские кружки Москвы</h1>
       <div class="cell">
-        <strong>По возрасту</strong>
-        <ul>
-          <% AgeTag.all.each do |age_tag| %>
-            <li>
-              <%= check_box_tag "age[]", age_tag.id, false, id: (dom_id age_tag), class: :remote_action %>
-              <span class="sim_check"></span>
-              <%= label_tag (dom_id age_tag), age_tag.title, class: :hidden_checkbox %>
-            </li>
-          <% end %>
-        </ul>
+	<strong>По возрасту</strong>
+	<ul>
+	  <% AgeTag.all.each do |age_tag| %>
+	    <li>
+	      <%= check_box_tag "age[]", age_tag.id, false, id: (dom_id age_tag), class: :remote_action %>
+	      <%= label_tag (dom_id age_tag), age_tag.title, class: :hidden_checkbox do %>
+		<span class="sim_check"></span> <%= age_tag.title %>
+	      <% end %>
+	    </li>
+	  <% end %>
+	</ul>
       </div>
       <div class="cell">
-        <strong>По категории</strong>
-        <ul>
-          <% @directions.each do |tag| %>
-            <li>
-              <%= check_box_tag "tag[]", tag.id, false, id: (dom_id tag), class: :remote_action %>
-              <span class="sim_check"></span>
-              <%= label_tag (dom_id tag), tag.name, class: :hidden_checkbox %>
-            </li>
-          <% end %>
-        </ul>
+	<strong>По категории</strong>
+	<ul>
+	  <% @directions.each do |tag| %>
+	    <li>
+	      <%= check_box_tag "tag[]", tag.id, false, id: (dom_id tag), class: :remote_action %>
+	      <%= label_tag (dom_id tag), class: :hidden_checkbox do %>
+		<span class="sim_check"></span> <%= tag.name %>
+	      <% end %>
+	    </li>
+	  <% end %>
+	</ul>
       </div>
       <div class="cell">
-        <strong>По округу</strong>
-        <ul>
-          <% Region.all.each do |region| %>
-            <li>
-              <%= check_box_tag "region[]", region.id, false, id: (dom_id region), class: :remote_action %>
-              <span class="sim_check"></span>
-              <%= label_tag (dom_id region), region.title, class: :hidden_checkbox %>
-            </li>
-          <% end %>
-        </ul>
+	<strong>По округу</strong>
+	<ul>
+	  <% Region.all.each do |region| %>
+	    <li>
+	      <%= check_box_tag "region[]", region.id, false, id: (dom_id region), class: :remote_action %>
+	      <%= label_tag (dom_id region), region.title, class: :hidden_checkbox do %>
+		<span class="sim_check"></span> <%= region.title %>
+	      <% end %>
+	    </li>
+	  <% end %>
+	</ul>
       </div>
       <div class="cell">
-        <div class="clear_block">
-          <a id="clear_all_options" href="">Сбросить все</a>
-        </div>
+	<div class="clear_block">
+	  <a id="clear_all_options" href="">Сбросить все</a>
+	</div>
       </div>
     </div>
   </div>
 <% end %>
 
+<!-- TODO: remove it to coffee -->
 <script type="text/javascript">
   $(document).ready(function(){
-  $(".filter_sorter li label").live('click',function(){
-  var idCheck = $(this).attr("for");
+    $(".filter_sorter li label, #only_approved").live('click',function(){
+      var idCheck = $(this).attr("for");
 
-  if($('#'+idCheck).attr('checked')){
-  $(this).prev("span").removeClass("active");
-  } else {
-  $(this).prev("span").addClass("active");
-  }
-  });
+      if($('#'+idCheck).attr('checked')){
+        $(this).find("span").removeClass("active");
+      } else {
+        $(this).find("span").addClass("active");
+      }
+    });
   });
 </script>
