@@ -27,6 +27,18 @@
         </ul>
       </div>
       <div class="cell">
+      
+        <strong>Ближайшая станция метро</strong>
+        <%= select_tag 'metro_faker_select', options_from_collection_for_select(MetroStation.all, :id, :title),
+            :class => 'faker-select', :id => 'faker-metro', 'data-select' => 'metro', 'data-selected' => 'selected_metro', :prompt => 'Выбирите метро' %>
+
+        <div><select id="metro" multiple="multiple" name="metro[]"></select></div>
+
+        Вы выбрали:
+        <div class="selected_metro">
+        </div>
+      
+        <br />
         <strong>По округу</strong>
         <%= select_tag 'region_faker_select', options_from_collection_for_select(Region.all, :id, :title),
             :class => 'faker-select', :id => 'faker-region', 'data-select' => 'region', 'data-selected' => 'selected_region', :prompt => 'Выбирите регион' %>
@@ -37,17 +49,8 @@
         <div class="selected_region">
         </div>
 
-      </div>
-      <div class="cell">
-        <strong>Ближайшая станция метро</strong>
-        <%= select_tag 'metro_faker_select', options_from_collection_for_select(MetroStation.all, :id, :title),
-            :class => 'faker-select', :id => 'faker-metro', 'data-select' => 'metro', 'data-selected' => 'selected_metro', :prompt => 'Выбирите метро' %>
 
-        <div><select id="metro" multiple="multiple" name="metro[]"></select></div>
-
-        Вы выбрали:
-        <div class="selected_metro">
-        </div>
+        
 
       </div>
       <div class="cell">
