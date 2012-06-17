@@ -5,7 +5,7 @@
       <%= link_to 'Развлекательные', activities_path(kind: 'entertainment'), class: 'title_link balloon' %>
     </div>
 
-    <% Activity.for_main.each do |activity| %>
+    <% Activity.published.for_main.each do |activity| %>
       <div class="preview_agencies">
         <div class="info">
 	    <div class="thumb"><%= link_to image_tag(activity.logo.url), activity_path(activity) %></div>

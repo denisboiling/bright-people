@@ -89,8 +89,6 @@ class Activity < ActiveRecord::Base
   scope :by_region, lambda{|regions| where('region_id in (?)', regions)}
   scope :approved, where(approved: true)
 
-  default_scope published
-
   define_index do
     indexes title, sortable: true
     indexes description
@@ -123,7 +121,7 @@ class Activity < ActiveRecord::Base
 
   # For near places
   def place_near
-    region.activities.where('id != ?', self.id).first(4)
+    region.activities.published.where('id != ?', self.id).first(4)
   end
 
   # If activity already has approval, we approved it

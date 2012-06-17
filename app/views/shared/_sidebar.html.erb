@@ -1,8 +1,7 @@
 <div class="alongside">
   <div class="title">Лучшие места для детей в Москве</div>
   <ul>
-    <% @temp = Activity.all.shuffle.pop(3) %>
-    <% @temp.each do |activity| %>
+    <% Activity.published.sample(3).each do |activity| %>
       <li>
         <span class="thumb"><%= link_to image_tag(activity.logo.url), activity %></span>
         <span class="name"><%= link_to activity.title, activity %></span>
