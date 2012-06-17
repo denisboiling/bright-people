@@ -9,19 +9,17 @@ window.setup_ajax_articles_loading = ->
       1
   
   update_articles = ->
-    data =
-      remote: true,
-      page: window._page,
-      category_id: window._articles_category_id
-    
     $.ajax
       url: '/articles',
       type: 'GET',
-      data: data,
+      data:
+        remote: true
+        page: window._page
+        category_id: window._articles_category_id
       success: (response) ->
         $('.journal_post').html(response)
   
-  $('.rubric_list a, .personality_wrapper a').live 'click', (event) ->
+  $('.rubric_list a, .personality_wrapper a.cat').live 'click', (event) ->
     event.preventDefault()
     window._articles_category_id = $(this).attr('data-id')
     update_articles()
