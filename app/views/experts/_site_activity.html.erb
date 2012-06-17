@@ -1,38 +1,47 @@
+<!-- TODO: bbrr..brrr -->
 <div class="right_part">
   <div class="dop_title">
     Активность на нашем сайте
   </div>
   <div class="post_category_menu">
     <ul>
-      <li class="active expert_tab" data-for="activities_catalog">
-        <a href="#">
-          <span class="count"><%= @expert.approvals_count %></span>
-          Кружки
-        </a>
-      </li>
-      
-      <li class="expert_tab" data-for="mentions_catalog">
-        <a href="#">
-          <span class="count"><%= @expert.mentions.count %></span>
-          Упоминания
-        </a>
-      </li>
+      <% if @expert.approvals_count > 0 %>
+	<li class="active expert_tab" data-for="activities_catalog">
+	  <a href="#">
+	    <span class="count"><%= @expert.approvals_count %></span>
+	    Кружки
+	  </a>
+	</li>
+      <% end %>
+
+      <% if @expert.mentions.count > 0 %>
+	<li class="expert_tab" data-for="mentions_catalog">
+	  <a href="#">
+	    <span class="count"><%= @expert.mentions.count %></span>
+	    Упоминания
+	  </a>
+	</li>
+      <% end %>
+
     </ul>
     <div class="clear"></div>
   </div>
-  
-  <div class="catalog activities_catalog expert_tab_content">
-    <% expert.approved_activities.first(16).each do |activity| %>
-      <%= render 'activities/preview_catalog_item', activity: activity %>
-    <% end %>
-  </div>
-  
-  <div class="catalog mentions_catalog expert_tab_content hidden">
-    <% expert.mentions.first(16).each do |relation| %>
-      <%= render "mention_#{relation.class.name.underscore}",
-                 :"#{relation.class.name.underscore}" => relation %>
-    <% end %>
-  </div>
-  
+  <% if @expert.approvals_count > 0 %>
+    <div class="catalog activities_catalog expert_tab_content">
+      <% expert.approved_activities.first(16).each do |activity| %>
+	<%= render 'activities/preview_catalog_item', activity: activity %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if @expert.mentions.count > 0 %>
+    <div class="catalog mentions_catalog expert_tab_content hidden">
+      <% expert.mentions.first(16).each do |relation| %>
+	<%= render "mention_#{relation.class.name.underscore}",
+	    :"#{relation.class.name.underscore}" => relation %>
+      <% end %>
+    </div>
+  <% end %>
+
 </div>
 <div class="clear"></div>

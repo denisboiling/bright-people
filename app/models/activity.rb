@@ -137,9 +137,14 @@ class Activity < ActiveRecord::Base
 
   # OPTIMIZE: a lot of SQL query
   # Find max count of schedules per day
+  # TODO: remove rescue, it's unacceptably
   def max_schedule_items
-    _max = self[:schedule].map {|k,v| schedule[k].size}.max
-    _max == 0 ? nil : _max
+    begin
+      _max = self[:schedule].map {|k,v| schedule[k].size}.max
+      _max == 0 ? nil : _max
+    rescue
+      nil
+    end
   end
 
   class << self
