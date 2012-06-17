@@ -23,6 +23,7 @@ class Article < ActiveRecord::Base
   scope :published, where(published: true)
   scope :not_published, where(published: false)
   scope :bests, where(best: true)
+  scope :expect, lambda{|article| where('id != ?', article.id)}
 
   define_index do
     indexes title, sortable: true
