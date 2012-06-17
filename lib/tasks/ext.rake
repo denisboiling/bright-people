@@ -5,6 +5,7 @@ namespace :ext do
   desc 'Clear development workspaces'
   task :clear do
     %w[tmp log].each {|d| FileUtils.rm_rf(Rails.root.join(d)) and FileUtils.mkdir(Rails.root.join(d))}
+    FileUtils.mkdir(Rails.root.join('tmp/sphinx_index'))
   end
 end
 

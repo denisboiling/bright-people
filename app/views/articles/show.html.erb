@@ -14,13 +14,16 @@
     </div>
     <div class="post_info">
       <div class="other_link">
-        <div class="title">Об авторе</div>
-         <%= @article.author.description %>
+	<% if @article.biography.present? %>
+	  <div class="title">Биография</div>
+          <%== @article.biography %>
+	<% end %>
+
         <div class="title">Другие статьи автора</div>
         <ul>
-          <% article = @article.author.articles.shuffle.first %>
+          <% article = @article.author.articles.sample %>
           <li><%= link_to article.title, article %>
-          <% article = @article.author.articles.shuffle.last %>
+          <% article = @article.author.articles.sample %>
           <li><%= link_to article.title, article %>
         </ul>
       </div>

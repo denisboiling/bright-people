@@ -30,8 +30,7 @@ setup_schedule = ->
   
   update_fields = (values) ->
     for day in days
-      chunks = values[day] if values
-      chunks ?= []
+      chunks = []
       $("li[data-day-name=#{day}] .time_block").each ->
         start = $(this).find('.time_start').val()
         end = $(this).find('.time_end').val()
@@ -61,6 +60,9 @@ setup_schedule = ->
   $('.close_time_box_link').live 'click', (event) ->
     event.preventDefault()
     $(this).closest('.time_block').remove()
+    update_fields()
+  
+  $('.time_start, .time_end').live 'focusout', ->
     update_fields()
     
   $('.schedule_day_link').bind 'click', (event) ->

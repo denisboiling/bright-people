@@ -7,10 +7,10 @@
     <div class="detail_page">
 
       <h1><%= @activity.title %>
-        <%= favourite_block @activity %>
-        <% if @activity.participant? %>
-          <span class="mark">Участник фестиваля!</span>
-        <% end %>
+	<%= favourite_block @activity %>
+	<% if @activity.participant? %>
+	  <span class="mark">Участник фестиваля!</span>
+	<% end %>
       </h1>
 
       <div class="base">На базе учреждения: <%= link_to @activity.organization.title, organization_path(@activity.organization) %></div>
@@ -36,7 +36,7 @@
 	  <!-- OPTIMIZE: bad bad bad..bbr -->
 	  <div class="rating" data-rating="<%= @activity.users_rating %>" data-activity-id="<%= @activity.id %>" data-lock=<%= !can?(:vote, @activity) %> data-already-vote=<%= current_user ? current_user.already_vote?(@activity) : false  %>>Звезды</div>
 	  <%= render partial: 'vote_count' %><br />
-	  <a href="#" class="cancel_rating <%= 'hidden' if (current_user ? !current_user.already_vote?(@activity) : true) %>">Отменить</a>
+	  <a href="#" class="cancel_rating <%= 'hidden' if (current_user ? !current_user.already_vote?(@activity) : true) %>">Изменить</a>
 	</div>
 	<div class="clear"></div>
 
@@ -48,6 +48,10 @@
 		<td><%= @activity.metro_station.title %><br />
 	      </tr>
 	    <% end %>
+	    <tr>
+	      <th><span>АО</span></th>
+	      <td><%= @activity.region.title %><br />
+	    </tr>
 	    <tr>
 	      <th><span>Адрес</span></th>
 	      <td><%= y_link(@activity.coords, @activity.address) %></td>
@@ -136,6 +140,7 @@
       <% expert = @activity.expert %>
       <div class="expert_opinion">
 	<div class="title">Мнение эксперта</div>
+	<%= link_to('Редактировать', edit_admin_activity_approval_path(@activity.approval), target: '_blank') if current_admin_user %>
 	<div class="thumb"><span class="mark"><%= expert.activity_approvals.count %></span><%= link_to image_tag(expert.avatar.url), expert_path(expert) %></div>
 	<div class="name"><%= expert.name %></div>
 	<div class="info"><%= expert.description %></div>
