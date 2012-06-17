@@ -1,6 +1,6 @@
 <% if (article = category.articles.sample) %>
   <% if (article.author.role.name == 'expert') %>
-  <div class="personality_preview">
+  <div class="personality_preview exp">
     <div class="personality_wrapper">
       <%= link_to category.title, '#', class: "cat", 'data-id' => category.id %>
       <span class="mark"><%= article.author.approvals_count %></span>
