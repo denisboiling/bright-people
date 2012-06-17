@@ -22,6 +22,7 @@ class Article < ActiveRecord::Base
 
   scope :published, where(published: true)
   scope :not_published, where(published: false)
+  scope :bests, where(best: true)
 
   define_index do
     indexes title, sortable: true
