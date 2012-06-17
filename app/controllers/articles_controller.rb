@@ -10,9 +10,8 @@ class ArticlesController < ApplicationController
   end
 
   # OPTIMIZE: brrr
+  # TODO: :shit:
   def index
-    @categories = ArticleCategory.all
-
     category = nil
     category = ArticleCategory.find(params[:category_id]) if params[:category_id]
 

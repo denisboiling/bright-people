@@ -1,4 +1,5 @@
-<% if (article = category.articles.sample) %>
+<!-- TODO: :shit: -->
+<% if article = category ? category.articles.sample : false %>
   <% if (article.author.role.name == 'expert') %>
   <div class="personality_preview">
     <div class="personality_wrapper">
