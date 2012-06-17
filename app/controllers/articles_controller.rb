@@ -1,5 +1,4 @@
-# encoding: utf-8
-
+# -*- coding: utf-8 -*-
 class ArticlesController < ApplicationController
   before_filter :load_object, only: :show
   before_filter :check_permission, only: :show
@@ -13,27 +12,27 @@ class ArticlesController < ApplicationController
   # OPTIMIZE: brrr
   def index
     @categories = ArticleCategory.all
-    
+
     category = nil
     category = ArticleCategory.find(params[:category_id]) if params[:category_id]
-    
+
     @persons_category = ArticleCategory.find_by_title("Личности")
     @teachers_category = ArticleCategory.find_by_title("Учителя")
     @foreign_category = ArticleCategory.find_by_title("Зарубежный опыт")
     @expert_category = ArticleCategory.find_by_title("Колонка эксперта")
-    
+
     if category and params[:remote]
       @articles = Article.published.order('created_at DESC')
       @articles = @articles.where(article_category_id: category.id) if category
       @articles = @articles.page(params[:page]).per(5)
-      
+
       render partial: 'page', locals: { articles: @articles, category: category }
     else
       @news_category = ArticleCategory.find_by_title("Новости")
       @best_articles = Article.where('NOT article_category_id = ?', @news_category.id)
-                              .where(best: true)
-                              .order('created_at DESC')
-                              .first(3)
+	.where(best: true)
+	.order('created_at DESC')
+	.first(3)
     end
   end
 
