@@ -536,7 +536,7 @@ span.sim_check.active { background-position:0px 0px; }
 .description { margin-left:260px; }
 
 .description h3 { color:#c14425; font-size:18px; font-family:Futura; padding:10px 0px}
-.description .question-class { color:#343434; font-weight:bold; padding:12px 0px 12px 40px; background:url(/assets/question-class.png) no-repeat 5px 5px;}
+.description .question-class { color:#343434; font-weight:bold; padding:12px 0px 12px 30px; background:url(/assets/question-class.png) no-repeat 5px 6px;}
 
 .description img {  -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px;}
 
