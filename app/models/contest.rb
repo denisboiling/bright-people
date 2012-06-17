@@ -22,7 +22,7 @@ class Contest < ActiveRecord::Base
   def title
     name
   end
-                              
+
   # def active?
   #   active == true
   #   # now = DateTime.now
