@@ -6,6 +6,8 @@ class SpecialProjectsController < ApplicationController
   end
 
   def index
+    # TODO: replace active link for current page
+    @special_project_page = true
     @special_projects = SpecialProject.scoped
     @special_projects =
       case params[:sort]
