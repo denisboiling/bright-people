@@ -5,43 +5,41 @@
   </div>
   <div class="post_category_menu">
     <ul>
-      <% if @expert.approvals_count > 0 %>
-	<li class="active expert_tab" data-for="activities_catalog">
-	  <a href="#">
-	    <span class="count"><%= @expert.approvals_count %></span>
-	    Кружки
-	  </a>
-	</li>
-      <% end %>
 
-      <% if @expert.mentions.count > 0 %>
-	<li class="expert_tab" data-for="mentions_catalog">
-	  <a href="#">
-	    <span class="count"><%= @expert.mentions.count %></span>
-	    Упоминания
-	  </a>
-	</li>
-      <% end %>
+      <li class="active expert_tab" data-for="activities_catalog">
+	<a href="#">
+	  <span class="count"><%= @expert.approvals_count %></span>
+	  Кружки
+	</a>
+      </li>
+
+
+
+      <li class="expert_tab" data-for="mentions_catalog">
+	<a href="#">
+	  <span class="count"><%= @expert.mentions.count %></span>
+	  Упоминания
+	</a>
+      </li>
+
 
     </ul>
     <div class="clear"></div>
   </div>
-  <% if @expert.approvals_count > 0 %>
-    <div class="catalog activities_catalog expert_tab_content">
-      <% expert.approved_activities.first(16).each do |activity| %>
-	<%= render 'activities/preview_catalog_item', activity: activity %>
-      <% end %>
-    </div>
-  <% end %>
 
-  <% if @expert.mentions.count > 0 %>
-    <div class="catalog mentions_catalog expert_tab_content hidden">
-      <% expert.mentions.first(16).each do |relation| %>
-	<%= render "mention_#{relation.class.name.underscore}",
-	    :"#{relation.class.name.underscore}" => relation %>
-      <% end %>
-    </div>
-  <% end %>
+  <div class="catalog activities_catalog expert_tab_content">
+    <% expert.approved_activities.first(16).each do |activity| %>
+      <%= render 'activities/preview_catalog_item', activity: activity %>
+    <% end %>
+  </div>
+
+
+
+  <div class="catalog mentions_catalog expert_tab_content hidden">
+    <% expert.mentions.first(16).each do |relation| %>
+      <%= render "mention_#{relation.class.name.underscore}", :"#{relation.class.name.underscore}" => relation %>
+    <% end %>
+  </div>
 
 </div>
 <div class="clear"></div>
