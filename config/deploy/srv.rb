@@ -1,6 +1,6 @@
 set :deploy_to, "/var/www/#{application}"
 set :rails_env, "production"
-set :branch, "master"
+set :branch, "ezo"
 
 load 'config/deploy/srv_avg'
 

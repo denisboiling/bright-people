@@ -1,7 +1,8 @@
 <%= render 'profile_menu', current: 'comments' %>
 
 <div class="profile_comment">
-  <div class="title">Ваши комментарии к материалам сайта</div>
+  <div class="profile_title">Ваши комментарии к материалам сайта</div>
+
   <ul>
   <% @notifications.map(&:child_comment).each do |comment| %>
     <li>
@@ -16,4 +17,4 @@
     </li>
   <% end %>
   </ul>
-</div>
+</div>
