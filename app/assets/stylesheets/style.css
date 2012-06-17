@@ -78,7 +78,7 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 .show_login .login_wrapper .login_text { padding-top:16px; display:inline-block}
 
 
-#login_block .is_login {}
+#login_block .is_login { position:relative; margin-left:-40px;}
 #login_block .is_login .login_user_flag { font-size:11px; background:url(/assets/user_name_login_flag.png); text-decoration:none; white-space:nowrap; line-height:21px; width:85px; height:21px; display:inline-block; position:relative; color:#fff; padding:0px 6px 0px 25px; overflow:hidden}
 #login_block .is_login .login_user_flag .mask {  position:absolute; right:0px; top:0px; background:url(/assets/user_name_login_mask.png); width:36px; height:21px; display:block;}
 #login_block .is_login .logout { color:#c51917; font-size:11px; line-height:21px;}
@@ -265,7 +265,7 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 .socialnet .soc_widget_tab a span { display:inline-block; padding-bottom:8px;  margin-bottom:-2px}
 .socialnet .soc_widget_tab a.active span { background:url(/assets/social_tab_arrow.jpg) no-repeat center bottom;}
 
-.socialnet .soc_widget {  padding:10px 0px; height:290px; background:#fff; }
+.socialnet .soc_widget {  padding:10px 0px; height:290px; background:#fff; overflow:hidden }
 
 #vk_groups, #vk_groups iframe { width: 100% !important; }
 
@@ -369,6 +369,8 @@ span.sim_check.active { background-position:0px 0px; }
 .detail_page .approved_mark { behavior: url(border-radius.htc); -moz-border-radius:10px; border-radius:10px; -webkit-border-radius:10px; -khtml-border-radius:10px; border:2px solid #fcbe42; padding:10px 40px 6px 23px; font-size:15px; color:#d4140a; font-family:Futura; display:inline-block}
 .detail_page .approved_mark img { float:left; margin-top:-36px;}
 .detail_page .info_block { padding-top:10px; width: 250px; overflow:hidden}
+.detail_page .info_block .activ_site { position:relative}
+.detail_page .info_block .mask { background:url(/assets/fade_text.png) no-repeat; width:96px; height:24px; position:absolute; right:-20px; top:0px}
 .detail_page .base { font-weight:bold;}
 .detail_page .cat_list { padding-bottom:20px;}
 .detail_page .info_block th { text-align:left; padding-right:10px; background:url(/assets/punktir_info.jpg) repeat-x 0px 15px;}
@@ -467,7 +469,7 @@ span.sim_check.active { background-position:0px 0px; }
 .add_comment .field textarea { behavior: url(border-radius.htc); -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; background:#fff; border:none; margin:0px; padding:7px 10px; font-size:14px; color:#333333; width:100%; border:1px solid #cccccb; font-family:Arial, Helvetica, sans-serif; height:90px}
 .add_comment .field .arrow { position:absolute; width:13px; height:26px; background:url(../assets/add_comment_arrow.jpg) no-repeat; display:block; top:40px; left:-12px; }
 
-.expert_opinion { text-align:center; background:#ecece7; padding:25px 20px; behavior: url(border-radius.htc); -moz-border-radius:10px; border-radius:10px; -webkit-border-radius:10px; -khtml-border-radius:10px;}
+.expert_opinion { margin-bottom:20px; text-align:center; background:#ecece7; padding:25px 20px; behavior: url(border-radius.htc); -moz-border-radius:10px; border-radius:10px; -webkit-border-radius:10px; -khtml-border-radius:10px;}
 .expert_opinion .title { font-size:20px; color:#4f4f4f; font-family:Futura; border-bottom:2px solid #ccc; padding-bottom:2px; margin-bottom:20px}
 .expert_opinion .thumb a { position:relative; overflow:hidden; -moz-border-radius:0 0 40px 40px; border-radius:0 0 40px 40px; -webkit-border-radius:0 0 40px 40px; -khtml-border-radius:0 0 40px 40px; behavior: url(border-radius.htc); display:block; width:128px; margin:auto; -moz-box-shadow:3px 3px 6px rgba(0,0,0,0.3);
         -webkit-box-shadow:3px 3px 6px rgba(0,0,0,0.3);
