@@ -147,9 +147,9 @@ class Activity < ActiveRecord::Base
   end
 
   class << self
-    def for_main
-      self.random(4)
-    end
+    # def for_main
+    #   self.random(4)
+    # end
 
     # TODO: replace!!!!
     def nice_approval(_scope)
