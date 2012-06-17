@@ -89,6 +89,7 @@ class Activity < ActiveRecord::Base
   scope :by_region, lambda{|regions| where('region_id in (?)', regions)}
   scope :approved, where(approved: true)
 
+  default_scope published
 
   define_index do
     indexes title, sortable: true
