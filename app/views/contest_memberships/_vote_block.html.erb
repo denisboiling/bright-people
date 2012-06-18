@@ -12,7 +12,7 @@
            data-rating="<%= @membership.rating %>"
            data-membership-id="<%= @membership.id %>"
            data-lock=<%= not current_user %>
-           data-already-vote=<%= current_user.already_vote?(@membership) %>>Звезды</div>
+           data-already-vote=<%= current_user and current_user.already_vote?(@membership) %>>Звезды</div>
     <% if @contest.ended? %>
       <span data-vote="<%= @membership.votes.count %>" id="vote-count">
         <%= t(:vote, count: @membership.votes.count) %>

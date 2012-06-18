@@ -19,6 +19,8 @@ td              { font-family: Verdana, Geneva, sans-serif; color:#464646; font-
 }
 html {height: 100%;}
 
+a.bold { font-weight:bold; }
+
 a               { font-family: Verdana, Geneva, sans-serif; color:#464646; font-size:14px; text-decoration:underline}
 a:hover { font-family: Verdana, Geneva, sans-serif; color:#464646; font-size:14px; text-decoration:none}
 

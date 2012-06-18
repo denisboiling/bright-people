@@ -8,7 +8,13 @@ window.setup_activities_list = ->
     window.setup_raty()
 
   $("a.order_by").bind 'click', ->
-    if $(this).hasClass('bold') then $(this).removeClass('bold') else $(this).addClass('bold')
+    if $(this).hasClass('bold')
+      $(this).removeClass('bold')
+    else
+      $("a.order_by.bold").each ->
+        $(this).removeClass('bold')
+      $(this).addClass('bold')
+
     $("input#order_by").val($(this).attr('data-order'))
     $("form#remote_form").submit()
     false
