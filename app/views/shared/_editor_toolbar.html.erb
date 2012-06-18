@@ -1,7 +1,7 @@
 <div id="wysihtml5-toolbar-<%= element_id %>" style="display: none;">
   <a data-wysihtml5-command="bold">bold</a>
   <a data-wysihtml5-command="italic">italic</a>
-  <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="blockquote">quote</a>
+  <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h5">quote</a>
   <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h4">question</a>
   <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h3">intermediate header</a>
   <a data-wysihtml5-command="insertImage">insert image</a>
@@ -27,9 +27,10 @@
 
 <script>
   $(document).ready(function() {
-  var editor = new wysihtml5.Editor("<%= element_id %>", {
+  new wysihtml5.Editor("<%= element_id %>", {
   toolbar: "wysihtml5-toolbar-<%= element_id %>",
-  parserRules:  wysihtml5ParserRules
+  parserRules:  wysihtml5ParserRules,
+  stylesheets: ["/../assets/editor_style.css"]
   });
   });
 </script>

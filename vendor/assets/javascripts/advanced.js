@@ -295,9 +295,8 @@ var wysihtml5ParserRules = {
             "remove": 1
         },
         "h5": {
-            "add_class": {
-                "align": "align_text"
-            }
+            "rename_tag": "div"
+            "set_class": "quote-class"
         },
         "meta": {
             "remove": 1
