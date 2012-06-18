@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  
+  before_filter :set_url_for_fb
   after_filter :ensure_email_existence
   after_filter :current_user_presence
   
@@ -24,6 +24,10 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def set_url_for_fb
+    @fb_url = request.url
+  end
+
   def current_ability
     @current_ability ||= Ability.new(current_user, current_admin_user)
   end

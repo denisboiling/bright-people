@@ -32,7 +32,6 @@
       <br>
       <% if !current_user.nil? %>
         <div class="participation_step">
-          <div class="thumb work_thumb"><img id="preview" src="#"/></div>
           <div class="participation_form">
             <%= form_for(@membership, url: contest_memberships_path(contest_id: @contest.id)) do |f| %>
               <div class="field">

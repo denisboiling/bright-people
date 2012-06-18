@@ -6,4 +6,8 @@ class DirectionTag < ActiveRecord::Base
 
   scope :educational, where(is_educational: true)
   scope :entertainment, where(is_educational: [false, nil])
+  
+  def kind
+    is_educational ? 'educational' : 'entertainment'
+  end
 end
