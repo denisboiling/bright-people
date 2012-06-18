@@ -11,7 +11,7 @@ class ContestMembership < ActiveRecord::Base
   has_many :comments, as: :relation
 
   has_attached_file :picture,
-                    styles: { medium: "600x500^#", thumb: "100x100^#" },
+                    styles: { medium: "600x3000>", thumb: "100x100^#" },
                     path: ":rails_root/public/system/:attachment/:id/:style/:filename",
                     url: "/system/:attachment/:id/:style/:filename"
 
