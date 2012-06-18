@@ -8,6 +8,7 @@ class ActivitiesController < ApplicationController
   before_filter :check_published, only: :show
 
   def index
+    @activity_page = true
     @activities = search
     if request.xhr?
       render partial: "activities/m_#{@kind}", locals: {activities: @activities}

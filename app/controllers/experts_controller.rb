@@ -1,5 +1,6 @@
 class ExpertsController < ApplicationController
   def index
+    @expert_page = true
     @experts = User.experts
   end
 
