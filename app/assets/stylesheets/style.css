@@ -39,8 +39,8 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 
 .header_wrapper { margin:auto; position:relative; min-width:960px; padding:25px 0px 15px 0px; border-bottom:2px solid #ccc;}
 
-#header .header_flash_wrapper  { background:url(/assets/header_bg.jpg) no-repeat center top; height:204px;}
-#header .header_flash_wrapper a { display:block; height:204px}
+#header .header_flash_wrapper  { position:relative; background:url(/assets/header_bg.jpg) no-repeat center top; height:204px;}
+#header .header_flash_wrapper a { display:block; height:204px; width:100%; position:absolute; z-index:10}
 
 #header .header_flash_wrapper .cap { background:url(/assets/header_cap.jpg) no-repeat center top; height:204px;}
 
