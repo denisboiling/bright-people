@@ -59,8 +59,10 @@
 	</div>
       <% end %>
     </div>
-    <a href="" class="next">Вперед</a>
-    <a href="" class="prev">Назад</a>
+    <% if activity.teachers.count > 1 %>
+      <a href="" class="next">Вперед</a>
+      <a href="" class="prev">Назад</a>
+    <% end %>
   </div>
 <% else %>
     <div class="title_block">Здесь работают</div>
