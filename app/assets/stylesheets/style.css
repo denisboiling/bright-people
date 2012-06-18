@@ -107,7 +107,7 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 .sub_menu li:hover { border:3px solid #21a2dc !important;}
 
 #header #menu li:hover, #header #menu li.selected  { border:3px solid #21a2dc; }
-#header #menu li:hover a { padding:0px 2px;}
+#header #menu li:hover a, #header #menu li.selected a { padding:0px 2px;}
 
 /*
 #header #menu li.current {  border:3px solid #BB224C;}
