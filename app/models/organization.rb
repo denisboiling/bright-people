@@ -10,15 +10,7 @@ class Organization < ActiveRecord::Base
 
   belongs_to :metro_station
 
-  define_index do
-    indexes title, sortable: true
-  end
-
   default_scope order: 'title ASC'
-
-  def picture
-    'url-to-generic-image-for-organization.png'
-  end
   
   def direction_tags
     DirectionTag.joins(:activities => :organization)

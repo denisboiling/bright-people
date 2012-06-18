@@ -1,6 +1,6 @@
 <div class="pages">
   <div class="common">
-    <h1><%= @contest.name %></h1>
+    <h1><%= @contest.name %> <%= favourite_block @contest %></h1>
     <div class="post_category_menu">
       <ul>
         <li><%= link_to "О конкурсе", contest_path(@contest) %></li>
