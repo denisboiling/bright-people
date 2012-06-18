@@ -348,7 +348,7 @@ span.sim_check.active { background-position:0px 0px; }
 .catalog .preview_catalog.approved .thumb img { height:114px; width:422px; border-radius:6px;}
 .catalog .preview_catalog.approved .info { width:186px; }
 .catalog .preview_catalog .flag { background:url(/assets/approved_flag.png); width:124px; height:28px; color:#fff; line-height:22px; text-align:center; position:absolute; top:-100px; left:-6px; font-size:10px; letter-spacing:-1px; padding-right:10px}
-.catalog .preview_catalog .mark { z-index:1; background:#ed1f24; text-align:center; padding:2px 0px; position:absolute; width:100%; color:#fff; top:-32px; -moz-border-radius:0px 0px 6px 6px; border-radius:0px 0px 6px 6px; -webkit-border-radius:0px 0px 6px 6px; -khtml-border-radius:0px 0px 6px 6px; behavior: url(border-radius.htc); margin:0}
+.catalog .preview_catalog .mark { z-index:1; background:#BB224C; text-align:center; padding:2px 0px; position:absolute; width:100%; color:#fff; top:-32px; -moz-border-radius:0px 0px 6px 6px; border-radius:0px 0px 6px 6px; -webkit-border-radius:0px 0px 6px 6px; -khtml-border-radius:0px 0px 6px 6px; behavior: url(border-radius.htc); margin:0}
 .catalog .preview_catalog .mark .arrow { background:url(/assets/catalog_fest_user.png) no-repeat; height:17px; width:16px; position:absolute; left:50%; margin-left:-8px; bottom:-16px}
 .catalog .preview_catalog.approved .mark { width:422px}
 
