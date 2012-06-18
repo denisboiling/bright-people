@@ -8,6 +8,7 @@ ActiveAdmin.register Contest do
   index do
     id_column
     column :name
+    column :active
     column :category
     default_actions
   end
@@ -15,6 +16,9 @@ ActiveAdmin.register Contest do
   form html: { enctype: 'multipart/form-data' } do |f|
     f.inputs 'Основное' do
       f.input :name
+      f.input :active
+      f.input :started_at
+      f.input :ended_at
       f.input :category, include_blank: false
       f.input :description, input_html: {size: 10}
       f.input :rules, input_html: {size: 10}

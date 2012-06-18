@@ -8,10 +8,7 @@
 
 <div class="color_line_left">
   <div class="color_line_right">
-
-
     <div class="header_wrapper">
-
       <div id="search_block">
 	<a class="search_button" href="#"><img src="/assets/ico_search.png" alt="" /></a>
       </div>
@@ -50,6 +47,7 @@
 	</div>
       <% end %>
 
+      <!-- TODO: move to coffee -->
       <script type="text/javascript">
 	$(document).ready(function(){
 
@@ -104,9 +102,9 @@
 
       <div id="menu">
 	<ul class="">
-	  <li><%= link_to 'Кружки и студии', activities_path %></li>
-	  <li><%= link_to 'Яркий журнал', articles_path %></li>
-	  <li class="current"><%= link_to "Фестиваль", page_path('org_komitet') %>
+	  <li <%= 'class=selected' if @activity_page %>><%= link_to 'Кружки и студии', activities_path %></li>
+	  <li <%= 'class=selected' if @article_page %>><%= link_to 'Яркий журнал', articles_path %></li>
+	  <li class="current"><%= link_to 'Фестиваль', page_path('org_komitet') %>
 	    <div class="sub_menu">
 	      <ul>
 		<li><%= link_to "О фестивале", page_path('about_festival') %></li>
@@ -116,8 +114,8 @@
 	      </ul>
 	    </div>
 	  </li>
-	  <li><%= link_to 'Экспертный совет', experts_path %></li>
-	  <li><%= link_to 'Спецпроект', special_projects_path %></li>
+	  <li <%= 'class=selected' if @expert_page %>><%= link_to 'Экспертный совет', experts_path %></li>
+	  <li <%= 'class=selected' if @special_project_page %>><%= link_to 'Спецпроект', special_projects_path %></li>
 	</ul>
       </div>
 

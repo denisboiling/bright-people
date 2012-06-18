@@ -15,8 +15,13 @@ window.setup_activities_list = ->
 
   $("a.clear_link").live 'click', ->
     val = $(this).attr('data-val')
-    option = $('select#metro option[value="' + val + '"]')
-    $("select#select_metro").append($(option).removeAttr('selected'))
+    # TODO: brrr  
+    if $(this).parent('div').hasClass('selected_region')
+      option = $('select#region option[value="' + val + '"]')
+      $("select#faker-region").append($(option).removeAttr('selected'))  
+    else
+      option = $('select#metro option[value="' + val + '"]')
+      $("select#faker-metro").append($(option).removeAttr('selected'))  
     $(this).remove()
     $("#remote_form").submit()
     false

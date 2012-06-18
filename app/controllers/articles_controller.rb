@@ -12,6 +12,7 @@ class ArticlesController < ApplicationController
   # OPTIMIZE: brrr
   # TODO: :shit:
   def index
+    @article_page = true
     category = nil
     category = ArticleCategory.find(params[:category_id]) if params[:category_id]
 
