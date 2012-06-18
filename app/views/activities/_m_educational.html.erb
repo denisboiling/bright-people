@@ -14,7 +14,7 @@
         </div>
         <div class="short_desc">
         Детям <%= activity.age %> лет<br />
-        Учреждение: <%= activity.organization.title %>
+        Учреждение: <%= link_to activity.organization.title, activity.organization %>
         </div>
         <div class="rating_readonly" data-rating="<%= activity.users_rating %>"></div>
       </div>
@@ -33,7 +33,7 @@
         </div>
         <div class="short_desc">
         Детям <%= activity.age %> лет<br />
-        Учреждение: <%= activity.organization.title %>
+        Учреждение: <%= link_to activity.organization.title, activity.organization %>
         </div>
         <div class="rating_readonly" data-rating="<%= activity.users_rating %>"></div>
       </div>
