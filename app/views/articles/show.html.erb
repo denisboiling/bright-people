@@ -44,13 +44,16 @@
   <%== @article.content %>
 </div>
 <div class="clear"></div>
-<div class="comment treeview">
-  <ul>
-    <% @comments.each do |comment| %>
-      <%= render 'shared/comment', comment: comment %>
-    <% end %>
-  </ul>
-</div>
+<% unless @comments.blank? %>
+  <div class="comment treeview">
+    <div class="title">Комментарии</div>
+    <ul>
+      <% @comments.each do |comment| %>
+        <%= render 'shared/comment', comment: comment %>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 <div class="add_comment">
   <%= render 'shared/comment_form' %>
 </div>
