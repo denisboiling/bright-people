@@ -4,8 +4,9 @@
       <div class="thumb"><%= link_to image_tag(membership.picture.url(:thumb)), contest_membership_path(membership, contest_id: contest.id) %></div>
       <div class="name"><%= link_to membership.name, contest_membership_path(membership, contest_id: contest.id) %></div>
       <div class="author">Автор: <%= membership.user.name %></div>
-      <div class="comments_count"><%= membership.comments_count %></div>
-
+      <% if membership.comments_count != 0 %>
+        <div class="comments_count"><%= membership.comments_count %></div>
+      <% end %>
         <div class="rating_readonly" data-rating="<%= membership.rating %>">Звезды</div>
         <%= render 'vote_count', membership: membership if @contest.ended? %>
     </div>
