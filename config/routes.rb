@@ -38,9 +38,8 @@ BrightPeople::Application.routes.draw do
                                     as: :memberships do
       put :vote
     end
+    get 'rules', on: :member
   end
-
-  get "/contests/:id/rules" => "contests#rules"
 
   # User dashboard
   scope 'dashboard' do
