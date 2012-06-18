@@ -4,5 +4,5 @@ class Picture < ActiveRecord::Base
   has_attached_file :picture, styles: { medium: "585x310>" },
                               path: ":rails_root/public/system/:attachment/:id/:style/:filename",
                               url: "/system/:attachment/:id/:style/:filename",
-                              default_style: :medium
+                              default_style: :medium, default_url: 'loading.gif'
 end

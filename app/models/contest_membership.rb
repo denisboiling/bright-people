@@ -5,6 +5,7 @@ class ContestMembership < ActiveRecord::Base
   has_many :votes, class_name: 'ContestVote', foreign_key: :membership_id
 
   attr_accessible :name, :description, :picture
+  attr_accessible :user_id, :contest_id, :description, as: :admin
 
   validates :picture, :user_id, :contest_id, presence: true
 
