@@ -129,7 +129,13 @@ class User < ActiveRecord::Base
   end
 
   # User already voted for this activity 
-  def already_vote?(_activity)
-    activity_votes.where(activity_id: _activity.id).present?
+  def already_vote?(object)
+    case object
+    when Activity
+      activity_votes.where(activity_id: object.id).any?
+    when ContestMembership
+      contest_votes.where(membership_id: object.id).any?
+    end
+    
   end
 end

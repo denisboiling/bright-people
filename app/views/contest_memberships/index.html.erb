@@ -15,10 +15,12 @@
         <div class="cell">Сортировать по
           <span class="sort_date">
             <%= link_to "дате добавления", '#' %>
-          </span>,
+          </span>
+          <% if @contest.ended? %>,
           <span class="sort_rating">
             <%= link_to "рейтингу", '#' %>
           </span>
+          <% end %>
           или
           <span class="sort_comment">
             <%= link_to "количеству комментариев", '#' %>

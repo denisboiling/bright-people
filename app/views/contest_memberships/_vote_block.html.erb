@@ -6,13 +6,24 @@
   <%= Russian::strftime(@membership.contest.started_at, "%e %B %Y г.")%>
 </div>
 <% else %>
-  <% if current_user %>
   <div class="rating_block">
-  <span class="name">Рейтинг</span>
-  <div class="rating">Звезды</div>
-  <span><%= @membership.votes.count %><%= Russian::pluralize(@membership.votes.count, " голос", " голоса", " голосов") %></span>
-  <br>
-  <a href="">Отменить</a>
-</div>
-  <% end %>
+    <span class="name">Рейтинг</span>
+      <div class="rating<%= @contest.running? ? '' : '_readonly' %>"
+           data-rating="<%= @membership.rating %>"
+           data-membership-id="<%= @membership.id %>"
+           data-lock=<%= not current_user %>
+           data-already-vote=<%= current_user.already_vote?(@membership) %>>Звезды</div>
+    <% if @contest.ended? %>
+      <span data-vote="<%= @membership.votes.count %>" id="vote-count">
+        <%= t(:vote, count: @membership.votes.count) %>
+      </span>
+      <%= Russian::pluralize(@membership.votes.count, " голос", " голоса", " голосов") %>
+    <% end %>
+    <br>
+    <% if current_user %>
+      <a href="#" class="cancel_rating<%= ' hidden' unless current_user.already_vote?(@membership) %>">
+        Изменить
+      </a>
+    <% end %>
+  </div>
 <% end %>
