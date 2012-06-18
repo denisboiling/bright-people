@@ -163,6 +163,12 @@ ru:
       contest:
         name: Название
         category: Категория
+        description: Описание
+        rules: Правила
+        picture: Логотип
+        started_at: Дата начала
+        ended_at: Дата окончания
+        active: Активен
       teacher:
         name: Имя
         created_at: Дата создания
