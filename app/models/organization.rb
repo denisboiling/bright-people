@@ -10,10 +10,6 @@ class Organization < ActiveRecord::Base
 
   belongs_to :metro_station
 
-  define_index do
-    indexes title, sortable: true
-  end
-
   default_scope order: 'title ASC'
   
   def direction_tags
