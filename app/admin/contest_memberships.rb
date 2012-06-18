@@ -15,6 +15,7 @@ ActiveAdmin.register ContestMembership do
 
   form html: { enctype: 'multipart/form-data' } do |f|
     f.inputs 'Основное' do
+      f.input :name
       f.input :user, include_blank: false, input_html: { class: 'chosen_autocomplete' }
       f.input :contest, include_blank: false, input_html: { class: 'chosen_autocomplete' }
       f.input :description, input_html: {size: 10}
@@ -24,7 +25,7 @@ ActiveAdmin.register ContestMembership do
   end
 
   show do
-    attributes_table :id, :description
+    attributes_table :id, :name, :description
 
     panel 'Фотография' do
       image_tag(contest_membership.picture.url)
