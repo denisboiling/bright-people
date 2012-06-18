@@ -11,7 +11,7 @@ class SpecialProject < ActiveRecord::Base
                     styles: { medium: "300x300^#", thumb: "160x100^#" },
                     path: ":rails_root/public/system/special_projects/:attachment/:id/:style/:filename",
                     url: "/system/special_projects/:attachment/:id/:style/:filename",
-                    default_style: :thumb
+                    default_style: :thumb, default_url: 'loading.gif'
 
   define_index do
     indexes title, sortable: true
