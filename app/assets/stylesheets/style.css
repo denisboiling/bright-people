@@ -639,7 +639,8 @@ qoute-class { color:#000000; font-family:Futura; font-size:20px; display:block; 
 .work_list .info .thumb { height:100px; width:160px; behavior: url(border-radius.htc); -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; overflow:hidden; position:relative; margin:0px 0px 10px 0px}
 .work_list .info .thumb img { height:100px; width:160px; border-radius:6px;}
 
-.work_list .info .author { font-size:12px;}
+.work_list .name { overflow:hidden; height:40px}
+.work_list .info .author { font-size:12px; overflow:hidden; height:38px}
 
 .work_list .comments_count { text-align:center; color:#fff; font-weight:bold; line-height:22px; position:absolute; right:10px; top:80px; width:34px; height:30px; background:url(/assets/comment_count.png) no-repeat;}
 
