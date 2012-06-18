@@ -1,6 +1,6 @@
-role :web, "bp.balticit.ru"
-role :app, "bp.balticit.ru"
-role :db,  "bp.balticit.ru", :primary=>true
+role :web, "bright-people.ru"
+role :app, "bright-people.ru"
+role :db,  "bright-people.ru", :primary=>true
 
 set :user, "www-data"
 set :deploy_via, :remote_cache
