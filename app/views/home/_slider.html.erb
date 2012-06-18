@@ -1,10 +1,13 @@
 <div id="nested_slider">
   <div class="slider_control">
     <ul>
-      <li class="sl_fest"><a rel="slider_fest" class="active" href="#">О фестивале</a></li>
-      <li class="sl_news"><a rel="slider_news" href="#">Новости фестиваля</a></li>
+      <li class="sl_fest">
+	<%= link_to 'О фестивале', page_path('about_festival'), class: :active, rel: :slider_fest %>
+      </li>
       <li class="sl_user"><a rel="slider_user" href="#">Участники</a></li>
-      <li class="sl_org"><a rel="slider_org" href="#">Оргкомитет</a></li>
+      <li class="sl_org">
+	<%= link_to 'Оргкомитет', page_path('org_komitet'), class: :active, rel: :slider_org %>
+      </li>
     </ul>
   </div>
   
@@ -16,7 +19,7 @@
             	Парк Горького<br />
               18 августа<br />
               10:00-23:00<br />
-              <span style="color:#e7393b">Вход свободный</span>
+              <span style="color:#bb224c">Вход свободный</span>
             </div>
           </div>
       </div>
@@ -26,7 +29,7 @@
             	Парк Горького<br />
               18 августа<br />
               10:00-23:00<br />
-              <span style="color:#e7393b">Вход свободный</span>
+              <span style="color:#bb224c">Вход свободный</span>
             </div>
           </div>
       </div>
@@ -36,7 +39,7 @@
             	Парк Горького<br />
               18 августа<br />
               10:00-23:00<br />
-              <span style="color:#e7393b">Вход свободный</span>
+              <span style="color:#bb224c">Вход свободный</span>
             </div>
           </div>
       </div>
@@ -45,31 +48,29 @@
     <a href="" class="prev">Назад</a>
   </div>
   
-  <div id="slider_news" class="slider">
-    <div class="slides_container">
-      <div style="background:url(/assets/samp/slide_samp.jpg) no-repeat 0 top; height:395px">
 
-      </div>
-      <div style="background:url(/assets/samp/slide_samp.jpg) no-repeat 0 top; height:395px">
-
-      </div>
-      <div style="background:url(/assets/samp/slide_samp.jpg) no-repeat 0 top; height:395px">
-
-      </div>
-    </div>
-    <a href="" class="next">Вперед</a>
-    <a href="" class="prev">Назад</a>
-  </div>
+  
   <div id="slider_user" class="slider">
     <div class="slides_container">
-      <div style="background:url(/assets/samp/slide_samp_2.jpg) no-repeat 0 top; height:395px">
-
+      <div class="slide" style="background:url(/assets/samp/slide_user_1.jpg) no-repeat 0 top; height:395px">
+        <div class="slide_text">
+            <div style="float:left; padding-right:50px; padding-top:100px">
+            	Парк Горького<br />
+              18 августа<br />
+              10:00-23:00<br />
+              <span style="color:#bb224c">Вход свободный</span>
+            </div>  
+        </div>
       </div>
-      <div style="background:url(/assets/samp/slide_samp_2.jpg) no-repeat 0 top; height:395px">
-
-      </div>
-      <div style="background:url(/assets/samp/slide_samp_2.jpg) no-repeat 0 top; height:395px">
-
+      <div class="slide" style="background:url(/assets/samp/slide_user_2.jpg) no-repeat 0 top; height:395px">
+        <div class="slide_text">
+            <div style="float:left; padding-right:50px; padding-top:100px">
+            	Парк Горького<br />
+              18 августа<br />
+              10:00-23:00<br />
+              <span style="color:#bb224c">Вход свободный</span>
+            </div>
+        </div>
       </div>
     </div>
     <a href="" class="next">Вперед</a>
@@ -94,15 +95,18 @@
 
 <div class="main_content">
   <div>
-    <div class="adv"><a href=""><img src="/assets/samp/adv_pic.jpg" alt="" /></a></div>
+    <div class="adv"><a href="/about_bank"><img src="/assets/bank_bright_card.png" alt="" /></a></div>
     <div class="bank_info">
       <div class="title">Добро пожаловать в мир ярких людей!</div>
-      <div class="order_bank_catd">Заказать уникальную<br />родительскую карту Москвича</div>
+      <div class="order_bank_catd">Президент МОСКОВСКОГО КРЕДИТНОГО БАНКА<br />Александр Николашин</div>
       <div class="bank_text">
 
-        Московский кредитный банк рад возможности подарить маленьким и взрослым москвичам этот праздник этим прекрасным летом 2012 года, когда все цветет и вселяет в наши душу надежду.
+МОСКОВСКИЙ КРЕДИТНЫЙ БАНК <br />в честь своего 20-летия дарит городу праздник – детский творческий фестиваль «Яркие люди». 
+<br />
+Гости мероприятия смогут <br />не только весело провести время, но и открыть двери в мир творческих профессий <br />и искусства.<br />
 
-        <div class="signature">Александр НИКОЛАШИН,<br />Президент Московского Кредитного Банка</div>
+        <%= link_to 'Подробнее', page_path('about_bank'), class: :to_bank_link %>
+        
       </div>
       <div class="clear"></div>
     </div>

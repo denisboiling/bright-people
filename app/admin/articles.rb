@@ -5,6 +5,7 @@ ActiveAdmin.register Article, :as => "ArticlePost" do
   scope :all, :default => true
   scope :published
   scope :not_published
+  scope :bests
 
   filter :title
   filter :category

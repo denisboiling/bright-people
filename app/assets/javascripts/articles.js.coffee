@@ -1,8 +1,6 @@
 window.setup_ajax_articles_loading = ->
   return if $('.journal_post').length == 0
   
-  window._articles_category = "";
-  
   regex = /page=(\d+)/
   window._page =
     if regex.test(window.location.href)
@@ -11,21 +9,19 @@ window.setup_ajax_articles_loading = ->
       1
   
   update_articles = ->
-    data =
-      remote: true,
-      page: window._page,
-      category: window._articles_category
-    
     $.ajax
       url: '/articles',
       type: 'GET',
-      data: data,
+      data:
+        remote: true
+        page: window._page
+        category_id: window._articles_category_id
       success: (response) ->
         $('.journal_post').html(response)
   
-  $('.rubric_list a').live 'click', (event) ->
+  $('.rubric_list a, .personality_wrapper a.cat').live 'click', (event) ->
     event.preventDefault()
-    window._articles_category = if window._articles_category == $(this).text() then "" else $(this).text()
+    window._articles_category_id = $(this).attr('data-id')
     update_articles()
   
   # open pages with selected categories
@@ -33,6 +29,6 @@ window.setup_ajax_articles_loading = ->
     event.preventDefault()
     page = $(this).text()
     url = "/articles?page=#{page}"
-    if window._articles_category
-      url += "&category=#{window._articles_category}"
+    if window._articles_category_id
+      url += "&category_id=#{window._articles_category_id}"
     window.location.href = url

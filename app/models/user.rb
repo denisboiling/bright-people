@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
   attr_accessible :vkontakte_id, :facebook_id, :odnoklassniki_id
 
   def notifications
-    Comment.joins(:comment_notifies).where(user_id: self.id)
+    UserCommentNotify.where(user_id: self.id)
   end
 
   def ensure_external_avatar!(external_avatar_url)
@@ -128,4 +128,8 @@ class User < ActiveRecord::Base
     false
   end
 
+  # User already voted for this activity 
+  def already_vote?(_activity)
+    activity_votes.where(activity_id: _activity.id).present?
+  end
 end

@@ -1,4 +1,3 @@
-#= require ya.maps
 #= require jquery
 #= require jquery-ui
 #= require jquery_ujs
@@ -9,7 +8,9 @@
 #= require jquery.jcarousel.min
 #= require jquery.countdown
 #= require js
+#= require swfobject
 #= require select_script
+#= require ya.maps
 #= require_directory .
 
 $ ->

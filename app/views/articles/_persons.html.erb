@@ -1,0 +1,19 @@
+<div class="personality_slider">
+  <div class="slides_container">
+    <% @persons_category.articles.each do |article| %>
+      <div class="slide">
+        <%= link_to image_tag(article.picture.url(:slider)), article%>
+        <div class="info">
+          <div class="name"><%= article.title %></div>
+          <div class="short_desc"><%== article.short_description %></div>
+	  <% if article.comments.count > 0 %>
+	    <div class="comment_count"><%= article.comments.count %></div>
+	  <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <img class="person_slide_lenta" alt="" src="assets/personality_lenta.png">
+  <%= link_to image_tag("page_slider_arrow_right.png"), '#', class: "next" %>
+  <%= link_to image_tag("page_slider_arrow_left.png"), '#', class: "prev" %>
+</div>

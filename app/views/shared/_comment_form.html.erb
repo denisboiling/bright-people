@@ -2,7 +2,7 @@
   Ваш комментарий
   <div class="thumb">
     <span class="mask"></span>
-    <%= image_tag current_user ? current_user.avatar.url(:comment) : url_for("/assets/tender_ico.png") %>
+    <%= image_tag(current_user.avatar.url(:comment)) if current_user && current_user.avatar.present? %>
   </div>
 </div>
 <div class="field">
@@ -12,4 +12,7 @@
 <div class="clear"></div>
 <div class="button">
   <input type="submit" class="submit_comment" value="Отправить">
+  <% if current_admin_user %>
+  &nbsp; от имени эксперта: <%= select_tag :expert_id, options_from_collection_for_select(User.experts, :id, :name) %>
+  <% end %>
 </div>

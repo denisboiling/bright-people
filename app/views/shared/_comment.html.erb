@@ -7,7 +7,9 @@
     <%= comment.user.name %>
     <span class="date"><%= Russian::strftime(comment.created_at, "%e %B %Y г., %R") %></span>
     <div class="quote"><%= comment.text %></div>
-    <%= link_to 'Ответить на комментарий', '', :class => 'create_comment reply', 'data-id' => comment.id if !current_user.nil?%>
+    <% if current_user or current_admin_user %>
+      <%= link_to 'Ответить на комментарий', '', :class => 'create_comment reply', 'data-id' => comment.id %>
+    <% end %>
   </div>
   <div class="clear"></div>
   <ul>

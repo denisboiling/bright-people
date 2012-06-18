@@ -1,9 +1,10 @@
 <%= render 'profile_menu', current: 'comments' %>
 
 <div class="profile_comment">
-  <div class="title">Ваши комментарии к материалам сайта</div>
+  <div class="profile_title">Ваши комментарии к материалам сайта</div>
+
   <ul>
-  <% @comments.each do |comment| %>
+  <% @notifications.map(&:child_comment).each do |comment| %>
     <li>
       <div class="thumb"><%= image_tag comment.relation.picture %></div>
       <div class="info">
@@ -16,4 +17,4 @@
     </li>
   <% end %>
   </ul>
-</div>
+</div>

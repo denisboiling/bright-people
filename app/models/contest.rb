@@ -3,11 +3,12 @@ class Contest < ActiveRecord::Base
   has_many :memberships, class_name: 'ContestMembership'
   has_many :votes, class_name: 'ContestVote'
 
-  attr_accessible :name, :started_at, :ended_at, :description, :picture, :category_id, :rules
+  attr_accessible :name, :started_at, :ended_at, :description, :picture,
+                  :category_id, :rules, :active, as: :admin
 
   validates :name, :started_at, :ended_at, :description, :rules ,presence: true
 
-  has_attached_file :picture, styles: { medium: "300x300>", thumb: "325x100" },
+  has_attached_file :picture, styles: { medium: "300x300^#", thumb: "325x100^#" },
                               path: ":rails_root/public/system/contests/:attachment/:id/:style/:filename",
                               url: "/system/contests/:attachment/:id/:style/:filename",
                               default_style: :thumb
@@ -22,7 +23,7 @@ class Contest < ActiveRecord::Base
   def title
     name
   end
-                              
+
   # def active?
   #   active == true
   #   # now = DateTime.now

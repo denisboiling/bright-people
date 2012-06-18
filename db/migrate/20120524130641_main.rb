@@ -91,8 +91,6 @@ class Main < ActiveRecord::Migration
     t.datetime :picture_updated_at
     t.integer :comments_count
     t.boolean :published, null: false, default: false
-    t.boolean :best, default: false, null: false
-
     t.timestamps
   end
 
