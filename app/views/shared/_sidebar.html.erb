@@ -5,7 +5,9 @@
       <li>
         <span class="thumb"><%= link_to image_tag(activity.logo.url), activity %></span>
         <span class="name"><%= link_to activity.title, activity %></span>
-        <span class="geo"><%#= image_tag activity.metro_station.metro_branch.icon.url %>м. <%= activity.metro_station.try(:title) %></span>
+        <% unless activity.metro_station.blank? %>
+          <span class="geo"><%#= image_tag activity.metro_station.metro_branch.icon.url %>м. <%= activity.metro_station.try(:title) %></span>
+        <% end %>
       </li>
     <% end %>
   </ul>
