@@ -43,16 +43,14 @@
   <%== @article.content %>
 </div>
 <div class="clear"></div>
-<% unless @comments.blank? %>
-  <div class="comment treeview">
-    <div class="title">Комментарии</div>
-    <ul>
-      <% @comments.each do |comment| %>
-        <%= render 'shared/comment', comment: comment %>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<% if @comments.blank? %> <div class="comment treeview hidden"> <% else %> <div class="comment treeview"> <% end %>
+  <div class="title">Комментарии</div>
+  <ul>
+    <% @comments.each do |comment| %>
+      <%= render 'shared/comment', comment: comment %>
+    <% end %>
+  </ul>
+</div>
 <div class="add_comment">
   <%= render 'shared/comment_form' %>
 </div>

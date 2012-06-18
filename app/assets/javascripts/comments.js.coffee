@@ -51,6 +51,7 @@ window.add_comment = ->
           $(subcomment.parent().parent().find('>ul')).append(data)
           $(subcomment).replaceWith("<a class='create_comment reply' data-id=" + parent_id + " href=''>Ответить на комментарий</a>")
         else
+          $(".treeview").removeClass('hidden')
           $("div.treeview").append("<ul>"+data+"</ul>")
 
       error: () ->
