@@ -19,4 +19,11 @@ class Organization < ActiveRecord::Base
   def picture
     'url-to-generic-image-for-organization.png'
   end
+  
+  def direction_tags
+    DirectionTag.joins(:activities => :organization)
+                .where('organizations.id = ?', self.id)
+                .where('activities.published = TRUE')
+                .select('DISTINCT(direction_tags.id), direction_tags.*')
+  end
 end
