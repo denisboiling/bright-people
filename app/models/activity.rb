@@ -55,7 +55,7 @@ class Activity < ActiveRecord::Base
   has_attached_file :logo, styles: { medium: "300x300^#", thumb: '160x100^#', approved: '422x114^#', index: '186x114^#' },
                            path: ":rails_root/public/system/activities/:attachment/:id/:style/:filename",
                            url: "/system/activities/:attachment/:id/:style/:filename",
-                           default_style: :thumb
+                           default_style: :thumb, default_url: 'loading.gif'
 
   # Forcibly set activity relation type for video
   def add_activity_type(video)

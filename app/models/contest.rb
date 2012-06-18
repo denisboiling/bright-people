@@ -11,7 +11,7 @@ class Contest < ActiveRecord::Base
   has_attached_file :picture, styles: { big: "840x270^#", medium: "300x300^#", thumb: "325x100^#" },
                               path: ":rails_root/public/system/contests/:attachment/:id/:style/:filename",
                               url: "/system/contests/:attachment/:id/:style/:filename",
-                              default_style: :thumb
+                              default_style: :thumb, default_url: 'loading.gif'
 
   define_index do
     indexes name, sortable: true

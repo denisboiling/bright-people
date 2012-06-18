@@ -43,7 +43,7 @@
                                                      'data-association-insertion-node' => '.activity_comments' %>
   <% end %>
 
-  <%= f.inputs "Преподователи" do %>
+  <%= f.inputs "Преподаватели" do %>
     <div class="activity_teachers">
       <%= f.semantic_fields_for :teachers do |teacher| %>
         <%= render 'admin/activities/teacher_fields', f: teacher %>

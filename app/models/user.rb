@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, styles: { medium: "300x300^#", thumb: "125x125^#", comment: "84x84^#" },
                              path: ":rails_root/public/system/users/:attachment/:id/:style/:filename",
                              url: "/system/users/:attachment/:id/:style/:filename",
-                             default_style: :thumb
+                             default_style: :thumb, default_url: 'loading.gif'
 
   attr_accessible :email, :remember_me, :password, :password_confirmation, :avatar, :description, :about
   attr_accessible :email, :remember_me, :password, :password_confirmation, :avatar, :description, :about, :role_id, :name, as: :admin
