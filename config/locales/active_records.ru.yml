@@ -119,7 +119,7 @@ ru:
         created_at: Дата создания
         updated_at: Дата обновления
       activity:
-        is_educational: Образовательный
+        is_educational: Тип кружка
         logo: Логотип
         direction_tags: Категории
         age_tags: Возрастные категории
