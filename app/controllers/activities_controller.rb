@@ -62,7 +62,7 @@ class ActivitiesController < ApplicationController
                    activities.order('created_at DESC')
                  end
 
-    return activities
+    activities
   end
 
   # TODO: create check params. More secure!!!
