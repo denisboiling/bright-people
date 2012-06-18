@@ -10,7 +10,7 @@ class ContestMembershipsController < ApplicationController
     @memberships = ContestMembership.order(sort)
     @memberships = @memberships.reject { |item| item.contest_id != @contest.id }
 #   @memberships = @memberships.page(params[:page]).per(10)
-    @memberships = Kaminari.paginate_array(@memberships).page(params[:page]).per(5)
+    @memberships = Kaminari.paginate_array(@memberships).page(params[:page]).per(8)
 
     render partial: 'memberships_list', locals: { memberships: @memberships, contest: @contest } if params[:remote]
 #   @memberships = @contest.memberships
