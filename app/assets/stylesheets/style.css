@@ -41,8 +41,8 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 
 .header_wrapper { margin:auto; position:relative; min-width:960px; padding:25px 0px 15px 0px; border-bottom:2px solid #ccc;}
 
-#header .header_flash_wrapper  { background:url(/assets/header_bg.jpg) no-repeat center top; height:204px;}
-#header .header_flash_wrapper a { display:block; height:204px}
+#header .header_flash_wrapper  { position:relative; background:url(/assets/header_bg.jpg) no-repeat center top; height:204px;}
+#header .header_flash_wrapper a { display:block; height:204px; width:100%; position:absolute; z-index:10}
 
 #header .header_flash_wrapper .cap { background:url(/assets/header_cap.jpg) no-repeat center top; height:204px;}
 
@@ -642,7 +642,8 @@ span.sim_check.active { background-position:0px 0px; }
 .work_list .info .thumb { height:100px; width:160px; behavior: url(border-radius.htc); -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; overflow:hidden; position:relative; margin:0px 0px 10px 0px}
 .work_list .info .thumb img { height:100px; width:160px; border-radius:6px;}
 
-.work_list .info .author { font-size:12px;}
+.work_list .name { overflow:hidden; height:40px}
+.work_list .info .author { font-size:12px; overflow:hidden; height:38px}
 
 .work_list .comments_count { text-align:center; color:#fff; font-weight:bold; line-height:22px; position:absolute; right:10px; top:80px; width:34px; height:30px; background:url(/assets/comment_count.png) no-repeat;}
 
