@@ -37,9 +37,12 @@
 
 	<div class="rating_block">
 	  <span class="name">Рейтинг родителей</span>
-	  <!-- OPTIMIZE: bad bad bad..bbr -->
-	  <div class="rating" data-rating="<%= @activity.users_rating %>" data-activity-id="<%= @activity.id %>" data-lock=<%= !can?(:vote, @activity) %> data-already-vote=<%= current_user ? current_user.already_vote?(@activity) : false  %>>Звезды</div>
-	  <%= render partial: 'vote_count' %><br />
+    <div class="rating"
+         data-rating="<%= @activity.users_rating %>"
+         data-activity-id="<%= @activity.id %>"
+         data-lock=<%= not can?(:vote, @activity) %>
+         data-already-vote=<%= current_user and current_user.already_vote?(@activity) %>>Звезды</div>
+    <%= render 'vote_count' %><br />
 	  <a href="#" class="cancel_rating <%= 'hidden' if (current_user ? !current_user.already_vote?(@activity) : true) %>">Изменить</a>
 	</div>
 	<div class="clear"></div>
@@ -49,7 +52,7 @@
 	    <% if @activity.metro_station %>
 	      <tr>
 		<th><span>Метро</span></th>
-		<td><%= @activity.metro_station.title %><br />
+		<td><%#= image_tag @activity.metro_station.metro_branch.icon.url %><%= @activity.metro_station.title %><br />
 	      </tr>
 	    <% end %>
 	    <tr>

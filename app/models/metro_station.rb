@@ -4,5 +4,7 @@ class MetroStation < ActiveRecord::Base
 
   attr_accessible :title, as: :admin
 
+  belongs_to :metro_branch
+
   default_scope order: 'title ASC'
 end
