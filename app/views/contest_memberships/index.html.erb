@@ -37,11 +37,3 @@
   </div>
   <div class="clear"></div>
 </div>
-
-<%= dialog "Нужно зарегистрироваться", id: :register_dialog do %>
-  <% if !@contest.active? %>
-    Голосование еще не началось!
-  <% else %>
-    Вы уже голосовали!
-  <% end %>
-<% end %>

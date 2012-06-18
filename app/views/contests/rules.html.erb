@@ -4,14 +4,14 @@
     <div class="post_category_menu">
       <ul>
         <li><%= link_to "О конкурсе", contest_path(@contest) %></li>
-        <li class="active"><%= link_to "Правила", url_for("/contests/"+@contest.id.to_s+"/rules") %></li>
+        <li class="active"><%= link_to "Правила", rules_contest_path(@contest) %></li>
         <li><%= link_to "Конкурсные работы", contest_memberships_path(@contest) %></li>
         <li><%= link_to "Принять участие", new_contest_membership_path(@contest) %></li>
       </ul>
       <div class="clear"></div>
     </div>
     <div class="about_contest">
-      <div class="thumb"><%= image_tag @contest.picture.url(:medium) %></div>
+      <div class="thumb"><%= image_tag @contest.picture.url(:big) %></div>
       <div class="left_part">
         <%= @contest.rules %>
       </div>
