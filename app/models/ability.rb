@@ -16,15 +16,8 @@ class Ability
     can :get_comments, Activity
     can :vote, Activity if user.id
     can :vote, ContestMembership do |membership|
-      if !user.id
-        false
-      else
-         if ContestVote.where({:user_id => user.id, :membership_id => membership.id}).empty?
-           true
-         else
-           false
-         end
-      end
+      user.persisted? and ContestVote.where(user_id: user.id, membership_id: membership.id)
+                                     .empty?
     end
   end
 end

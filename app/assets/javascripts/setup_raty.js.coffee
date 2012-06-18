@@ -1,22 +1,33 @@
 # TODO: all shit, replace, optimize and be awesome ;)
 window.setup_raty = ->
-  return if !($('.rating').length > 0 || $(".rating_readonly").length > 0)
+  return if $('.rating, .rating_readonly').length == 0
   
-  if $(".rating_readonly").length > 0
-    for obj in $(".rating_readonly")
-      rating =  $(obj).attr('data-rating')
-      $(obj).raty
-        path: '/assets/raty'
-        readOnly: true
-        score: rating
-        half  : true
-
-  # TODO: make it more readable. I like line with started "url:..."
+  for obj in $(".rating_readonly")
+    rating =  $(obj).attr('data-rating')
+    $(obj).raty
+      path: '/assets/raty'
+      readOnly: true
+      score: rating
+      half  : true
+  
   send_rating = (rating,activity) ->
+    url =  if document.URL.match(/\/[A-Za-z0-9]+\//)[0] == "/activities/"
+            '/activities/vote'
+           else
+             document.URL + (activity ? "/" + activity :  "") + '/vote'
+    id = if not activity
+           document.URL.match(/(\d+)$/)[0]
+         else
+           activity
+    data = 
+      rating: rating
+      id: id
+      contest_id: document.URL.match(/(\d+)/)[0]
+    
     $.ajax
       type: 'PUT'
-      url: if document.URL.match(/\/[A-Za-z0-9]+\//)[0] == "/activities/" then '/activities/vote' else document.URL+ (if activity then ('/' + activity) else "") + '/vote'
-      data: {rating: rating, id: (if !activity then document.URL.match(/(\d+)$/)[0] else activity), contest_id: document.URL.match(/(\d+)/)[0]}
+      url: url
+      data: data
       success: (data) ->
         $("span#vote-count").replaceWith(data)
         $(".rating").raty('readOnly', true)
@@ -24,12 +35,12 @@ window.setup_raty = ->
 
   if $(".rating").length > 0
     rating = $(".rating").attr('data-rating')
-    id = if document.URL.match(/\/[A-Za-z0-9]+\//)[0] == "/activities/" then $(".rating").attr('data-activity-id') else $(".rating").attr('data-membership-id')
     lock = $(".rating").attr('data-lock')
-    if $(".rating").attr('data-already-vote') == "true"
-      readonly = true
-    else
-      readonly = false
+    id = if document.URL.match(/\/[A-Za-z0-9]+\//)[0] == "/activities/"
+           $(".rating").attr('data-activity-id')
+         else
+           $(".rating").attr('data-membership-id')
+    readonly = $(".rating").attr('data-already-vote') == "true"
     $(".rating").raty
       path: '/assets/raty'
       score: rating

@@ -1,5 +1,6 @@
 <div class="pages">
   <div class="common">
+    <h1><%= @contest.name %></h1>
     <div class="post_category_menu">
       <ul>
         <li><%= link_to "О конкурсе", contest_path(@contest) %></li>
@@ -11,23 +12,7 @@
     </div>
     <div class="work_detail">
       <div class="left_part">
-        <% if current_user && @contest.active? %>
-          <div class="rating_block">
-            <span class="name">Рейтинг</span>
-            <div class="rating">Звезды</div>
-            <span><%= @membership.votes.count %><%= Russian::pluralize(@membership.votes.count, " голос", " голоса", " голосов") %></span>
-            <br>
-            <a href="">Отменить</a>
-          </div>
-        <% end %>
-        <% if Time.now < @membership.contest.started_at %>
-          <div class="rating_info_start">
-            <span class="arrow"></span>
-            Возможность голосовать появится
-            <br>
-            <%= Russian::strftime(@membership.contest.started_at, "%e %B %Y г.")%>
-          </div>
-        <% end %>
+        <%= render 'vote_block' %>
         <div class="clear"></div>
         <div class="title"><%= @membership.name %></div>
         <div class="author"><%= @membership.user.name %></div>
