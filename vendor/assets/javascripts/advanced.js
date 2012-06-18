@@ -38,6 +38,7 @@ var wysihtml5ParserRules = {
      * Following css classes won't be removed when parsed by the wysihtml5 html parser
      */
     "classes": {
+        "quote-class": 1,
         "question-class": 1,
         "wysiwyg-clear-both": 1,
         "wysiwyg-clear-left": 1,
@@ -295,7 +296,7 @@ var wysihtml5ParserRules = {
             "remove": 1
         },
         "h5": {
-            "rename_tag": "div"
+            "rename_tag": "div",
             "set_class": "quote-class"
         },
         "meta": {

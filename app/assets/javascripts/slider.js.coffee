@@ -1,9 +1,10 @@
 window.setup_slider = ->
+  ###
   $("#menu .current").mouseenter(->
     $("#menu .sub_menu").fadeIn 100
   ).mouseleave ->
     $("#menu .sub_menu").fadeOut 100
-
+  ###
 
   $("div.moscow_agencies .preview_agencies:last").addClass("last")
   $("div.council .exp_preview:last").addClass("last")

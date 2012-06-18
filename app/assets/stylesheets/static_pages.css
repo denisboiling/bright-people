@@ -1,16 +1,16 @@
 .orgkomitet {}
-.orgkomitet .left_part { float:left; width:40%;  padding-right:4%;}
-.orgkomitet .right_part { float:right; width:52%;  padding-left:4%; }
+.orgkomitet .left_part { float:left; width:48%;  padding-right:2%;}
+.orgkomitet .right_part { float:right; width:48%;  padding-left:2%; }
 
 .orgkomitet .title { font-size:16px; font-family:Futura; color:#000000; padding-bottom:10px}
 
 .org_people { padding:20px 0; border-bottom:1px solid #ccc; margin-bottom:20px}
 .org_people_preview { width:33%; float:left; }
 
-.org_people_preview .org_people_wrapper { width:205px; position:relative; margin:auto; text-align:center}
+.org_people_preview .org_people_wrapper { width:230px; position:relative; margin:auto; text-align:center}
 
 
-.org_people_preview .thumb { position:relative; float:left; width:205px; height:205px; overflow:hidden;}
+.org_people_preview .thumb { position:relative; float:left; width:205px; height:205px; overflow:hidden; margin-left:12px}
 .org_people_preview .thumb .mask { width:205px; height:205px; background:url(/assets/mask_flower_big.png) no-repeat center center; display:block; position:absolute}
 .org_people_preview .name { font-weight:bold; color:#f3452e; font-size:17px; font-family:Futura; display:block; }
 .org_people_preview .info { color:#33343a; font-size:12px; display:block; padding:4px 0 10px 0 }
