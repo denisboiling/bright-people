@@ -3,7 +3,7 @@
     <div class="info">
       <div class="thumb"><%= link_to image_tag(membership.picture.url(:thumb)), contest_membership_path(membership, contest_id: contest.id) %></div>
       <div class="name"><%= link_to membership.name, contest_membership_path(membership, contest_id: contest.id) %></div>
-      <div class="author"><%= membership.user.name %></div>
+      <div class="author">Автор: <%= membership.user.name %></div>
       <div class="comments_count"><%= membership.comments_count %></div>
 
         <div class="rating" data-rating="<%= membership.rating %>" data-membership-id="<%= membership.id %>" data-lock=<%= !can?(:vote, membership) or !contest.active? %>>Звезды</div>

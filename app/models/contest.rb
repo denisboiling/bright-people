@@ -23,12 +23,19 @@ class Contest < ActiveRecord::Base
   def title
     name
   end
-
-  # def active?
-  #   active == true
-  #   # now = DateTime.now
-  #   # (started_at < now) and (now < ended_at)
-  # end
+  
+  def waiting?
+    DateTime.now < started_at
+  end
+  
+  def running?
+    now = DateTime.now
+    (started_at < now) and (now < ended_at)
+  end
+  
+  def ended?
+    DateTime.now > ended_at
+  end
 
   class << self
     def for_main
