@@ -37,14 +37,14 @@
         <%= render 'shared/share_social' %>
         <div class="clear"></div>
 
-
 </div>
 </div>
 <div class="description">
   <%== @article.content %>
 </div>
 <div class="clear"></div>
-<div class="comment treeview">
+<% if @comments.blank? %> <div class="comment treeview hidden"> <% else %> <div class="comment treeview"> <% end %>
+  <div class="title">Комментарии</div>
   <ul>
     <% @comments.each do |comment| %>
       <%= render 'shared/comment', comment: comment %>

@@ -1,12 +1,22 @@
 <%= semantic_form_for [:admin, @activity], html: { multipart: true } do |f| %>
   <%= f.inputs 'Основное' do %>
     <%= f.input :title %>
-    <%= f.input :is_educational, as: :select, include_blank: false %>
+
+    <%= f.input :is_educational, as: :select, collection: [['Образовательный', true],['Развлекательный', false]], include_blank: false %>
+
     <%= f.input :published %>
     <%= f.input :organization, include_blank: false, input_html: { class: 'chosen_autocomplete' } %>
     <%= f.input :phone %>
     <%= f.input :site %>
-    <%= f.input :direction_tags, :collection => DirectionTag.educational, input_html: { size: 6 } %>
+
+    <!-- TODO: brrr... aaa -->
+    <% if f.object.is_educational.nil? || f.object.is_educational == true %>
+      <% tag_method = :educational %>
+    <% else  %>
+      <% tag_method = :entertainment %>
+    <% end %>
+    
+    <%= f.input :direction_tags, :collection => DirectionTag.send(tag_method), input_html: { size: 6 } %>
     <%= f.input :age_tags, input_html: { size: 4 } %>
     <%= f.input :logo, as: :file, hint: f.template.image_tag(f.object.logo.url) %>
 
