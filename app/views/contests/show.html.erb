@@ -13,7 +13,6 @@
     <div class="about_contest">
       <div class="thumb"><%= image_tag @contest.picture.url(:big) %></div>
       <div class="left_part">
-        <div class="title"><%= @l = @contest.description.split(/[!\.\?]/).first %><%= @contest.description[@l.length,1] %></div>
         <%= @contest.description %>
       </div>
       <div class="right_part">
