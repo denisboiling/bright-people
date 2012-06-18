@@ -17,6 +17,8 @@
 .org_people_preview .desc { color:#33343a; font-size:12px; display:block;  }
 
 
+.org_people_preview .toemail { display:inline-block; line-height:24px; background:url(/assets/mail_ico.png) no-repeat left center; padding-left:20px; text-decoration:underline; margin-right:10px}
+
 
 .other_people_preview { min-height:90px; padding-bottom:10px}
 .other_people_preview .name { font-weight:bold; color:#f3452e; font-size:15px; font-family:Futura; display:block; }

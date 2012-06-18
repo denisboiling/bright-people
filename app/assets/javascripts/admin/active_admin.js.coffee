@@ -61,6 +61,9 @@ setup_schedule = ->
     event.preventDefault()
     $(this).closest('.time_block').remove()
     update_fields()
+  
+  $('.time_start, .time_end').live 'focusout', ->
+    update_fields()
     
   $('.schedule_day_link').bind 'click', (event) ->
     event.preventDefault()

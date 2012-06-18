@@ -29,7 +29,7 @@
     <div class="profile_change_name">
       <div class="info_label">
         <strong>Смена имени</strong><br />
-        Вы можете поменять имя, правда фиг знает, зачем, но оно должно быть не длинне N символов
+        Вы можете поменять имя
       </div>
       <div class="field">
         <%= f.text_field :name %>
@@ -39,6 +39,20 @@
         <%= f.submit "Сохранить" %>
       </div>
       <div class="clear"></div>
+      <script type="text/javascript">
+      $(document).ready(function(){
+      
+        var user_name = $("#user_name").val();
+        $("#user_name").bind("focus", function() {
+                if (this.value == user_name)
+                        this.value = "";
+        }).bind("blur", function() {
+                if (this.value == "")
+                this.value = user_name;
+        });
+      
+      });
+      </script>
     </div>
   
   </div>

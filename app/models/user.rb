@@ -132,5 +132,4 @@ class User < ActiveRecord::Base
   def already_vote?(_activity)
     activity_votes.where(activity_id: _activity.id).present?
   end
-
 end

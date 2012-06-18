@@ -1,6 +1,11 @@
 ru:
   activerecord:
     models:
+      activity_approval:
+        one: Одобрить кружок
+        few: Одобрить кружки
+        many: Одобренные кружки
+        other: Одобренные кружки
       sponsor:
         one: Попечитель
         few: Попечительский совет
@@ -80,6 +85,7 @@ ru:
         other: Новости
     attributes:
       article:
+        best: Лучшие
         title: Название
         author: Автор
         biography: Биография
@@ -157,6 +163,11 @@ ru:
       contest:
         name: Название
         category: Категория
+        description: Описание
+        rules: Правила
+        picture: Логотип
+        started_at: Дата начала
+        ended_at: Дата окончания
       teacher:
         name: Имя
         created_at: Дата создания
@@ -189,3 +200,9 @@ ru:
         first_name: Имя
         last_name: Фамилия
         description: Описание
+      activity_approval:
+        activity: Кружок
+        user: Кто одобрил
+        text: Текст
+        created_at: Дата одобрения
+        updated_at: Дата изменения

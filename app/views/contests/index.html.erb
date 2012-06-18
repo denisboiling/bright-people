@@ -4,15 +4,15 @@
     <div class="post_category_menu">
       <ul>
         <% if params[:category].nil? %>
-          <li class="active"><%= link_to "<span class=\"count\">".html_safe+Contest.count.to_s+"</span>".html_safe+"Все", contests_path %></li>
+          <li class="active"><%= link_to "<span class=\"count\">".html_safe+Contest.count.to_s+"</span> ".html_safe+"Все", contests_path %></li>
         <% else %>
-          <li><%= link_to "<span class=\"count\">".html_safe+Contest.count.to_s+"</span>".html_safe+"Все", contests_path %></li>
+          <li><%= link_to "<span class=\"count\">".html_safe+Contest.count.to_s+"</span> ".html_safe+"Все", contests_path %></li>
         <% end %>
         <% ContestCategory.all.each do |category| %>
           <% if params[:category]==category.id.to_s %>
             <li class="active"><%= link_to "<span class=\"count\">".html_safe+Contest.where(:category_id => category.id).count.to_s+"</span>".html_safe+category.name, contests_path(category: category.id) %></li>
           <% else %>
-            <li><%= link_to "<span class=\"count\">".html_safe+Contest.where(:category_id => category.id).count.to_s+"</span>".html_safe+category.name, contests_path(category: category.id) %></li>
+            <li><%= link_to "<span class=\"count\">".html_safe+Contest.where(:category_id => category.id).count.to_s+"</span> ".html_safe+category.name, contests_path(category: category.id) %></li>
           <% end %>
         <% end %>
       </ul>

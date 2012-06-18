@@ -1,10 +1,9 @@
 
 <div class="pages">
   <div class="common">
-    <h1>Личное пространство</h1>
-    Здесь мы храним для вас все ваши комментарии, избранные страницы и прочее
+
     <%= render 'users/profile_menu', current: 'favourites' %>
-    <div class="title">Избранные материалы яркого журнала</div>
+    <div class="profile_title">Избранные материалы яркого журнала</div>
     <% @favourites.each do |favourite| %>
       <% if favourite.relation_type == 'ContestMembership' %>
         <%= render "contest_membership_item", favourite: favourite, object: favourite.relation %>

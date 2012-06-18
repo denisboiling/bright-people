@@ -3,7 +3,7 @@ class Contest < ActiveRecord::Base
   has_many :memberships, class_name: 'ContestMembership'
   has_many :votes, class_name: 'ContestVote'
 
-  attr_accessible :name, :started_at, :ended_at, :description, :picture, :category_id, :rules
+  attr_accessible :name, :started_at, :ended_at, :description, :picture, :category_id, :rules, as: :admin
 
   validates :name, :started_at, :ended_at, :description, :rules ,presence: true
 
@@ -22,7 +22,7 @@ class Contest < ActiveRecord::Base
   def title
     name
   end
-                              
+
   # def active?
   #   active == true
   #   # now = DateTime.now

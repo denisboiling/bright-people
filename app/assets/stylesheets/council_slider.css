@@ -9,7 +9,7 @@
 #slide9:checked ~ #slides .inner { margin-left:-800%; }
 #slide10:checked ~ #slides .inner { margin-left:-900%; }
  
-#slides { padding:5% 0 20px}
+#slides { padding:15px 0 20px}
 
 #overflow {
         width: 100%;
@@ -34,10 +34,11 @@ article a.thumb img { height:160px; width:130px; border-radius:0 0 40px 40px;}
         width: 10%;
         float: left;
         text-align:center;
+        padding-bottom:10px
 }
 
-#slides article .info { width:140px; margin:auto; color:#795113; font-size:14px; text-align:center; padding-top:10px;}
-#slides article .info span { text-transform:uppercase}
+#slides article .info { width:140px; margin:auto; color:#795113; font-size:14px; text-align:center; padding-bottom:10px; font-weight:bold;}
+#slides article .info span { text-transform:uppercase; }
 
 /* Slider Styling */
 

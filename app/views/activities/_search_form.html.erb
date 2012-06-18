@@ -2,55 +2,56 @@
   <%= hidden_field_tag :order_by, 'created_at', id: :order_by %>
   <div class="filter_sorter">
     <div class="filter_wraper">
-      <div class="cell">
+      <div class="cell" style="width:120px">
         <strong>По возрасту</strong>
         <ul>
           <% AgeTag.all.each do |age_tag| %>
             <li>
               <%= check_box_tag "age[]", age_tag.id, false, id: (dom_id age_tag), class: :remote_action %>
-
-              <%= label_tag (dom_id age_tag), age_tag.title, class: :hidden_checkbox %>
+              <%= label_tag (dom_id age_tag), age_tag.title, class: :hidden_checkbox do %>
+		<span class="sim_check"></span> <%= age_tag.title %>
+	      <% end %>
             </li>
           <% end %>
         </ul>
       </div>
-      <div class="cell">
+      <div class="cell" style="width:200px">
         <strong>По категории</strong>
         <ul>
           <% @directions.each do |tag| %>
             <li>
               <%= check_box_tag "tag[]", tag.id, false, id: (dom_id tag), class: :remote_action %>
-              <span class="sim_check"></span>
-              <%= label_tag (dom_id tag), tag.name, class: :hidden_checkbox %>
+              <%= label_tag (dom_id tag), class: :hidden_checkbox do %>
+		<span class="sim_check"></span> <%= tag.name %>
+	      <% end %>
             </li>
           <% end %>
         </ul>
       </div>
       <div class="cell">
-        <strong>По округу</strong>
-        <%= select_tag 'region_faker_select', options_from_collection_for_select(Region.all, :id, :title),
-            :class => 'faker-select', :id => 'faker-region', 'data-select' => 'region', 'data-selected' => 'selected_region', :prompt => 'Выбирите регион' %>
-
-        <div><select id="region" multiple="multiple" name="region[]"></select></div>
-
-        Вы выбрали:
-        <div class="selected_region">
-        </div>
-
-      </div>
-      <div class="cell">
+      
         <strong>Ближайшая станция метро</strong>
         <%= select_tag 'metro_faker_select', options_from_collection_for_select(MetroStation.all, :id, :title),
-            :class => 'faker-select', :id => 'faker-metro', 'data-select' => 'metro', 'data-selected' => 'selected_metro', :prompt => 'Выбирите метро' %>
+            :class => 'faker-select', :id => 'faker-metro', 'data-select' => 'metro', 'data-selected' => 'selected_metro', :prompt => 'Выберите' %>
 
         <div><select id="metro" multiple="multiple" name="metro[]"></select></div>
 
         Вы выбрали:
         <div class="selected_metro">
         </div>
+      
+        <br />
+        <strong>По округу</strong>
+        <%= select_tag 'region_faker_select', options_from_collection_for_select(Region.all, :id, :title),
+            :class => 'faker-select', :id => 'faker-region', 'data-select' => 'region', 'data-selected' => 'selected_region', :prompt => 'Выберите' %>
 
+        <div><select id="region" multiple="multiple" name="region[]"></select></div>
+
+        Вы выбрали:
+        <div class="selected_region">
+        </div>
       </div>
-      <div class="cell">
+      <div class="cell hidden">
         <strong>Где вы?</strong>
 
         <a id="clear_map" class="clear_link" href="">Сбросить</a>
@@ -76,24 +77,26 @@
       </div>
       <div class="cell">
         <%= check_box_tag :only_approved, '1', false, class: :remote_action %>
-        <span class="sim_check"></span>
-        <%= label_tag 'only_approved', 'Только одобренные', class: :hidden_checkbox %>
+        <%= label_tag 'only_approved', class: :hidden_checkbox, id: :only_approved do %>
+	  <span class="sim_check"></span> Только одобренные
+	<% end %>
       </div>
       <div class="clear"></div>
     </div>
   </div>
 <% end %>
 
+<!-- TODO: remove it to coffee -->
 <script type="text/javascript">
   $(document).ready(function(){
-  $(".filter_sorter li label").live('click',function(){
-  var idCheck = $(this).attr("for");
+    $(".filter_sorter li label, #only_approved").live('click',function(){
+      var idCheck = $(this).attr("for");
 
-  if($('#'+idCheck).attr('checked')){
-  $(this).prev("span").removeClass("active");
-  } else {
-  $(this).prev("span").addClass("active");
-  }
-  });
+      if($('#'+idCheck).attr('checked')){
+        $(this).find("span").removeClass("active");
+      } else {
+        $(this).find("span").addClass("active");
+      }
+    });
   });
 </script>

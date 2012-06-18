@@ -4,20 +4,24 @@
   </div>
   <div class="info">
     <%  %>
-    <div class="mark">
-      <span class="arrow"></span>Участник фестиваля-2012!
-    </div>
+
+    <% if activity.participant %>
+      <div class="mark">
+	<span class="arrow"></span>Участник фестиваля-2012!
+      </div>
+    <% end %>
+
     <div class="name">
       <%= link_to activity.title, activity %>
     </div>
-    
-    Детям <%= activity.age %>
+
+    Детям <%= activity.age %> лет
     <br />
-    
+
     <% if activity.organization %>
-    Учреждение: <%= link_to activity.organization.title, activity.organization %> 
+      Учреждение: <%= link_to activity.organization.title, activity.organization %>
     <% end %>
-    
+
     <div class="rating_readonly" data-rating="<%= activity.users_rating %>"></div>
   </div>
 </div>
