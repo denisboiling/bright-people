@@ -4,7 +4,7 @@
     <div class="post_category_menu">
       <ul>
         <li class="active"><%= link_to "О конкурсе", contest_path(@contest) %></li>
-        <li><%= link_to "Правила", url_for("/contests/"+@contest.id.to_s+"/rules") %></li>
+        <li><%= link_to "Правила", rules_contest_path(@contest) %></li>
         <li><%= link_to "Конкурсные работы", contest_memberships_path(@contest) %></li>
         <li><%= link_to "Принять участие", new_contest_membership_path(@contest) %></li>
       </ul>
