@@ -31,7 +31,8 @@
   <%= render 'title' %>
   
   <div class="expert_big_info">
-    <div class="name"><%= @expert.name %></div>
+    <!-- OPTIMIZE: brrrr...brrr -->
+    <div class="name"><%== @expert.name.split(' ').join('<br>') %></div>
     <div class="thumb">
       <%= link_to image_tag(@expert.avatar(:medium)), expert_path(@expert) %>
     </div>
