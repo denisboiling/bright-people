@@ -15,10 +15,6 @@ class Organization < ActiveRecord::Base
   end
 
   default_scope order: 'title ASC'
-
-  def picture
-    'url-to-generic-image-for-organization.png'
-  end
   
   def direction_tags
     DirectionTag.joins(:activities => :organization)

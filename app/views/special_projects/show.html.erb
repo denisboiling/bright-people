@@ -1,6 +1,6 @@
 <div class="pages">
   <div class="common">
-    <h1><%= @special_project.title %></h1>
+    <h1><%= @special_project.title %> <%= favourite_block @special_project %></h1>
     <strong>
       <%= @special_project.author %>.
       <%= Russian::strftime @special_project.created_at, '%A, %e %B %Y г.' %>
