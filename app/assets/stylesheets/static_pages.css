@@ -10,8 +10,9 @@
 .org_people_preview .org_people_wrapper { width:230px; position:relative; margin:auto; text-align:center}
 
 
-.org_people_preview .thumb { position:relative; float:left; width:205px; height:205px; overflow:hidden; margin-left:12px}
-.org_people_preview .thumb .mask { width:205px; height:205px; background:url(/assets/mask_flower_big.png) no-repeat center center; display:block; position:absolute}
+.org_people_preview .thumb { position:relative; float:left; width:205px; height:205px; overflow:hidden; margin-left:12px; behavior: url(border-radius.htc); -moz-border-radius:102px; border-radius:102px; -webkit-border-radius:102px; -khtml-border-radius:102px;}
+.org_people_preview .thumb img { border-radius:102px; width:205px; height:205px}
+.org_people_preview .thumb .mask { display:none; width:205px; height:205px; background:url(/assets/mask_flower_big.png) no-repeat center center; position:absolute}
 .org_people_preview .name { font-weight:bold; color:#f3452e; font-size:17px; font-family:Futura; display:block; }
 .org_people_preview .info { color:#33343a; font-size:12px; display:block; padding:4px 0 10px 0 }
 .org_people_preview .desc { color:#33343a; font-size:12px; display:block;  }
@@ -22,8 +23,9 @@
 
 .other_people_preview { min-height:90px; padding-bottom:10px}
 .other_people_preview .name { font-weight:bold; color:#f3452e; font-size:15px; font-family:Futura; display:block; }
-.other_people_preview .thumb { position:relative; float:left; width:85px; height:85px; overflow:hidden;}
-.other_people_preview .thumb .mask { width:85px;; height:85px; background:url(/assets/mask_flower_small.png) no-repeat center center; display:block; position:absolute}
+.other_people_preview .thumb { behavior: url(border-radius.htc); -moz-border-radius:43px; border-radius:43px; -webkit-border-radius:43px; -khtml-border-radius:43px; position:relative; float:left; width:85px; height:85px; overflow:hidden;}
+.other_people_preview .thumb img { border-radius:43px; width:85px; height:85px}
+.other_people_preview .thumb .mask { width:85px; height:85px; background:url(/assets/mask_flower_small.png) no-repeat center center; display:none; position:absolute}
 .other_people_preview .info { color:#33343a; font-size:12px; margin-left:100px}
 .other_people_preview .contact { color:#156069; font-size:12px; padding-top:4px}
 .other_people_preview .contact .toemail { display:inline-block; line-height:24px; background:url(/assets/mail_ico.png) no-repeat left center; padding-left:20px; text-decoration:underline; margin-right:10px}
