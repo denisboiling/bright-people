@@ -1,3 +1,12 @@
+check_used_tags = ->
+  params = window.location.href.split('?')[1]
+  return unless params
+  regex = /tag=([\d,]+)/
+  return unless regex.test(params)
+  ids = regex.exec(params)[1].split(',')
+  for id in ids
+    $("label[for=direction_tag_#{id}]").find('.sim_check').addClass('active')
+
 window.setup_activities_list = ->
   $(".filter_sorter li label, #only_approved").live 'click', ->
     idCheck = $(this).attr("for")
@@ -51,6 +60,8 @@ window.setup_activities_list = ->
     $(selected_div).append("<a class='clear_link' href='' data-val=#{val}>#{text}</a> ")
     $(select_select).append(selected)
     $("#remote_form").submit()
+  
+  check_used_tags()
 
 window.setup_activities_approval = ->
   $('.approve_activity_link').bind 'click', (event) ->
