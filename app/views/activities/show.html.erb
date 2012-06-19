@@ -95,7 +95,7 @@
             <li><%= link_to image_tag(photo.attach.url(:slider), 'data-hook-class' => "photo#{photo.id}") %></li>
           <% end %>
           <% @activity.videos.each do |video| %>
-            <li class="slideshow_video_item"><%= link_to image_tag(video.preview_url, 'data-hook-class' => "video#{video.id}") %></li>
+            <li class="slideshow_video_item"><div class="video"></div><%= link_to image_tag(video.preview_url, 'data-hook-class' => "video#{video.id} ", 'style' => 'width:530px') %></li>
           <% end %>
           </ul>
         <% end %>

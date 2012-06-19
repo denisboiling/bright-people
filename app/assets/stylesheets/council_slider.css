@@ -1,9 +1,9 @@
 #slide1:checked ~ #slides .inner { margin-left:0; }
 #slide2:checked ~ #slides .inner { margin-left:-100%; }
-/*
+
 #slide3:checked ~ #slides .inner { margin-left:-200%; }
 #slide4:checked ~ #slides .inner { margin-left:-300%; }
-#slide5:checked ~ #slides .inner { margin-left:-400%; }
+/*#slide5:checked ~ #slides .inner { margin-left:-400%; }
 #slide6:checked ~ #slides .inner { margin-left:-500%; }
 #slide7:checked ~ #slides .inner { margin-left:-600%; }
 #slide8:checked ~ #slides .inner { margin-left:-700%; }
@@ -28,11 +28,11 @@ article a.thumb { position:relative; overflow:hidden; -moz-border-radius:0 0 40p
 article a.thumb img { height:160px; width:130px; border-radius:0 0 40px 40px;}
 
 #slides .inner {
-        width: 200%;
+        width: 400%;
 }
 
 #slides article {
-        width: 50%;
+        width: 25%;
         float: left;
         text-align:center;
         padding-bottom:10px
@@ -83,9 +83,9 @@ article a.thumb img { height:160px; width:130px; border-radius:0 0 40px 40px;}
 }
 
 #slide1:checked ~ #controls label:nth-child(2), 
-#slide2:checked ~ #controls label:nth-child(1)/*, 
+#slide2:checked ~ #controls label:nth-child(3), 
 #slide3:checked ~ #controls label:nth-child(4), 
-#slide4:checked ~ #controls label:nth-child(5), 
+#slide4:checked ~ #controls label:nth-child(1)/*, 
 #slide5:checked ~ #controls label:nth-child(6), 
 #slide6:checked ~ #controls label:nth-child(7), 
 #slide7:checked ~ #controls label:nth-child(8), 
@@ -99,10 +99,10 @@ article a.thumb img { height:160px; width:130px; border-radius:0 0 40px 40px;}
 }
 
 
-#slide1:checked ~ #controls label:nth-child(2),
-#slide2:checked ~ #controls label:nth-child(1)/*,
+#slide1:checked ~ #controls label:nth-child(4),
+#slide2:checked ~ #controls label:nth-child(1),
 #slide3:checked ~ #controls label:nth-child(2),
-#slide4:checked ~ #controls label:nth-child(3),
+#slide4:checked ~ #controls label:nth-child(3)/*,
 #slide5:checked ~ #controls label:nth-child(4),
 #slide6:checked ~ #controls label:nth-child(5),
 #slide7:checked ~ #controls label:nth-child(6),
