@@ -104,7 +104,7 @@
 	<ul class="">
 	  <li <%= 'class=selected' if @activity_page %>><%= link_to 'Кружки и студии', activities_path %></li>
 	  <li <%= 'class=selected' if @article_page %>><%= link_to 'Яркий журнал', articles_path %></li>
-	  <li class="current <%= 'selected' if @org_komitet %>"><%= link_to 'Фестиваль', page_path('org_komitet') %>
+	  <li class="current <%= 'selected' if @org_komitet %>"><%= link_to 'Фестиваль', page_path('about_festival') %>
 	    <div class="sub_menu">
 	      <ul>
 		<li><%= link_to "О фестивале", page_path('about_festival') %></li>
