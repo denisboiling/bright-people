@@ -38,6 +38,11 @@ namespace :db do
     end
   end
 
+  desc 'Load pages'
+  task :load_pages => :environment do
+    Rake::Task["db:load_file"].execute(Rake::TaskArguments.new([:file], ['db/default/pages.yml']))
+  end
+
   desc 'db:drop db:create db:migrate db:seed db:load_sample'
   task :setup_sample => :environment do
     ['db:drop', 'db:create', 'db:migrate', 'db:seed', 'db:load_sample'].each do |t|
