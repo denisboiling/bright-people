@@ -14,7 +14,9 @@ window.setup_activities_list = ->
     $("div.activities").html(data)
     window.setup_raty()
 
-  $("a.order_by").bind 'click', ->
+  $("a.order_by").bind 'click', (event) ->
+    event.preventDefault()
+    
     if $(this).hasClass('bold')
       $(this).removeClass('bold')
     else
@@ -24,9 +26,10 @@ window.setup_activities_list = ->
 
     $("input#order_by").val($(this).attr('data-order'))
     $("form#remote_form").submit()
-    false
 
-  $("a.clear_link").live 'click', ->
+  $("a.clear_link").live 'click', (event) ->
+    event.preventDefault()
+    
     val = $(this).attr('data-val')
     # TODO: brrr  
     if $(this).parent('div').hasClass('selected_region')
@@ -37,7 +40,6 @@ window.setup_activities_list = ->
       $("select#faker-metro").append($(option).removeAttr('selected'))  
     $(this).remove()
     $("#remote_form").submit()
-    false
 
   $("select.faker-select").bind 'change', ->
     id = $(this).attr('id')
