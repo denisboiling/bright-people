@@ -1,6 +1,6 @@
 <div class="profile_magazine" data-id="<%= object.id %>" data-type="<%= object.class.name %>">
   <div class="info">
-    <%= link_to "delete", favourite, method: :delete, confirm: "You sure?", :class => "close" %>
+    <%= link_to "delete", favourite, method: :delete, confirm: "Вы уверены?", :class => "close" %>
     <div class="thumb">
       <%= link_to image_tag(object.picture), send(:"#{object.class.name.underscore}_path", object) %>
     </div>
