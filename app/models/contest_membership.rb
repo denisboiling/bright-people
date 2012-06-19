@@ -10,6 +10,7 @@ class ContestMembership < ActiveRecord::Base
   validates :picture, :user_id, :contest_id, presence: true
 
   has_many :comments, as: :relation
+  has_many :favourites, as: :relation, dependent: :destroy
 
   has_attached_file :picture,
                     styles: { medium: "600x3000>", thumb: "100x100^#" },

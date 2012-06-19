@@ -41,6 +41,8 @@ class Activity < ActiveRecord::Base
   has_many :photos, class_name: 'ActivityPhoto',
                     dependent: :destroy
 
+  has_many :favourites, as: :relation, dependent: :destroy
+                    
   # TODO: replace with polymorphic
   has_many :videos, class_name: 'VideoUrl', dependent: :destroy,
                     conditions: "relation_type = 'activity'",
