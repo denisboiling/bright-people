@@ -1,5 +1,26 @@
+setup_search = ->
+  $("#search_block a.search_button").live 'click', (event) ->
+    event.preventDefault()
+    
+    $("#login_block a.login_button").removeClass("active")
+    $(".show_login").addClass("hidden")
+
+    if $(this).hasClass('active')
+      $(this).removeClass("active")
+      $(".show_search").addClass("hidden")
+    else
+      $(this).addClass("active")
+      $(".show_search").removeClass("hidden")
+  
+  $(".show_search .close").live 'click', ->
+    $("#search_block a.search_button").removeClass("active")
+    $(".show_search").addClass("hidden")
+
 window.setup_search_tabs = ->
+  setup_search()
+  
   return if $(".search_filter").length == 0
+  
   $(".search_filter a").first().addClass('active')
   $(".search_filter a").first().prepend('<span class=\"mask\"></span>')
 
