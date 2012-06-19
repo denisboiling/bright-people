@@ -5,4 +5,6 @@
 .jcarousel-skin-pika .jcarousel-clip-horizontal {height: 65px; width: 415px; margin:auto; overflow:hidden }
 .jcarousel-skin-pika .jcarousel-item-horizontal { margin-right: 10px;}
 
+.pika-stage a img { width:530px;}
 .pikachoose .mask { background:url(/assets/slider_pages_mask.png) no-repeat; position:absolute; width:532px; height:370px; z-index:50}
+.pikachoose .video { background:url(/assets/play_ico.png) no-repeat; position:absolute; width:24px; height:24px; z-index:50; margin-left:33px; margin-top:22px}
