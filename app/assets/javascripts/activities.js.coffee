@@ -1,5 +1,21 @@
-window.setup_activities_list = ->
+check_used_tags = ->
+  params = window.location.href.split('?')[1]
+  return unless params
+  regex = /tag=([\d,]+)/
+  return unless regex.test(params)
+  ids = regex.exec(params)[1].split(',')
+  for id in ids
+    $("label[for=direction_tag_#{id}]").find('.sim_check').addClass('active')
 
+window.setup_activities_list = ->
+  $(".filter_sorter li label, #only_approved").live 'click', ->
+    idCheck = $(this).attr("for")
+
+    if $('#' + idCheck).is(':checked')
+      $(this).find("span").removeClass("active");
+    else
+      $(this).find("span").addClass("active");
+  
   $(".remote_action").bind 'change', ->
     $("#remote_form").submit()
 
@@ -7,7 +23,9 @@ window.setup_activities_list = ->
     $("div.activities").html(data)
     window.setup_raty()
 
-  $("a.order_by").bind 'click', ->
+  $("a.order_by").bind 'click', (event) ->
+    event.preventDefault()
+    
     if $(this).hasClass('bold')
       $(this).removeClass('bold')
       $("input#order_by").val("")
@@ -18,9 +36,10 @@ window.setup_activities_list = ->
       $("input#order_by").val($(this).attr('data-order'))
 
     $("form#remote_form").submit()
-    false
 
-  $("a.clear_link").live 'click', ->
+  $("a.clear_link").live 'click', (event) ->
+    event.preventDefault()
+    
     val = $(this).attr('data-val')
     # TODO: brrr  
     if $(this).parent('div').hasClass('selected_region')
@@ -31,7 +50,6 @@ window.setup_activities_list = ->
       $("select#faker-metro").append($(option).removeAttr('selected'))  
     $(this).remove()
     $("#remote_form").submit()
-    false
 
   $("select.faker-select").bind 'change', ->
     id = $(this).attr('id')
@@ -43,6 +61,8 @@ window.setup_activities_list = ->
     $(selected_div).append("<a class='clear_link' href='' data-val=#{val}>#{text}</a> ")
     $(select_select).append(selected)
     $("#remote_form").submit()
+  
+  check_used_tags()
 
 window.setup_activities_approval = ->
   $('.approve_activity_link').bind 'click', (event) ->
