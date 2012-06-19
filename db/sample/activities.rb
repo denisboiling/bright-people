@@ -10,18 +10,9 @@ Activity.all.each do |ac|
   ac.recheck_approved
   ac.update_attribute(:location, rand_point)
   ac.update_attribute(:logo, File.new(logos.shuffle.first))
-  rand(1..3).times do
-    tag =
-      if ac.is_educational
-        DirectionTag.educational.sample
-      else
-        DirectionTag.entertainment.sample
-      end
-    ac.direction_tags << tag
-  end
-
-  rand(1..3).times do
-    tag = AgeTag.all.sample
-    ac.age_tags << tag
+  if ac.is_edu?
+    ac.direction_tags << DirectionTag.educational.sample(rand(3))
+  else
+    ac.direction_tags << DirectionTag.entertainment.sample(rand(3))
   end
 end
