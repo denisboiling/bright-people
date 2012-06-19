@@ -1,7 +1,7 @@
 <div class="tender_and_spec">
   <div class="tender_last">
     <div class="title">
-      Конкурсы
+      <%= link_to "Конкурсы", contests_path, class: "title" %>
       <span class="tender_title_ico"></span>
     </div>
     <% if contest = Contest.for_main %>
@@ -14,7 +14,9 @@
   </div>
 
   <div class="spec_project_last">
-    <div class="title">Спецпроекты</div>
+    <div class="title">
+      <%= link_to "Спецпроекты", special_projects_path, class: "title" %>
+    </div>
     <% SpecialProject.for_main.each do |sp| %>
       <div class="preview_cell">
         <div class="info">

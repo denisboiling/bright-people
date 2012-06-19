@@ -43,7 +43,7 @@ window.setup_search_tabs = ->
           $(".pager .page").removeClass('current')
           $(this).parent().addClass('current')
 
-  $(".search_filter a").live 'click', (event) ->
+  $(".search_filter a, .info a").live 'click', (event) ->
     event.preventDefault()
 
     if $(this).text() == 'Все разделы'
@@ -51,8 +51,12 @@ window.setup_search_tabs = ->
     else category = $(this).text()
     $(".search_filter a").removeClass('active')
     $(".search_filter a .mask").remove();
-    $(this).addClass('active')
-    $(this).prepend('<span class=\"mask\"></span>')
+    if category
+      $(".search_filter a:contains("+category+")").addClass('active')
+      $(".search_filter a:contains("+category+")").prepend('<span class=\"mask\"></span>')
+    else
+      $(".search_filter a").first().addClass('active')
+      $(".search_filter a").first().prepend('<span class=\"mask\"></span>')
     data =
       q: $(".search_title span").text().split('\"')[1]
       category: category
