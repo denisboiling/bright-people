@@ -28,12 +28,13 @@ window.setup_activities_list = ->
     
     if $(this).hasClass('bold')
       $(this).removeClass('bold')
+      $("input#order_by").val("")
     else
       $("a.order_by.bold").each ->
         $(this).removeClass('bold')
       $(this).addClass('bold')
+      $("input#order_by").val($(this).attr('data-order'))
 
-    $("input#order_by").val($(this).attr('data-order'))
     $("form#remote_form").submit()
 
   $("a.clear_link").live 'click', (event) ->

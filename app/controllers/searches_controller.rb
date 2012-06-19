@@ -2,26 +2,22 @@
 class SearchesController < ApplicationController
   def show
     
-    if params[:category].nil? or params[:category].empty?
-      range = [Activity, Organization, Article, Sponsor, SpecialProject, Contest]
-    else 
-      case params[:category]
-        when "Москва для детей"
-          range = [Activity]
-        when "Журнал"
-          range = [Article]
-        when "Конкурсы"
-          range = [Contest]
-        when "Экспертный совет"
-          range = [Sponsor]
-        when "Спецпроекты"
-          range = [SpecialProject]
-        else range = [Activity, Organization, Article, Sponsor, SpecialProject, Contest]
-      end
+    range = case params[:category]
+      when "Москва для детей"
+        [Activity]
+      when "Журнал"
+        [Article]
+      when "Конкурсы"
+        [Contest]
+      when "Экспертный совет"
+        [Sponsor]
+      when "Спецпроекты"
+        [SpecialProject]
+      else
+        [Activity, Article, Sponsor, SpecialProject, Contest]
     end
     @results = ThinkingSphinx.search(params[:q], star: true, classes: range)
     @results = @results.page(params[:page]) if params[:page]
-    @request = params[:q]
     render partial: 'searches/result', locals: { results: @results } if params[:remote]
   end
 end
