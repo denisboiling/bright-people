@@ -228,7 +228,7 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 
 .spec_project_last { margin-left:345px; overflow:hidden; height:320px;}
 .spec_project_last .title { font-family:Futura; border-bottom:2px solid #cdcdc9; color:#4f4f4f; font-size:20px; padding:10px 0px}
-.spec_project_last .preview_cell { width:23.5%; margin-top:-30px; height:290px; position:relative; z-index:10}
+.spec_project_last .preview_cell { width:23.5%; margin-top:-30px; height:290px; position:relative; z-index:10; margin-bottom:40px}
 .spec_project_last .preview_cell .desc { color:#6c6c6c}
 .spec_project_last .preview_cell:hover .desc { color:#ffe1b2}
 
@@ -347,6 +347,7 @@ span.sim_check.active { background-position:0px 0px; }
 .catalog .preview_catalog .name { padding:4px 0px; height:35px; overflow:hidden}
 .catalog .preview_catalog .short_desc {height:40px; overflow:hidden}
 .catalog .preview_catalog .name a { font-size:14px; font-weight:bold; color:#007ba4; text-decoration:none; line-height:1.2; }
+.catalog .preview_catalog .name a:hover { text-decoration:underline;}
 .catalog .preview_catalog .info { width:186px; font-size:12px; position:relative}
 .catalog .preview_catalog .info a { font-size:12px;}
 .catalog .preview_catalog.approved { width:40%}
@@ -385,7 +386,8 @@ span.sim_check.active { background-position:0px 0px; }
 .detail_page .approved_mark img { float:left; margin-top:-36px;}
 .detail_page .info_block { padding-top:10px; width: 250px; overflow:hidden}
 .detail_page .info_block table { width: 250px;}
-.detail_page .info_block .activ_site { position:relative}
+.detail_page .info_block .activ_site { position:relative; width:160px;}
+.detail_page .info_block .activ_address { position:relative; width:160px;}
 .detail_page .info_block .mask { background:url(/assets/fade_text.png) no-repeat; width:96px; height:24px; position:absolute; right:-20px; top:0px}
 .detail_page .base { font-weight:bold;}
 .detail_page .cat_list { padding-bottom:20px;}
@@ -791,6 +793,7 @@ span.sim_check.active { background-position:0px 0px; }
 .personality_preview .thumb .mask { width:120px; height:120px; background:url(/assets/rukov_mask.png) no-repeat center center; display:none; position:absolute}
 .personality_preview .name { font-weight:bold; color:#007ba4; font-size:15px; display:block; }
 .personality_preview .name a { font-weight:bold; color:#007ba4; font-size:15px; text-decoration:none }
+.personality_preview .name a:hover { text-decoration:underline}
 .personality_preview .info { color:#544d4d;display:block; }
 .personality_preview .date { color:#74746f; font-size:12px; display:block; font-weight:bold; }
 
