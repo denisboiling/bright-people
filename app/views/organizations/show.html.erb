@@ -3,6 +3,7 @@
     <div class="detail_page">
       <h1><%= @organization.title %></h1>
       <div class="cat_list">
+        Категории:
   <% @organization.direction_tags.each do |tag| %>
     <%= link_to tag.name, activities_path(tag: tag.id, kind: tag.kind) %>
   <% end %>

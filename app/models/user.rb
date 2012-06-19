@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   has_many :activity_approvals
   has_many :approved_activities, through: :activity_approvals, source: :activity
 
-  has_attached_file :avatar, styles: { medium: "300x300^#", thumb: "125x125^#", comment: "84x84^#" },
+  has_attached_file :avatar, styles: { medium: "300x300^#", thumb: "125x125^#", comment: "84x84^#", approval: "32x32^#" },
                              path: ":rails_root/public/system/users/:attachment/:id/:style/:filename",
                              url: "/system/users/:attachment/:id/:style/:filename",
                              default_style: :thumb, default_url: 'loading.gif'
