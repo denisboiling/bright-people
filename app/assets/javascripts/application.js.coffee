@@ -7,6 +7,7 @@
 #= require jquery.pikachoose
 #= require jquery.jcarousel.min
 #= require jquery.countdown
+#= require jquery.prettyPhoto
 #= require js
 #= require swfobject
 #= require select_script
@@ -34,3 +35,4 @@ $ ->
   window.setup_organization_map()
   window.setup_search_tabs()
   window.setup_login()
+  window.setup_lightbox()
