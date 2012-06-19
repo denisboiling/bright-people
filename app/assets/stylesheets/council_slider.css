@@ -10,7 +10,7 @@
 #slide9:checked ~ #slides .inner { margin-left:-800%; }
 #slide10:checked ~ #slides .inner { margin-left:-900%; }
 */
-#slides { padding:15px 0 20px}
+#slides { padding:15px 0 20px; width:160px; margin:auto}
 
 #overflow {
         width: 100%;
@@ -99,8 +99,8 @@ article a.thumb img { height:160px; width:130px; border-radius:0 0 40px 40px;}
 }
 
 
-#slide1:checked ~ #controls label:nth-child(10),
-#slide2:checked ~ #controls label:nth-child(9)/*,
+#slide1:checked ~ #controls label:nth-child(2),
+#slide2:checked ~ #controls label:nth-child(1)/*,
 #slide3:checked ~ #controls label:nth-child(2),
 #slide4:checked ~ #controls label:nth-child(3),
 #slide5:checked ~ #controls label:nth-child(4),
