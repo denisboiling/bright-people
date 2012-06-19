@@ -31,6 +31,13 @@
 	  <div class="is_login">
 	    <a class="login_user_flag" href="<%= dashboard_profile_path %>"><%= current_user.name %><span class="mask"></span></a>
 	    <a href="#" class="logout logout_link">Выйти</a>
+      <div class="profile_menu hidden">
+        <ul>
+          <li><%= link_to 'Профиль', dashboard_profile_path %></li>
+          <li><%= link_to 'Комментарии', dashboard_notifications_path %></li>
+          <li><%= link_to 'Избранное', dashboard_favourites_path %></li>
+        </ul>
+      </div>
 	  </div>
 	<% end %>
       </div>
