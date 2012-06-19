@@ -1,5 +1,12 @@
 window.setup_activities_list = ->
+  $(".filter_sorter li label, #only_approved").live 'click', ->
+    idCheck = $(this).attr("for")
 
+    if $('#' + idCheck).is(':checked')
+      $(this).find("span").removeClass("active");
+    else
+      $(this).find("span").addClass("active");
+  
   $(".remote_action").bind 'change', ->
     $("#remote_form").submit()
 

@@ -47,59 +47,6 @@
 	</div>
       <% end %>
 
-      <!-- TODO: move to coffee -->
-      <script type="text/javascript">
-	$(document).ready(function(){
-
-	// SEARCH
-	$("#search_block a.search_button").live('click',function(){
-
-	$("#login_block a.login_button").removeClass("active");
-	$(".show_login").addClass("hidden");
-
-	if($(this).hasClass('active')) {
-	$(this).removeClass("active");
-	$(".show_search").addClass("hidden");
-	}
-	else {
-	$(this).addClass("active");
-	$(".show_search").removeClass("hidden");
-	}
-
-	return false;
-	});
-	$(".show_search .close").live('click',function(){
-	$("#search_block a.search_button").removeClass("active");
-	$(".show_search").addClass("hidden");
-	});
-
-
-
-	// LOGIN
-	$("#login_block a.login_button").live('click',function(){
-
-	$("#search_block a.search_button").removeClass("active");
-	$(".show_search").addClass("hidden");
-
-	if($(this).hasClass('active')) {
-	$(this).removeClass("active");
-	$(".show_login").addClass("hidden");
-	}
-	else {
-	$(this).addClass("active");
-	$(".show_login").removeClass("hidden");
-	}
-
-	return false;
-	});
-	$(".show_login .close").live('click',function(){
-	$("#login_block a.login_button").removeClass("active");
-	$(".show_login").addClass("hidden");
-	});
-
-	});
-      </script>
-
       <div id="menu">
 	<ul class="">
 	  <li <%= 'class=selected' if @activity_page %>><%= link_to 'Кружки и студии', activities_path %></li>

@@ -50,18 +50,3 @@
     </div>
   </div>
 <% end %>
-
-<!-- TODO: remove it to coffee -->
-<script type="text/javascript">
-  $(document).ready(function(){
-    $(".filter_sorter li label, #only_approved").live('click',function(){
-      var idCheck = $(this).attr("for");
-
-      if($('#'+idCheck).attr('checked')){
-        $(this).find("span").removeClass("active");
-      } else {
-        $(this).find("span").addClass("active");
-      }
-    });
-  });
-</script>
