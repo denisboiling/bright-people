@@ -1,6 +1,7 @@
 /*
  *= require_self
  *= require jquery-ui/flick
+ *= require prettyPhoto
  *= require_directory .
 */
 

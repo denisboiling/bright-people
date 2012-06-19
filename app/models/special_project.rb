@@ -6,6 +6,7 @@ class SpecialProject < ActiveRecord::Base
   validates :title, :content, :author, presence: :true
 
   has_many :comments, as: :relation
+  has_many :favourites, as: :relation, dependent: :destroy
 
   has_attached_file :picture,
                     styles: { medium: "300x300^#", thumb: "160x100^#" },
