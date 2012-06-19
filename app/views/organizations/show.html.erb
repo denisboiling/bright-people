@@ -3,11 +3,9 @@
     <div class="detail_page">
       <h1><%= @organization.title %></h1>
       <div class="cat_list">
-	<% arr = Array.new %>
-	<% @organization.activities.each do |a| a.direction_tags.each do |t| arr << t end end %>
-	<% arr.each do |tag| %>
-	  <%= link_to tag.name, activities_path(tag: tag.id) %>
-	<% end %>
+  <% @organization.direction_tags.each do |tag| %>
+    <%= link_to tag.name, activities_path(tag: tag.id, kind: tag.kind) %>
+  <% end %>
       </div>
       <div class="left_part">
 	<div class="info_block">
@@ -15,7 +13,7 @@
 	    <tbody>
 	      <tr>
 		<th><span>Метро</span></th>
-		<td><%= @organization.metro_station.title %></td>
+		<td><%#= image_tag @organization.metro_station.metro_branch.icon.url %><%= @organization.metro_station.title %></td>
 	      </tr>
 	      <tr>
 		<th><span>Адрес</span></th>

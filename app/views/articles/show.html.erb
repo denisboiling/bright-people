@@ -1,6 +1,9 @@
+<% content_for :title do %>
+  Фестиваль Яркие Люди | Яркий Журнал | <%= @article.title %>
+<% end %>
 <div class="pages">
   <div class="common">
-    <h1><%= @article.title %></h1>
+    <h1><%= @article.title %> <%= favourite_block @article %></h1>
     <strong><%= @article.author.name %>. <%= Russian::strftime(@article.created_at, "%A, %e %B %Y г.") %></strong>
     <div class="post_preview">
       <div class="thumb">
@@ -36,13 +39,15 @@
         <div class="title">Делись с друзьями</div>
         <%= render 'shared/share_social' %>
         <div class="clear"></div>
+
 </div>
 </div>
 <div class="description">
   <%== @article.content %>
 </div>
 <div class="clear"></div>
-<div class="comment treeview">
+<% if @comments.blank? %> <div class="comment treeview hidden"> <% else %> <div class="comment treeview"> <% end %>
+  <div class="title">Комментарии</div>
   <ul>
     <% @comments.each do |comment| %>
       <%= render 'shared/comment', comment: comment %>

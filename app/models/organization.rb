@@ -10,13 +10,12 @@ class Organization < ActiveRecord::Base
 
   belongs_to :metro_station
 
-  define_index do
-    indexes title, sortable: true
-  end
-
   default_scope order: 'title ASC'
-
-  def picture
-    'url-to-generic-image-for-organization.png'
+  
+  def direction_tags
+    DirectionTag.joins(:activities => :organization)
+                .where('organizations.id = ?', self.id)
+                .where('activities.published = TRUE')
+                .select('DISTINCT(direction_tags.id), direction_tags.*')
   end
 end

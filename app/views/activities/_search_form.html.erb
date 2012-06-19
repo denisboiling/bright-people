@@ -20,7 +20,8 @@
         <ul>
           <% @directions.each do |tag| %>
             <li>
-              <%= check_box_tag "tag[]", tag.id, false, id: (dom_id tag), class: :remote_action %>
+              <%= check_box_tag "tag[]", tag.id, (params[:tag] and tag.id.to_s.in? params[:tag]),
+                                id: (dom_id tag), class: :remote_action %>
               <%= label_tag (dom_id tag), class: :hidden_checkbox do %>
 		<span class="sim_check"></span> <%= tag.name %>
 	      <% end %>
@@ -85,18 +86,3 @@
     </div>
   </div>
 <% end %>
-
-<!-- TODO: remove it to coffee -->
-<script type="text/javascript">
-  $(document).ready(function(){
-    $(".filter_sorter li label, #only_approved").live('click',function(){
-      var idCheck = $(this).attr("for");
-
-      if($('#'+idCheck).attr('checked')){
-        $(this).find("span").removeClass("active");
-      } else {
-        $(this).find("span").addClass("active");
-      }
-    });
-  });
-</script>

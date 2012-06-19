@@ -19,6 +19,8 @@ td              { font-family: Verdana, Geneva, sans-serif; color:#464646; font-
 }
 html {height: 100%;}
 
+a.bold { font-weight:bold; }
+
 a               { font-family: Verdana, Geneva, sans-serif; color:#464646; font-size:14px; text-decoration:underline}
 a:hover { font-family: Verdana, Geneva, sans-serif; color:#464646; font-size:14px; text-decoration:none}
 
@@ -464,6 +466,7 @@ span.sim_check.active { background-position:0px 0px; }
 .comment .more_comment a { background:url(/assets/more_button.png); width:208px; height:33px; color:#fff; text-align:center; display:block; font-size:14px; text-shadow:1px 1px #ccc; text-decoration:none; line-height:33px}
 
 .treeview { padding-bottom:10px; border-top:3px solid #e5e5e5}
+.treeview .title { font-size:20px; color:#007ba4; font-family:Futura; border-bottom:2px solid #ccc; padding-bottom:2px; margin-bottom:20px}
 .treeview .info .quote { background:none; padding-left:0}
 .treeview .info .name { padding-left:0;}
 
@@ -546,7 +549,7 @@ span.sim_check.active { background-position:0px 0px; }
 .description h3 { color:#c14425; font-size:18px; font-family:Futura; padding:10px 0px}
 .description .question-class { color:#343434; font-weight:bold; padding:12px 0px 12px 30px; background:url(/assets/question-class.png) no-repeat 5px 6px;}
 
-qoute-class { color:#000000; font-family:Futura; font-size:20px; display:block; padding:10px 0px; text-align:center}
+.quote-class { color:#000000; font-family:Futura; font-size:20px; display:block; padding:10px 0px; text-align:center}
 
 .description img {  -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px;}
 

@@ -1,0 +1,235 @@
+about_festival:
+  permalink: about_festival
+  text: >-
+    <div class="common">
+    <div class="post_category_menu">
+    <ul>
+    <li class="about_ico active"><a href="/pages/about_festival">О фестивале</a></li>
+    <li class="org_ico"><a href="/pages/org_komitet">Оргкомитет</a></li>
+    </ul>
+    <div class="clear">
+    </div>
+    </div>
+    <div id="slider_about_fest">
+    <div class="slides_container">
+    <div class="slide" style="background:url(/assets/samp/slide_1_small.jpg) no-repeat 0 top; height:395px">
+    </div>
+    <div class="slide" style="background:url(/assets/samp/slide_2_small.jpg) no-repeat 0 top; height:395px">
+    </div>
+    <div class="slide" style="background:url(/assets/samp/slide_4_small.jpg) no-repeat 0 top; height:395px">
+    </div>
+    </div>
+    <a href="#" class="next">Вперед</a>
+    <a href="#" class="prev">Назад</a>
+    </div>
+    <div class="about_fest">
+    <div class="left_part">
+    <div class="title">
+    Что такое фестиваль "Яркие люди 2012"?
+    </div>
+    - Это ежегодный международный фестиваль, объединяющий лучшие культурные и образовательные проекты для детей, талантливых педагогов и самых ярких представителей творческих профессий из России и Европы с родителями, заинтересованных во всестороннем развитие своих детей.<br />
+    <br />
+    - Это уличный перформанс-карнавал, в котором участвуют детские и взрослые артисты ведущих московских и зарубежных театров, школ и ВУЗов, цирковые артисты, музыканты.<br />
+    <br />
+    - Это многочисленные мастер-классы, яркие обучающие активности, делающие гостей соучастниками фестиваля.
+    </div>
+    <div class="right_part">
+    <div class="title">
+    О фестивале "Яркие люди 2012"
+    </div>
+    Ежегодный детский фестиваль "Яркие люди" состоится в Парке Горького 18 августа 2012 г.<br />
+    <br />
+    <div class="title">
+    Что вас ждет на фестивале?
+    </div>
+    - 3 сцены: цирковая, театральная, музыкальная;<br />
+      <br />
+      - многочисленные творческие мастерские;<br />
+      <br />
+      - эко-городок;<br />
+      <br />
+      - зона для самых маленьких;<br />
+      <br />
+      - зона детского вокального мастерства;<br />
+      <br />
+      - зона активных игр;<br />
+      <br />
+      - маркет с творческими товарами;<br />
+      <br />
+      - книжная зона;<br />
+      <br />
+      - кафе и мороженое;<br />
+      <br />
+      - зона пикника.
+      </div>
+      <div class="clear">
+      </div>
+      </div>
+      </div>
+
+org_komitet:
+  permalink: org_komitet
+  text: >-
+    <div class="common">
+    <div class="post_category_menu">
+    <ul>
+    <li class="about_ico"><a href="/pages/about_festival">О фестивале</a></li>
+    <li class="org_ico active"><a href="/pages/org_komitet">Оргкомитет</a></li>
+    </ul>
+    <div class="clear">
+    </div>
+    </div>
+    <div class="orgkomitet">
+    <div class="org_people">
+    <div class="org_people_preview">
+    <div class="org_people_wrapper">
+    <div class="thumb">
+    <a href="">
+    <span class="mask"></span>
+    <img src="/assets/org_com_face_1.jpg" width="205px" height="205px" alt="" />
+    </a>
+    </div>
+    <span class="name">Надежда Левашова</span>
+    <span class="info">МОСКОВСКИЙ КРЕДИТНЫЙ БАНК</span>
+    </div>
+    </div>
+    <div class="org_people_preview">
+    <div class="org_people_wrapper">
+    <div class="thumb">
+    <a href="">
+    <span class="mask"></span>
+    <img src="/assets/org_com_face_2.jpg" width="205px" height="205px" alt="" />
+    </a>
+    </div>
+    <span class="name">Мунтян Ольга</span>
+    <span class="info">КОМПАНИЯ "БРАЙТ ПИПЛ"</span>
+    </div>
+    </div>
+    <div class="org_people_preview">
+    <div class="org_people_wrapper">
+    <div class="thumb">
+    <a href="">
+    <span class="mask"></span>
+    <img src="/assets/org_com_face_3.jpg" width="205px" height="205px" alt="" />
+    </a>
+    </div>
+    <span class="name">Гальперина Мария</span>
+    <span class="info">КОМПАНИЯ "БРАЙТ ПИПЛ"</span>
+    </div>
+    </div>
+    <div class="clear">
+    </div>
+    </div>
+    <div class="title">
+    Оргкомитет фестиваля "Яркие люди 2012"
+    </div>
+    <div class="left_part">
+    <div class="other_people_preview">
+    <div class="thumb">
+    <a href="">
+    <span class="mask"></span>
+    <img src="/assets/org_com_face_4.jpg" width="85" height="85" alt="" />
+    </a>
+    </div>
+    <div class="info">
+    <div class="name">
+    Василиса Никифорова
+    </div>
+    PR-менеджер проекта.<br />
+    Обращаться по вопросам аккредитации журналистов.
+    <div class="contact">
+    <span class="toemail">v_nicol@bk.ru</span><br /><span class="phone">+7 906 072-04-42</span>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="right_part">
+    <div class="other_people_preview">
+    <div class="thumb">
+    <a href="">
+    <span class="mask"></span>
+    <img src="/assets/org_com_face_5.jpg" width="85" height="85" alt="" />
+    </a>
+    </div>
+    <div class="info">
+    <div class="name">
+    Мария Демидова
+    </div>
+    Продюсер проекта.<br />
+    Обращаться по вопросам участия в фестивале.
+    <div class="contact">
+    <span class="toemail">demidova@bright-people.ru</span><span class="phone">+7 926 884-12-27</span>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="clear">
+    </div>
+    </div>
+    </div>
+
+about_bank:
+  permalink: about_bank
+  text: >-
+    <div class="bank_page">
+    <div class="left_corner">
+    <div class="right_corner">
+    <div class="confeti">
+    <div class="title"><h1>МОСКОВСКОМУ КРЕДИТНОМУ БАНКУ — 20 лет!</h1></div>
+    <div class="bank_info">
+    <div class="bank_info_wrapper">
+    <div class="thumb">
+    <a href="#"><img src="/assets/more_about_bank.png" alt="" /></a>
+    </div>
+    <div class="who">
+    Карта<br />для ярких людей!
+    </div>
+    <div class="card">
+    <img src="/assets/bank_bright_card.png" alt="" />
+    </div>
+    </div>
+    </div>
+    <div class="director_info">
+    <div class="director_info_wrapper">
+    <div class="thumb">
+    <img src="/assets/nikolashev.png" alt="" />
+    </div>
+    <div class="who">
+    Президент МОСКОВСКОГО КРЕДИТНОГО БАНКА<br />Александр НИКОЛАШИН
+    </div>
+    <strong>МОСКОВСКИЙ КРЕДИТНЫЙ БАНК в честь своего 20-летия дарит городу праздник  - детский творческий фестиваль «Яркие люди».</strong>
+    <br /><br />
+    Такое масштабное мероприятие МОСКОВСКИЙ КРЕДИТНЫЙ БАНК проводит впервые, несмотря на то, что банк всегда с уважением относился к семейным ценностям и проявлял живое участие к жизни детей, оставшихся без родительского внимания и заботы. Поддержка всегда носила «неформальный» характер и проявлялась через личное стремление и желание руководителей и сотрудников банка помочь тем, кто в этом нуждается. Мы уверены, дети  - наше будущее и очень важно, чтобы они вошли в этот мир умными, разносторонними людьми, чтобы в их сердцах жила доброта и красота.<br /><br />
+    В этом году мы решили расширить границы и устроить праздник для всех детей Москвы. Банк постарался организовать мероприятие так, чтобы все гости, от самых больших до самых маленьких, могли не только весело провести время, но и познакомиться с творческими профессиями, поучаствовать в мастер-классах и, возможно, найти для себя новые увлечения и занятия.<br /><br />
+    Мы надеемся, что праздник понравится как детям, так и их родителям, и будем рады, если этим фестивалем МОСКОВСКИЙ КРЕДИТНЫЙ БАНК положит начало новой традиции – ежегодному проведению масштабных детских мероприятий. <br /><br />
+    Мы уверены, что творчество и искусство помогут детям раскрыться, стать нестандартными и яркими людьми!
+    </div>
+    </div>
+    <div class="observer_info">
+    <div class="observer_info_wrapper">
+    <div class="thumb">
+    <img src="/assets/avdeev.png" alt="" />
+    </div>
+    <div class="who">
+    Член наблюдательного совета<br />МОСКОВСКОГО КРЕДИТНОГО БАНКА<br />Роман АВДЕЕВ
+    </div>
+    <div class="blog_title">блог<br />романа<br />авдеева</div>
+    <div class="blog_cell first">
+    <a href="">Усыновление: "правда, которая невероятней выдумки"</a><br />
+    <span class="date">23 мая 2012 г. </span>
+    </div>
+    <div class="blog_cell">
+    <a href="">Усыновление: "правда, которая невероятней выдумки"</a><br />
+    <span class="date">23 мая 2012 г. </span>
+    </div>
+    <div class="blog_cell">
+    <a href="">Усыновление: "правда, которая невероятней выдумки"</a><br />
+    <span class="date">23 мая 2012 г. </span>
+    </div>
+    </div>
+    </div>
+    <div class="clear"></div>
+    </div>
+    </div>
+    </div>
+    </div>

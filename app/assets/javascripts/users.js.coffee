@@ -2,6 +2,24 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+window.setup_login = ->
+  $("#login_block a.login_button").live 'click', (event) ->
+    event.preventDefault()
+    
+    $("#search_block a.search_button").removeClass("active")
+    $(".show_search").addClass("hidden")
+    
+    if $(this).hasClass('active')
+      $(this).removeClass("active")
+      $(".show_login").addClass("hidden")
+    else
+      $(this).addClass("active")
+      $(".show_login").removeClass("hidden")
+    
+    $(".show_login .close").live 'click', ->
+      $("#login_block a.login_button").removeClass("active")
+      $(".show_login").addClass("hidden")
+
 window.setup_email_dialog = ->
   return unless $.cookie('email_dialog')
   

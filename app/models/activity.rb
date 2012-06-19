@@ -55,7 +55,7 @@ class Activity < ActiveRecord::Base
   has_attached_file :logo, styles: { medium: "300x300^#", thumb: '160x100^#', approved: '422x114^#', index: '186x114^#' },
                            path: ":rails_root/public/system/activities/:attachment/:id/:style/:filename",
                            url: "/system/activities/:attachment/:id/:style/:filename",
-                           default_style: :thumb
+                           default_style: :thumb, default_url: 'loading.gif'
 
   # Forcibly set activity relation type for video
   def add_activity_type(video)
@@ -82,11 +82,11 @@ class Activity < ActiveRecord::Base
   scope :published, where(published: true)
   scope :not_published, where(published: false)
 
-  scope :by_kind, lambda{|kind| where(is_educational: kind == 'educational' ? true : false)}
-  scope :by_age, lambda{|ages| joins(:age_tags).where('age_tags.id IN (?)', ages)}
-  scope :by_tag, lambda{|tags| joins(:direction_tags).where('direction_tags.id IN (?)', tags)}
-  scope :by_metro, lambda{|metros| where('metro_station_id in (?)', metros)}
-  scope :by_region, lambda{|regions| where('region_id in (?)', regions)}
+  scope :by_kind, lambda { |kind| where(is_educational: kind == 'educational') }
+  scope :by_age, lambda { |ages| joins(:age_tags).where('age_tags.id IN (?)', ages) }
+  scope :by_tag, lambda { |tags| joins(:direction_tags).where('direction_tags.id IN (?)', tags) }
+  scope :by_metro, lambda { |metros| where('metro_station_id in (?)', metros) }
+  scope :by_region, lambda { |regions| where('region_id in (?)', regions) }
   scope :approved, where(approved: true)
 
   define_index do

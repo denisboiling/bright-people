@@ -10,7 +10,7 @@ class ContestMembershipsController < ApplicationController
     @memberships = ContestMembership.order(sort)
     @memberships = @memberships.reject { |item| item.contest_id != @contest.id }
 #   @memberships = @memberships.page(params[:page]).per(10)
-    @memberships = Kaminari.paginate_array(@memberships).page(params[:page]).per(5)
+    @memberships = Kaminari.paginate_array(@memberships).page(params[:page]).per(16)
 
     render partial: 'memberships_list', locals: { memberships: @memberships, contest: @contest } if params[:remote]
 #   @memberships = @contest.memberships
@@ -37,12 +37,17 @@ class ContestMembershipsController < ApplicationController
   end
 
   def vote
-    return unless @contest.active?
-    ContestVote.create user_id: current_user.id,
-                       rate: params[:rating].to_i,
-                       contest_id: params[:contest_id],
-                       membership_id: params[:id]
-    head :ok
+    throw "contest is not running #{@contest}" unless @contest.running?
+    @membership = ContestMembership.find(params[:id])
+    ContestVote.where(user_id: current_user.id,
+                      membership_id: params[:id],
+                      contest_id: params[:contest_id])
+               .delete_all
+    ContestVote.create! user_id: current_user.id,
+                        membership_id: params[:id],
+                        contest_id: params[:contest_id],
+                        rate: params[:rating].to_i
+    render partial: 'vote_count', locals: { membership: @membership }
   end
 
   private

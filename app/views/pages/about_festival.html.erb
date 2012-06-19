@@ -1,71 +1,12 @@
 <div class="pages">
-  <div class="common">
-    <div class="post_category_menu">
-      <ul>
-        <li class="about_ico active"><%= link_to "О фестивале", page_path('about_festival') %></li>
-        <li class="org_ico"><%= link_to "Оргкомитет", page_path('org_komitet') %></li>
-      </ul>
-      <div class="clear">
-      </div>
-    </div>
-    <div id="slider_about_fest">
-      <div class="slides_container">
-        <div class="slide" style="background:url(/assets/samp/slide_1_small.jpg) no-repeat 0 top; height:395px">
-        </div>
-        <div class="slide" style="background:url(/assets/samp/slide_2_small.jpg) no-repeat 0 top; height:395px">
-        </div>
-        <div class="slide" style="background:url(/assets/samp/slide_4_small.jpg) no-repeat 0 top; height:395px">
-        </div>
-      </div>
-      <a href="#" class="next">Вперед</a>
-      <a href="#" class="prev">Назад</a>
-    </div>
-    <div class="about_fest">
-      <div class="left_part">
-        <div class="title">
-          Что такое фестиваль "Яркие люди 2012"?
-        </div>
-         - Это ежегодный международный фестиваль, объединяющий лучшие культурные и образовательные проекты для детей, талантливых педагогов и самых ярких представителей творческих профессий из России и Европы с родителями, заинтересованных во всестороннем развитие своих детей.<br />
-        <br />
-         - Это уличный перформанс-карнавал, в котором участвуют детские и взрослые артисты ведущих московских и зарубежных театров, школ и ВУЗов, цирковые артисты, музыканты.<br />
-        <br />
-         - Это многочисленные мастер-классы, яркие обучающие активности, делающие гостей соучастниками фестиваля.
-      </div>
-      <div class="right_part">
-        <div class="title">
-          О фестивале "Яркие люди 2012"
-        </div>
-         Ежегодный детский фестиваль "Яркие люди" состоится в Парке Горького 18 августа 2012 г.<br />
-        <br />
-        <div class="title">
-          Что вас ждет на фестивале?
-        </div>
-         - 3 сцены: цирковая, театральная, музыкальная;<br />
-        <br />
-         - многочисленные творческие мастерские;<br />
-        <br />
-         - эко-городок;<br />
-        <br />
-         - зона для самых маленьких;<br />
-        <br />
-         - зона детского вокального мастерства;<br />
-        <br />
-         - зона активных игр;<br />
-        <br />
-         - маркет с творческими товарами;<br />
-        <br />
-         - книжная зона;<br />
-        <br />
-         - кафе и мороженое;<br />
-        <br />
-         - зона пикника.
-      </div>
-      <div class="clear">
-      </div>
-    </div>
-  </div>
+  <%== Page.as('about_festival').text %>
+  <!-- NOT EDIT -->
   <div class="sidebar">
     <%= render 'shared/sidebar' %>
   </div>
   <div class="clear"></div>
 </div>
+
+<% content_for :title do %>
+  Фестиваль Яркие Люди | о Фестивале
+<% end %>
