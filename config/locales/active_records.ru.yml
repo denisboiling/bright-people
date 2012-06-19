@@ -1,6 +1,11 @@
 ru:
   activerecord:
     models:
+      page:
+        one: Страница
+        few: Страницы
+        many: Страницы
+        other: Страницы
       activity_approval:
         one: Одобрить кружок
         few: Одобрить кружки
@@ -207,3 +212,8 @@ ru:
         text: Текст
         created_at: Дата одобрения
         updated_at: Дата изменения
+      page:
+        permalink: Индификатор
+        created_at: Дата одобрения
+        updated_at: Дата изменения
+        text: Текст
