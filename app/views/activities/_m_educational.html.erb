@@ -16,6 +16,17 @@
         Детям <%= activity.age %> лет<br />
         Учреждение: <%= link_to activity.organization.title, activity.organization %>
         </div>
+        <div class="dop_info">
+          <div class="thumb">
+            <%= image_tag activity.expert.avatar.url(:approval) %>
+          </div>
+          <div class="expert_name">
+            <%= activity.expert.name %>:
+          </div>
+          <div class="expert_opinion">
+            "<%= truncate(activity.approval.text, length: 60, separator: ' ') %>"
+          </div>
+        </div>
         <div class="rating_readonly" data-rating="<%= activity.users_rating %>"></div>
       </div>
     </div>
