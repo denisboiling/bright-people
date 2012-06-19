@@ -67,3 +67,13 @@ window.setup_activities_approval = ->
   $('.approve_activity_link').bind 'click', (event) ->
     event.preventDefault()
     $('#activity_approve_dialog').removeClass('hidden')
+
+window.setup_lightbox = ->
+  $("a[rel^='prettyPhoto']").prettyPhoto(social_tools: false)
+  $('#pikame').PikaChoose(carousel: true, autoPlay: false)
+  
+  $('.pikachoose .mask').bind 'click', ->
+    PikaChoose = $('#pikame').data('pikachoose')
+    element = PikaChoose.active
+    class_name = element.attr('data-hook-class')
+    $("#lightbox_hook .#{class_name}").trigger('click')
