@@ -357,7 +357,7 @@ span.sim_check.active { background-position:0px 0px; }
 .catalog .preview_catalog .thumb { width:186px; -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; overflow:hidden; position:relative; margin:0px 0px 10px 0px}
 .catalog .preview_catalog .thumb img { height:114px; width:186px; border-radius:6px;}
 .catalog .preview_catalog .name { padding:4px 0px; height:50px; overflow:hidden}
-.catalog .preview_catalog .short_desc {height:40px; overflow:hidden}
+.catalog .preview_catalog .short_desc {height:54px; overflow:hidden}
 .catalog .preview_catalog .name a { font-size:14px; font-weight:bold; color:#007ba4; text-decoration:none; line-height:1.2; }
 .catalog .preview_catalog .name a:hover { text-decoration:underline;}
 .catalog .preview_catalog .info { width:186px; font-size:12px; position:relative}
@@ -377,7 +377,8 @@ span.sim_check.active { background-position:0px 0px; }
 .catalog .preview_catalog .dop_info .expert_name { height:42px; font-family:Futura; padding-top:3px}
 .catalog .preview_catalog .dop_info .expert_opinion { background:none; padding:0; margin:0; text-align: left; }
 
-.catalog .preview_catalog .info .domik { background:url(/assets/place.png) no-repeat 0 2px; width:16px; height:16px; display:inline-block; overflow:hidden; text-indent:-1000px;}
+.catalog .preview_catalog .info .domik { background:url(/assets/place.png) no-repeat 0 2px; padding-left:20px; display:block}
+
 
 .entertainment_list .preview_catalog { width:25%;}
 
