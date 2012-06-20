@@ -41,10 +41,10 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 
 .header_wrapper { margin:auto; position:relative; min-width:960px; padding:25px 0px 15px 0px; border-bottom:2px solid #ccc;}
 
-#header .header_flash_wrapper  { position:relative; background:url(/assets/header_bg.jpg) no-repeat center top; height:204px;}
-#header .header_flash_wrapper a { display:block; height:204px; width:100%; position:absolute; z-index:10}
+#header .header_flash_wrapper  { position:relative; background:url(/assets/header_bg.jpg) no-repeat center top; height:200px;}
+#header .header_flash_wrapper a { display:block; height:200px; width:100%; position:absolute; z-index:10}
 
-#header .header_flash_wrapper .cap { background:url(/assets/header_cap.jpg) no-repeat center top; height:204px;}
+#header .header_flash_wrapper .cap { background:url(/assets/header_cap.jpg) no-repeat center top; height:200px;}
 
 
 
@@ -93,6 +93,10 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 #login_block .is_login .login_user_flag .mask {  position:absolute; right:0px; top:0px; background:url(/assets/user_name_login_mask.png); width:36px; height:21px; display:block;}
 #login_block .is_login .logout { color:#bb224c; font-size:11px; line-height:21px;}
 
+#login_block .profile_menu { position:relative; padding:4px; width:112px; margin-left:-2px; background:#fff; -moz-box-shadow:0px 2px 6px rgba(0,0,0,0.5);
+	      -webkit-box-shadow:0px 2px 6px rgba(0,0,0,0.5);
+	      box-shadow:0px 2px 6px rgba(0,0,0,0.5); text-align:center; -moz-border-radius:0 0 20px 20px; border-radius:0 0 20px 20px; -webkit-border-radius:0 0 20px 20px; -khtml-border-radius:0 0 20px 20px; }
+#login_block .profile_menu a { color:#bb224c; font-size:11px;}
 
 .show_search .search_wrapper {}
 
@@ -117,10 +121,10 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 #header #menu li:hover, #header #menu li.selected  { border:3px solid #21a2dc; }
 #header #menu li:hover a, #header #menu li.selected a { padding:0px 2px;}
 
-/*
+
 #header #menu li.current {  border:3px solid #BB224C;}
 #header #menu li.current a {  padding:0px 2px;}
-*/
+#header #menu li.current:hover {  border:3px solid #21a2dc;}
 
 
 #nested_slider { height:395px; position:relative}
@@ -172,7 +176,7 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 .main_content .bank_info  .order_bank_catd { background:url(../assets/samp/cards.jpg) no-repeat; padding-top:180px; float:left; width:180px; font-size:11px; text-align:center}
 .main_content .bank_info .bank_text { color:#525252; font-size:12px; float:left; width:220px; text-align:left; margin-left:10px; background:url(../assets/samp/signature.jpg) no-repeat right 130px;}
 
-.main_content .adv { float:right; margin-left:3%; height:250px; width:213px; border:1px solid #bb224c; text-align:center; padding-top:100px}
+.main_content .adv { float:right; margin-left:3%; width:213px; text-align:center;}
 
 .main_content .bank_info .to_bank_link { margin-top:23px; background:#fff; border:3px solid #bb224c; -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; behavior: url(border-radius.htc); text-decoration:none; font-weight:bold; color:#bb224c; padding:1px 5px; display:inline-block}
 .main_content .bank_info .to_bank_link:hover { border:3px solid #21a2dc;}
@@ -224,6 +228,7 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 
 .tender_last { float:left; width:325px;}
 .tender_last .title { font-family:Futura; border-bottom:2px solid #cdcdc9; color:#4f4f4f; font-size:20px; padding:10px 0px; position:relative}
+.tender_last .title a { font-family:Futura; color:#4f4f4f; font-size:20px;}
 .tender_last .tender_title_ico { background:url(/assets/tender_ico.png) ; display:block; height:51px; width:51px; position:absolute; left:110px; top:5px}
 .tender_last .preview_tender { margin-top:30px}
 .tender_last .preview_tender .name a { font-size:14px; font-weight:bold; color:#007ba4; text-decoration:none; line-height:1.3}
@@ -234,6 +239,7 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 
 .spec_project_last { margin-left:345px; overflow:hidden; height:320px;}
 .spec_project_last .title { font-family:Futura; border-bottom:2px solid #cdcdc9; color:#4f4f4f; font-size:20px; padding:10px 0px}
+.spec_project_last .title a { font-family:Futura; color:#4f4f4f; font-size:20px;}
 .spec_project_last .preview_cell { width:23.5%; margin-top:-30px; height:290px; position:relative; z-index:10; margin-bottom:40px}
 .spec_project_last .preview_cell .desc { color:#6c6c6c}
 .spec_project_last .preview_cell:hover .desc { color:#ffe1b2}
@@ -259,7 +265,7 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 .council .title { font-family:Futura; border-bottom:2px solid #cdcdc9; color:#4f4f4f; font-size:20px; padding:10px 0px;}
 .council .expert { float: left; width:760px;}
 
-.council .expert .exp_preview { position:relative; float:left; width:143px; margin-top:20px; margin-right:11px; text-align:center; }
+.council .expert .exp_preview { position:relative; float:left; width:143px; margin-top:20px; margin-right:9px; text-align:center; }
 .council .expert .exp_preview.last { margin-right:0px;}
 .council .expert .exp_preview .mark { background:url(/assets/exp_mark.png) no-repeat; display:block; width:19px; height:24px; text-align:center; line-height:24px; padding:0px 10px 0px 5px; color:#fff; position:absolute; top:50px;}
 .council .expert .exp_preview .thumb { margin:auto; overflow:hidden;height:122px;width:122px; -moz-border-radius:60px; border-radius:60px; -webkit-border-radius:60px; -khtml-border-radius:60px; behavior: url(border-radius.htc); margin-bottom:5px}
@@ -350,8 +356,8 @@ span.sim_check.active { background-position:0px 0px; }
 .catalog .preview_catalog { float:left; width:20%; margin:20px 0px;  }
 .catalog .preview_catalog .thumb { width:186px; -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; overflow:hidden; position:relative; margin:0px 0px 10px 0px}
 .catalog .preview_catalog .thumb img { height:114px; width:186px; border-radius:6px;}
-.catalog .preview_catalog .name { padding:4px 0px; height:35px; overflow:hidden}
-.catalog .preview_catalog .short_desc {height:40px; overflow:hidden}
+.catalog .preview_catalog .name { padding:4px 0px; height:50px; overflow:hidden}
+.catalog .preview_catalog .short_desc {height:54px; overflow:hidden}
 .catalog .preview_catalog .name a { font-size:14px; font-weight:bold; color:#007ba4; text-decoration:none; line-height:1.2; }
 .catalog .preview_catalog .name a:hover { text-decoration:underline;}
 .catalog .preview_catalog .info { width:186px; font-size:12px; position:relative}
@@ -371,7 +377,8 @@ span.sim_check.active { background-position:0px 0px; }
 .catalog .preview_catalog .dop_info .expert_name { height:42px; font-family:Futura; padding-top:3px}
 .catalog .preview_catalog .dop_info .expert_opinion { background:none; padding:0; margin:0; text-align: left; }
 
-.catalog .preview_catalog .info .domik { background:url(/assets/place.png) no-repeat 0 2px; width:16px; height:16px; display:inline-block; overflow:hidden; text-indent:-1000px;}
+.catalog .preview_catalog .info .domik { background:url(/assets/place.png) no-repeat 0 2px; padding-left:20px; display:block}
+
 
 .entertainment_list .preview_catalog { width:25%;}
 
@@ -522,7 +529,9 @@ span.sim_check.active { background-position:0px 0px; }
 .alongside .title { font-size:20px; color:#4f4f4f; font-family:Futura; border-bottom:2px solid #ccc; padding-bottom:2px; margin-bottom:20px}
 .alongside .thumb { -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; behavior: url(border-radius.htc); overflow:hidden; position:relative; width:160px; height:100px; display:block; overflow:hidden; margin:auto; margin-bottom:10px}
 .alongside .thumb img { height:100px; width:160px; border-radius:6px;}
-.alongside .name a { color:#007ba4; font-size:16px; font-family:Futura; display:block; text-decoration:none}
+.alongside a { color:#007ba4; text-decoration:none}
+.alongside a:hover { color:#007ba4; text-decoration:underline}
+.alongside span.name { color:#007ba4; font-size:16px; font-family:Futura; display:block; }
 .alongside .geo {}
 
 
@@ -744,8 +753,8 @@ span.sim_check.active { background-position:0px 0px; }
 
 .expert_list .exp_preview .info {}
 .expert_list .exp_preview .name { color:#007ba4; font-weight:bold; padding:2px 10px; text-align:center; display:block; line-height:1.3}
-.expert_list .exp_preview .name a { color:#007ba4; font-weight:bold; text-decoration:none}
-.expert_list .exp_preview .name a:hover { text-decoration:underline}
+.expert_list .exp_preview  a { color:#007ba4; font-weight:bold; text-decoration:none}
+.expert_list .exp_preview  a:hover { text-decoration:underline}
 
 
 /* SEARCH RESULT */
