@@ -32,9 +32,6 @@ class Activity < ActiveRecord::Base
   has_many :activity_direction_relations
   has_many :direction_tags, through: :activity_direction_relations
 
-  has_many :activity_age_relations
-  has_many :age_tags, through: :activity_age_relations
-
   has_many :teachers
   has_many :votes, class_name: 'ActivityVote'
   has_many :activity_comments
@@ -43,7 +40,7 @@ class Activity < ActiveRecord::Base
                     dependent: :destroy
 
   has_many :favourites, as: :relation, dependent: :destroy
-                    
+
   # TODO: replace with polymorphic
   has_many :videos, class_name: 'VideoUrl', dependent: :destroy,
                     conditions: "relation_type = 'activity'",
@@ -77,7 +74,7 @@ class Activity < ActiveRecord::Base
                   :photos_attributes, :videos_attributes, :logo, :expert_id, :region_id, :cost,
                   :monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday,
                   :coords, :activity_comments_attributes, :teachers_attributes, :published,
-                  :phone, :site, :direction_tag_ids, :age_tag_ids, :replace_teacher_text, :logo, as: :admin
+                  :phone, :site, :direction_tag_ids, :replace_teacher_text, :logo, :start_age, :end_age, as: :admin
 
   scope :distinct, select('DISTINCT(activities.id), activities.*')
   scope :educationals, where(is_educational: true)
