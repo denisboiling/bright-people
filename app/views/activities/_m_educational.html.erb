@@ -14,9 +14,13 @@
         </div>
         <div class="short_desc">
         Детям <%= activity.age %> лет<br />
-        Учреждение: <%= link_to activity.organization.title, activity.organization %>
+        <span class="domik">Учреждение</span> <%= link_to activity.organization.title, activity.organization %>
         </div>
-        <div class="dop_info">
+        
+        <div class="rating_readonly" data-rating="<%= activity.users_rating %>"></div>
+      </div>
+      
+      <div class="dop_info">
           <div class="thumb">
             <%= image_tag activity.expert.avatar.url(:approval) %>
           </div>
@@ -27,8 +31,7 @@
             "<%= truncate(activity.approval.text, length: 60, separator: ' ') %>"
           </div>
         </div>
-        <div class="rating_readonly" data-rating="<%= activity.users_rating %>"></div>
-      </div>
+      
     </div>
   <% else %>
     <div class="preview_catalog">
@@ -44,7 +47,7 @@
         </div>
         <div class="short_desc">
         Детям <%= activity.age %> лет<br />
-        Учреждение: <%= link_to activity.organization.title, activity.organization %>
+        <span class="domik">Учреждение</span> <%= link_to activity.organization.title, activity.organization %>
         </div>
         <div class="rating_readonly" data-rating="<%= activity.users_rating %>"></div>
       </div>
