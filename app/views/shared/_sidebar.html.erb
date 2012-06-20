@@ -3,8 +3,12 @@
   <ul>
     <% Activity.published.sample(3).each do |activity| %>
       <li>
-        <span class="thumb"><%= link_to image_tag(activity.logo.url), activity %></span>
-        <span class="name"><%= link_to activity.title, activity %></span>
+      
+        <%= link_to activity do %>
+        <span class="thumb"><%= image_tag(activity.logo.url) %></span>
+        <span class="name"><%= activity.title %></span>
+        <% end %>
+        
         <% unless activity.metro_station.blank? %>
           <span class="geo"><%#= image_tag activity.metro_station.metro_branch.icon.url %>м. <%= activity.metro_station.try(:title) %></span>
         <% end %>
