@@ -43,7 +43,7 @@
       <div id="overflow">
 
         <div class="inner">
-          <% Sponsor.all.each do |sponsor| %>
+          <% (Sponsor.all * 2).each do |sponsor| %>
             <article>
               <div class="info">
                 <%= sponsor.first_name %><br /><span><%= sponsor.last_name.upcase %></span>
