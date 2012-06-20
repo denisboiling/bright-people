@@ -41,6 +41,7 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'nokogiri'
 gem 'high_voltage'
+gem 'fb_graph'
 
 group :development do
   gem 'letter_opener'
