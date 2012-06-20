@@ -28,12 +28,11 @@
       <div class="left_part">
 	<%= render 'approved' %>
 
-	<% if _min_age = @activity.min_age %>
-	  <div class="age_block">
-	    <span class="name">Возраст<br />детей</span><br />
-	    <span class="age">от <%= t(:age, :count => @activity.min_age) %></span>
-	  </div>
-	<% end %>
+	<div class="age_block">
+	  <span class="name">Возраст<br />детей</span><br />
+	  <span class="age">от <%= t(:age, :count => @activity.start_age) %></span>
+	</div>
+
 
 	<div class="rating_block">
 	  <span class="name">Рейтинг родителей</span>

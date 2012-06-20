@@ -17,7 +17,10 @@
     <% end %>
     
     <%= f.input :direction_tags, :collection => DirectionTag.send(tag_method), input_html: { size: 6 } %>
-    <%= f.input :age_tags, input_html: { size: 4 } %>
+
+    <%= f.input :start_age, as: :select, collection: age_collection(:start), include_blank: false %>
+    <%= f.input :end_age, as: :select, collection: age_collection(:end), include_blank: false %>
+
     <%= f.input :logo, as: :file, hint: f.template.image_tag(f.object.logo.url) %>
 
     <%= render 'shared/editor_toolbar', element_id: 'activity_description' %>
