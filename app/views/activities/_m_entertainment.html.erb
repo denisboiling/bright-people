@@ -9,7 +9,7 @@
       <% end %>
 
       <div class="name"><%= link_to activity.title, activity_path(activity) %></div>
-      Детям <%= activity.age %> лет<br />
+      Детям <%= activity.age_range %> лет<br />
       Учреждение: <%= link_to activity.organization.title, activity.organization %>
       <div class="rating_readonly" data-rating="<%= activity.users_rating %>"></div>
     </div>

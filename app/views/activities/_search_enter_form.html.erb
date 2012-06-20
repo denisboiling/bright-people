@@ -6,11 +6,11 @@
       <div class="cell">
 	<strong>По возрасту</strong>
 	<ul>
-	  <% AgeTag.all.each do |age_tag| %>
+	  <% search_ages.each do |age| %>
 	    <li>
-	      <%= check_box_tag "age[]", age_tag.id, false, id: (dom_id age_tag), class: :remote_action %>
-	      <%= label_tag (dom_id age_tag), age_tag.title, class: :hidden_checkbox do %>
-		<span class="sim_check"></span> <%= age_tag.title %>
+	      <%= check_box_tag "age[]", age[1], false, id: "age_#{age[1]}", class: :remote_action %>
+	      <%= label_tag "age_#{age[1]}", class: :hidden_checkbox do %>
+		<span class="sim_check"></span> <%= age[0] %>
 	      <% end %>
 	    </li>
 	  <% end %>
@@ -22,7 +22,7 @@
 	  <% @directions.each do |tag| %>
 	    <li>
 	      <%= check_box_tag "tag[]", tag.id, (params[:tag] and tag.id.to_s.in? params[:tag]),
-                          id: (dom_id tag), class: :remote_action %>
+		  id: (dom_id tag), class: :remote_action %>
 	      <%= label_tag (dom_id tag), class: :hidden_checkbox do %>
 		<span class="sim_check"></span> <%= tag.name %>
 	      <% end %>

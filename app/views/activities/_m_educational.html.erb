@@ -13,8 +13,8 @@
           <%= link_to activity.title, activity_path(activity) %>
         </div>
         <div class="short_desc">
-        Детям <%= activity.age %> лет<br />
-        <span class="domik"><%= link_to activity.organization.title, activity.organization %></span>
+        Детям <%= activity.age_range %> лет<br />
+        <span class="domik">Учреждение</span> <%= link_to activity.organization.title, activity.organization %>
         </div>
         
         <div class="rating_readonly" data-rating="<%= activity.users_rating %>"></div>
@@ -46,8 +46,13 @@
           <%= link_to activity.title, activity_path(activity) %>
         </div>
         <div class="short_desc">
+<<<<<<< HEAD
         Детям <%= activity.age %> лет<br />
         <span class="domik"><%= link_to activity.organization.title, activity.organization %></span>
+=======
+        Детям <%= activity.age_range %> лет<br />
+        <span class="domik">Учреждение</span> <%= link_to activity.organization.title, activity.organization %>
+>>>>>>> origin/master
         </div>
         <div class="rating_readonly" data-rating="<%= activity.users_rating %>"></div>
       </div>

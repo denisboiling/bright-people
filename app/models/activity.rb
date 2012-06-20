@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class Activity < ActiveRecord::Base
   include LocationExt
 
@@ -83,13 +84,18 @@ class Activity < ActiveRecord::Base
   scope :entertainments, where(is_educational: false)
   scope :published, where(published: true)
   scope :not_published, where(published: false)
-
   scope :by_kind, lambda { |kind| where(is_educational: kind == 'educational') }
-  scope :by_age, lambda { |ages| joins(:age_tags).where('age_tags.id IN (?)', ages) }
   scope :by_tag, lambda { |tags| joins(:direction_tags).where('direction_tags.id IN (?)', tags) }
   scope :by_metro, lambda { |metros| where('metro_station_id in (?)', metros) }
   scope :by_region, lambda { |regions| where('region_id in (?)', regions) }
   scope :approved, where(approved: true)
+
+
+  # OPTIMIZE: maybe..or no??? 
+  scope :by_agerange, lambda { |ages|
+    _ages = ages.map{|_age| (_age.split('-')[0].to_i.._age.split('-')[1].to_i).to_a }.flatten.uniq
+    where('start_age in (:s_age) OR end_age in (:s_age)', s_age: _ages)
+  }
 
   define_index do
     indexes title, sortable: true
@@ -116,9 +122,9 @@ class Activity < ActiveRecord::Base
     self.save!
   end
 
-  # Return min age from age_tags. When minium is nil return 0
-  def min_age
-    age_tags.minimum(:start_year)
+  # Simple show age like "1-3"
+  def age_range
+    [start_age, end_age].join(' — ')
   end
 
   # For near places
