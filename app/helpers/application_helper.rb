@@ -20,6 +20,6 @@ module ApplicationHelper
   # This need for /activities search form
   # OPTIMIZE:
   def search_ages
-    [['до года', '0-1']] | [1, 4, 7, 10].map{|i| ["#{i}—#{i+2} лет", "#{i}-#{i+2}"]} | [['13—16 лет', '13-16']]
+    [['до года', '0-0']] | [1, 4, 7, 10].map{|i| ["#{i}—#{i+2} лет", "#{i}-#{i+2}"]} | [['13—16 лет', '13-16']]
   end
 end
