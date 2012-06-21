@@ -5,7 +5,7 @@ class Comment < ActiveRecord::Base
   belongs_to :user
 
   belongs_to :relation, polymorphic: true
-  has_many :comment_notifies, class_name: 'UserCommentNotify'
+  has_many :comment_notifies, class_name: 'UserCommentNotify', dependent: :destroy
 
   after_create :create_user_notify
   after_create :update_comments_count!

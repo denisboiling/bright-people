@@ -124,6 +124,8 @@ ru:
         created_at: Дата создания
         updated_at: Дата обновления
       activity:
+        start_age: Возраст от
+        end_age: Возраст до
         is_educational: Тип кружка
         logo: Логотип
         direction_tags: Категории

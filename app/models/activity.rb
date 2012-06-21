@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class Activity < ActiveRecord::Base
   include LocationExt
 
@@ -31,9 +32,6 @@ class Activity < ActiveRecord::Base
   has_many :activity_direction_relations
   has_many :direction_tags, through: :activity_direction_relations
 
-  has_many :activity_age_relations
-  has_many :age_tags, through: :activity_age_relations
-
   has_many :teachers
   has_many :votes, class_name: 'ActivityVote'
   has_many :activity_comments
@@ -42,7 +40,7 @@ class Activity < ActiveRecord::Base
                     dependent: :destroy
 
   has_many :favourites, as: :relation, dependent: :destroy
-                    
+
   # TODO: replace with polymorphic
   has_many :videos, class_name: 'VideoUrl', dependent: :destroy,
                     conditions: "relation_type = 'activity'",
@@ -76,20 +74,25 @@ class Activity < ActiveRecord::Base
                   :photos_attributes, :videos_attributes, :logo, :expert_id, :region_id, :cost,
                   :monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday,
                   :coords, :activity_comments_attributes, :teachers_attributes, :published,
-                  :phone, :site, :direction_tag_ids, :age_tag_ids, :replace_teacher_text, :logo, as: :admin
+                  :phone, :site, :direction_tag_ids, :replace_teacher_text, :logo, :start_age, :end_age, as: :admin
 
   scope :distinct, select('DISTINCT(activities.id), activities.*')
   scope :educationals, where(is_educational: true)
   scope :entertainments, where(is_educational: false)
   scope :published, where(published: true)
   scope :not_published, where(published: false)
-
   scope :by_kind, lambda { |kind| where(is_educational: kind == 'educational') }
-  scope :by_age, lambda { |ages| joins(:age_tags).where('age_tags.id IN (?)', ages) }
   scope :by_tag, lambda { |tags| joins(:direction_tags).where('direction_tags.id IN (?)', tags) }
   scope :by_metro, lambda { |metros| where('metro_station_id in (?)', metros) }
   scope :by_region, lambda { |regions| where('region_id in (?)', regions) }
   scope :approved, where(approved: true)
+
+
+  # OPTIMIZE: maybe..or no??? 
+  scope :by_agerange, lambda { |ages|
+    _ages = ages.map{|_age| (_age.split('-')[0].to_i.._age.split('-')[1].to_i).to_a }.flatten.uniq
+    where('start_age in (:s_age) OR end_age in (:s_age)', s_age: _ages)
+  }
 
   define_index do
     indexes title, sortable: true
@@ -116,9 +119,9 @@ class Activity < ActiveRecord::Base
     self.save!
   end
 
-  # Return min age from age_tags. When minium is nil return 0
-  def min_age
-    age_tags.minimum(:start_year)
+  # Simple show age like "1-3"
+  def age_range
+    [start_age, end_age].join(' — ')
   end
 
   # For near places

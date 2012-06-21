@@ -1,4 +1,6 @@
 BrightPeople::Application.routes.draw do
+  match '/fb' => 'fb_pages#fb_auth'
+  match '/fb_pages' => 'fb_pages#fb_pages'
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   put 'users/email' => 'users#update_email', as: :update_user_email
 

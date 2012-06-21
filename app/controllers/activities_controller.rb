@@ -49,7 +49,7 @@ class ActivitiesController < ApplicationController
   def search
     activities = Activity.by_kind(@kind).published
     activities = activities.approved if params[:only_approved].present?
-    activities = activities.by_age(params[:age]) if params[:age].present?
+    activities = activities.by_agerange(params[:age]) if params[:age].present?
     activities = activities.by_tag(params[:tag]) if params[:tag].present?
     activities = activities.by_metro(params[:metro]) if params[:metro].present?
     activities = activities.by_region(params[:region]) if params[:region].present?
