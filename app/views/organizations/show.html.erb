@@ -31,29 +31,31 @@
       </div>
       <div class="clear"></div>
       <% if @organization.activities.present? %>
-	<div class="title_block">Все кружки учреждения:</div>
-	<div class="catalog">
-	  <% @organization.activities.each do |activity| %>
-	    <div class="preview_catalog">
-	      <div class="thumb">
-		<%= link_to image_tag(activity.logo.url), activity %>
-	      </div>
-	      <div class="info">
-		<% if activity.participant %>
-		  <div class="mark"><span class="arrow"></span>Участник фестиваля-2012!</div>
-		<% end %>
-		<% if activity.approved %>
-		  <span class="flag">Одобрено экспертом</span>
-		<% end %>
-		<div class="name"><%= link_to activity.title, activity %></div>
-		Детям  <%= activity.age_range %> лет
-		<br>
-		<div class="rating_readonly" data-rating="<%= activity.users_rating %>"></div>
-	      </div>
-	    </div>
-	  <% end %>
-	  <div class="clear"></div>
-	</div>
+  <div class="title_block">Все кружки учреждения:</div>
+  <div class="catalog">
+    <% @organization.activities.each do |activity| %>
+      <% if activity.published? %>
+        <div class="preview_catalog">
+          <div class="thumb">
+            <%= link_to image_tag(activity.logo.url), activity %>
+          </div>
+          <div class="info">
+            <% if activity.participant %>
+              <div class="mark"><span class="arrow"></span>Участник фестиваля-2012!</div>
+            <% end %>
+            <% if activity.approved %>
+              <span class="flag">Одобрено экспертом</span>
+            <% end %>
+            <div class="name"><%= link_to activity.title, activity %></div>
+            Детям  <%= activity.age_range %> лет
+            <br>
+            <div class="rating_readonly" data-rating="<%= activity.users_rating %>"></div>
+          </div>
+        </div>
+        <div class="clear"></div>
+      <% end %>
+    <% end %>
+  </div>
       <% end %>
 
       <% if @organization.teachers.present? %>
