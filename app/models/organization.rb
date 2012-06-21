@@ -18,4 +18,10 @@ class Organization < ActiveRecord::Base
                 .where('activities.published = TRUE')
                 .select('DISTINCT(direction_tags.id), direction_tags.*')
   end
+
+  def teachers
+    a = Array.new
+    self.activities.each do |ac| a<< ac.id end
+    Teacher.where(:activity_id => a).uniq_by{|o| o.name}
+  end
 end
