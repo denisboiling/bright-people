@@ -246,6 +246,8 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 
 .title_link { margin-left:20px; vertical-align: 0; line-height:1.6; font-weight:bold; }
 
+.activit { padding:0 20px;}
+
 .moscow_agencies { float:left; width:760px;}
 .moscow_agencies .title { font-family:Futura; border-bottom:2px solid #cdcdc9; color:#4f4f4f; font-size:20px; padding:10px 0px; vertical-align: bottom}
 .moscow_agencies .title .globe { background:url(/assets/ico_globe.png) no-repeat 0px 1px; padding-left:16px;}
@@ -263,6 +265,7 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 /* COUNCIL BLOCK IN MAIN */
 .council { padding:20px 20px;}
 .council .title { font-family:Futura; border-bottom:2px solid #cdcdc9; color:#4f4f4f; font-size:20px; padding:10px 0px;}
+
 .council .expert { float: left; width:760px;}
 
 .council .expert .exp_preview { position:relative; float:left; width:143px; margin-top:20px; margin-right:9px; text-align:center; }
