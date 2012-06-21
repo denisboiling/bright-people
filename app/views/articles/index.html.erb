@@ -10,6 +10,7 @@
   
   <%= render 'persons' %>
 
+  <div style="float:right; width:100%;	margin-left:-540px;">
   <div class="personality_column">
     <% [@teachers_category, @foreign_category].each do |category| %>
       <% if article = category.articles.sample %>
@@ -26,9 +27,13 @@
       </div>
       <% end %>
     <% end %>
+    
     <%= render 'expert_column', category: @expert_category %>
+    
+  </div>
   </div>
 
+    
   <div class="clear"></div>
 
   <div class="common">
