@@ -20,6 +20,7 @@ class Organization < ActiveRecord::Base
   end
 
   def teachers
+    # TODO: optimize. ps: ruby, i believe in you, just make it uniq quite rapid!
     a = Array.new
     self.activities.each do |ac| a<< ac.id end
     Teacher.where(:activity_id => a).uniq_by{|o| o.name}
