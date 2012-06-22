@@ -38,6 +38,27 @@ namespace :db do
     end
   end
 
+  task :load_full_metro => :environment do
+    require 'open-uri'
+    require 'nokogiri'
+
+    doc = Nokogiri::HTML(open(URI.parse(URI.encode('http://ru.wikipedia.org/wiki/Список_станций_Московского_метрополитена'))))
+    doc.css('td[colspan="6"]').each do |branch|
+      puts branch.text
+      station = MetroBranch.find_or_create_by_title(branch.text)
+      iterator =  branch.parent.next.next
+      while(!iterator.nil? and iterator.child['colspan'] != '6') do
+        m = MetroStation.new
+        m.title = iterator.child.text
+        m.metro_branch_id = station.id
+        m.save
+        puts "Metro: " + m.title + "\t" + m.metro_branch_id.to_s + "\t" + iterator.child['colspan'].to_s
+        iterator = iterator.next
+      end
+    end
+  end
+
+
   desc 'Load pages'
   task :load_pages => :environment do
     Rake::Task["db:load_file"].execute(Rake::TaskArguments.new([:file], ['db/default/pages.yml']))
