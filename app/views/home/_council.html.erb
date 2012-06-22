@@ -1,27 +1,25 @@
-<div class="council">
-  <div class="expert">
-    <div class="title">Экспертный совет
-      <%= link_to 'Все эксперты', experts_path, class: :title_link %>
+<div class="activit">
+  <div class="moscow_agencies">
+    <div class="title">Детские учреждения Москвы
+      <%= link_to 'Образовательные', activities_path(kind: 'educational'), class: 'title_link globe' %>
+      <%= link_to 'Развлекательные', activities_path(kind: 'entertainment'), class: 'title_link balloon' %>
     </div>
 
-    <% @experts.each do |expert| %>
-      <div class="exp_preview">
-        <%= link_to expert_path(expert) do %>
-        <% if expert.approvals_count != 0 %>
-        <span class="mark"><%= expert.approvals_count %></span>
-        <% end %>
-          <div class="thumb">
-            <%= image_tag(expert.avatar.url) %>
-          </div>
-          <span class="name"><%= expert.name %></span>
-        <% end %>
-        <span class="info"><%= expert.description %></span>
+    <% Activity.published.sample(4).each do |activity| %>
+      <div class="preview_agencies">
+        <div class="info">
+      <div class="thumb"><%= link_to image_tag(activity.logo.url), activity_path(activity) %></div>
+      <div class="name"><%= link_to activity.title, activity_path(activity) %></div>
+          <div class="geo"><%= activity.region.title %></div>
+        </div>
       </div>
     <% end %>
-    
-
+    <div class="clear"></div>
   </div>
-  
+</div>
+
+<div class="council">
+ 
   <div style="float:right; width:100%;	margin-left:-780px;">
   <div class="trustee">
     <div class="title">Попечительский совет</div>
