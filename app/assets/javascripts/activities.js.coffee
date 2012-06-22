@@ -8,6 +8,18 @@ check_used_tags = ->
     $("label[for=direction_tag_#{id}]").find('.sim_check').addClass('active')
 
 window.setup_activities_list = ->
+
+  a = document.URL.split("&")
+  b = new Array()
+  i = 0
+  while i < a.length
+    b.push a[i].match(/tag%5B%5D=(\d+)/)[1]  if a[i].match(/tag%5B%5D=(\d+)/)
+    i++
+  i = 0
+  while i < b.length
+    $("#direction_tag_" + b[i].toString()).parent().find("label span").addClass "active"
+    i++
+
   $(".filter_sorter li label, #only_approved").live 'click', ->
     idCheck = $(this).attr("for")
 

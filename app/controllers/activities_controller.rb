@@ -10,6 +10,7 @@ class ActivitiesController < ApplicationController
   def index
     @activity_page = true
     @activities = search
+    @activities = @activities.page(params[:page]).per(15)
     if request.xhr?
       render partial: "activities/m_#{@kind}", locals: {activities: @activities}
     else
