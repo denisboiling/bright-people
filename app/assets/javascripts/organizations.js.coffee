@@ -7,7 +7,7 @@ window.setup_organization_map = ->
   ymaps.ready ->
     myMap = new ymaps.Map("org_map", {
       center: [x, y],
-      zoom: 16,
+      zoom: 12,
       type: "yandex#map",
       behaviors: [ "default", "scrollZoom" ]
       }
@@ -22,3 +22,9 @@ window.setup_organization_map = ->
     )
 
     myMap.geoObjects.add(myPlacemark);
+
+    $(".act_addr").each ->
+      myGeocoder = ymaps.geocode($(this).text(),{results: 1});
+      myGeocoder.then ((res) ->
+        myMap.geoObjects.add res.geoObjects
+      )
