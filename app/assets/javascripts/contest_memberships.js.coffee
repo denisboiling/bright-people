@@ -45,3 +45,9 @@ window.setup_ajax_contest_memberships_loading = ->
     event.preventDefault()
     window._sort = 'rating DESC'
     update_contest_memberships()
+
+window.setup_member_lightbox = ->
+  return if $('.work_detail').length == 0
+
+  $('.work_detail .right_part .thumb').live 'click', ->
+    $("#lightbox_hook .light_box_pic").trigger('click')
