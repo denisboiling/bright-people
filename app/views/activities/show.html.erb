@@ -48,23 +48,34 @@
 
 	<div class="info_block">
 	  <table>
-	    <% unless @activity.metro_station.blank? %>
-	      <tr>
-		    <th><span>Метро</span></th>
-		    <td><%#= image_tag @activity.metro_station.metro_branch.icon.url %><%= @activity.metro_station.title %><br />
-	      </tr>
-	    <% end %>
+	    <% unless @activity.metro_station.uniq.blank? %>
+        <% @activity.metro_station.uniq.each do |ms| %>
+          <tr>
+          <th><span>Метро</span></th>
+          <td><%#= image_tag @activity.metro_station.metro_branch.icon.url %><%= ms.title %><br />
+          </tr>
+        <% end %>
+      <% end %>
       <% unless @activity.region.title.blank? %>
 	    <tr>
 	      <th><span>Округ</span></th>
 	      <td><%= @activity.region.title %><br />
 	    </tr>
       <% end %>
+      <% first = true %>
       <% unless @activity.address.blank? %>
-	    <tr>
-	      <th><span>Адрес</span></th>
-	      <td><div class="activ_address"><%= y_link(@activity.coords, @activity.address) %></div></td>
-	    </tr>
+        <% @activity.address.split(/; |;/).each do |addr| %>
+          <tr>
+            <th><span>Адрес</span></th>
+            <td><div class="activ_address"><%= y_link((first ? @activity.coords : nil), addr) %></div></td>
+             <% if first then first = false end %>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <th><span>Адрес</span></th>
+          <td><div class="activ_address"><%= @activity.address_dummy %></div></td>
+        </tr>
       <% end %>
       <% unless @activity.site.blank? %>
 	    <tr>

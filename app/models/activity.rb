@@ -24,10 +24,10 @@ class Activity < ActiveRecord::Base
     end
   end
 
-  validates :title, :region, :description, presence: true
+  validates :title, :region, :description, :organization, presence: true
 
   belongs_to :organization
-  belongs_to :metro_station
+  has_and_belongs_to_many :metro_station
 
   has_many :activity_direction_relations
   has_many :direction_tags, through: :activity_direction_relations
@@ -69,10 +69,10 @@ class Activity < ActiveRecord::Base
 
 
   attr_accessible :title, :description, :organization_id, :users_rating,
-                  :metro_station_id, :address, :is_educational,
+                  :metro_station_id, :address, :is_educational, :metro_station_ids ,
                   :additional_information, :parent_activities, :schedule,
                   :photos_attributes, :videos_attributes, :logo, :expert_id, :region_id, :cost,
-                  :monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday,
+                  :monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday, :address_dummy,
                   :coords, :activity_comments_attributes, :teachers_attributes, :published,
                   :phone, :site, :direction_tag_ids, :replace_teacher_text, :logo, :start_age, :end_age, as: :admin
 
@@ -83,7 +83,13 @@ class Activity < ActiveRecord::Base
   scope :not_published, where(published: false)
   scope :by_kind, lambda { |kind| where(is_educational: kind == 'educational') }
   scope :by_tag, lambda { |tags| joins(:direction_tags).where('direction_tags.id IN (?)', tags) }
-  scope :by_metro, lambda { |metros| where('metro_station_id in (?)', metros) }
+  scope :by_metro, lambda { |metros| 
+  #where('metro_station_id in (?)', metros)
+    {
+      :include => :metro_station,
+      :conditions => [ "metro_stations.id IN (?)", metros ]
+    }
+  }
   scope :by_region, lambda { |regions| where('region_id in (?)', regions) }
   scope :approved, where(approved: true)
 

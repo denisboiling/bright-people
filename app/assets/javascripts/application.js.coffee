@@ -36,3 +36,4 @@ $ ->
   window.setup_search_tabs()
   window.setup_login()
   window.setup_lightbox()
+  window.setup_member_lightbox()

@@ -23,6 +23,9 @@
         <div class="thumb">
           <%= image_tag @membership.picture.url(:medium) %>
         </div>
+        <div id="lightbox_hook" class="hidden">
+          <%= link_to '#', @membership.picture.url(:original), class: "light_box_pic", rel: "prettyPhoto[contest_work]" %>
+        </div>
       </div>
     </div>
     <div class="clear"></div>
