@@ -7,13 +7,10 @@ set :whenever_identifier, defer { "#{application}_#{stage}" }
 require 'whenever/capistrano'
 
 set :stages, %w(srv srv-dev srv-stage)
-set :default_stage, "srv"
+set :default_stage, "srv-stage"
 set :repository,  "git@github.com:balticit/bright-people.git"
 set :scm, :git
 set :application, "bright-people"
 ssh_options[:forward_agent] = true
 default_run_options[:pty] = true
 set :keep_releases, 10
-
-
-
