@@ -24,7 +24,7 @@ class Activity < ActiveRecord::Base
     end
   end
 
-  validates :title, :region, :description, presence: true
+  validates :title, :region, :description, :organization, presence: true
 
   belongs_to :organization
   has_and_belongs_to_many :metro_station
