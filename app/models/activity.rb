@@ -69,7 +69,7 @@ class Activity < ActiveRecord::Base
 
 
   attr_accessible :title, :description, :organization_id, :users_rating,
-                  :metro_station_id, :address, :is_educational,
+                  :metro_station_id, :address, :is_educational, :metro_station_ids ,
                   :additional_information, :parent_activities, :schedule,
                   :photos_attributes, :videos_attributes, :logo, :expert_id, :region_id, :cost,
                   :monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday, :address_dummy,
