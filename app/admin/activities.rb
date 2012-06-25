@@ -33,8 +33,12 @@ ActiveAdmin.register Activity do
   form partial: "form"
 
   show do
-    attributes_table :id, :title, :published, :address, :metro_station, :organization,
+    attributes_table :id, :title, :published, :address, :organization,
                      :users_rating, :created_at, :updated_at
+
+    panel 'Станции метро' do
+      activity.metro_station.map(&:title)
+    end
 
     panel 'Посмотреть страницу' do
       link_to activity.title, activity_path(activity), target: '_blank'
