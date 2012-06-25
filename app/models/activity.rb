@@ -72,7 +72,7 @@ class Activity < ActiveRecord::Base
                   :metro_station_id, :address, :is_educational,
                   :additional_information, :parent_activities, :schedule,
                   :photos_attributes, :videos_attributes, :logo, :expert_id, :region_id, :cost,
-                  :monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday,
+                  :monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday, :address_dummy,
                   :coords, :activity_comments_attributes, :teachers_attributes, :published,
                   :phone, :site, :direction_tag_ids, :replace_teacher_text, :logo, :start_age, :end_age, as: :admin
 
