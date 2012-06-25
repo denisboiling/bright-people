@@ -27,7 +27,7 @@ class Activity < ActiveRecord::Base
   validates :title, :region, :description, presence: true
 
   belongs_to :organization
-  belongs_to :metro_station
+  has_and_belongs_to_many :metro_station
 
   has_many :activity_direction_relations
   has_many :direction_tags, through: :activity_direction_relations
@@ -83,7 +83,13 @@ class Activity < ActiveRecord::Base
   scope :not_published, where(published: false)
   scope :by_kind, lambda { |kind| where(is_educational: kind == 'educational') }
   scope :by_tag, lambda { |tags| joins(:direction_tags).where('direction_tags.id IN (?)', tags) }
-  scope :by_metro, lambda { |metros| where('metro_station_id in (?)', metros) }
+  scope :by_metro, lambda { |metros| 
+  #where('metro_station_id in (?)', metros)
+    {
+      :include => :metro_station,
+      :conditions => [ "metro_stations.id IN (?)", metros ]
+    }
+  }
   scope :by_region, lambda { |regions| where('region_id in (?)', regions) }
   scope :approved, where(approved: true)
 
