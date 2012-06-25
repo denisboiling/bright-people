@@ -9,73 +9,87 @@
   <% end %>
       </div>
       <div class="left_part">
-	<div class="info_block">
-	  <table>
-	    <tbody>
-	      <tr>
-		<th><span>Метро</span></th>
-		<td><%#= image_tag @organization.metro_station.metro_branch.icon.url %><%= @organization.metro_station.title %></td>
-	      </tr>
-	      <tr>
-		<th><span>Адрес</span></th>
-		<td><%= y_link "#{@organization.location.x},#{@organization.location.y}", @organization.address, class: "to_map_link"%><span></span></td>
-	      </tr>
-	    </tbody>
-	  </table>
-	</div>
+  <div class="info_block">
+    <table>
+      <tbody>
+        <tr>
+    <th><span>Метро</span></th>
+    <td><%#= image_tag @organization.metro_station.metro_branch.icon.url %><%= @organization.metro_station.title %></td>
+        </tr>
+        <tr>
+          <th><span>Адрес</span></th>
+          <td><%= y_link "#{@organization.location.x},#{@organization.location.y}", @organization.address, class: "to_map_link"%><span></span></td>
+        </tr>
+        <% first = true %>
+        <% @activity_addresses.each do |addr| %>
+          <tr>
+            <% if first %>
+              <th><span>Адреса кружков</span></th>
+            <% else %>
+              <th></th>
+            <% end %>
+            <% if first then first = false end%>
+            <td class='act_addr'><%= y_link nil, addr, class: "to_map_link"%><span></span></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
       </div>
       <div class="right_part">
-	<div class="map_wrapper">
-	  <div id="org_map" data-x="<%= @organization.location.x %>" data-y="<%= @organization.location.y %>" style="width: 525px; height: 335px"></div>
-	</div>
+  <div class="map_wrapper">
+    <div id="org_map" data-x="<%= @organization.location.x %>" data-y="<%= @organization.location.y %>" style="width: 525px; height: 335px"></div>
+  </div>
       </div>
       <div class="clear"></div>
       <% if @organization.activities.present? %>
-	<div class="title_block">Все кружки учреждения:</div>
-	<div class="catalog">
-	  <% @organization.activities.each do |activity| %>
-	    <div class="preview_catalog">
-	      <div class="thumb">
-		<%= link_to image_tag(activity.logo.url), activity %>
-	      </div>
-	      <div class="info">
-		<% if activity.participant %>
-		  <div class="mark"><span class="arrow"></span>Участник фестиваля-2012!</div>
-		<% end %>
-		<% if activity.approved %>
-		  <span class="flag">Одобрено экспертом</span>
-		<% end %>
-		<div class="name"><%= link_to activity.title, activity %></div>
-		Детям  <%= activity.age_range %> лет
-		<br>
-		<div class="rating_readonly" data-rating="<%= activity.users_rating %>"></div>
-	      </div>
-	    </div>
-	  <% end %>
-	  <div class="clear"></div>
-	</div>
+  <div class="title_block">Все кружки учреждения:</div>
+  <div class="catalog">
+    <% @organization.activities.each do |activity| %>
+      <% if activity.published? %>
+        <div class="preview_catalog">
+          <div class="thumb">
+            <%= link_to image_tag(activity.logo.url), activity %>
+          </div>
+          <div class="info">
+            <% if activity.participant %>
+              <div class="mark"><span class="arrow"></span>Участник фестиваля-2012!</div>
+            <% end %>
+            <% if activity.approved %>
+              <span class="flag">Одобрено экспертом</span>
+            <% end %>
+            <div class="name"><%= link_to activity.title, activity %></div>
+            Детям  <%= activity.age_range %> лет
+            <br>
+            <div class="rating_readonly" data-rating="<%= activity.users_rating %>"></div>
+          </div>
+        </div>
+        <div class="clear"></div>
+      <% end %>
+    <% end %>
+  </div>
       <% end %>
 
       <% if @organization.teachers.present? %>
-	<div class="title_block">Здесь работают <%= t(:people, count: @organization.teachers.count) %></div>
-	<div id="ruk_slider">
-	  <div class="slides_container">
-	    <% @organization.teachers.each do |teacher| %>
-	      <div class="slide">
-		<div class="thumb">
-		  <span class="mask"></span>
-		  <%= image_tag teacher.photo.url %>
-		</div>
-		<div class="info">
-		  <div class="name"><%= teacher.name %></div>
-		  <%= teacher.description %>
-		</div>
-	      </div>
-	    <% end %>
-	  </div>
-	  <a class="next" href="">Вперед</a>
-	  <a class="prev" href="">Назад</a>
-	</div>
+  <div class="title_block">Здесь работают <%= t(:people, count: @organization.teachers.count) %></div>
+  <div id="ruk_slider">
+    <div class="slides_container">
+      <% @organization.teachers.each do |teacher| %>
+        <div class="slide">
+  <div class="thumb">
+      <span class="mask"></span>
+      <%= image_tag teacher.photo.url %>
+    </div>
+    <div class="info">
+      <div class="name"><%= teacher.name %></div>
+      <%= teacher.description %>
+    </div>
+        </div>
+      <% end %>
+    </div>
+    <a class="next" href="">Вперед</a>
+    <a class="prev" href="">Назад</a>
+  </div>
       <% end %>
     </div>
         <div class="share_block">

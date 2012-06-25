@@ -60,11 +60,20 @@
 	      <td><%= @activity.region.title %><br />
 	    </tr>
       <% end %>
+      <% first = true %>
       <% unless @activity.address.blank? %>
-	    <tr>
-	      <th><span>Адрес</span></th>
-	      <td><div class="activ_address"><%= y_link(@activity.coords, @activity.address) %></div></td>
-	    </tr>
+        <% @activity.address.split(/; |;/).each do |addr| %>
+          <tr>
+            <th><span>Адрес</span></th>
+            <td><div class="activ_address"><%= y_link((first ? @activity.coords : nil), addr) %></div></td>
+             <% if first then first = false end %>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <th><span>Адрес</span></th>
+          <td><div class="activ_address"><%= @activity.address_dummy %></div></td>
+        </tr>
       <% end %>
       <% unless @activity.site.blank? %>
 	    <tr>
