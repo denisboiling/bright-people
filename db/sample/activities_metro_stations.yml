@@ -1,0 +1,5 @@
+<% 1.upto(30).each do |i| %>
+activity_metro_station_link<%= i %>:
+  metro_station_id: <%= rand(1..5) %>
+  activity_id: <%= rand(1..20) %>
+<% end %>
