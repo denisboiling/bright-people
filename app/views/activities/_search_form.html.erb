@@ -52,12 +52,12 @@
         <div class="selected_region">
         </div>
       </div>
-      <div class="cell hidden">
-        <strong>Где вы?</strong>
-
+      <div class="cell">
+        <a href='' id="map_spoiler" ><strong>Где вы?</strong></a>
+        <input id="coords_input" name='coords' class="remote_action hidden" type="text">
         <a id="clear_map" class="clear_link" href="">Сбросить</a>
         <div class="clear_block">
-          <a id="clear_all_options" href="">Сбросить все</a>
+          <!--<a id="clear_all_options" href="">Сбросить все</a>-->
         </div>
 
       </div>
@@ -85,4 +85,9 @@
       <div class="clear"></div>
     </div>
   </div>
+<% end %>
+
+<%= dialog "Кликните на месте, от которого стоит искать кружки",
+           id: :select_coords_dialog do %>
+  <div id="activity_map" style="width: 525px; height: 350px"></div>
 <% end %>

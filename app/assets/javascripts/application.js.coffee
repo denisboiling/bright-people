@@ -37,3 +37,4 @@ $ ->
   window.setup_login()
   window.setup_lightbox()
   window.setup_member_lightbox()
+  window.setup_activity_search_map()
