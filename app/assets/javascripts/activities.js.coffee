@@ -12,6 +12,7 @@ window.setup_activities_list = ->
   $('#map_spoiler').live 'click', (event) ->
     event.preventDefault()
     $('#select_coords_dialog').removeClass('hidden')
+    window.setup_activity_search_map()
 
   a = document.URL.split("&")
   b = new Array()
