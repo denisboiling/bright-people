@@ -17,12 +17,12 @@ window.setup_activity_search_map = ->
 
     window.myMap.events.add "click", (e) ->
       unless window.myMap.balloon.isOpen()
-        window.myMap.geoObjects.each ->
-          window.myMap.geoObjects.remove myCircle
         i = 0
         while i < window.mapGeoObjects.length
           window.myMap.geoObjects.remove window.mapGeoObjects[i]
           i++
+        window.mapGeoObjects = []
+        window.myMap.geoObjects.remove myCircle
         coords = e.get("coordPosition")
         window.myMap.balloon.open coords,
           contentBody: "Вы здесь!"
