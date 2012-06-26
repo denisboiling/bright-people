@@ -98,7 +98,7 @@ require 'capistrano-unicorn'
 namespace :unicorn do
   desc 'Reload unicorn'
   task :reload, :roles => :app, :except => {:no_release => true} do
-    config_path = "#{current_path}/config/unicorn/#{rails_env}.rb"
+    config_path = "#{current_path}/config/unicorn/#{rails_env}_#{stage}.rb"
     if remote_file_exists?(unicorn_pid)
       logger.important("Stopping...", "Unicorn")
       run "kill -s USR2 `cat #{unicorn_pid}`"
