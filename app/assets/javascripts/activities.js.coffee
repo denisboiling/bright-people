@@ -42,7 +42,7 @@ window.setup_activities_list = ->
   $("form#remote_form").live "ajax:success", (xhr, data, status) ->
     $("div.activities").html(data)
     window.setup_raty()
-    window.render_placemarks( !$('#select_coords_dialog').hasClass('hidden') )
+    window.render_placemarks( !$('#select_coords_dialog').hasClass('hidden') ) if $('#coords_input').val()
 
   $("a.order_by").bind 'click', (event) ->
     event.preventDefault()

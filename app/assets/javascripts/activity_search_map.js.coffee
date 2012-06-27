@@ -42,6 +42,7 @@ window.setup_activity_search_map = ->
             window.myMap.geoObjects.remove window.mapGeoObjects[j]
             j++
           $('#coords_input').val('')
+          $("#remote_form").submit()
           window.mapGeoObjects=[]
 
       else
@@ -52,6 +53,7 @@ window.setup_activity_search_map = ->
           window.myMap.geoObjects.remove window.mapGeoObjects[i]
           i++
         $('#coords_input').val('')
+        $("#remote_form").submit()
         window.mapGeoObjects=[]
 
   window.myMap_draw = false
