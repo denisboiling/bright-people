@@ -25,8 +25,11 @@ window.setup_activity_search_map = ->
         window.mapGeoObjects = []
         window.myMap.geoObjects.remove window.myCircle
         coords = e.get("coordPosition")
-        window.myMap.balloon.open coords,
-          contentBody: "Вы здесь!"
+        window.myMap.balloon.open coords,{},
+          {
+            layout: create_map_balloon_layout(),
+            shadow: false
+          }
         $('#coords_input').val(coords.join())
         $("#remote_form").submit()
         window.myCircle = new ymaps.Circle([
@@ -73,3 +76,14 @@ window.render_placemarks = (on_map) ->
     })
     window.mapGeoObjects.push(myPlacemark)
     window.myMap.geoObjects.add(myPlacemark) if on_map;
+
+
+
+create_map_balloon_layout = ->
+  newBalloonLayout = ymaps.templateLayoutFactory.createClass("<div style=\"background: #f00; position: relative; left: -5px; top: -5px; width: 10px; height: 10px; border-radius: 50%\"></div>​",
+    build: ->
+      newBalloonLayout.superclass.build.call this
+    clear: ->
+      newBalloonLayout.superclass.clear.call this
+  )
+  return newBalloonLayout
