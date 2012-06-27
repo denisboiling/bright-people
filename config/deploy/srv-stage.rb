@@ -37,8 +37,4 @@ namespace :public do
     run "rm -rf #{shared_path}/system"
     run "cp -rf /var/www/bright-people/shared/system #{shared_path}/system"
   end
-
-  task :remove_system, roles: :app do
-    run "rm -rf #{shared_path}/system/*"
-  end
 end
