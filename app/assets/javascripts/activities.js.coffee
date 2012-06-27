@@ -10,6 +10,7 @@ check_used_tags = ->
 window.setup_activities_list = ->
 
   window.myMap_draw = true
+  window.mapGeoObjects = []
 
   $('#map_spoiler').live 'click', (event) ->
     event.preventDefault()
@@ -41,7 +42,7 @@ window.setup_activities_list = ->
   $("form#remote_form").live "ajax:success", (xhr, data, status) ->
     $("div.activities").html(data)
     window.setup_raty()
-    window.render_placemarks()
+    window.render_placemarks( !$('#select_coords_dialog').hasClass('hidden') )
 
   $("a.order_by").bind 'click', (event) ->
     event.preventDefault()

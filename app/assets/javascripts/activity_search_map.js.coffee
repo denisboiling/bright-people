@@ -1,5 +1,4 @@
 window.setup_activity_search_map = ->
-  window.mapGeoObjects = new Array unless window.mapGeoObjects
   return if $('#activity_map').length == 0
 
   #ymaps.ready ->
@@ -60,7 +59,7 @@ window.setup_activity_search_map = ->
 
 
 
-window.render_placemarks = ->
+window.render_placemarks = (on_map) ->
   window.mapGeoObjects=[]
   $('.preview_catalog').each ->
     activity_coords = $(this).attr('data-coords').split(/, |,/)
@@ -71,4 +70,4 @@ window.render_placemarks = ->
             preset: 'twirl#blueStretchyIcon'
     })
     window.mapGeoObjects.push(myPlacemark)
-    window.myMap.geoObjects.add(myPlacemark);
+    window.myMap.geoObjects.add(myPlacemark) if on_map;
