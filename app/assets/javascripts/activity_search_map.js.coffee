@@ -1,58 +1,63 @@
 window.setup_activity_search_map = ->
-  window.mapGeoObjects = new Array
+  window.mapGeoObjects = new Array unless window.mapGeoObjects
   return if $('#activity_map').length == 0
 
   #ymaps.ready ->
-  myCircle = new ymaps.Circle([[0,0],0])
+  window.myCircle = new ymaps.Circle([[0,0],0]) unless window.myCircle
   window.myMap = new ymaps.Map("activity_map", {
     center: [55.76, 37.64],
     zoom: 12,
     type: "yandex#map",
     behaviors: [ "default", "scrollZoom" ]
     }
-  )
+  ) if window.myMap_draw
 
   window.myMap.controls.add('zoomControl')
     .add('typeSelector')
-    .add('smallZoomControl', {right: 5, top: 75})
+    .add('smallZoomControl', {right: 5, top: 75}) if window.myMap_draw
 
-  window.myMap.events.add "click", (e) ->
-    unless window.myMap.balloon.isOpen()
-      i = 0
-      while i < window.mapGeoObjects.length
-        window.myMap.geoObjects.remove window.mapGeoObjects[i]
-        i++
-      window.mapGeoObjects = []
-      window.myMap.geoObjects.remove myCircle
-      coords = e.get("coordPosition")
-      window.myMap.balloon.open coords,
-        contentBody: "Вы здесь!"
-      $('#coords_input').val(coords.join())
-      $("#remote_form").submit()
-      myCircle = new ymaps.Circle([
-                coords,
-                2500
-            ]);
-      window.myMap.geoObjects.add(myCircle);
-      myCircle.events.add 'click', (e) ->
+  if window.myMap_draw
+    window.myMap.events.add "click", (e) ->
+      unless window.myMap.balloon.isOpen()
+        i = 0
+        while i < window.mapGeoObjects.length
+          window.myMap.geoObjects.remove window.mapGeoObjects[i]
+          i++
+        window.mapGeoObjects = []
+        window.myMap.geoObjects.remove window.myCircle
+        coords = e.get("coordPosition")
+        window.myMap.balloon.open coords,
+          contentBody: "Вы здесь!"
+        $('#coords_input').val(coords.join())
+        $("#remote_form").submit()
+        window.myCircle = new ymaps.Circle([
+                  coords,
+                  2500
+              ]);
+        window.myMap.geoObjects.add(window.myCircle);
+        window.myCircle.events.add 'click', (e) ->
+          window.myMap.balloon.close()
+          j = 0
+          window.myMap.geoObjects.remove window.myCircle
+          while j < window.mapGeoObjects.length
+            window.myMap.geoObjects.remove window.mapGeoObjects[j]
+            j++
+          $('#coords_input').val('')
+          window.mapGeoObjects=[]
+
+      else
         window.myMap.balloon.close()
-        j = 0
-        window.myMap.geoObjects.remove myCircle
-        while j < window.mapGeoObjects.length
-          window.myMap.geoObjects.remove window.mapGeoObjects[j]
-          j++
+        i = 0
+        window.myMap.geoObjects.remove window.myCircle
+        while i < window.mapGeoObjects.length
+          window.myMap.geoObjects.remove window.mapGeoObjects[i]
+          i++
         $('#coords_input').val('')
         window.mapGeoObjects=[]
 
-    else
-      window.myMap.balloon.close()
-      i = 0
-      window.myMap.geoObjects.remove myCircle
-      while i < window.mapGeoObjects.length
-        window.myMap.geoObjects.remove window.mapGeoObjects[i]
-        i++
-      $('#coords_input').val('')
-      window.mapGeoObjects=[]
+  window.myMap_draw = false
+
+
 
 
 window.render_placemarks = ->

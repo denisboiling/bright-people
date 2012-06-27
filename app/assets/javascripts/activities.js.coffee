@@ -9,6 +9,8 @@ check_used_tags = ->
 
 window.setup_activities_list = ->
 
+  window.myMap_draw = true
+
   $('#map_spoiler').live 'click', (event) ->
     event.preventDefault()
     $('#select_coords_dialog').removeClass('hidden')
