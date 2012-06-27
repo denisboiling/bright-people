@@ -1,7 +1,7 @@
 class SpecialProjectsController < ApplicationController
   def tag
-    @special_project_tag_name = params[:id]
-    @special_projects = SpecialProject.tagged_with(params[:id])
+    @special_project_tag_name = params[:tag]
+    @special_projects = SpecialProject.tagged_with(@special_project_tag_name)
     render 'special_project_tags/show'
   end
 
