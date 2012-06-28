@@ -1,6 +1,6 @@
 <% activities.each do |activity| %>
   <% if activity.approved? %>
-    <div class="preview_catalog approved">
+    <div class="preview_catalog approved" data-coords="<%= activity.coords %>">
       <div class="thumb">
         <%= link_to image_tag(activity.logo.url(:approved)), activity_path(activity) %>
       </div>
@@ -34,7 +34,7 @@
       
     </div>
   <% else %>
-    <div class="preview_catalog">
+    <div class="preview_catalog" data-coords="<%= activity.coords %>">
       <div class="thumb">
         <%= link_to image_tag(activity.logo.url(:index)), activity_path(activity) %>
       </div>

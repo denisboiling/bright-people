@@ -91,6 +91,8 @@ class Activity < ActiveRecord::Base
     }
   }
   scope :by_region, lambda { |regions| where('region_id in (?)', regions) }
+  #TODO : optimize
+  scope :by_coords, lambda { |coords| where("ST_Distance(location,(ST_GeogFromText('SRID=4326;POINT(:x :y)'))) <= :max_distance", {:x => coords.split(/, |,/)[0].to_f, :y => coords.split(/, |,/)[1].to_f, :max_distance => 2500}) }
   scope :approved, where(approved: true)
 
 

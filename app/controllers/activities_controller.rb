@@ -54,6 +54,7 @@ class ActivitiesController < ApplicationController
     activities = activities.by_tag(params[:tag]) if params[:tag].present?
     activities = activities.by_metro(params[:metro]) if params[:metro].present?
     activities = activities.by_region(params[:region]) if params[:region].present?
+    activities = activities.by_coords(params[:coords]) if params[:coords].present?
 
     activities = case params[:order_by]
                  when 'title' then activities.order('activities.title ASC')

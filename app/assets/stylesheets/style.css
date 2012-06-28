@@ -490,7 +490,7 @@ span.sim_check.active { background-position:0px 0px; }
 .comment .more_comment { padding-left:145px }
 .comment .more_comment a { background:url(/assets/more_button.png); width:208px; height:33px; color:#fff; text-align:center; display:block; font-size:14px; text-shadow:1px 1px #ccc; text-decoration:none; line-height:33px}
 
-.treeview { padding-bottom:10px; border-top:3px solid #e5e5e5}
+.treeview { padding-bottom:10px; border-top:0px solid #e5e5e5}
 .treeview .title { font-size:20px; color:#007ba4; font-family:Futura; border-bottom:2px solid #ccc; padding-bottom:2px; margin-bottom:20px}
 .treeview .info .quote { background:none; padding-left:0}
 .treeview .info .name { padding-left:0;}
