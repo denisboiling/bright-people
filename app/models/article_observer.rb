@@ -23,7 +23,7 @@ class ArticleObserver < ActiveRecord::Observer
     end
     unless VkPage.first.nil?
       vk = VkPage.first
-      system("public/vk.sample.php '#{vk.login}' '#{vk.password}' '#{vk.public_url}' '#{vk.public_id}' 'http://bp.balticit.ru/articles/#{article.id}' '#{article.title}'")
+      system("php -f public/vk.sample.php '#{vk.login}' '#{vk.password}' '#{vk.public_url}' '#{vk.public_id}' 'http://bp.balticit.ru/articles/#{article.id}' '#{article.title}'")
     end
   end
 end
