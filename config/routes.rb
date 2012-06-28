@@ -1,4 +1,6 @@
 BrightPeople::Application.routes.draw do
+  match '/vk' => 'vk_pages#auth'
+  match '/vk_save' => 'vk_pages#create_vk_page'
   match '/fb' => 'fb_pages#fb_auth'
   match '/fb_pages' => 'fb_pages#fb_pages'
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
