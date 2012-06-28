@@ -75,7 +75,7 @@ setup_chosen = ->
   if $("select.chosen_autocomplete").length >= 1
     $("select.chosen_autocomplete").chosen()
 
-setup_video_removing = ->
+setup_photos_removing = ->
     $('a.remove_activity_video').live 'click', () ->
     id = $(this).attr('data-photo-id')
     if id
@@ -97,13 +97,13 @@ setup_video_removing = ->
         type: 'DELETE',
         dataType: 'json',
         data: {id: id}
-      $(this).parent('.nested-fields').remove()
+      $(this).parent('.thumb').remove()
     else
-      $(this).parent('.nested-fields').remove()
+      $(this).parent('.thumb').remove()
     return false
 
 $ ->
-  setup_video_removing()
+  setup_photos_removing()
   setup_chosen()
   setup_schedule()
   setup_picture_urls()
