@@ -6,23 +6,27 @@ $(document).ready(function(){
 	});
 
 
-    $(window).bind('scroll',function () {
-        var scrollT = $(window).scrollTop();
-        if(scrollT >= 680){
-        	$(".rubric_wrapp").addClass("fixed");
-        }
-        else{
-        	$(".rubric_wrapp").removeClass("fixed");
-        }
-    });
+  $(window).bind('scroll',function () {
+      var scrollT = $(window).scrollTop();
+      if(scrollT >= 680){
+      	$(".rubric_wrapp").addClass("fixed");
+      }
+      else{
+      	$(".rubric_wrapp").removeClass("fixed");
+      }
+  });
 
+	$("#login_block .is_login").mouseenter(function(){
+    $(this).find(".profile_menu").removeClass("hidden");
+  }).mouseleave(function(){
+    $(this).find(".profile_menu").addClass("hidden");
+  });
 
-	
-    // <![CDATA[ 
-    var so = new SWFObject("/assets/header.swf", "bnr_1", "100%", "200"); 
-    so.addParam("wmode", "transparent");
-    so.write("flashcontent_1"); 		
-    // ]]> 
+  // <![CDATA[ 
+  var so = new SWFObject("/assets/header.swf", "bnr_1", "100%", "200"); 
+  so.addParam("wmode", "transparent");
+  so.write("flashcontent_1"); 		
+  // ]]> 
 	
 	
 	$("div.socialnet #show_widget_vk").css("position", "absolute").css("width", "0px");
