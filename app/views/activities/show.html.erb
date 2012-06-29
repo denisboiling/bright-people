@@ -52,7 +52,7 @@
         <% @activity.metro_station.uniq.each do |ms| %>
           <tr>
           <th><span>Метро</span></th>
-          <td><%#= image_tag @activity.metro_station.metro_branch.icon.url %><%= ms.title %><br />
+          <td><%= image_tag ms.metro_branch.icon.url %><%= ms.title %><br />
           </tr>
         <% end %>
       <% end %>

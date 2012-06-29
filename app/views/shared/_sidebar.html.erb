@@ -11,7 +11,7 @@
         <% counter = 1 %>
         <% unless activity.metro_station.uniq.blank? %>
           <% activity.metro_station.uniq.each do |ms| %>
-            <span class="geo"><%#= image_tag activity.metro_station.metro_branch.icon.url %>м. <%= ms.try(:title)+(counter == activity.metro_station.uniq.count ? "" : ",") %></span>
+            <span class="geo"><%= image_tag ms.metro_branch.icon.url %><%= ms.try(:title)+(counter == activity.metro_station.uniq.count ? "" : ",") %></span>
             <% counter+=1 %>
           <% end %>
         <% end %>
