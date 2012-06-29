@@ -77,7 +77,7 @@ namespace :db do
 
   desc 'db:drop db:create db:migrate db:seed db:load_sample'
   task :setup_sample => :environment do
-    ['db:drop', 'db:create', 'db:migrate', 'db:seed', 'db:load_sample'].each do |t|
+    ['db:drop', 'db:create', 'db:migrate', 'db:seed', 'db:load_sample', 'db:load_full_metro'].each do |t|
       Rake::Task[t].execute
     end
   end
