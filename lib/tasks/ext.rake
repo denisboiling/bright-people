@@ -42,6 +42,8 @@ namespace :db do
     require 'open-uri'
     require 'nokogiri'
 
+    FileUtils.rm_rf Rails.root.join('public/system/metro_branches')
+
     doc = Nokogiri::HTML(open(URI.parse(URI.encode('http://ru.wikipedia.org/wiki/Список_станций_Московского_метрополитена'))))
     doc.css('td[colspan="6"]').each do |branch|
       t = (branch.text.strip[0,branch.text.index("линия")+4] == "Бутовская лини" ? "Бутовская линия" : branch.text.strip[0,branch.text.index("линия")+4] )
