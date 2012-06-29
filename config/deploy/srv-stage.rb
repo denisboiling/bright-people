@@ -12,6 +12,7 @@ if ENV['SAMPLE']
   after "db:prepare", "deploy:migrate"
   after "deploy:migrate", "db:load_seed"
   after "db:load_seed", "db:load_sample"
+  after "db:load_sample", "db:load_full_metro"
 else
   after "db:prepare", "db:dump_production"
   after "db:prepare", "public:copy_system_production"
