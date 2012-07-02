@@ -29,6 +29,12 @@
     </div>
     
     <div class="clear"></div>
+      <div class="article_tags">
+        <% @tags.each do |t| %>
+          <%= link_to t.name, tag_special_projects_path(tag: t.name) %>
+        <% end %>
+    </div>
+    <div class="clear"></div>
     <div class="comment treeview">
       <ul>
         <% @comments.each do |comment| %>

@@ -48,12 +48,14 @@
 
 	<div class="info_block">
 	  <table>
-	    <% unless @activity.metro_station.blank? %>
-	      <tr>
-		    <th><span>Метро</span></th>
-		    <td><%#= image_tag @activity.metro_station.metro_branch.icon.url %><%= @activity.metro_station.title %><br />
-	      </tr>
-	    <% end %>
+	    <% unless @activity.metro_station.uniq.blank? %>
+        <% @activity.metro_station.uniq.each do |ms| %>
+          <tr>
+          <th><span>Метро</span></th>
+          <td><%= image_tag ms.metro_branch.icon.url %><%= ms.title %><br />
+          </tr>
+        <% end %>
+      <% end %>
       <% unless @activity.region.title.blank? %>
 	    <tr>
 	      <th><span>Округ</span></th>

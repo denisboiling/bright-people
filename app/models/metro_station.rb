@@ -1,6 +1,6 @@
 class MetroStation < ActiveRecord::Base
   has_many :organizations
-  has_many :activities
+  has_and_belongs_to_many :activities
 
   attr_accessible :title, as: :admin
 

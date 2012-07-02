@@ -4,8 +4,8 @@ class ArticlesController < ApplicationController
   before_filter :check_permission, only: :show
 
   def tag
-    @article_tag_name = params[:id]
-    @articles = Article.tagged_with(params[:id])
+    @article_tag_name = params[:tag]
+    @articles = Article.tagged_with(@article_tag_name)
     render 'article_tags/show'
   end
 
@@ -30,9 +30,9 @@ class ArticlesController < ApplicationController
     else
       @news_category = ArticleCategory.find_by_title("Новости")
       @best_articles = Article.where('NOT article_category_id = ?', @news_category.id)
-	.where(best: true)
-	.order('created_at DESC')
-	.first(3)
+        .where(best: true)
+        .order('created_at DESC')
+        .first(3)
     end
   end
 

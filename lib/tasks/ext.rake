@@ -42,20 +42,31 @@ namespace :db do
     require 'open-uri'
     require 'nokogiri'
 
+    FileUtils.rm_rf Rails.root.join('public/system/metro_branches')
+
     doc = Nokogiri::HTML(open(URI.parse(URI.encode('http://ru.wikipedia.org/wiki/Список_станций_Московского_метрополитена'))))
     doc.css('td[colspan="6"]').each do |branch|
-      puts branch.text
-      station = MetroBranch.find_or_create_by_title(branch.text)
+      t = (branch.text.strip[0,branch.text.index("линия")+4] == "Бутовская лини" ? "Бутовская линия" : branch.text.strip[0,branch.text.index("линия")+4] )
+      puts t
+      station = MetroBranch.find_or_create_by_title(t)
       iterator =  branch.parent.next.next
       while(!iterator.nil? and iterator.child['colspan'] != '6') do
         m = MetroStation.new
         m.title = iterator.child.text
         m.metro_branch_id = station.id
         m.save
-        puts "Metro: " + m.title + "\t" + m.metro_branch_id.to_s + "\t" + iterator.child['colspan'].to_s
+        #puts "Metro: " + m.title + "\t" + m.metro_branch_id.to_s + "\t" + iterator.child['colspan'].to_s
         iterator = iterator.next
       end
     end
+    Dir.foreach(Rails.root.join('db/sample/files/metro_branches/')) {
+      |x|
+      puts "Got #{x}"
+      if x.split('.')[1]=='png'
+        id = x.split('.')[0]
+        MetroBranch.find(id).update_attribute(:icon, File.new(Rails.root.to_s + '/db/sample/files/metro_branches/'+ x))
+      end
+    }
   end
 
 
@@ -66,7 +77,7 @@ namespace :db do
 
   desc 'db:drop db:create db:migrate db:seed db:load_sample'
   task :setup_sample => :environment do
-    ['db:drop', 'db:create', 'db:migrate', 'db:seed', 'db:load_sample'].each do |t|
+    ['db:drop', 'db:create', 'db:migrate', 'db:seed', 'db:load_sample', 'db:load_full_metro'].each do |t|
       Rake::Task[t].execute
     end
   end

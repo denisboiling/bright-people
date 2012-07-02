@@ -27,8 +27,8 @@ a:hover { font-family: Verdana, Geneva, sans-serif; color:#464646; font-size:14p
 .clear          { clear:both}
 .hidden { display:none}
 
-#wrapper  {  min-width:960px; max-width:1235px; margin:auto; overflow:hidden; position:relative}
-.wrapper        { width:960px; margin:auto; position:relative}
+#wrapper  {   position:relative}
+.wrapper  { min-width:960px; max-width:1235px; margin:auto; position:relative}
 
 a, img, input, button, textarea, select { outline: none; resize:none }
 strong, b { font-weight:bold; }
@@ -41,7 +41,7 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 
 .header_wrapper { margin:auto; position:relative; min-width:960px; padding:25px 0px 15px 0px; border-bottom:2px solid #ccc;}
 
-#header .header_flash_wrapper  { position:relative; background:url(/assets/header_bg.jpg) no-repeat center top; height:200px;}
+#header .header_flash_wrapper  { position:relative; background:#7e1222 url(/assets/header_bg.jpg) no-repeat center top; height:200px;}
 #header .header_flash_wrapper a { display:block; height:200px; width:100%; position:absolute; z-index:10}
 
 #header .header_flash_wrapper .cap { background:url(/assets/header_cap.jpg) no-repeat center top; height:200px;}
@@ -127,7 +127,8 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 #header #menu li.current:hover {  border:3px solid #21a2dc;}
 
 
-#nested_slider { height:395px; position:relative}
+
+#nested_slider { height:395px; min-width:960px; max-width:1235px; margin:auto; position:relative}
 #nested_slider  .mask { background:url(/assets/slider_mask.png) no-repeat center 40px; position:absolute; width:100%; height:300px; z-index:10 }
 #nested_slider .slider_control { position:absolute; bottom:0px; z-index:100; width:100%; text-align:center; padding:10px 0px; background:url(/assets/slider_control_bg.png)}
 #nested_slider .slider_control li { display:inline; margin:0px 10px}
@@ -157,6 +158,9 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 #nested_slider .next { background:url(/assets/slider_arrow_right.png) no-repeat; right:30px;}
 
 #nested_slider  .pagination { display:none}
+
+
+#center { min-width:960px; max-width:1235px; margin:auto; position:relative}
 
 /* MAIN PAGE */
 .main_content { padding:20px 20px}
@@ -283,7 +287,7 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 .council .trustee .title { font-family:Futura; border-bottom:1px solid #c69141; color:#7a5113; text-align:center; letter-spacing:-1px}
 
 
-.socialnet { margin-left:780px;overflow:hidden}
+.socialnet { margin-left:780px;overflow:hidden; padding-top:23px}
 .socialnet .soc_widget_tab { border-bottom:2px solid #dcdcdc; }
 .socialnet .soc_widget_tab .fb_ico { background:url(/assets/fb_tab.png) no-repeat left center; padding-left:16px; text-decoration:none; color:#5a7ea5; font-weight:bold; margin-left:5px;}
 .socialnet .soc_widget_tab .vk_ico { background:url(/assets/vk_tab.png) no-repeat left center; padding-left:26px; text-decoration:none; color:#5a7ea5; font-weight:bold; margin-left:5px;}
@@ -305,10 +309,13 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 .workshop_list .filter_sorter { -moz-border-radius:8px; border-radius:8px; -webkit-border-radius:8px; -khtml-border-radius:8px; border:1px solid #dbdbdb; }
 
 .workshop_list .filter_wraper  { padding:16px 0px;}
-.workshop_list .filter_wraper .cell { float:left; padding:0px 20px; border-right:1px solid #dbdbdb; height:290px; position:relative }
+.workshop_list .filter_wraper .cell { float:left; padding:0px 20px; border-right:1px solid #dbdbdb; height:210px; position:relative }
 .workshop_list .sorter_wraper { border-top:1px solid #dbdbdb; } 
 .workshop_list .sorter_wraper .cell { float:left; padding:10px 20px; border-right:1px solid #dbdbdb; }
 .workshop_list .filter_wraper ul { float:left; }
+
+.workshop_list .filter_wraper .cell.cat_checkbox { width:400px}
+.workshop_list .filter_wraper .cell.cat_checkbox li { float:left; width:200px }
 
 .workshop_list .cell select { height: 22px;
 			      line-height: 28px;
@@ -490,7 +497,7 @@ span.sim_check.active { background-position:0px 0px; }
 .comment .more_comment { padding-left:145px }
 .comment .more_comment a { background:url(/assets/more_button.png); width:208px; height:33px; color:#fff; text-align:center; display:block; font-size:14px; text-shadow:1px 1px #ccc; text-decoration:none; line-height:33px}
 
-.treeview { padding-bottom:10px; border-top:3px solid #e5e5e5}
+.treeview { padding-bottom:10px; border-top:0px solid #e5e5e5}
 .treeview .title { font-size:20px; color:#007ba4; font-family:Futura; border-bottom:2px solid #ccc; padding-bottom:2px; margin-bottom:20px}
 .treeview .info .quote { background:none; padding-left:0}
 .treeview .info .name { padding-left:0;}
@@ -847,12 +854,14 @@ span.sim_check.active { background-position:0px 0px; }
 .special_project_list .preview_cell { width:23%; height:290px;}
 
 /* FOOTER */
-#main_page #footer { background:#ECECE7}
-#footer { font-size:13px; color:#fff; }
+
+.footer_wrapper { width:960px; margin:auto; }
+#footer { font-size:13px; color:#fff; background:url(/assets/footer_bg.png) }
 #footer a { color:#fff;}
-#footer .footer_header { height:60px; background:url(/assets/footer_top.png) no-repeat center top; min-width:960px}
-#footer .footer_content { background:url(/assets/footer_bg.png) }
-#footer .footer_shadow { background:url(/assets/footer_shadow.png) repeat-x bottom; padding: 0 0 5px 0;}
+#footer .footer_header { height:56px; background:#fff url(/assets/footer_top.png) no-repeat center top; min-width:960px}
+#main_page #footer .footer_header { background:#ECECE7 url(/assets/footer_top.png) no-repeat center top;}
+#footer .footer_content {  }
+#footer .footer_shadow { background:url(/assets/footer_shadow.png) repeat-x bottom; }
 
 #footer .column { width:252px; float:left; text-align:center}
 #footer .column.right { float:right}
@@ -927,6 +936,9 @@ span.sim_check.active { background-position:0px 0px; }
     .pages .sidebar { display:none}
     .expert_page .preview_catalog { width:50%}
     .preview_specialist { width:24%;}
+    .workshop_list .filter_wraper .cell.cat_checkbox { width:200px }
+    .workshop_list .filter_wraper .cell.cat_checkbox li { float:none; width:200px }
+    .workshop_list .filter_wraper .cell {height:290px}
 
 }
 @media screen and (max-width: 1150px) {

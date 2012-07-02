@@ -8,9 +8,12 @@
         <span class="thumb"><%= image_tag(activity.logo.url) %></span>
         <span class="name"><%= activity.title %></span>
         <% end %>
-        
-        <% unless activity.metro_station.blank? %>
-          <span class="geo"><%#= image_tag activity.metro_station.metro_branch.icon.url %>м. <%= activity.metro_station.try(:title) %></span>
+        <% counter = 1 %>
+        <% unless activity.metro_station.uniq.blank? %>
+          <% activity.metro_station.uniq.each do |ms| %>
+            <span class="geo"><%= image_tag ms.metro_branch.icon.url %><%= ms.try(:title)+(counter == activity.metro_station.uniq.count ? "" : ",") %></span>
+            <% counter+=1 %>
+          <% end %>
         <% end %>
       </li>
     <% end %>

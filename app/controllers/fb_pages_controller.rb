@@ -14,6 +14,7 @@ class FbPagesController < ApplicationController
     client = fb_auth.client
     client.authorization_code = params[:code]
     access_token = client.access_token! :client_auth_body
+    fb_auth.exchange_token! access_token
     owner = FbGraph::User.me(access_token)
     pages = owner.accounts
     page = pages.detect do |page|

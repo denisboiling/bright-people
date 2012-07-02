@@ -9,6 +9,14 @@ check_used_tags = ->
 
 window.setup_activities_list = ->
 
+  window.myMap_draw = true
+  window.mapGeoObjects = []
+
+  $('#map_spoiler').live 'click', (event) ->
+    event.preventDefault()
+    $('#select_coords_dialog').removeClass('hidden')
+    window.setup_activity_search_map()
+
   a = document.URL.split("&")
   b = new Array()
   i = 0
@@ -28,12 +36,13 @@ window.setup_activities_list = ->
     else
       $(this).find("span").addClass("active");
   
-  $(".remote_action").bind 'change', ->
+  $(".remote_action").live 'change', ->
     $("#remote_form").submit()
 
-  $("form#remote_form").bind "ajax:success", (xhr, data, status) ->
+  $("form#remote_form").live "ajax:success", (xhr, data, status) ->
     $("div.activities").html(data)
     window.setup_raty()
+    window.render_placemarks( !$('#select_coords_dialog').hasClass('hidden') ) if $('#coords_input').val()
 
   $("a.order_by").bind 'click', (event) ->
     event.preventDefault()
