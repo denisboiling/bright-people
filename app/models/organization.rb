@@ -11,6 +11,11 @@ class Organization < ActiveRecord::Base
   belongs_to :metro_station
 
   default_scope order: 'title ASC'
+
+  define_index do
+    indexes title, sortable: true
+    indexes address
+  end
   
   def direction_tags
     DirectionTag.joins(:activities => :organization)

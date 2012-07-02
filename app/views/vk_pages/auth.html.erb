@@ -1,0 +1,7 @@
+<%= form_for @vk_page, :url => { :action => "create_vk_page" } do |f| %>
+  <%= f.password_field :login %>
+  <%= f.password_field :password %>
+  <%= f.text_field :public_url %>
+  <%= f.text_field :public_id %>
+  <%= f.submit "Save" %>
+<% end %>

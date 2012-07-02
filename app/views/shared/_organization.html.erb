@@ -1,3 +1,10 @@
-<h3>организация</h3><br />
-<%= object.title %>
-<br /><br />
+<div class="name"><%= link_to object.excerpts.title.html_safe, object %></div>
+
+<div class="short_desc"><%= object.excerpts.address.html_safe %></div>
+
+<div class="info">
+  <em>В разделе</em>
+  <%= link_to 'Организации', '#'%>
+  <em>от</em>
+  <%= Russian::strftime(object.created_at, "%e %B %Y") %>
+</div>
