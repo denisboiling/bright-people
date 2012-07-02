@@ -16,17 +16,17 @@
     </div>
     <div class="post_info">
       <!-- OPTIMIZE: brr..ugly -->
-      <% if @article.biography.present? || @article.author.articles.count > 1 %>
+      <% if @article.biography.present? || @article.author.articles.published.count > 1 %>
 	<div class="other_link">
 	  <% if @article.biography.present? %>
 	    <div class="title">Биография</div>
 	    <%== @article.biography %>
 	  <% end %>
 
-	  <% if @article.author.articles.count > 1 %>
+	  <% if @article.author.articles.published.count > 1 %>
 	    <div class="title">Другие статьи автора</div>
 	    <ul>
-	      <% @article.author.articles.except(@article).each do |article| %>
+	      <% @article.author.articles.published.except(@article).each do |article| %>
 		<li><%= link_to article.title, article %>
 	      <% end %>
 	    </ul>
