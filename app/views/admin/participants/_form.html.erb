@@ -1,0 +1,39 @@
+<%= semantic_form_for [:admin, @participant], html: { multipart: true } do |f| %>
+  <%= f.inputs 'Основное' do %>
+    <%= f.input :title %>
+
+    <%= f.input :headliner, as: :select, collection: [['Да', true],['Нет', false]], include_blank: false %>
+
+    <%= f.input :logo, as: :file, hint: f.template.image_tag(f.object.logo.url) %>
+
+    <%= render 'shared/editor_toolbar', element_id: 'activity_description' %>
+    <%= f.input :description, input_html: { size: 10 } %>
+  <% end %>
+
+  <%= f.inputs "Медиа контент" do %>
+    <div class="participant_photos">
+      <h3>Фотографии:</h3>
+      <% f.object.photos.each do |ph| %>
+        <div class='thumb'>
+          <%= image_tag ph.attach.url %>
+          <%= link_to 'Убрать фотографию', '#', :class => 'remove_participant_photo', 'data-photo-id' => ph.try(:id) %>
+        </div>
+      <% end %>
+      <input type="file" name="participant[photos_attributes][][attach]" multiple="multiple" accept="image"/>
+    </div>
+    <br>
+    <h3>Видео:</h3>
+    <div class="participant_videos">
+      <%= f.semantic_fields_for :videos do |video| %>
+        <%= render 'admin/participant/video_fields', f: video %>
+      <% end %>
+    </div>
+    <%= link_to_add_association 'Добавить ссылку на видео', f, :videos,
+                                  'data-association-insertion-method' => 'append',
+                                  'data-association-insertion-node' => '.participant_videos' %>
+  <% end %>
+    
+  <%= f.buttons do %>
+    <%= f.commit_button %>
+  <% end %>
+<% end %>

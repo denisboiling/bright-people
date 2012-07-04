@@ -1,0 +1,13 @@
+<% @best.each do |b| %>
+  <%= image_tag b.logo.url(:medium) %>
+  <%= b.title %>
+  <%= b.description %>
+<% end %>
+
+<br><br><br><br>
+
+<% @participants.each do |p| %>
+  <%= image_tag p.logo.url(:medium) %>
+  <%= p.title %>
+  <%= p.description %>
+<% end %>
