@@ -6,6 +6,22 @@ ActiveAdmin.register Participant do
   scope :headliners
   scope :not_headliners
 
+  scope :music_stage do |participants|
+    participants.where(:category => 'music_stage')
+  end
+  scope :doll_stage do |participants|
+    participants.where(:category => 'doll_stage')
+  end
+  scope :circus_stage do |participants|
+    participants.where(:category => 'circus_stage')
+  end
+  scope :street_theater do |participants|
+    participants.where(:category => 'street_theater')
+  end
+  scope :master_class do |participants|
+    participants.where(:category => 'master_class')
+  end
+
   filter :title
 
   index do
@@ -15,6 +31,8 @@ ActiveAdmin.register Participant do
     end
     column :title
     column :headliner
+    column :category
+    column :priority
     column :description
     default_actions
   end

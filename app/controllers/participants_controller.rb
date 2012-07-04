@@ -1,7 +1,7 @@
 class ParticipantsController < ApplicationController
   def index
     cat = params[:category]
-    if cat != 'music_stages' and cat != 'doll_stages' and cat != 'circus_stages' and cat != 'street_theaters' and cat != 'master_classes' then
+    if cat != 'music_stage' and cat != 'doll_stage' and cat != 'circus_stage' and cat != 'street_theater' and cat != 'master_class' then
       cat = nil
     end
     if cat then

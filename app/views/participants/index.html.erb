@@ -8,6 +8,16 @@
       </ul>
       <div class="clear"></div>
     </div>
+    <div>
+      <ul>
+        <li><%= link_to 'Хедлайнеры', '/participants' %></li>
+        <li><%= link_to 'Музыкальная сцена', '/participants?category=music_stage' %></li>
+        <li><%= link_to 'Кукольная сцена', '/participants?category=doll_stage' %></li>
+        <li><%= link_to 'Цирковая сцена', '/participants?category=circus_stage' %></li>
+        <li><%= link_to 'Уличные театры', '/participants?category=street_theather' %></li>
+        <li><%= link_to 'Мастер-классы', '/participants?category=master_class' %></li>
+      </ul>
+    </div>
     <% if @best %>
       <% @best.each do |b| %>
         <%= image_tag b.logo.url(:thumb) %>
