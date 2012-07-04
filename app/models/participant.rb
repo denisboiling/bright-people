@@ -1,4 +1,6 @@
 class Participant < ActiveRecord::Base
+  default_scope :order => 'priority DESC'
+
   has_attached_file :logo, styles: { medium: "300x300^#", thumb: '160x100^#', approved: '422x114^#', index: '186x114^#' },
                            path: ":rails_root/public/system/participants/:attachment/:id/:style/:filename",
                            url: "/system/participants/:attachment/:id/:style/:filename",
@@ -14,21 +16,17 @@ class Participant < ActiveRecord::Base
   scope :headliners, where(headliner: true)
   scope :not_headliners, where(headliner: false)
 
+  scope :by_category, lambda { |category| where(category: category) }
+
   validates :title, :description, :logo, presence: :true
-  validate :must_be_not_more_than_3_headliners
 
   accepts_nested_attributes_for :photos, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :videos, allow_destroy: true, reject_if: :all_blank
 
-  attr_accessible :title, :description, :logo, :photos_attributes, :videos_attributes, :headliner, as: :admin
+  attr_accessible :title, :description, :logo, :photos_attributes, :videos_attributes, :headliner, :category, :priority, as: :admin
 
   def add_participant_type(video)
     video.relation_type = 'participant'
   end
 
-  def must_be_not_more_than_3_headliners
-    if headliner and Participant.headliners.count >= 3 
-      errors.add(:headliner, "Too many headliners - 3 maximum")
-    end
-  end
 end
