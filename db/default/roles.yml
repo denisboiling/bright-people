@@ -13,3 +13,7 @@ editor:
 expert:
   id: 4
   name: expert
+
+manager:
+  id: 5
+  name: manager
