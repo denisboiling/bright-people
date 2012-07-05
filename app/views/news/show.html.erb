@@ -16,7 +16,7 @@
       <div class="clear"></div>
     </div>
     <br>
-    <%= image_tag @news.photo.url %>
+    <%= image_tag @news.photo.url(:original) %>
     <%= @news.title %>
     <%= Russian::strftime(@news.created_at, "%e %B, %A") %>
     <br>
