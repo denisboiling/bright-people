@@ -92,14 +92,40 @@
       <div class="clear"></div>
     </div>
 
-        <div class="timer">
-        	<div class="title">Новости фестиваля «Яркие люди»:</div>
-            <% News.for_main.each do |n| %>
-              <%= image_tag n.photo.url %>
-              <%= n.title %>
-              <%= truncate(n.content, separator: '.', omission: '.', length: 140) %>
-            <% end %>
+        <div class="news_in_main">
+        
+<div id="slider-code">
+	
+	<div class="viewport">
+		<ul class="overview">
+        <% News.for_main.each do |n| %>
+        <li>
+        <div class="news_cell">
+          <div class="date">дата</div>
+          <div class="thumb"><%= image_tag n.photo.url %></div>
+          <div class="info">
+            <div class="name"><%= n.title %></div>
+            <div class="short_desc"><%= truncate(n.content, separator: '.', omission: '.', length: 140) %></div>
+          </div>
         </div>
+        </li>
+        <% end %>
+    </ul>
+    <div class="clear"></div>
+	</div>
+	<div class="nav_arrow">
+	<a class="buttons prev" href="#"><img src="/assets/news_slide_up.png" /></a>
+	<a class="buttons next" href="#"><img src="/assets/news_slide_down.png" /></a>
+	</div>
+</div>
+
+            <script src="/assets/jquery.tinycarousel.min.js" type="text/javascript"></script>
+            <script type="text/javascript">
+            $(document).ready(function(){
+              $('#slider-code').tinycarousel({ axis: 'y', display: 2});
+            });
+            </script>
+
             
         </div>
 
