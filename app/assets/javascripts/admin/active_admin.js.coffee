@@ -102,6 +102,32 @@ setup_photos_removing = ->
       $(this).parent('.thumb').remove()
     return false
 
+    $('a.remove_participant_video').live 'click', () ->
+    id = $(this).attr('data-photo-id')
+    if id
+      # TODO: only in success we should delete div
+      $.ajax '/staff/delete_video_by_participant',
+        type: 'DELETE',
+        dataType: 'json',
+        data: {id: id}
+      $(this).parent('.nested-fields').remove()
+    else
+      $(this).parent('.nested-fields').remove()
+    return false
+
+  $('a.remove_participant_photo').live 'click', () ->
+    id = $(this).attr('data-photo-id')
+    if id
+      # TODO: only in success we should delete div
+      $.ajax '/staff/delete_photo_by_participant',
+        type: 'DELETE',
+        dataType: 'json',
+        data: {id: id}
+      $(this).parent('.thumb').remove()
+    else
+      $(this).parent('.thumb').remove()
+    return false
+
 $ ->
   setup_photos_removing()
   setup_chosen()

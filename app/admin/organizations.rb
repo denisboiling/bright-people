@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ActiveAdmin.register Organization do
-  menu label: 'Организации'
+  menu label: 'Организации', :parent => "Кружки, организации"
 
   controller do
     autocomplete :organization, :title, full: true

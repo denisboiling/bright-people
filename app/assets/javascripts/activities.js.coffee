@@ -91,6 +91,8 @@ window.setup_activities_approval = ->
     $('#activity_approve_dialog').removeClass('hidden')
 
 window.setup_lightbox = ->
+  return if $('.title_block').length == 0
+  
   $("a[rel^='prettyPhoto']").prettyPhoto(social_tools: false)
   $('#pikame').PikaChoose(carousel: true, autoPlay: false)
   
