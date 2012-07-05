@@ -6,7 +6,7 @@ class ParticipantsController < ApplicationController
     end
     if cat then
       @best = Participant.by_category(cat).first(3)
-      @participants = Participant.by_category(cat)[3,Participant.headliners.count]
+      @participants = Participant.by_category(cat)[3,Participant.by_category(cat).count]
     else
       @best = Participant.headliners.first(3)
       @participants = Participant.headliners[3,Participant.headliners.count]
