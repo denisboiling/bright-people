@@ -54,8 +54,6 @@
         <div class="title"><span>Лучшее</span></div>
         <%= render 'items', articles: @best_articles %>
       <% end %>
-      <div class="title"><span><%= @news_category.title %></span></div>
-      <%= render 'items', articles: @news_category.articles.published.first(2) %>
     </div>
   </div>
 
