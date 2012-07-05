@@ -20,7 +20,6 @@ window.add_comment = ->
     relation = document.URL.match(/\/[_A-Za-z0-9]+\//)[0].match(/[_A-Za-z0-9]+/)[0]
     relation =
       switch (relation)
-        when "news" then "News"
         when "articles" then "Article"
         when "interviews" then "Interview"
         when "contests" then "ContestMembership"

@@ -183,32 +183,11 @@ class Main < ActiveRecord::Migration
     t.timestamps
   end
 
-  # create_table :interviews do |t|
-  #   t.string :title
-  #   t.integer :author_id
-  #   t.text :review
-  #   t.string :review_title
-  #   t.boolean :is_enabled
-  #   t.text :content, :short_description
-  #   t.has_attached_file :picture
-  #   t.integer :comments_count, default: 0
-  #   t.timestamps
-  # end
-
   create_table :activity_age_relations do |t|
     t.integer :activity_id, :age_tag_id
 
     t.timestamps
   end
-
-  # create_table :news do |t|
-  #   t.string :title
-  #   t.integer :author_id
-  #   t.text :content
-  #   t.has_attached_file :picture
-  #   t.integer :comments_count, default: 0
-  #   t.timestamps
-  # end
 
   create_table :special_projects do |t|
     t.string :title, :author

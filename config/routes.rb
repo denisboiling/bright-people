@@ -8,10 +8,12 @@ BrightPeople::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
+  resources :news, only: [:index, :show]
   resources :organizations, only: [:show]
   resources :experts, only: [:index, :show]
   resources :sponsors, only: [:index, :show]
   resources :favourites, only: [:index, :create, :destroy]
+  resources :participants, only: [:index]
 
   resource :comments, only: :create
   resource :search, only: [:show]
@@ -67,6 +69,8 @@ BrightPeople::Application.routes.draw do
   # Some staff match routes
   match '/staff/delete_photo_by_activity' => 'staff#delete_photo_by_activity', :via => :delete
   match '/staff/delete_video_by_activity' => 'staff#delete_video_by_activity', :via => :delete
+  match '/staff/delete_photo_by_participant' => 'staff#delete_photo_by_participant', :via => :delete
+  match '/staff/delete_video_by_participant' => 'staff#delete_video_by_participant', :via => :delete
 
   root :to => 'home#show'
 

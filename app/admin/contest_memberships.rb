@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ActiveAdmin.register ContestMembership do
-  menu label: "Участники конкурсов"
+  menu label: "Участники конкурсов", :parent => "Конкурсы"
 
   filter :contest, input_html: { class: 'chosen_autocomplete' }
   filter :user, input_html: { class: 'chosen_autocomplete' }

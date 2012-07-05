@@ -10,4 +10,14 @@ class StaffController < ApplicationController
     VideoUrl.find(params[:id]).destroy
     render nothing: true
   end
+
+  def delete_photo_by_participant
+    ParticipantPhoto.find(params[:id]).destroy
+    render nothing: true
+  end
+
+  def delete_video_by_participant
+    VideoUrl.find(params[:id]).destroy
+    render nothing: true
+  end
 end
