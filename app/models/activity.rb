@@ -44,7 +44,7 @@ class Activity < ActiveRecord::Base
   # TODO: replace with polymorphic
   has_many :videos, class_name: 'VideoUrl', dependent: :destroy,
                     conditions: "relation_type = 'activity'",
-  foreign_key: 'relation_id', before_add: :add_activity_type
+                    foreign_key: 'relation_id', before_add: :add_activity_type
 
   belongs_to :region
 

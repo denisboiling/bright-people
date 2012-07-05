@@ -1,0 +1,28 @@
+<% 1.upto(4).each do |i| %>
+headliner_<%= i %>:
+  title: <%= Faker::Lorem.words.join(' ') %>
+  id: <%= i %>
+  description: "<%= Faker::Lorem.paragraphs(1).join('\n') %>"
+  priority: <%= i %>
+  headliner: true
+<% end %>
+
+<% 5.upto(8).each do |i| %>
+music_<%= i %>:
+  title: <%= Faker::Lorem.words.join(' ') %>
+  id: <%= i %>
+  description: "<%= Faker::Lorem.paragraphs(1).join('\n') %>"
+  priority: <%= i %>
+  headliner: false
+  category: 'music_stage'
+<% end %>
+
+<% 9.upto(12).each do |i| %>
+circus_<%= i %>:
+  title: <%= Faker::Lorem.words.join(' ') %>
+  id: <%= i %>
+  description: "<%= Faker::Lorem.paragraphs(1).join('\n') %>"
+  priority: <%= i %>
+  headliner: false
+  category: 'circus_stage'
+<% end %>
