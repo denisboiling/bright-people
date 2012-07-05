@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ActiveAdmin.register News do
-  menu label: 'Новости'
+  menu label: 'Новости фестиваля', :parent => "Фестиваль"
 
   filter :title
 

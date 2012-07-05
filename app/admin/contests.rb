@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ActiveAdmin.register Contest do
-  menu label: "Конкурсы"
+  menu label: "Конкурсы", :parent => "Конкурсы"
 
   filter :name
   filter :category
