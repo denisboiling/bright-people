@@ -6,8 +6,6 @@ about_festival:
     <ul>
     <li class="about_ico active"><a href="/pages/about_festival">О фестивале</a></li>
     <li class="org_ico"><a href="/pages/org_komitet">Оргкомитет</a></li>
-    <li class="participants_ico"><a href="/participants">Участники фестиваля</a></li>
-    <li class="news_ico"><a href="/news">Новости фестиваля</a></li>
     </ul>
     <div class="clear">
     </div>
@@ -77,8 +75,6 @@ org_komitet:
     <ul>
     <li class="about_ico"><a href="/pages/about_festival">О фестивале</a></li>
     <li class="org_ico active"><a href="/pages/org_komitet">Оргкомитет</a></li>
-    <li class="participants_ico"><a href="/participants">Участники фестиваля</a></li>
-    <li class="news_ico"><a href="/news">Новости фестиваля</a></li>
     </ul>
     <div class="clear">
     </div>
