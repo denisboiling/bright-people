@@ -101,10 +101,10 @@
         <% News.for_main.each do |n| %>
         <li>
         <div class="news_cell">
-          <div class="date">дата</div>
+          <div class="date"><%= Russian::strftime(n.created_at, "%e %B, %A") %></div>
           <div class="thumb"><%= image_tag n.photo.url %></div>
           <div class="info">
-            <div class="name"><%= n.title %></div>
+            <div class="name"><%= link_to n.title, n %></div>
             <div class="short_desc"><%= truncate(n.content, separator: '.', omission: '.', length: 140) %></div>
           </div>
         </div>
