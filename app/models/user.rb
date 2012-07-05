@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   has_many :articles, foreign_key: :author_id
   has_many :news, foreign_key: :author_id
 
+  has_many :activities, foreign_key: :manager_id
+
   has_many :activity_approvals
   has_many :approved_activities, through: :activity_approvals, source: :activity
 

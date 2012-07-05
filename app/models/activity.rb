@@ -52,6 +52,8 @@ class Activity < ActiveRecord::Base
 
   has_one :expert, through: :approval, source: :user
 
+  belongs_to :manager, class_name: 'User'
+
   has_attached_file :logo, styles: { medium: "300x300^#", thumb: '160x100^#', approved: '422x114^#', index: '186x114^#' },
                            path: ":rails_root/public/system/activities/:attachment/:id/:style/:filename",
                            url: "/system/activities/:attachment/:id/:style/:filename",

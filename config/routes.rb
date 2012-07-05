@@ -16,7 +16,7 @@ BrightPeople::Application.routes.draw do
   resource :comments, only: :create
   resource :search, only: [:show]
 
-  resources :activities, only: [:index, :show, :search] do
+  resources :activities, only: [:index, :show, :search, :edit] do
     get :get_comments
     put :approve
   end

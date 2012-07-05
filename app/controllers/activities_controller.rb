@@ -1,10 +1,10 @@
 class ActivitiesController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource :except => :edit
 
   # TODO: bugaggagga make it better, and try understand what every line do ;)
   before_filter :get_kind, only: :index
   before_filter :get_directions, only: :index
-  before_filter :load_object, only: [:show, :get_comments, :vote]
+  before_filter :load_object, only: [:show, :get_comments, :vote, :edit]
   before_filter :check_published, only: :show
 
   def index
@@ -19,6 +19,13 @@ class ActivitiesController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
+    authorize! :edit, @activity
+  end
+
+  def update
   end
 
   def vote
