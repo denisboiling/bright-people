@@ -5,7 +5,7 @@ class CreateParticipants < ActiveRecord::Migration
       t.text :description
       t.has_attached_file :logo
       t.boolean :headliner, null: false, default: false
-      t.integer :priority, null: 0, default: 0
+      t.integer :priority, null: 1, default: 1
       t.string :category
 
       t.timestamps

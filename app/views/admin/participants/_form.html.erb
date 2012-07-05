@@ -4,9 +4,13 @@
 
     <%= f.input :headliner, as: :select, collection: [['Да', true],['Нет', false]], include_blank: false %>
 
+    <%= f.input :priority, as: :number %>
+
+    <%= f.input :category, as: :select, collection: [['Музыкальная сцена', 'music_stage'], ['Кукольная сцена', 'doll_stage'],
+                                                    ['Цирковая сцена', 'circus_stage'], ['Уличные театры', 'street_theather'], ['Мастер класс', 'master_class']] %>
+
     <%= f.input :logo, as: :file, hint: f.template.image_tag(f.object.logo.url) %>
 
-    <%= render 'shared/editor_toolbar', element_id: 'activity_description' %>
     <%= f.input :description, input_html: { size: 10 } %>
   <% end %>
 
@@ -25,7 +29,7 @@
     <h3>Видео:</h3>
     <div class="participant_videos">
       <%= f.semantic_fields_for :videos do |video| %>
-        <%= render 'admin/participant/video_fields', f: video %>
+        <%= render 'admin/participants/video_fields', f: video %>
       <% end %>
     </div>
     <%= link_to_add_association 'Добавить ссылку на видео', f, :videos,

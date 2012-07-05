@@ -1,3 +1,8 @@
+<% content_for :title do %>
+  Фестиваль Яркие Люди | Участники фестиваля
+<% end %>
+
+
 <div class="pages">
   <div class="common">
     <div class="post_category_menu">
@@ -20,11 +25,12 @@
     </div>
     <% if @best %>
       <% @best.each do |b| %>
-        <%= image_tag b.logo.url(:thumb) %>
-        <%= b.title %>
-        <br>
-        <%= b.description %>
-        <br>
+        <div class="main_participant">
+          <%= image_tag b.logo.url(:thumb) %>
+          <%= b.title %>
+          <br>
+          <%= b.description %>
+        </div>
       <% end %>
     <% end %>
     <br>
@@ -32,14 +38,34 @@
     <br>
     <% if @participants %>
       <% @participants.each do |p| %>
-        <%= image_tag p.logo.url(:thumb) %>
-        <%= p.title %>
-        <br>
-        <%= p.description %>
-        <br>
+        <div class="participant">
+          <span class="participant_photo">
+            <%= image_tag p.logo.url(:thumb) %>
+          </span>
+          <%= p.title %>
+          <br>
+          <%= p.description %>
+          <ul id="pikame" class="jcarousel-skin-pika hidden">
+            <% p.photos.each do |photo| %>
+              <li><%= link_to image_tag(photo.attach.url(:slider), 'data-hook-class' => "photo#{photo.id}") %></li>
+            <% end %>
+            <% p.videos.each do |video| %>
+              <li class="slideshow_video_item"><div class="video"></div><%= link_to image_tag(video.preview_url, 'data-hook-class' => "video#{video.id} ", 'style' => 'width:530px') %></li>
+            <% end %>
+          </ul>
+        </div>
+        <div id="lightbox_hook" class="hidden">
+          <% p.photos.each do |photo| %>
+            <%= link_to '#', photo.attach.url(:original), class: "photo#{photo.id}", rel: "prettyPhoto[participant]" %>
+          <% end %>
+          <% p.videos.each do |video| %>
+            <%= link_to '#', video.url, class: "video#{video.id}", rel: "prettyPhoto[participant]" %>
+          <% end %>
+        </div>
       <% end %>
     <% end %>
   </div>
+
   <div class="sidebar">
     <%= render 'shared/sidebar' %>
   </div>

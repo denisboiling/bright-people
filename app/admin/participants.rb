@@ -40,7 +40,7 @@ ActiveAdmin.register Participant do
   form partial: 'form'
 
   show do
-    attributes_table :title, :headliner, :updated_at
+    attributes_table :title, :headliner, :priority, :category, :updated_at
 
     panel 'Лого' do
       image_tag resource.logo.url(:medium)
