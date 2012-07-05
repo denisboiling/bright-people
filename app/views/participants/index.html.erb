@@ -38,29 +38,31 @@
     <br>
     <% if @participants %>
       <% @participants.each do |p| %>
-        <div class="participant">
-          <span class="participant_photo">
-            <%= image_tag p.logo.url(:thumb) %>
-          </span>
-          <%= p.title %>
-          <br>
-          <%= p.description %>
-          <ul id="pikame" class="jcarousel-skin-pika hidden">
+        <div class="participant_wrapper">
+          <div class="participant">
+            <span class="participant_photo">
+              <%= image_tag p.logo.url(:thumb) %>
+            </span>
+            <%= p.title %>
+            <br>
+            <%= p.description %>
+            <ul id="pikame_<%= p.id %>" class="jcarousel-skin-pika hidden">
+              <% p.photos.each do |photo| %>
+                <li><%= link_to image_tag(photo.attach.url(:slider), 'data-hook-class' => "photo#{photo.id}") %></li>
+              <% end %>
+              <% p.videos.each do |video| %>
+                <li class="slideshow_video_item"><div class="video"></div><%= link_to image_tag(video.preview_url, 'data-hook-class' => "video#{video.id} ", 'style' => 'width:530px') %></li>
+              <% end %>
+            </ul>
+          </div>
+          <div id="lightbox_hook_<%= p.id %>" class="hidden">
             <% p.photos.each do |photo| %>
-              <li><%= link_to image_tag(photo.attach.url(:slider), 'data-hook-class' => "photo#{photo.id}") %></li>
+              <%= link_to '#', photo.attach.url(:original), class: "photo#{photo.id}", rel: "participant_"+p.id.to_s %>
             <% end %>
             <% p.videos.each do |video| %>
-              <li class="slideshow_video_item"><div class="video"></div><%= link_to image_tag(video.preview_url, 'data-hook-class' => "video#{video.id} ", 'style' => 'width:530px') %></li>
+              <%= link_to '#', video.url, class: "video#{video.id}", rel: "participant_"+p.id.to_s %>
             <% end %>
-          </ul>
-        </div>
-        <div id="lightbox_hook" class="hidden">
-          <% p.photos.each do |photo| %>
-            <%= link_to '#', photo.attach.url(:original), class: "photo#{photo.id}", rel: "prettyPhoto[participant]" %>
-          <% end %>
-          <% p.videos.each do |video| %>
-            <%= link_to '#', video.url, class: "video#{video.id}", rel: "prettyPhoto[participant]" %>
-          <% end %>
+          </div>
         </div>
       <% end %>
     <% end %>
