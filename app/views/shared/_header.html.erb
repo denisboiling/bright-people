@@ -70,7 +70,7 @@
 	      </ul>
 	    </div>
 	  </li>
-	  <li <%= 'class=selected' if @expert_page or current_page?(sponsors_path) or current_page?(sponsor_path) or current_page?(expert_path)%>><%= link_to 'О нас', experts_path %></li>
+	  <li <%= 'class=selected' if @expert_page or current_page?(sponsors_path) %>><%= link_to 'О нас', experts_path %></li>
 	  <li <%= 'class=selected' if @special_project_page %>><%= link_to 'Спецпроект', special_projects_path %></li>
 	</ul>
       </div>
