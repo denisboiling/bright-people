@@ -48,27 +48,44 @@ namespace :db do
     doc.css('td[colspan="6"]').each do |branch|
       t = (branch.text.strip[0,branch.text.index("линия")+4] == "Бутовская лини" ? "Бутовская линия" : branch.text.strip[0,branch.text.index("линия")+4] )
       puts t
-      station = MetroBranch.find_or_create_by_title(t)
+      station = MetroBranch.find_by_title(t)
+      unless station then
+        puts 'Branch' + t + 'not found: creating new'
+        station = MetroBranch.new
+        station.title = t
+        station.save
+      end
       iterator =  branch.parent.next.next
       while(!iterator.nil? and iterator.child['colspan'] != '6') do
-        m = MetroStation.new
-        m.title = iterator.child.text
+        m = MetroStation.find_by_title(iterator.child.text)
+        unless m then
+          puts 'Station' + iterator.child.text + 'not found: creating new'
+          m = MetroStation.new
+          m.title = iterator.child.text
+        end
         m.metro_branch_id = station.id
         m.save
-        #puts "Metro: " + m.title + "\t" + m.metro_branch_id.to_s + "\t" + iterator.child['colspan'].to_s
+        puts "Metro: " + m.title + "\t" + m.metro_branch_id.to_s + "\t" + iterator.child['colspan'].to_s
         iterator = iterator.next
       end
     end
     Dir.foreach(Rails.root.join('db/sample/files/metro_branches/')) {
       |x|
       puts "Got #{x}"
+      zero = MetroBranch.order('id ASC').first.id.to_i - 1 
       if x.split('.')[1]=='png'
         id = x.split('.')[0]
-        MetroBranch.find(id).update_attribute(:icon, File.new(Rails.root.to_s + '/db/sample/files/metro_branches/'+ x))
+        MetroBranch.find(zero + id.to_i).update_attribute(:icon, File.new(Rails.root.to_s + '/db/sample/files/metro_branches/'+ x))
       end
     }
   end
 
+  desc 'Update activities pictures'
+  task :update_activities_pictures => :environment do
+    ActivityPhoto.each do |ph|
+      ph.update_attribute(:attach, File.new("#{::Rails.root}/public"+ph.attach.url(:original).split('?')[0]))
+    end
+  end
 
   desc 'Load pages'
   task :load_pages => :environment do

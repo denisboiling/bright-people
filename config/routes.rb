@@ -71,6 +71,8 @@ BrightPeople::Application.routes.draw do
   match '/staff/delete_video_by_activity' => 'staff#delete_video_by_activity', :via => :delete
   match '/staff/delete_photo_by_participant' => 'staff#delete_photo_by_participant', :via => :delete
   match '/staff/delete_video_by_participant' => 'staff#delete_video_by_participant', :via => :delete
+  match '/staff/delete_photo_by_news' => 'staff#delete_photo_by_news', :via => :delete
+  match '/staff/delete_video_by_news' => 'staff#delete_video_by_news', :via => :delete
 
   root :to => 'home#show'
 
