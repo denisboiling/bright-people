@@ -1,3 +1,11 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+window.setup_news_lightbox = ->
+  return if $('#news').length == 0
+  
+  $("a[rel^='prettyPhoto']").prettyPhoto(social_tools: false)
+  $('#pikame').PikaChoose(carousel: true, autoPlay: false)
+  
+  $('.pikachoose .mask').bind 'click', ->
+    PikaChoose = $('#pikame').data('pikachoose')
+    element = PikaChoose.active
+    class_name = element.attr('data-hook-class')
+    $("#lightbox_hook .#{class_name}").trigger('click')
