@@ -194,7 +194,7 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 
 .bright_magazine { background:#ecece7; padding:10px 20px }
 .bright_magazine .magazine_control { float:left; width:175px; z-index:5; position:relative}
-.bright_magazine .magazine_control .title{ font-family:Futura; font-size:20px; color:#00b9e1; padding-top:20px; letter-spacing:-1px}
+.bright_magazine .magazine_control .title { font-family:Futura; font-size:20px; color:#00b9e1; padding-top:20px; letter-spacing:-1px}
 
 .bright_magazine .magazine_control a.active { font-weight:bold}
 
@@ -210,9 +210,7 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 .bright_magazine .magazine_tab .mag_tabs { display:none}
 .preview_cell { float:left; width:19%; margin-left:1%; height:330px; -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; margin-bottom:20px; margin-top:10px}
 .preview_cell .name { overflow:hidden; max-height:127px}
-.preview_cell:hover { background:#32985c; -moz-box-shadow:2px 2px 8px rgba(0,0,0,0.5);
-		      -webkit-box-shadow:2px 2px 8px rgba(0,0,0,0.5);
-		      box-shadow:2px 2px 8px rgba(0,0,0,0.5);}
+.preview_cell:hover { background:#32985c; -moz-box-shadow:2px 2px 8px rgba(0,0,0,0.5); -webkit-box-shadow:2px 2px 8px rgba(0,0,0,0.5); box-shadow:2px 2px 8px rgba(0,0,0,0.5);}
 .preview_cell .info { width:160px; margin:auto; padding:15px 0px;}
 .preview_cell .info .cat_name { height:24px; text-align:center; letter-spacing:-1px}
 .preview_cell .info .cat_name span { display:none}
