@@ -1,0 +1,7 @@
+<%= form_for(@activity) do |f| %>
+  <%= f.label :title %><%= f.text_field :title %><br>
+  <%= f.label :address %><%= f.text_field :address %><br>
+  <%= f.label :description %><%= f.text_area :description %><br>
+  <%= f.label :logo %><%= f.file_field :logo %><br>
+  <%= f.submit %>
+<% end %>
