@@ -80,6 +80,14 @@ namespace :db do
     }
   end
 
+  desc 'Update activities pictures'
+  task :update_activities_pictures => :environment do
+    Activity.all.each do |a|
+      a.photos.each do |ph|
+        ph.update_attribute(:attach, File.new("#{::Rails.root}/public"+ph.attach.url(:original).split('?')[0]))
+      end
+    end
+  end
 
   desc 'Load pages'
   task :load_pages => :environment do
