@@ -1,6 +1,8 @@
 class News < ActiveRecord::Base
   default_scope order: 'created_at DESC'
 
+  scope :published, where("publication_date <= :now_date", {:now_date =>  DateTime.now })
+
   has_many :photos, class_name: 'NewsPhoto',
                     dependent: :destroy
 
@@ -8,7 +10,7 @@ class News < ActiveRecord::Base
                     conditions: "relation_type = 'news'",
                     foreign_key: 'relation_id', before_add: :add_news_type
 
-  attr_accessible :title, :content, :photo, :photos_attributes, :videos_attributes, as: :admin
+  attr_accessible :title, :content, :photo, :photos_attributes, :videos_attributes, :publication_date, as: :admin
 
   accepts_nested_attributes_for :photos, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :videos, allow_destroy: true, reject_if: :all_blank
@@ -17,6 +19,11 @@ class News < ActiveRecord::Base
                              path: ":rails_root/public/system/news/:attachment/:id/:style/:filename",
                              url: "/system/news/:attachment/:id/:style/:filename",
                              default_style: :thumb
+
+  def published?
+    return false if self.publication_date.blank?
+    self.publication_date <= DateTime.now
+  end
 
   def add_news_type(video)
     video.relation_type = 'news'

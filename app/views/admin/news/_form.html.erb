@@ -3,7 +3,7 @@
     <%= f.input :title %>
 
     <%= f.input :photo, as: :file, hint: f.template.image_tag(f.object.photo.url) %>
-
+    <%= f.input :publication_date %>
     <%= f.input :content, input_html: { size: 10 } %>
   <% end %>
 
