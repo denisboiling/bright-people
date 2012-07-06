@@ -18,7 +18,7 @@ class SpecialProjectsController < ApplicationController
       else
         @special_projects
       end
-    @special_projects = @special_projects.page(params[:page]).per(15)
+    @special_projects = @special_projects.page(params[:page]).per(12)
   end
 
   def show
