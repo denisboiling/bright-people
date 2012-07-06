@@ -13,7 +13,6 @@ class User < ActiveRecord::Base
   has_many :comment_notifies, class_name: 'UserCommentNotify', through: :comments
   has_many :interviews, foreign_key: :author_id
   has_many :articles, foreign_key: :author_id
-  has_many :news, foreign_key: :author_id
 
   has_many :activities, foreign_key: :manager_id
 

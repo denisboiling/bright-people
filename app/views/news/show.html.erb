@@ -1,0 +1,22 @@
+<% content_for :title do %>
+  Фестиваль Яркие Люди | Новости фестиваля | <%= @news.title %>
+<% end %>
+
+
+
+<div class="pages">
+  <div class="common">
+    <br>
+    <%= image_tag @news.photo.url(:original) %>
+    <%= @news.title %>
+    <%= Russian::strftime(@news.created_at, "%e %B, %A") %>
+    <br>
+    <%= @news.content %>
+  </div>
+
+  <div class="sidebar">
+    <%= render 'shared/sidebar' %>
+  </div>
+  <div class="clear">
+  </div>
+</div>

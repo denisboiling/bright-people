@@ -1,0 +1,27 @@
+<% content_for :title do %>
+  Фестиваль Яркие Люди | Новости фестиваля
+<% end %>
+
+
+
+<div class="pages">
+  <div class="common">
+    <% @news.each do |n| %>
+      <div class="news">
+        <%= image_tag n.photo.url %>
+        <%= link_to n.title, n %>
+        <%= Russian::strftime(n.created_at, "%e %B, %A") %>
+        <br>
+        <%= truncate(n.content, separator: '.', omission: '.', length: 240) %>
+      </div>
+      <br>
+    <% end %>
+  <%= paginate @news %>
+  </div>
+
+  <div class="sidebar">
+    <%= render 'shared/sidebar' %>
+  </div>
+  <div class="clear">
+  </div>
+</div>

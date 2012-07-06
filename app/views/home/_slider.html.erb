@@ -92,33 +92,41 @@
       <div class="clear"></div>
     </div>
 
-        <div class="timer">
-        	<div class="title">До начала фестиваля «Яркие люди» остается:</div>
-            
-            <div class="timer_block">
-            <div class="timer_wrapper">
-            	<div id="counter"></div>
-                <div class="date_wrapper">
-                    <div class="date">Дни</div>
-                    <div class="date">Часы</div>
-                    <div class="date">Минуты</div>
-                </div>
-            </div>
-<script type="text/javascript">
-$(function(){
-	var _date = new Date();
-	_date.setMonth(7);
-	_date.setDate(18);
-	_date.setHours(0);
-	_date.setMinutes(0);
-	_date.setSeconds(0);
-	$('#counter').countdown({
-		image: '/assets/counter.png',
-		startTime: _date
-	});
-});
-</script>
+        <div class="news_in_main">
+        
+<div id="slider-code">
+	
+	<div class="viewport">
+		<ul class="overview">
+        <% News.for_main.each do |n| %>
+        <li>
+        <div class="news_cell">
+          <div class="date"><%= Russian::strftime(n.created_at, "%e %B, %A") %></div>
+          <div class="thumb"><%= image_tag n.photo.url %></div>
+          <div class="info">
+            <div class="name"><%= link_to n.title, n %></div>
+            <div class="short_desc"><%= truncate(n.content, separator: '.', omission: '.', length: 140) %></div>
+          </div>
         </div>
+        </li>
+        <% end %>
+    </ul>
+    <div class="clear"></div>
+	</div>
+	<div class="nav_arrow">
+	<a class="buttons prev" href="#"><img src="/assets/news_slide_up.png" /></a>
+	<a class="buttons next" href="#"><img src="/assets/news_slide_down.png" /></a>
+	</div>
+  <%= link_to 'Архив новостей', news_index_path %>
+</div>
+
+            <%#= javascript_include_tag 'jquery.tinycarousel.min' %>
+            <script type="text/javascript">
+            $(document).ready(function(){
+              $('#slider-code').tinycarousel({ axis: 'y', display: 2});
+            });
+            </script>
+
             
         </div>
 

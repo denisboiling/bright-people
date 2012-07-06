@@ -15,6 +15,11 @@ ActiveAdmin.register Picture do
         picture.picture.url(:original, timestamp: false)
       end
     end
+    column "URL масштабированной картинки" do |picture|
+      span class: 'get_host_url' do
+        picture.picture.url(:medium, timestamp: false)
+      end
+    end
     default_actions
   end
 

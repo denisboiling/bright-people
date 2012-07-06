@@ -8,6 +8,7 @@ BrightPeople::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
+  resources :news, only: [:index, :show]
   resources :organizations, only: [:show]
   resources :experts, only: [:index, :show]
   resources :sponsors, only: [:index, :show]
