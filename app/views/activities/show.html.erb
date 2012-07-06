@@ -112,7 +112,7 @@
         </div>
         <div id="lightbox_hook" class="hidden">
           <% @activity.photos.each do |photo| %>
-            <%= link_to '#', photo.attach.url(:original), class: "photo#{photo.id}", rel: "prettyPhoto[activity]" %>
+            <%= link_to '#', photo.attach.url(:large), class: "photo#{photo.id}", rel: "prettyPhoto[activity]" %>
           <% end %>
           <% @activity.videos.each do |video| %>
             <%= link_to '#', video.url, class: "video#{video.id}", rel: "prettyPhoto[activity]" %>
