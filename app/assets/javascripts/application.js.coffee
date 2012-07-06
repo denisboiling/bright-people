@@ -8,6 +8,7 @@
 #= require jquery.jcarousel.min
 #= require jquery.countdown
 #= require jquery.prettyPhoto
+#= require jquery.tinycarousel.min
 #= require js
 #= require swfobject
 #= require select_script

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ActiveAdmin.register Activity do
-  menu label: 'Кружки'
+  menu label: 'Кружки', :parent => "Кружки, организации"
 
   scope :all, :default => true
   scope :educationals

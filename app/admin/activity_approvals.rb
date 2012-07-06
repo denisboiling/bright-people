@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ActiveAdmin.register ActivityApproval do
-  menu label: 'Одобрение кружков'
+  menu label: 'Одобрение кружков', :parent => "Кружки, организации"
 
   filter :activity, input_html: { class: 'chosen_autocomplete' }
   filter :user, input_html: { class: 'chosen_autocomplete' }

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ActiveAdmin.register Page do
-  menu label: 'Страницы'
+  menu label: 'Страницы', :parent => "Фестиваль"
 
   filter :permalink
 

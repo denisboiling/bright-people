@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ActiveAdmin.register Participant do
-  menu label: 'Участники фестиваля'
+  menu label: 'Участники фестиваля', :parent => "Фестиваль"
 
   scope :all, :default => true
   scope :headliners
