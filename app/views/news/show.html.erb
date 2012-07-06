@@ -12,7 +12,7 @@
         <% if @news.photos.count == 1 %>
           <div class="mask"></div>
           <%= link_to image_tag(@news.photos.last.attach.url(:slider)), '#' %>
-        <% elsif  @activity.photos.count > 1 %>
+        <% elsif  @news.photos.count > 1 %>
           <div class="mask"></div>
           <ul id="pikame" class="jcarousel-skin-pika">
           <% @news.photos.each do |photo| %>
@@ -32,7 +32,7 @@
             <%= link_to '#', video.url, class: "video#{video.id}", rel: "prettyPhoto[news]" %>
           <% end %>
         </div>
-    <%= image_tag @news.photo.url(:original) %>
+    <%#= image_tag @news.photo.url(:original) %>
     <%= @news.title %>
     <%= Russian::strftime(@news.created_at, "%e %B, %A") %>
     <br>
