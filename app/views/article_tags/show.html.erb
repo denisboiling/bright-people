@@ -2,7 +2,7 @@
   <p>
      <%= link_to article.title, article %>
       by <%= article.author.name %>
-     <%= time_ago_in_words article.created_at %> назад
+     <%= time_ago_in_words article.updated_at %> назад
   </p>
   <p>
       <%= truncate(article.content, length: 25, omission: '...') %>
