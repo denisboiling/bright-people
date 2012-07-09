@@ -73,9 +73,9 @@
 
 <div class="main_content">
   <div>
-  <% pics = [image_tag('/assets/samp/adv.jpg'), image_tag('/assets/samp/R7.jpg')] %>
-  <% links = ["http://www.krokha.ru", "http://radio7.ru/?utm_source=bright-people&utm_medium=promo&utm_campaign=bright-people"] %>
-  <% j = rand(0..1) %>
+  <% pics = [image_tag('/assets/samp/adv.jpg'), image_tag('/assets/samp/R7.jpg'), image_tag('/assets/samp/baner.jpg')] %>
+  <% links = ["http://www.krokha.ru", "http://radio7.ru/?utm_source=bright-people&utm_medium=promo&utm_campaign=bright-people", "http://www.bg.ru"] %>
+  <% j = rand(0..2) %>
     <div class="adv"><%= link_to pics[j], links[j], "target"=>"_blank" %></div>
     <div class="bank_info">
       <div class="title">Добро пожаловать в мир ярких людей!</div>
