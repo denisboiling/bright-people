@@ -5,7 +5,7 @@ about_festival:
     <div class="post_category_menu">
     <ul>
     <li class="about_ico active"><a href="/pages/about_festival">О фестивале</a></li>
-    <li class="creative_ico"><a href="">Творческая группа</a></li>
+    <li class="creative_ico"><a href="/creative_group">Творческая группа</a></li>
     <li class="participants_ico"><a href="/participants?category=music_stage">Программа</a></li>
     <li class="headliners_ico"><a href="/participants">Хэдлайнеры</a></li>
     <li class="org_ico"><a href="/pages/org_komitet">Оргкомитет</a></li>
@@ -77,7 +77,7 @@ org_komitet:
     <div class="post_category_menu">
     <ul>
     <li class="about_ico"><a href="/pages/about_festival">О фестивале</a></li>
-    <li class="creative_ico"><a href="">Творческая группа</a></li>
+    <li class="creative_ico"><a href="/creative_group">Творческая группа</a></li>
     <li class="participants_ico"><a href="/participants?category=music_stage">Программа</a></li>
     <li class="headliners_ico"><a href="/participants">Хэдлайнеры</a></li>
     <li class="org_ico active"><a href="/pages/org_komitet">Оргкомитет</a></li>

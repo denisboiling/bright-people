@@ -15,6 +15,7 @@ BrightPeople::Application.routes.draw do
       get :tag
     end
   end
+  resources :creative_group, only: [:index]
   resources :organizations, only: [:show]
   resources :experts, only: [:index, :show]
   resources :sponsors, only: [:index, :show]
