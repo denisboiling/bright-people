@@ -1,4 +1,5 @@
 BrightPeople::Application.routes.draw do
+  match '/authors' => 'users#authors'
   match '/vk' => 'vk_pages#auth'
   match '/vk_save' => 'vk_pages#create_vk_page'
   match '/fb' => 'fb_pages#fb_auth'
