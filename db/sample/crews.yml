@@ -1,0 +1,7 @@
+<% 1.upto(7).each do |i| %>
+crew_<%= i %>:
+  name: <%= Faker::Name.name %>
+  id: <%= i %>
+  description: "<%= Faker::Lorem.sentences(2).join('. ') %>"
+<% end %>
+
