@@ -10,6 +10,8 @@ class News < ActiveRecord::Base
                     conditions: "relation_type = 'news'",
                     foreign_key: 'relation_id', before_add: :add_news_type
 
+  validates :title, :content, :publication_date, presence: true
+
   attr_accessible :title, :content, :photo, :photos_attributes, :videos_attributes, :publication_date, as: :admin
 
   accepts_nested_attributes_for :photos, allow_destroy: true, reject_if: :all_blank
