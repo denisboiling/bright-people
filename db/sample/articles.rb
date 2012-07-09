@@ -16,3 +16,20 @@ arr.each do |a|
   a.best = true
   a.save!
 end
+
+a = Article.find(1)
+a.article_tag_list=%w"tag1 tag2 tag3"
+a.save
+
+a = Article.find(2)
+a.article_tag_list=%w"tag1 tag2"
+a.save
+
+a = Article.find(3)
+a.article_tag_list=%w"tag3"
+a.save
+
+a = Article.find(4)
+a.article_tag_list=%w"tag2 tag3"
+a.save
+

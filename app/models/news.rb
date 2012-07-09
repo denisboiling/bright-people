@@ -17,6 +17,8 @@ class News < ActiveRecord::Base
   accepts_nested_attributes_for :photos, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :videos, allow_destroy: true, reject_if: :all_blank
 
+  acts_as_taggable_on :news_tags
+
   has_attached_file :photo, styles: { thumb: "160x100^#", slider: '530x370^#' },
                              path: ":rails_root/public/system/news/:attachment/:id/:style/:filename",
                              url: "/system/news/:attachment/:id/:style/:filename",

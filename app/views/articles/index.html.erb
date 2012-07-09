@@ -45,6 +45,7 @@
             <% ArticleCategory.all.each do |category| %>
               <li><%= link_to category.title, '#', 'data-id' => category.id %></li>
             <% end %>
+            <li id="news"><a href=''>Новости</a></li>
           </ul>
         </div>
       </div>
