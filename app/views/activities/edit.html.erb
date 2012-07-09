@@ -1,7 +1,68 @@
-<%= form_for(@activity) do |f| %>
-  <%= f.label :title %><%= f.text_field :title %><br>
-  <%= f.label :address %><%= f.text_field :address %><br>
-  <%= f.label :description %><%= f.text_area :description %><br>
-  <%= f.label :logo %><%= f.file_field :logo %><br>
-  <%= f.submit %>
-<% end %>
+<div class="activity_edit_block">
+  <div class="header">
+    <span>1</span>
+    Основная информация о кружке
+  </div>
+  <div>
+    <div class="item width50">
+      1. Название
+      <input type="text" placeholder="Название">
+    </div>
+    <div class="item width50">
+      2. Организация/центр/учреждение
+      <select>
+        <option>Центр</option>
+      </select>
+    </div>
+    <div class="clear"></div>
+    <div class="item">
+      3. Тип кружка
+      <select>
+        <option>Образовательный</option>
+      </select>
+    </div>
+    <div class="item">
+      4. Категория
+      <select>
+        <option>Для самых маленьких</option>
+      </select>
+    </div>
+    <div class="item">
+      5. Для детей от...
+      <select>
+        <option>От 25 лет</option>
+      </select>
+    </div>
+    <div class="item">
+      6. ... и до      
+      <select>
+        <option>25 лет</option>
+      </select>
+    </div>
+    <div class="item">
+      7. Телефон
+      <input type="text" placeholder="Телефон">
+    </div>
+    <div class="item">
+      8. Сайт <span>вот так (http://www.adres.ru)</span>
+      <input type="text" value="http://www.">
+    </div>
+    <div class="item">
+      9. Загрузка логотипа
+      <input type="text" placeholder="Название">
+    </div>
+    <div class="item">
+      10. Описание
+      <textarea>sdasdas</textarea>
+    </div>
+  </div>
+</div>
+
+
+<%#= form_for(@activity) do |f| %>
+  <%#= f.label :title %><%#= f.text_field :title %><br>
+  <%#= f.label :address %><%#= f.text_field :address %><br>
+  <%#= f.label :description %><%#= f.text_area :description %><br>
+  <%#= f.label :logo %><%#= f.file_field :logo %><br>
+  <%#= f.submit %>
+<%# end %>

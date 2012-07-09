@@ -1,0 +1,10 @@
+.activity_edit_block { max-width: 790px; }
+.activity_edit_block .header {}
+.activity_edit_block .header span {}
+.activity_edit_block .item { float: left; }
+.activity_edit_block .item.width50 { width: 47%; margin-right: 3%; }
+.activity_edit_block .item.width30 { width: 30% }
+.activity_edit_block .item.width20 { width: 20% }
+.activity_edit_block .item input,
+.activity_edit_block .item select,
+.activity_edit_block .item textarea { display: block; box-sizing: border-box; width: 100%; }
