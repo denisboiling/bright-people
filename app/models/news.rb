@@ -31,7 +31,7 @@ class News < ActiveRecord::Base
 
   class << self
     def for_main
-      News.all(:limit => 6)
+      News.published(:limit => 6)
     end
   end
 
