@@ -15,7 +15,7 @@
       <div class="clear"></div>
     </div>
     <div>
-      <ul>
+      <ul class="participants_menu">
         <li><%= link_to 'Хедлайнеры', '/participants' %></li>
         <li><%= link_to 'Музыкальная сцена', '/participants?category=music_stage' %></li>
         <li><%= link_to 'Кукольная сцена', '/participants?category=doll_stage' %></li>
@@ -25,47 +25,48 @@
       </ul>
     </div>
     <% if @best %>
+    <div class="main_participants">
       <% @best.each do |b| %>
-        <div class="main_participant">
-          <%= image_tag b.logo.url(:thumb) %>
-          <%= b.title %>
-          <br>
-          <%= b.description %>
+        <div class="item">
+          <%= image_tag b.logo.url(:thumb), 'class' => 'participant_photo' %>
+          <div class="title"><%= b.title %></div>
+          <%= b.description %>          
+          <div id="lightbox_hook_<%= b.id %>" class="hidden">
+            <% b.photos.each do |photo| %>
+              <%= link_to '#', photo.attach.url(:original), class: "photo#{photo.id}", rel: "participant_"+(b.id.to_s)+"[gallery]" %>
+            <% end %>
+            <% b.videos.each do |video| %>
+              <%= link_to '#', video.url, class: "video#{video.id}", rel: "participant_"+(b.id.to_s)+"[gallery]" %>
+            <% end %>
+          </div>
         </div>
       <% end %>
+    </div>
+    <div class="clear"></div>
     <% end %>
-    <br>
-    --------------------------------------------------
-    <br>
     <% if @participants %>
+    <div class="participants">
       <% @participants.each do |p| %>
-        <div class="participant_wrapper">
-          <div class="participant">
-            <span class="participant_photo">
-              <%= image_tag p.logo.url(:thumb) %>
-            </span>
-            <%= p.title %>
-            <br>
-            <%= p.description %>
-            <ul id="pikame_<%= p.id %>" class="jcarousel-skin-pika hidden">
-              <% p.photos.each do |photo| %>
-                <li><%= link_to image_tag(photo.attach.url(:slider), 'data-hook-class' => "photo#{photo.id}") %></li>
-              <% end %>
-              <% p.videos.each do |video| %>
-                <li class="slideshow_video_item"><div class="video"></div><%= link_to image_tag(video.preview_url, 'data-hook-class' => "video#{video.id} ", 'style' => 'width:530px') %></li>
-              <% end %>
-            </ul>
-          </div>
-          <div id="lightbox_hook_<%= p.id %>" class="hidden">
-            <% p.photos.each do |photo| %>
-              <%= link_to '#', photo.attach.url(:original), class: "photo#{photo.id}", rel: "participant_"+p.id.to_s %>
-            <% end %>
-            <% p.videos.each do |video| %>
-              <%= link_to '#', video.url, class: "video#{video.id}", rel: "participant_"+p.id.to_s %>
-            <% end %>
-          </div>
+      <div class="participant">
+        <div class="participant_photo">
+          <%= image_tag p.logo.url(:thumb) %>
         </div>
+        <div class="participant_data">
+          <div class="participant_title"><%= p.title %></div>
+          <%= p.description %>
+        </div>
+        <div id="lightbox_hook_<%= p.id %>" class="hidden">
+          <% p.photos.each do |photo| %>
+            <%= link_to '#', photo.attach.url(:original), class: "photo#{photo.id}", rel: "participant_"+(p.id.to_s)+"[gallery]" %>
+          <% end %>
+          <% p.videos.each do |video| %>
+            <%= link_to '#', video.url, class: "video#{video.id}", rel: "participant_"+(p.id.to_s)+"[gallery]" %>
+          <% end %>
+        </div>
+        <div class="clear"></div>
+      </div>
       <% end %>
+    </div>
     <% end %>
   </div>
 

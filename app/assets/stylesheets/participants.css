@@ -1,0 +1,15 @@
+.participants_menu {}
+.participants_menu li { display: inline-block; width: 16%; margin: 20px 0; text-align: center; }
+.participants_menu li a { font-size: 85%; }
+
+.main_participants .item { float: left; width: 32%; margin-right: 2%; }
+.main_participants .item:last-child { margin-right: 0; }
+.main_participants .item img { display: block; width: 100%; behaviour: url(border-radius.htc); border-radius: 7px; -webkit-border-radius: 7px; -moz-border-radius: 7px; -khtml-border-radius: 7px; }
+.main_participants .item .title { margin: 10px 3px; padding-bottom: 0; font-weight: bold; }
+
+.participants { margin-top: 15px; padding-top: 15px; border-top: 1px solid #ccc; }
+.participants .participant_wrapper { border-bottom: 1px solid #ccc; margin-bottom: 15px; padding-bottom: 15px; }
+.participants .participant_photo { float: left; width: 120px;}
+.participants .participant_photo img { display: block; width: 100%; behaviour: url(border-radius.htc); border-radius: 7px; -webkit-border-radius: 7px; -moz-border-radius: 7px; -khtml-border-radius: 7px; }
+.participants .participant_data { margin-left: 130px; }
+.participants .participant_title { margin-bottom: 10px; font-weight: bold; }
