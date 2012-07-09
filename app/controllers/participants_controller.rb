@@ -5,6 +5,7 @@ class ParticipantsController < ApplicationController
       cat = nil
     end
     if cat then
+      @stage = Stage.where(:category => cat).first
       @best = Participant.by_category(cat).first(3)
       @participants = Participant.by_category(cat)[3,Participant.by_category(cat).count]
       @is_headliners_page = false

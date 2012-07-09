@@ -26,6 +26,12 @@
         </ul>
       </div>
     <% end %>
+    <% if @stage %>
+      <div class="stage_info">
+        <%= image_tag @stage.small_pic.url unless @stage.small_pic_file_name.blank? %>
+        <%= @stage.content unless @stage.content.blank? %>
+      </div>
+    <% end %>
     <% if @best %>
     <div class="main_participants">
       <% @best.each do |b| %>
