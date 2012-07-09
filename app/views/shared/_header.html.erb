@@ -58,7 +58,7 @@
 
       <div id="menu">
 	<ul class="">
-	  <li <%= 'class=selected' if @mission_page %>><%= link_to 'Миссия', '' %></li>
+	  <li <%= 'class=selected' if @mission_page %>><%= link_to 'Миссия', '/pages/mission' %></li>
 	  <li <%= 'class=selected' if @activity_page %>><%= link_to 'Детские студии', activities_path %></li>
 	  <li class="current <%= 'selected' if current_page?(page_path('about_festival')) or current_page?(page_path('org_komitet')) %>"><%= link_to 'Фестиваль', page_path('about_festival') %>
 	  </li>
