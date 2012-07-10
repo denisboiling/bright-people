@@ -1,4 +1,6 @@
 BrightPeople::Application.routes.draw do
+  match '/crew' => 'crew#index'
+  match '/authors' => 'users#authors'
   match '/vk' => 'vk_pages#auth'
   match '/vk_save' => 'vk_pages#create_vk_page'
   match '/fb' => 'fb_pages#fb_auth'
@@ -8,7 +10,12 @@ BrightPeople::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
-  resources :news, only: [:index, :show]
+  resources :news, only: [:index, :show] do
+    collection do
+      get :tag
+    end
+  end
+  resources :creative_group, only: [:index]
   resources :organizations, only: [:show]
   resources :experts, only: [:index, :show]
   resources :sponsors, only: [:index, :show]

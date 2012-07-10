@@ -37,6 +37,12 @@
     <%= Russian::strftime(@news.created_at, "%e %B, %A") %>
     <br>
     <%= @news.content %>
+    <div class="clear"></div>
+    <div class="article_tags">
+      <% @tags.each do |t| %>
+        <%= link_to t.name, tag_articles_path(tag: t.name) %>
+      <% end %>
+    </div>
   </div>
 
   <div class="sidebar">

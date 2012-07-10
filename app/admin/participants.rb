@@ -9,8 +9,8 @@ ActiveAdmin.register Participant do
   scope :music_stage do |participants|
     participants.where(:category => 'music_stage')
   end
-  scope :doll_stage do |participants|
-    participants.where(:category => 'doll_stage')
+  scope :theater_stage do |participants|
+    participants.where(:category => 'theater_stage')
   end
   scope :circus_stage do |participants|
     participants.where(:category => 'circus_stage')

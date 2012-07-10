@@ -1,0 +1,19 @@
+music_stage:
+  id: 1
+  category: 'music_stage'
+
+theater_stage:
+  id: 2
+  category: 'theater_stage'
+
+circus_stage:
+  id: 3
+  category: 'circus_stage'
+
+street_theater:
+  id: 4
+  category: 'street_theater'
+
+master_class:
+  id: 5
+  category: 'master_class'
