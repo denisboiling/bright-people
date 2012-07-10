@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 ActiveAdmin.register News do
-  scope_to :current_user, :association_method => :unscoped_news
+# TODO: reopen. quick fix
+#  scope_to :current_user, :association_method => :unscoped_news
   menu label: 'Новости фестиваля', :parent => "Фестиваль"
 
   filter :title

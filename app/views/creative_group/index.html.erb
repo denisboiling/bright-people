@@ -21,7 +21,7 @@
           <div class="thumb">
             <%= image_tag(tm.avatar) %>
           </div>
-          <span class="name"><%= tm.name %>, <%= tm.profession %></span>
+          <span class="name"> <%= link_to tm.name+', '+tm.profession, creative_group_path(tm) %></span>
           <span class="info"><%= tm.description %></span>
       </div>
     <% end %>

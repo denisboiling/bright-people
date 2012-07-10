@@ -8,4 +8,13 @@ class CreativeGroup < ActiveRecord::Base
 
   validates :name, :description, :profession, :avatar, presence: true
   validates :description, length: { maximum: 140 }
+  
+  def prev_creative
+    CreativeGroup.split(self).first.last
+  end
+
+  def next_creative
+    CreativeGroup.split(self).last.first
+  end
+  
 end

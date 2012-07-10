@@ -15,22 +15,30 @@
       </ul>
       <div class="clear"></div>
     </div>
-    <% unless @is_headliners_page %>
-      <div>
-        <ul class="participants_menu">
-          <li><%= link_to 'Музыкальная сцена', '/participants?category=music_stage' %></li>
-          <li><%= link_to 'Театральная сцена', '/participants?category=theater_stage' %></li>
-          <li><%= link_to 'Цирковая сцена', '/participants?category=circus_stage' %></li>
-          <li><%= link_to 'Уличные театры', '/participants?category=street_theater' %></li>
-          <li><%= link_to 'Мастер-классы', '/participants?category=master_class' %></li>
-        </ul>
-      </div>
+    <% unless @is_headliners_page %>         
+      <% 
+        links = [ 
+          { 'title' => 'Музыкальная сцена', 'link' => 'music_stage'     },
+          { 'title' => 'Театральная сцена', 'link' => 'theater_stage'   },
+          { 'title' => 'Цирковая сцена'   , 'link' => 'circus_stage'    },
+          { 'title' => 'Уличные театры'   , 'link' => 'street_theater'  },
+          { 'title' => 'Мастер-классы'    , 'link' => 'master_class'    }
+        ]  
+      %>
+      <%= participants_menu links %>
     <% end %>
-    <% if @stage %>
-      <div class="stage_info">
-        <%= image_tag @stage.small_pic.url unless @stage.small_pic_file_name.blank? %>
+    <% if ( @stage ) %>
+    <div class="participants_map">
+      <div class="text">
         <%= @stage.content unless @stage.content.blank? %>
       </div>
+      <% if ( !@stage.small_pic_file_name.blank? ) %>
+      <div class="map" data-small="<%= @stage.small_pic.url %>" data-large="<%= @stage.large_pic.url %>"><%= image_tag @stage.small_pic.url %></div>
+      <div class="participants_map_toggle_wrapper">
+        <div id="participants_map_toggle">Раскрыть карту</div>
+      </div>
+      <% end %>
+    </div>
     <% end %>
     <% if @best %>
     <div class="main_participants">

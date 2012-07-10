@@ -43,9 +43,9 @@
         <div class="rubric_list">
           <ul>
             <% ArticleCategory.all.each do |category| %>
-              <li><%= link_to category.title, '#', 'data-id' => category.id %></li>
+              <li><%= link_to category.title, '#', 'data-id' => category.id, :class => 'article' %></li>
             <% end %>
-            <li id="news"><a href=''>Новости</a></li>
+            <%#*<li id="news"><a href='#'>Новости</a></li>%>
           </ul>
         </div>
       </div>
@@ -55,6 +55,10 @@
         <div class="title"><span>Лучшее</span></div>
         <%= render 'items', articles: @best_articles %>
       <% end %>
+      <%# if @news.any? %>
+        <%#*<div class="title"><span>Новости</span></div>%>
+        <%#= render 'news/page',  news: @news %>
+      <%# end %>
     </div>
   </div>
 
