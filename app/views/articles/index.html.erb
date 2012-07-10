@@ -22,7 +22,7 @@
             <%= link_to image_tag(article.picture.url), article %>
           </div>
           <span class="name"><%= link_to article.title, article %></span>
-          <span class="date"><%= Russian::strftime(article.created_at, "%e %B %Y") %></span>
+          <span class="date"><%= Russian::strftime(article.updated_at, "%e %B %Y") %></span>
         </div>
       </div>
       <% end %>
@@ -43,8 +43,9 @@
         <div class="rubric_list">
           <ul>
             <% ArticleCategory.all.each do |category| %>
-              <li><%= link_to category.title, '#', 'data-id' => category.id %></li>
+              <li><%= link_to category.title, '#', 'data-id' => category.id, :class => 'article' %></li>
             <% end %>
+            <%#*<li id="news"><a href='#'>Новости</a></li>%>
           </ul>
         </div>
       </div>
@@ -54,8 +55,10 @@
         <div class="title"><span>Лучшее</span></div>
         <%= render 'items', articles: @best_articles %>
       <% end %>
-      <div class="title"><span><%= @news_category.title %></span></div>
-      <%= render 'items', articles: @news_category.articles.published.first(2) %>
+      <%# if @news.any? %>
+        <%#*<div class="title"><span>Новости</span></div>%>
+        <%#= render 'news/page',  news: @news %>
+      <%# end %>
     </div>
   </div>
 

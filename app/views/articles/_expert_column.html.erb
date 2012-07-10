@@ -11,7 +11,7 @@
         <%= link_to image_tag(article.author.avatar), expert_path(article.author) %>
       </div>
       <span class="name"><%= link_to article.title, article %></span>
-      <span class="date"><%= Russian::strftime(article.created_at, "%e %B %Y") %></span>
+      <span class="date"><%= Russian::strftime(article.updated_at, "%e %B %Y") %></span>
     </div>
   </div>
   <% else %>
@@ -23,7 +23,7 @@
         <%= link_to image_tag(article.picture.url), article %>
       </div>
       <span class="name"><%= link_to article.title, article %></span>
-      <span class="date"><%= Russian::strftime(article.created_at, "%e %B %Y") %></span>
+      <span class="date"><%= Russian::strftime(article.updated_at, "%e %B %Y") %></span>
     </div>
   </div>
   <% end %>

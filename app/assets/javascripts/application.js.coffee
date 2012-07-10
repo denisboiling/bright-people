@@ -20,6 +20,7 @@ $ ->
   window.setup_email_dialog()
   window.setup_activities_list()
   window.setup_activities_approval()
+  window.setup_activities_edit()
   window.add_comment()
   window.setup_favourite_button()
   window.setup_slider()
@@ -39,3 +40,4 @@ $ ->
   window.setup_lightbox()
   window.setup_member_lightbox()
   window.setup_participants_list()
+  window.setup_news_lightbox()

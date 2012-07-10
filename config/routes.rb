@@ -1,4 +1,6 @@
 BrightPeople::Application.routes.draw do
+  match '/crew' => 'crew#index'
+  match '/authors' => 'users#authors'
   match '/vk' => 'vk_pages#auth'
   match '/vk_save' => 'vk_pages#create_vk_page'
   match '/fb' => 'fb_pages#fb_auth'
@@ -8,7 +10,12 @@ BrightPeople::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
-  resources :news, only: [:index, :show]
+  resources :news, only: [:index, :show] do
+    collection do
+      get :tag
+    end
+  end
+  resources :creative_group, only: [:index, :show]
   resources :organizations, only: [:show]
   resources :experts, only: [:index, :show]
   resources :sponsors, only: [:index, :show]
@@ -18,7 +25,7 @@ BrightPeople::Application.routes.draw do
   resource :comments, only: :create
   resource :search, only: [:show]
 
-  resources :activities, only: [:index, :show, :search] do
+  resources :activities, only: [:index, :show, :search, :edit] do
     get :get_comments
     put :approve
   end
@@ -71,6 +78,8 @@ BrightPeople::Application.routes.draw do
   match '/staff/delete_video_by_activity' => 'staff#delete_video_by_activity', :via => :delete
   match '/staff/delete_photo_by_participant' => 'staff#delete_photo_by_participant', :via => :delete
   match '/staff/delete_video_by_participant' => 'staff#delete_video_by_participant', :via => :delete
+  match '/staff/delete_photo_by_news' => 'staff#delete_photo_by_news', :via => :delete
+  match '/staff/delete_video_by_news' => 'staff#delete_video_by_news', :via => :delete
 
   root :to => 'home#show'
 

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  load_and_authorize_resource :dashboard, class: false
+  load_and_authorize_resource :dashboard, class: false, :except => :authors
   
   def update_email
     user = current_user
@@ -24,5 +24,9 @@ class UsersController < ApplicationController
   
   def notifications
     @notifications = current_user.notifications.order('created_at DESC').page(1).per(16)
+  end
+
+  def authors
+    @authors = Kaminari.paginate_array(User.joins(:articles)).page(params[:page]).per(12)
   end
 end

@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 ActiveAdmin.register News do
+# TODO: reopen. quick fix
+#  scope_to :current_user, :association_method => :unscoped_news
   menu label: 'Новости фестиваля', :parent => "Фестиваль"
 
   filter :title
@@ -11,21 +13,14 @@ ActiveAdmin.register News do
     end
     column :title
     column :content
-    column :created_at
+    column :publication_date
     default_actions
   end
 
-  form html: { enctype: 'multipart/form-data' } do |f|
-    f.inputs 'Основное' do
-      f.input :title
-      f.input :content
-      f.input :photo, as: :file
-    end
-    f.buttons
-  end
+  form partial: "form"
 
   show do
-    attributes_table :title, :content, :created_at
+    attributes_table :title, :content, :publication_date
 
     panel 'Фотография' do
       image_tag(news.photo.url(:original))

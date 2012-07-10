@@ -28,11 +28,11 @@ class ArticlesController < ApplicationController
 
       render partial: 'page', locals: { articles: @articles, category: category }
     else
-      @news_category = ArticleCategory.find_by_title("Новости")
-      @best_articles = Article.where('NOT article_category_id = ?', @news_category.id)
-        .where(best: true)
+      @best_articles = Article.where(best: true)
         .order('created_at DESC')
         .first(3)
+        
+      @news = News.order('created_at DESC').page(1).per(3)
     end
   end
 

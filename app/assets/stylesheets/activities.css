@@ -1,0 +1,76 @@
+.activity_edit_block { margin: 40px 0 0 20px; }
+
+.activity_edit_block .header { margin-bottom: 15px; }
+.activity_edit_block .header .title { line-height: 30px; margin-left: 5px; font-size: 120%; font-weight: bold; color: #b73652; }
+.activity_edit_block .header .circle { display: inline-block; padding: 4px 10px; font-weight: bold; color: #fff; background-color: #b73652; -webkit-border-radius: 50%; -moz-border-radius: 50%; -khtml-border-radius: 50%; border-radius: 50%; }
+
+.activity_edit_block .item { position: relative; line-height: 110%; margin-right: 3%; padding: 10px 0; font-size: 90%; font-weight: bold; }
+
+.activity_edit_block .item.width75 { float: left; width: 72%; }
+.activity_edit_block .item.width50 { float: left; width: 47%; }
+.activity_edit_block .item.width33 { float: left; width: 30.4%; }
+.activity_edit_block .item.width25 { float: left; width: 22%; }
+
+.activity_edit_block .item .images { margin-top: 20px; }
+.activity_edit_block .item .images .image { float: left; position: relative; width: 100px; margin-right: 20px; }
+.activity_edit_block .item .images .image img { max-width: 100%; }
+
+.activity_edit_block .item .circle-delete { position: absolute; z-index: 1; top: -16px; right: -16px; width: 32px; height: 32px; background: url(/assets/close_red_big.png) no-repeat; }
+.activity_edit_block .item .circle-delete:hover { cursor: pointer; }
+
+.activity_edit_block .item.list,
+.activity_edit_block .item.gallery { padding: 20px 20px 0; background-color: #eee; }
+.activity_edit_block .item.list .item { font-size: 100%; }
+.activity_edit_block .item.gallery { padding-bottom: 20px; }
+.activity_edit_block .item.gallery p { margin-bottom: 5px; }
+.activity_edit_block .item.gallery .download_button_wrapper { margin: 10px 0 20px; }
+.activity_edit_block .item.gallery input[type=url] { display: inline-block; width: 50%; margin-right: 2%; }
+.activity_edit_block .item.gallery button { padding: 10px 15px; font-weight: bold; }
+.activity_edit_block .item.gallery ol { position: relative; list-style: inside decimal; margin-top: 20px; font-weight: normal; }
+.activity_edit_block .item.gallery ol li { margin-bottom: 5px; }
+.activity_edit_block .item.gallery ol li div { display: inline-block; position: relative; }
+.activity_edit_block .item.gallery ol li .circle-delete { top: 0; left: 105%; width: 15px; height: 15px; background-image: url(/assets/close_red.png); }
+
+.activity_edit_block .item.schedule { width: 100%; min-width: 840px; margin-left: -20px; border-collapse: separate; }
+.activity_edit_block .item.schedule th { padding: 10px; border-left: none; border-bottom: none; }
+.activity_edit_block .item.schedule th:first-child { -webkit-border-top-left-radius: 15px; -moz-border-top-left-radius: 15px; border-top-left-radius: 15px; border-left: none; }
+.activity_edit_block .item.schedule th:last-child { -webkit-border-top-right-radius: 15px; -moz-border-top-right-radius: 15px; border-top-right-radius: 15px; border-right: none; }
+.activity_edit_block .item.schedule td { line-height: 21px; padding: 0; font-weight: normal; border: none; }
+.activity_edit_block .item.schedule tr:first-child td { border-top: none; }
+.activity_edit_block .item.schedule td .data .time,
+.activity_edit_block .item.schedule td .add { padding: 10px; border-style: solid; border-color: #e3e3e3; }
+.activity_edit_block .item.schedule td .data .time { position: relative; padding: 10px 10px 10px 25px; text-align: left; background-color: #fdfea0; border-width: 0 1px 1px 0;  }
+.activity_edit_block .item.schedule td .data .circle-delete { top: 14px; right: 10px; width: 15px; height: 15px; background-image: url(/assets/close_red.png); }
+.activity_edit_block .item.schedule td .add { margin-left: -1px; font-size: 110%; border-width: 0 1px 1px 1px; }
+.activity_edit_block .item.schedule td:first-child .add { margin-left: 0; }
+
+.activity_edit_block .button_edit { margin-right: 3%; }
+.activity_edit_block .button_edit button { float: left; width: 50%; padding: 10px 10px 10px 35px; text-align: left; font-size: 110%; font-weight: bold; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; -webkit-border-radius: 0; -moz-border-radius: 0; -khtml-border-radius: 0; border-radius: 0; }
+.activity_edit_block .button_edit .add { background: #b73652 url(/assets/add.png) no-repeat 10px 12px; }
+.activity_edit_block .button_edit .delete { background: #b73652 url(/assets/delete.png) no-repeat 10px 13px; border-right: 1px solid #fff; }
+
+.activity_edit_block .item .hint { font-weight: normal; color: #888; }
+
+.activity_edit_block .item input,
+.activity_edit_block .item select,
+.activity_edit_block .item textarea { display: block; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; width: 100%; margin-top: 7px; font-size: 120%; }
+.activity_edit_block .item textarea,
+.activity_edit_block .item input[type=text],
+.activity_edit_block .item input[type=email],
+.activity_edit_block .item input[type=url] { padding: 10px; border: 1px solid #ccc; -webkit-box-shadow: inset 0 1px 4px #ddd; -moz-box-shadow: inset 0 1px 4px #ddd; box-shadow: inset 0 1px 4px #ddd; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; }
+.activity_edit_block .item input.subway { padding-left: 40px; }
+.activity_edit_block .item .subway_icon { position: absolute; z-index: 1; width: 22px; height: 15px; margin-top: 19px; margin-left: 10px; content: url(/assets/subway.png); }
+.activity_edit_block .item select { padding: 9px; }
+.activity_edit_block .item textarea { height: 200px; }
+
+.activity_edit_block .item .download_button_wrapper { cursor: pointer; position: relative; overflow: hidden; display: block; width: 206px; height: 56px; margin-top: 7px; }
+.activity_edit_block .item .mask_button { cursor: pointer; display: block; width: 186px; height: 36px; line-height: 36px; text-align: center; font-size: 90%; color: #fff; background-color: #b73652; -webkit-box-shadow: 3px 3px 5px #ccc; -moz-box-shadow: 3px 3px 5px #ccc; box-shadow: 3px 3px 5px #ccc; -webkit-border-radius: 2px; -moz-border-radius: 2px; -khtml-border-radius: 2px; border-radius: 2px; }
+.activity_edit_block .item .download_button_wrapper input { cursor: pointer; position: absolute; z-index: 10; top:0; margin: -10px 0 0 -2px; font-size: 2000px; background: none; border: none; }
+
+.save { margin-top: 20px; padding: 20px 0 30px; text-align: center; background-color: #eee; }
+.save button { padding: 20px 30px; font-family: Futura; font-size: 200%; -webkit-border-radius: 20px; -moz-border-radius: 20px; -khtml-border-radius: 20px; border-radius: 20px; }
+
+#activity-edit-shadow { position: fixed; z-index: 98; top: 0; left: 0; opacity: .65; background-color: #000; }
+#activity-edit-modal { position: fixed; z-index: 99; top: 50%; left: 50%; margin-left: -104px; margin-top: -50px; padding: 15px; background-color: #fff; -webkit-box-shadow: 0 0 15px #333; -moz-box-shadow: 0 0 15px #333; box-shadow: 0 0 15px #333; -webkit-border-radius: 3px; -moz-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; }
+#activity-edit-modal table td { padding: 5px; }
+#activity-edit-modal button { width: 100%; margin-top: 10px; }

@@ -6,7 +6,7 @@
 
     <%= f.input :priority, as: :number %>
 
-    <%= f.input :category, as: :select, collection: [['Музыкальная сцена', 'music_stage'], ['Кукольная сцена', 'doll_stage'],
+    <%= f.input :category, as: :select, collection: [['Музыкальная сцена', 'music_stage'], ['Театральная сцена', 'theater_stage'],
                                                     ['Цирковая сцена', 'circus_stage'], ['Уличные театры', 'street_theater'], ['Мастер класс', 'master_class']] %>
 
     <%= f.input :logo, as: :file, hint: f.template.image_tag(f.object.logo.url) %>

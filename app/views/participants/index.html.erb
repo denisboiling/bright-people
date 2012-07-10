@@ -8,64 +8,81 @@
     <div class="post_category_menu">
       <ul>
         <li class="about_ico"><a href="/pages/about_festival">О фестивале</a></li>
+        <li class="creative_ico"><a href="/creative_group">Творческая группа</a></li>
+        <li class="participants_ico <%= 'active' unless @is_headliners_page %>"><a href="/participants?category=music_stage">Программа</a></li>
+        <li class="headliners_ico <%= 'active' if @is_headliners_page %>"><a href="/participants">Хэдлайнеры</a></li>
         <li class="org_ico"><a href="/pages/org_komitet">Оргкомитет</a></li>
-        <li class="participants_ico active"><a href="/participants">Участники фестиваля</a></li>
-        <li class="news_ico"><a href="/news">Новости фестиваля</a></li>
       </ul>
       <div class="clear"></div>
     </div>
-    <div>
-      <ul>
-        <li><%= link_to 'Хедлайнеры', '/participants' %></li>
-        <li><%= link_to 'Музыкальная сцена', '/participants?category=music_stage' %></li>
-        <li><%= link_to 'Кукольная сцена', '/participants?category=doll_stage' %></li>
-        <li><%= link_to 'Цирковая сцена', '/participants?category=circus_stage' %></li>
-        <li><%= link_to 'Уличные театры', '/participants?category=street_theater' %></li>
-        <li><%= link_to 'Мастер-классы', '/participants?category=master_class' %></li>
-      </ul>
-    </div>
-    <% if @best %>
-      <% @best.each do |b| %>
-        <div class="main_participant">
-          <%= image_tag b.logo.url(:thumb) %>
-          <%= b.title %>
-          <br>
-          <%= b.description %>
-        </div>
-      <% end %>
+    <% unless @is_headliners_page %>         
+      <% 
+        links = [ 
+          { 'title' => 'Музыкальная сцена', 'link' => 'music_stage'     },
+          { 'title' => 'Театральная сцена', 'link' => 'theater_stage'   },
+          { 'title' => 'Цирковая сцена'   , 'link' => 'circus_stage'    },
+          { 'title' => 'Уличные театры'   , 'link' => 'street_theater'  },
+          { 'title' => 'Мастер-классы'    , 'link' => 'master_class'    }
+        ]  
+      %>
+      <%= participants_menu links %>
     <% end %>
-    <br>
-    --------------------------------------------------
-    <br>
-    <% if @participants %>
-      <% @participants.each do |p| %>
-        <div class="participant_wrapper">
-          <div class="participant">
-            <span class="participant_photo">
-              <%= image_tag p.logo.url(:thumb) %>
-            </span>
-            <%= p.title %>
-            <br>
-            <%= p.description %>
-            <ul id="pikame_<%= p.id %>" class="jcarousel-skin-pika hidden">
-              <% p.photos.each do |photo| %>
-                <li><%= link_to image_tag(photo.attach.url(:slider), 'data-hook-class' => "photo#{photo.id}") %></li>
-              <% end %>
-              <% p.videos.each do |video| %>
-                <li class="slideshow_video_item"><div class="video"></div><%= link_to image_tag(video.preview_url, 'data-hook-class' => "video#{video.id} ", 'style' => 'width:530px') %></li>
-              <% end %>
-            </ul>
-          </div>
-          <div id="lightbox_hook_<%= p.id %>" class="hidden">
-            <% p.photos.each do |photo| %>
-              <%= link_to '#', photo.attach.url(:original), class: "photo#{photo.id}", rel: "participant_"+p.id.to_s %>
+    <% if ( @stage ) %>
+    <div class="participants_map">
+      <div class="text">
+        <%= @stage.content unless @stage.content.blank? %>
+      </div>
+      <% if ( !@stage.small_pic_file_name.blank? ) %>
+      <div class="map" data-small="<%= @stage.small_pic.url %>" data-large="<%= @stage.large_pic.url %>"><%= image_tag @stage.small_pic.url %></div>
+      <div class="participants_map_toggle_wrapper">
+        <div id="participants_map_toggle">Раскрыть карту</div>
+      </div>
+      <% end %>
+    </div>
+    <% end %>
+    <% if @best %>
+    <div class="main_participants">
+      <% @best.each do |b| %>
+        <div class="item">
+          <%= image_tag b.logo.url(:thumb), 'class' => 'participant_photo' %>
+          <div class="title"><%= b.title %></div>
+          <%= b.description %>          
+          <div id="lightbox_hook_<%= b.id %>" class="hidden">
+            <% b.photos.each do |photo| %>
+              <%= link_to '#', photo.attach.url(:original), class: "photo#{photo.id}", rel: "participant_"+(b.id.to_s)+"[gallery]" %>
             <% end %>
-            <% p.videos.each do |video| %>
-              <%= link_to '#', video.url, class: "video#{video.id}", rel: "participant_"+p.id.to_s %>
+            <% b.videos.each do |video| %>
+              <%= link_to '#', video.url, class: "video#{video.id}", rel: "participant_"+(b.id.to_s)+"[gallery]" %>
             <% end %>
           </div>
         </div>
       <% end %>
+    </div>
+    <div class="clear"></div>
+    <% end %>
+    <% if @participants %>
+    <div class="participants">
+      <% @participants.each do |p| %>
+      <div class="participant">
+        <div class="participant_photo">
+          <%= image_tag p.logo.url(:thumb) %>
+        </div>
+        <div class="participant_data">
+          <div class="participant_title"><%= p.title %></div>
+          <%= p.description %>
+        </div>
+        <div id="lightbox_hook_<%= p.id %>" class="hidden">
+          <% p.photos.each do |photo| %>
+            <%= link_to '#', photo.attach.url(:original), class: "photo#{photo.id}", rel: "participant_"+(p.id.to_s)+"[gallery]" %>
+          <% end %>
+          <% p.videos.each do |video| %>
+            <%= link_to '#', video.url, class: "video#{video.id}", rel: "participant_"+(p.id.to_s)+"[gallery]" %>
+          <% end %>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <% end %>
+    </div>
     <% end %>
   </div>
 

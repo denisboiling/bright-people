@@ -1,0 +1,33 @@
+<% content_for :title do %>
+  Фестиваль Яркие Люди | Авторы
+<% end %>
+
+<div class="pages">
+  <div class="post_category_menu">
+    <ul>
+      <li class="experts_ico"><a href="/experts">Экспертный совет</a></li>
+      <li class="sponsors_ico"><a href="/sponsors">Попечительский совет</a></li>
+      <li class="crew_ico"><a href="/crew">Команда</a></li>
+      <li class="authors_ico active"><a href="/authors">Авторы</a></li>
+    </ul>
+    <div class="clear"></div>
+  </div>
+  <div class="expert_list_wrapper">
+  <%= render 'authors_title' %>
+    <div class="expert_list">
+      
+    <% @authors.each do |author| %>
+      <div class="exp_preview">
+        <div class="thumb">
+          <%= image_tag(author.avatar) %>
+        </div>
+        <span class="name"><%= author.name %></span>
+        
+        <span class="info"><%= truncate(author.description, separator: '.', length: 140, omission: '.') %></span>
+      </div>
+    <% end %>
+      <div class="clear"></div>
+    <%= paginate @authors %>
+    </div>
+  </div>
+</div>

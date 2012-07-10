@@ -10,6 +10,8 @@ class Ability
     can :manage, :dashboard if user.persisted?
     can :create, :comment if user.persisted?
 
+    can :edit, Activity, :manager_id == user.id
+
     # TODO: replace role_id with role method as admin?
     # can :view_disabled, :interview, :is_enabled => false if user.role_id == 2 || user.role_id == 3
 

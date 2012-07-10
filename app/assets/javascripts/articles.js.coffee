@@ -19,11 +19,11 @@ window.setup_ajax_articles_loading = ->
       success: (response) ->
         $('.journal_post').html(response)
   
-  $('.rubric_list a, .personality_wrapper a.cat').live 'click', (event) ->
+  $('.rubric_list a.article, .personality_wrapper a.cat').live 'click', (event) ->
     event.preventDefault()
     window._articles_category_id = $(this).attr('data-id')
     update_articles()
-  
+
   # open pages with selected categories
   $('.pager .page a').bind 'click', (event) ->
     event.preventDefault()
@@ -32,3 +32,16 @@ window.setup_ajax_articles_loading = ->
     if window._articles_category_id
       url += "&category_id=#{window._articles_category_id}"
     window.location.href = url
+
+
+  $('#news a').live 'click', (event) ->
+    event.preventDefault()
+    $.ajax
+      url: '/news',
+      type: 'GET',
+      data:
+        remote: true
+        page: 1
+      success: (response) ->
+        $('.journal_post').html(response)
+    
