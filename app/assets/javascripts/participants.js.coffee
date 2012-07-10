@@ -20,3 +20,13 @@ window.setup_participants_list = ->
   $('.participant_photo').live 'click', (event) ->
     event.preventDefault()
     $(this).parent().find("[id^=lightbox_hook_]").children(':first').trigger('click')
+    
+  $('#participants_map_toggle').click ->
+    map = $(this).prev()
+    if ( map.hasClass('opened') )
+      map.children('img').attr( 'src', map.attr('data-small') )
+#      map.stop().animate( { height: '300px', backgroundColor: '#aaa' }, 'fast' )
+    else      
+      map.children('img').attr( 'src', map.attr('data-large') )
+#      map.stop().animate( { height: '60px', backgroundColor: '#ccc' }, 'fast' )
+    map.toggleClass('opened')

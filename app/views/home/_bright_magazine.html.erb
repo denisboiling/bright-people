@@ -5,7 +5,7 @@
       Все что вы хотели узнать о детской жизни в Москве
     </div>
     <ul>
-      <li class="green"><a rel="show_mag_all" href="">Все</a></li>
+      <li class="green"><a rel="show_mag_all" class="active" href="">Все</a></li>
       <% ArticleCategory.all.each do |article| %>
 	<li class="red"><a rel="show_mag_<%= article.id %>" href=""><%= article.title %></a></li>
       <% end %>

@@ -65,60 +65,56 @@
   </div>
 </div>
 
-
 <div class="wrapper">
 
-<div class="color_line_left">
-<div class="color_line_right">
+  <div class="color_line_left">
+    <div class="color_line_right">
 
-<div class="main_content">
-  <div>
-  <% pics = ['/assets/samp/adv.jpg', '/assets/samp/R7.jpg', '/assets/samp/baner.jpg'] %>
-  <% links = ["http://www.krokha.ru", "http://radio7.ru/?utm_source=bright-people&utm_medium=promo&utm_campaign=bright-people", "http://www.bg.ru"] %>
-  <% j = rand(0..2) %>
-    <div class="adv"><%= link_to image_tag(pics[j]), links[j], "target"=>"_blank" %></div>
-    <div class="bank_info">
-      <div class="title">Добро пожаловать в мир ярких людей!</div>
-      <div class="order_bank_catd">Президент ОАО<br />«МОСКОВСКИЙ <br />КРЕДИТНЫЙ БАНК»<br />Александр Николашин</div>
-      <div class="bank_text">
-
-МОСКОВСКИЙ КРЕДИТНЫЙ БАНК <br />в честь своего 20-летия дарит городу праздник – детский творческий фестиваль «Яркие люди». 
-<br />
-Гости мероприятия смогут <br />не только весело провести время, но и открыть двери в мир творческих профессий <br />и искусства.<br />
-
-        <%= link_to 'Подробнее', page_path('about_bank'), class: :to_bank_link %>
-        
-      </div>
-      <div class="clear"></div>
-    </div>
-
-        <div class="news_in_main">
-        
-<div id="slider-code">
-	
-	<div class="viewport">
-		<ul class="overview">
-        <% News.for_main.each do |n| %>
-        <li>
-        <div class="news_cell">
-          <div class="date"><%= Russian::strftime(n.created_at, "%e %B, %A") %></div>
-          <div class="thumb"><%= image_tag n.photo.url %></div>
-          <div class="info">
-            <div class="name"><%= link_to n.title, n %></div>
-            <div class="short_desc"><%= truncate(n.content, separator: '.', omission: '.', length: 140) %></div>
+      <div class="main_content">
+        <% pics = ['/assets/samp/adv.jpg', '/assets/samp/R7.jpg', '/assets/samp/baner.jpg'] %>
+        <% links = ["http://www.krokha.ru", "http://radio7.ru/?utm_source=bright-people&utm_medium=promo&utm_campaign=bright-people", "http://www.bg.ru"] %>
+        <% j = rand(0..2) %>
+        <div class="adv"><%= link_to image_tag(pics[j]), links[j], "target"=>"_blank" %></div>
+        <div class="content-wrapper">
+          <div class="bank_info">
+            <div class="title">Добро пожаловать в мир ярких людей!</div>
+            <div class="order_bank_catd">Президент ОАО<br />«МОСКОВСКИЙ <br />КРЕДИТНЫЙ БАНК»<br />Александр Николашин</div>
+            <div class="bank_text">
+              МОСКОВСКИЙ КРЕДИТНЫЙ БАНК <br />
+              в честь своего 20-летия дарит городу праздник – детский творческий фестиваль «Яркие люди».<br />
+              Гости мероприятия смогут<br />
+              не только весело провести время, но и открыть двери в мир творческих профессий<br />
+              и искусства.<br />
+              <%= link_to 'Подробнее', page_path('about_bank'), class: :to_bank_link %>
+            </div>
+            <div class="clear"></div>
           </div>
-        </div>
-        </li>
-        <% end %>
-    </ul>
-    <div class="clear"></div>
-	</div>
-	<div class="nav_arrow">
-	<a class="buttons prev" href="#"><img src="/assets/news_slide_up.png" /></a>
-	<a class="buttons next" href="#"><img src="/assets/news_slide_down.png" /></a>
-	</div>
-  <%= link_to 'Архив новостей', news_index_path %>
-</div>
+          <div class="news_in_main">
+            <div id="slider-code">
+
+              <div class="viewport">
+                <ul class="overview">
+                    <% News.for_main.each do |n| %>
+                    <li>
+                    <div class="news_cell">
+                      <div class="date"><%= Russian::strftime(n.created_at, "%e %B, %A") %></div>
+                      <div class="thumb"><%= image_tag n.photo.url %></div>
+                      <div class="info">
+                        <div class="name"><%= link_to n.title, n %></div>
+                        <div class="short_desc"><%= truncate(n.content, separator: '.', omission: '.', length: 140) %></div>
+                      </div>
+                    </div>
+                    </li>
+                    <% end %>
+                </ul>
+                <div class="clear"></div>
+              </div>
+              <%= link_to 'Архив новостей', news_index_path, :class => 'news_archive' %>
+              <div class="nav_arrow">
+                <a class="buttons prev" href="#"><img src="/assets/news_slide_up.png" /></a>
+                <a class="buttons next" href="#"><img src="/assets/news_slide_down.png" /></a>
+              </div>
+            </div>
 
             <%#= javascript_include_tag 'jquery.tinycarousel.min' %>
             <script type="text/javascript">
@@ -126,33 +122,28 @@
               $('#slider-code').tinycarousel({ axis: 'y', display: 2});
             });
             </script>
-
-            
+          </div>
+          <div class="clear"></div>
+          <div class="subscription">
+            <div class="title">
+              Подписка
+              <span>на материалы из всех рубрик</span>
+            </div>
+            <div class="subscript_form">
+              <!-- Begin MailChimp Signup Form -->
+              <div id="mc_embed_signup">
+              <form action="http://bright-people.us5.list-manage.com/subscribe/post?u=79722e9c6e3607f42dfb277bd&amp;id=8ae74f1ca8" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+                  <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email адрес" required>
+                  <input type="submit" value="Ok!" name="subscribe" id="mc-embedded-subscribe" class="button">
+              </form>
+              </div>
+              <!--End mc_embed_signup-->
+            </div>
+          </div>
         </div>
+      </div>
 
 
-    <div class="clear"></div>
+    </div>    
   </div>
-  <div class="subscription">
-    <div class="title">
-      Подписка
-      <span>на материалы из всех рубрик</span>
-    </div>
-    <div class="subscript_form">
-                <!-- Begin MailChimp Signup Form -->
-                <div id="mc_embed_signup">
-                <form action="http://bright-people.us5.list-manage.com/subscribe/post?u=79722e9c6e3607f42dfb277bd&amp;id=8ae74f1ca8" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-                    <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email адрес" required>
-                    <input type="submit" value="Ok!" name="subscribe" id="mc-embedded-subscribe" class="button">
-                </form>
-                </div>
-                <!--End mc_embed_signup-->
-    </div>
-  </div>
-</div>
-
-
-</div>    
-</div>
-
 </div>

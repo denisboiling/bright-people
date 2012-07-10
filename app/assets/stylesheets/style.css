@@ -31,7 +31,10 @@ a:hover { font-family: Verdana, Geneva, sans-serif; color:#464646; font-size:14p
 .wrapper  { min-width:960px; max-width:1235px; margin:auto; position:relative}
 
 a, img, input, button, textarea, select { outline: none; resize:none }
+textarea { font-family: Verdana, Geneva, sans-serif; font-size:14px; }
 strong, b { font-weight:bold; }
+
+button { padding: 5px 7px; color: #fff; background-color: #b73652; border: none; -webkit-box-shadow: 3px 3px 5px #ccc; -moz-box-shadow: 3px 3px 5px #ccc; box-shadow: 3px 3px 5px #ccc; -webkit-border-radius: 2px; -moz-border-radius: 2px; -khtml-border-radius: 2px; border-radius: 2px; }
 
 h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 
@@ -163,7 +166,7 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 #center { min-width:960px; max-width:1235px; margin:auto; position:relative}
 
 /* MAIN PAGE */
-.main_content { padding:20px 20px}
+.main_content { padding:20px 20px;}
 .main_content .title { font-family:Futura; font-weight:bold; font-size:16px; padding-bottom:10px}
 .main_content .timer { margin-right:670px;  }
 .main_content .timer .title{ color:#bb224c;}
@@ -176,16 +179,17 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 .timer_wrapper div.date { font-family:Futura; width:105px; float:left; margin-right:8px; text-align:center; color:#cc0636; font-size:15px; font-weight:bold; text-transform:uppercase; padding-top:5px}
 .timer_wrapper .cntSeparator { padding-top:22px; font-weight:bold; color:#af0035; font-size:20px}
 
-.main_content .bank_info { float:right; width:410px; margin-left:3% }
+.main_content .adv { float:right; width:213px; text-align:center;}
+
+.main_content .content-wrapper { overflow: hidden; margin-right: 223px; }
+
+.main_content .bank_info { float:right; width:410px;}
 .main_content .bank_info  .order_bank_catd { background:url(../assets/samp/cards.jpg) no-repeat; padding-top:177px; float:left; width:180px; font-size:12px; line-height:14px; text-align:center}
 .main_content .bank_info .bank_text { color:#525252; font-size:12px; float:left; width:220px; text-align:left; margin-left:10px; background:url(../assets/samp/signature.jpg) no-repeat right 130px;}
-
-.main_content .adv { float:right; margin-left:3%; width:213px; text-align:center;}
-
 .main_content .bank_info .to_bank_link { margin-top:23px; background:#fff; border:3px solid #bb224c; -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; behavior: url(border-radius.htc); text-decoration:none; font-weight:bold; color:#bb224c; padding:1px 5px; display:inline-block}
 .main_content .bank_info .to_bank_link:hover { border:3px solid #21a2dc;}
 
-.main_content .subscription { behavior: url(border-radius.htc); -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; background:#ebebeb; padding:20px; margin-right:250px; margin-top:-79px; height: 40px;}
+.main_content .subscription { height: 40px; margin-top: 12px; padding: 20px; background:#ebebeb; behavior: url(border-radius.htc); -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; }
 .main_content .subscription .title { font-size:20px; float:left; color:#616161; vertical-align:0; background:url(/assets/subscription_ico.png) no-repeat 0px 8px; padding-left:50px;}
 .main_content .subscription .title span { font-size:14px; vertical-align:0; font-weight:normal}
 .main_content .subscription .subscript_form { float:left; margin-left:20px; padding-top:2px}
@@ -281,7 +285,7 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 .council .expert .exp_preview a { color:#007ba4; text-decoration:none;}
 .council .expert .exp_preview a:hover { text-decoration:underline;}
 
-.council .trustee { margin-left:780px; background:#ffb13b; -moz-border-radius:0 0 180px 180px; border-radius:0 0 180px 180px; -webkit-border-radius:0 0 180px 180px; -khtml-border-radius:0 0 180px 180px; behavior: url(border-radius.htc); position:relative; overflow:hidden}
+.council .trustee { min-width: 160px; margin-left:780px; background:#ffb13b; -moz-border-radius:0 0 180px 180px; border-radius:0 0 180px 180px; -webkit-border-radius:0 0 180px 180px; -khtml-border-radius:0 0 180px 180px; behavior: url(border-radius.htc); position:relative; overflow:hidden}
 .council .trustee .title { font-family:Futura; border-bottom:1px solid #c69141; color:#7a5113; text-align:center; letter-spacing:-1px}
 
 
@@ -719,10 +723,10 @@ span.sim_check.active { background-position:0px 0px; }
 
 
 
-.expert_title { text-align:center;}
+.expert_title { margin-top: 20px; text-align:center;}
 .expert_title h1 { font-size:24px;}
 
-.expert_nav { min-width:960px; margin:auto; max-width:1100px; position:relative}
+.expert_nav { min-width:960px; margin: 20px auto auto; max-width:1100px; position:relative}
 .expert_nav .prev_exp { position:absolute; left:0px; width:140px; background:url(/assets/expert_nav_prev.png) no-repeat left center; padding-left:24px}
 .expert_nav .next_exp { position:absolute; right:0px; width:140px; background:url(/assets/expert_nav_next.png) no-repeat right center; padding-right:24px}
 .expert_nav .exp_cell {}
@@ -739,7 +743,7 @@ span.sim_check.active { background-position:0px 0px; }
 
 .expert_page {}
 
-.expert_page .left_part { float:left; width:400px;}
+.expert_page .left_part { float: left; width: 400px;}
 .expert_page .right_part { margin-left:440px;}
 
 
@@ -751,7 +755,7 @@ span.sim_check.active { background-position:0px 0px; }
 .expert_page .dop_title {  color:#007ba4; background:url(/assets/magaz_arrow_red.png) no-repeat 0px 7px;font-size:20px;padding:0 0 15px 20px; font-family:Futura; display:block}
 
 
-.expert_list_wrapper { background:url(/assets/expert_list_bg.jpg) no-repeat center 24px}
+.expert_list_wrapper { padding-top: 50px; background:url(/assets/expert_list_bg.jpg) no-repeat center 24px; }
 .expert_list { margin:auto; width:960px;}
 .expert_list .exp_preview { height: 300px; position:relative; float:left; width:150px; margin-top:20px; margin-right:10px; text-align:center; }
 .expert_list .exp_preview.last { margin-right:0px;}
@@ -764,6 +768,7 @@ span.sim_check.active { background-position:0px 0px; }
 .expert_list .exp_preview  a { color:#007ba4; font-weight:bold; text-decoration:none}
 .expert_list .exp_preview  a:hover { text-decoration:underline}
 
+/*.creative_page { margin-top: 20px auto; }*/
 
 /* SEARCH RESULT */
 .search_title { text-align:center}
@@ -948,7 +953,7 @@ span.sim_check.active { background-position:0px 0px; }
 
 /* NEWS CAROUSEL */
 
-.main_content .news_in_main { margin-right:670px; background:#ebebeb; padding-top:5px; position: relative; }
+.main_content .news_in_main { margin-right: 430px; background:#ebebeb; padding-top:5px; position: relative; }
 .main_content .news_in_main .news_cell { min-height:110px; padding:0px 10px  }
 .main_content .news_in_main .news_cell .date { color:#000; font-weight:bold; margin-bottom:5px; border-bottom:1px solid #ccc;}
 .main_content .news_in_main .news_cell .thumb { float:left; width:140px}
@@ -956,6 +961,7 @@ span.sim_check.active { background-position:0px 0px; }
 .main_content .news_in_main .news_cell .info .name { color:#000; font-size:16px;}
 .main_content .news_in_main .news_cell .info .name a { color:#000; font-size:16px;}
 .main_content .news_in_main .news_cell .info .short_desc { font-size:12px;}
+.main_content .news_in_main .news_archive { position: absolute; z-index: 99; right: 5px; bottom: 2px; }
 
 #slider-code { height: 260px; overflow:hidden; }
 #slider-code .viewport { width: 100%; display:block; height: 220px; overflow: hidden; position: relative; }

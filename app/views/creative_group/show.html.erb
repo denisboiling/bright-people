@@ -1,0 +1,38 @@
+<% content_for :title do %>
+  Фестиваль Яркие Люди | Экспертный Совет | <%= @creative.name %>
+<% end %>
+<div class="pages">
+  <div class="post_category_menu">
+    <ul>
+      <li class="about_ico"><a href="/pages/about_festival">О фестивале</a></li>
+      <li class="expert_ico active"><a href="/creative_group">Творческая группа</a></li>
+      <li class="participants_ico"><a href="/participants?category=music_stage">Программа</a></li>
+      <li class="headliners_ico"><a href="/participants">Хэдлайнеры</a></li>
+      <li class="org_ico"><a href="/pages/org_komitet">Оргкомитет</a></li>
+    </ul>
+    <div class="clear"></div>
+  </div>
+  
+  <div class="expert_big_info">
+    <!-- OPTIMIZE: brrrr...brrr -->
+    <div class="name"><%= raw @creative.name.split(' ').join('<br>') %></div>
+    <div class="thumb">
+      <%= link_to image_tag(@creative.avatar(:medium)), creative_group_path(@creative) %>
+    </div>
+    <div class="doljnost"><%= @creative.description %></div>
+    <div class="clear"></div>
+  </div>
+  
+  <div class="expert_page creative_page">
+    <div class="left_part">
+      <%= render 'experts/post_share' %>
+    </div>
+    <div class="right_part">
+      <div class="dop_title">Биография</div>
+      <div class="bio">
+         <%= @creative.description %><br />
+      </div>      
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
