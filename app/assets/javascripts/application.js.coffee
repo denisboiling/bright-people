@@ -20,6 +20,7 @@ $ ->
   window.setup_email_dialog()
   window.setup_activities_list()
   window.setup_activities_approval()
+  window.setup_activities_edit()
   window.add_comment()
   window.setup_favourite_button()
   window.setup_slider()
