@@ -27,17 +27,15 @@
       %>
       <%= participants_menu links %>
     <% end %>
-    <% if ( @stage ) %>
+    <% if ( @stage && !@stage.small_pic_file_name.blank? ) %>
     <div class="participants_map">
       <div class="text">
         <%= @stage.content unless @stage.content.blank? %>
       </div>
-      <% if ( !@stage.small_pic_file_name.blank? ) %>
       <div class="map" data-small="<%= @stage.small_pic.url %>" data-large="<%= @stage.large_pic.url %>"><%= image_tag @stage.small_pic.url %></div>
       <div class="participants_map_toggle_wrapper">
         <div id="participants_map_toggle">Раскрыть карту</div>
       </div>
-      <% end %>
     </div>
     <% end %>
     <% if @best %>

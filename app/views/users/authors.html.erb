@@ -16,7 +16,7 @@
   <%= render 'authors_title' %>
     <div class="expert_list">
       
-    <% @authors.each do |author| %>
+    <% @authors.each_with_index do |author, index| %>
       <div class="exp_preview">
         <div class="thumb">
           <%= image_tag(author.avatar) %>
@@ -25,6 +25,9 @@
         
         <span class="info"><%= truncate(author.description, separator: '.', length: 140, omission: '.') %></span>
       </div>
+      <% if (index+1) % 6 == 0 %>
+      <div class="clear"></div>
+      <% end %>
     <% end %>
       <div class="clear"></div>
     <%= paginate @authors %>

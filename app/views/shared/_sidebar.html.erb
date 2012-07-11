@@ -3,10 +3,13 @@
   <ul>
     <% Activity.published.sample(3).each do |activity| %>
       <li>
-      
         <%= link_to activity do %>
-        <span class="thumb"><%= image_tag(activity.logo.url) %></span>
-        <span class="name"><%= activity.title %></span>
+        <span class="thumb">
+          <%= image_tag(activity.logo.url) %>
+        </span>
+        <span class="name">
+          <%= activity.title %>
+        </span>
         <% end %>
         <% counter = 1 %>
         <% unless activity.metro_station.uniq.blank? %>
