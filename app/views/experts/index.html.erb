@@ -16,7 +16,7 @@
   <%= render 'title' %>
     <div class="expert_list">
       
-    <% @experts.each do |expert| %>
+    <% @experts.each_with_index do |expert, index| %>
       <div class="exp_preview">
         <% if expert.approvals_count != 0 %>
         <span class="mark"><%= expert.approvals_count %></span>
@@ -31,9 +31,11 @@
         
         <span class="info"><%= expert.description %></span>
       </div>
-    <% end %>
-      
+      <% if (index+1) % 6 == 0 %>
       <div class="clear"></div>
+      <% end %>
+    <% end %>
+    <div class="clear"></div>
     </div>
   </div>
 </div>
