@@ -62,11 +62,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'guard-cucumber'
   gem 'database_cleaner'
-  unless ENV['JENKINS']
-    gem 'thin'
-    gem 'launchy'
-    gem 'debugger'
-  else
-    gem 'headless'
-  end
+  gem 'thin'
+  gem 'launchy'
+  gem 'debugger'
 end

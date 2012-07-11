@@ -31,6 +31,8 @@ class User < ActiveRecord::Base
 
   scope :experts, where(role_id: 4)
   scope :usuals, where(role_id: 1)
+  scope :authors, joins(:articles).uniq
+  scope :authors_with_photos, authors.where('avatar_file_size IS NOT NULL OR avatar_file_size != 0')
 
   # Callbacks
   before_validation(on: :create) do
