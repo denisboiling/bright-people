@@ -7,15 +7,12 @@ load 'config/deploy/srv_avg'
 before "db:prepare", "unicorn:stop"
 before "db:prepare", "thinking_sphinx:stop"
 before "db:prepare", "delayed_job:stop"
+
 after "deploy:finalize_update", "db:prepare"
-if ENV['SAMPLE']
-  after "db:prepare", "deploy:migrate"
-  after "deploy:migrate", "db:load_seed"
-  after "db:load_seed", "db:load_sample"
-else
-  after "db:prepare", "db:dump_production"
-  after "db:prepare", "public:copy_system_production"
-end
+after "db:prepare", "db:dump_production"
+after "db:dump_production", "deploy:migrate"
+after "db:prepare", "public:copy_system_production"
+
 
 after "deploy:update_code", "thinking_sphinx:configure"
 after "deploy:update_code", "delayed_job:restart"
