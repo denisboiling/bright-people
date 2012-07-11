@@ -4,7 +4,7 @@
   <div class="personality_preview exp">
     <div class="personality_wrapper">
       <%= link_to category.title, '#', class: "cat", 'data-id' => category.id %>
-      <% if article.author.approvals_count %>
+      <% if article.author.approvals_count > 0 %>
 	<span class="mark"><%= article.author.approvals_count %></span>
       <% end %>
       <div class="thumb">

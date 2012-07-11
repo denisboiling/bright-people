@@ -5,7 +5,7 @@
     <%= f.input :photo, as: :file, hint: f.template.image_tag(f.object.photo.url) %>
     <%= f.input :publication_date %>
     <%= f.input :content, input_html: { size: 10 } %>
-    <%= f.input :article_tag_list %>
+    <%= f.input :news_tag_list %>
   <% end %>
 
   <%= f.inputs "Медиа контент" do %>

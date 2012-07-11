@@ -18,11 +18,13 @@
       
     <% @cg.each do |tm| %>
       <div class="exp_preview">
-          <div class="thumb">
-            <%= image_tag(tm.avatar) %>
-          </div>
-          <span class="name"> <%= link_to tm.name+', '+tm.profession, creative_group_path(tm) %></span>
-          <span class="info"><%= tm.description %></span>
+        <%= link_to creative_group_path(tm) do %>
+        <div class="thumb">
+          <%= image_tag(tm.avatar)  %>
+        </div>
+        <span class="name"><%= tm.name %></span>
+        <% end %>
+        <span class="info"><%= tm.profession %>, <%= tm.description %></span>
       </div>
     <% end %>
       

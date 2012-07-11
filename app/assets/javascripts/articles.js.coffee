@@ -34,14 +34,14 @@ window.setup_ajax_articles_loading = ->
     window.location.href = url
 
 
-  $('#news a').live 'click', (event) ->
+  $('a#news').live 'click', (event) ->
     event.preventDefault()
     $.ajax
       url: '/news',
       type: 'GET',
       data:
         remote: true
-        page: 1
+        page: window._page
       success: (response) ->
         $('.journal_post').html(response)
     

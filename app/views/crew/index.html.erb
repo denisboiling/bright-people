@@ -16,7 +16,7 @@
   <%= render 'crew_title' %>
     <div class="expert_list">
       
-    <% @crew.each do |tm| %>
+    <% @crew.each_with_index do |tm, index| %>
       <div class="exp_preview">
         <div class="thumb">
           <%= image_tag(tm.photo) %>
@@ -25,6 +25,9 @@
         
         <span class="info"><%= tm.description %></span>
       </div>
+      <% if (index+1) % 6 == 0 %>
+      <div class="clear"></div>
+      <% end %>
     <% end %>
       
       <div class="clear"></div>
