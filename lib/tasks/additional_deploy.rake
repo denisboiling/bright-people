@@ -4,13 +4,19 @@ namespace :db do
   # but I am lazy...
   desc 'Load database from production server'
   task :load_from_server => :environment do
-    Rake::Task['db:drop'].execute
-    Rake::Task['db:create'].execute
-    config = YAML::load(File.open(Rails.root.join('config/database.yml')))[Rails.env]
     tmp_file = "/tmp/bp-#{rand(99999).to_s}.sql.gz"
     %x(ssh rvm_user@bright-people.ru "pg_dump -U postgres bp_production | gzip -9" > #{tmp_file})
+
+    Rake::Task['db:drop'].execute
+    Rake::Task['db:create'].execute
+    config = ActiveRecord::Base.configurations[Rails.env]
+
     puts "Then execute following"
-    puts "zcat #{tmp_file} | psql -U brightpeople brightpeople && rm -rf /tmp/#{tmp_file}"
+    unless config['password'].present?
+      %x(zcat #{tmp_file} | psql -U #{config['username']} #{config['database']} && rm -rf #{tmp_file})
+    else
+      puts "zcat #{tmp_file} | psql -U #{config['username']} #{config['database']} && rm -rf #{tmp_file}"
+    end
   end
 end
 
