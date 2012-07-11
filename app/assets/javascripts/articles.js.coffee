@@ -41,7 +41,7 @@ window.setup_ajax_articles_loading = ->
       type: 'GET',
       data:
         remote: true
-        page: 1
+        page: window._page
       success: (response) ->
         $('.journal_post').html(response)
     

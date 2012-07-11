@@ -16,7 +16,7 @@
   <%= render 'sponsors_title' %>
     <div class="expert_list">
       
-    <% @sponsors.each do |sponsor| %>
+    <% @sponsors.each_with_index do |sponsor, index| %>
       <div class="exp_preview">
         <%= link_to sponsor_path(sponsor) do %>
         <div class="thumb">
@@ -27,6 +27,9 @@
         
         <span class="info"><%= truncate(sponsor.description, separator: '.', length: 140, omission: '.') %></span>
       </div>
+      <% if (index+1) % 6 == 0 %>
+      <div class="clear"></div>
+      <% end %>
     <% end %>
       
       <div class="clear"></div>

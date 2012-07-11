@@ -179,9 +179,9 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 .timer_wrapper div.date { font-family:Futura; width:105px; float:left; margin-right:8px; text-align:center; color:#cc0636; font-size:15px; font-weight:bold; text-transform:uppercase; padding-top:5px}
 .timer_wrapper .cntSeparator { padding-top:22px; font-weight:bold; color:#af0035; font-size:20px}
 
-.main_content .adv { float:right; width:213px; text-align:center;}
+.main_content .adv { float: right; width:213px; text-align:center;}
 
-.main_content .content-wrapper { overflow: hidden; margin-right: 223px; }
+.main_content .content-wrapper { margin-right: 223px; }
 
 .main_content .bank_info { float:right; width:410px;}
 .main_content .bank_info  .order_bank_catd { background:url(../assets/samp/cards.jpg) no-repeat; padding-top:177px; float:left; width:180px; font-size:12px; line-height:14px; text-align:center}
@@ -537,10 +537,10 @@ span.sim_check.active { background-position:0px 0px; }
 
 
 .alongside { text-align:center; padding:25px 20px; background:#ecece7; behavior: url(border-radius.htc); -moz-border-radius:10px; border-radius:10px; -webkit-border-radius:10px; -khtml-border-radius:10px;}
-.alongside li { padding:10px 0px}
+.alongside li { padding:10px 0px; text-align: center; }
 .alongside .title { font-size:20px; color:#4f4f4f; font-family:Futura; border-bottom:2px solid #ccc; padding-bottom:2px; margin-bottom:20px}
-.alongside .thumb { -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; behavior: url(border-radius.htc); overflow:hidden; position:relative; width:160px; height:100px; display:block; overflow:hidden; margin:auto; margin-bottom:10px}
-.alongside .thumb img { height:100px; width:160px; border-radius:6px;}
+.alongside .thumb { -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; behavior: url(border-radius.htc); overflow:hidden; position:relative; height:100px; display:block; overflow:hidden; margin:auto; margin-bottom:10px}
+.alongside .thumb img { height:100px; border-radius:6px;}
 .alongside a { color:#007ba4; text-decoration:none}
 .alongside a:hover { color:#007ba4; text-decoration:underline}
 .alongside span.name { color:#007ba4; font-size:16px; font-family:Futura; display:block; }
@@ -723,7 +723,7 @@ span.sim_check.active { background-position:0px 0px; }
 
 
 
-.expert_title { margin-top: 20px; text-align:center;}
+.expert_title { text-align:center;}
 .expert_title h1 { font-size:24px;}
 
 .expert_nav { min-width:960px; margin: 20px auto auto; max-width:1100px; position:relative}
@@ -757,7 +757,7 @@ span.sim_check.active { background-position:0px 0px; }
 
 .expert_list_wrapper { padding-top: 50px; background:url(/assets/expert_list_bg.jpg) no-repeat center 24px; }
 .expert_list { margin:auto; width:960px;}
-.expert_list .exp_preview { height: 300px; position:relative; float:left; width:150px; margin-top:20px; margin-right:10px; text-align:center; }
+.expert_list .exp_preview { position:relative; float:left; width:150px; margin-top:20px; margin-right:10px; text-align:center; }
 .expert_list .exp_preview.last { margin-right:0px;}
 .expert_list .exp_preview .mark { background:url(/assets/exp_mark.png) no-repeat; display:block; width:19px; height:24px; text-align:center; line-height:24px; padding:0px 10px 0px 5px; color:#fff; position:absolute; top:50px;}
 .expert_list .exp_preview .thumb { margin:auto; overflow:hidden;height:122px;width:122px; -moz-border-radius:60px; border-radius:60px; -webkit-border-radius:60px; -khtml-border-radius:60px; behavior: url(border-radius.htc); margin-bottom:5px}
