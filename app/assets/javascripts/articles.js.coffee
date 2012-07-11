@@ -34,7 +34,7 @@ window.setup_ajax_articles_loading = ->
     window.location.href = url
 
 
-  $('#news a').live 'click', (event) ->
+  $('a#news').live 'click', (event) ->
     event.preventDefault()
     $.ajax
       url: '/news',
