@@ -30,11 +30,11 @@
             <%= link_to '#', video.url, class: "video#{video.id}", rel: "prettyPhoto[news]" %>
           <% end %>
         </div>
-    <%#= image_tag @news.photo.url(:original) %>
+
     <%= @news.title %>
     <%= Russian::strftime(@news.created_at, "%e %B, %A") %>
     <br>
-    <%= @news.content %>
+    <%== @news.full_text %>
     <div class="clear"></div>
     <div class="article_tags">
       <% @tags.each do |t| %>
