@@ -2,7 +2,7 @@
   <div class="news">
     <%= image_tag n.photo.url %>
     <%= link_to n.title, n %>
-    <%= Russian::strftime(n.created_at, "%e %B, %A") %>
+    <%= Russian::strftime(n.publication_date, "%e %B, %A") %>
     <br>
     <%= truncate(n.content, separator: '.', omission: '.', length: 240) %>
   </div>

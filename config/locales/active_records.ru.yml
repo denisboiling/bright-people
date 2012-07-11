@@ -113,6 +113,9 @@ ru:
         created_at: Дата создания
         updated_at: Дата обновления
         content: Содержание
+        photo: Фотография
+        publication_date: Дата публикации
+        news_tag_list: Тэги
       admin_user:
         email: E-mail
         password: Пароль

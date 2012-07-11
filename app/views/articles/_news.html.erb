@@ -1,0 +1,11 @@
+<% news.each do |novelty| %>
+  <div class="news">
+    <%= image_tag novelty.photo %>
+    <%= link_to novelty.title, novelty %>
+    <!-- TODO: it's not cool use Russian, rewrite! -->
+    <%= Russian::strftime(novelty.publication_date, "%e %B, %A") %>
+    <br>
+    <%= truncate(novelty.content, separator: '.', omission: '.', length: 240) %>
+  </div>
+  <br>
+<% end %>

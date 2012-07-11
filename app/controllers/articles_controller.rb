@@ -31,8 +31,6 @@ class ArticlesController < ApplicationController
       @best_articles = Article.where(best: true)
         .order('created_at DESC')
         .first(3)
-        
-      @news = News.order('created_at DESC').page(1).per(3)
     end
   end
 
