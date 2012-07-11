@@ -7,6 +7,7 @@ load 'config/deploy/srv_avg'
 before "db:prepare", "unicorn:stop"
 before "db:prepare", "thinking_sphinx:stop"
 before "db:prepare", "delayed_job:stop"
+before "db:prepare", "deploy:remove_assets_folder"
 
 after "deploy:finalize_update", "db:prepare"
 after "db:prepare", "db:dump_production"
@@ -33,5 +34,11 @@ namespace :public do
   task :copy_system_production, roles: :app do
     run "rm -rf #{shared_path}/system"
     run "cp -rf /var/www/bright-people/shared/system #{shared_path}/system"
+  end
+end
+
+namespace :deploy do
+  task :remove_assets_folder, roles: :app do
+    run "cd #{latest_release} && rm -rf public/assets && mkdir public/assets"
   end
 end
