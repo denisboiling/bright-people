@@ -5,14 +5,7 @@ set :branch, "master"
 load 'config/deploy/srv_avg'
 
 before "deploy:update_code", "backup:create"
-
-if ENV['CLEAR']
-  before "db:prepare", "unicorn:stop"
-  before "db:prepare", "thinking_sphinx:stop"
-  before "db:prepare", "delayed_job:stop"
-  before "deploy:assets:precompile", "db:prepare"
-  after "deploy:migrate", "db:load_seed"
-end
+before "bundle:install", "deploy:remove_assets_folder"
 
 before "deploy:assets:precompile", "deploy:migrate"
 after "deploy:migrate", "thinking_sphinx:configure"
