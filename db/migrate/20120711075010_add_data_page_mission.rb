@@ -4,7 +4,10 @@ class AddDataPageMission < ActiveRecord::Migration
       puts "I can't create 'mission' page, becouse it's already exist"
       return
     else
-      if Page.create(permalink: 'mission', text: '<h1>Change this text in Admin Panel!!!</h1>' )
+      page = Page.new
+      page.permalink = 'mission'
+      page.text = '<h1>Change this text in Admin Panel!!!</h1>'
+      if page.save
         puts "Create page 'mission' success"
       else
         puts "ERROR!!! Something wrong with create page 'mission'"
