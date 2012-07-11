@@ -102,6 +102,7 @@ ru:
         updated_at: Дата обновления
         picture: Лого
         published: Опубликовать
+        publication_date: Дата публикации
       activity_comment:
         commentator: Комментатор
         content: Контент
