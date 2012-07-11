@@ -1,5 +1,5 @@
 class Stage < ActiveRecord::Base
-  attr_accessible :content, :small_pic, :large_pic, as: :admin
+  attr_accessible :content, :small_pic, :large_pic, :category, as: :admin
 
   has_attached_file :small_pic, styles: { thumb: '125x125^#' },
                            path: ":rails_root/public/system/stage/small/:attachment/:id/:style/:filename",
