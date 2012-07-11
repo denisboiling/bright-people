@@ -22,7 +22,7 @@
         <div class="thumb">
           <%= image_tag(sponsor.photo) %>
         </div>
-        <span class="name"><%= sponsor.first_name+" "+sponsor.last_name %></span>
+        <span class="name"><%= sponsor.full_name %></span>
         <% end %>
         
         <span class="info"><%= truncate(sponsor.description, separator: '.', length: 140, omission: '.') %></span>
