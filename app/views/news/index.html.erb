@@ -6,16 +6,23 @@
 
 <div class="pages">
   <div class="common">
+    <div class="news">
     <% @news.each do |n| %>
-      <div class="news">
+      <div class="item">
         <%= image_tag n.photo.url %>
-        <%= link_to n.title, n %>
-        <%= Russian::strftime(n.created_at, "%e %B, %A") %>
-        <br>
-        <%= truncate(n.content, separator: '.', omission: '.', length: 240) %>
+        <div class="content">
+          <%= link_to n.title, n, :class => 'title' %>
+          <div class="date">
+            <%= Russian::strftime(n.created_at, "%e %B, %A") %>
+          </div>
+          <div class="text">
+            <%= truncate(n.content, separator: '.', omission: '.', length: 240) %>
+          </div>
+        </div>
+        <div class="clear"></div>
       </div>
-      <br>
     <% end %>
+    </div>
   <%= paginate @news %>
   </div>
 
