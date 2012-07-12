@@ -4,7 +4,9 @@
 
     <%= f.input :is_educational, as: :select, collection: [['Образовательный', true],['Развлекательный', false]], include_blank: false %>
 
-    <%= f.input :published %>
+    <%= f.input :published, as: :select, collection: [['Да', true],['Нет', false]], include_blank: false %>
+    <%= f.input :participant, as: :select, collection: [['Да', true],['Нет', false]], include_blank: false %>
+
     <%= f.input :organization, include_blank: false, input_html: { class: 'chosen_autocomplete' } %>
     <%= f.input :phone %>
     <%= f.input :site %>

@@ -156,6 +156,7 @@ ru:
         cost: Стоимость и длительность
         parent_activities: Чем заняться родителю
         additional_information: Дополнительно
+        participant: Участник фестиваля
       user:
         name: Имя
         description: Описание
