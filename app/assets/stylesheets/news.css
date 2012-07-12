@@ -1,0 +1,11 @@
+.news { }
+.news .item { margin-bottom: 20px; }
+.news .item img { float: left; width: 160px; behavior: url(border-radius.htc); -webkit-border-radius:6px; -moz-border-radius:6px; border-radius:6px; }
+.news .item .content { margin-left: 175px; }
+.news .item .content a { font-weight: bold; }
+.news .item .content .date { margin: 2px 0 4px; font-size: 80%; color: #aaa; }
+
+.news_view .title { font-weight: bold; font-size: 110%; padding-bottom: 0; }
+.news_view .date { margin: 3px 0 5px; color: #aaa; font-size: 90%; }
+.news_view .article_tags { margin-top: 5px; }
+.news_view .article_tags a { color: #aaa; font-size: 90%; }

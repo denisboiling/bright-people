@@ -4,8 +4,7 @@
 
 <div class="pages">
   <div class="common">
-    <br>
-        <div id="news"></div>
+     <div id="news"></div>
         <div class="pikachoose">
         <% if @news.photos.count == 1 %>
           <div class="mask"></div>
@@ -30,16 +29,15 @@
             <%= link_to '#', video.url, class: "video#{video.id}", rel: "prettyPhoto[news]" %>
           <% end %>
         </div>
-
-    <%= @news.title %>
-    <%= Russian::strftime(@news.created_at, "%e %B, %A") %>
-    <br>
-    <%== @news.full_text %>
-    <div class="clear"></div>
-    <div class="article_tags">
-      <% @tags.each do |t| %>
-        <%= link_to t.name, tag_articles_path(tag: t.name) %>
-      <% end %>
+    <div class="news_view">
+      <div class="title"><%= @news.title %></div>
+      <div class="date"><%= Russian::strftime(@news.created_at, "%e %B, %A") %></div>
+      <div class="text"><%= @news.content %></div>
+      <div class="article_tags">
+        <% @tags.each do |t| %>
+          <%= link_to t.name, tag_articles_path(tag: t.name) %>
+        <% end %>
+      </div>
     </div>
   </div>
 

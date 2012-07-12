@@ -1,7 +1,8 @@
 class Participant < ActiveRecord::Base
   default_scope :order => 'priority DESC'
 
-  has_attached_file :logo, styles: { medium: "300x300^#", thumb: '160x100^#', approved: '422x114^#', index: '186x114^#' },
+  has_attached_file :logo, styles: { medium: "300x300^#", thumb: '160x100^#', approved: '422x114^#', index: '186x114^#',
+                                     participants_page: "420x263#" },
                            path: ":rails_root/public/system/participants/:attachment/:id/:style/:filename",
                            url: "/system/participants/:attachment/:id/:style/:filename",
                            default_style: :thumb, default_url: 'loading.gif'
