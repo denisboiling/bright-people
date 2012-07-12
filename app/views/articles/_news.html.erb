@@ -1,11 +1,17 @@
-<% news.each do |novelty| %>
-  <div class="news">
-    <%= image_tag novelty.photo %>
-    <%= link_to novelty.title, novelty %>
-    <!-- TODO: it's not cool use Russian, rewrite! -->
-    <%= Russian::strftime(novelty.publication_date, "%e %B, %A") %>
-    <br>
-    <%= truncate(novelty.content, separator: '.', omission: '.', length: 240) %>
+<div class="news">
+  <% news.each do |n| %>
+  <div class="item">
+    <%= image_tag n.photo.url %>
+    <div class="content">
+      <%= link_to n.title, n, :class => 'title' %>
+      <div class="date">
+        <%= Russian::strftime(n.created_at, "%e %B, %A") %>
+      </div>
+      <div class="text">
+        <%= truncate(n.content, separator: '.', omission: '.', length: 240) %>
+      </div>
+    </div>
+    <div class="clear"></div>
   </div>
-  <br>
-<% end %>
+  <% end %>
+</div>
