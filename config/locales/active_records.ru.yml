@@ -117,6 +117,7 @@ ru:
         photo: Фотография
         publication_date: Дата публикации
         news_tag_list: Тэги
+        full_text: Полный текст новости
       admin_user:
         email: E-mail
         password: Пароль
