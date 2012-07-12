@@ -45,11 +45,11 @@
       <% @best.each do |b| %>
         <div class="item">
           <div class="participant_photo">
-            <% if ( b.photos.count > 0 || b.videos.count > 0 ) %>
+            <% if  b.photos.count > 0 || b.videos.count > 0  %>
             <div class="init_lightbox"></div>
-            <%= image_tag b.logo.url(:thumb), :class => 'clickable' %>
+            <%= image_tag b.logo.url(:participants_page), :class => 'clickable' %>
             <% else %>
-            <%= image_tag b.logo.url(:thumb) %>
+            <%= image_tag b.logo.url(:participants_page) %>
             <% end %>
           </div>
           <div class="title"><%= b.title %></div>
@@ -72,10 +72,10 @@
       <% @participants.each do |p| %>
       <div class="participant">
         <div class="participant_photo">
-          <% if ( p.photos.count > 0 || p.videos.count > 0 ) %>
-          <%= image_tag p.logo.url(:thumb), :class => 'clickable' %>
+          <% if p.photos.count > 0 || p.videos.count > 0 %>
+            <%= image_tag p.logo.url(:participants_page), :class => 'clickable' %>
           <% else %>
-          <%= image_tag p.logo.url(:thumb) %>
+            <%= image_tag p.logo.url(:participants_page) %>
           <% end %>
         </div>
         <div class="participant_data">
