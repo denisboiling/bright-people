@@ -27,22 +27,31 @@
       %>
       <%= participants_menu links %>
     <% end %>
-    <% if ( @stage && !@stage.small_pic_file_name.blank? ) %>
     <div class="participants_map">
+      <% if ( @stage && !@stage.content.blank? ) %>
       <div class="text">
-        <%= @stage.content unless @stage.content.blank? %>
+        <%= @stage.content %>
       </div>
+      <% end %>
+      <% if ( @stage && !@stage.small_pic_file_name.blank? ) %>
       <div class="map" data-small="<%= @stage.small_pic.url %>" data-large="<%= @stage.large_pic.url %>"><%= image_tag @stage.small_pic.url %></div>
       <div class="participants_map_toggle_wrapper">
         <div id="participants_map_toggle">Раскрыть карту</div>
       </div>
+      <% end %>
     </div>
-    <% end %>
     <% if @best %>
     <div class="main_participants">
       <% @best.each do |b| %>
         <div class="item">
-          <%= image_tag b.logo.url(:thumb), 'class' => 'participant_photo' %>
+          <div class="participant_photo">
+            <% if  b.photos.count > 0 || b.videos.count > 0  %>
+            <div class="init_lightbox"></div>
+            <%= image_tag b.logo.url(:participants_page), :class => 'clickable' %>
+            <% else %>
+            <%= image_tag b.logo.url(:participants_page) %>
+            <% end %>
+          </div>
           <div class="title"><%= b.title %></div>
           <%= b.description %>          
           <div id="lightbox_hook_<%= b.id %>" class="hidden">
@@ -63,7 +72,11 @@
       <% @participants.each do |p| %>
       <div class="participant">
         <div class="participant_photo">
-          <%= image_tag p.logo.url(:thumb) %>
+          <% if p.photos.count > 0 || p.videos.count > 0 %>
+            <%= image_tag p.logo.url(:participants_page), :class => 'clickable' %>
+          <% else %>
+            <%= image_tag p.logo.url(:participants_page) %>
+          <% end %>
         </div>
         <div class="participant_data">
           <div class="participant_title"><%= p.title %></div>

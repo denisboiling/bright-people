@@ -11,7 +11,6 @@ ActiveAdmin.register CreativeGroup do
     end
     column :name
     column :profession
-    column :description
     default_actions
   end
 

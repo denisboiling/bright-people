@@ -425,6 +425,7 @@ span.sim_check.active { background-position:0px 0px; }
 .detail_page .cat_list { padding-bottom:20px;}
 .detail_page .info_block th { text-align:left; padding-right:10px; background:url(/assets/punktir_info.jpg) repeat-x 0px 15px;}
 .detail_page .info_block th span { background:#fff;}
+.detail_page .info_block th img { margin-top: 3px; }
 
 .to_map_link span { background:url(/assets/to_map_ico.png) no-repeat 0 0; width:21px; height:25px; display:inline-block; margin-left:5px}
 
@@ -539,12 +540,13 @@ span.sim_check.active { background-position:0px 0px; }
 .alongside { text-align:center; padding:25px 20px; background:#ecece7; behavior: url(border-radius.htc); -moz-border-radius:10px; border-radius:10px; -webkit-border-radius:10px; -khtml-border-radius:10px;}
 .alongside li { padding:10px 0px; text-align: center; }
 .alongside .title { font-size:20px; color:#4f4f4f; font-family:Futura; border-bottom:2px solid #ccc; padding-bottom:2px; margin-bottom:20px}
-.alongside .thumb { -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; behavior: url(border-radius.htc); overflow:hidden; position:relative; height:100px; display:block; overflow:hidden; margin:auto; margin-bottom:10px}
+.alongside .thumb { -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; behavior: url(border-radius.htc); overflow:hidden; position:relative; height:100px; overflow:hidden; margin: auto; margin-bottom:10px}
 .alongside .thumb img { height:100px; border-radius:6px;}
 .alongside a { color:#007ba4; text-decoration:none}
 .alongside a:hover { color:#007ba4; text-decoration:underline}
 .alongside span.name { color:#007ba4; font-size:16px; font-family:Futura; display:block; }
-.alongside .geo {}
+.alongside .geo { line-height: 17px; }
+.alongside .geo img { margin: 1px 3px 0 0;}
 
 
 .post_category_menu { padding-bottom:1px; border-bottom:1px solid #dadce1; height:38px; margin-top:10px}
@@ -844,8 +846,8 @@ span.sim_check.active { background-position:0px 0px; }
 
 
 .journal_post { margin-left:20px; float:left; width: 600px;}
-.journal_post .title { font-family:Futura; font-size:18px; background:url(/assets/bright_magazine_top_line.jpg) repeat-x center}
-.journal_post .title span { background:#fff; padding-right:5px}
+.journal_post > .title { font-family:Futura; font-size:18px; background:url(/assets/bright_magazine_top_line.jpg) repeat-x center}
+.journal_post > .title span { background:#fff; padding-right:5px}
 
 .journal_preview { padding:10px 0px}
 .journal_preview .thumb { float:left; width:160px; height:100px; -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; overflow:hidden}
