@@ -11,19 +11,10 @@ ActiveAdmin.register CreativeGroup do
     end
     column :name
     column :profession
-    column :description
     default_actions
   end
 
-  form html: { enctype: 'multipart/form-data' } do |f|
-    f.inputs 'Основное' do
-      f.input :name
-      f.input :profession
-      f.input :description
-      f.input :avatar, as: :file, hint: f.template.image_tag(f.object.avatar.url)
-    end
-    f.buttons
-  end
+  form partial: 'form'
 
   show do
     attributes_table :name, :profession, :description

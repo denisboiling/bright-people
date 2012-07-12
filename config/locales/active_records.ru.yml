@@ -1,6 +1,11 @@
 ru:
   activerecord:
     models:
+      creative_group:
+        one: Творческая группа
+        few: Творческая группа
+        many: Творческая группа
+        other: Творческая группа
       page:
         one: Страница
         few: Страницы
@@ -117,6 +122,7 @@ ru:
         photo: Фотография
         publication_date: Дата публикации
         news_tag_list: Тэги
+        full_text: Полный текст новости
       admin_user:
         email: E-mail
         password: Пароль
@@ -224,3 +230,8 @@ ru:
         created_at: Дата одобрения
         updated_at: Дата изменения
         text: Текст
+      creative_group:
+        name: Название
+        profession: Професия
+        description: Описание
+        avatar: Фото

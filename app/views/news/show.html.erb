@@ -29,7 +29,6 @@
             <%= link_to '#', video.url, class: "video#{video.id}", rel: "prettyPhoto[news]" %>
           <% end %>
         </div>
-    <%#= image_tag @news.photo.url(:original) %>
     <div class="news_view">
       <div class="title"><%= @news.title %></div>
       <div class="date"><%= Russian::strftime(@news.created_at, "%e %B, %A") %></div>
