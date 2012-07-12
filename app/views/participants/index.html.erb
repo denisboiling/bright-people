@@ -42,7 +42,7 @@
     <div class="main_participants">
       <% @best.each do |b| %>
         <div class="item">
-          <%= image_tag b.logo.url(:thumb), 'class' => 'participant_photo' %>
+          <%= image_tag b.logo.url(:participants_page), 'class' => 'participant_photo' %>
           <div class="title"><%= b.title %></div>
           <%= b.description %>          
           <div id="lightbox_hook_<%= b.id %>" class="hidden">
