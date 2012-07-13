@@ -24,5 +24,10 @@ class AddDataPositionToArticleCategory < ActiveRecord::Migration
         _category.save
       end
     end
+
+    if category = ArticleCategory.find_by_title('Учителя')
+      puts "Destroy ArticleCategory 'Учителя'"
+      category.destroy
+    end
   end
 end
