@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ActiveAdmin.register News do
-# TODO: reopen. quick fix
-#  scope_to :current_user, :association_method => :unscoped_news
+  # TODO: reopen. quick fix
+  #  scope_to :current_user, :association_method => :unscoped_news
   menu label: 'Новости фестиваля', :parent => "Фестиваль"
 
   filter :title
@@ -9,9 +9,11 @@ ActiveAdmin.register News do
   index do
     id_column
     column "Фотография" do |news|
-        link_to image_tag(news.photo.url(:thumb), alt: news.title), admin_news_path(news)
+      link_to image_tag(news.photo.url(:thumb), alt: news.title), news.photo.url(:original)
     end
-    column :title
+    column :title do |news|
+      link_to news.title, news
+    end
     column :content
     column :publication_date
     default_actions

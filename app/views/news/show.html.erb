@@ -4,39 +4,18 @@
 
 <div class="pages">
   <div class="common">
-     <div id="news"></div>
-        <div class="pikachoose">
-        <% if @news.photos.count == 1 %>
-          <div class="mask"></div>
-          <%= link_to image_tag(@news.photos.last.attach.url(:slider)), '#' %>
-        <% elsif  @news.photos.count > 1 %>
-          <div class="mask"></div>
-          <ul id="pikame" class="jcarousel-skin-pika">
-          <% @news.photos.each do |photo| %>
-            <li><%= link_to image_tag(photo.attach.url(:slider), 'data-hook-class' => "photo#{photo.id}") %></li>
-          <% end %>
-          <% @news.videos.each do |video| %>
-            <li class="slideshow_video_item"><div class="video"></div><%= link_to image_tag(video.preview_url, 'data-hook-class' => "video#{video.id} ", 'style' => 'width:530px') %></li>
-          <% end %>
-          </ul>
-        <% end %>
-        </div>
-        <div id="lightbox_hook" class="hidden">
-          <% @news.photos.each do |photo| %>
-            <%= link_to '#', photo.attach.url(:original), class: "photo#{photo.id}", rel: "prettyPhoto[news]" %>
-          <% end %>
-          <% @news.videos.each do |video| %>
-            <%= link_to '#', video.url, class: "video#{video.id}", rel: "prettyPhoto[news]" %>
-          <% end %>
-        </div>
+    <div id="news"></div>
+
+    <%= render 'shared/photos_lightbox', object: @news %>
+
     <div class="news_view">
       <div class="title"><%= @news.title %></div>
       <div class="date"><%= Russian::strftime(@news.created_at, "%e %B, %A") %></div>
       <div class="text"><%= @news.content %></div>
       <div class="article_tags">
-        <% @tags.each do |t| %>
-          <%= link_to t.name, tag_articles_path(tag: t.name) %>
-        <% end %>
+	<% @tags.each do |t| %>
+	  <%= link_to t.name, tag_articles_path(tag: t.name) %>
+	<% end %>
       </div>
     </div>
   </div>

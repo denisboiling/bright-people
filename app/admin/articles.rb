@@ -14,9 +14,11 @@ ActiveAdmin.register Article do
   index do
     id_column
     column "Фотография" do |article|
-        link_to image_tag(article.picture, alt: article.title), article
+      link_to image_tag(article.picture, alt: article.title), article.picture.url(:original)
     end
-    column :title
+    column :title do |article|
+      link_to article.title, article
+    end
     column :author
     column :created_at
     column :updated_at

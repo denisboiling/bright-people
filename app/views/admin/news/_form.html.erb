@@ -4,7 +4,7 @@
 
     <%= f.input :photo, as: :file, hint: f.template.image_tag(f.object.photo.url) %>
     <%= f.input :publication_date %>
-    <%= f.input :content, input_html: { size: 10 } %>
+    <%= f.input :content, input_html: { rows: 4, maxlength: 140 } %>
 
     <%= render 'shared/editor_toolbar', element_id: 'news_full_text' %>
     <%= f.input :full_text, input_html: { size: 10 } %>

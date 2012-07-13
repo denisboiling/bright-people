@@ -90,30 +90,6 @@ window.setup_activities_approval = ->
     event.preventDefault()
     $('#activity_approve_dialog').removeClass('hidden')
 
-window.setup_lightbox = ->
-  return if $('.title_block').length == 0
-  
-  $("a[rel^='prettyPhoto']").prettyPhoto(social_tools: false)
-  $('#pikame').PikaChoose(carousel: true, autoPlay: false)
-  
-  $('.pikachoose .mask').bind 'click', ->
-    PikaChoose = $('#pikame').data('pikachoose')
-    element = PikaChoose.active
-    class_name = element.attr('data-hook-class')
-    $("#lightbox_hook .#{class_name}").trigger('click')
-
-  $('.pika-imgnav .previous').live 'click', ->
-    PikaChoose = $('#pikame').data('pikachoose')
-    element = PikaChoose.active
-    class_name = element.attr('data-hook-class')
-    $("#lightbox_hook .#{class_name}").trigger('click')
-
-  $('.pika-imgnav .next').live 'click', ->
-    PikaChoose = $('#pikame').data('pikachoose')
-    element = PikaChoose.active
-    class_name = element.attr('data-hook-class')
-    $("#lightbox_hook .#{class_name}").trigger('click')
-
 window.activity_schedule_add = (el) ->
   console.log(el)
 
