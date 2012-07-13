@@ -40,11 +40,7 @@ class Activity < ActiveRecord::Base
                     dependent: :destroy
 
   has_many :favourites, as: :relation, dependent: :destroy
-
-  # TODO: replace with polymorphic
-  has_many :videos, class_name: 'VideoUrl', dependent: :destroy,
-                    conditions: "relation_type = 'activity'",
-                    foreign_key: 'relation_id', before_add: :add_activity_type
+  has_many :videos, class_name: 'VideoUrl', as: :relation, dependent: :destroy
 
   belongs_to :region
 
@@ -58,11 +54,6 @@ class Activity < ActiveRecord::Base
                            path: ":rails_root/public/system/activities/:attachment/:id/:style/:filename",
                            url: "/system/activities/:attachment/:id/:style/:filename",
                            default_style: :thumb, default_url: 'loading.gif'
-
-  # Forcibly set activity relation type for video
-  def add_activity_type(video)
-    video.relation_type = 'activity'
-  end
 
   accepts_nested_attributes_for :photos, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :videos, allow_destroy: true, reject_if: :all_blank

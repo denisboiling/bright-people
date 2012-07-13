@@ -1,14 +1,12 @@
 class Article < ActiveRecord::Base
-  attr_accessible :title, :content, :author_id, :article_category_id,
-                  :article_tag_list, :picture, :short_description,
-                  :published, :biography, :best, :publication_date, as: :admin
-
-
   belongs_to :category, class_name: 'ArticleCategory', foreign_key: :article_category_id
   belongs_to :author, class_name: 'User'
 
   has_many :comments, as: :relation
   has_many :favourites, as: :relation, dependent: :destroy
+  has_many :videos, class_name: 'VideoUrl', as: :relation, dependent: :destroy
+
+  has_many :photos, class_name: 'ArticlePhoto', dependent: :destroy
 
   has_attached_file :picture, styles: { medium: "440x275^#", slider: "520x320^#", thumb: "160x100^#" },
                               path: ":rails_root/public/system/articles/:attachment/:id/:style/:filename",
@@ -18,12 +16,21 @@ class Article < ActiveRecord::Base
 
   acts_as_taggable_on :article_tags
 
+  attr_accessible :title, :content, :author_id, :article_category_id,
+                  :article_tag_list, :picture, :short_description,
+                  :published, :biography, :best, :publication_date,
+                  :photos_attributes,  :videos_attributes, as: :admin
+
+
   validates :title, :content, :author, :article_category_id, presence: :true
 
   scope :published, where(published: true)
   scope :not_published, where(published: false)
   scope :bests, where(best: true)
   scope :expect, lambda{|article| where('id != ?', article.id)}
+
+  accepts_nested_attributes_for :photos, allow_destroy: true, reject_if: :all_blank
+  accepts_nested_attributes_for :videos, allow_destroy: true, reject_if: :all_blank
 
   define_index do
     indexes title, sortable: true

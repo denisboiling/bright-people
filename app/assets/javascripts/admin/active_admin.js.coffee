@@ -76,83 +76,24 @@ setup_chosen = ->
     $("select.chosen_autocomplete").chosen()
 
 setup_photos_removing = ->
-    $('a.remove_activity_video').live 'click', () ->
-    id = $(this).attr('data-photo-id')
-    if id
-      # TODO: only in success we should delete div
-      $.ajax '/staff/delete_video_by_activity',
-        type: 'DELETE',
-        dataType: 'json',
-        data: {id: id}
-      $(this).parent('.nested-fields').remove()
-    else
-      $(this).parent('.nested-fields').remove()
-    return false
+  $('a.remove_video').live 'click', () ->
+    object_id = $(this).attr('data-video-id')
+    $.ajax '/staff/delete_video',
+        type: 'DELETE'
+        dataType: 'json'
+        data: {object_id: object_id}
+    $(this).parent('.video').remove()
+    false
 
-  $('a.remove_activity_photo').live 'click', () ->
-    id = $(this).attr('data-photo-id')
-    if id
-      # TODO: only in success we should delete div
-      $.ajax '/staff/delete_photo_by_activity',
-        type: 'DELETE',
-        dataType: 'json',
-        data: {id: id}
-      $(this).parent('.thumb').remove()
-    else
-      $(this).parent('.thumb').remove()
-    return false
-
-    $('a.remove_participant_video').live 'click', () ->
-    id = $(this).attr('data-photo-id')
-    if id
-      # TODO: only in success we should delete div
-      $.ajax '/staff/delete_video_by_participant',
-        type: 'DELETE',
-        dataType: 'json',
-        data: {id: id}
-      $(this).parent('.nested-fields').remove()
-    else
-      $(this).parent('.nested-fields').remove()
-    return false
-
-  $('a.remove_participant_photo').live 'click', () ->
-    id = $(this).attr('data-photo-id')
-    if id
-      # TODO: only in success we should delete div
-      $.ajax '/staff/delete_photo_by_participant',
-        type: 'DELETE',
-        dataType: 'json',
-        data: {id: id}
-      $(this).parent('.thumb').remove()
-    else
-      $(this).parent('.thumb').remove()
-    return false
-
-    $('a.remove_news_video').live 'click', () ->
-    id = $(this).attr('data-photo-id')
-    if id
-      # TODO: only in success we should delete div
-      $.ajax '/staff/delete_video_by_news',
-        type: 'DELETE',
-        dataType: 'json',
-        data: {id: id}
-      $(this).parent('.nested-fields').remove()
-    else
-      $(this).parent('.nested-fields').remove()
-    return false
-
-  $('a.remove_news_photo').live 'click', () ->
-    id = $(this).attr('data-photo-id')
-    if id
-      # TODO: only in success we should delete div
-      $.ajax '/staff/delete_photo_by_news',
-        type: 'DELETE',
-        dataType: 'json',
-        data: {id: id}
-      $(this).parent('.thumb').remove()
-    else
-      $(this).parent('.thumb').remove()
-    return false
+  $('a.remove_photo').live 'click', () ->
+    object_class = $(this).attr('data-class')
+    object_id = $(this).attr('data-photo-id')
+    $.ajax '/staff/delete_photo',
+        type: 'DELETE'
+        dataType: 'json'
+        data: {object_id: object_id, object_class: object_class}
+    $(this).parent('.thumb').remove()
+    false
 
 $ ->
   setup_photos_removing()

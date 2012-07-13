@@ -43,6 +43,17 @@ gem 'nokogiri'
 gem 'high_voltage'
 gem 'fb_graph'
 
+group :development, :test do
+  gem 'cucumber-rails', require: false
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'spork'
+  gem 'database_cleaner'
+  gem 'thin'
+  gem 'launchy'
+  gem 'debugger'
+end
+
 group :development do
   gem 'letter_opener'
   gem 'capistrano'
@@ -51,18 +62,8 @@ group :development do
   gem 'rvm-capistrano'
   gem 'sextant'
   gem 'quiet_assets'
-end
-
-group :development, :test do
-  gem 'cucumber-rails', require: false
-  gem 'rspec-rails'
-  gem 'factory_girl_rails'
-  gem 'spork', github: 'sporkrb/spork'
   gem 'guard-spork'
   gem 'guard-rspec'
   gem 'guard-cucumber'
-  gem 'database_cleaner'
-  gem 'thin'
-  gem 'launchy'
-  gem 'debugger'
 end
+

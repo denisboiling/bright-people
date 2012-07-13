@@ -1,6 +1,5 @@
 <div class="nested-fields">
   <%= f.inputs do %>
-    <% f.input :url %>
+    <% f.input :url, as: :string %>
   <% end %>
-  <%= link_to 'Убрать видео', '#', :class => 'remove_participant_video', 'data-photo-id' => f.object.try(:id) %>
 </div>

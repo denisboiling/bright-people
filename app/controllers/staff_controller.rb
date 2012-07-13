@@ -1,33 +1,23 @@
 class StaffController < ApplicationController
   # TODO: only admin or moderator can do this
-  # OPTIMIZE: maybe combine 2 action in one?
-  def delete_photo_by_activity
-    ActivityPhoto.find(params[:id]).destroy
-    render nothing: true
+  # TODO: only admin or moderator can do this
+  # TODO: only admin or moderator can do this
+
+  def delete_video
+    if VideoUrl.find(params[:object_id]).destroy
+      head :ok
+    else
+      head :error
+    end
   end
 
-  def delete_video_by_activity
-    VideoUrl.find(params[:id]).destroy
-    render nothing: true
+  def delete_photo
+    return head(:bad_request) unless %w(ArticlePhoto NewsPhoto ParticipantPhoto ActivityPhoto).include?(params[:object_class])
+    if params[:object_class].constantize.find(params[:object_id]).destroy
+      head :ok
+    else
+      head :error
+    end
   end
 
-  def delete_photo_by_participant
-    ParticipantPhoto.find(params[:id]).destroy
-    render nothing: true
-  end
-
-  def delete_video_by_participant
-    VideoUrl.find(params[:id]).destroy
-    render nothing: true
-  end
-
-  def delete_photo_by_news
-    NewsPhoto.find(params[:id]).destroy
-    render nothing: true
-  end
-
-  def delete_video_by_news
-    VideoUrl.find(params[:id]).destroy
-    render nothing: true
-  end
 end
