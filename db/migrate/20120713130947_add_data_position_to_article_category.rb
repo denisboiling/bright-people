@@ -8,7 +8,6 @@ class AddDataPositionToArticleCategory < ActiveRecord::Migration
       { title: 'Интервью', position: 4},
       { title: 'Личный опыт', position: 5},
       { title: 'Мастер-класс', position: 6},
-      { title: 'Учителя', position: 7},
       { title: 'Зарубежный опыт', position: 8},
       { title: 'Личности', position: 9},
     ]
