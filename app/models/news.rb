@@ -12,7 +12,7 @@ class News < ActiveRecord::Base
 
   validates :title, :content, :publication_date, presence: true
 
-  attr_accessible :title, :content, :photo, :photos_attributes, :videos_attributes, :publication_date, :news_tag_list, as: :admin
+  attr_accessible :title, :content, :photo, :photos_attributes, :videos_attributes, :publication_date, :news_tag_list, :full_text, as: :admin
 
   accepts_nested_attributes_for :photos, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :videos, allow_destroy: true, reject_if: :all_blank

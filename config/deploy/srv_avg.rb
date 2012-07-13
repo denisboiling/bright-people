@@ -55,10 +55,10 @@ namespace :delayed_job do
   end
 end
 
-# TODO: bad bad bad
+
 namespace :deploy do
-  task :fix_i18n, :roles => :app do
-    run "cd #{latest_release}/config/locales && echo >> *.yml"
+  task :remove_assets_folder, roles: :app do
+    run "cd #{latest_release} && rm -rf public/assets && mkdir public/assets"
   end
 end
 

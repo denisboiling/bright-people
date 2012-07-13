@@ -11,6 +11,7 @@
 
     <%= f.input :logo, as: :file, hint: f.template.image_tag(f.object.logo.url) %>
 
+    <%= render 'shared/editor_toolbar', element_id: 'participant_description' %>
     <%= f.input :description, input_html: { size: 10 } %>
   <% end %>
 

@@ -20,6 +20,7 @@ ActiveAdmin.register Stage do
   form html: { enctype: 'multipart/form-data' } do |f|
     f.inputs 'Основное' do
       f.input :content
+      f.input :category, as: :select, collection: all_stages, include_blank: false
       f.input :small_pic, as: :file
       f.input :large_pic, as: :file
     end
