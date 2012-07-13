@@ -66,7 +66,7 @@ BrightPeople::Application.routes.draw do
   namespace :admin do
     resources :activities do
       get :get_categories, :on => :collection
-      get :autocomplete_activity_title, :on => :collection
+      get :autocomplete, :on => :collection
     end
     resources :organizations do
       get :autocomplete_organization_title, :on => :collection

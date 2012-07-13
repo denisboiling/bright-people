@@ -90,7 +90,7 @@ class Activity < ActiveRecord::Base
   scope :approved, where(approved: true)
 
 
-  # OPTIMIZE: maybe..or no??? 
+  # OPTIMIZE: maybe..or no???
   scope :by_agerange, lambda { |ages|
     _ages = ages.map{|_age| (_age.split('-')[0].to_i.._age.split('-')[1].to_i).to_a }.flatten.uniq
     where('start_age in (:s_age) OR end_age in (:s_age)', s_age: _ages)

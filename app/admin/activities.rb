@@ -9,7 +9,11 @@ ActiveAdmin.register Activity do
   scope :not_published
 
   controller do
-    autocomplete :activity, :title, full: true
+    # TODO: create for this awesome module dude
+    def autocomplete
+      a = Activity.search(:conditions => {:title => params[:term]})
+      render json: a.map{|x| {id: x.id, label: x.title, value: x.title}}.to_json
+    end
 
     # Get gategories by is_educational?
     def get_categories
@@ -18,7 +22,7 @@ ActiveAdmin.register Activity do
     end
   end
 
-  filter :title, as: :autocomplete, input_html: {'data-autocomplete' => '/admin/activities/autocomplete_activity_title', object: 'activity'}
+  filter :title, as: :autocomplete, input_html: {'data-autocomplete' => '/admin/activities/autocomplete', object: 'activity'}
 
   index do
     id_column
