@@ -1,14 +1,13 @@
 class News < ActiveRecord::Base
-  default_scope order: 'created_at DESC'
-
-  scope :published, where("publication_date <= ?", DateTime.now )
-
-  has_many :photos, class_name: 'NewsPhoto',
-                    dependent: :destroy
+  has_many :photos, class_name: 'NewsPhoto', dependent: :destroy
 
   has_many :videos, class_name: 'VideoUrl', dependent: :destroy,
                     conditions: "relation_type = 'news'",
                     foreign_key: 'relation_id', before_add: :add_news_type
+
+
+  default_scope order: 'created_at DESC'
+  scope :published, where("publication_date <= ?", DateTime.now )
 
   validates :title, :content, :publication_date, presence: true
 
