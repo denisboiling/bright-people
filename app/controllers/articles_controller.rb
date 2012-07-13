@@ -17,7 +17,6 @@ class ArticlesController < ApplicationController
     category = ArticleCategory.find(params[:category_id]) if params[:category_id]
 
     @persons_category = ArticleCategory.find_by_title("Личности")
-    @teachers_category = ArticleCategory.find_by_title("Учителя")
     @foreign_category = ArticleCategory.find_by_title("Зарубежный опыт")
     @expert_category = ArticleCategory.find_by_title("Колонка эксперта")
 
