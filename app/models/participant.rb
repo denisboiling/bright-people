@@ -10,9 +10,7 @@ class Participant < ActiveRecord::Base
   has_many :photos, class_name: 'ParticipantPhoto',
                     dependent: :destroy
 
-  has_many :videos, class_name: 'VideoUrl', dependent: :destroy,
-                    conditions: "relation_type = 'participant'",
-                    foreign_key: 'relation_id', before_add: :add_participant_type
+  has_many :videos, class_name: 'VideoUrl', as: :relation, dependent: :destroy
 
   scope :headliners, where(headliner: true)
   scope :not_headliners, where(headliner: false)
@@ -25,9 +23,5 @@ class Participant < ActiveRecord::Base
   accepts_nested_attributes_for :videos, allow_destroy: true, reject_if: :all_blank
 
   attr_accessible :title, :description, :logo, :photos_attributes, :videos_attributes, :headliner, :category, :priority, as: :admin
-
-  def add_participant_type(video)
-    video.relation_type = 'participant'
-  end
 
 end

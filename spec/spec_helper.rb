@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'spork'
-require 'spork/ext/ruby-debug' unless ENV['JENKINS']
+require 'spork/ext/ruby-debug'
 
 Spork.prefork do
   ENV["RAILS_ENV"] ||= 'test'
@@ -36,11 +36,6 @@ Spork.prefork do
 end
 
 Spork.each_run do
-  # Reload factory
   FactoryGirl.reload
-
-  # Reload models
-  Dir["#{Rails.root}/app/models/**/*.rb"].each do |model|
-    load model
-  end
+  Dir["#{Rails.root}/app/models/**/*.rb"].each{|f| load f}
 end

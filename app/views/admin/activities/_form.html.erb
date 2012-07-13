@@ -66,26 +66,8 @@
   <% end %>
 
 
-  <%= f.inputs "Медиа контент" do %>
-    <div class="activity_photos">
-      <% f.object.photos.each do |ph| %>
-        <div class='thumb'>
-          <%= image_tag ph.attach.url %>
-          <%= link_to 'Убрать фотографию', '#', :class => 'remove_activity_photo', 'data-photo-id' => ph.try(:id) %>
-        </div>
-      <% end %>
-      <input type="file" name="activity[photos_attributes][][attach]" multiple="multiple" accept="image"/>
-    </div>
+    <%= render 'admin/shared/media_content', f: f %>
 
-    <div class="activity_videos">
-      <%= f.semantic_fields_for :videos do |video| %>
-        <%= render 'admin/activities/video_fields', f: video %>
-      <% end %>
-    </div>
-    <%= link_to_add_association 'Добавить ссылку на видео', f, :videos,
-                                  'data-association-insertion-method' => 'append',
-                                  'data-association-insertion-node' => '.activity_videos' %>
-  <% end %>
 
     <%= f.inputs "Дополнительно" do %>
 

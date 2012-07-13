@@ -1,0 +1,24 @@
+<%= f.inputs "Медиа контент" do %>
+<div class="photos">
+  <% f.object.photos.each do |photo| %>
+    <div class='thumb'>
+      <%= link_to image_tag(photo.attach), photo.attach.url(:original) %>
+      <%= link_to 'Убрать', '', :class => 'remove_photo', 'data-photo-id' => photo.id, 'data-class' => photo.class.name %>
+    </div>
+  <% end %>
+  <input type="file" name="<%= f.object.class.name.downcase %>[photos_attributes][][attach]" multiple="multiple" accept="image"/>
+</div>
+
+<div class="videos">
+  <% f.object.videos.each do |video| %>
+    <div class="video">
+      <%= link_to image_tag(video.preview_url), video.url, target: '_blank' %>
+      <%= link_to 'Убрать', '', :class => 'remove_video', 'data-video-id' => video.id %>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to_add_association 'Добавить ссылку на видео', f, :videos,
+                                                           'data-association-insertion-method' => 'append',
+                                                           'data-association-insertion-node' => '.videos' %>
+<% end %>

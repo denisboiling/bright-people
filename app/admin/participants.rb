@@ -27,7 +27,7 @@ ActiveAdmin.register Participant do
   index do
     id_column
     column "Фотография" do |p|
-        link_to image_tag(p.logo.url(:thumb), alt: p.title), admin_participant_path(p)
+      link_to image_tag(p.logo.url(:thumb), alt: p.title), p.logo.url(:original)
     end
     column :title
     column :headliner
