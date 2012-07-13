@@ -43,5 +43,5 @@ window.setup_ajax_articles_loading = ->
         remote: true
         page: window._page
       success: (response) ->
-        $('.journal_post').html(response)
+        $('.journal_post').html('<div class="title">Новости</div>'+response)
     

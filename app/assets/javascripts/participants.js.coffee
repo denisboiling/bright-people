@@ -22,7 +22,7 @@ window.setup_participants_list = ->
     $(this).parent().find("[id^=lightbox_hook_]").children(':first').trigger('click')
     
   $('#participants_map_toggle').click ->
-    map = $(this).prev()
+    map = $('.participants_map .map')
     if ( map.hasClass('opened') )
       map.children('img').attr( 'src', map.attr('data-small') )
     else      
