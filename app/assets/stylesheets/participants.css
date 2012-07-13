@@ -4,7 +4,7 @@
 .participants_menu li a.active { font-weight: bold }
 
 .participants_map { position: relative }
-.participants_map .text { overflow: hidden; height: 45px; line-height: 15px; margin-top: 15px; }
+.participants_map .text { margin-top: 15px; }
 .participants_map .map { margin-top: 10px; background-color: #ccc; }
 .participants_map .map img { width: 100%; }
 .participants_map_toggle_wrapper { margin-bottom: 40px; }

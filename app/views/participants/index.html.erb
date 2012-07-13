@@ -53,7 +53,7 @@
             <% end %>
           </div>
           <div class="title"><%= b.title %></div>
-          <%= b.description %>          
+          <%= raw b.description %>          
           <div id="lightbox_hook_<%= b.id %>" class="hidden">
             <% b.photos.each do |photo| %>
               <%= link_to '#', photo.attach.url(:original), class: "photo#{photo.id}", rel: "participant_"+(b.id.to_s)+"[gallery]" %>
