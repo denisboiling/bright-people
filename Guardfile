@@ -1,9 +1,9 @@
-group 'rspec' do
+group 'spec' do
   guard 'spork', :rspec_env => { 'RAILS_ENV' => 'test' },
-  :rspec => true,
-  :cucumber => false,
-  :test_unit => false,
-  :aggressive_kill => true do
+                 :rspec => true,
+                 :cucumber => false,
+                 :test_unit => false,
+                 :aggressive_kill => true do
     watch('config/application.rb')
     watch('config/environment.rb')
     watch(%r{^extras/.+\.rb$})

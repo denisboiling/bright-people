@@ -11,7 +11,7 @@ class VideoUrl < ActiveRecord::Base
   end
 
   def get_code
-    /(?<=v=)[a-zA-Z0-9-_]+(?=&)|(?<=[0-9]\/)[^&\n]+|(?<=v=)[^&\n]+/.match(url)[0]
+    /(?<=v=)[a-zA-Z0-9\-_]+(?=&)|(?<=[0-9]\/)[^&\n]+|(?<=v=)[^&\n]+/.match(url)[0]
   end
 
   def preview_url
