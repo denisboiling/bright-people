@@ -12,7 +12,8 @@ namespace :db do
     unless config['password'].present?
       %x(zcat #{tmp_file} | psql -U #{config['username']} #{config['database']} && rm -rf #{tmp_file})
     else
-      puts "zcat #{tmp_file} | psql -U #{config['username']} #{config['database']} && rm -rf #{tmp_file}"
+      %x(export PGPASSWORD="#{config['password']} && zcat #{tmp_file} | psql -U #{config['username']} #{config['database']} && rm -rf #{tmp_file}")
+      # puts "zcat #{tmp_file} | psql -U #{config['username']} #{config['database']} && rm -rf #{tmp_file}"
     end
   end
 end
