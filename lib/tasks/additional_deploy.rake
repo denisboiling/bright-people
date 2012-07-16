@@ -12,7 +12,7 @@ namespace :db do
                         zcat #{tmp_file} | psql -U #{config['username']} #{config['database']} && \
                         rm -rf #{tmp_file})
     puts restore_db_str
-    %x(restore_db_str)
+    %x(#{restore_db_str})
   end
 end
 
