@@ -1,8 +1,9 @@
-namespace :db do
-  desc 'Load database from production server'
-  task :load_from_server => :environment do
+namespace :staging do
+  desc "Load database from production server"
+  task :load_db => :environment do
     tmp_file = "/tmp/bp.sql.gz"
-    %x(ssh rvm_user@bright-people.ru "pg_dump -U postgres bp_production | gzip -9" > #{tmp_file})
+    %x(ssh rvm_user@bright-people.ru "export PGPASSWORD="NX12NDwvney5GKqaZ_he1u-G" && \
+       pg_dump -U brightpeople brightpeople | gzip -9" > #{tmp_file})
 
     Rake::Task['db:drop'].execute
     Rake::Task['db:create'].execute
@@ -13,13 +14,10 @@ namespace :db do
                         rm -rf #{tmp_file})
     puts restore_db_str
     %x(#{restore_db_str})
-    %x(rm -rf #{tmp_file})
   end
-end
 
-namespace :images do
-  desc "Load images from production. By default public/system will be replaced"
-  task :load_from_server do
+  desc "Load public/system from production"
+  task :load_images do
     folder = ENV['public_folder'] || Rails.root.join('public')
     puts "something wrong" and exit unless folder.present?
 
