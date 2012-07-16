@@ -27,8 +27,8 @@ if ENV['new']
   before "db:prepare", "unicorn:stop"
   before "db:prepare", "thinking_sphinx:stop"
   before "db:prepare", "delayed_job:stop"
-  after "deploy:finalize_update", "main_site"
-  after "main_site", "deploy:migrate"
+  after "deploy:finalize_update", "main_site:load_db"
+  after "main_site:load_db", "deploy:migrate"
 else
   before "deploy:assets:precompile", "deploy:migrate"
 end
@@ -36,4 +36,3 @@ end
 after "deploy:migrate", "thinking_sphinx:configure"
 after "deploy:update_code", "delayed_job:restart"
 after "deploy:update_code", "thinking_sphinx:rebuild"
-before "deploy:restart", "unicorn:stop"
