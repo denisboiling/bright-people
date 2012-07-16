@@ -1,7 +1,7 @@
 namespace :db do
   desc 'Load database from production server'
   task :load_from_server => :environment do
-    tmp_file = "/tmp/bp-#{rand(99999).to_s}.sql.gz"
+    tmp_file = "/tmp/bp.sql.gz"
     %x(ssh rvm_user@bright-people.ru "pg_dump -U postgres bp_production | gzip -9" > #{tmp_file})
 
     Rake::Task['db:drop'].execute
@@ -13,6 +13,7 @@ namespace :db do
                         rm -rf #{tmp_file})
     puts restore_db_str
     %x(#{restore_db_str})
+    %x(rm -rf #{tmp_file})
   end
 end
 
