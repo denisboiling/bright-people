@@ -9,7 +9,7 @@ namespace :db do
     config = ActiveRecord::Base.configurations[Rails.env]
 
     restore_db_str = %Q(PGPASSWORD="#{config['password']}" && \
-                        zcat #{tmp_file} | `which psql` -U #{config['username']} #{config['database']} && \
+                        zcat #{tmp_file} | psql -U #{config['username']} #{config['database']} && \
                         rm -rf #{tmp_file})
     puts restore_db_str
     %x(#{restore_db_str})
