@@ -1,3 +1,9 @@
+namespace :deploy do
+  task :remove_assets_folder, roles: :app do
+    run "cd #{latest_release} && rm -rf public/assets && mkdir public/assets"
+  end
+end
+
 namespace :rails do
   desc "Open the rails console on one of the remote servers"
   task :console, :roles => :app do
@@ -34,6 +40,11 @@ namespace :shared do
 end
 
 namespace :main_site do
+  task :default do
+    load_db
+    load_images
+  end
+
   task :load_db, :roles => :app do
     run "cd #{latest_release}; RAILS_ENV=#{rails_env} bundle exec rake db:load_from_server"
   end
