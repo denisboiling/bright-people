@@ -8,7 +8,7 @@ namespace :db do
     Rake::Task['db:create'].execute
     config = ActiveRecord::Base.configurations[Rails.env]
 
-    restore_db_str = %Q(PGPASSWORD="#{config['password']}" && \
+    restore_db_str = %Q(export PGPASSWORD="#{config['password']}" && \
                         zcat #{tmp_file} | psql -U #{config['username']} #{config['database']} && \
                         rm -rf #{tmp_file})
     puts restore_db_str
