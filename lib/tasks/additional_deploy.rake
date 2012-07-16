@@ -8,14 +8,11 @@ namespace :db do
     Rake::Task['db:create'].execute
     config = ActiveRecord::Base.configurations[Rails.env]
 
-
-    # unless config['password'].present?
-    #   %x(zcat #{tmp_file} | psql -U #{config['username']} #{config['database']} && rm -rf #{tmp_file})
-    # else
-    puts %Q(PGPASSWORD="#{config['password']} && zcat #{tmp_file} | psql -U #{config['username']} #{config['database']} && rm -rf #{tmp_file}")
-    %x(PGPASSWORD="#{config['password']} && zcat #{tmp_file} | psql -U #{config['username']} #{config['database']} && rm -rf #{tmp_file}")
-      # puts "zcat #{tmp_file} | psql -U #{config['username']} #{config['database']} && rm -rf #{tmp_file}"
-    # end
+    restore_db_str = %Q(PGPASSWORD="#{config['password']}" && \
+                        zcat #{tmp_file} | psql -U #{config['username']} #{config['database']} && \
+                        rm -rf #{tmp_file})
+    puts restore_db_str
+    %x(restore_db_str)
   end
 end
 
