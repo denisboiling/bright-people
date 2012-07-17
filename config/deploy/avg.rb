@@ -40,11 +40,6 @@ namespace :shared do
 end
 
 namespace :main_site do
-  task :default do
-    load_db
-    load_images
-  end
-
   task :load_db, :roles => :app do
     run "cd #{latest_release}; RAILS_ENV=#{rails_env} bundle exec rake db:load_from_server"
   end

@@ -1,6 +1,6 @@
-role :web, "bender.srv.balticit.ru"
-role :app, "bender.srv.balticit.ru"
-role :db,  "bender.srv.balticit.ru", :primary=>true
+role :web, "bright-people.ru"
+role :app, "bright-people.ru"
+role :db,  "bright-people.ru", :primary=>true
 
 set :user, "rvm_user"
 set :deploy_via, :remote_cache
@@ -23,17 +23,8 @@ load 'config/deploy/avg'
 before "bundle:install", "deploy:remove_assets_folder"
 before "deploy:finalize_update", "shared:symlinks"
 
-if ENV['new']
-  before "db:prepare", "unicorn:stop"
-  before "db:prepare", "thinking_sphinx:stop"
-  before "db:prepare", "delayed_job:stop"
-  after "deploy:finalize_update", "main_site"
-  after "main_site", "deploy:migrate"
-else
-  before "deploy:assets:precompile", "deploy:migrate"
-end
+before "deploy:assets:precompile", "deploy:migrate"
 
 after "deploy:migrate", "thinking_sphinx:configure"
 after "deploy:update_code", "delayed_job:restart"
 after "deploy:update_code", "thinking_sphinx:rebuild"
-before "deploy:restart", "unicorn:stop"
