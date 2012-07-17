@@ -1,3 +1,12 @@
+desc "tail production log files"
+task :tail_logs, :roles => :app do
+  run "tail -f #{shared_path}/log/#{rails_env}.log" do |channel, stream, data|
+    puts  # for an extra line break before the host name
+    puts "#{channel[:host]}: #{data}"
+    break if stream == :err
+  end
+end
+
 namespace :deploy do
   task :remove_assets_folder, roles: :app do
     run "cd #{latest_release} && rm -rf public/assets && mkdir public/assets"
