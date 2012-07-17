@@ -16,7 +16,7 @@ class Organization < ActiveRecord::Base
     indexes title, sortable: true
     indexes address
   end
-  
+
   def direction_tags
     DirectionTag.joins(:activities => :organization)
                 .where('organizations.id = ?', self.id)

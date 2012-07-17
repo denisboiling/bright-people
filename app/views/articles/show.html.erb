@@ -6,9 +6,11 @@
     <h1><%= @article.title %> <%= favourite_block @article %></h1>
     <strong><%= @article.author.name %>. <%= Russian::strftime(@article.updated_at, "%A, %e %B %Y г.") %></strong>
     <div class="post_preview">
-
+      
+      <div class="gallery_wrapper">
       <%= render 'shared/photos_lightbox', object: @article %>
-
+        <div class="clear"></div>
+      </div>
       <div class="short_desc">
 	<%== @article.short_description %>
       </div>

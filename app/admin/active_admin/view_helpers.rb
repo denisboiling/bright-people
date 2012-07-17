@@ -15,4 +15,9 @@ module ActiveAdmin::ViewHelpers
       ['Мастер-классы', 'master_class']
     ]
   end
+
+  def user_vk_link(user)
+    return user.name unless vk_id = user.vkontakte_id
+    [user.name, link_to('VK', "http://vk.com/id#{vk_id}")].join(' ').html_safe
+  end
 end

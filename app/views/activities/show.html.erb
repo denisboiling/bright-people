@@ -80,7 +80,7 @@
       <% unless @activity.site.blank? %>
 	    <tr>
 	      <th><span>Сайт</span></th>
-	      <td ><div class="activ_site"><a href=<%= @activity.site %> target="_blank" ><span class="mask"></span><%= @activity.site %></a></div></td>
+	      <td ><div class="activ_site"><a href=<%= @activity.site %> target="_blank" ><%= @activity.site %></a></div></td>
 	    </tr>
       <% end %>
       <% unless @activity.phone.blank? %>
@@ -97,7 +97,7 @@
       
       <div class="clear"></div>
 
-      <div class="title_block">О кружке</div>
+      <div class="title_block">О студии</div>
       <div><%= simple_format @activity.description %></div>
 
       <% if @activity.is_edu? %>

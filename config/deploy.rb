@@ -6,8 +6,8 @@ set :whenever_command, "bundle exec whenever"
 set :whenever_identifier, defer { "#{application}_#{stage}" }
 require 'whenever/capistrano'
 
-set :stages, %w(srv srv-dev srv-stage production)
-set :default_stage, "srv-stage"
+set :stages, %w(srv-dev staging production)
+set :default_stage, "staging"
 set :repository,  "git@github.com:balticit/bright-people.git"
 set :scm, :git
 set :application, "bright-people"
