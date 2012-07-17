@@ -7,7 +7,6 @@ class CreativeGroup < ActiveRecord::Base
                              default_style: :thumb, default_url: 'loading.gif'
 
   validates :name, :description, :profession, :avatar, presence: true
-  validates :description, length: { maximum: 140 }
 
   def prev_creative
     CreativeGroup.split(self).first.last

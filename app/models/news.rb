@@ -1,12 +1,9 @@
 class News < ActiveRecord::Base
   has_many :photos, class_name: 'NewsPhoto', dependent: :destroy
-
-  has_many :videos, class_name: 'VideoUrl', dependent: :destroy,
-                    conditions: "relation_type = 'news'",
-                    foreign_key: 'relation_id', before_add: :add_news_type
-
+  has_many :videos, class_name: 'VideoUrl', as: :relation, dependent: :destroy
 
   default_scope order: 'created_at DESC'
+
   scope :published, where("publication_date <= ?", DateTime.now )
 
   validates :title, :content, :publication_date, presence: true
@@ -18,7 +15,7 @@ class News < ActiveRecord::Base
 
   acts_as_taggable_on :news_tags
 
-  has_attached_file :photo, styles: { thumb: "160x100^#", slider: '530x370^#' },
+  has_attached_file :photo, styles: { thumb: "160x100^#", slider: '530x370#' },
                              path: ":rails_root/public/system/news/:attachment/:id/:style/:filename",
                              url: "/system/news/:attachment/:id/:style/:filename",
                              default_style: :thumb
@@ -26,10 +23,6 @@ class News < ActiveRecord::Base
   def published?
     return false if self.publication_date.blank?
     self.publication_date <= DateTime.now
-  end
-
-  def add_news_type(video)
-    video.relation_type = 'news'
   end
 
   class << self
