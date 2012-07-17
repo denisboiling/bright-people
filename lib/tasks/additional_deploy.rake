@@ -19,7 +19,7 @@ namespace :staging do
       %x(#{restore_db_str})
     end
 
-    if ENV['CACHE_SQL']
+    if ENV['CACHE_DUMP'] == true
       if File.exist?(@tmp_file)
         restore_dump
       else
@@ -38,10 +38,10 @@ namespace :staging do
     folder = ENV['public_folder'] || Rails.root.join('public')
     puts "something wrong" and exit unless folder.present?
 
-
     tmp_file = "/tmp/bp-images.tar.gz"
     %x(rm -rf #{File.join(folder, 'system')})
-    if File.exist?(tmp_file)
+
+    if File.exist?(tmp_file) && !ENV['RELOAD_IMAGES'] == true
       puts "Images already exists #{tmp_file}"
     else
       puts "Start download images from production server"
