@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   has_many :interviews, foreign_key: :author_id
   has_many :articles, foreign_key: :author_id
 
-  has_many :activities, foreign_key: :manager_id
+  belongs_to :activity
 
   has_many :activity_approvals
   has_many :approved_activities, through: :activity_approvals, source: :activity
@@ -30,6 +30,8 @@ class User < ActiveRecord::Base
   validates :role, presence: true
 
   scope :experts, where(role_id: 4)
+  scope :managers, where(role_id: 5)
+
   scope :usuals, where(role_id: 1)
   scope :authors, joins(:articles).uniq
   scope :authors_with_photos, authors.where('avatar_file_size IS NOT NULL OR avatar_file_size != 0')

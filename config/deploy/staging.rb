@@ -27,7 +27,7 @@ after "deploy:update_code", "thinking_sphinx:stop"
 after "deploy:update_code", "delayed_job:stop"
 
 after "deploy:update_code", "load_staging:db"
-after "staging:load_db", "deploy:migrate"
+after "load_staging:db", "deploy:migrate"
 after "deploy:update_code", "load_staging:images"
 
 after "deploy:update_code", "thinking_sphinx:configure"
