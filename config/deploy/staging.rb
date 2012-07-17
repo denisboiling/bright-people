@@ -11,7 +11,7 @@ set :rvm_ruby_string, 'ruby-1.9.3-p194-perf@bright-people'
 require "rvm/capistrano"
 
 set :deploy_to, "/var/www/#{application}-stage"
-set :rails_env, "production"
+set :rails_env, "staging"
 set :branch, "stage"
 
 load 'config/deploy/avg'
@@ -26,9 +26,9 @@ after "deploy:update_code", "unicorn:stop"
 after "deploy:update_code", "thinking_sphinx:stop"
 after "deploy:update_code", "delayed_job:stop"
 
-after "deploy:update_code", "staging:load_db"
+after "deploy:update_code", "load_staging:db"
 after "staging:load_db", "deploy:migrate"
-after "deploy:update_code", "staging:load_images"
+after "deploy:update_code", "load_staging:images"
 
 after "deploy:update_code", "thinking_sphinx:configure"
 after "deploy:update_code", "delayed_job:restart"

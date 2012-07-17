@@ -39,13 +39,15 @@ namespace :shared do
   end
 end
 
-namespace :staging do
-  task :load_db, :roles => :app do
-    run "cd #{latest_release}; RAILS_ENV=#{rails_env} bundle exec rake staging:load_db"
+namespace :load_staging do
+  task :db, :roles => :app do
+    cache_dump = ENV['CACHE_DUMP'] ? true : false
+    run "cd #{latest_release}; RAILS_ENV=#{rails_env} CACHE_DUMP=#{cache_dump} bundle exec rake staging:load_db"
   end
 
-  task :load_images, :roles => :app do
-    run "cd #{latest_release}; RAILS_ENV=#{rails_env} bundle exec rake staging:load_images"
+  task :images, :roles => :app do
+    reload_images = ENV['RELOAD_IMAGES'] ? true : false
+    run "cd #{latest_release}; RAILS_ENV=#{rails_env} RELOAD_IMAGES=#{reload_images} bundle exec rake staging:load_images"
   end
 end
 
