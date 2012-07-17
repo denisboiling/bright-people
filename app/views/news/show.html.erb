@@ -6,11 +6,11 @@
   <div class="common">
     <div id="news"></div>
 
-    <%= render 'shared/photos_lightbox', object: @news %>
 
     <div class="news_view">
       <div class="title"><%= @news.title %></div>
       <div class="date"><%= Russian::strftime(@news.publication_date, "%e %B, %A") %></div>
+      <%= render 'shared/photos_lightbox', object: @news %>
       <div class="text"><%= raw @news.full_text %></div>
       <div class="article_tags">
 	<% @tags.each do |t| %>
