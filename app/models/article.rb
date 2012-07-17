@@ -8,11 +8,13 @@ class Article < ActiveRecord::Base
 
   has_many :photos, class_name: 'ArticlePhoto', dependent: :destroy
 
-  has_attached_file :picture, styles: { medium: "440x275^#", slider: "520x320^#", thumb: "160x100^#" },
+  has_attached_file :picture, styles: { medium: "440x275^#", slider: "530x370^#", thumb: "160x100^#" },
                               path: ":rails_root/public/system/articles/:attachment/:id/:style/:filename",
                               url: "/system/articles/:attachment/:id/:style/:filename",
                               default_style: :thumb, default_url: 'loading.gif'
 
+  # Use this hook, becouse it's model twin to News
+  alias photo picture
 
   acts_as_taggable_on :article_tags
 
