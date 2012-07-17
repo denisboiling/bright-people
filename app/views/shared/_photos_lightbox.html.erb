@@ -13,6 +13,9 @@
 	  <li class="slideshow_video_item"><div class="video"></div><%= link_to image_tag(video.preview_url, 'data-hook-class' => "video#{video.id} ", 'style' => 'width:530px') %></li>
 	<% end %>
       </ul>
+    <% else object.photo.present? %>
+      <div class="mask"></div>
+      <%= link_to image_tag(object.photo.url(:slider)), '#' %>
     <% end %>
   </div>
   <div id="lightbox_hook" class="hidden">
