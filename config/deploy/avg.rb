@@ -39,13 +39,13 @@ namespace :shared do
   end
 end
 
-namespace :main_site do
+namespace :staging do
   task :load_db, :roles => :app do
-    run "cd #{latest_release}; RAILS_ENV=#{rails_env} bundle exec rake db:load_from_server"
+    run "cd #{latest_release}; RAILS_ENV=#{rails_env} bundle exec rake staging:load_db"
   end
 
   task :load_images, :roles => :app do
-    run "cd #{latest_release}; RAILS_ENV=#{rails_env} bundle exec rake images:load_from_server"
+    run "cd #{latest_release}; RAILS_ENV=#{rails_env} bundle exec rake staging:load_images"
   end
 end
 

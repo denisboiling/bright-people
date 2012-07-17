@@ -1,19 +1,36 @@
 namespace :staging do
   desc "Load database from production server"
   task :load_db => :environment do
-    tmp_file = "/tmp/bp.sql.gz"
-    %x(ssh rvm_user@bright-people.ru "export PGPASSWORD="NX12NDwvney5GKqaZ_he1u-G" && \
-       pg_dump -U brightpeople brightpeople | gzip -9" > #{tmp_file})
-
     Rake::Task['db:drop'].execute
     Rake::Task['db:create'].execute
-    config = ActiveRecord::Base.configurations[Rails.env]
 
-    restore_db_str = %Q(export PGPASSWORD="#{config['password']}" && \
-                        zcat #{tmp_file} | psql -U #{config['username']} #{config['database']} && \
-                        rm -rf #{tmp_file})
-    puts restore_db_str
-    %x(#{restore_db_str})
+    @config = ActiveRecord::Base.configurations[Rails.env]
+    @tmp_file = "/tmp/bp.sql.gz"
+
+    def dump_db
+      %x(ssh rvm_user@bright-people.ru "export PGPASSWORD="NX12NDwvney5GKqaZ_he1u-G" && \
+       pg_dump -U brightpeople brightpeople | gzip -9" > #{@tmp_file})
+    end
+
+    def restore_dump
+      restore_db_str = %Q(export PGPASSWORD="#{@config['password']}" && \
+                        zcat #{@tmp_file} | psql -U #{@config['username']} #{@config['database']} )
+      puts restore_db_str
+      %x(#{restore_db_str})
+    end
+
+    if ENV['CACHE_DUMP'] == true
+      if File.exist?(@tmp_file)
+        restore_dump
+      else
+        dump_db
+        restore_dump
+      end
+    else
+      dump_db
+      restore_dump
+      %x(rm #{@tmp_file})
+    end
   end
 
   desc "Load public/system from production"
@@ -23,7 +40,8 @@ namespace :staging do
 
     tmp_file = "/tmp/bp-images.tar.gz"
     %x(rm -rf #{File.join(folder, 'system')})
-    if File.exist?(tmp_file)
+
+    if File.exist?(tmp_file) && !ENV['RELOAD_IMAGES'] == true
       puts "Images already exists #{tmp_file}"
     else
       puts "Start download images from production server"

@@ -10,7 +10,7 @@
 
     <div class="news_view">
       <div class="title"><%= @news.title %></div>
-      <div class="date"><%= Russian::strftime(@news.created_at, "%e %B, %A") %></div>
+      <div class="date"><%= Russian::strftime(@news.publication_date, "%e %B, %A") %></div>
       <div class="text"><%= raw @news.full_text %></div>
       <div class="article_tags">
 	<% @tags.each do |t| %>

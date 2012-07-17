@@ -5,7 +5,7 @@
     <div class="content">
       <%= link_to n.title, n, :class => 'title' %>
       <div class="date">
-        <%= Russian::strftime(n.created_at, "%e %B, %A") %>
+        <%= Russian::strftime(n.publication_date, "%e %B, %A") %>
       </div>
       <div class="text">
         <%= truncate(n.content, separator: '.', omission: '.', length: 240) %>
