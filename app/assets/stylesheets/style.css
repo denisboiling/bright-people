@@ -577,6 +577,7 @@ span.sim_check.active { background-position:0px 0px; }
 .post_list {}
 
 .post_preview { padding:20px 0 20px 0px}
+.post_preview .gallery_wrapper { float: left }
 .post_preview .thumb { float:left; margin-right:20px; overflow:hidden; -moz-border-radius:10px; border-radius:10px; -webkit-border-radius:10px; -khtml-border-radius:10px; }
 .post_preview .thumb img { height:275px; width:440px; border-radius:6px;}
 .post_preview .short_desc { font-size:16px; color:#585858; font-family:Futura}
