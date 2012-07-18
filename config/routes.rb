@@ -5,6 +5,7 @@ BrightPeople::Application.routes.draw do
   match '/vk_save' => 'vk_pages#create_vk_page'
   match '/fb' => 'fb_pages#fb_auth'
   match '/fb_pages' => 'fb_pages#fb_pages'
+
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   put 'users/email' => 'users#update_email', as: :update_user_email
 
@@ -19,7 +20,6 @@ BrightPeople::Application.routes.draw do
   resources :organizations, only: [:show]
   resources :experts, only: [:index, :show]
   resources :sponsors, only: [:index, :show]
-  resources :favourites, only: [:index, :create, :destroy]
   resources :participants, only: [:index]
 
   resource :comments, only: :create
@@ -55,11 +55,10 @@ BrightPeople::Application.routes.draw do
   end
 
   # User dashboard
-  scope 'dashboard' do
-    get 'notifications' => 'users#notifications', as: :dashboard_notifications
-    get 'favourites' => 'favourites#index', as: :dashboard_favourites
-    get 'profile' => 'users#edit', as: :dashboard_profile
-    put 'profile' => 'users#update'
+  namespace :dashboard do
+    resource :profile, only: [:show, :update]
+    resources :favorites, only: [:index, :create, :destroy]
+    resources :comments, only: :index
   end
 
   # Admin panel

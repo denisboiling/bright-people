@@ -1,8 +1,8 @@
-
 <div class="pages">
   <div class="common">
 
-    <%= render 'users/profile_menu', current: 'favourites' %>
+    <%= render 'dashboard/shared/profile_menu', current: 'favourites' %>
+
     <div class="profile_title">Избранные материалы яркого журнала</div>
     <% @favourites.each do |favourite| %>
       <% if favourite.relation_type == 'ContestMembership' %>

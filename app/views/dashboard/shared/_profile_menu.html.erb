@@ -1,0 +1,14 @@
+<h1>Личное пространство</h1>
+Здесь мы храним для вас все ваши комментарии, избранные страницы и прочее
+
+<div class="post_category_menu">
+  <ul>
+    <%= content_tag :li, link_to("Профиль", dashboard_profile_path),
+        class: "profile_ico#{(current == 'profile' ? ' active' : '')}" %>
+    <%= content_tag :li, link_to("Комментарии", dashboard_comments_path),
+        class: "comment_ico#{(current == 'comments' ? ' active' : '')}" %>
+    <%= content_tag :li, link_to("Избранное", dashboard_favorites_path),
+        class: "fav_ico#{(current == 'favourites' ? ' active' : '')}" %>
+  </ul>
+  <div class="clear"></div>
+</div>
