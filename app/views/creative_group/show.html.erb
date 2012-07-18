@@ -15,7 +15,7 @@
   
   <div class="expert_big_info">
     <!-- OPTIMIZE: brrrr...brrr -->
-    <div class="name"><%= raw @creative.name.split(' ').join('<br>') %></div>
+    <div class="name"><%== @creative.name.split(' ').join('<br>') %></div>
     <div class="thumb">
       <%= link_to image_tag(@creative.avatar(:medium)), creative_group_path(@creative) %>
     </div>
@@ -30,7 +30,7 @@
     <div class="right_part">
       <div class="dop_title">Биография</div>
       <div class="bio">
-         <%= @creative.description %><br />
+         <%== @creative.description %><br />
       </div>      
     </div>
     <div class="clear"></div>
