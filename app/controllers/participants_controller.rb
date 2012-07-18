@@ -1,13 +1,12 @@
 class ParticipantsController < ApplicationController
+  # OPTIMIZE: this is shit, really
   def index
-    cat = params[:category]
-    if cat != 'music_stage' and cat != 'theater_stage' and cat != 'circus_stage' and cat != 'street_theater' and cat != 'master_class' then
-      cat = nil
-    end
-    if cat then
-      @stage = Stage.where(:category => cat).first
-      @best = Participant.by_category(cat).first(3)
-      @participants = Participant.by_category(cat)[3,Participant.by_category(cat).count]
+    category = params[:category]
+    category = nil unless %w(music_stage theater_stage circus_stage street_theater master_class).include?(category)
+    if category then
+      @stage = Stage.by_category_name(category)
+      @best = Participant.best(category)
+      @participants = Participant.by_category_unless(category, @best)
       @is_headliners_page = false
     else
       @is_headliners_page = true

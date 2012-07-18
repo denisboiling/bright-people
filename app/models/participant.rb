@@ -16,6 +16,7 @@ class Participant < ActiveRecord::Base
   scope :not_headliners, where(headliner: false)
 
   scope :by_category, lambda { |category| where(category: category) }
+  scope :by_category_unless, lambda { |category, exists| where('category = ? AND id NOT IN (?)', category, exists.map(&:id)) }
 
   validates :title, :description, :logo, presence: :true
 
@@ -23,5 +24,12 @@ class Participant < ActiveRecord::Base
   accepts_nested_attributes_for :videos, allow_destroy: true, reject_if: :all_blank
 
   attr_accessible :title, :description, :logo, :photos_attributes, :videos_attributes, :headliner, :category, :priority, as: :admin
+
+
+  class << self
+    def best(_category)
+      by_category(_category).first(3)
+    end
+  end
 
 end
