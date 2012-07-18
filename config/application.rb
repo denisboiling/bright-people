@@ -20,6 +20,7 @@ module BrightPeople
     config.active_record.whitelist_attributes = true
     config.assets.enabled = true
     config.assets.version = '1.0'
+    config.time_zone = 'Moscow'
 
     # Special for ltree
     config.active_record.schema_format = :sql
