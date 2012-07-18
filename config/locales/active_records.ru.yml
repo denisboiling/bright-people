@@ -166,6 +166,7 @@ ru:
         password: Пароль
         created_at: Дата создания
         updated_at: Дата обновления
+        activity: Кружок
       activity_photo:
         attach: Фотография
       video_url:

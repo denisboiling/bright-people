@@ -95,11 +95,31 @@ setup_photos_removing = ->
     $(this).parent('.thumb').remove()
     false
 
+setup_manager_activity = ->
+  if $('div#chose_user_activity').length != 0
+    select_id = $('select#user_role_id').attr('id')
+    if $("##{select_id} :selected").val() != "5"
+      $('div#chose_user_activity').addClass('hidden')
+    
+  $('select#user_role_id').bind 'change', () ->
+    id = $(this).attr('id')
+    selected_id = $("##{id} :selected").val()
+    close_div = $("div#chose_user_activity")
+    activity_select = $("select#user_activity_id")
+    # We find only selected role with id 5, it's manager role
+    if selected_id == "5"
+      close_div.removeClass('hidden')
+      activity_select.removeAttr('disabled')
+    else
+      close_div.addClass('hidden')
+      activity_select.attr('disabled', 'disabled')
+      
+
 $ ->
   setup_photos_removing()
   setup_chosen()
   setup_schedule()
   setup_picture_urls()
   setup_activity_categories()
-  # if document.URL.substr(0, 39) is "http://bp.balticit.ru/admin/activities"
+  setup_manager_activity()
 

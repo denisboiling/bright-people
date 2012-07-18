@@ -25,7 +25,8 @@ class User < ActiveRecord::Base
                              default_style: :thumb, default_url: 'loading.gif'
 
   attr_accessible :email, :remember_me, :password, :password_confirmation, :avatar, :description, :about
-  attr_accessible :email, :remember_me, :password, :password_confirmation, :avatar, :description, :about, :role_id, :name, as: :admin
+  attr_accessible :email, :remember_me, :password, :password_confirmation, :avatar, :description, :about, 
+                  :role_id, :name, :activity_id,  as: :admin
 
   validates :role, presence: true
 
@@ -41,8 +42,18 @@ class User < ActiveRecord::Base
     self.role = Role.user if role.blank?
   end
 
+  # OPTIMIZE: it's not cool, we should do this in client
+  # side, but today I am lazy
+  before_save do
+    self.activity = nil unless self.manager?
+  end
+
   attr_accessible :email, :name, :password, :remember_me
   attr_accessible :vkontakte_id, :facebook_id, :odnoklassniki_id
+
+  def manager?
+    role == Role.manager
+  end
 
   def notifications
     UserCommentNotify.where(user_id: self.id)
