@@ -24,9 +24,8 @@ class User < ActiveRecord::Base
                              url: "/system/users/:attachment/:id/:style/:filename",
                              default_style: :thumb, default_url: 'loading.gif'
 
-  attr_accessible :email, :remember_me, :password, :password_confirmation, :avatar, :description, :about
-  attr_accessible :email, :remember_me, :password, :password_confirmation, :avatar, :description, :about, 
-                  :role_id, :name, :activity_id,  as: :admin
+  attr_accessible :email, :remember_me, :password, :password_confirmation, :avatar, :description, :about,
+                  :role_id, :name, :activity_id
 
   validates :role, presence: true
 
