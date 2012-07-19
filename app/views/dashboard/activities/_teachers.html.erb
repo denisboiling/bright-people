@@ -13,7 +13,7 @@
       </div>
     <% end %>
 
-    <% f.object.teachers.each do |teacher| %>
+    <% f.object.teachers.order('created_at ASC').each do |teacher| %>
       <%= render 'teacher', f: f, teacher: teacher, new_data: false %>
     <% end %>
     <div class="hidden_teacher hidden">

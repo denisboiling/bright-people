@@ -81,7 +81,8 @@ $ ->
                   <div class='circle-delete'></div>
                   <span>#{start} — #{end}</span>
                   </div>"
-    $("#activity-edit-schedule td[data-day='#{day}'] .data").append(append_div)
+    # console.log $("#activity-edit-schedule td[data-day='#{day}'] .data:last")
+    $("#activity-edit-schedule td[data-day='#{day}'] .data:last").append(append_div)
     $('#activity-edit-modal, #activity-edit-shadow').fadeOut 'fast'
     false
   

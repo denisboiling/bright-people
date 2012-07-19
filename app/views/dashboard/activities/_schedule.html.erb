@@ -74,9 +74,8 @@
 	  </tr>
 	<% end %>
       <% end %>
-
       <tr>
-	<% (0..6).each do |weekday| %>
+	<% Activity::SCHEDULE_DAYS.each do |weekday| %>
 	  <td data-day="<%= weekday %>">
 	    <div class="data"></div>
 	    <div class="add">+добавить</div>
