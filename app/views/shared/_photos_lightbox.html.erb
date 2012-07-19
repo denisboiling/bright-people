@@ -3,33 +3,50 @@
   <div class="pikachoose">
     <% if object.photos.count == 1 %>
       <div class="mask"></div>
-      <%= link_to image_tag(object.photos.last.attach.url(:slider)), '#' %>
+      <% if object.videos.present? %>
+        <ul id="pikame" class="jcarousel-skin-pika">
+          <% object.photos.each do |photo| %>
+            <li><%= link_to image_tag(photo.attach.url(:slider), 'data-hook-class' => "photo#{photo.id}") %></li>
+          <% end %>
+          <% object.videos.each do |video| %>
+            <li class="slideshow_video_item">
+              <div class="video"></div>
+              <%= link_to image_tag(video.preview_url, 'data-hook-class' => "video#{video.id} ", 'style' => 'width:530px', 'alt' => '') %>
+            </li>
+          <% end %>
+        </ul>        
+      <% else %>
+        <%= link_to image_tag(object.photos.last.attach.url(:slider)), '#' %>
+      <% end %>
     <% elsif object.photos.count > 1 %>
       <div class="mask"></div>
       <ul id="pikame" class="jcarousel-skin-pika">
-	<% object.photos.each do |photo| %>
-	  <li><%= link_to image_tag(photo.attach.url(:slider), 'data-hook-class' => "photo#{photo.id}") %></li>
-	<% end %>
-	<% object.videos.each do |video| %>
-	  <li class="slideshow_video_item">
-	    <div class="video"></div>
-	    <%= link_to image_tag(video.preview_url, 'data-hook-class' => "video#{video.id} ", 'style' => 'width:530px') %>
-	  </li>
-	<% end %>
+        <% object.photos.each do |photo| %>
+          <li><%= link_to image_tag(photo.attach.url(:slider), 'data-hook-class' => "photo#{photo.id}") %></li>
+        <% end %>
+        <% object.videos.each do |video| %>
+          <li class="slideshow_video_item">
+            <div class="video"></div>
+            <%= link_to image_tag(video.preview_url, 'data-hook-class' => "video#{video.id} ", 'style' => 'width:530px', 'alt' => '') %>
+          </li>
+        <% end %>
       </ul>
     <% elsif object.videos.present? %>
       <% if object.videos.count == 1 %>
-	<%= link_to image_tag(object.videos.last.preview_url, 'style' => 'width:530px',), object.videos.last.url, rel: "prettyPhoto" %>
+        <%= link_to( object.videos.last.url, :rel => "prettyPhoto", :class => "video_alone") do %>
+          <span class="video_big"></span>
+          <%= image_tag(object.videos.last.preview_url, 'style' => 'width:530px', 'alt' => '') %>
+        <% end %>
       <% else %>
-	<div class="mask"></div>
-	<ul id="pikame" class="jcarousel-skin-pika">
-	  <% object.videos.each do |video| %>
-	    <li class="slideshow_video_item">
-	      <div class="video"></div>
-	      <%= link_to image_tag(video.preview_url, 'data-hook-class' => "video#{video.id} ", 'style' => 'width:530px') %>
-	    </li>
-	  <% end %>
-	</ul>
+        <div class="mask"></div>
+        <ul id="pikame" class="jcarousel-skin-pika">
+          <% object.videos.each do |video| %>
+            <li class="slideshow_video_item">
+              <div class="video"></div>
+              <%= link_to image_tag(video.preview_url, 'data-hook-class' => "video#{video.id} ", 'style' => 'width:530px', 'alt' => '') %>
+            </li>
+          <% end %>
+        </ul>
       <% end %>
     <% elsif object.photo.present? %>
       <div class="mask"></div>
@@ -42,7 +59,7 @@
       <%= link_to '#', photo.attach.url(:large), class: "photo#{photo.id}", rel: "prettyPhoto[activity]" %>
     <% end %>
     <% object.videos.each do |video| %>
-      <%= link_to '#', video.url, class: "video#{video.id}", rel: "prettyPhoto[activity]" %>
+      <%= link_to '#', video.url, class: "video#{video.id}", rel: "prettyPhoto[activity]", alt: '' %>
     <% end %>
   </div>
 </div>

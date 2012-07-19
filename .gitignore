@@ -22,3 +22,4 @@ db/sphinx*
 rerun.txt
 public/assets
 REVISION
+/nbproject
