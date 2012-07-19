@@ -7,7 +7,7 @@ BrightPeople::Application.configure do
   config.assets.compile = false
   config.assets.digest = true
   config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
-  config.assets.precompile += %w( admin/active_admin.js admin/active_admin.css )
+  config.assets.precompile += %w( admin/active_admin.js admin/active_admin.css chosen.jquery.min )
   config.i18n.fallbacks = true
   config.active_support.deprecation = :notify
 end
