@@ -66,7 +66,7 @@ class Activity < ActiveRecord::Base
                   :monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday, :address_dummy,
                   :coords, :activity_comments_attributes, :teachers_attributes, :published,
                   :phone, :site, :direction_tag_ids, :replace_teacher_text, :logo, :start_age, :end_age,
-                  :participant, as: :admin
+                  :participant, :organization
 
   scope :distinct, select('DISTINCT(activities.id), activities.*')
   scope :educationals, where(is_educational: true)

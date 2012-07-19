@@ -5,7 +5,7 @@ class Contest < ActiveRecord::Base
   has_many :favourites, as: :relation, dependent: :destroy
 
   attr_accessible :name, :started_at, :ended_at, :description, :picture,
-                  :category_id, :rules, :active, as: :admin
+                  :category_id, :rules, :active
 
   validates :name, :started_at, :ended_at, :description, :rules ,presence: true
 

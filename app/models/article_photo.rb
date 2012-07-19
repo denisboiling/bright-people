@@ -6,5 +6,5 @@ class ArticlePhoto < ActiveRecord::Base
                              url: "/system/news_photos/:attachment/:id/:style/:filename",
                              default_style: :thumb
 
-  attr_accessible :attach, as: :admin
+  attr_accessible :attach
 end

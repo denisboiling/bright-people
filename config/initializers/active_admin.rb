@@ -1,18 +1,18 @@
 require 'active_admin_autocomple_filter'
 
-module ActiveAdmin
-  # Implement dynamic role for mass assignment security.
-  class BaseController
-    protected
-    def role_given?
-      current_admin_user.role
-    end
+# module ActiveAdmin
+#   # Implement dynamic role for mass assignment security.
+#   class BaseController
+#     protected
+#     def role_given?
+#       current_admin_user.role
+#     end
 
-    def as_role
-      { as: current_admin_user.role.name.downcase.to_sym }
-    end
-  end
-end
+#     def as_role
+#       { as: current_admin_user.role.name.downcase.to_sym }
+#     end
+#   end
+# end
 
 ActiveAdmin.setup do |config|
   config.site_title = "Bright People"

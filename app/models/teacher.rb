@@ -1,5 +1,5 @@
 class Teacher < ActiveRecord::Base
-  attr_accessible :name, :description, :photo, :activity_id, as: :admin
+  attr_accessible :name, :description, :photo, :activity_id
 
   belongs_to :activity
 

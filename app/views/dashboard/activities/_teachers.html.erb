@@ -1,0 +1,23 @@
+<div class="activity_edit_block">
+  <div class="header">
+    <span class="circle">3</span>
+    <span class="title">Преподаватели</span>
+
+    <% unless f.object.teachers.present? %>
+      <div class="button_edit first">
+	<button class="delete"></button>
+	<button class="add-first">Добавить еще одного преподавателя</button>
+	<div class="clear"></div>
+      </div>
+      <div class="teacher">
+      </div>
+    <% end %>
+
+    <% f.object.teachers.each do |teacher| %>
+      <%= render 'teacher', f: f, teacher: teacher, new_data: false %>
+    <% end %>
+    <div class="hidden_teacher hidden">
+      <%= render 'teacher', f: f, teacher: f.object.teachers.new, new_data: true %>
+    </div>
+  </div>
+</div>

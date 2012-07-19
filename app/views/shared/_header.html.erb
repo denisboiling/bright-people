@@ -38,6 +38,9 @@
           <li><%= link_to 'Профиль', dashboard_profile_path %></li>
           <li><%= link_to 'Комментарии', dashboard_comments_path %></li>
           <li><%= link_to 'Избранное', dashboard_favorites_path %></li>
+	  <% if can? :manage, :dashboard_activity %>
+	    <li><%= link_to 'Кружок', dashboard_activity_path %></li>
+	  <% end %>
         </ul>
       </div>
 	  </div>

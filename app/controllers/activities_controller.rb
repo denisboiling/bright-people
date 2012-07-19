@@ -21,10 +21,6 @@ class ActivitiesController < ApplicationController
   def show
   end
 
-  def edit
-    authorize! :edit, @activity
-  end
-
   def update
   end
 

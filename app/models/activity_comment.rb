@@ -9,5 +9,5 @@ class ActivityComment < ActiveRecord::Base
   scope :parents, where(is_parent: true).order('created_at DESC')
   scope :childrens, where(is_parent: false).order('created_at DESC')
 
-  attr_accessible :content, :commentator, :picture, :is_parent, :activity_id, as: :admin
+  attr_accessible :content, :commentator, :picture, :is_parent, :activity_id
 end

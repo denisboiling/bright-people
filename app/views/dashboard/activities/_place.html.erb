@@ -1,0 +1,29 @@
+<div class="activity_edit_block">
+  <div class="header">
+    <span class="circle">2</span>
+    <span class="title">Расположение</span>
+  </div>
+
+  <div class="item width50">
+    1. Станция метро <span class="hint">(начните вводить, мы подскажем)</span>
+    <div class="subway_icon"></div>
+    <%= f.collection_select :metro_station_ids, MetroStation.all, :id, :title %>
+  </div>
+  <div class="item width50">
+
+    2. Округ
+    <%= f.collection_select :region_id, Region.all, :id, :title %>
+  </div>
+  <div class="clear"></div>
+
+  <div class="item">
+    3. Полный адрес
+    <%= f.text_field :address %>
+  </div>
+
+  <div class="item">
+    4. На карте<br><br>
+    <%= f.hidden_field :coords %>
+    <div id="edit_map"></div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<%= include_js :after_head, load_ymaps(true), 'chosen.jquery.min', 'dashboard/activities' %>
+
+
+<%= render 'dashboard/shared/profile_menu', current: 'activity' %>
+
+<%= form_for @activity, url: dashboard_activity_path, method: :put do |f| %>
+
+
+  <%= render 'main', f: f %>
+  <%= render 'place', f: f %>
+  <%= render 'teachers', f: f %>
+  <%= render 'additional', f: f %>
+
+
+  <%= render 'schedule', f: f %>
+  <%= render 'galery', f: f %>
+
+
+  <div class="save">
+    <button>Сохранить</button>
+  </div>
+<% end %>

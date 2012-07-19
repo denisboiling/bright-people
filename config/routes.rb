@@ -25,7 +25,7 @@ BrightPeople::Application.routes.draw do
   resource :comments, only: :create
   resource :search, only: [:show]
 
-  resources :activities, only: [:index, :show, :search, :edit] do
+  resources :activities, only: [:index, :show, :search] do
     get :get_comments
     put :approve
   end
@@ -59,6 +59,9 @@ BrightPeople::Application.routes.draw do
     resource :profile, only: [:show, :update]
     resources :favorites, only: [:index, :create, :destroy]
     resources :comments, only: :index
+    resource :activity do
+      delete 'destroy_teacher', on: :member
+    end
   end
 
   # Admin panel
@@ -75,6 +78,8 @@ BrightPeople::Application.routes.draw do
   # Some staff match routes
   match '/staff/delete_photo' => 'staff#delete_photo', :via => :delete
   match '/staff/delete_video' => 'staff#delete_video', :via => :delete
+  match '/staff/add_video' => 'staff#add_video', :via => :post
+  match '/staff/get_categories' => 'staff#get_categories'
 
   root :to => 'home#show'
 

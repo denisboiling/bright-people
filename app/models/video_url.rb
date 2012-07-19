@@ -2,7 +2,7 @@ class VideoUrl < ActiveRecord::Base
 
   belongs_to :relation, polymorphic: true
 
-  attr_accessible :url, as: :admin
+  attr_accessible :url
 
   before_save :update_code
 

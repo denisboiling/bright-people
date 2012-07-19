@@ -1,0 +1,41 @@
+<div class="activity_edit_block">
+
+  <div class="header">
+    <span class="circle">6</span>
+    <span class="title">Галерея</span>
+  </div>
+
+  <div class="item gallery">
+
+    <p>Фотографии</p>
+    <div class="images">
+      <% f.object.photos.each do |photo| %>
+	<div class="image">
+	  <div class="circle-delete photo" data-photo-id=<%= photo.id %> data-class=<%= photo.class.name %>></div>
+	  <%= image_tag photo.attach %>
+	</div>
+      <% end %>
+      <div class="clear"></div>
+    </div>
+
+    <div class="download_button_wrapper">
+      <span class="mask_button">Выбрать изображение</span>
+      <input type="file" name="<%= f.object.class.name.downcase %>[photos_attributes][][attach]" multiple="multiple" accept="image"/>
+    </div>
+
+    <p>Видео</p>
+    <input type="url" name="video" id="video_url" data-object-id=<%= f.object.id %> data-object-class=<%= f.object.class %> placeholder="Скопируйте сюда ссылку на ролик">
+    <button type="button" id="add_video">Добавить</button>
+    <ol id="video_list">
+      <% f.object.videos.each do |video| %>
+	<li>
+	  <div>
+	    <div class="circle-delete video" data-video-id=<%= video.id %> ></div>
+	    <%= video.url %>
+	  </div>
+	</li>
+      <% end %>
+    </ol>
+  </div>
+
+</div>

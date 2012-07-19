@@ -5,5 +5,5 @@ class ParticipantPhoto < ActiveRecord::Base
                              path: ":rails_root/public/system/participant_photos/:attachment/:id/:style/:filename",
                              url: "/system/participant_photos/:attachment/:id/:style/:filename",
                              default_style: :thumb, default_url: 'loading.gif'
-  attr_accessible :attach, as: :admin
+  attr_accessible :attach
 end

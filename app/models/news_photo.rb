@@ -8,5 +8,5 @@ class NewsPhoto < ActiveRecord::Base
 
   has_many :videos, class_name: 'VideoUrl', as: :relation, dependent: :destroy
 
-  attr_accessible :attach, as: :admin
+  attr_accessible :attach
 end

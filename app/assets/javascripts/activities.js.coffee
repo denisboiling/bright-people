@@ -89,23 +89,3 @@ window.setup_activities_approval = ->
   $('.approve_activity_link').bind 'click', (event) ->
     event.preventDefault()
     $('#activity_approve_dialog').removeClass('hidden')
-
-window.activity_schedule_add = (el) ->
-  console.log(el)
-
-window.setup_activities_edit = ->
-  $('#activity-edit-schedule .add').bind 'click', ->
-    $('#activity-edit-ok').attr( 'data-day', $(this).parent().attr('data-day') )
-    $('#activity-edit-shadow').width(screen.width).height(screen.height).fadeIn 'fast'
-    $('#activity-edit-modal').fadeIn 'fast'
-    
-  $('#activity-edit-ok').bind 'click', ->
-    start = $('#activity-edit-schedule-start.hour').val() + ":" + $('#activity-edit-schedule-start.minute').val()
-    end   = $('#activity-edit-schedule-end.hour').val() + ":" + $('#activity-edit-schedule-end.minute').val()
-    # Is it okay to embed html like this?
-    day = $(this).attr('data-day')
-    $('#activity-edit-schedule td[data-day='+day+'] .data').append('<div class="time"><div class="circle-delete"></div><span>'+start+' - '+end+'</span></div>')
-    $('#activity-edit-modal, #activity-edit-shadow').fadeOut 'fast'
-  
-  $('#activity-edit-schedule .circle-delete').live 'click', ->
-    $(this).parent().detach()

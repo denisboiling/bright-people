@@ -1,0 +1,68 @@
+<div class="activity_edit_block">
+  <div class="header">
+    <span class="circle">1</span>
+    <span class="title">Основная информация о кружке</span>
+  </div>
+
+  <div class="item width50">
+    1. Название
+    <%= f.text_field :title, placehold: "Название" %>
+  </div>
+  <div class="item width50">
+    2. Организация/центр/учреждение
+    <%= f.collection_select :organization_id, Organization.all, :id, :title %>
+  </div>
+  <div class="clear"></div>
+
+  <div class="item width25">
+    3. Тип кружка
+    <%= f.select :is_educational, [['Образовательный', true],['Развлекательный', false]] %>
+  </div>
+
+  <div class="item width25">
+    4. Категория
+    <%= f.collection_select :direction_tag_ids, DirectionTag.where(is_educational: f.object.is_educational), :id, :name %>
+  </div>
+
+  <div class="item width25">
+    5. Для детей от...
+    <%= f.select :start_age, age_collection(:start) %>
+  </div>
+
+  <div class="item width25">
+    6. ... и до
+    <%= f.select :end_age, age_collection(:end) %>
+  </div>
+  <div class="clear"></div>
+
+  <div class="item width50">
+    7. Телефон
+    <%= f.text_field :phone %>
+  </div>
+
+  <div class="item width50">
+    8. Сайт <span>вот так (http://www.adres.ru)</span>
+    <%= f.text_field :site %>
+  </div>
+
+  <div class="clear"></div>
+
+  <div class="item width25">
+    9. Загрузка логотипа
+    <div class="download_button_wrapper">
+      <span class="mask_button">Выберите файл!</span>
+      <%= f.file_field :logo %>
+    </div>
+
+    <div class="images">
+      <div class="image">
+	<%= image_tag f.object.logo %>
+      </div>
+    </div>
+  </div>
+  <div class="item width75">
+    10. Описание
+    <%= f.text_area :description %>
+  </div>
+  <div class="clear"></div>
+</div>

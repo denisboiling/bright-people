@@ -1,5 +1,5 @@
 class Page < ActiveRecord::Base
-  attr_accessible :permalink, :text, as: :admin
+  attr_accessible :permalink, :text
 
   # find page by permalink
   def self.as(_permalink)

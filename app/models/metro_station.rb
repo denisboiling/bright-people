@@ -2,7 +2,7 @@ class MetroStation < ActiveRecord::Base
   has_many :organizations
   has_and_belongs_to_many :activities
 
-  attr_accessible :title, as: :admin
+  attr_accessible :title
 
   belongs_to :metro_branch
 

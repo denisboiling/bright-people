@@ -1,7 +1,7 @@
 class Region < ActiveRecord::Base
   has_many :activities
 
-  attr_accessible :title, as: :admin
+  attr_accessible :title
 
   validates :title, presence: true
 

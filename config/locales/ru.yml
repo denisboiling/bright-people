@@ -19,4 +19,11 @@ ru:
   admin: Администратор
   user: Пользователь
   expert: Эксперт
-  manager: Менеджер организации
+  manager: Менеджер кружка
+  monday: Пн.
+  tuesday: Вт.
+  wednesday: Ср.
+  thursday: Чт.
+  friday: Пт.
+  saturday: Сб.
+  sunday: Вс.

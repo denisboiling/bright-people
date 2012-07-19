@@ -1,5 +1,5 @@
 class Crew < ActiveRecord::Base
-  attr_accessible :name, :description, :photo, as: :admin
+  attr_accessible :name, :description, :photo
 
   has_attached_file :photo, styles: { medium: "300x300^#", thumb: '125x125^#' },
                            path: ":rails_root/public/system/crew/:attachment/:id/:style/:filename",

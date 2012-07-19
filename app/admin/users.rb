@@ -8,6 +8,7 @@ ActiveAdmin.register User do
   scope :managers
 
   filter :name
+  filter :email
 
   index do
     id_column

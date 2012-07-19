@@ -1,0 +1,34 @@
+<div class="teacher">
+  <%= f.fields_for :teachers, teacher do |t| %>
+    <div class="item list">
+      <div class="item width50">
+	1. Имя
+	<%= t.text_field :name %>
+	<br>
+	2. Биография
+	<%= t.text_area :description %>
+      </div>
+      <div class="item width50">
+	3. Портрет
+	<div class="download_button_wrapper">
+	  <span class="mask_button">Выберите фото!</span>
+	  <%= t.file_field :photo %>
+	</div>
+	<div class="images">
+	  <div class="image">
+	    <%= image_tag t.object.try(:photo) %>
+	  </div>
+	</div>
+      </div>
+      <div class="item width50">
+      </div>
+      <div class="clear"></div>
+
+    </div>
+    <div class="button_edit">
+      <button class="delete" data-new=<%= new_data %>  data-id=<%= teacher.id %> >Удалить преподавателя</button>
+      <button class="add">Добавить еще одного преподавателя</button>
+      <div class="clear"></div>
+    </div>
+  <% end %>
+</div>

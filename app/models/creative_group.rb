@@ -1,5 +1,5 @@
 class CreativeGroup < ActiveRecord::Base
-  attr_accessible :name, :description, :profession, :avatar, as: :admin
+  attr_accessible :name, :description, :profession, :avatar
 
   has_attached_file :avatar, styles: { medium: "300x300^#", thumb: "125x125^#" },
                              path: ":rails_root/public/system/creative_group/:attachment/:id/:style/:filename",
