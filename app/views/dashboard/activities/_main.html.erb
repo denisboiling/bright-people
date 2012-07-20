@@ -2,17 +2,15 @@
   <div class="header">
     <span class="circle">1</span>
     <span class="title">Основная информация о кружке</span>
-  </div>
-
-  <!-- Fix this -->
-  99. Опубликовать
-  <%= f.select :published, [['Да', true],['Нет', false]] %>
-
-  Организация: <%= f.object.organization.title %>
+  </div>  
   
   <div class="item width50">
     1. Название
     <%= f.text_field :title, placehold: "Название" %>
+  </div>
+  <div class="item width50">
+    2. Организация
+    <h1><%= f.object.organization.title %></h1>
   </div>
   <div class="clear"></div>
 

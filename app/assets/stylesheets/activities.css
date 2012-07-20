@@ -38,11 +38,13 @@
 .activity_edit_block .item.schedule td { line-height: 21px; padding: 0; font-weight: normal; border: none; }
 .activity_edit_block .item.schedule tr:first-child td { border-top: none; }
 .activity_edit_block .item.schedule td .data .time,
-.activity_edit_block .item.schedule td .add { padding: 10px; border-style: solid; border-color: #e3e3e3; }
-.activity_edit_block .item.schedule td .data .time { position: relative; padding: 10px 10px 10px 25px; text-align: left; background-color: #fdfea0; border-width: 0 1px 1px 0;  }
+.activity_edit_block .item.schedule td .add { margin-left: -1px; padding: 10px; font-size: 110%; border-style: solid; border-width: 0 1px 1px 1px; border-color: #e3e3e3; }
+.activity_edit_block .item.schedule td .add:hover { cursor: pointer }
+.activity_edit_block .item.schedule td .data .time { position: relative; padding: 10px 10px 10px 25px; text-align: left; background-color: #fdfea0; border-width: 0 1px 1px 1px; }
 .activity_edit_block .item.schedule td .data .circle-delete { top: 14px; right: 10px; width: 15px; height: 15px; background-image: url(/assets/close_red.png); }
-.activity_edit_block .item.schedule td .add { margin-left: -1px; font-size: 110%; border-width: 0 1px 1px 1px; }
 .activity_edit_block .item.schedule td:first-child .add { margin-left: 0; }
+
+.activity_edit_block .item h1 { margin-top: 10px; line-height: 40px; }
 
 .activity_edit_block .button_edit { margin-right: 3%; }
 .activity_edit_block .button_edit button { float: left; width: 50%; padding: 10px 10px 10px 35px; text-align: left; font-size: 110%; font-weight: bold; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; -webkit-border-radius: 0; -moz-border-radius: 0; -khtml-border-radius: 0; border-radius: 0; }
@@ -58,19 +60,30 @@
 .activity_edit_block .item input[type=text],
 .activity_edit_block .item input[type=email],
 .activity_edit_block .item input[type=url] { padding: 10px; border: 1px solid #ccc; -webkit-box-shadow: inset 0 1px 4px #ddd; -moz-box-shadow: inset 0 1px 4px #ddd; box-shadow: inset 0 1px 4px #ddd; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; }
-.activity_edit_block .item input.subway { padding-left: 40px; }
-.activity_edit_block .item .subway_icon { position: absolute; z-index: 1; width: 22px; height: 15px; margin-top: 19px; margin-left: 10px; content: url(/assets/subway.png); }
+.activity_edit_block .item .subway_wrapper { position: relative; }
+.activity_edit_block .item .subway_icon { position: absolute; z-index: 3; bottom: 12px; width: 22px; height: 15px; margin-left: 10px; content: url(/assets/subway.png); }
 .activity_edit_block .item select { padding: 9px; }
 .activity_edit_block .item textarea { height: 200px; }
 
 .activity_edit_block .item .download_button_wrapper { cursor: pointer; position: relative; overflow: hidden; display: block; width: 206px; height: 56px; margin-top: 7px; }
 .activity_edit_block .item .mask_button { cursor: pointer; display: block; width: 186px; height: 36px; line-height: 36px; text-align: center; font-size: 90%; color: #fff; background-color: #b73652; -webkit-box-shadow: 3px 3px 5px #ccc; -moz-box-shadow: 3px 3px 5px #ccc; box-shadow: 3px 3px 5px #ccc; -webkit-border-radius: 2px; -moz-border-radius: 2px; -khtml-border-radius: 2px; border-radius: 2px; }
-.activity_edit_block .item .download_button_wrapper input { cursor: pointer; position: absolute; z-index: 10; top:0; margin: -10px 0 0 -2px; font-size: 2000px; background: none; border: none; }
+.activity_edit_block .item .download_button_wrapper input { cursor: pointer; position: absolute; opacity: 0; z-index: 10; top:0; margin: -10px 0 0 -2px; font-size: 2000px; background: none; border: none; }
 
 .save { margin-top: 20px; padding: 20px 0 30px; text-align: center; background-color: #eee; }
 .save button { padding: 20px 30px; font-family: Futura; font-size: 200%; -webkit-border-radius: 20px; -moz-border-radius: 20px; -khtml-border-radius: 20px; border-radius: 20px; }
 
 #activity-edit-shadow { position: fixed; z-index: 98; top: 0; left: 0; opacity: .65; background-color: #000; }
-#activity-edit-modal { position: fixed; z-index: 99; top: 50%; left: 50%; margin-left: -104px; margin-top: -50px; padding: 15px; background-color: #fff; -webkit-box-shadow: 0 0 15px #333; -moz-box-shadow: 0 0 15px #333; box-shadow: 0 0 15px #333; -webkit-border-radius: 3px; -moz-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; }
+#activity-edit-modal { position: fixed; z-index: 99; top: 40%; left: 50%; margin-left: -104px; margin-top: -50px; padding: 15px; background-color: #fff; -webkit-box-shadow: 0 0 15px #333; -moz-box-shadow: 0 0 15px #333; box-shadow: 0 0 15px #333; -webkit-border-radius: 3px; -moz-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; }
 #activity-edit-modal table td { padding: 5px; }
 #activity-edit-modal button { width: 100%; margin-top: 10px; }
+
+.activity_edit_block .chzn-container { margin-top: 10px; }
+.activity_edit_block .chzn-drop { margin-top: 5px; }
+.activity_edit_block .search-field input { position: relative; z-index: 2; clear: both; width: 100% !important; padding-left: 40px !important; }
+.activity_edit_block .search-choice { float: left; display: block; margin-right: 10px; padding: 5px; }
+.activity_edit_block .search-choice .search-choice-close { float: right; display: block; width: 15px; height: 15px; margin-left: 5px; background: url(/assets/close_red.png) no-repeat center center; }
+.activity_edit_block .chzn-results { display: none; position: absolute; z-index: 1; width: 98%; max-height: 208px; margin: -6px 5px 0; overflow-y: scroll; background-color: #fff; border: 1px solid #eee; -webkit-box-shadow: 0 1px 5px #888; -moz-box-shadow: 0 1px 5px #888; box-shadow: 0 1px 5px #888; }
+.activity_edit_block .chzn-results li { display: none; padding: 10px; border-bottom: 1px solid #eee; }
+.activity_edit_block .chzn-results li.active-result { display: block; }
+.activity_edit_block .chzn-results li.active-result:hover { cursor: pointer; color: #fff; background-color: #b73652; }
+.activity_edit_block .chzn-results li.active-result.result-selected { font-style: italic; }

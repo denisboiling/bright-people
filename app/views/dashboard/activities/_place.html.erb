@@ -6,8 +6,11 @@
 
   <div class="item width50">
     1. Станция метро <span class="hint">(начните вводить, мы подскажем)</span>
-    <div class="subway_icon"></div>
-    <%= f.collection_select :metro_station_ids, MetroStation.all, :id, :title %>
+    
+    <div class="subway_wrapper">
+      <div class="subway_icon"></div>
+      <%= f.collection_select :metro_station_ids, MetroStation.all, :id, :title, {}, { :multiple => '' } %>
+    </div>
   </div>
   <div class="item width50">
 
