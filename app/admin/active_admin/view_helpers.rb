@@ -25,7 +25,7 @@ module ActiveAdmin::ViewHelpers
   def images_form(picture)
     [:thumb, :medium, :original].map do |style|
       label_tag(nil, I18n.t('picture.' + style.to_s)) +
-        text_field_tag(nil, ActionController::Base.asset_host + picture.picture.url(style, timestamp: false), size: 45)
+        text_field_tag(nil, 'http://images.bright-people.ru' + picture.picture.url(style, timestamp: false), size: 45)
     end.join("<br>").html_safe
   end
 end
