@@ -1,5 +1,7 @@
 $ ->
 
+  $('.rte-zone').rte { media_url : '/assets/rte/', content_css_url : '/assets/rte.css' }
+
   $('select#activity_metro_station_ids').chosen()
         
   $('#activity_metro_station_ids_chzn .search-field input')
@@ -7,7 +9,7 @@ $ ->
     $(this).parent().parent().next().find('.chzn-results').show()
   .focusout ->
     # DIRTY HACKZZ, focus doesn't disappears immediately when fading out
-    # So click event will be triggered :D
+    # So click event WILL be triggered :D
     $(this).parent().parent().next().find('.chzn-results').fadeOut('fast')
     
   $('#activity_metro-station_ids .chzn-single span')

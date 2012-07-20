@@ -1,0 +1,60 @@
+
+.frameBody
+{
+    width:100%;
+    height:100%;
+    margin:0;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size:14px; 
+    color:#464646; 
+}
+
+.rte-zone
+{
+    display: block; 
+     -webkit-box-sizing: border-box; 
+     -moz-box-sizing: border-box; 
+    box-sizing: border-box; 
+    width: 100%; 
+    height: 200px;
+    padding: 10px; 
+    font-size: 120%; 
+    background-color: #fff;
+    border: 1px solid #ccc; 
+     -webkit-box-shadow: inset 0 1px 4px #ddd; 
+     -moz-box-shadow: inset 0 1px 4px #ddd; 
+    box-shadow: inset 0 1px 4px #ddd; 
+     -webkit-border-radius: 5px; 
+     -moz-border-radius: 5px; 
+     -khtml-border-radius: 5px; 
+    border-radius: 5px;
+}
+
+.rte-toolbar { overflow: hidden; height: 27px; margin: 5px 0 0 5px; }
+
+.rte-toolbar a
+{
+  display: inline-block;
+  padding: 5px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-bottom: none;
+    -webkit-box-shadow: 0 1px 4px #ddd; 
+    -moz-box-shadow: 0 1px 4px #ddd; 
+  box-shadow: 0 1px 4px #ddd; 
+    -webkit-border-radius: 5px 5px 0 0; 
+    -moz-border-radius: 5px 5px 0 0; 
+    -khtml-border-radius: 5px 0; 
+  border-radius: 5px 5px 0 0;
+}
+  .rte-toolbar a img { border: 0 }
+
+.rte-toolbar p 
+{
+    float:left;
+    margin:0;
+    padding-right:5px;
+}
+
+
+
