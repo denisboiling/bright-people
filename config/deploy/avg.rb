@@ -53,8 +53,10 @@ end
 
 namespace :load_staging do
   task :db, :roles => :app do
-    cache_dump = ENV['CACHE_DUMP'] ? true : false
-    run "cd #{latest_release}; RAILS_ENV=#{rails_env} CACHE_DUMP=#{cache_dump} bundle exec rake staging:load_db"
+    unless ENV['NOT_DUMP_DB']
+      cache_dump = ENV['CACHE_DUMP'] ? true : false
+      run "cd #{latest_release}; RAILS_ENV=#{rails_env} CACHE_DUMP=#{cache_dump} bundle exec rake staging:load_db"
+    end
   end
 
   task :images, :roles => :app do
