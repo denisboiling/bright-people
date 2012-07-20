@@ -7,18 +7,11 @@ ActiveAdmin.register Picture do
   index do
     id_column
     column "Фотография" do |picture|
-        link_to image_tag(picture.picture.url(:thumb), alt: picture.caption), admin_picture_path(picture)
+        link_to image_tag(picture.picture, alt: picture.caption), admin_picture_path(picture)
     end
     column :caption
     column "URL картинки" do |picture|
-      span class: 'get_host_url' do
-        picture.picture.url(:original, timestamp: false)
-      end
-    end
-    column "URL масштабированной картинки" do |picture|
-      span class: 'get_host_url' do
-        picture.picture.url(:medium, timestamp: false)
-      end
+      images_form(picture)
     end
     default_actions
   end
