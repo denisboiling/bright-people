@@ -1,4 +1,4 @@
-<%= include_js :after_head, load_ymaps(true), 'chosen.jquery.min', 'dashboard/activities' %>
+<%= include_js :after_head, load_ymaps(true), 'chosen.jquery.min', 'dashboard/activities', 'jquery.rte' %>
 
 
 <%= render 'dashboard/shared/profile_menu', current: 'activity' %>
@@ -13,8 +13,9 @@
 
 
   <%= render 'schedule', f: f %>
-  <%= render 'galery', f: f %>
+  <%= render 'gallery', f: f %>
 
+  <%= render 'publication', f: f %>
 
   <div class="save">
     <button>Сохранить</button>

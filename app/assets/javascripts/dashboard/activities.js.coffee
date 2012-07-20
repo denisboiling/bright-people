@@ -1,5 +1,19 @@
 $ ->
+
+  $('.rte-zone').rte { media_url : '/assets/rte/', content_css_url : '/assets/rte.css' }
+
   $('select#activity_metro_station_ids').chosen()
+        
+  $('#activity_metro_station_ids_chzn .search-field input')
+  .focus ->
+    $(this).parent().parent().next().find('.chzn-results').show()
+  .focusout ->
+    # DIRTY HACKZZ, focus doesn't disappears immediately when fading out
+    # So click event WILL be triggered :D
+    $(this).parent().parent().next().find('.chzn-results').fadeOut('fast')
+    
+  $('#activity_metro-station_ids .chzn-single span')
+  .change -> console.log('yay!')
 
   # CATEGORY
   $("select#activity_is_educational").bind 'change', ->
@@ -70,6 +84,8 @@ $ ->
     $('#activity-edit-ok').attr( 'data-day', $(this).parent().attr('data-day') )
     $('#activity-edit-shadow').width(screen.width).height(screen.height).fadeIn 'fast'
     $('#activity-edit-modal').fadeIn 'fast'
+    
+  $('#activity-edit-shadow').bind 'click', -> $('#activity-edit-modal, #activity-edit-shadow').fadeOut 'fast'
     
   $('#activity-edit-ok').bind 'click', ->
     start = $('#activity-edit-schedule-start.hour').val() + ":" + $('#activity-edit-schedule-start.minute').val()

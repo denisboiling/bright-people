@@ -711,7 +711,7 @@ span.sim_check.active { background-position:0px 0px; }
 
 .participation_contest .participation_form .field .download_button_wrapper { cursor:pointer; margin-left:10px; width:383px; height:38px; overflow:hidden; display:block; position:relative}
 .participation_contest .participation_form .field .mask_button { text-align:center; display:block; background:url(/assets/download_button.png) no-repeat; width:383px; height:38px; line-height:38px; cursor:pointer}
-.participation_contest .participation_form .field .download_button_wrapper input {  position:absolute; z-index:10; top:0; margin-left:-10px; margin-top:-10px; background:none; border:none; font-size:2000px; cursor:pointer}
+.participation_contest .participation_form .field .download_button_wrapper input {  position:absolute; z-index:10; opacity: 0; top:0; margin-left:-10px; margin-top:-10px; background:none; border:none; font-size:2000px; cursor:pointer}
 
 .participation_contest .participation_step.thanks { padding:30px; background:#cacaca}
 
