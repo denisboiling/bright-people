@@ -24,8 +24,9 @@ class Article < ActiveRecord::Base
                   :photos_attributes,  :videos_attributes
 
 
-  validates :title, :content, :author, :article_category_id, presence: :true
-
+  validates :title, :content, :author, :article_category_id,
+            :publication_date, presence: :true
+  
   scope :published, where(published: true)
   scope :not_published, where(published: false)
   scope :bests, where(best: true)

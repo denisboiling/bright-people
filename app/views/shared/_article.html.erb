@@ -6,5 +6,5 @@
   <em>В разделе</em>
   <%= link_to 'Журнал', '#'%>
   <em>от</em>
-  <%= Russian::strftime(object.publication_date, "%e %B %Y") %>
+  <%= r_time(object.publication_date || object.created_at) %>
 </div>
