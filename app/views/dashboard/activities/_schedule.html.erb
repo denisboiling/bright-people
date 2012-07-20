@@ -9,36 +9,36 @@
   <div id="activity-edit-modal" style="display: none">
     <table>
       <tr>
-        <td>Начало:</td>
-        <td>
-          <select id="activity-edit-schedule-start" class="hour">
-            <% (0..23).each do |hour| %>
-              <option><%= "%02d" % hour %></option>
-            <% end %>
-          </select>
-          :
-          <select id="activity-edit-schedule-start" class="minute">
-            <% (0..59).each do |minute| %>
-              <option><%= "%02d" % minute %></option>
-            <% end %>
-          </select>
-        </td>
-            </tr>
-            <tr>
-        <td>Конец:</td>
-        <td>
-          <select id="activity-edit-schedule-end" class="hour">
-            <% (0..24).each do |hour| %>
-              <option><%= "%02d" % hour %></option>
-            <% end %>
-          </select>
-          :
-          <select id="activity-edit-schedule-end" class="minute">
-            <% (0..59).each do |minute| %>
-              <option><%= "%02d" % minute %></option>
-            <% end %>
-          </select>
-        </td>
+	<td>Начало:</td>
+	<td>
+	  <select id="activity-edit-schedule-start" class="hour">
+	    <% (0..23).each do |hour| %>
+	      <option><%= "%02d" % hour %></option>
+	    <% end %>
+	  </select>
+	  :
+	  <select id="activity-edit-schedule-start" class="minute">
+	    <% (0..59).each do |minute| %>
+	      <option><%= "%02d" % minute %></option>
+	    <% end %>
+	  </select>
+	</td>
+      </tr>
+      <tr>
+	<td>Конец:</td>
+	<td>
+	  <select id="activity-edit-schedule-end" class="hour">
+	    <% (0..24).each do |hour| %>
+	      <option><%= "%02d" % hour %></option>
+	    <% end %>
+	  </select>
+	  :
+	  <select id="activity-edit-schedule-end" class="minute">
+	    <% (0..59).each do |minute| %>
+	      <option><%= "%02d" % minute %></option>
+	    <% end %>
+	  </select>
+	</td>
       </tr>
     </table>
     <button id="activity-edit-ok">OK</button>
@@ -54,25 +54,35 @@
     </thead>
     <tbody>
       <% if f.object.max_schedule_items.present? %>
-        <% @activity.max_schedule_items.times do |i| %>
-          <tr>
-            <% Activity::SCHEDULE_DAYS.each do |day| %>
-              <td data-day=<%= day %>>
-                <% if _time = @activity.schedule[day][i] %>
-                <div class="data">
-                  <div class="time" data-start=<%= @activity.schedule[day][i]['start'] %> data-end=<%= @activity.schedule[day][i]['end'] %> >
-                    <div class="circle-delete"></div>
-                    <span><%= schedule_time(_time) %></span>
-                  </div>
-                </div>
-                <% else %>
-                <div class="data"></div>
-                <% end %>
-                <div class="add">+добавить</div>
-              </td>
-            <% end %>
-          </tr>
-        <% end %>
+	<% @activity.max_schedule_items.times do |i| %>
+	  <tr>
+	    <% Activity::SCHEDULE_DAYS.each do |day| %>
+	      <td data-day=<%= day %>>
+		<% if _time = @activity.schedule[day][i] %>
+		  <div class="data">
+		    <div class="time" data-start=<%= @activity.schedule[day][i]['start'] %> data-end=<%= @activity.schedule[day][i]['end'] %> >
+		      <div class="circle-delete"></div>
+		      <span><%= schedule_time(_time) %></span>
+		    </div>
+		  </div>
+		<% else %>
+		  <div class="data"></div>
+		<% end %>
+		<div class="add">+добавить</div>
+	      </td>
+	    <% end %>
+	  </tr>
+	<% end %>
+      <% else %>
+	<tr>
+	  <% Activity::SCHEDULE_DAYS.each do |day| %>
+	    <td data-day=<%= day %>>
+	      <div class="data">
+	      </div>
+	      <div class="add">+добавить</div>
+	    </td>
+	  <% end %>
+	</tr>
       <% end %>
     </tbody>
   </table>
