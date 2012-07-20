@@ -41,7 +41,7 @@ namespace :staging do
     tmp_file = "/tmp/bp-images.tar.gz"
     %x(rm -rf #{File.join(folder, 'system')})
 
-    if File.exist?(tmp_file)
+    if File.exist?(tmp_file) && ENV['RELOAD_IMAGES'] != "true"
       puts "Images already exists #{tmp_file}"
     else
       puts "Start download images from production server"
