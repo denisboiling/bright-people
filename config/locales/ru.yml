@@ -27,3 +27,7 @@ ru:
   friday: Пт.
   saturday: Сб.
   sunday: Вс.
+  picture:
+    thumb: 'Превью '
+    medium: 'Средняя '
+    original: 'Оригинал '

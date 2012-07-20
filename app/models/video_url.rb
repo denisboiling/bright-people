@@ -2,7 +2,7 @@ class VideoUrl < ActiveRecord::Base
 
   belongs_to :relation, polymorphic: true
 
-  attr_accessible :url
+  attr_accessible :url, :relation
 
   before_save :update_code
 
@@ -11,7 +11,7 @@ class VideoUrl < ActiveRecord::Base
   end
 
   def get_code
-    /(?<=v=)[a-zA-Z0-9\-_]+(?=&)|(?<=[0-9]\/)[^&\n]+|(?<=v=)[^&\n]+/.match(url)[0]
+    /(?<=v=|youtu\.be\/)[a-zA-Z0-9\-_]+/.match(url)[0]
   end
 
   def preview_url

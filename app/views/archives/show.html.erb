@@ -1,0 +1,32 @@
+<% content_for :title do %>
+  Фестиваль Яркие Люди | Архив автора <%= @author.name %>
+<% end %>
+
+<div class="pages">
+  <div class="common">
+    <div class="news">
+    <% @articles.each do |article| %>
+      <div class="item">
+        <%= image_tag article.photo %>
+        <div class="content">
+          <%= link_to article.title, article, :class => 'title' %>
+          <div class="date">
+            <%= r_time(article.publication_date || article.created_at) %>
+          </div>
+          <div class="text">
+	    <%== article.short_description %>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+    <% end %>
+    </div>
+  <%= paginate @articles %>
+  </div>
+
+  <div class="sidebar">
+    <%= render 'shared/sidebar' %>
+  </div>
+  <div class="clear">
+  </div>
+</div>

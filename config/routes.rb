@@ -33,6 +33,7 @@ BrightPeople::Application.routes.draw do
   match '/activities/vote' => 'activities#vote', :via => :put
 
   resources :articles, only: [:index, :show] do
+    resource :archive, only: :show
     collection do
       get :tag
     end

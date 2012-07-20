@@ -1,17 +1,14 @@
 require 'spec_helper'
 
-describe VideoUrl do
-  before(:all) do
-    @url = 'http://www.youtube.com/watch?v=iYWzMvlj2RQ'
-  end
+describe VideoUrl, current: true do
+  it "Check video urls regexp" do
+    urls = [ 'http://www.youtube.com/watch?v=iYWzMvlj2RQ',
+             'http://youtu.be/iYWzMvlj2RQ' ]
 
-  it "Should create code by url" do
-    @relation = FactoryGirl.create(:article)
     video = VideoUrl.new
-    video.url = @url
-    video.relation_type = @relation.class
-    video.relation_id = @relation.id
-    video.save
-    video.code.should == 'iYWzMvlj2RQ'
+    urls.each do |url|
+      video.url = url
+      video.get_code.should == 'iYWzMvlj2RQ'
+    end
   end
 end

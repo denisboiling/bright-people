@@ -20,4 +20,12 @@ module ActiveAdmin::ViewHelpers
     return user.name unless vk_id = user.vkontakte_id
     [user.name, link_to('VK', "http://vk.com/id#{vk_id}")].join(' ').html_safe
   end
+
+  # Generate inputs with image urls by each styles
+  def images_form(picture)
+    [:thumb, :medium, :original].map do |style|
+      label_tag(nil, I18n.t('picture.' + style.to_s)) +
+        text_field_tag(nil, 'http://images.bright-people.ru' + picture.picture.url(style, timestamp: false), size: 45)
+    end.join("<br>").html_safe
+  end
 end

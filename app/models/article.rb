@@ -30,6 +30,7 @@ class Article < ActiveRecord::Base
   scope :not_published, where(published: false)
   scope :bests, where(best: true)
   scope :expect, lambda{|article| where('id != ?', article.id)}
+  scope :last5, lambda{|article| where('published = true AND id != ?', article.id).last(5) }
 
   accepts_nested_attributes_for :photos, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :videos, allow_destroy: true, reject_if: :all_blank

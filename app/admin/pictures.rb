@@ -5,20 +5,17 @@ ActiveAdmin.register Picture do
   filter :caption
 
   index do
+    h2 "Форматы изображений"
+    h4 "Превью - 160x100, если картинка больше, то мы ее уменьшаем пропорционально до этих параметров, если меньше - нечего не делаем"
+    h4 "Средняя - 575x305, если картинка больше, то мы ее уменьшаем пропорционально до этих параметров, если меньше - нечего не делаем"
+    h4 "Оригинал - картинка как есть"
     id_column
     column "Фотография" do |picture|
-        link_to image_tag(picture.picture.url(:thumb), alt: picture.caption), admin_picture_path(picture)
+        link_to image_tag(picture.picture, alt: picture.caption), admin_picture_path(picture)
     end
     column :caption
     column "URL картинки" do |picture|
-      span class: 'get_host_url' do
-        picture.picture.url(:original, timestamp: false)
-      end
-    end
-    column "URL масштабированной картинки" do |picture|
-      span class: 'get_host_url' do
-        picture.picture.url(:medium, timestamp: false)
-      end
+      images_form(picture)
     end
     default_actions
   end
