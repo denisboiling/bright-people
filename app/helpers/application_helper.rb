@@ -51,4 +51,13 @@ module ApplicationHelper
     true if ENV['BLOCK_EXT_JS']
   end
 
+  # Show time with russian words
+  def r_time(time, format=:article)
+    _format = case format
+              when :article then '%e %B, %A'
+              else
+                '%e %B, %A'
+              end
+    Russian::strftime(time, _format)
+  end
 end

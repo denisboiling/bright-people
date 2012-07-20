@@ -28,10 +28,11 @@
 	  <% if @article.author.articles.published.count > 1 %>
 	    <div class="title">Другие статьи автора</div>
 	    <ul>
-	      <% @article.author.articles.published.except(@article).each do |article| %>
+	      <% @article.author.articles.last5(@article).each do |article| %>
 		<li><%= link_to article.title, article %>
 	      <% end %>
 	    </ul>
+	    <%= link_to 'Архив', article_archive_path(@article) %>
 	  <% end %>
 	</div>
       <% end %>
