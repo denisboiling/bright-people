@@ -44,7 +44,7 @@ gem 'high_voltage'
 gem 'fb_graph'
 
 group :development, :test do
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', require: false
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'spork'
