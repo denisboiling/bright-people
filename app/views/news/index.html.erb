@@ -5,7 +5,8 @@
 <div class="pages">
   <div class="common">
     <div class="news">
-    <% @news.each do |n| %>
+      <div class="title">Новости</div>
+      <% @news.each do |n| %>
       <div class="item">
         <%= image_tag n.photo.url %>
         <div class="content">
