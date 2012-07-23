@@ -50,6 +50,12 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :remember_me
   attr_accessible :vkontakte_id, :facebook_id, :odnoklassniki_id
 
+  # TODO: add role author to this conditions
+  define_index do
+    indexes :name
+    where "role_id in (4)"
+  end
+
   def manager?
     role == Role.manager
   end
@@ -143,7 +149,7 @@ class User < ActiveRecord::Base
     false
   end
 
-  # User already voted for this activity 
+  # User already voted for this activity
   def already_vote?(object)
     case object
     when Activity
@@ -151,6 +157,5 @@ class User < ActiveRecord::Base
     when ContestMembership
       contest_votes.where(membership_id: object.id).any?
     end
-    
   end
 end
