@@ -4,7 +4,7 @@ class News < ActiveRecord::Base
 
   default_scope order: 'created_at DESC'
 
-  scope :published, where("publication_date <= ?", Time.now.to_date)
+  scope :published, where("publication_date <= ?", Time.zone.now.to_date)
 
   validates :title, :content, :publication_date, presence: true
 
@@ -22,7 +22,7 @@ class News < ActiveRecord::Base
 
   def published?
     return false if self.publication_date.blank?
-    self.publication_date <= Time.now.to_date
+    self.publication_date <= Time.zone.now.to_date
   end
 
   class << self
