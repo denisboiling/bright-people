@@ -28,3 +28,5 @@ before "deploy:assets:precompile", "deploy:migrate"
 after "deploy:migrate", "thinking_sphinx:configure"
 after "deploy:update_code", "delayed_job:restart"
 after "deploy:update_code", "thinking_sphinx:rebuild"
+
+before "unicorn:reload", "unicorn:stop"

@@ -33,3 +33,5 @@ after "deploy:update_code", "load_staging:images"
 after "deploy:update_code", "thinking_sphinx:configure"
 after "deploy:update_code", "delayed_job:restart"
 after "deploy:update_code", "thinking_sphinx:rebuild"
+
+before "unicorn:reload", "unicorn:stop"
