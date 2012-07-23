@@ -4,7 +4,7 @@ class News < ActiveRecord::Base
 
   default_scope order: 'created_at DESC'
 
-  scope :published, lambda{ where("publication_date <= ?", Time.zone.now.to_date) }
+  scope :published, where("publication_date <= ?", Time.now.to_date)
 
   validates :title, :content, :publication_date, presence: true
 
