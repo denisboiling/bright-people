@@ -1,0 +1,13 @@
+<%= semantic_form_for [:admin, resource] do |f| %>
+  <%= f.inputs 'Основное' do %>
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :description %>
+    <%= render 'shared/editor_toolbar', element_id: 'sponsor_text' %>
+    <%= f.input :text %>
+    <%= f.input :position %>
+    <%= f.input :photo, as: :file, hint: f.template.image_tag(f.object.photo) %>
+  <% end %>
+
+  <%= f.buttons %>
+<% end %>

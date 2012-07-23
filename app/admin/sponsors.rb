@@ -15,15 +15,7 @@ ActiveAdmin.register Sponsor do
     default_actions
   end
 
-  form html: { enctype: 'multipart/form-data' } do |f|
-    f.inputs 'Основное' do
-      f.input :first_name
-      f.input :last_name
-      f.input :description
-      f.input :photo, as: :file, hint: f.template.image_tag(f.object.photo.url)
-    end
-    f.buttons
-  end
+  form partial: 'form'
 
   show do
     attributes_table :id, :first_name, :last_name, :created_at, :updated_at
