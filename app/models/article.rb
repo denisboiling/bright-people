@@ -41,6 +41,14 @@ class Article < ActiveRecord::Base
     indexes content
   end
 
+  # Assing role 'author' to user who created article
+  after_create :check_author_role
+
+  def check_author_role
+    return if author.role.name != 'user'
+    author.author!
+  end
+
   class << self
     def for_main
       published.order('created_at DESC').first(5)
