@@ -20,7 +20,7 @@ class SocialPostObserver < ActiveRecord::Observer
       page = FbGraph::Page.new(FbPage.first.identifier, :access_token => FbPage.first.token)
       pic = model.photo ? "http://images.bright-people.ru" + model.photo.url(:medium, false) : nil
       page.feed!(:message => model.title,
-                 :link => "http://bright-people.ru/#{model.name.downcase.pluralize}/" + model.id.to_s,
+                 :link => "http://bright-people.ru/#{model.class.name.downcase.pluralize}/" + model.id.to_s,
                  :picture => pic
                 )
     end
