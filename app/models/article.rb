@@ -39,6 +39,7 @@ class Article < ActiveRecord::Base
   define_index do
     indexes title, sortable: true
     indexes content
+    where sanitize_sql(["published", true])
   end
 
   # Assing role 'author' to user who created article
