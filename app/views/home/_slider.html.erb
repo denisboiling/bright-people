@@ -86,7 +86,7 @@
                     <% News.for_main.each do |n| %>
                     <li>
                     <div class="news_cell">
-                      <div class="date"><%= Russian::strftime(n.publication_date, "%e %B, %A") %></div>
+                      <div class="date"><%= Russian::strftime(n.publication_date || n.created_at, "%e %B, %A") %></div>
                       <div class="thumb"><%= image_tag n.photo.url %></div>
                       <div class="info">
                         <div class="name"><%= link_to n.title, n %></div>
