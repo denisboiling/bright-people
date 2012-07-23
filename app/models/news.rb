@@ -4,7 +4,7 @@ class News < ActiveRecord::Base
 
   default_scope order: 'created_at DESC'
 
-  scope :published, where("publication_date <= ?", Time.now.to_date)
+  scope :published, lambda{ where("publication_date <= ?", Time.zone.now.to_date) }
 
   validates :title, :content, :publication_date, presence: true
 
@@ -27,7 +27,7 @@ class News < ActiveRecord::Base
 
   class << self
     def for_main
-      News.published(:limit => 6)
+      News.published.first(6)
     end
   end
 
