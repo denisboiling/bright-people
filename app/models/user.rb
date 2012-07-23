@@ -50,10 +50,10 @@ class User < ActiveRecord::Base
 
   scope :authors_with_photos, authors.where('avatar_file_size IS NOT NULL OR avatar_file_size != 0')
 
-  # Sphinx should indexing only roles experts and authors
+  # Sphinx should indexing only roles experts
   define_index do
     indexes :name
-    where "role_id in (4,6)"
+    where "role_id in (4)"
   end
 
   def manager?
