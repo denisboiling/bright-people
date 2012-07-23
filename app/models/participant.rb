@@ -13,6 +13,8 @@ class Participant < ActiveRecord::Base
   has_many :videos, class_name: 'VideoUrl', as: :relation, dependent: :destroy
 
   scope :headliners, where(headliner: true)
+  scope :headliners_unless, lambda{ |_headliners| where('headliner = ? AND id NOT IN (?)', true, _headliners.map(&:id)) }
+
   scope :not_headliners, where(headliner: false)
 
   scope :by_category, lambda { |category| where(category: category) }
@@ -28,7 +30,7 @@ class Participant < ActiveRecord::Base
 
   class << self
     def best(_category)
-      by_category(_category).first(3)
+      by_category(_category).sample(3)
     end
   end
 

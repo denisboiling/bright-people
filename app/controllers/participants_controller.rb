@@ -10,8 +10,8 @@ class ParticipantsController < ApplicationController
       @is_headliners_page = false
     else
       @is_headliners_page = true
-      @best = Participant.headliners.first(3)
-      @participants = Participant.headliners[3,Participant.headliners.count]
+      @best = Participant.headliners.sample(3)
+      @participants = Participant.headliners_unless(@best)
     end
   end
 end
