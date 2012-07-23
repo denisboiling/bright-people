@@ -26,9 +26,6 @@ gem 'spatial_adapter'
 gem 'russian'
 gem 'paperclip'
 
-# Because this need for samples
-gem 'ffaker'
-
 gem 'thinking-sphinx'
 gem 'cocoon'
 gem 'rails3-jquery-autocomplete'
@@ -42,6 +39,7 @@ gem 'daemons'
 gem 'nokogiri'
 gem 'high_voltage'
 gem 'fb_graph'
+gem 'exception_notification'
 
 group :development, :test do
   gem 'cucumber-rails', require: false
@@ -52,6 +50,7 @@ group :development, :test do
   gem 'thin'
   gem 'launchy'
   gem 'debugger'
+  gem 'ffaker'
 end
 
 group :development do
