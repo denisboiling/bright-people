@@ -50,6 +50,8 @@
 .activity_edit_block .button_edit button { float: left; width: 50%; padding: 10px 10px 10px 35px; text-align: left; font-size: 110%; font-weight: bold; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; -webkit-border-radius: 0; -moz-border-radius: 0; -khtml-border-radius: 0; border-radius: 0; }
 .activity_edit_block .button_edit .add { background: #b73652 url(/assets/add.png) no-repeat 10px 12px; }
 .activity_edit_block .button_edit .delete { background: #b73652 url(/assets/delete.png) no-repeat 10px 13px; border-right: 1px solid #fff; }
+#teachers-default-buttons, #teachers { margin-top: 10px; }
+
 
 .activity_edit_block .item .hint { font-weight: normal; color: #888; }
 
