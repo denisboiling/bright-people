@@ -11,16 +11,20 @@
       <div class="title"><%= @news.title %></div>
       <div class="date"><%= Russian::strftime(@news.publication_date, "%e %B, %A") %></div>
       <%= render 'shared/photos_lightbox', object: @news %>
-      <div class="text"><%= raw @news.full_text %></div>
-      <div class="article_tags">
-	<% @tags.each do |t| %>
-	  <%= link_to t.name, tag_articles_path(tag: t.name) %>
-	<% end %>
+      <div class="post_info">
+        <div class="post_share">
+          <div class="title">Делись с друзьями</div>
+          <%= render 'shared/share_social' %>
+          <div class="clear"></div>
+        </div>
       </div>
-      <div class="post_share post_info">
-        <div class="title">Делись с друзьями</div>
-        <%= render 'shared/share_social' %>
-        <div class="clear"></div>
+      <div class="description">
+        <div class="text"><%= raw @news.full_text %></div>
+        <div class="article_tags">
+          <% @tags.each do |t| %>
+            <%= link_to t.name, tag_articles_path(tag: t.name) %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
