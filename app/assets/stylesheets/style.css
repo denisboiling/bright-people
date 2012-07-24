@@ -421,9 +421,10 @@ span.sim_check.active { background-position:0px 0px; }
 .detail_page .info_block th .metro_icon { }
 
 .detail_page .info_block .info_title { margin-bottom: 10px; }
-.detail_page .info_block .info_title .info_left { float: left; width: 30%; font-weight: bold; border-bottom: 1px dotted #555; }
+.detail_page .info_block .info_title .info_left { float: left; width: 30%; margin-right: 5%; font-weight: bold; border-bottom: 1px dotted #555; }
 .detail_page .info_block .info_title .info_left .metro_icon { float: left; margin-top: 2px; }
 .detail_page .info_block .info_title .info_left.no_padding { display: block; float: none; width: 100%; margin-bottom: 5px; }
+.detail_page .info_block .info_title .info_right { width: 70%; margin-left: 35%; }
 .detail_page .info_block .info_title a { display: inline-block; margin: 0 0 5px 5px; }
 
 .to_map_link span { background:url(/assets/to_map_ico.png) no-repeat 0 0; float: left; width:21px; height:25px; display:inline-block; margin-right:5px}
