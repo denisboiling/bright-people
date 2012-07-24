@@ -49,6 +49,10 @@ namespace :shared do
     run "ln -nfs #{shared_path}/config/rvmrc #{latest_release}/.rvmrc"
     run "ln -nfs #{shared_path}/config/sphinx.yml #{latest_release}/config/sphinx.yml"
   end
+
+  task :disallow_robots, :roles => :app do
+    run "ln -nfs #{shared_path}/config/robots.txt #{latest_release}/public/robots.txt"
+  end
 end
 
 namespace :load_staging do
