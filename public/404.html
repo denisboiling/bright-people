@@ -11,136 +11,120 @@
 </head>
 
 <body>
-
-    <div id="wrapper">
       <div id="header">
         <div class="header_flash_wrapper">
-  <a href="/"></a>
-    <div id="flashcontent_1">
-      <div class="cap"></div>
-    </div>
-  
-</div>
+          <a href="/"></a>
+            <div id="flashcontent_1">
+              <div class="cap"></div>
+            </div> 
+        </div>
 
-<div class="color_line_left">
-  <div class="color_line_right">
-    <div class="header_wrapper">
+        <div class="color_line_left">
+          <div class="color_line_right">
+            <div class="header_wrapper">
+              <div id="login_block">
+                <a class="login_button" href="#"><img src="/assets/ico_login.png" alt="" /></a>
+              </div>
+              <div class="show_login hidden">
+                <div class="login_wrapper">
+                  <span class="login_text">Войти на сайт через: </span>
+                  <a href="/users/auth/facebook"><img alt="Ico_fb_big" src="/assets/ico_fb_big.png" /></a>
+                  <a href="/users/auth/vkontakte"><img alt="Ico_vk_big" src="/assets/ico_vk_big.png" /></a>
+                  <a href="/users/auth/odnoklassniki"><img alt="Ico_od_big" src="/assets/ico_od_big.png" /></a>
+                  <a class="close" href="#">Закрыть</a>
+                </div>
+              </div>
 
+              <!-- TODO: move to coffee -->
+              <script type="text/javascript">
+                $(document).ready(function(){
 
+                // SEARCH
+                $("#search_block a.search_button").live('click',function(){
 
-      <div id="login_block">
-	  <a class="login_button" href="#"><img src="/assets/ico_login.png" alt="" /></a>
-      </div>
+                $("#login_block a.login_button").removeClass("active");
+                $(".show_login").addClass("hidden");
 
-	<div class="show_login hidden">
-	  <div class="login_wrapper">
-	    <span class="login_text">Войти на сайт через: </span>
-	    <a href="/users/auth/facebook"><img alt="Ico_fb_big" src="/assets/ico_fb_big.png" /></a>
-	    <a href="/users/auth/vkontakte"><img alt="Ico_vk_big" src="/assets/ico_vk_big.png" /></a>
-	    <a href="/users/auth/odnoklassniki"><img alt="Ico_od_big" src="/assets/ico_od_big.png" /></a>
-	    <a class="close" href="#">Закрыть</a>
-	  </div>
-	</div>
+                if($(this).hasClass('active')) {
+                $(this).removeClass("active");
+                $(".show_search").addClass("hidden");
+                }
+                else {
+                $(this).addClass("active");
+                $(".show_search").removeClass("hidden");
+                }
 
-      <!-- TODO: move to coffee -->
-      <script type="text/javascript">
-	$(document).ready(function(){
-
-	// SEARCH
-	$("#search_block a.search_button").live('click',function(){
-
-	$("#login_block a.login_button").removeClass("active");
-	$(".show_login").addClass("hidden");
-
-	if($(this).hasClass('active')) {
-	$(this).removeClass("active");
-	$(".show_search").addClass("hidden");
-	}
-	else {
-	$(this).addClass("active");
-	$(".show_search").removeClass("hidden");
-	}
-
-	return false;
-	});
-	$(".show_search .close").live('click',function(){
-	$("#search_block a.search_button").removeClass("active");
-	$(".show_search").addClass("hidden");
-	});
+                return false;
+                });
+                $(".show_search .close").live('click',function(){
+                $("#search_block a.search_button").removeClass("active");
+                $(".show_search").addClass("hidden");
+                });
 
 
 
-	// LOGIN
-	$("#login_block a.login_button").live('click',function(){
+                // LOGIN
+                $("#login_block a.login_button").live('click',function(){
 
-	$("#search_block a.search_button").removeClass("active");
-	$(".show_search").addClass("hidden");
+                $("#search_block a.search_button").removeClass("active");
+                $(".show_search").addClass("hidden");
 
-	if($(this).hasClass('active')) {
-	$(this).removeClass("active");
-	$(".show_login").addClass("hidden");
-	}
-	else {
-	$(this).addClass("active");
-	$(".show_login").removeClass("hidden");
-	}
+                if($(this).hasClass('active')) {
+                $(this).removeClass("active");
+                $(".show_login").addClass("hidden");
+                }
+                else {
+                $(this).addClass("active");
+                $(".show_login").removeClass("hidden");
+                }
 
-	return false;
-	});
-	$(".show_login .close").live('click',function(){
-	$("#login_block a.login_button").removeClass("active");
-	$(".show_login").addClass("hidden");
-	});
+                return false;
+                });
+                $(".show_login .close").live('click',function(){
+                $("#login_block a.login_button").removeClass("active");
+                $(".show_login").addClass("hidden");
+                });
 
-	});
-      </script>
+                });
+              </script>
 
-      <div id="menu">
-	<ul class="">
-	  <li ><a href="/activities">Места</a></li>
-	  <li ><a href="/articles">Яркий журнал</a></li>
-	  <li class="current "><a href="/pages/org_komitet">Фестиваль</a>
-	    <div class="sub_menu">
-	      <ul>
-		<li><a href="/pages/about_festival">О фестивале</a></li>
-		<li><a href="">Новости фестиваля</a></li>
-		<li><a href="">Участники</a></li>
-		<li><a href="/pages/org_komitet">Оргкомитет</a></li>
-	      </ul>
-	    </div>
-	  </li>
-	  <li ><a href="/experts">Экспертный совет</a></li>
-	  <li ><a href="/special_projects">Спецпроект</a></li>
-	</ul>
-      </div>
+              <div id="menu">
+                <ul class="">
+                  <li><a href="/pages/mission">Миссия</a></li>
+                  <li><a href="/activities">Детские студии</a></li>
+                  <li class="current "><a href="/pages/about_festival">Фестиваль</a>
+                  </li>
+                  <li><a href="/articles">Яркий журнал</a></li>
+                  <li><a href="/experts">О нас</a></li>
+                </ul>
+              </div>
 
-    </div>
-  </div>
-</div>
+            </div>
+          </div>
+        </div>
 
       </div>
 
-          <div class="dialog_block hidden" id="register_dialog">
-      <div class="dialog_header">
-        <span class="close"></span>
-        <div class="dialog_title">Неоходима авторизация</div>
-      </div>
+    <div id="wrapper">
+
+      <div class="dialog_block hidden" id="register_dialog">
+        <div class="dialog_header">
+          <span class="close"></span>
+          <div class="dialog_title">Неоходима авторизация</div>
+        </div>
       
-      <div class="dialog_content">
-        <div class="dialog_form">
+        <div class="dialog_content">
+          <div class="dialog_form">
           
-  <a href="/users/auth/facebook"><img alt="Ico_fb_big" src="/assets/ico_fb_big.png" /></a>
-  <br/><br/>
-  <a href="/users/auth/vkontakte"><img alt="Ico_vk_big" src="/assets/ico_vk_big.png" /></a>
-  <br/><br/>
-  <a href="/users/auth/odnoklassniki"><img alt="Ico_od_big" src="/assets/ico_od_big.png" /></a>
+            <a href="/users/auth/facebook"><img alt="Ico_fb_big" src="/assets/ico_fb_big.png" /></a>
+            <br/><br/>
+            <a href="/users/auth/vkontakte"><img alt="Ico_vk_big" src="/assets/ico_vk_big.png" /></a>
+            <br/><br/>
+            <a href="/users/auth/odnoklassniki"><img alt="Ico_od_big" src="/assets/ico_od_big.png" /></a>
 
+          </div>
         </div>
       </div>
-    </div>
-
-      
-
       
       <div id="center">
       
@@ -151,62 +135,62 @@
         </div>
       </div>
 
-      <div id="footer">
-        <div class="footer_header"></div>
-<div class="footer_content">
-  <div class="footer_shadow">
-    <div class="wrapper">
-      <div class="left column">
-        <div class="gen_sponsor">
-          
-          <a href="http://mkb.ru/"><img src="/assets/footer_bank_bg.png" alt="" /></a>
-          <span>дарит городу праздник<br />
-в честь своего 20-летия</span>
-        </div>
-
-      </div>
-      <div class="center column">
-        <div class="menu">
-          <ul>
-            <li><a href="/activities">Места</a></li>
-            <li><a href="/articles">Яркий журнал</a></li>
-            <li><a href="/pages/org_komitet">Фестиваль</a></li>
-            <li><a href="/contests">Конкурсы</a></li>
-            <li><a href="/experts">Экспертный совет</a></li>
-            <li><a href="/special_projects">Спецпроекты</a></li>
-          </ul>
-        </div>
-        <div class="copy">
-          &copy; 2012 ООО &laquo;Брайт Пипл&raquo;.<br />
-          Все права защищены.<br />
-        </div>
-        <div class="create">
-          Разработано в <a href="http://www.balticit.ru/">BalticIT</a><br />
-          Дизайн – <a href="">Веркс</a>
-        </div>
-      </div>
-      <div class="right column">
-        <div class="gen_sponsor">
-          <a href="http://mos.ru/"><img src="/assets/moscow_logo.png" alt="" /></a>
-        </div>
-        
-        <div class="phone_info">
-        	<span>Организатор фестиваля</span><br />
-            +7 (495) 640-91-21 &bull; info@bright-people.ru
-
-        </div>
-        <div class="phone_info">
-
-            <span>PR-поддержка</span><br />
-            +7 (495) 640-42-32 &bull; info@massovet.ru
-        </div>
-        
-      </div>
-      <div class="clear"></div>
     </div>
-  </div>
-</div>
 
+    <div id="footer">
+      <div class="footer_shadow">
+        <div class="wrapper">
+          <div class="footer_header"></div>
+          <div class="footer_content">
+            <div class="left column">
+              <div class="gen_sponsor">
+
+                <a href="http://mkb.ru/"><img src="/assets/footer_bank_bg.png" alt="" /></a>
+                <span>дарит городу праздник<br />
+      в честь своего 20-летия</span>
+              </div>
+
+            </div>
+            <div class="center column">
+              <div class="menu">
+                <ul>
+                  <li><a href="/activities">Места</a></li>
+                  <li><a href="/articles">Яркий журнал</a></li>
+                  <li><a href="/pages/org_komitet">Фестиваль</a></li>
+                  <li><a href="/contests">Конкурсы</a></li>
+                  <li><a href="/experts">Экспертный совет</a></li>
+                  <li><a href="/special_projects">Спецпроекты</a></li>
+                </ul>
+              </div>
+              <div class="copy">
+                &copy; 2012 ООО &laquo;Брайт Пипл&raquo;.<br />
+                Все права защищены.<br />
+              </div>
+              <div class="create">
+                Разработано в <a href="http://www.balticit.ru/">BalticIT</a><br />
+                Дизайн – <a href="">Веркс</a>
+              </div>
+            </div>
+            <div class="right column">
+              <div class="gen_sponsor">
+                <a href="http://mos.ru/"><img src="/assets/moscow_logo.png" alt="" /></a>
+              </div>
+
+              <div class="phone_info">
+                <span>Организатор фестиваля</span><br />
+                  +7 (495) 640-91-21 &bull; info@bright-people.ru
+
+              </div>
+              <div class="phone_info">
+
+                  <span>PR-поддержка</span><br />
+                  +7 (495) 640-42-32 &bull; info@massovet.ru
+              </div>
+
+            </div>
+            <div class="clear"></div>
+          </div>
+        </div>
       </div>
 
     </div>

@@ -155,7 +155,7 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 #nested_slider  .pagination { display:none}
 
 
-#center { min-width:960px; max-width:1235px; margin:auto; position:relative}
+#center { min-width:960px; max-width:1235px; margin: 10px auto; position:relative}
 
 /* MAIN PAGE */
 .main_content { padding:20px 20px;}
@@ -417,6 +417,7 @@ span.sim_check.active { background-position:0px 0px; }
 .detail_page .info_block th { text-align:left; padding-right:10px; background:url(/assets/punktir_info.jpg) repeat-x 0px 15px;}
 .detail_page .info_block th span { background:#fff;}
 .detail_page .info_block th img { margin-top: 3px; }
+.detail_page .info_block td .metro_icon { float: left; margin: 2px 0 0 2px; }
 
 .to_map_link span { background:url(/assets/to_map_ico.png) no-repeat 0 0; width:21px; height:25px; display:inline-block; margin-left:5px}
 
@@ -540,7 +541,7 @@ span.sim_check.active { background-position:0px 0px; }
 .alongside .geo img { margin: 1px 3px 0 0;}
 
 
-.post_category_menu { padding-bottom:1px; border-bottom:1px solid #dadce1; height:38px; margin-top:10px}
+.post_category_menu { padding-bottom:1px; border-bottom:1px solid #dadce1; height:38px; margin-top:15px}
 .post_category_menu ul { display:block; height:36px; border-bottom:2px solid #000;}
 .post_category_menu li { float:left; margin:0px 2px}
 .post_category_menu li a { display:block; padding:5px 10px; background: #dadce1; font-family:Futura; color:#6c6c6c; font-size:17px; text-decoration:none; line-height:26px}
@@ -587,15 +588,16 @@ span.sim_check.active { background-position:0px 0px; }
 
 .post_info .other_link { behavior: url(border-radius.htc); -moz-border-radius:8px; border-radius:8px; -webkit-border-radius:8px; -khtml-border-radius:8px; border:1px solid #dbdbdb; padding:10px; font-size:12px; margin-bottom:20px}
 .post_info .other_link li { padding:2px 0px}
-.post_info .other_link a { font-size:12px; background:url(/assets/other_link_ico.png) no-repeat 0px 1px; padding-left:16px;display:block}
-.post_info .other_link .title { font-size:16px; color:#007ba4; font-family:Futura; padding:0}
+.post_info .other_link li a { font-size:12px; background:url(/assets/other_link_ico.png) no-repeat 0px 1px; padding-left:16px;display:block}
+.post_info .other_link .title { font-size: 16px; color: #007ba4; font-family: Futura; padding: 0}
+.post_info .other_link > a { display: inline-block; margin: 10px 0 0 15px; }
 
 
 
 .post_share { background:#ffb13b; padding:10px; behavior: url(border-radius.htc); -moz-border-radius:8px; border-radius:8px; -webkit-border-radius:8px; -khtml-border-radius:8px; margin-bottom:20px;}
 .post_share .title { font-size:16px; color:#654515; font-family:Futura; padding:0}
 
-.soc_like_button { float:left; margin-right:10px; padding:2px 0px}
+.soc_like_button { float:left; display: block; margin-right:10px; padding:2px 0px}
 .soc_like_button div { vertical-align: top !important;}
 
 .preview_specialist { width:19%; margin-right:1%; float:left }
@@ -818,7 +820,7 @@ span.sim_check.active { background-position:0px 0px; }
 .personality_preview .cat { font-size:18px; font-family:Futura; color:#f3452e}
 .personality_preview .mark { background:url(/assets/exp_mark.png) no-repeat; display:block; width:19px; height:24px; text-align:center; line-height:24px; padding:0px 10px 0px 5px; color:#fff; position:absolute; top:80px; z-index: 10}
 .personality_preview .thumb { margin:10px 0; -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; position:relative; float:left; /*width:120px; height:120px; margin-left:20px;*/ width:160px; height:100px; overflow:hidden; }
-.personality_preview .thumb img { border-radius:6px; width:160px; height:100px; }
+.personality_preview .thumb img { border-radius:6px; height:100px; }
 .personality_preview .thumb .mask { width:120px; height:120px; background:url(/assets/rukov_mask.png) no-repeat center center; display:none; position:absolute}
 .personality_preview .name { font-weight:bold; color:#007ba4; font-size:15px; display:block; }
 .personality_preview .name a { font-weight:bold; color:#007ba4; font-size:15px; text-decoration:none }
@@ -826,8 +828,8 @@ span.sim_check.active { background-position:0px 0px; }
 .personality_preview .info { color:#544d4d;display:block; }
 .personality_preview .date { color:#74746f; font-size:12px; display:block; font-weight:bold; }
 
-.personality_preview.exp .thumb { margin-left:20px; -moz-border-radius:60px; border-radius:60px; -webkit-border-radius:60px; -khtml-border-radius:60px; width:120px; height:120px;}
-.personality_preview.exp .thumb img { border-radius:60px; width:120px; height:120px;}
+.personality_preview.exp .thumb { margin-left:20px; -moz-border-radius:60px; border-radius:60px; -webkit-border-radius:60px; -khtml-border-radius:60px; width:120px; height:100px;}
+.personality_preview.exp .thumb img { border-radius:60px; height:100px;}
 
 
 .rubric { float:left; width:200px; min-height:100px; position:relative}
