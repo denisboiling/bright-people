@@ -554,19 +554,6 @@ span.sim_check.active { background-position:0px 0px; }
 .post_category_menu li a { display:block; padding:5px 10px; background: #dadce1; font-family:Futura; color:#6c6c6c; font-size:17px; text-decoration:none; line-height:26px}
 .post_category_menu li.active a { color:#f3452e; padding-bottom:9px; padding-top:3px; background:#fff; border-top:2px solid #f3452e; border-left:1px solid #dadce1; border-right:1px solid #dadce1}
 
-
-.post_category_menu li.profile_ico a { background:#dadce1 url(/assets/profile_icon_user.png) no-repeat 5px -25px; padding-left:30px}
-.post_category_menu li.comment_ico a { background:#dadce1 url(/assets/profile_icon_comment.png) no-repeat 5px -25px; padding-left:30px}
-.post_category_menu li.fav_ico a { background:#dadce1 url(/assets/profile_icon_fav.png) no-repeat 5px -25px; padding-left:30px}
-.post_category_menu li.org_ico a { background:#dadce1 url(/assets/category_menu_org_ico.png) no-repeat 5px -27px; padding-left:30px}
-.post_category_menu li.about_ico a { background:#dadce1 url(/assets/category_menu_about_ico.png) no-repeat 5px -27px; padding-left:30px}
-
-.post_category_menu li.profile_ico.active a { background:#fff url(/assets/profile_icon_user.png) no-repeat 5px 7px; }
-.post_category_menu li.comment_ico.active a { background:#fff url(/assets/profile_icon_comment.png) no-repeat 5px 7px; }
-.post_category_menu li.fav_ico.active a { background:#fff url(/assets/profile_icon_fav.png) no-repeat 5px 7px; }
-.post_category_menu li.org_ico.active a { background:#fff url(/assets/category_menu_org_ico.png) no-repeat 5px 7px; padding-left:30px}
-.post_category_menu li.about_ico.active a { background:#fff url(/assets/category_menu_about_ico.png) no-repeat 5px 7px; padding-left:30px}
-
 .post_category_menu li span.count { background:#f3452e; color:#fff; font-size:14px; display:inline-block; height:20px; width:20px; text-align:center; margin-top:3px; line-height:20px; -moz-border-radius:4px; border-radius:4px; -webkit-border-radius:4px; -khtml-border-radius:4px;}
 
 
