@@ -394,6 +394,7 @@ span.sim_check.active { background-position:0px 0px; }
 .pager li span {  display:block; height:30px; width:30px; text-align:center; color:red; font-size:18px; text-decoration:none; line-height:30px;}
 
 .pages { padding:10px}
+.pages.no-padding { padding: 0; }
 .pages .common { float:left; width:840px;}
 .pages .sidebar { margin-left:860px}
 
@@ -414,12 +415,18 @@ span.sim_check.active { background-position:0px 0px; }
 .detail_page .info_block .activ_address { position:relative; width:160px;}
 .detail_page .base { font-weight:bold;}
 .detail_page .cat_list { padding-bottom:20px;}
-.detail_page .info_block th { text-align:left; padding-right:10px; background:url(/assets/punktir_info.jpg) repeat-x 0px 15px;}
+.detail_page .info_block th { text-align:left; padding-right:10px; background:url(/assets/punktir_info.jpg) repeat-x 0px 16px;}
 .detail_page .info_block th span { background:#fff;}
 .detail_page .info_block th img { margin-top: 3px; }
-.detail_page .info_block td .metro_icon { float: left; margin: 2px 0 0 2px; }
+.detail_page .info_block th .metro_icon { }
 
-.to_map_link span { background:url(/assets/to_map_ico.png) no-repeat 0 0; width:21px; height:25px; display:inline-block; margin-left:5px}
+.detail_page .info_block .info_title { margin-bottom: 10px; }
+.detail_page .info_block .info_title .info_left { float: left; width: 30%; font-weight: bold; border-bottom: 1px dotted #555; }
+.detail_page .info_block .info_title .info_left .metro_icon { float: left; margin-top: 2px; }
+.detail_page .info_block .info_title .info_left.no_padding { display: block; float: none; width: 100%; margin-bottom: 5px; }
+.detail_page .info_block .info_title a { display: inline-block; margin: 0 0 5px 5px; }
+
+.to_map_link span { background:url(/assets/to_map_ico.png) no-repeat 0 0; float: left; width:21px; height:25px; display:inline-block; margin-right:5px}
 
 .detail_page .age_block, .detail_page .rating_block { float:left; width:120px; height:102px; behavior: url(border-radius.htc); -moz-border-radius:10px; border-radius:10px; -webkit-border-radius:10px; -khtml-border-radius:10px; background:#fcbe42; margin-right:10px; text-align:center; color:#7b571c; font-size:12px; line-height:1.3; padding-top:8px; margin-top:10px }
 .detail_page .left_part { float:left; width:260px }

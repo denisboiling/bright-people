@@ -4,70 +4,60 @@
       <h1><%= @organization.title %></h1>
       <div class="cat_list">
         Категории:
-  <% @organization.direction_tags.each do |tag| %>
-    <%= link_to tag.name, activities_path(tag: tag.id, kind: tag.kind) %>
-  <% end %>
+        <% @organization.direction_tags.each do |tag| %>
+          <%= link_to tag.name, activities_path(tag: tag.id, kind: tag.kind) %>
+        <% end %>
       </div>
       <div class="left_part">
-  <div class="info_block">
-    <table>
-      <tbody>
-        <tr>
-    <th><span>Метро</span></th>
-    <td><%= image_tag @organization.metro_station.metro_branch.icon.url, class: 'metro_icon' %><%= @organization.metro_station.title %></td>
-        </tr>
-        <tr>
-          <th><span>Адрес</span></th>
-          <td><%= y_link "#{@organization.location.x},#{@organization.location.y}", @organization.address, class: "to_map_link"%><span></span></td>
-        </tr>
-        <% first = true %>
-        <% @activity_addresses.each do |addr| %>
-          <tr>
-            <% if first %>
-              <th><span>Адреса кружков</span></th>
-            <% else %>
-              <th></th>
+        <div class="info_block">
+          <div class="info_title">
+              <div class="info_left"><%= image_tag @organization.metro_station.metro_branch.icon.url, class: 'metro_icon' %></div>
+              <%= @organization.metro_station.title %>      
+          </div>
+          <div class="info_title">
+            <div class="info_left no_padding"><span>Адрес</span></div>
+            <%= y_link "#{@organization.location.x},#{@organization.location.y}", @organization.address, class: "to_map_link" %>      
+          </div>
+          <div class="info_title">
+            <div class="info_left no_padding"><span>Адреса кружков</span></div>
+            <% @activity_addresses.each do |addr| %>
+            <%= y_link nil, addr, class: "to_map_link"%>
             <% end %>
-            <% if first then first = false end%>
-            <td class='act_addr'><%= y_link nil, addr, class: "to_map_link"%><span></span></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+          </div>
+        </div>
       </div>
       <div class="right_part">
-  <div class="map_wrapper">
-    <div id="org_map" data-x="<%= @organization.location.x %>" data-y="<%= @organization.location.y %>" style="width: 525px; height: 335px"></div>
-  </div>
+        <div class="map_wrapper">
+          <div id="org_map" data-x="<%= @organization.location.x %>" data-y="<%= @organization.location.y %>" style="width: 525px; height: 335px"></div>
+        </div>
       </div>
       <div class="clear"></div>
       <% if @organization.activities.present? %>
-  <div class="title_block">Все кружки учреждения:</div>
-  <div class="catalog">
-    <% @organization.activities.each do |activity| %>
-      <% if activity.published? %>
-        <div class="preview_catalog">
-          <div class="thumb">
-            <%= link_to image_tag(activity.logo.url), activity %>
-          </div>
-          <div class="info">
-            <% if activity.participant %>
-              <div class="mark"><span class="arrow"></span>Участник фестиваля-2012!</div>
-            <% end %>
-            <% if activity.approved %>
-              <span class="flag">Одобрено экспертом</span>
-            <% end %>
-            <div class="name"><%= link_to activity.title, activity %></div>
-            Детям  <%= activity.age_range %> лет
-            <br>
-            <div class="rating_readonly" data-rating="<%= activity.users_rating %>"></div>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-    <div class="clear"></div>
-  </div>
+      <div class="title_block">Все кружки учреждения:</div>
+      <div class="catalog">
+        <% @organization.activities.each do |activity| %>
+          <% if activity.published? %>
+            <div class="preview_catalog">
+              <div class="thumb">
+                <%= link_to image_tag(activity.logo.url), activity %>
+              </div>
+              <div class="info">
+                <% if activity.participant %>
+                  <div class="mark"><span class="arrow"></span>Участник фестиваля-2012!</div>
+                <% end %>
+                <% if activity.approved %>
+                  <span class="flag">Одобрено экспертом</span>
+                <% end %>
+                <div class="name"><%= link_to activity.title, activity %></div>
+                Детям  <%= activity.age_range %> лет
+                <br>
+                <div class="rating_readonly" data-rating="<%= activity.users_rating %>"></div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+        <div class="clear"></div>
+      </div>
       <% end %>
 
       <% if @organization.teachers.present? %>

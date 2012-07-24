@@ -15,9 +15,9 @@ module ApplicationHelper
   def y_link(coords, title, *options)
     unless coords.blank?
       coords = coords.split(',')
-      link_to (title + '<span></span>').html_safe, "http://maps.yandex.ru/?text=#{title}&ll=#{coords[1]},#{coords[0]}&spn=0.010986%2C0.003261&z=17&l=map", target: '_blank', class: 'to_map_link'
+      link_to ('<span></span>' + title ).html_safe, "http://maps.yandex.ru/?text=#{title}&ll=#{coords[1]},#{coords[0]}&spn=0.010986%2C0.003261&z=17&l=map", target: '_blank', class: 'to_map_link'
     else
-      link_to (title + '<span></span>').html_safe, "http://maps.yandex.ru/?text=#{title}&spn=0.010986%2C0.003261&z=16&l=map", target: '_blank', class: 'to_map_link'
+      link_to ( '<span></span>' + title ).html_safe, "http://maps.yandex.ru/?text=#{title}&spn=0.010986%2C0.003261&z=16&l=map", target: '_blank', class: 'to_map_link'
     end
   end
 

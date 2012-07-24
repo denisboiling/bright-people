@@ -9,7 +9,7 @@
     
     <div class="subway_wrapper">
       <div class="subway_icon"></div>
-      <%= f.collection_select :metro_station_ids, MetroStation.all, :id, :title, {}, { :multiple => '' } %>
+      <%= f.collection_select :metro_station_ids, MetroStation.all, :id, :title, {}, { :multiple => '', :'data-placeholder' => 'Выберите одну или несколько станций' } %>
     </div>
   </div>
   <div class="item width50">

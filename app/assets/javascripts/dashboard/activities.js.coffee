@@ -108,20 +108,27 @@ $ ->
   # TEACHERS
 
   # When teachers not presents
-  $("button.add-first").bind "click", ->
-    form = $('div.hidden_teacher').html()
-    $("div.teacher").replaceWith(form)
-    $(this).parent("div").remove()
+  $("button.add.first").bind "click", ->
+    $('#teachers').prepend($('#hidden_teacher').html())
+    $('#teachers-default-buttons').hide()
+    $('#teachers > .teacher:first-child')
+      .find('textarea')
+      .addClass('rte-zone')
+      .rte { media_url : '/assets/rte/', content_css_url : '/assets/rte.css' }
     false
 
   # When teacher present
   $("button.add").live "click", ->
     regex = /activity_teachers_attributes_([\d+])_(\w+)/
-    first_element = $('div.hidden_teacher').find('input')[0]
+    first_element = $('#hidden_teacher').find('input')[0]
     minor_number = parseInt(regex.exec($(first_element).attr('id'))[1])
     big_number = minor_number + 1
 
-    $('div.hidden_teacher').find('input').each ->
+    $('#teachers').prepend($('#hidden_teacher').html())
+
+    newTeacher = $('#teachers > .teacher:first-child')
+
+    newTeacher.find('input').each ->
       id = $(this).attr('id')
       new_id = id.replace(minor_number, big_number)
       $(this).attr('id', new_id)
@@ -130,7 +137,7 @@ $ ->
       new_name = name.replace(minor_number, big_number)
       $(this).attr('name', new_name)
 
-    $('div.hidden_teacher').find('textarea').each ->
+    newTeacher.find('textarea').each ->
       id = $(this).attr('id')
       new_id = id.replace(minor_number, big_number)
       $(this).attr('id', new_id)
@@ -138,9 +145,8 @@ $ ->
       name = $(this).attr('name')
       new_name = name.replace(minor_number, big_number)
       $(this).attr('name', new_name)
-
-    form = $('div.hidden_teacher').html()
-    $(this).parent(".button_edit").parent(".teacher").after(form)
+        .addClass('rte-zone')
+        .rte { media_url : '/assets/rte/', content_css_url : '/assets/rte.css' }
     false
 
   $("button.delete").live "click", ->
@@ -152,6 +158,8 @@ $ ->
       dataType: 'json'
       data: { id: teacher_id }
     main_div.remove()
+    if !$('#teachers > .teacher').length 
+      $('#teachers-default-buttons').show()
     false
 
 
