@@ -1,9 +1,8 @@
-# encoding: utf-8
-
+# -*- coding: utf-8 -*-
 module FavouritesHelper
   def favourite_block(object)
     return '' unless current_user
-    
+
     args = { relation_id: object.id,
              relation_type: object.class.name,
              user_id: current_user.id }

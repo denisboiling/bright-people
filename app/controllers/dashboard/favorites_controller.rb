@@ -1,4 +1,5 @@
 class Dashboard::FavoritesController < Dashboard::BaseController
+  # TODO: recheck!!!!
   def index
     @favourites = current_user.favourites
   end
@@ -15,6 +16,6 @@ class Dashboard::FavoritesController < Dashboard::BaseController
   def destroy
     favourite = Favourite.find(params[:id])
     favourite.destroy if favourite.user == current_user
-    redirect_to favourites_path
+    redirect_to dashboard_favourites_path
   end
 end
