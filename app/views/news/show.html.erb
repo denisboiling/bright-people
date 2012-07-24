@@ -17,6 +17,11 @@
 	  <%= link_to t.name, tag_articles_path(tag: t.name) %>
 	<% end %>
       </div>
+      <div class="post_share post_info">
+        <div class="title">Делись с друзьями</div>
+        <%= render 'shared/share_social' %>
+        <div class="clear"></div>
+      </div>
     </div>
   </div>
 
