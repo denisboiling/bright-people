@@ -50,6 +50,9 @@ class User < ActiveRecord::Base
 
   scope :authors_with_photos, authors.where('avatar_file_size IS NOT NULL OR avatar_file_size != 0')
 
+  # Show all experts and authors with photos
+  scope :experts_authors, where('role_id in (?) AND (avatar_file_size IS NOT NULL OR avatar_file_size != 0)', [4,6])
+
   # Sphinx should indexing only roles experts
   define_index do
     indexes :name
