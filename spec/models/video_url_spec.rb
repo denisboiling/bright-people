@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe VideoUrl, current: true do
+describe VideoUrl do
   it "Check video urls regexp" do
     urls = [ 'http://www.youtube.com/watch?v=iYWzMvlj2RQ',
              'http://youtu.be/iYWzMvlj2RQ' ]

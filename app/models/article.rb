@@ -26,7 +26,7 @@ class Article < ActiveRecord::Base
 
   validates :title, :content, :author, :article_category_id,
             :publication_date, presence: :true
-  
+
   scope :published, where(published: true)
   scope :not_published, where(published: false)
   scope :bests, where(best: true)
@@ -39,6 +39,15 @@ class Article < ActiveRecord::Base
   define_index do
     indexes title, sortable: true
     indexes content
+    where sanitize_sql(["published", true])
+  end
+
+  # Assing role 'author' to user who created article
+  after_create :check_author_role
+
+  def check_author_role
+    return if author.role.name != 'user'
+    author.author!
   end
 
   class << self

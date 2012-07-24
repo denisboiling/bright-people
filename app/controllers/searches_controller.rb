@@ -10,12 +10,12 @@ class SearchesController < ApplicationController
               [Article]
             when "Конкурсы"
               [Contest]
-            when "Экспертный совет"
-              [Sponsor]
+            when "Личности"
+              [Sponsor, User]
             when "Спецпроекты"
               [SpecialProject]
             else
-              [Activity, Organization, Article, Sponsor, SpecialProject, Contest]
+              [Activity, Organization, Article, Sponsor, SpecialProject, Contest, User]
             end
     @results = ThinkingSphinx.search(params[:q], star: true, classes: range)
     @results = @results.page(params[:page]) if params[:page]

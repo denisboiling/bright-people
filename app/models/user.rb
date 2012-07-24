@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :favourites
   has_many :comments
   has_many :comment_notifies, class_name: 'UserCommentNotify', through: :comments
-  has_many :interviews, foreign_key: :author_id
+
   has_many :articles, foreign_key: :author_id
 
   belongs_to :activity
@@ -29,13 +29,6 @@ class User < ActiveRecord::Base
 
   validates :role, presence: true
 
-  scope :experts, where(role_id: 4)
-  scope :managers, where(role_id: 5)
-
-  scope :usuals, where(role_id: 1)
-  scope :authors, joins(:articles).uniq
-  scope :authors_with_photos, authors.where('avatar_file_size IS NOT NULL OR avatar_file_size != 0')
-
   # Callbacks
   before_validation(on: :create) do
     self.role = Role.user if role.blank?
@@ -49,6 +42,19 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :name, :password, :remember_me
   attr_accessible :vkontakte_id, :facebook_id, :odnoklassniki_id
+
+  scope :usuals, where(role_id: 1)
+  scope :experts, where(role_id: 4)
+  scope :managers, where(role_id: 5)
+  scope :authors, where(role_id: 6)
+
+  scope :authors_with_photos, authors.where('avatar_file_size IS NOT NULL OR avatar_file_size != 0')
+
+  # Sphinx should indexing only roles experts
+  define_index do
+    indexes :name
+    where "role_id in (4)"
+  end
 
   def manager?
     role == Role.manager
@@ -84,12 +90,6 @@ class User < ActiveRecord::Base
     comments.map(&:relation)
       .select {|r| r.class.name.in? Comment.possible_relations }
       .uniq
-  end
-
-  class << self
-    def experts_for_main
-      User.experts.random(5)
-    end
   end
 
   def self.find_or_create_for_vkontakte(data)
@@ -143,7 +143,7 @@ class User < ActiveRecord::Base
     false
   end
 
-  # User already voted for this activity 
+  # User already voted for this activity
   def already_vote?(object)
     case object
     when Activity
@@ -151,6 +151,15 @@ class User < ActiveRecord::Base
     when ContestMembership
       contest_votes.where(membership_id: object.id).any?
     end
-    
+  end
+
+  def author!
+    update_attribute(:role, Role.author)
+  end
+
+  class << self
+    def experts_for_main
+      User.experts.random(5)
+    end
   end
 end

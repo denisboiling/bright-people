@@ -17,3 +17,7 @@ expert:
 manager:
   id: 5
   name: manager
+
+author:
+  id: 6
+  name: author

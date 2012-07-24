@@ -45,14 +45,12 @@
       <div id="overflow">
 
         <div class="inner">
-          <% Sponsor.order('id ASC').each do |sponsor| %>
+          <% Sponsor.all.each do |sponsor| %>
             <article>
               <div class="info">
                 <%= sponsor.first_name %><br /><span><%= sponsor.last_name.upcase %></span>
-                
               </div>
               <%= link_to image_tag(sponsor.photo.url(:main)), sponsor_path(sponsor), class: :thumb %>
-              
             </article>
           <% end %>
 

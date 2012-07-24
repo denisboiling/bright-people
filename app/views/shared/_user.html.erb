@@ -1,10 +1,10 @@
-<div class="name"><%= link_to object.title, object %></div>
+<div class="name"><%= link_to object.name, expert_path(object) %></div>
 
 <div class="short_desc"><%= object.description %></div>
 
 <div class="info">
   <em>В разделе</em>
-  <%= link_to 'Москва для детей', '#'%>
+  <%= link_to 'Личности', '#'%>
   <em>от</em>
   <%= Russian::strftime(object.created_at, "%e %B %Y") %>
 </div>

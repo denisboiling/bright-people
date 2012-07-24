@@ -52,6 +52,7 @@ class Activity < ActiveRecord::Base
                            path: ":rails_root/public/system/activities/:attachment/:id/:style/:filename",
                            url: "/system/activities/:attachment/:id/:style/:filename",
                            default_style: :thumb, default_url: 'loading.gif'
+  alias photo logo
 
   accepts_nested_attributes_for :photos, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :videos, allow_destroy: true, reject_if: :all_blank

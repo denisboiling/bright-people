@@ -221,6 +221,8 @@ ru:
         first_name: Имя
         last_name: Фамилия
         description: Описание
+        text: Полный текст
+        position: Позиция
       activity_approval:
         activity: Кружок
         user: Кто одобрил
