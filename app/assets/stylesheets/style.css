@@ -386,6 +386,10 @@ span.sim_check.active { background-position:0px 0px; }
 
 .entertainment_list .preview_catalog { width:25%;}
 
+.inf_page { background: url(/assets/expert_list_bg_small.jpg) no-repeat center 34px; }
+.inf_page .preview_catalog { width: 25%; margin-bottom: 10px; }
+.inf_page .preview_catalog .name { height: auto; text-align: center; }
+
 /* CATALOGS  PAGER */
 .pager { text-align:center}
 .pager ul {}
@@ -421,13 +425,14 @@ span.sim_check.active { background-position:0px 0px; }
 .detail_page .info_block th .metro_icon { }
 
 .detail_page .info_block .info_title { margin-bottom: 10px; }
-.detail_page .info_block .info_title .info_left { float: left; width: 30%; margin-right: 5%; font-weight: bold; border-bottom: 1px dotted #555; }
+.detail_page .info_block .info_title .info_left { float: left; width: 30%; margin-right: 5%; font-weight: bold; background:url(/assets/punktir_info.jpg) repeat-x 0px 17px; }
 .detail_page .info_block .info_title .info_left .metro_icon { float: left; margin-top: 2px; }
 .detail_page .info_block .info_title .info_left.no_padding { display: block; float: none; width: 100%; margin-bottom: 5px; }
 .detail_page .info_block .info_title .info_right { width: 70%; margin-left: 35%; }
 .detail_page .info_block .info_title a { display: inline-block; margin: 0 0 5px 5px; }
 
-.to_map_link span { background:url(/assets/to_map_ico.png) no-repeat 0 0; float: left; width:21px; height:25px; display:inline-block; margin-right:5px}
+.to_map_link { position: relative; padding-left: 26px; }
+.to_map_link span { background:url(/assets/to_map_ico.png) no-repeat 0 0; position: absolute; left: 0; top: 1px; width:21px; height:25px; }
 
 .detail_page .age_block, .detail_page .rating_block { float:left; width:120px; height:102px; behavior: url(border-radius.htc); -moz-border-radius:10px; border-radius:10px; -webkit-border-radius:10px; -khtml-border-radius:10px; background:#fcbe42; margin-right:10px; text-align:center; color:#7b571c; font-size:12px; line-height:1.3; padding-top:8px; margin-top:10px }
 .detail_page .left_part { float:left; width:260px }
