@@ -386,6 +386,10 @@ span.sim_check.active { background-position:0px 0px; }
 
 .entertainment_list .preview_catalog { width:25%;}
 
+.inf_page { background: url(/assets/expert_list_bg_small.jpg) no-repeat center 34px; }
+.inf_page .preview_catalog { width: 25%; margin-bottom: 10px; }
+.inf_page .preview_catalog .name { height: auto; text-align: center; }
+
 /* CATALOGS  PAGER */
 .pager { text-align:center}
 .pager ul {}
