@@ -164,13 +164,7 @@ if(typeof $.fn.rte === "undefined") {
 
             var iframeDoc = $(iframe.contentWindow.document);
 
-            iframeDoc.mouseup(function(){
-                setSelectedType(getSelectionElement(), select);
-                return true;
-            });
-
             iframeDoc.keyup(function() {
-                setSelectedType(getSelectionElement(), select);
                 var body = $('body', iframeDoc);
                 if(body.scrollTop() > 0) {
                     var iframe_height = parseInt(iframe.style['height'])
