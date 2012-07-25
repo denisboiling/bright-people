@@ -29,8 +29,9 @@ class Article < ActiveRecord::Base
 
   scope :published, where(published: true)
   scope :not_published, where(published: false)
-  scope :bests, where(best: true)
-  scope :expect, lambda { |article| where('published = true AND id != ?', article.id) }
+
+  scope :bests, published.where(best: true)
+  scope :except_for, lambda { |_article| published.where('id != ?', _article.id) }
 
   accepts_nested_attributes_for :photos, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :videos, allow_destroy: true, reject_if: :all_blank
