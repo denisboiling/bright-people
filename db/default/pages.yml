@@ -244,3 +244,7 @@ about_bank:
 about_bank:
   permalink: mission
   text: "#TODO!!"
+
+inf:
+  permalink: inf
+  text: TODO TODO
