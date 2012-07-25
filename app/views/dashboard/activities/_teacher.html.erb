@@ -6,7 +6,7 @@
 	<%= t.text_field :name %>
 	<br>
 	2. Биография
-	<%= t.text_area :description %>
+	<%= t.text_area :description, class: (teacher.id ? 'teacher_bio' : '') %>
       </div>
       <div class="item width50">
 	3. Портрет

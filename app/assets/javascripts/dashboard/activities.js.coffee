@@ -1,5 +1,10 @@
 $ ->
 
+  # Add class zte-zone to each teacher descriptions
+  $('.teacher_bio').each ->
+    $(this).addClass('rte-zone')
+
+  # Init simple html editor to all textara with rte-zone class
   $('.rte-zone').rte { media_url : '/assets/rte/', content_css_url : '/assets/rte.css' }
 
   $('select#activity_metro_station_ids').chosen()
@@ -12,9 +17,6 @@ $ ->
     # So click event WILL be triggered :D
     $(this).parent().parent().next().find('.chzn-results').fadeOut('fast')
     
-  $('#activity_metro-station_ids .chzn-single span')
-  .change -> console.log('yay!')
-
   # CATEGORY
   $("select#activity_is_educational").bind 'change', ->
     # REFACTOR:
@@ -68,6 +70,8 @@ $ ->
     $('form.edit_activity').append(input)
 
   $('div.save button').bind 'click', ->
+    $('div#hidden_teacher').remove()
+
     days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday',
            'saturday', 'sunday']
     for day in days
@@ -77,8 +81,6 @@ $ ->
         end = $(this).attr('data-end')
         chunks.push {start: start, end: end}
       input_to_form(day, JSON.stringify(chunks))
-
-    $('div.hidden_teacher').remove()
     
   $('#activity-edit-schedule .add').bind 'click', ->
     $('#activity-edit-ok').attr( 'data-day', $(this).parent().attr('data-day') )
@@ -148,6 +150,7 @@ $ ->
         .addClass('rte-zone')
         .rte { media_url : '/assets/rte/', content_css_url : '/assets/rte.css' }
     false
+  
 
   $("button.delete").live "click", ->
     main_div = $(this).parents("div.teacher:first")

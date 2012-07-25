@@ -4,23 +4,23 @@
     <span class="title">Преподаватели</span>
 
     <div id="teachers">
-    
-      <% f.object.teachers.order('created_at ASC').each do |teacher| %>
-        <%= render 'teacher', f: f, teacher: teacher, new_data: false %>
-      <% end %>
-      
-      <% unless f.object.teachers.present? %>
-        <div class="button_edit first" id="teachers-default-buttons">
-          <button></button>
-          <button class="add first">Добавить еще одного преподавателя</button>
-          <div class="clear"></div>
-        </div>
+
+      <% if f.object.teachers.present? %>
+	<% f.object.teachers.each do |teacher| %>
+	  <%= render 'teacher', f: f, teacher: teacher, new_data: false %>
+	<% end %>
+      <% else %>
+	<div class="button_edit first" id="teachers-default-buttons">
+	  <button></button>
+	  <button class="add first">Добавить еще одного преподавателя</button>
+	  <div class="clear"></div>
+	</div>
       <% end %>
 
       <div id="hidden_teacher" class="hidden">
-        <%= render 'teacher', f: f, teacher: f.object.teachers.new, new_data: true %>
+	<%= render 'teacher', f: f, teacher: f.object.teachers.new, new_data: true %>
       </div>
-      
+
     </div>
   </div>
 </div>
