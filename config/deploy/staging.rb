@@ -21,6 +21,7 @@ after "deploy:restart","deploy:cleanup"
 
 before "bundle:install", "deploy:remove_assets_folder"
 before "deploy:finalize_update", "shared:symlinks"
+before "deploy:finalize_update", "shared:disallow_robots"
 
 after "deploy:update_code", "unicorn:stop"
 after "deploy:update_code", "thinking_sphinx:stop"

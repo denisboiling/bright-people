@@ -15,8 +15,8 @@ BrightPeople::Application.configure do
   config.i18n.fallbacks = true
   config.active_support.deprecation = :notify
 
-  config.middleware.use ExceptionNotifier, :email_prefix => "[Notify bright-people]",
-                                           :sender_address => %{"notify" <notify@bender.srv.balticit.ru>},
+  config.middleware.use ExceptionNotifier, :email_prefix => "[Notify bright-people] ",
+                                           :sender_address => %{"notify"},
                                            :exception_recipients => %w{ kremenev@balticit.ru }
   config.action_mailer.delivery_method = :sendmail
   config.action_mailer.perform_deliveries = true
