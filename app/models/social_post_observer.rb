@@ -30,7 +30,7 @@ class SocialPostObserver < ActiveRecord::Observer
     unless VkPage.first.nil?
       standalone = VK::Standalone.new :app_id => '3051096'
       # TODO !!! change owner_id and attachment when deploying to production!
-      standalone.wall.post(owner_id: '-40194424', attachments: "#{host_name}/#{model.class.name.downcase.pluralize}/" + model.id.to_s, from_group: 1, access_token: VkPage.first.access_token)
+      standalone.wall.post(owner_id: '-40194424', attachments: "#{Rails.application.config.host_name}/#{model.class.name.downcase.pluralize}/" + model.id.to_s, from_group: 1, access_token: VkPage.first.access_token)
     end
   end
 
