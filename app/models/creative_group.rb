@@ -1,5 +1,7 @@
 class CreativeGroup < ActiveRecord::Base
-  attr_accessible :name, :description, :profession, :avatar
+  default_scope :order => 'priority DESC'
+
+  attr_accessible :name, :description, :profession, :avatar, :priority
 
   has_attached_file :avatar, styles: { medium: "300x300^#", thumb: "125x125^#" },
                              path: ":rails_root/public/system/creative_group/:attachment/:id/:style/:filename",
