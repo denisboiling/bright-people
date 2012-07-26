@@ -50,42 +50,42 @@
     <% unless @activity.metro_station.uniq.blank? %>
       <% @activity.metro_station.uniq.each do |ms| %>
       <div class="info_title">
-        <div class="info_left"><%= image_tag ms.metro_branch.icon.url %></div>
-        <div class="info_right"><%= ms.title %></div>
+        <div class="info_left"><%= image_tag ms.metro_branch.icon.url, :class => 'metro_icon' %></div>
+        <div class="info_right"><span><%= ms.title %></span></div>
       </div>
       <% end %>
     <% end %>
       <% unless @activity.region.title.blank? %>
 	    <div class="info_title">
-	      <div class="info_left">Округ</div>
-	      <div class="info_right"><%= @activity.region.title %></div>
+	      <div class="info_left"><span>Округ</span></div>
+	      <div class="info_right"><span><%= @activity.region.title %></span></div>
 	    </div>
       <% end %>
       <% first = true %>
       <% unless @activity.address.blank? %>
         <% @activity.address.split(/; |;/).each do |addr| %>
         <div class="info_title">
-          <div class="info_left">Адрес</div>
+          <div class="info_left"><span>Адрес</span></div>
           <div class="info_right"><div class="activ_address"><%= y_link((first ? @activity.coords : nil), addr) %></div></div>
             <% if first then first = false end %>
         </div>
         <% end %>
       <% else %>
       <div class="info_title">
-        <div class="info_left">Адрес</div>
+        <div class="info_left"><span>Адрес</span></div>
         <div class="info_right"><div class="activ_address"><%= @activity.address_dummy %></div></div>
       </div>
       <% end %>
       <% unless @activity.site.blank? %>
       <div class="info_title">
-	      <div class="info_left">Сайт</div>
+	      <div class="info_left"><span>Сайт</span></div>
 	      <div class="info_right"><div class="activ_site"><a href=<%= @activity.site %> target="_blank" ><%= @activity.site %></a></div></div>
 	    </div>
       <% end %>
       <% unless @activity.phone.blank? %>
 	    <div class="info_title">
-	      <div class="info_left">Телефон</div>
-	      <div class="info_right"><%= @activity.phone %></div>
+	      <div class="info_left"><span>Телефон</span></div>
+	      <div class="info_right"><span><%= @activity.phone %></span></div>
 	    </div>
       <% end %>
 	</div>
