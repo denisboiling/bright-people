@@ -40,6 +40,7 @@ gem 'nokogiri'
 gem 'high_voltage'
 gem 'fb_graph'
 gem 'exception_notification'
+gem 'sanitize' # to remove html from articles content when auto posting to facebook (and maybe vk)
 
 group :development, :test do
   gem 'cucumber-rails', require: false

@@ -7,6 +7,7 @@ Article.all.each do |article|
   (0..3).each do users << User.all.shuffle.first end
   article.update_attribute(:picture, File.new(photos.shuffle.first))
   article.update_attribute(:author_id, users.shuffle.first.id)
+  article.update_attribute(:publication_date, DateTime.now.to_date())
 end
 
 arr = Array.new

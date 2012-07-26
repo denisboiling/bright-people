@@ -311,6 +311,8 @@ GEM
       i18n (>= 0.5.0)
     rvm-capistrano (1.2.5)
       capistrano (>= 2.0.0)
+    sanitize (2.0.3)
+      nokogiri (>= 1.4.4, < 1.6)
     sass (3.1.20)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
@@ -410,6 +412,7 @@ DEPENDENCIES
   rspec-rails
   russian
   rvm-capistrano
+  sanitize
   sass-rails (~> 3.2.3)
   sextant
   spatial_adapter
