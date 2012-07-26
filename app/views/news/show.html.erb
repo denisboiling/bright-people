@@ -4,7 +4,7 @@
 <!-- for vk -->
 <meta name="title" content="<%= @news.title %>">
 <meta name="description" content="<%= truncate(@news.content, length: 140, omission: '...') %>" />
-<link rel="image_src" href="<%= @news.photo.url(:original) %>" />
+<link rel="image_src" href="<%= @news.photo.url(:slider) %>" />
 
 <div class="pages">
   <div class="common">
