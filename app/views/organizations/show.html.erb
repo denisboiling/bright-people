@@ -14,7 +14,7 @@
         <div class="info_block">
           <div class="info_title">
               <div class="info_left"><%= image_tag @organization.metro_station.metro_branch.icon.url, class: 'metro_icon' %></div>
-              <%= @organization.metro_station.title %>      
+              <div class="info_right"><span><%= @organization.metro_station.title %></span></div>  
           </div>
           <div class="info_title">
             <div class="info_left no_padding"><span>Адрес</span></div>
