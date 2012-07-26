@@ -2,6 +2,7 @@
   <%= f.inputs 'Основное' do %>
     <%= f.input :name %>
     <%= f.input :profession %>
+    <%= f.input :position, :label => "Приоритет (чем меньше - тем ближе к началу списка)" %>
 
     <%= render 'shared/editor_toolbar', element_id: 'creative_group_description' %>
     <%= f.input :description, input_html: { size: 10 } %>

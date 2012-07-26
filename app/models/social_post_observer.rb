@@ -1,4 +1,5 @@
 class SocialPostObserver < ActiveRecord::Observer
+  include ActionView::Helpers::TextHelper
   # TODO: rewrite this shit!!!!
   observe :article, :news
 
@@ -18,11 +19,18 @@ class SocialPostObserver < ActiveRecord::Observer
   def publish(model)
     unless FbPage.first.nil?
       page = FbGraph::Page.new(FbPage.first.identifier, :access_token => FbPage.first.token)
+      description = model.class.name == 'Article' ? model.short_description : model.content
       pic = model.photo ? "http://images.bright-people.ru" + model.photo.url(:medium, false) : nil
       page.feed!(:message => model.title,
                  :link => "http://bright-people.ru/#{model.class.name.downcase.pluralize}/" + model.id.to_s,
-                 :picture => pic
+                 :picture => pic,
+                 :description => description
                 )
+    end
+    unless VkPage.first.nil?
+      standalone = VK::Standalone.new :app_id => '3051096'
+      # TODO !!! change owner_id and attachment when deploying to production!
+      standalone.wall.post(owner_id: '-40194424', attachments: "http://stagebp.balticit.ru/#{model.class.name.downcase.pluralize}/" + model.id.to_s, from_group: 1)
     end
   end
 

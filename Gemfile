@@ -39,7 +39,9 @@ gem 'daemons'
 gem 'nokogiri'
 gem 'high_voltage'
 gem 'fb_graph'
+gem 'vk-ruby', github: 'zinenko/vk-ruby'
 gem 'exception_notification'
+gem 'sanitize' # to remove html from articles content when auto posting to facebook (and maybe vk)
 
 group :development, :test do
   gem 'cucumber-rails', require: false
