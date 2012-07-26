@@ -1,7 +1,7 @@
 <% content_for :title do %>
   Фестиваль Яркие Люди | Новости фестиваля | <%= @news.title %>
 <% end %>
-<% content_for :vk_data do %>
+<% content_for :after_head do %>
 <!-- for vk -->
   <meta name="title" content="<%= @news.title %>">
   <meta name="description" content="<%= truncate(@news.content, length: 140, omission: '...') %>" />
