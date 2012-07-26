@@ -27,6 +27,11 @@ class SocialPostObserver < ActiveRecord::Observer
                  :description => description
                 )
     end
+    unless VkPage.first.nil?
+      standalone = VK::Standalone.new :app_id => '3051096'
+      # TODO !!! change owner_id and attachment when deploying to production!
+      standalone.wall.post(owner_id: '-40194424', attachments: "http://stagebp.balticit.ru/#{model.class.name.downcase.pluralize}/" + model.id.to_s, from_group: 1)
+    end
   end
 
 end

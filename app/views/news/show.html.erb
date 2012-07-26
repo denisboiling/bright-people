@@ -1,6 +1,10 @@
 <% content_for :title do %>
   Фестиваль Яркие Люди | Новости фестиваля | <%= @news.title %>
 <% end %>
+<!-- for vk -->
+<meta name="title" content="<%= @news.title %>">
+<meta name="description" content="<%= truncate(@news.content, length: 140, omission: '...') %>" />
+<link rel="image_src" href="<%= @news.photo.url(:original) %>" />
 
 <div class="pages">
   <div class="common">
