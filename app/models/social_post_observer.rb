@@ -19,16 +19,12 @@ class SocialPostObserver < ActiveRecord::Observer
   def publish(model)
     unless FbPage.first.nil?
       page = FbGraph::Page.new(FbPage.first.identifier, :access_token => FbPage.first.token)
-      if model.class.name == "Article" then
-        descript = truncate(Sanitize.clean(model.short_description), separator: '.', omission: '.', length: 240)
-      else
-        descript = truncate(Sanitize.clean(model.content), separator: '.', omission: '.', length: 240)
-      end
+      description = (model.class.name == 'Article' ? model.short_description : model.content)
       pic = model.photo ? "http://images.bright-people.ru" + model.photo.url(:medium, false) : nil
       page.feed!(:message => model.title,
                  :link => "http://bright-people.ru/#{model.class.name.downcase.pluralize}/" + model.id.to_s,
                  :picture => pic,
-                 :description => descript
+                 :description => description
                 )
     end
   end
