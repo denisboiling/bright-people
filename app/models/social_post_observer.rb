@@ -28,7 +28,7 @@ class SocialPostObserver < ActiveRecord::Observer
       page.feed!(:message => model.title,
                  :link => "http://bright-people.ru/#{model.class.name.downcase.pluralize}/" + model.id.to_s,
                  :picture => pic,
-                 :description => truncate(Sanitize.clean(model.content), separator: '.', omission: '.', length: 240)
+                 :description => descript
                 )
     end
   end
