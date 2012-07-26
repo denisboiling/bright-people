@@ -11,14 +11,14 @@ ActiveAdmin.register CreativeGroup do
     end
     column :name
     column :profession
-    column :priority
+    column :position
     default_actions
   end
 
   form partial: 'form'
 
   show do
-    attributes_table :name, :profession, :description, :priority
+    attributes_table :name, :profession, :description, :position
 
     panel 'Фотография' do
       image_tag(creative_group.avatar.url(:original))
