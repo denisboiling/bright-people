@@ -11,7 +11,6 @@
   <%== yield(:body).present? ? yield(:body) : '<body>' %>
     <div id="wrapper">
       <div id="header">
-        <div class="notify notice">Я предупреждение, я не хочу предупреждать. Я хочу "АЛЯРМ!"</div>
 	<%= flash_messages %>
         <%= render partial: 'shared/header' %>
       </div>
