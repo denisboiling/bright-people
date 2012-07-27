@@ -49,7 +49,11 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 
 #flashcontent_1 { background:url(/assets/header_cap.jpg) no-repeat center top;}
 
-
+.notify { position: absolute; z-index: 1; width: 100%; padding: 10px 10px 10px 45px; font-size: 90%; background-repeat: no-repeat; background-position: 10px center; -webkit-box-shadow: 0 0 7px #000; }
+.notify.notice { color: #BA912D; background-image: url(/assets/notify-notice.png); background-color: #FFF1CF; }
+.notify.message { color: #186FAD; background-image: url(/assets/notify-message.png); background-color: #DAE8F2; }
+.notify.success { color: #3E960E; background-image: url(/assets/notify-success.png); background-color: #DEF2D3; }
+.notify.error { color: #A33112; background-image: url(/assets/notify-error.png); background-color: #FAE2DC; }
 
 #main_page .color_line_left { background:url(/assets/color_line.jpg) repeat-y left 100px}
 #main_page .color_line_right { background:url(/assets/color_line.jpg) repeat-y right}
