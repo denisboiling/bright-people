@@ -1,6 +1,6 @@
 class Article < ActiveRecord::Base
   belongs_to :category, class_name: 'ArticleCategory', foreign_key: :article_category_id
-  belongs_to :author, class_name: 'User'
+  belongs_to :author, class_name: 'User', foreign_key: :author_id
 
   has_many :comments, as: :relation
   has_many :favourites, as: :relation, dependent: :destroy
@@ -21,7 +21,7 @@ class Article < ActiveRecord::Base
   attr_accessible :title, :content, :author_id, :article_category_id,
                   :article_tag_list, :picture, :short_description,
                   :published, :biography, :best, :publication_date,
-                  :photos_attributes,  :videos_attributes
+                  :photos_attributes,  :videos_attributes, :posted
 
 
   validates :title, :content, :author, :article_category_id,

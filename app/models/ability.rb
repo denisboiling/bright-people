@@ -7,6 +7,8 @@ class Ability
     can :read, Activity
     can :approve, Activity if admin_user
 
+    can :manage, :social if admin_user
+
     can :manage, :dashboard if user.persisted?
     can :manage, :dashboard_activity if user.manager?
 

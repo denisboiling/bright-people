@@ -14,7 +14,7 @@ ActiveAdmin.register News do
     column :title do |news|
       link_to news.title, news
     end
-    column :content
+    column :short_description
     column :publication_date
     default_actions
   end
@@ -22,7 +22,7 @@ ActiveAdmin.register News do
   form partial: "form"
 
   show do
-    attributes_table :title, :content, :publication_date
+    attributes_table :title, :short_description, :publication_date
 
     panel 'Фотография' do
       image_tag(news.photo.url(:original))
