@@ -22,10 +22,12 @@ class Activity < ActiveRecord::Base
     end
   end
 
-  validates :title, :region, :description, :organization, presence: true
+  validates :title, :description, :organization, presence: true
+
+  before_save :set_region
 
   belongs_to :organization
-  has_and_belongs_to_many :metro_station
+  has_and_belongs_to_many :metro_stations
 
   has_many :activity_direction_relations
   has_many :direction_tags, through: :activity_direction_relations
@@ -169,5 +171,9 @@ class Activity < ActiveRecord::Base
       arr
     end
 
+  end
+
+  def set_region
+    self.region = self.metro_stations.first.region if self.metro_stations.present?
   end
 end
