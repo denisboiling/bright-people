@@ -27,7 +27,7 @@ ActiveAdmin.register Organization do
       f.input :coords, as: :hidden, input_html: { class: 'hidden_coords'}
       f.input :coords, input_html: { class: 'edit_map' }, label: false
     end
-    f.buttons
+    f.actions
   end
 
   show do

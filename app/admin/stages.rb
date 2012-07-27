@@ -24,7 +24,7 @@ ActiveAdmin.register Stage do
       f.input :small_pic, as: :file
       f.input :large_pic, as: :file
     end
-    f.buttons
+    f.actions
   end
 
   show do
