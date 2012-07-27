@@ -1,3 +1,4 @@
+# encoding: utf-8
 namespace :fixes do
   task :fix_age_tags => :environment do
     Activity.all.each do |activity|
