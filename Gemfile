@@ -20,7 +20,7 @@ end
 gem 'jquery-rails'
 gem 'jquery-ui-themes'
 gem 'unicorn'
-gem 'activeadmin', :git => 'git://github.com/gregbell/active_admin.git'
+gem 'activeadmin'
 gem 'cancan'
 gem 'spatial_adapter'
 gem 'russian'
