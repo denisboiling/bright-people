@@ -21,7 +21,7 @@ class Article < ActiveRecord::Base
   attr_accessible :title, :content, :author_id, :article_category_id,
                   :article_tag_list, :picture, :short_description,
                   :published, :biography, :best, :publication_date,
-                  :photos_attributes,  :videos_attributes, :is_posted
+                  :photos_attributes,  :videos_attributes, :posted
 
 
   validates :title, :content, :author, :article_category_id,

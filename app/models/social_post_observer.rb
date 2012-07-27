@@ -11,7 +11,7 @@ class SocialPostObserver < ActiveRecord::Observer
 
   # TODO: News or Artilce has't field published, replace this shit
   def after_update(model)
-    if model.published? and !model.is_posted
+    if model.published? and !model.posted
       publish(model)
     end
   end
@@ -30,7 +30,7 @@ class SocialPostObserver < ActiveRecord::Observer
     unless VkPage.first.nil?
       standalone = VK::Standalone.new :app_id => '3051096'
       standalone.wall.post(owner_id: "#{Rails.application.config.vk_public}", attachments: "#{Rails.application.config.host_name}/#{model.class.name.downcase.pluralize}/" + model.id.to_s, from_group: 1, access_token: VkPage.first.access_token)
-      model.is_posted = true
+      model.posted = true
       model.save
     end
   end

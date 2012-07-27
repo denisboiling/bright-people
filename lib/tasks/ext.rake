@@ -10,7 +10,7 @@ namespace :ext do
 end
 
 task :articles_posting => :environment do
-  Article.where(:is_posted => false).each do |a|
+  Article.where(:posted => false).each do |a|
     unless FbPage.first.nil?
       page = FbGraph::Page.new(FbPage.first.identifier, :access_token => FbPage.first.token)
       description = a.short_description
@@ -24,14 +24,14 @@ task :articles_posting => :environment do
     unless VkPage.first.nil?
       standalone = VK::Standalone.new :app_id => '3051096'
       standalone.wall.post(owner_id: "#{Rails.application.config.vk_public}", attachments: "#{Rails.application.config.host_name}/articles/" + a.id.to_s, from_group: 1, access_token: VkPage.first.access_token)
-      a.is_posted = true
+      a.posted = true
       a.save
     end
   end
 end
 
 task :news_posting => :environment do
-  News.where(:is_posted => false).each do |n|
+  News.where(:posted => false).each do |n|
     unless FbPage.first.nil?
       page = FbGraph::Page.new(FbPage.first.identifier, :access_token => FbPage.first.token)
       description = n.content
@@ -45,7 +45,7 @@ task :news_posting => :environment do
     unless VkPage.first.nil?
       standalone = VK::Standalone.new :app_id => '3051096'
       standalone.wall.post(owner_id: "#{Rails.application.config.vk_public}", attachments: "#{Rails.application.config.host_name}/news/" + n.id.to_s, from_group: 1, access_token: VkPage.first.access_token)
-      n.is_posted = true
+      n.posted = true
       n.save
     end
   end
