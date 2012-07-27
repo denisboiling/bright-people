@@ -4,5 +4,6 @@
     <%= f.input :picture, as: :file, hint: f.template.image_tag(f.object.picture.url) %>
     <%= f.input :content, input_html: { size: 10 } %>
     <%= f.input :is_parent, as: :select, include_blank: false %>
+    <%= link_to_remove_association "Удалить отзыв", f %>
   <% end %>
 </div>
