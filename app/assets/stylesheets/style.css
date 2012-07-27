@@ -47,7 +47,7 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 #header .header_flash_wrapper  { position:relative; background:#7e1222 url(/assets/header_bg.jpg) no-repeat center top; height:200px;}
 #header .header_flash_wrapper a { display:block; height:200px; width:100%; position:absolute; z-index:10}
 
-#header .header_flash_wrapper .cap { background:url(/assets/header_cap.jpg) no-repeat center top; height:200px;}
+#flashcontent_1 { background:url(/assets/header_cap.jpg) no-repeat center top;}
 
 
 
@@ -426,11 +426,13 @@ span.sim_check.active { background-position:0px 0px; }
 .detail_page .info_block th img { margin-top: 3px; }
 .detail_page .info_block th .metro_icon { }
 
-.detail_page .info_block .info_title { margin-bottom: 10px; }
-.detail_page .info_block .info_title .info_left { float: left; width: 30%; margin-right: 5%; font-weight: bold; background:url(/assets/punktir_info.jpg) repeat-x 0px 17px; }
-.detail_page .info_block .info_title .info_left .metro_icon { float: left; margin-top: 2px; }
+.detail_page .info_block .info_title { margin-bottom: 10px; background:url(/assets/punktir_info.jpg) repeat-x 0px 15px; }
+.detail_page .info_block .info_title .info_left { float: left; width: 30%; margin-right: 5%; font-weight: bold;  }
+.detail_page .info_block .info_title .info_left > * { background-color: #fff; }
+.detail_page .info_block .info_title .info_left .metro_icon { float: left; margin-top: 2px; padding-right: 2px; }
 .detail_page .info_block .info_title .info_left.no_padding { display: block; float: none; width: 100%; margin-bottom: 5px; }
 .detail_page .info_block .info_title .info_right { width: 70%; margin-left: 35%; }
+.detail_page .info_block .info_title .info_right > * { display: block; background-color: #fff; }
 .detail_page .info_block .info_title a { display: inline-block; margin: 0 0 5px 5px; }
 
 .to_map_link { position: relative; padding-left: 26px; }
