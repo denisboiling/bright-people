@@ -4,9 +4,9 @@ class ApplicationController < ActionController::Base
   after_filter :ensure_email_existence
   after_filter :current_user_presence
 
-  #rescue_from CanCan::AccessDenied do |exception|
-    #redirect_to root_url, :alert => exception.message
-  #end
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, :alert => exception.message
+  end
   
   # check current user for email
   # if none, then it sets apropriate flag into cookie
