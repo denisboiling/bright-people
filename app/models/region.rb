@@ -1,5 +1,6 @@
 class Region < ActiveRecord::Base
   has_many :activities
+  has_many :metro_stations
 
   attr_accessible :title
 

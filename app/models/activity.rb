@@ -22,7 +22,9 @@ class Activity < ActiveRecord::Base
     end
   end
 
-  validates :title, :region, :description, :organization, presence: true
+  validates :title, :description, :organization, presence: true
+
+  before_validation :set_region
 
   belongs_to :organization
   has_and_belongs_to_many :metro_station
@@ -169,5 +171,10 @@ class Activity < ActiveRecord::Base
       arr
     end
 
+  end
+
+  private
+  def set_region
+    self.region = self.metro_station.first.region if !self.metro_station.blank?
   end
 end
