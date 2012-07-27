@@ -6,6 +6,6 @@ window.setup_dialogs = ->
 window.setup_notify = ->
   $(document).ready ->
     slideUp = window.setTimeout ( ->
-      $('.notify').animate { marginTop :  } 'normal', -> $(this).detach()
+      $('.notify').animate { marginTop : '' } 'normal', -> $(this).detach()
     )
     , 5000
