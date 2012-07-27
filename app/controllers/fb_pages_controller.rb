@@ -25,11 +25,11 @@ class FbPagesController < ApplicationController
       page.name == "#{Rails.application.config.fb_page_name}"
     end
     if(!page.nil?)
-      FbPage.all.map &:destroy
-      @p = FbPage.new
-      @p.identifier = page.identifier
-      @p.token = page.access_token
-      @p.save
+      FbPage.all.map(&:destroy)
+      p = FbPage.new
+      p.identifier = page.identifier
+      p.token = page.access_token
+      p.save
     end
   end
 end
