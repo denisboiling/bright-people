@@ -14,4 +14,6 @@ BrightPeople::Application.configure do
   config.i18n.fallbacks = true
   config.active_support.deprecation = :notify
   config.host_name = "http://stagebp.balticit.ru"
+  config.vk_public = '-40194424'
+  config.fb_page_name = 'Mytestpage'
 end
