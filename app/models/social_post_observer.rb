@@ -11,7 +11,7 @@ class SocialPostObserver < ActiveRecord::Observer
 
   # TODO: News or Artilce has't field published, replace this shit
   def after_update(model)
-    if model.published? and !model.changes[:published].nil?
+    if model.published? and !model.is_posted
       publish(model)
     end
   end
@@ -22,15 +22,16 @@ class SocialPostObserver < ActiveRecord::Observer
       description = model.class.name == 'Article' ? model.short_description : model.content
       pic = model.photo ? "http://images.bright-people.ru" + model.photo.url(:medium, false) : nil
       page.feed!(:message => model.title,
-                 :link => "http://bright-people.ru/#{model.class.name.downcase.pluralize}/" + model.id.to_s,
+                 :link => "#{Rails.application.config.host_name}/#{model.class.name.downcase.pluralize}/" + model.id.to_s,
                  :picture => pic,
                  :description => description
                 )
     end
     unless VkPage.first.nil?
       standalone = VK::Standalone.new :app_id => '3051096'
-      # TODO !!! change owner_id and attachment when deploying to production!
       standalone.wall.post(owner_id: "#{Rails.application.config.vk_public}", attachments: "#{Rails.application.config.host_name}/#{model.class.name.downcase.pluralize}/" + model.id.to_s, from_group: 1, access_token: VkPage.first.access_token)
+      model.is_posted = true
+      model.save
     end
   end
 
