@@ -34,7 +34,7 @@ task :news_posting => :environment do
   News.where(:posted => false).each do |n|
     unless FbPage.first.nil?
       page = FbGraph::Page.new(FbPage.first.identifier, :access_token => FbPage.first.token)
-      description = n.content
+      description = n.short_description
       pic = n.photo ? "http://images.#{Rails.application.config.host_name}" + n.photo.url(:medium, false) : nil
       page.feed!(:message => n.title,
                  :link => "#{Rails.application.config.host_name}/news/" + n.id.to_s,
