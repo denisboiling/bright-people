@@ -2,10 +2,18 @@
 ActiveAdmin.register Article do
   menu label: 'Статьи'
 
-  scope :all, :default => true
-  scope :published
-  scope :not_published
-  scope :bests
+  scope :all, :default => true do |articles|
+    articles.joins [:author]
+  end
+  scope :published do |articles|
+    articles.joins(:author).published
+  end
+  scope :not_published do |articles|
+    articles.joins(:author).not_published
+  end
+  scope :bests do |articles|
+    articles.joins(:author).bests
+  end
 
   filter :title
   filter :category
@@ -19,7 +27,7 @@ ActiveAdmin.register Article do
     column :title do |article|
       link_to article.title, article
     end
-    column :author
+    column :author, sortable: :'users.name'
     column :created_at
     column :updated_at
     default_actions

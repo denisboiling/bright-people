@@ -1,6 +1,6 @@
 class Article < ActiveRecord::Base
   belongs_to :category, class_name: 'ArticleCategory', foreign_key: :article_category_id
-  belongs_to :author, class_name: 'User'
+  belongs_to :author, class_name: 'User', foreign_key: :author_id
 
   has_many :comments, as: :relation
   has_many :favourites, as: :relation, dependent: :destroy

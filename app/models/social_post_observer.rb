@@ -12,7 +12,7 @@ class SocialPostObserver < ActiveRecord::Observer
   # TODO: News or Artilce has't field published, replace this shit
   def after_update(model)
     if model.published? and !model.posted
-      publish(model)
+      SocialPostObserver::publish(model)
     end
   end
 
