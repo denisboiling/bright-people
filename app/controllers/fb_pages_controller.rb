@@ -18,7 +18,7 @@ class FbPagesController < ApplicationController
     owner = FbGraph::User.me(access_token)
     pages = owner.accounts
     page = pages.detect do |page|
-      page.name == 'Фестиваль "Яркие Люди"'
+      page.name == "#{Rails.application.config.fb_page_name}"
     end
     FbPage.all.map &:destroy
     @p = FbPage.new

@@ -21,4 +21,7 @@ BrightPeople::Application.configure do
   config.action_mailer.delivery_method = :sendmail
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
+  config.host_name = "http://bright-people.ru"
+  config.vk_public = '-39665521'
+  config.fb_page_name = 'Фестиваль "Яркие Люди"'
 end
