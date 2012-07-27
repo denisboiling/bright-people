@@ -3,6 +3,5 @@ every 10.minutes do
 end
 
 every :hour do
-  rake "articles_posting"
-  rake "news_posting"
+  rake "social_posting"
 end

@@ -16,8 +16,8 @@ class SocialPostObserver < ActiveRecord::Observer
     end
   end
 
-  def publish(model)
-    unless FbPage.first.nil?
+  def self.publish(model)
+    unless FbPage.first.nil? or FbPage.first.identifier.nil? or FbPage.first.token.nil?
       page = FbGraph::Page.new(FbPage.first.identifier, :access_token => FbPage.first.token)
       description = model.short_description
       pic = model.photo ? "http://images.bright-people.ru" + model.photo.url(:medium, false) : nil
@@ -27,7 +27,7 @@ class SocialPostObserver < ActiveRecord::Observer
                  :description => description
                 )
     end
-    unless VkPage.first.nil?
+    unless VkPage.first.nil? or VkPage.first.access_token.nil?
       standalone = VK::Standalone.new :app_id => '3051096'
       standalone.wall.post(owner_id: "#{Rails.application.config.vk_public}", attachments: "#{Rails.application.config.host_name}/#{model.class.name.downcase.pluralize}/" + model.id.to_s, from_group: 1, access_token: VkPage.first.access_token)
       model.posted = true

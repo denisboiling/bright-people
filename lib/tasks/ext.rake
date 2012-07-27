@@ -9,45 +9,12 @@ namespace :ext do
   end
 end
 
-task :articles_posting => :environment do
+task :social_posting => :environment do
   Article.where(:posted => false).each do |a|
-    unless FbPage.first.nil?
-      page = FbGraph::Page.new(FbPage.first.identifier, :access_token => FbPage.first.token)
-      description = a.short_description
-      pic = a.photo ? "http://images.#{Rails.application.config.host_name}" + a.photo.url(:medium, false) : nil
-      page.feed!(:message => a.title,
-                 :link => "#{Rails.application.config.host_name}/articles/" + a.id.to_s,
-                 :picture => pic,
-                 :description => description
-                )
-    end
-    unless VkPage.first.nil?
-      standalone = VK::Standalone.new :app_id => '3051096'
-      standalone.wall.post(owner_id: "#{Rails.application.config.vk_public}", attachments: "#{Rails.application.config.host_name}/articles/" + a.id.to_s, from_group: 1, access_token: VkPage.first.access_token)
-      a.posted = true
-      a.save
-    end
+    SocialPostObserver::publish(a)
   end
-end
-
-task :news_posting => :environment do
-  News.where(:posted => false).each do |n|
-    unless FbPage.first.nil?
-      page = FbGraph::Page.new(FbPage.first.identifier, :access_token => FbPage.first.token)
-      description = n.short_description
-      pic = n.photo ? "http://images.#{Rails.application.config.host_name}" + n.photo.url(:medium, false) : nil
-      page.feed!(:message => n.title,
-                 :link => "#{Rails.application.config.host_name}/news/" + n.id.to_s,
-                 :picture => pic,
-                 :description => description
-                )
-    end
-    unless VkPage.first.nil?
-      standalone = VK::Standalone.new :app_id => '3051096'
-      standalone.wall.post(owner_id: "#{Rails.application.config.vk_public}", attachments: "#{Rails.application.config.host_name}/news/" + n.id.to_s, from_group: 1, access_token: VkPage.first.access_token)
-      n.posted = true
-      n.save
-    end
+  News.where(:posted => false).each do |a|
+    SocialPostObserver::publish(a)
   end
 end
 
