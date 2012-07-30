@@ -55,7 +55,7 @@
       </div>
       <% end %>
     <% end %>
-      <% unless @activity.region.blank? or @activity.region.title.blank? %>
+      <% if @activity.region.present? and @activity.region.title.present? %>
 	    <div class="info_title">
 	      <div class="info_left"><span>Округ</span></div>
 	      <div class="info_right"><span><%= @activity.region.title %></span></div>
