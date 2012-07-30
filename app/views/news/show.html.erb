@@ -6,7 +6,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <meta name="title" content="<%= @news.title %>">
   <meta name="description" content="<%= truncate(Sanitize.clean(@news.short_description), length: 200, omission: '...') %>" />
-  <link rel="image_src" href="<%= Rails.application.config.host_name+@news.photo.url(:slider, :false) %>" />
+  <link rel="image_src" href="<%= Rails.application.config.host_name+@news.photo.url(:slider, false) %>" />
   <!-- for vk -->
 <% end %>
 
