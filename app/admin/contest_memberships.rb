@@ -21,7 +21,7 @@ ActiveAdmin.register ContestMembership do
       f.input :description, input_html: {size: 10}
       f.input :picture, as: :file, hint: f.template.image_tag(f.object.picture.url(:medium))
     end
-    f.actions
+    f.buttons
   end
 
   show do

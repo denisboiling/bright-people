@@ -35,7 +35,7 @@
 	  <% if @article.author.articles.published.count > 1 %>
 	    <div class="title">Другие статьи автора</div>
 	    <ul>
-	      <% @article.author.articles.except(@article).last(5).each do |article| %>
+	      <% @article.author.articles.except_for(@article).last(5).each do |article| %>
 		<li><%= link_to article.title, article %>
 	      <% end %>
 	    </ul>
