@@ -58,7 +58,7 @@ GEM
       multi_json (~> 1.0)
     acts-as-taggable-on (2.3.3)
       rails (~> 3.0)
-    addressable (2.2.8)
+    addressable (2.3.2)
     arel (3.0.2)
     attr_required (0.0.5)
     bcrypt-ruby (3.0.1)
@@ -144,7 +144,7 @@ GEM
       rack-oauth2 (>= 0.14.4)
       tzinfo
     ffaker (1.15.0)
-    ffi (1.1.0)
+    ffi (1.1.2)
     formtastic (2.1.1)
       actionpack (~> 3.0)
     gherkin (2.11.1)
@@ -188,8 +188,8 @@ GEM
       activesupport (>= 3.0.0)
       railties (>= 3.0.0)
     kgio (2.7.4)
-    launchy (2.1.0)
-      addressable (~> 2.2.6)
+    launchy (2.1.1)
+      addressable (~> 2.3)
     letter_opener (0.0.2)
       launchy
     libv8 (3.3.10.4)
