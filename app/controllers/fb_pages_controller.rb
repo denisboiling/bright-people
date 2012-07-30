@@ -12,7 +12,7 @@ class FbPagesController < ApplicationController
   end
 
   def fb_pages
-    authorize! :manage_social
+    authorize! :manage, :social
     fb_auth = FbGraph::Auth.new "#{Rails.application.config.fb_app_id}", "#{Rails.application.config.fb_app_secret}",
                                   redirect_uri: "#{Rails.application.config.host_name}/fb_pages"
     client = fb_auth.client
