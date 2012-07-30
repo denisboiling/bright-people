@@ -5,7 +5,7 @@ module ApplicationHelper
     html = ''
     [:notice, :error, :message, :success].map do |name|
       if flash[name]
-	html += content_tag :div, flash[name], :class => name
+        html += content_tag :div, flash[name], :class => name.to_s + ' notify'
       end
     end
     html.html_safe

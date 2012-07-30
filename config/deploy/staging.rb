@@ -24,7 +24,7 @@ before "deploy:finalize_update", "shared:symlinks"
 before "deploy:finalize_update", "shared:disallow_robots"
 
 after "deploy:update_code", "unicorn:stop"
-after "deploy:update_code", "thinking_sphinx:stop"
+# after "deploy:update_code", "thinking_sphinx:stop"
 after "deploy:update_code", "delayed_job:stop"
 
 after "deploy:update_code", "load_staging:db"
