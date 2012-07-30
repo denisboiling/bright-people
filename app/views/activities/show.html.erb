@@ -47,8 +47,8 @@
 	<div class="clear"></div>
 
 	<div class="info_block">
-    <% unless @activity.metro_station.uniq.blank? %>
-      <% @activity.metro_station.uniq.each do |ms| %>
+    <% unless @activity.metro_stations.uniq.blank? %>
+      <% @activity.metro_stations.uniq.each do |ms| %>
       <div class="info_title">
         <div class="info_left"><%= image_tag ms.metro_branch.icon.url, :class => 'metro_icon' %></div>
         <div class="info_right"><span><%= ms.title %></span></div>
