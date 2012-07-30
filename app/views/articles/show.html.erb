@@ -1,11 +1,13 @@
 <% content_for :title do %>
   Фестиваль Яркие Люди | Яркий Журнал | <%= @article.title %>
 <% end %>
-<% content_for :after_head do %>
-<!-- for vk -->
+<% content_for :before_head do %>
+  <!-- for vk -->
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <meta name="title" content="<%= @article.title %>">
-  <meta name="description" content="<%= truncate(@article.content, length: 140, omission: '...') %>" />
-  <link rel="image_src" href="<%= @article.picture.url(:medium) %>" />
+  <meta name="description" content="<%= truncate(Sanitize.clean(@article.short_description), length: 200, omission: '...') %>" />
+  <link rel="image_src" href="<%= Rails.application.config.host_name+@article.picture.url(:medium) %>" />
+  <!-- for vk -->
 <% end %>
 
 <div class="pages">
