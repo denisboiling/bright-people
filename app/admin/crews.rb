@@ -20,7 +20,7 @@ ActiveAdmin.register Crew do
       f.input :description
       f.input :photo, as: :file, hint: f.template.image_tag(f.object.photo.url)
     end
-    f.actions
+    f.buttons
   end
 
   show do

@@ -20,7 +20,7 @@ ActiveAdmin.register ActivityApproval do
       f.input :activity, include_blank: false, input_html: { class: 'chosen_autocomplete' }
       f.input :text
     end
-    f.actions
+    f.buttons
   end
 
   show do
