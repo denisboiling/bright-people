@@ -28,7 +28,7 @@ ActiveAdmin.setup do |config|
   config.stylesheets.pop
   config.register_stylesheet 'admin/active_admin'
 
-  #config.register_javascript '//api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU'
+  config.register_javascript '//api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU'
 
   config.before_filter :set_admin_locale
 
