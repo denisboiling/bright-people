@@ -91,7 +91,7 @@ article a.thumb img { width: 100%; border-radius:0 0 40px 40px;}
 #slide10:checked ~ #controls label:nth-child(1)*/ {
         background: url(/assets/small_arrow_right.png) no-repeat;
         float: right;
-        margin: 100px 20px 0 0;
+        margin: 100px 10px 0 0;
         display: block; cursor:pointer
 }
 
@@ -108,7 +108,7 @@ article a.thumb img { width: 100%; border-radius:0 0 40px 40px;}
 #slide10:checked ~ #controls label:nth-child(9)*/ {
         background: url(/assets/small_arrow_left.png) no-repeat;
         float: left;
-        margin: 100px 0 0 20px;
+        margin: 100px 0 0 10px;
         display: block; cursor:pointer
 }
 
