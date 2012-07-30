@@ -83,7 +83,7 @@ class Activity < ActiveRecord::Base
   scope :by_metro, lambda { |metros| 
   #where('metro_station_id in (?)', metros)
     {
-      :include => :metro_station,
+      :include => :metro_stations,
       :conditions => [ "metro_stations.id IN (?)", metros ]
     }
   }
@@ -131,7 +131,7 @@ class Activity < ActiveRecord::Base
 
   # For near places
   def place_near
-    region.activities.published.where('id != ?', self.id).first(4)
+    region.activities.published.where('id != ?', self.id).first(4) if region.present?
   end
 
   # If activity already has approval, we approved it

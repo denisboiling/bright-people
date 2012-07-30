@@ -55,7 +55,7 @@
       </div>
       <% end %>
     <% end %>
-      <% unless @activity.region.title.blank? %>
+      <% if @activity.region.present? and @activity.region.title.present? %>
 	    <div class="info_title">
 	      <div class="info_left"><span>Округ</span></div>
 	      <div class="info_right"><span><%= @activity.region.title %></span></div>
@@ -157,7 +157,7 @@
       </div>
     <% end %>
 
-
+  <% unless @activity.place_near.blank? %>
     <div class="alongside">
       <div class="title">Еще места рядом</div>
       <ul>
@@ -170,6 +170,7 @@
 	<% end %>
       </ul>
     </div>
+  <% end %>
 
   </div>
   <div class="clear"></div>

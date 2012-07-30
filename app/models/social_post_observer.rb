@@ -19,7 +19,7 @@ class SocialPostObserver < ActiveRecord::Observer
   def self.publish(model)
     unless FbPage.first.nil? or FbPage.first.identifier.nil? or FbPage.first.token.nil?
       page = FbGraph::Page.new(FbPage.first.identifier, :access_token => FbPage.first.token)
-      description = model.short_description
+      description = Sanitize.clean(model.short_description)
       pic = model.photo ? "http://images.bright-people.ru" + model.photo.url(:medium, false) : nil
       page.feed!(:message => model.title,
                  :link => "#{Rails.application.config.host_name}/#{model.class.name.downcase.pluralize}/" + model.id.to_s,
