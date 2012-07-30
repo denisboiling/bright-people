@@ -5,5 +5,5 @@ class Favourite < ActiveRecord::Base
   belongs_to :relation, polymorphic: true
 
   validates :user_id, :relation_id, :relation_type, presence: :true
-  validates :relation_id, uniqueness: { scope: :relation_type }
+  validates :relation_id, uniqueness: { scope: [:relation_type, :user_id] }
 end

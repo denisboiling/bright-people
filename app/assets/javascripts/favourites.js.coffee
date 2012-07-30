@@ -1,6 +1,6 @@
 window.setup_favourite_button = ->
   $('.favourite_block_is a').live 'click', ->
-    window.location.href = '/dashboard/favourites'
+    window.location.href = '/dashboard/favorites'
     false
   
   $('.favourite_block_add a').live 'click', (event) ->
