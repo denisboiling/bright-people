@@ -18,7 +18,7 @@ BrightPeople::Application.configure do
 
   config.middleware.use ExceptionNotifier, :email_prefix => "[Notify bright-people] ",
                                            :sender_address => %{"notify"},
-                                           :exception_recipients => %w{ kremenev@balticit.ru }
+                                           :exception_recipients => %w{ kremenev@balticit.ru khodzha@balticit.ru }
   config.action_mailer.delivery_method = :sendmail
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
