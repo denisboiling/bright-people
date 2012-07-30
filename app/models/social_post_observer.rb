@@ -6,7 +6,7 @@ class SocialPostObserver < ActiveRecord::Observer
   include ActionView::Helpers::UrlHelper
 
   def after_create(model)
-    publish(model) if model.published?
+    SocialPostObserver::publish(model) if model.published?
   end
 
   # TODO: News or Artilce has't field published, replace this shit
