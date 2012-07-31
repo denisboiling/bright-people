@@ -159,7 +159,7 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 #nested_slider  .pagination { display:none}
 
 
-#center { min-width:960px; max-width:1235px; margin: 10px auto; position:relative}
+#center { min-width:960px; max-width:1235px; margin: 10px auto 0; position:relative}
 
 /* MAIN PAGE */
 .main_content { padding:20px 20px;}
