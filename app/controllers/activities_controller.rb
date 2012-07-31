@@ -61,7 +61,6 @@ class ActivitiesController < ApplicationController
 
     activities = case params[:order_by]
                  when 'title' then activities.order('activities.title ASC')
-                 when 'created_at' then activities.order('activities.created_at DESC')
                  when 'users_rating' then activities.order('activities.users_rating DESC')
                  else
                    activities.order('activities.created_at DESC')
