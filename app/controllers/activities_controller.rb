@@ -64,7 +64,7 @@ class ActivitiesController < ApplicationController
                  when 'created_at' then activities.order('activities.created_at DESC')
                  when 'users_rating' then activities.order('activities.users_rating DESC')
                  else
-                   activities.order('created_at DESC')
+                   activities.order('activities.created_at DESC')
                  end
 
     activities
