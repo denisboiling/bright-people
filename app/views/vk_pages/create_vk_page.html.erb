@@ -1,0 +1,10 @@
+<h3>Маленькая инструкция:</h3>
+Чтобы включить автопостинг на vk.com, идем на <a href="/vk_token" target="blank">/vk_token</a> - Вас перекинет на страницу авторизации, а затем на страницу вида http://http://api.vk.com/blank.html#access_token=ваш_токен&expires_in=0&user_id=ваш_айди. Скопируйте значение "ваш_токен" и вставьте его сюда.
+<br>
+<div id="vk_page">
+  <%= form_for("/vk_data", :method => 'post') do %>
+    <%= label_tag(:access_token, "Ваш токен:") %>
+    <%= text_field_tag(:access_token) %>
+    <%= submit_tag("Сохранить") %>
+  <% end %>
+</div>

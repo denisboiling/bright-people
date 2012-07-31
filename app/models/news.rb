@@ -6,9 +6,10 @@ class News < ActiveRecord::Base
 
   scope :published, lambda{ where("publication_date <= ?", Time.zone.now.to_date) }
 
-  validates :title, :content, :publication_date, presence: true
+  validates :title, :short_description, :publication_date, presence: true
 
-  attr_accessible :title, :content, :photo, :photos_attributes, :videos_attributes, :publication_date, :news_tag_list, :full_text
+  attr_accessible :title, :content, :photo, :photos_attributes, :videos_attributes, :publication_date, :news_tag_list, :short_description,
+                  :posted
 
   accepts_nested_attributes_for :photos, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :videos, allow_destroy: true, reject_if: :all_blank

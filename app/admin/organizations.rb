@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 ActiveAdmin.register Organization do
+  scope_to(:association_method => :unscoped) { Organization }
   menu label: 'Организации', :parent => "Кружки, организации"
 
   controller do

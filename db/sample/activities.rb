@@ -17,4 +17,4 @@ Activity.all.each do |ac|
   end
 end
 
-Activity.find_by_title("Main test education activity").update_attribute(:manager_id, 25)
+#Activity.find_by_title("Main test education activity").update_attribute(:manager_id, 25)

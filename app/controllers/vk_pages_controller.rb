@@ -1,15 +1,14 @@
 class VkPagesController < ApplicationController
   def auth
-    @vk_page = VkPage.first
+    authorize! :manage, :social
+    redirect_to "http://api.vk.com/oauth/authorize?client_id=3051096&scope=wall,groups,offline&redirect_uri=http://api.vk.com/blank.html&display=popup&response_type=token"
   end
 
   def create_vk_page
-    @vk_page = VkPage.first
-    @vk_page.login = params[:vk_page][:login]
-    @vk_page.password = params[:vk_page][:password]
-    @vk_page.public_url = params[:vk_page][:public_url]
-    @vk_page.public_id = params[:vk_page][:public_id]
-    @vk_page.save
-    redirect_to root_path
+    authorize! :manage, :social
+    @vp = VkPage.first
+    @vp ||= VkPage.new
+    @vp.access_token = params[:access_token]
+    @vp.save!
   end
 end

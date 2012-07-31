@@ -1,6 +1,6 @@
 source :rubygems
 
-gem 'rails', '3.2.6'
+gem 'rails', '3.2.7'
 gem 'pg'
 
 gem 'omniauth', '1.1.0'
@@ -39,7 +39,9 @@ gem 'daemons'
 gem 'nokogiri'
 gem 'high_voltage'
 gem 'fb_graph'
+gem 'vk-ruby', github: 'zinenko/vk-ruby'
 gem 'exception_notification'
+gem 'sanitize' # to remove html from articles content when auto posting to facebook (and maybe vk)
 
 group :development, :test do
   gem 'cucumber-rails', require: false

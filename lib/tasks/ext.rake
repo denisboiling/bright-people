@@ -9,6 +9,15 @@ namespace :ext do
   end
 end
 
+task :social_posting => :environment do
+  Article.where(:posted => false).each do |a|
+    SocialPostObserver::publish(a)
+  end
+  News.where(:posted => false).each do |a|
+    SocialPostObserver::publish(a)
+  end
+end
+
 namespace :db do
   # TODO: https://gist.github.com/1340242
   # namespace :test do |schema|

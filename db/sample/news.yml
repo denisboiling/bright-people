@@ -2,5 +2,5 @@
 news_<%= i %>:
   id: <%= i %>
   title: <%= Faker::Lorem.words.join(' ') %>
-  content: "<%= Faker::Lorem.paragraphs(3).join('\n') %>"
+  short_description: "<%= Faker::Lorem.sentences(3).join('. ') %>"
 <% end %>

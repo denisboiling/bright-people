@@ -47,9 +47,13 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 #header .header_flash_wrapper  { position:relative; background:#7e1222 url(/assets/header_bg.jpg) no-repeat center top; height:200px;}
 #header .header_flash_wrapper a { display:block; height:200px; width:100%; position:absolute; z-index:10}
 
-#header .header_flash_wrapper .cap { background:url(/assets/header_cap.jpg) no-repeat center top; height:200px;}
+#flashcontent_1 { background:url(/assets/header_cap.jpg) no-repeat center top;}
 
-
+.notify { position: absolute; z-index: 1; width: 100%; padding: 10px 10px 10px 45px; font-size: 90%; background-repeat: no-repeat; background-position: 10px center; -webkit-box-shadow: 0 0 7px #000; }
+.notify.notice { color: #BA912D; background-image: url(/assets/notify-notice.png); background-color: #FFF1CF; }
+.notify.message { color: #186FAD; background-image: url(/assets/notify-message.png); background-color: #DAE8F2; }
+.notify.success { color: #3E960E; background-image: url(/assets/notify-success.png); background-color: #DEF2D3; }
+.notify.error { color: #A33112; background-image: url(/assets/notify-error.png); background-color: #FAE2DC; }
 
 #main_page .color_line_left { background:url(/assets/color_line.jpg) repeat-y left 100px}
 #main_page .color_line_right { background:url(/assets/color_line.jpg) repeat-y right}
@@ -155,7 +159,7 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 #nested_slider  .pagination { display:none}
 
 
-#center { min-width:960px; max-width:1235px; margin: 10px auto; position:relative}
+#center { min-width:960px; max-width:1235px; margin: 10px auto 0; position:relative}
 
 /* MAIN PAGE */
 .main_content { padding:20px 20px;}
@@ -426,11 +430,13 @@ span.sim_check.active { background-position:0px 0px; }
 .detail_page .info_block th img { margin-top: 3px; }
 .detail_page .info_block th .metro_icon { }
 
-.detail_page .info_block .info_title { margin-bottom: 10px; }
-.detail_page .info_block .info_title .info_left { float: left; width: 30%; margin-right: 5%; font-weight: bold; background:url(/assets/punktir_info.jpg) repeat-x 0px 17px; }
-.detail_page .info_block .info_title .info_left .metro_icon { float: left; margin-top: 2px; }
+.detail_page .info_block .info_title { margin-bottom: 10px; background:url(/assets/punktir_info.jpg) repeat-x 0px 15px; }
+.detail_page .info_block .info_title .info_left { float: left; width: 30%; margin-right: 5%; font-weight: bold;  }
+.detail_page .info_block .info_title .info_left > * { background-color: #fff; }
+.detail_page .info_block .info_title .info_left .metro_icon { float: left; margin-top: 2px; padding-right: 2px; }
 .detail_page .info_block .info_title .info_left.no_padding { display: block; float: none; width: 100%; margin-bottom: 5px; }
 .detail_page .info_block .info_title .info_right { width: 70%; margin-left: 35%; }
+.detail_page .info_block .info_title .info_right > * { display: block; background-color: #fff; }
 .detail_page .info_block .info_title a { display: inline-block; margin: 0 0 5px 5px; }
 
 .to_map_link { position: relative; padding-left: 26px; }

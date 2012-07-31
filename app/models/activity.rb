@@ -22,10 +22,12 @@ class Activity < ActiveRecord::Base
     end
   end
 
-  validates :title, :region, :description, :organization, presence: true
+  validates :title, :description, :organization, presence: true
+
+  before_save :set_region
 
   belongs_to :organization
-  has_and_belongs_to_many :metro_station
+  has_and_belongs_to_many :metro_stations
 
   has_many :activity_direction_relations
   has_many :direction_tags, through: :activity_direction_relations
@@ -81,7 +83,7 @@ class Activity < ActiveRecord::Base
   scope :by_metro, lambda { |metros| 
   #where('metro_station_id in (?)', metros)
     {
-      :include => :metro_station,
+      :include => :metro_stations,
       :conditions => [ "metro_stations.id IN (?)", metros ]
     }
   }
@@ -129,7 +131,7 @@ class Activity < ActiveRecord::Base
 
   # For near places
   def place_near
-    region.activities.published.where('id != ?', self.id).first(4)
+    region.activities.published.where('id != ?', self.id).first(4) if region.present?
   end
 
   # If activity already has approval, we approved it
@@ -169,5 +171,9 @@ class Activity < ActiveRecord::Base
       arr
     end
 
+  end
+
+  def set_region
+    self.region = self.metro_stations.first.region if self.metro_stations.present?
   end
 end

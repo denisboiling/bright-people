@@ -4,17 +4,15 @@
 
     <%= f.input :photo, as: :file, hint: f.template.image_tag(f.object.photo.url) %>
     <%= f.input :publication_date %>
-    <%= f.input :content, input_html: { rows: 4, maxlength: 140 } %>
+    <%= f.input :short_description, input_html: { rows: 4, maxlength: 140 } %>
 
     <%= render 'shared/editor_toolbar', element_id: 'news_full_text' %>
-    <%= f.input :full_text, input_html: { size: 10 } %>
+    <%= f.input :content, input_html: { size: 10 } %>
     
     <%= f.input :news_tag_list %>
   <% end %>
 
   <%= render 'admin/shared/media_content', f: f %>
 
-  <%= f.buttons do %>
-    <%= f.commit_button %>
-  <% end %>
+  <%= f.buttons %>
 <% end %>

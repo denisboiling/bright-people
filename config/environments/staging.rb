@@ -13,4 +13,9 @@ BrightPeople::Application.configure do
                                   dashboard/*.js)
   config.i18n.fallbacks = true
   config.active_support.deprecation = :notify
+  config.host_name = "http://stagebp.balticit.ru"
+  config.vk_public = '-40194424'
+  config.fb_page_name = 'Mytestpage'
+  config.fb_app_id = '245615425549849'
+  config.fb_app_secret = '17849468bffdd53974e21bac98b397e9'
 end

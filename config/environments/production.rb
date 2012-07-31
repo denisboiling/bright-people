@@ -1,3 +1,4 @@
+# encoding: utf-8
 BrightPeople::Application.configure do
   config.cache_classes = true
   config.consider_all_requests_local       = false
@@ -17,8 +18,13 @@ BrightPeople::Application.configure do
 
   config.middleware.use ExceptionNotifier, :email_prefix => "[Notify bright-people] ",
                                            :sender_address => %{"notify"},
-                                           :exception_recipients => %w{ kremenev@balticit.ru }
+                                           :exception_recipients => %w{ kremenev@balticit.ru khodzha@balticit.ru }
   config.action_mailer.delivery_method = :sendmail
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
+  config.host_name = "http://bright-people.ru"
+  config.vk_public = '-39665521'
+  config.fb_page_name = 'Фестиваль "Яркие Люди"'
+  config.fb_app_id = '387281317989326'
+  config.fb_app_secret = 'bc8fc778501d7b432521262561ca9ca9'
 end

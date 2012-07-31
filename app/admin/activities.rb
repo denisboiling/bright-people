@@ -41,7 +41,7 @@ ActiveAdmin.register Activity do
                      :users_rating, :created_at, :updated_at
 
     panel 'Станции метро' do
-      activity.metro_station.map(&:title)
+      activity.metro_stations.map(&:title)
     end
 
     panel 'Посмотреть страницу' do
