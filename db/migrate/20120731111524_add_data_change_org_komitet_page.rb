@@ -109,5 +109,6 @@ class AddDataChangeOrgKomitetPage < ActiveRecord::Migration
 		</div>
 	</div>
 </div>'
+    org.save!
   end
 end
