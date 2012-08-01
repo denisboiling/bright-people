@@ -10,7 +10,9 @@
         <div class="info">
 	    <div class="thumb"><%= link_to image_tag(activity.logo.url), activity_path(activity) %></div>
 	    <div class="name"><%= link_to activity.title, activity_path(activity) %></div>
-          <div class="geo"><%= activity.region.title %></div>
+          <% if activity.region.present? %>
+            <div class="geo"><%= activity.region.title %></div>
+          <% end %>
         </div>
       </div>
     <% end %>
