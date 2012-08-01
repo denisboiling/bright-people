@@ -87,7 +87,7 @@ class Activity < ActiveRecord::Base
       :conditions => [ "metro_stations.id IN (?)", metros ]
     }
   }
-  scope :by_region, lambda { |regions| where('activities.region_id in (?)', regions) }
+  scope :by_region, lambda { |regions| where('activities.region_id in (?)', regions.delete_if {|x| x.blank?}) }
   #TODO : optimize
   scope :by_coords, lambda { |coords| where("ST_Distance(location,(ST_GeogFromText('SRID=4326;POINT(:x :y)'))) <= :max_distance", {:x => coords.split(/, |,/)[0].to_f, :y => coords.split(/, |,/)[1].to_f, :max_distance => 2500}) }
   scope :approved, where(approved: true)
