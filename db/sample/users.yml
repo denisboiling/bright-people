@@ -31,3 +31,17 @@ moderator:
   email: moder@example.com
   role_id: 5
   name: <%= Faker::Name.name %>
+
+main_photographer:
+  id: 26
+  email: main_photographer@example.com
+  role_id: 8
+  name: <%= Faker::Name.name %>
+
+<% 27.upto(30).each do |i| %>
+photographer_<%= i %>:
+  id: <%= i %>
+  email: photographer<%= i %>@example.com
+  role_id: 7
+  name: <%= Faker::Name.name %>
+<% end %>  
