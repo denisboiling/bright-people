@@ -1,5 +1,5 @@
 # Simple users
-<% 1.upto(10).each do |i| %>
+<% 1.upto(5).each do |i| %>
 user_<%= i %>:
   id: <%= i %>
   email: <%= Faker::Internet.email %>
@@ -9,7 +9,7 @@ user_<%= i %>:
 <% end %>
 
 # experts
-<% 11.upto(20).each do |i| %>
+<% 11.upto(15).each do |i| %>
 user_<%= i %>:
   id: <%= i %>
   email: <%= Faker::Internet.email %>

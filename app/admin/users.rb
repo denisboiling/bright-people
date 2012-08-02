@@ -6,6 +6,7 @@ ActiveAdmin.register User do
   scope :experts
   scope :usuals
   scope :managers
+  scope :photographers
 
   filter :name
   filter :email

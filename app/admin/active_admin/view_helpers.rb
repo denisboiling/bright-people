@@ -28,4 +28,9 @@ module ActiveAdmin::ViewHelpers
         text_field_tag(nil, 'http://images.bright-people.ru' + picture.picture.url(style, timestamp: false), size: 45)
     end.join("<br>").html_safe
   end
+
+  # Generate 24 chars password
+  def rand_password
+    24.times.map{ ('a'..'z').to_a[rand(26)] }.join
+  end
 end

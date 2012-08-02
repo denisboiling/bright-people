@@ -114,11 +114,15 @@ namespace :db do
     ext = File.extname file
     if ext == ".csv" or ext == ".yml"
       puts "loading fixture " + file
+      start_time = Time.now
       ActiveRecord::Fixtures.create_fixtures(File.dirname(file) , File.basename(file, '.*') )
+      puts "Time for '#{file}':  #{Time.now - start_time}" if ENV['sample_time']
     else
       if File.exists? file
         puts "loading ruby    " + file
+        start_time = Time.now
         require file
+        puts "Time for '#{file}':  #{Time.now - start_time}" if ENV['sample_time']
       end
     end
   end

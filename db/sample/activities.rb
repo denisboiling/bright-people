@@ -16,5 +16,3 @@ Activity.all.each do |ac|
     ac.direction_tags << DirectionTag.entertainment.sample(rand(3))
   end
 end
-
-#Activity.find_by_title("Main test education activity").update_attribute(:manager_id, 25)
