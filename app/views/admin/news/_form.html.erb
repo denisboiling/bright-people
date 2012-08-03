@@ -6,7 +6,7 @@
     <%= f.input :publication_date %>
     <%= f.input :short_description, input_html: { rows: 4, maxlength: 140 } %>
 
-    <%= render 'shared/editor_toolbar', element_id: 'news_full_text' %>
+    <%= render 'shared/editor_toolbar', element_id: 'news_content' %>
     <%= f.input :content, input_html: { size: 10 } %>
     
     <%= f.input :news_tag_list %>

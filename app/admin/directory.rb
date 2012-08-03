@@ -15,6 +15,6 @@ ActiveAdmin.register MetroStation do
   filter :title
 
   show do
-    attributes_table :title, :created_at, :updated_at
+    attributes_table :title, :metro_branch, :region, :created_at, :updated_at
   end
 end
