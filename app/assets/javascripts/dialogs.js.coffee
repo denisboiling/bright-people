@@ -5,7 +5,7 @@ window.setup_dialogs = ->
     
 window.setup_notify = ->
   $(document).ready ->
-    console.log "dasd"
+    # console.log "dasd"
     # TODO: rewrite!!!! error!!!
     # slideUp = window.setTimeout ( ->
     #   $('.notify').animate { marginTop :  } 'normal', -> $(this).detach()

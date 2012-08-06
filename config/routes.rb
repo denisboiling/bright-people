@@ -60,9 +60,11 @@ BrightPeople::Application.routes.draw do
     resource :profile, only: [:show, :update]
     resources :favorites, only: [:index, :create, :destroy]
     resources :comments, only: :index
+    resources :photos, only: [:index, :create, :destroy]
     resource :activity do
       delete 'destroy_teacher', on: :member
     end
+    root to: "profile#show"
   end
 
   # Admin panel

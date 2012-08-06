@@ -6,18 +6,16 @@ class User < ActiveRecord::Base
 
   has_many :activity_votes
   has_many :contest_votes
-
   has_many :contest_memberships
   has_many :favourites
   has_many :comments
   has_many :comment_notifies, class_name: 'UserCommentNotify', through: :comments
-
   has_many :articles, foreign_key: :author_id
-
-  belongs_to :activity
-
   has_many :activity_approvals
   has_many :approved_activities, through: :activity_approvals, source: :activity
+  has_many :photos, class_name: 'GalleryPhoto', dependent: :destroy
+
+  belongs_to :activity
 
   has_attached_file :avatar, styles: { medium: "300x300^#", thumb: "125x125^#", comment: "84x84^#", approval: "32x32^#" },
                              path: ":rails_root/public/system/users/:attachment/:id/:style/:filename",
@@ -62,6 +60,14 @@ class User < ActiveRecord::Base
 
   def manager?
     role == Role.manager
+  end
+
+  def photographer?
+    role == Role.main_photographer || Role.photographer
+  end
+
+  def main_photographer?
+    role == Role.main_photographer
   end
 
   def notifications
