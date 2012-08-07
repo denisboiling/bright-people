@@ -49,7 +49,7 @@
                       <div class="thumb"><%= image_tag n.photo.url %></div>
                       <div class="info">
                         <div class="name"><%= link_to n.title, n %></div>
-                        <div class="short_desc"><%= truncate(n.content, separator: '.', omission: '.', length: 140) %></div>
+                        <div class="short_desc"><%= truncate(n.short_description, separator: '.', omission: '.', length: 140) %></div>
                       </div>
                       <div class="clear"></div>
                     </div>
