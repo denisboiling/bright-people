@@ -9,7 +9,7 @@ class SpecialProject < ActiveRecord::Base
   has_many :favourites, as: :relation, dependent: :destroy
 
   has_attached_file :picture,
-                    styles: { medium: "300x300^#", thumb: "160x100^#" },
+                    styles: { medium: "440x275^#", thumb: "160x100^#" },
                     path: ":rails_root/public/system/special_projects/:attachment/:id/:style/:filename",
                     url: "/system/special_projects/:attachment/:id/:style/:filename",
                     default_style: :thumb, default_url: 'loading.gif'
