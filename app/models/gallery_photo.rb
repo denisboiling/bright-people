@@ -8,8 +8,16 @@ class GalleryPhoto < ActiveRecord::Base
                             url: "/system/gallery_photos/:attachment/:id/:style/:filename",
                             default_style: :thumb, default_url: 'loading.gif'
 
-
   attr_accessible :user_id, :photo
+
+  validates :photo_fingerprint, presence: true, uniqueness: true
+
+  after_save :add_shot_date
+
+  def add_shot_date
+    self.update_column(:shot_date, Time.now) unless File.exist?(self.photo.path(:original))
+    self.update_column(:shot_date, EXIFR::JPEG.new(self.photo.path(:original)).date_time)
+  end
 
   def to_jq_upload
     {

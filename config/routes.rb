@@ -64,7 +64,7 @@ BrightPeople::Application.routes.draw do
     resource :activity do
       delete 'destroy_teacher', on: :member
     end
-    root to: "profile#show"
+    root to: 'profiles#show'
   end
 
   # Admin panel

@@ -3,6 +3,8 @@ class CreateGalleryPhotos < ActiveRecord::Migration
     create_table :gallery_photos do |t|
       t.integer :user_id, null: false
       t.attachment :photo
+      t.string :photo_fingerprint
+      t.datetime :shot_date
       t.timestamps
     end
   end
