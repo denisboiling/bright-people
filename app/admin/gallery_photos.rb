@@ -1,0 +1,32 @@
+# -*- coding: utf-8 -*-
+ActiveAdmin.register GalleryPhoto do
+  menu label: "Галлерея", :parent => "Фото модуль"
+
+  filter :id
+  filter :photo_file_name
+  filter :photo_file_size
+  filter :photo_fingerprint
+  filter :shot_date
+
+  index do
+    id_column
+    column "Фото" do |photo|
+      link_to image_tag(photo.photo), admin_gallery_photo_path(photo)
+    end
+    column :photo_file_name
+    column :shot_date
+    column :photo_file_size do |photo|
+      number_to_human_size(photo.photo_file_size)
+    end
+    column :photo_fingerprint
+    default_actions
+  end
+
+  form do |f|
+    f.inputs "Основное" do
+      f.input :user, as: :select, collection: User.photographers, include_blank: false
+      f.input :photo, as: :file, hint: f.template.image_tag(f.object.photo.url)
+    end
+    f.buttons
+  end
+end

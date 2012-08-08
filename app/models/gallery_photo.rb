@@ -15,8 +15,8 @@ class GalleryPhoto < ActiveRecord::Base
   after_save :add_shot_date
 
   def add_shot_date
-    self.update_column(:shot_date, Time.now) unless File.exist?(self.photo.path(:original))
-    self.update_column(:shot_date, EXIFR::JPEG.new(self.photo.path(:original)).date_time)
+    date = EXIFR::JPEG.new(self.photo.path(:original)).date_time rescue Time.zone.now
+    self.update_column(:shot_date, date)
   end
 
   def to_jq_upload
