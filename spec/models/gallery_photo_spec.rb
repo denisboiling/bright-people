@@ -11,6 +11,6 @@ describe GalleryPhoto do
   it "Should be not save duplicate" do
     FactoryGirl.create(:gallery_photo, photo: file)
     photo = FactoryGirl.build(:gallery_photo, photo: file)
-    photo.should have(1).error_on(:photo_fingerprint)
+    photo.should have(2).error_on(:photo_fingerprint)
   end
 end
