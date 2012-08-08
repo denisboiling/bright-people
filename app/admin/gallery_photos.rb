@@ -29,4 +29,5 @@ ActiveAdmin.register GalleryPhoto do
     end
     f.buttons
   end
+
 end

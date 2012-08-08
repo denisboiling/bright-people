@@ -6,7 +6,9 @@ class GalleryPhoto < ActiveRecord::Base
   has_attached_file :photo, styles: {thumb: '100x100', medium: '530x370', big: '1366x768'},
                             path: ":rails_root/public/system/gallery_photos/:attachment/:id/:style/:filename",
                             url: "/system/gallery_photos/:attachment/:id/:style/:filename",
-                            default_style: :thumb, default_url: 'loading.gif'
+                            default_style: :thumb,
+                            default_url: 'loading.gif'
+
 
   attr_accessible :user_id, :photo
 
@@ -24,9 +26,25 @@ class GalleryPhoto < ActiveRecord::Base
       "name" => read_attribute(:photo_name),
       "size" => photo.size,
       "url" => photo.url,
-      "thumbnail_url" => photo.url(:thumb),
+      "thumbnail_url" => '/assets/processing.gif',
       "delete_url" => dashboard_photo_path(id),
       "delete_type" => "DELETE"
     }
   end
+
+  before_photo_post_process do
+    self.processing ? false : true
+  end
+
+  after_create do
+    self.delay.perform
+  end
+
+  # Regenerate thumbs
+  def perform
+    self.processing = false
+    photo.reprocess!
+    save
+  end
+
 end
