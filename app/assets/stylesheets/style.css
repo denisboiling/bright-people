@@ -165,7 +165,10 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 /* MAIN PAGE */
 #home_video 
 {
-    margin: 0 34px 0 33px;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+    width: 1234px;
     height: 360px;
     background: #7d1425;
     background: -moz-linear-gradient(-45deg,  #7d1425 0%, #ec144e 50%, #7d1425 100%);
@@ -176,7 +179,8 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
     background: linear-gradient(135deg,  #7d1425 0%,#ec144e 50%,#7d1425 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d1425', endColorstr='#7d1425',GradientType=1 );
 }
-#home_video_inner { position: absolute; }
+#home_video_inner { position: absolute; width: 100%; }
+#home_video .mask { position: absolute; z-index: 1; width: 100%; height: 100%; }
 
 .main_content { padding:20px 20px;}
 .main_content .title { font-family:Futura; font-weight:bold; font-size:16px; padding-bottom:10px}
