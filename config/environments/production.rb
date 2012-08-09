@@ -12,13 +12,15 @@ BrightPeople::Application.configure do
   config.assets.precompile += %w( admin/active_admin.js
                                   admin/active_admin.css
                                   chosen.jquery.min.js
-                                  dashboard/*.js)
+                                  dashboard/*.js
+                                  youTubeEmbed-jquery-1.0.js
+                                  youTubeEmbed-jquery-1.0.css)
   config.i18n.fallbacks = true
   config.active_support.deprecation = :notify
 
   config.middleware.use ExceptionNotifier, :email_prefix => "[Notify bright-people] ",
-                                           :sender_address => %{"notify"},
-                                           :exception_recipients => %w{ kremenev@balticit.ru khodzha@balticit.ru }
+  :sender_address => %{"notify"},
+  :exception_recipients => %w{ kremenev@balticit.ru khodzha@balticit.ru }
   config.action_mailer.delivery_method = :sendmail
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
