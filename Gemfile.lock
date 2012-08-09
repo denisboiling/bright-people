@@ -421,6 +421,7 @@ DEPENDENCIES
   rails3-jquery-autocomplete
   randumb
   rspec-rails
+  rubyzip
   russian
   rvm-capistrano
   sanitize
