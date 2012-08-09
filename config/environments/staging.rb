@@ -12,7 +12,8 @@ BrightPeople::Application.configure do
                                   chosen.jquery.min.js
                                   dashboard/*.js
                                   youTubeEmbed-jquery-1.0.js
-                                  youTubeEmbed-jquery-1.0.css)
+                                  youTubeEmbed-jquery-1.0.css
+                                  jquery.swfobject.1-1-1.min.js)
   config.i18n.fallbacks = true
   config.active_support.deprecation = :notify
   config.host_name = "http://stagebp.balticit.ru"
