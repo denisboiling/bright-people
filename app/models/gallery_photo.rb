@@ -14,6 +14,7 @@ class GalleryPhoto < ActiveRecord::Base
   attr_accessible :user_id, :photo
 
   validates :photo_fingerprint, presence: true, uniqueness: true
+  validates :user, presence: true
 
   after_save :add_shot_date
 
