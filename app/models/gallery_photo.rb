@@ -26,7 +26,7 @@ class GalleryPhoto < ActiveRecord::Base
       "name" => read_attribute(:photo_name),
       "size" => photo.size,
       "url" => photo.url,
-      "thumbnail_url" => '/assets/processing.gif',
+      "thumbnail_url" => '/assets/loading.gif',
       "delete_url" => dashboard_photo_path(id),
       "delete_type" => "DELETE"
     }

@@ -3,6 +3,7 @@ ActiveAdmin.register GalleryPhoto do
   menu label: "Галлерея", :parent => "Фото модуль"
 
   filter :id
+  filter :user, as: :select, collection: proc { User.photographers }
   filter :photo_file_name
   filter :photo_file_size
   filter :photo_fingerprint
@@ -18,7 +19,9 @@ ActiveAdmin.register GalleryPhoto do
     column :photo_file_size do |photo|
       number_to_human_size(photo.photo_file_size)
     end
-    column :photo_fingerprint
+    column "Фотограф" do |photo|
+      link_to photo.user.name, admin_user_path(photo.user)
+    end
     default_actions
   end
 
