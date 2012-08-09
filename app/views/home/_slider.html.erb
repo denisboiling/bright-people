@@ -1,16 +1,11 @@
-<div id="nested_slider" class="slider">  
-  <div id="slider_fest" class="slider" style="z-index:20">
-    <div class="slides_container">
-      <div class="slide" style="background:url(/assets/samp/slide_2.jpg) no-repeat 0 top; height:395px">
-      </div>
-      <div class="slide" style="background:url(/assets/samp/slide_5.jpg) no-repeat 0 top; height:395px">
-      </div>
-      <div class="slide" style="background:url(/assets/samp/slide_6.jpg) no-repeat 0 top; height:395px">
-      </div>
-    </div> 
-    <a href="" class="next">Вперед</a>
-    <a href="" class="prev">Назад</a>
-  </div>
+<% include_js :after_head, 'home-video/youTubeEmbed-jquery-1.0', 'home-video/jquery.swfobject.1-1-1.min' %>
+<% content_for :after_head do %>
+  <%= stylesheet_link_tag 'home-video/youTubeEmbed-jquery-1.0' %>
+<% end %>
+
+<div id="home_video">
+  <%= image_tag '/assets/video-bg.png', :id => 'home_video_inner' %>
+  <div class="mask"></div>
 </div>
 
 <div class="wrapper">
