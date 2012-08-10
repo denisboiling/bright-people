@@ -8,13 +8,12 @@
 	margin: 0 auto;
 }
 
-.flashContainer object { opacity: 0; }
-
 .controlDiv{
 	/* Centering the control div */
 	position:absolute;
 	width:148px;
 	height:148px;
+	z-index: 3;
 	cursor:pointer;
 	top:50%;
 	left:50%;
