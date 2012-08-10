@@ -41,7 +41,7 @@ describe GalleryPhoto do
       photo = FactoryGirl.create(:gallery_photo)
       photo2 = FactoryGirl.create(:gallery_photo, photo: File.new(Rails.root.join('spec/files/pics_032.jpg')))
       arhive = GalleryPhoto.create_archive([photo, photo2])
-      File.size(arhive).should == 98894
+      File.size(arhive).to_s.should =~ /988\d+/
     end
   end
 
