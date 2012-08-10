@@ -1,16 +1,11 @@
-<div id="nested_slider" class="slider">  
-  <div id="slider_fest" class="slider" style="z-index:20">
-    <div class="slides_container">
-      <div class="slide" style="background:url(/assets/samp/slide_2.jpg) no-repeat 0 top; height:395px">
-      </div>
-      <div class="slide" style="background:url(/assets/samp/slide_5.jpg) no-repeat 0 top; height:395px">
-      </div>
-      <div class="slide" style="background:url(/assets/samp/slide_6.jpg) no-repeat 0 top; height:395px">
-      </div>
-    </div> 
-    <a href="" class="next">Вперед</a>
-    <a href="" class="prev">Назад</a>
-  </div>
+<% include_js :after_head, 'home-video/youTubeEmbed-jquery-1.0', 'home-video/jquery.swfobject.1-1-1.min' %>
+<% content_for :after_head do %>
+  <%= stylesheet_link_tag 'home-video/youTubeEmbed-jquery-1.0' %>
+<% end %>
+
+<div id="home_video">
+  <%= image_tag '/assets/video-bg.png', :id => 'home_video_inner' %>
+  <div class="mask"></div>
 </div>
 
 <div class="wrapper">
@@ -19,9 +14,9 @@
     <div class="color_line_right">
 
       <div class="main_content">
-        <% pics = ['/assets/samp/adv.jpg', '/assets/samp/R7.jpg', '/assets/samp/baner.jpg', '/assets/samp/school.jpg'] %>
-        <% links = ["http://www.krokha.ru", "http://radio7.ru/?utm_source=bright-people&utm_medium=promo&utm_campaign=bright-people", "http://www.bg.ru", "http://schools.mn.ru/schools/"] %>
-        <% j = rand(0..3) %>
+        <% pics = ['/assets/samp/adv.jpg', '/assets/samp/R7.jpg', '/assets/samp/baner.jpg', '/assets/samp/school.jpg', '/assets/samp/var002.gif'] %>
+        <% links = ["http://www.krokha.ru", "http://radio7.ru/?utm_source=bright-people&utm_medium=promo&utm_campaign=bright-people", "http://www.bg.ru", "http://schools.mn.ru/schools/", "http://www.mama-tv.ru"] %>
+        <% j = rand(0..4) %>
         <div class="adv"><%= link_to image_tag(pics[j]), links[j], "target"=>"_blank" %></div>
         <div class="content-wrapper">
           <div class="bank_info">
@@ -49,7 +44,7 @@
                       <div class="thumb"><%= image_tag n.photo.url %></div>
                       <div class="info">
                         <div class="name"><%= link_to n.title, n %></div>
-                        <div class="short_desc"><%= truncate(n.content, separator: '.', omission: '.', length: 140) %></div>
+                        <div class="short_desc"><%= truncate(n.short_description, separator: '.', omission: '.', length: 140) %></div>
                       </div>
                       <div class="clear"></div>
                     </div>
