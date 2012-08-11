@@ -12,6 +12,7 @@
 #= require js
 #= require swfobject
 #= require select_script
+#= require home-video/youTubeEmbed-jquery-1.0
 #= require_directory .
 
 $ ->
