@@ -1,0 +1,25 @@
+<h1>Страничка с фоточками, часиками и фотограФФчиками</h1>
+
+<h2>Переключатель</h2>
+
+<%= check_box_tag :choose_photos, "Выбирать фотографии" %>
+
+<h2>Количетсво фоток готовых к загрузке</h2>
+<span id="photo_download_count"></span>
+
+<h3>Очистить список</h3>
+<%= link_to "clear list", "", id: 'clean-storage' %>
+
+<br /><br /><br />
+
+
+
+<% @photos.each do |photo| %>
+  <div class="photo" id=<%= photo.id %> >
+    <%= image_tag photo.photo.url %>
+    <div class="download hidden">
+      <%= link_to "Mark", "", "data-action" => "mark" %>
+    </div>
+  </div>
+  
+<% end %>

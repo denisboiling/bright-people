@@ -7,6 +7,7 @@ BrightPeople::Application.routes.draw do
   match '/fb_pages' => 'fb_pages#fb_pages'
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
+
   put 'users/email' => 'users#update_email', as: :update_user_email
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -24,6 +25,8 @@ BrightPeople::Application.routes.draw do
 
   resource :comments, only: :create
   resource :search, only: [:show]
+
+  resources :photos, only: [:index, :show]
 
   resources :activities, only: [:index, :show, :search] do
     get :get_comments

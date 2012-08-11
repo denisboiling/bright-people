@@ -16,6 +16,8 @@ class GalleryPhoto < ActiveRecord::Base
   validates :photo_fingerprint, presence: true, uniqueness: true
   validates :user, presence: true
 
+  scope :published, where(processing: false)
+
   after_save :add_shot_date
 
   def add_shot_date

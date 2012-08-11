@@ -40,3 +40,4 @@ $ ->
   window.setup_lightbox()
   window.setup_participants_list()
   window.setup_member_lightbox()
+  window.setup_download_photos()
