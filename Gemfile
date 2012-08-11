@@ -1,6 +1,6 @@
 source :rubygems
 
-gem 'rails', '3.2.7'
+gem 'rails', '3.2.8'
 gem 'pg'
 
 gem 'omniauth', '1.1.0'
@@ -11,6 +11,7 @@ gem 'devise', '2.1.0'
 gem 'acts-as-taggable-on'
 
 group :assets do
+  # TODO: update to new versions
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'

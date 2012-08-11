@@ -112,6 +112,8 @@
 				
 				if(status==-1)	// video is loaded
 				{
+					elements.player.style.marginTop = '-9999px'
+
 					if(!initialized)
 					{
 						// Listen for a click on the control button:
@@ -125,7 +127,7 @@
 								elements.control.removeClass('play replay').addClass('pause');
 								elements.container.addClass('playing');
 								$('#home_video_inner').fadeOut('fast');
-								elements.player.style.opacity = 1;
+								elements.player.style.marginTop = 0
 								elements.player.playVideo();
 								
 							} else {
@@ -155,7 +157,7 @@
 					elements.control.removeClass('pause').addClass('replay');
 					elements.container.removeClass('playing');
 					$('#home_video_inner').fadeIn('fast');
-					elements.player.style.opacity = 0;
+					elements.player.style.marginTop = '-9999px'
 				}
 			}
 			

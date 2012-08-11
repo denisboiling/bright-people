@@ -21,5 +21,6 @@ db/structure.sql
 db/sphinx*
 rerun.txt
 public/assets
+/public/arhives
 REVISION
 /nbproject
