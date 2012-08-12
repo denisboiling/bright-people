@@ -4,14 +4,18 @@
 <% end %>
 
 <script type="text/javascript">
+  $(document).ready(function(){
   var isiPad = navigator.userAgent.match(/iPad/i) != null;
   var isiPhone = navigator.userAgent.match(/iPhone/i) != null;
   var isiPod = navigator.userAgent.match(/iPod/i) != null;
 
   if(isiPad == true || isiPhone == true || isiPod == true) {
-    $("#home_video").hide();
-    $("#home_video_ios").show();
+  $("#home_video").css("display","none");
+  $("#home_video_ios").css("display","block");
+  alert("Dsadas");
   }
+  });
+
 
 </script>
 
