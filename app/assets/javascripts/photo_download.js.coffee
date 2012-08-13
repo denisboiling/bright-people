@@ -6,6 +6,10 @@ window.setup_download_photos = ->
     link.text('Unmark')
     link.parents("div.photo:first").addClass("marked")
 
+  marked_div_as_div = (id) ->
+    div = $("div.photo##{id}")
+    marked_div(div.find("div.download a"))
+
   # Unmarked div
   unmarked_div = (link) ->
     link.attr('data-action', 'mark')
@@ -15,15 +19,8 @@ window.setup_download_photos = ->
   find_and_mark_all_choose = () ->
     return if localStorage.choose_photos == "[]" || ""
     choose_photos = JSON.parse(localStorage.choose_photos)
-    for i in choose_photos
-      console.log i
-    # $.each(JSON.parse(localStorage.choose_photos)) ->
-    #   console.log $(this)
-
-    # $("div.photo").find("a").each ->
-    #   id = $(this).parents("div.photo:first").attr("id")
-    #   debugger
-    #   marked_div($(this)) if choose_photos.indexOf(id)
+    for id in choose_photos
+      marked_div_as_div(id)
 
   update_photo_download_count = () ->
     count = JSON.parse(localStorage.choose_photos).length
@@ -88,3 +85,17 @@ window.setup_download_photos = ->
 
   $("#clean-storage").live 'click', ->
     localStorage.choose_photos = JSON.stringify([])
+
+  $("a#hd_download").bind 'click', ->
+    photos = JSON.parse(localStorage.choose_photos)
+    $.ajax
+      type: 'POST',
+      url: '/photos/download',
+      data: "ids" : photos
+      success: (data) ->
+        $("body").append("<iframe src='#{data}' style='display: none;' ></iframe>")
+        localStorage.choose_photos = JSON.stringify([])
+        find_and_mark_all_choose()
+        update_photo_download_count()
+        toogle_checkbox()
+    false

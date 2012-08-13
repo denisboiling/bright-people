@@ -26,7 +26,9 @@ BrightPeople::Application.routes.draw do
   resource :comments, only: :create
   resource :search, only: [:show]
 
-  resources :photos, only: [:index, :show]
+  resources :photos, only: [:index, :show, :download]
+  match '/photos/download' => 'photos#download', :via => :post, :as => :photos_download
+
 
   resources :activities, only: [:index, :show, :search] do
     get :get_comments
