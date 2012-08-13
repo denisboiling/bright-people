@@ -5,7 +5,7 @@ class GalleryPhoto < ActiveRecord::Base
 
   belongs_to :user
 
-  has_attached_file :photo, styles: {thumb: '100x100', medium: '530x370', big: '1366x768'},
+  has_attached_file :photo, styles: { thumb: ['100x100', :jpg], medium: ['530x370', :jpg], big: ['9999x9999>', :jpg] },
                             path: ":rails_root/public/system/gallery_photos/:attachment/:id/:style/:filename",
                             url: "/system/gallery_photos/:attachment/:id/:style/:filename",
                             default_style: :thumb,
@@ -37,12 +37,9 @@ class GalleryPhoto < ActiveRecord::Base
   end
 
   before_photo_post_process do
-    self.processing ? false : true
     # TODO: remove this dirty hack about test env
-    if Rails.env.test?
-      self.processing = true
-      true
-    end
+    self.processing = true if Rails.env.test?
+    self.processing ? false : true
   end
 
   after_create do
@@ -56,6 +53,7 @@ class GalleryPhoto < ActiveRecord::Base
     photo.reprocess!
     save
   end
+
 
   class << self
 
@@ -77,7 +75,7 @@ class GalleryPhoto < ActiveRecord::Base
       _photos = photos.first.class.name == 'GalleryPhoto' ? photos : self.find(photos)
 
       Zip::ZipFile.open(arhive_dir + '.zip', Zip::ZipFile::CREATE) do |zipfile|
-        _photos.each {|photo| zipfile.add("#{photo.id}#{File.extname(photo.photo_file_name)}", photo.photo.path(:big)) }
+        _photos.each {|photo| zipfile.add("#{photo.id}.jpg", photo.photo.path(:big)) }
       end
 
       return arhive_dir + '.zip'
