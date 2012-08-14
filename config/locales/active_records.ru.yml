@@ -172,6 +172,7 @@ ru:
         created_at: Дата создания
         updated_at: Дата обновления
         activity: Кружок
+        position: Номер фотографа
       activity_photo:
         attach: Фотография
       video_url:

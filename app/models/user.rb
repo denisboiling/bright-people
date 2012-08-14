@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
                              default_style: :thumb, default_url: 'loading.gif'
 
   attr_accessible :email, :remember_me, :password, :password_confirmation, :avatar, :description, :about,
-                  :role_id, :name, :activity_id
+                  :role_id, :name, :activity_id, :position
 
   validates :role, presence: true
 
@@ -46,6 +46,7 @@ class User < ActiveRecord::Base
   scope :managers, where(role_id: 5)
   scope :authors, where(role_id: 6)
   scope :photographers, where(role_id: [7,8])
+  scope :junior_photographers, where(role_id: 7)
 
   scope :authors_with_photos, authors.where('avatar_file_size IS NOT NULL OR avatar_file_size != 0')
 
