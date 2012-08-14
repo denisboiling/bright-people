@@ -25,8 +25,8 @@
           <div class="cat_name"><span><%= sp.title %></span></div>
           <div class="thumb"><%= link_to image_tag(sp.picture.url), special_project_path(sp) %></div>
           <div class="name">
-            <%= link_to truncate(sp.content), special_project_path(sp) %>
-            <span class="desc">Классический по мотивам</span>
+            <%= link_to sp.title, special_project_path(sp) %>
+            <span class="desc"><%= truncate(sp.content) %></span>
           </div>
         </div>
       </div>

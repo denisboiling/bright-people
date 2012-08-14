@@ -12,11 +12,13 @@
 #= require js
 #= require swfobject
 #= require select_script
+#= require home-video/youTubeEmbed-jquery-1.0
 #= require_directory .
 
 $ ->
   window.setup_dialogs()
   window.setup_notify()
+  window.setup_home_video()
   window.setup_email_dialog()
   window.setup_activities_list()
   window.setup_activities_approval()
