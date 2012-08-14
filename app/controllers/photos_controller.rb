@@ -8,4 +8,10 @@ class PhotosController < ApplicationController
     arhive = GalleryPhoto.create_archive(params[:ids])
     render text: "/arhives/#{arhive.match(/(\w+\.zip)$/)[0]}"
   end
+
+  def promo
+  end
+
+  def clock
+  end
 end

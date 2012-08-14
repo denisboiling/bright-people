@@ -26,8 +26,10 @@ BrightPeople::Application.routes.draw do
   resource :comments, only: :create
   resource :search, only: [:show]
 
-  resources :photos, only: [:index, :show, :download]
+  resources :photos, only: [:index, :show]
   match '/photos/download' => 'photos#download', :via => :post, :as => :photos_download
+  match '/promo' => 'photos#promo', :as => :photos_promo
+  match '/clock' => 'photos#clock', :as => :photos_clock
 
 
   resources :activities, only: [:index, :show, :search] do
