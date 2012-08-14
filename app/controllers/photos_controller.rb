@@ -1,4 +1,6 @@
 class PhotosController < ApplicationController
+  layout "promo"
+
   def index
     @photos = GalleryPhoto.all
   end

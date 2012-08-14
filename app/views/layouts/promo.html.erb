@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= yield(:title).present? ? yield(:title) : 'Фестиваль Яркие Люди' %></title>
+    <%= yield :before_head %>
+    <%= stylesheet_link_tag 'promo/application', :media => "all" %>
+    <%= javascript_include_tag 'promo/application' %>
+    <%= yield :after_head %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+
+    <%= link_to image_tag('promo/goto-site.png'), root_path, id: 'bri-goto-site' %>
+
+    <div id="bri-main">
+
+      <div id="bri-preloader"></div>
+
+      <div class="bri-wrapper">
+
+        <div id="bri-fest-title"></div>
+
+	<%= link_to image_tag('promo/index/find-me.png'), photos_clock_path, class: 'bri-nav', id: 'bri-find-me' %>
+	<%= link_to image_tag('promo/index/fest.png'), photos_clock_path, id: 'bri-fest' %>
+
+        <div id="bri-letters">
+	  <%= image_tag 'promo/index/letters/ya.png',    id: 'bri-letters-ya' %>
+	  <%= image_tag 'promo/index/letters/r.png',     id: 'bri-letters-r' %>
+	  <%= image_tag 'promo/index/letters/k.png',     id: 'bri-letters-k' %>
+	  <%= image_tag 'promo/index/letters/i.png',     id: 'bri-letters-i' %>
+	  <%= image_tag 'promo/index/letters/e.png',     id: 'bri-letters-e' %>
+	  <%= image_tag 'promo/index/letters/l.png',     id: 'bri-letters-l' %>
+	  <%= image_tag 'promo/index/letters/yu.png',    id: 'bri-letters-yu' %>
+	  <%= image_tag 'promo/index/letters/d.png',     id: 'bri-letters-d' %>
+	  <%= image_tag 'promo/index/letters/i2.png',    id: 'bri-letters-i2' %>
+	  <%= image_tag 'promo/index/letters/exclm.png', id: 'bri-letters-exclm' %>
+        </div>
+
+	<!-- Don't forgot remove test data -->
+        <img src="/assets/promo/index/photo.jpg" id="bri-photo-1"  class="bri-photo">
+        <img src="/assets/promo/index/photo.jpg" id="bri-photo-2"  class="bri-photo">
+        <img src="/assets/promo/index/photo.jpg" id="bri-photo-3"  class="bri-photo">
+        <img src="/assets/promo/index/photo.jpg" id="bri-photo-4"  class="bri-photo">
+        <img src="/assets/promo/index/photo.jpg" id="bri-photo-5"  class="bri-photo">
+        <img src="/assets/promo/index/photo.jpg" id="bri-photo-6"  class="bri-photo">
+
+        <img src="/assets/promo/index/photo.jpg" id="bri-photo-7"  class="bri-photo">
+        <img src="/assets/promo/index/photo.jpg" id="bri-photo-8"  class="bri-photo">
+        <img src="/assets/promo/index/photo.jpg" id="bri-photo-9"  class="bri-photo">
+        <img src="/assets/promo/index/photo.jpg" id="bri-photo-10" class="bri-photo">
+        <img src="/assets/promo/index/photo.jpg" id="bri-photo-11" class="bri-photo">
+        <img src="/assets/promo/index/photo.jpg" id="bri-photo-12" class="bri-photo">
+
+      </div>
+    </div>
+
+    <footer>
+
+      <div class="bri-links">
+
+        <div class="bri-news left">
+          <span class="left">Читайте<br>яркие новости</span>
+	  <%= link_to image_tag('promo/index/fb.png'), '#' %>
+	  <%= link_to image_tag('promo/index/vk.png'), '#' %>
+        </div>
+
+        <div class="bri-videos">
+          <span class="left">Смотрите<br>яркие ролики</span>
+	  <%= link_to image_tag('promo/index/yt.png'), '#' %>
+        </div>
+
+      </div>
+
+      <div class="bri-credentials">
+
+        <div class="bri-organizator">
+          Организатор фестиваля<br>
+          +7 (495) 640-91-21 • <a href="mailto:info@bright-people.ru">info@bright-people.ru</a>
+        </div>
+
+        <div class="bri-support">
+          PR-поддержка<br>
+          +7 (495) 640-42-34 • <a href="mailto:info@massovet.ru">info@massovet.ru</a>
+        </div>
+
+        <div class="bri-bank"></div>
+
+        <div class="bri-shield">
+          При поддержке<br>
+          Правительства<br>
+          Москвы
+        </div>
+
+      </div>
+
+    </footer>
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-32745172-1']);
+      _gaq.push(['_setDomainName', 'bright-people.ru']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </body>
+</html>
