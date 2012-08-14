@@ -8,7 +8,7 @@
         <%= Russian::strftime(n.publication_date, "%e %B, %A") %>
       </div>
       <div class="text">
-        <%= truncate(n.content, separator: '.', omission: '.', length: 240) %>
+        <%= truncate(n.short_description, separator: '.', omission: '.', length: 240) %>
       </div>
     </div>
     <div class="clear"></div>
