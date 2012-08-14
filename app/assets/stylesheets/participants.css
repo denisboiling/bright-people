@@ -15,8 +15,8 @@
 .participant_photo img.clickable:hover { cursor: pointer }
 .init_lightbox { position: absolute; z-index: 10; right: 0; top: 50%; margin-top: -15px; width: 28px; height: 30px; background: url(/assets/prettyPhoto/default/sprite_next.png) no-repeat; }
 
-.main_participants { margin-top: 20px; }
-.main_participants .item { float: left; width: 32%; margin-right: 2%; }
+.main_participants { margin-top: 20px; overflow: hidden; }
+.main_participants .item { display: inline-block; width: 31%; margin-right: 2%; }
 .main_participants .item:last-child { margin-right: 0; }
 .main_participants .item img { width: 100%; behaviour: url(border-radius.htc); border-radius: 7px; -webkit-border-radius: 7px; -moz-border-radius: 7px; -khtml-border-radius: 7px; }
 .main_participants .item .title { margin: 10px 3px; padding-bottom: 0; font-weight: bold; }

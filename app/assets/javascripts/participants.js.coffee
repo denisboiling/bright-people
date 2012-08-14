@@ -14,8 +14,8 @@ window.setup_participants_list = ->
   $('.pika-stage').addClass('hidden')
   
   $('.main_participants .item').live 'mouseover', (event) ->
-    $(this).stop().animate { width: '50%' }
-    $(this).siblings().stop().animate { width: '23%' }
+    $(this).stop().animate { width: '50%', 'linear' }
+    $(this).siblings().stop().animate { width: '22%', 'linear' }
   
   $('.participant_photo').live 'click', (event) ->
     event.preventDefault()

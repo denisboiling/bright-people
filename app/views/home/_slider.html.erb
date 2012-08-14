@@ -1,16 +1,31 @@
-<div id="nested_slider" class="slider">  
-  <div id="slider_fest" class="slider" style="z-index:20">
-    <div class="slides_container">
-      <div class="slide" style="background:url(/assets/samp/slide_2.jpg) no-repeat 0 top; height:395px">
-      </div>
-      <div class="slide" style="background:url(/assets/samp/slide_5.jpg) no-repeat 0 top; height:395px">
-      </div>
-      <div class="slide" style="background:url(/assets/samp/slide_6.jpg) no-repeat 0 top; height:395px">
-      </div>
-    </div> 
-    <a href="" class="next">Вперед</a>
-    <a href="" class="prev">Назад</a>
-  </div>
+<% include_js :after_head, 'home-video/youTubeEmbed-jquery-1.0', 'home-video/jquery.swfobject.1-1-1.min' %>
+<% content_for :after_head do %>
+  <%= stylesheet_link_tag 'home-video/youTubeEmbed-jquery-1.0' %>
+<% end %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+  var isiPad = navigator.userAgent.match(/iPad/i) != null;
+  var isiPhone = navigator.userAgent.match(/iPhone/i) != null;
+  var isiPod = navigator.userAgent.match(/iPod/i) != null;
+
+  if(isiPad == true || isiPhone == true || isiPod == true) {
+  $("#home_video").css("display","none");
+  $("#home_video_ios").css("display","block");
+  }
+  });
+
+
+</script>
+
+<div id="home_video_ios" style="display:none">
+  <div style="margin:auto; width:640px"><iframe width="640" height="360" src="http://www.youtube.com/embed/0akT4U6GtwU" frameborder="0" allowfullscreen></iframe></div>
+</div>
+
+
+<div id="home_video">
+  <%= image_tag '/assets/video-bg.jpg', :id => 'home_video_inner' %>
+  <div class="mask"></div>
 </div>
 
 <div class="wrapper">
@@ -19,78 +34,78 @@
     <div class="color_line_right">
 
       <div class="main_content">
-        <% pics = ['/assets/samp/adv.jpg', '/assets/samp/R7.jpg', '/assets/samp/baner.jpg', '/assets/samp/school.jpg', '/assets/samp/var002.gif'] %>
-        <% links = ["http://www.krokha.ru", "http://radio7.ru/?utm_source=bright-people&utm_medium=promo&utm_campaign=bright-people", "http://www.bg.ru", "http://schools.mn.ru/schools/", "http://www.mama-tv.ru"] %>
-        <% j = rand(0..4) %>
-        <div class="adv"><%= link_to image_tag(pics[j]), links[j], "target"=>"_blank" %></div>
-        <div class="content-wrapper">
-          <div class="bank_info">
-            <div class="title">Добро пожаловать в мир ярких людей!</div>
-            <div class="order_bank_catd">Президент ОАО<br />«МОСКОВСКИЙ <br />КРЕДИТНЫЙ БАНК»<br />Александр Николашин</div>
-            <div class="bank_text">
-              МОСКОВСКИЙ КРЕДИТНЫЙ БАНК <br />
-              в честь своего 20-летия дарит городу праздник – детский творческий фестиваль «Яркие люди».<br />
-              Гости мероприятия смогут<br />
-              не только весело провести время, но и открыть двери в мир творческих профессий<br />
-              и искусства.<br />
-              <%= link_to 'Подробнее', page_path('about_bank'), class: :to_bank_link %>
-            </div>
-            <div class="clear"></div>
-          </div>
-          <div class="news_in_main">
-            <div id="slider-code">
+	<% pics = ['/assets/samp/adv.jpg', '/assets/samp/R7.jpg', '/assets/samp/baner.jpg', '/assets/samp/school.jpg', '/assets/samp/var002.gif'] %>
+	<% links = ["http://www.krokha.ru", "http://radio7.ru/?utm_source=bright-people&utm_medium=promo&utm_campaign=bright-people", "http://www.bg.ru", "http://schools.mn.ru/schools/", "http://www.mama-tv.ru"] %>
+	<% j = rand(0..4) %>
+	<div class="adv"><%= link_to image_tag(pics[j]), links[j], "target"=>"_blank" %></div>
+	<div class="content-wrapper">
+	  <div class="bank_info">
+	    <div class="title">Добро пожаловать в мир ярких людей!</div>
+	    <div class="order_bank_catd">Президент ОАО<br />«МОСКОВСКИЙ <br />КРЕДИТНЫЙ БАНК»<br />Александр Николашин</div>
+	    <div class="bank_text">
+	      МОСКОВСКИЙ КРЕДИТНЫЙ БАНК <br />
+	      в честь своего 20-летия дарит городу праздник – детский творческий фестиваль «Яркие люди».<br />
+	      Гости мероприятия смогут<br />
+	      не только весело провести время, но и открыть двери в мир творческих профессий<br />
+	      и искусства.<br />
+	      <%= link_to 'Подробнее', page_path('about_bank'), class: :to_bank_link %>
+	    </div>
+	    <div class="clear"></div>
+	  </div>
+	  <div class="news_in_main">
+	    <div id="slider-code">
 
-              <div class="viewport">
-                <ul class="overview">
-                    <% News.for_main.each do |n| %>
-                    <li>
-                    <div class="news_cell">
-                      <div class="date"><%= r_time(n.publication_date || n.created_at) %></div>
-                      <div class="thumb"><%= image_tag n.photo.url %></div>
-                      <div class="info">
-                        <div class="name"><%= link_to n.title, n %></div>
-                        <div class="short_desc"><%= truncate(n.short_description, separator: '.', omission: '.', length: 140) %></div>
-                      </div>
-                      <div class="clear"></div>
-                    </div>
-                    </li>
-                    <% end %>
-                </ul>
-                <div class="clear"></div>
-              </div>
-              <%= link_to 'Архив новостей', news_index_path, :class => 'news_archive' %>
-              <div class="nav_arrow">
-                <a class="buttons prev" href="#"><img src="/assets/news_slide_up.png" /></a>
-                <a class="buttons next" href="#"><img src="/assets/news_slide_down.png" /></a>
-              </div>
-            </div>
+	      <div class="viewport">
+		<ul class="overview">
+		  <% News.for_main.each do |n| %>
+		    <li>
+		      <div class="news_cell">
+			<div class="date"><%= r_time(n.publication_date || n.created_at) %></div>
+			<div class="thumb"><%= image_tag n.photo.url %></div>
+			<div class="info">
+			  <div class="name"><%= link_to n.title, n %></div>
+			  <div class="short_desc"><%= truncate(n.short_description, separator: '.', omission: '.', length: 140) %></div>
+			</div>
+			<div class="clear"></div>
+		      </div>
+		    </li>
+		  <% end %>
+		</ul>
+		<div class="clear"></div>
+	      </div>
+	      <%= link_to 'Архив новостей', news_index_path, :class => 'news_archive' %>
+	      <div class="nav_arrow">
+		<a class="buttons prev" href="#"><img src="/assets/news_slide_up.png" /></a>
+		<a class="buttons next" href="#"><img src="/assets/news_slide_down.png" /></a>
+	      </div>
+	    </div>
 
-            <script type="text/javascript">
-            $(document).ready(function(){
-              $('#slider-code').tinycarousel({ axis: 'y', display: 2});
-            });
-            </script>
-          </div>
-          <div class="subscription">
-            <div class="title">
-              Подписка
-              <span>на материалы из всех рубрик</span>
-            </div>
-            <div class="subscript_form">
-              <!-- Begin MailChimp Signup Form -->
-              <div id="mc_embed_signup">
-              <form action="http://bright-people.us5.list-manage.com/subscribe/post?u=79722e9c6e3607f42dfb277bd&amp;id=8ae74f1ca8" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-                  <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email адрес" required>
-                  <input type="submit" value="Ok!" name="subscribe" id="mc-embedded-subscribe" class="button">
-              </form>
-              </div>
-              <!--End mc_embed_signup-->
-            </div>
-          </div>
-        </div>
+	    <script type="text/javascript">
+	      $(document).ready(function(){
+	      $('#slider-code').tinycarousel({ axis: 'y', display: 2});
+	      });
+	    </script>
+	  </div>
+	  <div class="subscription">
+	    <div class="title">
+	      Подписка
+	      <span>на материалы из всех рубрик</span>
+	    </div>
+	    <div class="subscript_form">
+	      <!-- Begin MailChimp Signup Form -->
+	      <div id="mc_embed_signup">
+		<form action="http://bright-people.us5.list-manage.com/subscribe/post?u=79722e9c6e3607f42dfb277bd&amp;id=8ae74f1ca8" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+		  <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email адрес" required>
+		  <input type="submit" value="Ok!" name="subscribe" id="mc-embedded-subscribe" class="button">
+		</form>
+	      </div>
+	      <!--End mc_embed_signup-->
+	    </div>
+	  </div>
+	</div>
       </div>
 
 
-    </div>    
+    </div>
   </div>
 </div>
