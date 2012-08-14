@@ -56,6 +56,7 @@ group :development, :test do
   gem 'launchy'
   gem 'debugger'
   gem 'ffaker'
+  gem 'brakeman'
 end
 
 group :development do
