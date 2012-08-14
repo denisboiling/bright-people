@@ -27,7 +27,7 @@ body
     margin-left: -88px;
     height: 100%;
     text-align: center;
-    background: url(../img/clock/photographers3.png) no-repeat center top;
+    background: url(/assets/promo/clock/photographers3.png) no-repeat center top;
     background-size: contain;
   }
     #bri-svg 
@@ -44,7 +44,7 @@ body
     left: 50%;
     padding-top: 10px;
     font-family: Futura;
-    background: url(../img/clock/pointer.png) no-repeat left center;
+    background: url(/assets/promo/clock/pointer.png) no-repeat left center;
     background-size: contain;
     color: #85b8e3;
   }
