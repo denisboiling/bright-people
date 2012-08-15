@@ -68,25 +68,25 @@ class GalleryPhoto < ActiveRecord::Base
   def perform
     self.processing = false
     photo.reprocess!
-    add_watermark
+    # add_watermark
     save
   end
 
-  def add_watermark
-    require 'RMagick'
-    logo_path = Rails.root.join('public/logos/logo.png')
-    styles = [:thumb, :medium, :big]
-    styles.each do |style|
-      pic_path = Rails.root.join('public'+photo.url(style, false))
-      pic = Magick::Image.read(pic_path).first
-      logo = Magick::Image.read(logo_path).first
-      x_dim = pic.columns.to_i
-      y_dim = pic.rows.to_i
-      logo = logo.resize_to_fit(x_dim/4, y_dim/4)
-      pic = pic.composite(logo, Magick::SouthEastGravity, Magick::OverCompositeOp)
-      pic.write(pic_path)
-    end
-  end
+  # def add_watermark
+  #   require 'RMagick'
+  #   logo_path = Rails.root.join('public/logos/logo.png')
+  #   styles = [:thumb, :medium, :big]
+  #   styles.each do |style|
+  #     pic_path = Rails.root.join('public'+photo.url(style, false))
+  #     pic = Magick::Image.read(pic_path).first
+  #     logo = Magick::Image.read(logo_path).first
+  #     x_dim = pic.columns.to_i
+  #     y_dim = pic.rows.to_i
+  #     logo = logo.resize_to_fit(x_dim/4, y_dim/4)
+  #     pic = pic.composite(logo, Magick::SouthEastGravity, Magick::OverCompositeOp)
+  #     pic.write(pic_path)
+  #   end
+  # end
 
   class << self
 
