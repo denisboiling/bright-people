@@ -3,7 +3,8 @@ FileUtils.rm_rf Rails.root.join('public/arhives')
 
 photos = Dir.glob(Rails.root.join('db/sample/files/*/', '*.jpg'))
 
+# TODO: remove User.junior...
 30.times.each do |i|
-  GalleryPhoto.create(user_id: rand(26..30),
+  GalleryPhoto.create(user_id:  User.junior_photographers.sample.id,
                       photo: File.new(photos.shift))
 end

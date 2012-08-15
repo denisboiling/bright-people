@@ -168,6 +168,14 @@ class User < ActiveRecord::Base
     update_attribute(:role, Role.author)
   end
 
+  def first_name
+    name.split(' ').first
+  end
+
+  def last_name
+    name.split(' ').last
+  end
+
   class << self
     def experts_for_main
       User.experts.random(5)

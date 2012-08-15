@@ -3,7 +3,7 @@
   <% User.junior_photographers.order('position ASC').each do |photographer| %>
     <div class="bri-photographer" data-id=<%= photographer.id %> >
       <img src="/assets/promo/clock/photographers/<%= photographer.position %>.png" class="bri-number">
-      <%= image_tag photographer.avatar.url, class: 'bri-photo hidden' %>
+      <img src="/assets/promo/clock/photographers/<%= photographer.position %>_.png" class="bri-photo hidden">
     </div>
   <% end %>
 

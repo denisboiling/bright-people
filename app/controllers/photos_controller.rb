@@ -31,6 +31,6 @@ class PhotosController < ApplicationController
     @photographers = params["photographers"].split(',') if params["photographers"].present?
     params['hour']   ||= 10
     params['minute'] ||= 00
-    @time = Time.zone.parse("2012-09-18 #{params['hour']}:#{params['minute']}:00").to_s(:db)
+    @time = Time.zone.parse("2012-01-18 #{params['hour']}:#{params['minute']}:00").to_s(:db)
   end
 end
