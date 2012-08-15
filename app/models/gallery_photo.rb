@@ -5,7 +5,7 @@ class GalleryPhoto < ActiveRecord::Base
 
   belongs_to :user
 
-  has_attached_file :photo, styles: { thumb: ['100x100', :jpg], medium: ['530x370', :jpg], big: ['9999x9999>', :jpg] },
+  has_attached_file :photo, styles: { thumb: ['240x240', :jpg], medium: ['1000x1000', :jpg], big: ['9999x9999>', :jpg] },
                             path: ":rails_root/public/system/gallery_photos/:attachment/:id/:style/:filename",
                             url: "/system/gallery_photos/:attachment/:id/:style/:filename",
                             default_style: :thumb,
