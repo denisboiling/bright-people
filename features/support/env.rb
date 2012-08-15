@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'spork'
-require 'spork/ext/ruby-debug' unless ENV['JENKINS']
+require 'spork/ext/ruby-debug'
 
 Spork.prefork do
   require 'cucumber'
@@ -13,23 +13,6 @@ Spork.prefork do
   DatabaseCleaner.strategy = :transaction
 
   SUPPORT_DIR = Rails.root.join('features/support')
-
-  if Spork.using_spork?
-    Spork.trap_method(Rails::Application, :eager_load!)
-    Spork.trap_method(Rails::Application::RoutesReloader, :reload!)
-    require File.expand_path("../../../config/environment", __FILE__)
-    Rails.application.railties.all { |r| r.eager_load! }
-  end
-
-  # For jenkins
-  if ENV['JENKINS']
-    require 'headless'
-    headless = Headless.new
-    headless.start
-    at_exit do
-      headless.destroy
-    end
-  end
 end
 
 Spork.each_run do

@@ -1,7 +1,5 @@
-#OPTIMIZE:
-Delayed::Worker.destroy_failed_jobs = false
-Delayed::Worker.sleep_delay = 10
+Delayed::Worker.destroy_failed_jobs = true
 Delayed::Worker.max_attempts = 3
-Delayed::Worker.max_run_time = 5.minutes
-# Nice trick to don't start delayed_job of test env
+Delayed::Worker.sleep_delay = 60
+Delayed::Worker.max_run_time = Rails.env.production? ? 3.minutes : 1.hour
 Delayed::Worker.delay_jobs = !Rails.env.test?
