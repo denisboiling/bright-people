@@ -7,7 +7,7 @@ class GalleryPhoto < ActiveRecord::Base
 
   belongs_to :user
 
-  has_attached_file :photo, styles: { thumb: ['100x100', :jpg], medium: ['530x370', :jpg], big: ['9999x9999>', :jpg] },
+  has_attached_file :photo, styles: { thumb: ['240x240', :jpg], medium: ['1000x1000', :jpg], big: ['9999x9999>', :jpg] },
                             path: ":rails_root/public/system/gallery_photos/:attachment/:id/:style/:filename",
                             url: "/system/gallery_photos/:attachment/:id/:style/:filename",
                             default_style: :thumb,
@@ -68,9 +68,25 @@ class GalleryPhoto < ActiveRecord::Base
   def perform
     self.processing = false
     photo.reprocess!
+    add_watermark
     save
   end
 
+  def add_watermark
+    require 'RMagick'
+    logo_path = Rails.root.join('public/logos/logo.png')
+    styles = [:thumb, :medium, :big]
+    styles.each do |style|
+      pic_path = Rails.root.join('public'+photo.url(style, false))
+      pic = Magick::Image.read(pic_path).first
+      logo = Magick::Image.read(logo_path).first
+      x_dim = pic.columns.to_i
+      y_dim = pic.rows.to_i
+      logo = logo.resize_to_fit(x_dim/4, y_dim/4)
+      pic = pic.composite(logo, Magick::SouthEastGravity, Magick::OverCompositeOp)
+      pic.write(pic_path)
+    end
+  end
 
   class << self
 
