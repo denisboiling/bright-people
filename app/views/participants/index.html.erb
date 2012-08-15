@@ -27,6 +27,10 @@
       %>
       <%= participants_menu links %>
     <% end %>
+    
+    <a href="/system/files/scheme.pdf" class="pdf_link">Схема</a>
+    <a href="/system/files/schedule.pdf" class="pdf_link">Расписание выступлений</a>
+
     <div class="participants_map">
       <% if ( @stage && !@stage.content.blank? ) %>
       <div class="text">
