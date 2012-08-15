@@ -54,7 +54,7 @@ class GalleryPhoto < ActiveRecord::Base
 
   before_photo_post_process do
     # TODO: remove this dirty hack about test env
-    self.processing = true if Rails.env.test?
+    self.processing = true and return if Rails.env.test?
     self.processing ? false : true
   end
 

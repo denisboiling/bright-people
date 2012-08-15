@@ -3,3 +3,6 @@
 #= require promo/libs/modernizr-2.5.3.min
 #= require promo/libs/raphael-min
 #= require_directory .
+
+$ ->
+  window.setup_download_photos()
