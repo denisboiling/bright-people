@@ -28,10 +28,16 @@ class GalleryPhoto < ActiveRecord::Base
   scope :by_time, lambda{|time| where('shot_date >= ?', time)}
 
 
-  after_save :add_shot_date
+  after_create :shot_date!
 
-  def add_shot_date
-    date = EXIFR::JPEG.new(self.photo.path(:original)).date_time rescue Time.zone.now
+  # We can get date of shot only from TIFF(.NEF CR2) file.
+  # For jpeg and png we sett current date timesmapt
+  def shot_date!
+    date = begin
+             EXIFR::TIFF.new(self.photo.path(:original)).date_time
+           rescue
+             Time.zone.now
+           end
     self.update_column(:shot_date, date)
   end
 

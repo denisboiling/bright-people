@@ -5,6 +5,6 @@ photos = Dir.glob(Rails.root.join('db/sample/files/*/', '*.jpg'))
 
 # TODO: remove User.junior...
 30.times.each do |i|
-  GalleryPhoto.create(user_id:  User.junior_photographers.sample.id,
+  GalleryPhoto.create(user_id: User.junior_photographers.sample.id,
                       photo: File.new(photos.shift))
 end
