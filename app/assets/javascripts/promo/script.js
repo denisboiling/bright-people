@@ -2,7 +2,7 @@ function promo ()
 {
 	$(document).ready(function()
 	{
-		$('#bri-preloader')
+		$('#bri-main-preloader')
 			.delay(500)
 			.fadeOut
 			(

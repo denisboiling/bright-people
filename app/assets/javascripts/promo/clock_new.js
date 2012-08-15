@@ -64,11 +64,11 @@ function Clock ( el, setHour, setMinute )
           var segment        = obj.paper.path( this.arc( [this.cx,this.cy], radius, angle, angle+segmentAngle ) )
           segment.clickColor = colors[i]
           segment.angle      = angle
-          segment.time       = i*timeMultiplier
+          segment.time       = eval(timeMultiplier.replace('%',i))
           segment
             .attr({ 'stroke-width': strokeWidth, 'stroke': ( (!i)? colors[i] : strokeColor ) })
             .hover(function(){ this.attr('cursor','pointer') })
-            .click(function(){ onClick(segment) })
+            .click(function(){ onClick(this) })
             .toBack()
           set.push(segment)
 
@@ -117,6 +117,7 @@ function Clock ( el, setHour, setMinute )
     -90, 12, obj.minuteRadius, 360/12, obj.minuteSegmentColors, '5*%', obj.minuteStroke, obj.minuteStrokeColor
   , function (segment)
     {
+      console.log(segment)
       obj.minuteClock.forEach(function(item)
       {
         item.attr( 'stroke', obj.minuteStrokeColor )
