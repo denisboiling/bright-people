@@ -149,10 +149,6 @@ td { vertical-align: top; }
 
 footer 
 { 
-  position: absolute; 
-  left: 50%; 
-  bottom: 0; 
-  margin-left: -37%; 
   padding-bottom: 14px; 
   min-width: 720px; 
   width: 74%; 

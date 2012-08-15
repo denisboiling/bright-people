@@ -129,7 +129,12 @@ body.promo
 
 footer.promo 
 { 
+  position: absolute; 
+  left: 50%; 
+  bottom: 0; 
+  margin-left: -37%; 
   display: none; 
+
 }
   footer.promo,
   footer.promo .bri-links,

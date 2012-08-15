@@ -85,18 +85,22 @@ body.clock
       #bri-form .bri-nav:active { margin-top: 3px; }
 
 
-footer
+footer.clock
 {
+  position: absolute; 
   z-index: 99;
+  left: 50%; 
+  bottom: 0; 
+  margin-left: -37%; 
 }
-  footer,
-  footer .bri-links,
-  footer .bri-links .bri-news 
+  footer.clock,
+  footer.clock .bri-links,
+  footer.clock .bri-links .bri-news 
   {
     border-color: #c7dff3; 
   }
 
-  footer .bri-credentials a
+  footer.clock .bri-credentials a
   {
     color: #999;
   }
