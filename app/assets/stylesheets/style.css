@@ -1020,3 +1020,5 @@ span.sim_check.active { background-position:0px 0px; }
 #slider-code .overview li{  min-height: 110px; width:  100%;}
 #slider-code .overview li img { height:75px}
 #slider-code .nav_arrow { background:#d2d2ce; text-align:center; position:absolute; width:100%; padding:2px 0; bottom:0}
+
+.pdf_link { line-height: 33px; padding-left: 40px; background: url(/assets/pdfico.png) no-repeat left center; }

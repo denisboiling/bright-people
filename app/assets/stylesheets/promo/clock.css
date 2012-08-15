@@ -1,9 +1,17 @@
-body 
+body.clock
 {  
   color: #999;
 }
 
-  #bri-main .bri-photographer
+#bri-main-clock
+{
+  position: absolute;
+  width: 100%;
+  min-width: 720px;
+  top: 0;
+  bottom: 10em;
+}
+  #bri-main-clock .bri-photographer
   {
     position: absolute;
     z-index: 81;
@@ -11,16 +19,16 @@ body
     text-align: center;
     font-family: Futura;
   } 
-    #bri-main .bri-photographer:hover
+    #bri-main-clock .bri-photographer:hover
     {
       z-index: 82;
       cursor: pointer;
     }
 
-    #bri-main .bri-photographer img { width: 100%; }
-    #bri-main .bri-photographer img.hidden { display: none; }
+    #bri-main-clock .bri-photographer img { width: 100%; }
+    #bri-main-clock .bri-photographer img.hidden { display: none; }
 
-  #bri-main-mask
+  #bri-main-clock-mask
   {
     position: relative;
     z-index: 80;
@@ -96,5 +104,5 @@ footer
 
 @media only screen and (max-width: 1200px)
 {
-  #bri-main-mask { margin-left: -89px; }
+  #bri-main-clock-mask { margin-left: -89px; }
 }
