@@ -6,6 +6,7 @@ class CreateGalleryPhotos < ActiveRecord::Migration
       t.string :photo_fingerprint
       t.datetime :shot_date
       t.boolean :processing, null: false, default: true
+      t.integer :views, null: false, default: 0
       t.timestamps
     end
   end

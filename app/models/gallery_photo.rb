@@ -13,7 +13,7 @@ class GalleryPhoto < ActiveRecord::Base
                             default_style: :thumb,
                             default_url: 'loading.gif'
 
-  attr_accessible :user_id, :photo
+  attr_accessible :user_id, :photo, :views
 
   validates :photo_fingerprint, presence: true, uniqueness: true
   validates :user, presence: true
