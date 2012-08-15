@@ -1,0 +1,27 @@
+<div id="bri-main">
+
+  <% User.junior_photographers.order('position ASC').each do |photographer| %>
+    <div class="bri-photographer" data-id=<%= photographer.id %> >
+      <img src="/assets/promo/clock/photographers/<%= photographer.position %>.png" class="bri-number">
+      <img src="/assets/promo/clock/photographers/<%= photographer.position %>_.png" class="bri-photo hidden">
+    </div>
+  <% end %>
+
+  <div id="bri-main-mask">
+    <div id="bri-svg"></div>
+  </div>
+
+  <a href="#" id="bri-photographers-all">Выбрать всех фотографов</a>
+
+  <%= form_tag photos_path, method: :get, id: 'bri-form' do %>
+    <%= hidden_field_tag :photographers, '', id: 'bri-form-photographers' %>
+    <%= hidden_field_tag :hour, 10, id: 'bri-form-hour' %>
+    <%= hidden_field_tag :minute, 00, id: 'bri-form-minute' %>
+    Я пришел в
+    <div id="bri-time">
+      <span class="bri-hour">10</span>:<span class="bri-minute">00</span>
+    </div>
+    <button class="bri-nav"><img src="/assets/promo/clock/clock-button.png"></button>
+  <% end %>
+
+</div>

@@ -21,3 +21,11 @@ manager:
 author:
   id: 6
   name: author
+
+photographer:
+  id: 7
+  name: photographer
+
+main_photographer:
+  id: 8
+  name: main_photographer

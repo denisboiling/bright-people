@@ -6,18 +6,16 @@ class User < ActiveRecord::Base
 
   has_many :activity_votes
   has_many :contest_votes
-
   has_many :contest_memberships
   has_many :favourites
   has_many :comments
   has_many :comment_notifies, class_name: 'UserCommentNotify', through: :comments
-
   has_many :articles, foreign_key: :author_id
-
-  belongs_to :activity
-
   has_many :activity_approvals
   has_many :approved_activities, through: :activity_approvals, source: :activity
+  has_many :photos, class_name: 'GalleryPhoto', dependent: :destroy
+
+  belongs_to :activity
 
   has_attached_file :avatar, styles: { medium: "300x300^#", thumb: "125x125^#", comment: "84x84^#", approval: "32x32^#" },
                              path: ":rails_root/public/system/users/:attachment/:id/:style/:filename",
@@ -25,7 +23,7 @@ class User < ActiveRecord::Base
                              default_style: :thumb, default_url: 'loading.gif'
 
   attr_accessible :email, :remember_me, :password, :password_confirmation, :avatar, :description, :about,
-                  :role_id, :name, :activity_id
+                  :role_id, :name, :activity_id, :position
 
   validates :role, presence: true
 
@@ -47,6 +45,8 @@ class User < ActiveRecord::Base
   scope :experts, where(role_id: 4)
   scope :managers, where(role_id: 5)
   scope :authors, where(role_id: 6)
+  scope :photographers, where(role_id: [7,8])
+  scope :junior_photographers, where(role_id: 7)
 
   scope :authors_with_photos, authors.where('avatar_file_size IS NOT NULL OR avatar_file_size != 0')
 
@@ -61,6 +61,14 @@ class User < ActiveRecord::Base
 
   def manager?
     role == Role.manager
+  end
+
+  def photographer?
+    role == Role.main_photographer || Role.photographer
+  end
+
+  def main_photographer?
+    role == Role.main_photographer
   end
 
   def notifications
@@ -158,6 +166,14 @@ class User < ActiveRecord::Base
 
   def author!
     update_attribute(:role, Role.author)
+  end
+
+  def first_name
+    name.split(' ').first
+  end
+
+  def last_name
+    name.split(' ').last
   end
 
   class << self

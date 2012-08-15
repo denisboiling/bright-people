@@ -43,6 +43,8 @@ gem 'fb_graph'
 gem 'vk-ruby', github: 'zinenko/vk-ruby'
 gem 'exception_notification'
 gem 'sanitize' # to remove html from articles content when auto posting to facebook (and maybe vk)
+gem 'exifr'
+gem 'rubyzip'
 
 group :development, :test do
   gem 'cucumber-rails', require: false
@@ -54,6 +56,7 @@ group :development, :test do
   gem 'launchy'
   gem 'debugger'
   gem 'ffaker'
+  gem 'brakeman'
 end
 
 group :development do
@@ -68,4 +71,3 @@ group :development do
   gem 'guard-rspec'
   gem 'guard-cucumber'
 end
-

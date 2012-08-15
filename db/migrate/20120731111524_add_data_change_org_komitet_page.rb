@@ -13,7 +13,7 @@ class AddDataChangeOrgKomitetPage < ActiveRecord::Migration
     galperina.permalink='galperina'
     galperina.text = "<!-- HTML HERE -->"
     galperina.save!
-    org = Page.as('org_komitet')
+    org = Page.as('org_komitet') || return
     org.text = '<div class="common">
 	<div class="post_category_menu">
 		<ul>
