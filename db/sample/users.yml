@@ -32,3 +32,11 @@ main_photographer:
   email: main_photographer@example.com
   role_id: 8
   name: <%= Faker::Name.name %>
+
+<% (1..10).each do |i| %>
+photographer_<%= i %>:
+  email: <%= Faker::Internet.email %>
+  role_id: 7
+  position: <%= i %>
+  name: <%= Faker::Name.name %>
+<% end %>

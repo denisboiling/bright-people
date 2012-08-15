@@ -26,11 +26,13 @@ class PhotosController < ApplicationController
 
   private
 
-  # OPTIMIZE
+  # OPTIMIZE: bbrr
   def search_params
     @photographers = params["photographers"].split(',') if params["photographers"].present?
-    params['hour']   ||= 10
-    params['minute'] ||= 00
-    @time = Time.zone.parse("2012-01-18 #{params['hour']}:#{params['minute']}:00").to_s(:db)
+    @time =  if params['hour'].present? || params['minute'].present?
+               GalleryPhoto::FESTIVAL_START.change(hour: params['hour'], minute: params['minute'])
+             else
+               GalleryPhoto::FESTIVAL_START
+             end
   end
 end

@@ -1,6 +1,8 @@
 class GalleryPhoto < ActiveRecord::Base
   require 'zip/zip'
 
+  FESTIVAL_START = Time.zone.parse('2012-01-18 10:00:00')
+
   include Rails.application.routes.url_helpers
 
   belongs_to :user
@@ -25,8 +27,7 @@ class GalleryPhoto < ActiveRecord::Base
   }
 
   # Show photos filters by time
-  scope :by_time, lambda{|time| where('shot_date >= ?', time)}
-
+  scope :by_time, lambda{|time| published.where('shot_date >= ?', time)}
 
   after_create :shot_date!
 
