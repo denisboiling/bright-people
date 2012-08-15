@@ -1,6 +1,6 @@
 function Clock ( el, setHour, setMinute )
 {
-  console.log($(el))
+  // console.log($(el))
 
   var obj =
   {
