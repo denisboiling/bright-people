@@ -114,45 +114,45 @@ body.photos
             color: #777;
           }
 
-            #bri-photographers .bri-photographer[data-id="1"]  { border-color: #dd0041 }
-            #bri-photographers .bri-photographer[data-id="1"]  .bri-camera { background-color: #dd0041; }
-            #bri-photographers .bri-photographer[data-id="1"]  .bri-number { color: #dd0041; }
+            #bri-photographers .bri-photographer[data-position="1"]  { border-color: #dd0041 }
+            #bri-photographers .bri-photographer[data-position="1"]  .bri-camera { background-color: #dd0041; }
+            #bri-photographers .bri-photographer[data-position="1"]  .bri-number { color: #dd0041; }
 
-            #bri-photographers .bri-photographer[data-id="2"]  { border-color: #f88c0d }
-            #bri-photographers .bri-photographer[data-id="2"]  .bri-camera { background-color: #f88c0d; }
-            #bri-photographers .bri-photographer[data-id="2"]  .bri-number { color: #f88c0d; }
+            #bri-photographers .bri-photographer[data-position="2"]  { border-color: #f88c0d }
+            #bri-photographers .bri-photographer[data-position="2"]  .bri-camera { background-color: #f88c0d; }
+            #bri-photographers .bri-photographer[data-position="2"]  .bri-number { color: #f88c0d; }
 
-            #bri-photographers .bri-photographer[data-id="3"]  { border-color: #872986 }
-            #bri-photographers .bri-photographer[data-id="3"]  .bri-camera { background-color: #872986; }
-            #bri-photographers .bri-photographer[data-id="3"]  .bri-number { color: #872986; }
+            #bri-photographers .bri-photographer[data-position="3"]  { border-color: #872986 }
+            #bri-photographers .bri-photographer[data-position="3"]  .bri-camera { background-color: #872986; }
+            #bri-photographers .bri-photographer[data-position="3"]  .bri-number { color: #872986; }
 
-            #bri-photographers .bri-photographer[data-id="4"]  { border-color: #90c119 }
-            #bri-photographers .bri-photographer[data-id="4"]  .bri-camera { background-color: #90c119; }
-            #bri-photographers .bri-photographer[data-id="4"]  .bri-number { color: #90c119; }
+            #bri-photographers .bri-photographer[data-position="4"]  { border-color: #90c119 }
+            #bri-photographers .bri-photographer[data-position="4"]  .bri-camera { background-color: #90c119; }
+            #bri-photographers .bri-photographer[data-position="4"]  .bri-number { color: #90c119; }
 
-            #bri-photographers .bri-photographer[data-id="5"]  { border-color: #ee526f }
-            #bri-photographers .bri-photographer[data-id="5"]  .bri-camera { background-color: #ee526f; }
-            #bri-photographers .bri-photographer[data-id="5"]  .bri-number { color: #ee526f; }
+            #bri-photographers .bri-photographer[data-position="5"]  { border-color: #ee526f }
+            #bri-photographers .bri-photographer[data-position="5"]  .bri-camera { background-color: #ee526f; }
+            #bri-photographers .bri-photographer[data-position="5"]  .bri-number { color: #ee526f; }
 
-            #bri-photographers .bri-photographer[data-id="6"]  { border-color: #129fe2 }
-            #bri-photographers .bri-photographer[data-id="6"]  .bri-camera { background-color: #129fe2; }
-            #bri-photographers .bri-photographer[data-id="6"]  .bri-number { color: #129fe2; }
+            #bri-photographers .bri-photographer[data-position="6"]  { border-color: #129fe2 }
+            #bri-photographers .bri-photographer[data-position="6"]  .bri-camera { background-color: #129fe2; }
+            #bri-photographers .bri-photographer[data-position="6"]  .bri-number { color: #129fe2; }
 
-            #bri-photographers .bri-photographer[data-id="7"]  { border-color: #ffb400 }
-            #bri-photographers .bri-photographer[data-id="7"]  .bri-camera { background-color: #ffb400; }
-            #bri-photographers .bri-photographer[data-id="7"]  .bri-number { color: #ffb400; }
+            #bri-photographers .bri-photographer[data-position="7"]  { border-color: #ffb400 }
+            #bri-photographers .bri-photographer[data-position="7"]  .bri-camera { background-color: #ffb400; }
+            #bri-photographers .bri-photographer[data-position="7"]  .bri-number { color: #ffb400; }
 
-            #bri-photographers .bri-photographer[data-id="8"]  { border-color: #c94364 }
-            #bri-photographers .bri-photographer[data-id="8"]  .bri-camera { background-color: #c94364; }
-            #bri-photographers .bri-photographer[data-id="8"]  .bri-number { color: #c94364; }
+            #bri-photographers .bri-photographer[data-position="8"]  { border-color: #c94364 }
+            #bri-photographers .bri-photographer[data-position="8"]  .bri-camera { background-color: #c94364; }
+            #bri-photographers .bri-photographer[data-position="8"]  .bri-number { color: #c94364; }
 
-            #bri-photographers .bri-photographer[data-id="9"]  { border-color: #ee70ab }
-            #bri-photographers .bri-photographer[data-id="9"]  .bri-camera { background-color: #ee70ab; }
-            #bri-photographers .bri-photographer[data-id="9"]  .bri-number { color: #ee70ab; }
+            #bri-photographers .bri-photographer[data-position="9"]  { border-color: #ee70ab }
+            #bri-photographers .bri-photographer[data-position="9"]  .bri-camera { background-color: #ee70ab; }
+            #bri-photographers .bri-photographer[data-position="9"]  .bri-number { color: #ee70ab; }
 
-            #bri-photographers .bri-photographer[data-id="10"] { border-color: #2b8695 }
-            #bri-photographers .bri-photographer[data-id="10"] .bri-camera { background-color: #2b8695; }
-            #bri-photographers .bri-photographer[data-id="10"] .bri-number { color: #2b8695; }
+            #bri-photographers .bri-photographer[data-position="10"] { border-color: #2b8695 }
+            #bri-photographers .bri-photographer[data-position="10"] .bri-camera { background-color: #2b8695; }
+            #bri-photographers .bri-photographer[data-position="10"] .bri-number { color: #2b8695; }
 
       #bri-photographers .bri-all  
       {
@@ -234,6 +234,7 @@ body.photos
       height: 20px;
       background: #fff;
       border-radius: 10px;
+      box-shadow: 0 0 2px #000;
     }
       .am-wrapper.active .bri-checkbox div
       {
@@ -260,3 +261,20 @@ body.photos
     margin: 20px auto;
     background: url(/assets/promo/photos/preloader.gif) no-repeat left top;
   }
+
+  footer.photos
+  {
+    margin: 20px auto;
+    color: #999;
+  }
+    footer.photos,
+    footer.photos .bri-links,
+    footer.photos .bri-links .bri-news 
+    {
+      border-color: #c7dff3; 
+    }
+
+    footer.photos .bri-credentials a
+    {
+      color: #999;
+    }
