@@ -73,7 +73,7 @@ class GalleryPhoto < ActiveRecord::Base
 
   def add_watermark
     require 'RMagick'
-    logo_path = Rails.root.join('public/system/logo.png')
+    logo_path = Rails.root.join('public/logos/logo.png')
     styles = [:thumb, :medium, :big]
     styles.each do |style|
       pic_path = Rails.root.join('public'+photo.url(style, false))
