@@ -10,7 +10,9 @@ BrightPeople::Application.configure do
   config.assets.precompile += %w( admin/active_admin.js
                                   admin/active_admin.css
                                   chosen.jquery.min.js
-                                  dashboard/*.js)
+                                  dashboard/*.js
+                                  home-video/*.js
+                                  home-video/*.css)
   config.i18n.fallbacks = true
   config.active_support.deprecation = :notify
   config.host_name = "http://stagebp.balticit.ru"
