@@ -1,11 +1,11 @@
-html 
+html.photos
 { 
   height: auto;
   padding-top: 10px;
   background-color: #c7dff3; 
 }
 
-body
+body.photos
 {
   overflow: auto;
   height: auto;

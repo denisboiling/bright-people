@@ -1,4 +1,4 @@
-(function($)
+function photos ()
 {
 
   $(document).ready(function()
@@ -38,6 +38,27 @@
         })
         .attr( 'src', $img.attr('src') )
     }); 
+
+    
+    var clock = 
+      new Clock
+      (
+        // Element
+        '#bri-clock'
+        // setHour()
+      , function (n)
+        {
+          $('#bri-time .bri-hour').html(n)
+          $('#bri-form-hour').val(n)
+        }
+        // setMinute()
+      , function(n)
+        {
+          if ( n < 10 ) n = '0'+n
+          $('#bri-time .bri-minute').html(n)
+          $('#bri-form-minute').val(n)
+        }
+      )
   })
 
-})(jQuery)
+}
