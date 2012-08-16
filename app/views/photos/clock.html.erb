@@ -1,5 +1,7 @@
 <% @body_class="clock" %>
 
+<%= link_to image_tag('promo/goto-site.png'), root_path, id: 'bri-goto-site' %>
+
 <div id="bri-main-clock">
 
   <% User.junior_photographers.order('position ASC').each do |photographer| %>
