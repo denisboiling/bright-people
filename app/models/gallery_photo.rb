@@ -15,7 +15,7 @@ class GalleryPhoto < ActiveRecord::Base
 
   attr_accessible :user_id, :photo, :views
 
-  validates :photo_fingerprint, presence: true, uniqueness: true
+  # validates :photo_fingerprint, presence: true, uniqueness: true
   validates :user, presence: true
 
   scope :published, where(processing: false)

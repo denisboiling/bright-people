@@ -8,13 +8,13 @@
 
     <div id="bri-photographers">
       <% User.junior_photographers.order('position ASC').each do |photographer| %><div class="bri-photographer" data-id="<%= photographer.id %>" data-position="<%= photographer.position %>" >
-      	  <%= image_tag photographer.avatar.url, class: 'bri-photo' %>
-      	  <div class="bri-data">
-      	    <span class="bri-camera"></span>
-      	    <span class="bri-number"><%= photographer.position %></span>
-      	    <span class="bri-name"><%= photographer.first_name %><br><%= photographer.last_name %></span>
-      	  </div>
-      	</div><% end %>
+	  <%= image_tag photographer.avatar.url, class: 'bri-photo' %>
+	  <div class="bri-data">
+	    <span class="bri-camera"></span>
+	    <span class="bri-number"><%= photographer.position %></span>
+	    <span class="bri-name"><%= photographer.first_name %><br><%= photographer.last_name %></span>
+	  </div>
+	</div><% end %>
 
       <div class="bri-all">
 	<div class="bri-bracket"></div>
@@ -34,18 +34,18 @@
 
   <div id="bri-photos">
     <div class="am-container" id="am-container">
-      <% @photos.each do |photo| %>
-	<a href="#">
-	  <div class="bri-checkbox">
-	    <div></div>
-	  </div>
-	  <%= image_tag(photo.photo.url) %>
-	</a>
-      <% end %>
+      <%= render 'photos', photos: @photos %>
     </div>
     <div class="clearfix"></div>
     <div id="bri-preloader"></div>
   </div>
 </div>
+
+<%= form_tag photos_path, method: :get, id: 'bri-form-photos', remote: true do %>
+  <%= text_field_tag :photographers, params[:photographers] || '', id: 'bri-form-photographers' %>
+  <%= text_field_tag :hour, params[:hour] || 10, id: 'bri-form-hour' %>
+  <%= text_field_tag :minute, params[:minute] || 00, id: 'bri-form-minute' %>
+  <%= submit_tag %>
+<% end %>
 
 <script> $(document).ready(function(){ photos() })</script>
