@@ -135,7 +135,7 @@ html, body { margin: 0; padding: 0; height: 100%;}
 	display:block;
 	width:49%;
 	height: 100%;
-	background:transparent url("../images/blank.gif") no-repeat; /* Trick IE into showing hover */
+	/*background:transparent url("../images/blank.gif") no-repeat; /* Trick IE into showing hover */
 	/* cursor:pointer; */
 	zoom:1; /* who knows why? */
 	
@@ -215,7 +215,7 @@ html, body { margin: 0; padding: 0; height: 100%;}
 	right:15px;
 	width:25px;
 	height:25px;
-	background:url(../img/light/light-close.png) no-repeat;
+	background:url(/assets/promo/lightbox/light-close.png) no-repeat;
 	
 	text-align:right;
 }
@@ -231,7 +231,10 @@ html, body { margin: 0; padding: 0; height: 100%;}
 	visibility:hidden;
 }
 
-#lightbox-count { float:left; width:80px; background:url(../img/light/light-count.png) no-repeat 0px 0px; height:37px; padding-left:70px; line-height:37px; margin-top:5px; color:#8d8d8d; font-size:34px; font-weight:bold; font-family: 'Futura'; }
+#lightbox-count { float:left; width:80px; background:url(/assets/promo/lightbox/light-count.png) no-repeat 0px 0px; height:37px; padding-left:70px; line-height:37px; margin-top:5px; color:#8d8d8d; font-size:34px; font-weight:bold; font-family: 'Futura'; }
 
 #lightbox-hd { float:right;}
-#lightbox-hd a { width:49px; display:block; background:url(../img/light/light-hd.png) no-repeat 0px 0px; height:46px;}
+#lightbox-hd a { width:49px; overflow: hidden; text-indent: 100px; display:block; background:url(/assets/promo/lightbox/light-hd.png) no-repeat 0px 0px; height:46px;}
+
+
+#lightbox-social .soc_link { float: left; margin-right: 10px; margin-left: 10px; margin-bottom: 5px; height: 24px; overflow: hidden;}

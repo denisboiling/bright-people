@@ -68,8 +68,8 @@ class GalleryPhoto < ActiveRecord::Base
   def perform
     self.processing = false
     photo.reprocess!
-    # add_watermark
     save
+    # add_watermark
   end
 
   # def add_watermark

@@ -168,7 +168,7 @@ function photos ()
         show_helper_text: false,
         show_info: true,
         show_extended_info: true,
-        download_link: false,
+        download_link: true,
         keys: {
           close: 'z',
           prev: 'q',
