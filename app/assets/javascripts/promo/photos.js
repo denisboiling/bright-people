@@ -71,7 +71,7 @@ $("#bri-photods a").lightbox();
         return false
       })
 
-    $('.am-wrapper.bri-hd ')
+    $('.am-wrapper.bri-hd .bri-checkbox')
       .live( 'click', function()
       {
         
@@ -90,10 +90,7 @@ $("#bri-photods a").lightbox();
           window.localStorage.set('photos', JSON.stringify('photos'))
         }
 
-
-
         // TODO: IF THERE ONE OR MORE PHOTOS SELECTED - SHOW DOWNLOAD ICON!!1
-
 
         return false
       })
@@ -104,9 +101,44 @@ $("#bri-photods a").lightbox();
         // Do the twist!
       })
 
-    $('.bri-photographer')
-      .click(function()
+  function addPhotographer (el) {
+    var id   = el.attr('data-id')
+    ,   list = $('#bri-form-photographers').val()
+
+    list = ( !list.length )? [] : list.split(',') 
+    list.push(id)
+
+    $('#bri-form-photographers').val( list.join(',')  ).change()
+  }
+
+  function removePhotographer (el) {
+    var id   = el.attr('data-id')
+    ,   list = $('#bri-form-photographers').val()
+
+    list = list.split(',')
+
+    var deleteId
+    for ( var i=0; i< list.length; i++ )
+    {
+      if ( list[i] == id )
       {
+        deleteId = i
+        break
+      }
+    }
+    list.splice(i,1)
+
+    $('#bri-form-photographers').val( list.join(',')  ).change()
+
+  }
+
+    $('.bri-photographer')
+      .click(function() {
+	if ($(this).hasClass("active")){
+	    removePhotographer($(this))
+	} else {
+	    addPhotographer($(this))
+	}
         $(this).toggleClass('active')
         $(this).find('.bri-photo').slideToggle('fast')
         $(this).find('.bri-camera').slideToggle('fast')
@@ -117,17 +149,17 @@ $("#bri-photods a").lightbox();
     $('#bri-photographers-select-all')
       .click(function()
       {
-        $(this).toggleClass('active')
-        if($(this).hasClass('active')) { $(this).html('Убрать всех фотографов') }
-        else { $(this).html('Выбрать всех фотографов') }
-        $('.bri-photographer').each(function(){ $(this).click() })
+        $('.bri-photographer').each(function(){ 
+	    if (! $(this).hasClass("active")){
+		$(this).click() 
+	    }
+	     
+	})
+	  
       })
 
-
-
-
     var $container = $('#bri-photos')
-    ,   $imgs      = $container.find('img').hide()
+    ,   $imgs      = $container.find('img')
     ,   totalImgs  = $imgs.length
     ,   cnt        = 0
         
@@ -141,9 +173,7 @@ $("#bri-photods a").lightbox();
           ++cnt
           if( cnt === totalImgs ) 
           {
-             $imgs.fadeIn('slow')
-
-             $('#bri-preloader').remove();
+            // $imgs.show()
 
             $container.montage(
             {
@@ -165,40 +195,58 @@ $("#bri-photods a").lightbox();
         , function (n)
           {
             $('#bri-time .bri-hour').html(n)
-            $('#bri-form-hour').val(n)
+            $('#bri-form-hour').val(n).change()
           }
           // setMinute()
         , function(n)
           {
             if ( n < 10 ) n = '0'+n
             $('#bri-time .bri-minute').html(n)
-            $('#bri-form-minute').val(n)
+            $('#bri-form-minute').val(n).change()
           }
         )
 
     // ЧТОБЫ ПОВЕРНУТЬ СТРЕЛКИ ЧАСОВ НА НУЖНОЕ ВРЕМЯ, МОЖНО ИСПОЛЬЗОВАТЬ КОСТЫЛЬ (ВСЯ СОЛЬ В r-60, ГДЕ -60 - ГРАДУС ПОВОРОТА)
-     clock.minuteHand.animate
-       (
-         {
-           transform: 't'+clock.minuteHand.marginLeft+','+clock.minuteHand.marginTop+'r-360,'+clock.minuteHand.hx+','+clock.minuteHand.hy
-         }
-       , 2500
-       , '<>'
-       )
-     clock.hourHand.animate
-       (
-         {
-           transform: 't'+clock.hourHand.marginLeft+','+clock.hourHand.marginTop+'r-420,'+clock.hourHand.hx+','+clock.hourHand.hy
-         }
-       , 1500
-      , '<>'
-     )
+    // clock.minuteHand.animate
+    //   (
+    //     {
+    //       transform: 't'+clock.minuteHand.marginLeft+','+clock.minuteHand.marginTop+'r-60,'+clock.minuteHand.hx+','+clock.minuteHand.hy
+    //     }
+    //   , 500
+    //   , '<>'
+    //   )
+    // clock.hourHand.animate
+    //   (
+    //     {
+    //       transform: 't'+clock.hourHand.marginLeft+','+clock.hourHand.marginTop+'r-120,'+clock.hourHand.hx+','+clock.hourHand.hy
+    //     }
+    //   , 500
+    //   , '<>'
+    //   )
 
-    
-
-
-
-
+    $(function()
+    {
+      $.Lightbox.construct({
+        show_linkback: false,
+        show_helper_text: false,
+        show_info: true,
+        show_extended_info: true,
+        download_link: true,
+        keys: {
+          close: 'z',
+          prev: 'q',
+          next: 'e'
+        },
+        opacity: 0.7,
+        text: {
+          image: 'Фото',
+          of: 'из',
+          close: 'Закрыть',
+          download: 'Загрузить'
+    }
+  });
+  
+});
   })
 
   $(function()
@@ -226,4 +274,3 @@ $("#bri-photods a").lightbox();
   });
 
 }
-
