@@ -5,7 +5,6 @@ class PhotosController < ApplicationController
 
   # OPTIMIZE
   def index
-
     @photos = if @photographers
                 GalleryPhoto.by_photograph_and_time(@photographers, @time)
               else
