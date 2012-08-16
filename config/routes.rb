@@ -7,6 +7,7 @@ BrightPeople::Application.routes.draw do
   match '/fb_pages' => 'fb_pages#fb_pages'
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
+
   put 'users/email' => 'users#update_email', as: :update_user_email
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -24,6 +25,13 @@ BrightPeople::Application.routes.draw do
 
   resource :comments, only: :create
   resource :search, only: [:show]
+
+  resources :photos, only: [:index, :show]
+  match '/photos/download' => 'photos#download', :via => :post, :as => :photos_download
+  match '/promo'           => 'photos#promo',   :as => :photos_promo
+  match '/clock'           => 'photos#clock',   :as => :photos_clock
+  match '/festival'        => 'photos#festival',:as => :photos_festival
+
 
   resources :activities, only: [:index, :show, :search] do
     get :get_comments
@@ -60,9 +68,11 @@ BrightPeople::Application.routes.draw do
     resource :profile, only: [:show, :update]
     resources :favorites, only: [:index, :create, :destroy]
     resources :comments, only: :index
+    resources :photos, only: [:index, :create, :destroy]
     resource :activity do
       delete 'destroy_teacher', on: :member
     end
+    root to: 'profiles#show'
   end
 
   # Admin panel

@@ -14,7 +14,8 @@ BrightPeople::Application.configure do
                                   chosen.jquery.min.js
                                   dashboard/*.js
                                   home-video/*.js
-                                  home-video/*.css)
+                                  home-video/*.css
+                                  file-upload/*.js)
   config.i18n.fallbacks = true
   config.active_support.deprecation = :notify
 

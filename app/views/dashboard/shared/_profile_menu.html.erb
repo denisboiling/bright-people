@@ -4,14 +4,18 @@
 <div class="post_category_menu">
   <ul>
     <%= content_tag :li, link_to("Профиль", dashboard_profile_path),
-        class: "profile_ico#{(current == 'profile' ? ' active' : '')}" %>
+	class: "profile_ico#{(current == 'profile' ? ' active' : '')}" %>
     <%= content_tag :li, link_to("Комментарии", dashboard_comments_path),
-        class: "comment_ico#{(current == 'comments' ? ' active' : '')}" %>
+	class: "comment_ico#{(current == 'comments' ? ' active' : '')}" %>
     <%= content_tag :li, link_to("Избранное", dashboard_favorites_path),
-        class: "fav_ico#{(current == 'favourites' ? ' active' : '')}" %>
+	class: "fav_ico#{(current == 'favourites' ? ' active' : '')}" %>
     <% if can? :manage, :dashboard_activity %>
       <%= content_tag :li, link_to("Кружок", dashboard_activity_path),
-          class: "activity_ico#{(current == 'activity' ? ' active' : '')}" %>
+	  class: "activity_ico#{(current == 'activity' ? ' active' : '')}" %>
+    <% end %>
+    <% if can? :manage, :dashboard_photos %>
+      <%= content_tag :li, link_to('Фотографии', dashboard_photos_path),
+	  class: "activity_ico#{(current == 'photo' ? ' active' : '')}" %>
     <% end %>
   </ul>
   <div class="clear"></div>

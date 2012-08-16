@@ -1,6 +1,11 @@
 ru:
   activerecord:
     models:
+      gallery_photo:
+        one: Фото галлерея
+        few: Фото галлереи
+        many: Фото галлерея
+        other: Фото галлерея
       creative_group:
         one: Творческая группа
         few: Творческая группа
@@ -167,6 +172,7 @@ ru:
         created_at: Дата создания
         updated_at: Дата обновления
         activity: Кружок
+        position: Номер фотографа
       activity_photo:
         attach: Фотография
       video_url:
@@ -239,3 +245,12 @@ ru:
         profession: Професия
         description: Описание
         avatar: Фото
+      gallery_photo:
+        id: ID
+        photo_file_name: Название файла
+        photo_file_size: Размер файла
+        photo_fingerprint: Хеш файла
+        shot_date: Дата съемки
+        user: Фотограф
+        photo: Фотография
+        

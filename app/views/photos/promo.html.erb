@@ -1,0 +1,47 @@
+<% @body_class="promo" %>
+
+<%= link_to image_tag('promo/goto-site.png'), root_path, id: 'bri-goto-site' %>
+
+<div id="bri-main">
+
+  <div id="bri-main-preloader"></div>
+
+  <div class="bri-wrapper">
+
+    <div id="bri-fest-title"></div>
+
+    <%= link_to image_tag('promo/index/find-me.png'), photos_clock_path, class: 'bri-nav', id: 'bri-find-me' %>
+    <%= link_to image_tag('promo/index/fest.png'), photos_festival_path, class: 'bri-nav', id: 'bri-fest' %>
+
+    <div id="bri-letters">
+      <%= image_tag 'promo/index/letters/ya.png',    id: 'bri-letters-ya' %>
+      <%= image_tag 'promo/index/letters/r.png',     id: 'bri-letters-r' %>
+      <%= image_tag 'promo/index/letters/k.png',     id: 'bri-letters-k' %>
+      <%= image_tag 'promo/index/letters/i.png',     id: 'bri-letters-i' %>
+      <%= image_tag 'promo/index/letters/e.png',     id: 'bri-letters-e' %>
+      <%= image_tag 'promo/index/letters/l.png',     id: 'bri-letters-l' %>
+      <%= image_tag 'promo/index/letters/yu.png',    id: 'bri-letters-yu' %>
+      <%= image_tag 'promo/index/letters/d.png',     id: 'bri-letters-d' %>
+      <%= image_tag 'promo/index/letters/i2.png',    id: 'bri-letters-i2' %>
+      <%= image_tag 'promo/index/letters/exclm.png', id: 'bri-letters-exclm' %>
+    </div>
+
+    <!-- Don't forget to remove test data -->
+    <img src="/assets/promo/index/photo.jpg" id="bri-photo-1"  class="bri-photo">
+    <img src="/assets/promo/index/photo.jpg" id="bri-photo-2"  class="bri-photo">
+    <img src="/assets/promo/index/photo.jpg" id="bri-photo-3"  class="bri-photo">
+    <img src="/assets/promo/index/photo.jpg" id="bri-photo-4"  class="bri-photo">
+    <img src="/assets/promo/index/photo.jpg" id="bri-photo-5"  class="bri-photo">
+    <img src="/assets/promo/index/photo.jpg" id="bri-photo-6"  class="bri-photo">
+
+    <img src="/assets/promo/index/photo.jpg" id="bri-photo-7"  class="bri-photo">
+    <img src="/assets/promo/index/photo.jpg" id="bri-photo-8"  class="bri-photo">
+    <img src="/assets/promo/index/photo.jpg" id="bri-photo-9"  class="bri-photo">
+    <img src="/assets/promo/index/photo.jpg" id="bri-photo-10" class="bri-photo">
+    <img src="/assets/promo/index/photo.jpg" id="bri-photo-11" class="bri-photo">
+    <img src="/assets/promo/index/photo.jpg" id="bri-photo-12" class="bri-photo">
+
+  </div>
+</div>
+
+<script>$(document).ready(function(){ promo() })</script>

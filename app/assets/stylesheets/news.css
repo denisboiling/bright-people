@@ -1,7 +1,7 @@
 .news { }
 .news > .title { font-family: Futura; font-size:18px; background:url(/assets/bright_magazine_top_line.jpg) repeat-x center; }
 .news .item { margin-bottom: 20px; }
-.news .item img { float: left; width: 160px; behavior: url(border-radius.htc); -webkit-border-radius:6px; -moz-border-radius:6px; border-radius:6px; }
+.news .item img { float: left; width: 160px; behavior: url(/assets/border-radius.htc); -webkit-border-radius:6px; -moz-border-radius:6px; border-radius:6px; }
 .news .item .content { margin-left: 175px; }
 .news .item .content a { font-weight: bold; }
 .news .item .content .date { margin: 2px 0 4px; font-size: 80%; color: #aaa; }

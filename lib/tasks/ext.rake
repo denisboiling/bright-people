@@ -19,23 +19,6 @@ task :social_posting => :environment do
 end
 
 namespace :db do
-  # TODO: https://gist.github.com/1340242
-  # namespace :test do |schema|
-  #   schema[:clone_structure].abandon
-  #   desc "OVERWRITTEN - load the development_structure file using mysql shell"
-  #   task :clone_structure => ["db:test:purge"] do
-  #     config = ActiveRecord::Base.configurations['test']
-  #     cmd = "mysql #{mysql_options} < db/development_structure.sql"
-  #     system cmd
-  #   end
-  # end
-
-  # def mysql_options
-  #   config = ActiveRecord::Base.configurations[Rails.env]
-  #   pwd = "-p#{config['password']} " if config['password'].to_s.length > 0
-  #   "-u#{config['username'] || config['user']} #{pwd} #{config['database']}"
-  # end
-
   task :load_metro => :environment do
     require 'open-uri'
     require 'nokogiri'
@@ -114,11 +97,15 @@ namespace :db do
     ext = File.extname file
     if ext == ".csv" or ext == ".yml"
       puts "loading fixture " + file
+      start_time = Time.now
       ActiveRecord::Fixtures.create_fixtures(File.dirname(file) , File.basename(file, '.*') )
+      puts "Time for '#{file}':  #{Time.now - start_time}" if ENV['sample_time']
     else
       if File.exists? file
         puts "loading ruby    " + file
+        start_time = Time.now
         require file
+        puts "Time for '#{file}':  #{Time.now - start_time}" if ENV['sample_time']
       end
     end
   end

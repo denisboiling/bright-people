@@ -1,8 +1,9 @@
 <%= semantic_form_for [:admin, @user] do |f| %>
   <%= f.inputs 'Основное' do %>
     <%= f.input :email %>
-    <%= f.input :password %>
+    <%= f.input(:password, as: :hidden, value: rand_password) if @user.new_record? %>
     <%= f.input :role, as: :select, collection: Role.user_sets, include_blank: false %>
+    <%= f.input :position, as: :select, collection: (1..10).map {|i| i}, include_blank: false %>
     <div id="chose_user_activity">
       <%= f.input :activity, as: :select, collection: Activity.all, include_blank: false,  input_html: { class: 'chosen_autocomplete' } %>
     </div>

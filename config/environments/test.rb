@@ -1,5 +1,4 @@
 BrightPeople::Application.configure do
-
   config.cache_classes = true
 
   # Configure static asset server for tests with Cache-Control for performance

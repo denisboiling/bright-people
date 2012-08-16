@@ -1,0 +1,283 @@
+html.photos
+{ 
+  height: auto;
+  padding-top: 10px;
+  background-color: #c7dff3; 
+}
+
+body.photos
+{
+  overflow: auto;
+  height: auto;
+  background-color: #fff;
+}
+
+#bri-content
+{
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+}
+  body.photos header 
+  { 
+    position: relative;
+    height: 244px;
+    margin-bottom: 50px;
+  }
+    #bri-clock
+    {
+      float: left;
+      width: 244px;
+      height: 244px;
+    }
+
+    #bri-photographers
+    {
+      position: relative;
+      margin-left: 260px;
+      height: 210px;
+    }
+      #bri-photographers .bri-photographer
+      {
+        position: relative;
+        vertical-align: top;
+        display: inline-block;
+        width: 10%;
+        line-height: 1;
+        font-family: Futura;
+        border-width: 4px 0 0;
+        border-style: solid;
+      }
+        #bri-photographers .bri-photographer:before
+        {
+          position: absolute;
+          top: -9px;
+          left: 50%;
+          margin-left: -5px;
+          width: 0;
+          height: 0;
+          border-width: 0 5px 5px;
+          border-style: solid;
+          border-left-color: transparent;
+          border-right-color: transparent;
+          border-top-color: inherit;
+          border-bottom-color: inherit;
+          content: "";
+        }
+          #bri-photographers .bri-photographer.active:before
+          {
+            top: 0;
+            border-width: 5px 5px 0;
+          }
+
+        #bri-photographers .bri-photographer:hover { cursor: pointer; }
+
+        #bri-photographers .bri-photographer .bri-photo 
+        { 
+          display: none;
+          box-sizing: border-box;
+          width: 100%;
+          border-width: 0 1px 1px; 
+          border-style: solid;
+          border-color: inherit;
+        }
+
+        #bri-photographers .bri-photographer .bri-data
+        {
+          margin-top: 10px;
+          padding: 0 0 50px 5px;
+        }
+          #bri-photographers .bri-photographer .bri-camera
+          {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            background: url(/assets/promo/photos/camera.png) no-repeat center center;
+            border-radius: 12px;
+          }
+
+          #bri-photographers .bri-photographer .bri-number
+          {
+            margin-left: 10px;
+            font-size: 300%;
+          }
+            #bri-photographers .bri-photographer.active .bri-number
+            {
+              position: absolute;
+              right: 0;
+              margin-left: 0;
+              font-size: 200%;
+            } 
+
+          #bri-photographers .bri-photographer .bri-name
+          {
+            display: inline-block;
+            color: #777;
+          }
+
+            #bri-photographers .bri-photographer[data-position="1"]  { border-color: #dd0041 }
+            #bri-photographers .bri-photographer[data-position="1"]  .bri-camera { background-color: #dd0041; }
+            #bri-photographers .bri-photographer[data-position="1"]  .bri-number { color: #dd0041; }
+
+            #bri-photographers .bri-photographer[data-position="2"]  { border-color: #f88c0d }
+            #bri-photographers .bri-photographer[data-position="2"]  .bri-camera { background-color: #f88c0d; }
+            #bri-photographers .bri-photographer[data-position="2"]  .bri-number { color: #f88c0d; }
+
+            #bri-photographers .bri-photographer[data-position="3"]  { border-color: #872986 }
+            #bri-photographers .bri-photographer[data-position="3"]  .bri-camera { background-color: #872986; }
+            #bri-photographers .bri-photographer[data-position="3"]  .bri-number { color: #872986; }
+
+            #bri-photographers .bri-photographer[data-position="4"]  { border-color: #90c119 }
+            #bri-photographers .bri-photographer[data-position="4"]  .bri-camera { background-color: #90c119; }
+            #bri-photographers .bri-photographer[data-position="4"]  .bri-number { color: #90c119; }
+
+            #bri-photographers .bri-photographer[data-position="5"]  { border-color: #ee526f }
+            #bri-photographers .bri-photographer[data-position="5"]  .bri-camera { background-color: #ee526f; }
+            #bri-photographers .bri-photographer[data-position="5"]  .bri-number { color: #ee526f; }
+
+            #bri-photographers .bri-photographer[data-position="6"]  { border-color: #129fe2 }
+            #bri-photographers .bri-photographer[data-position="6"]  .bri-camera { background-color: #129fe2; }
+            #bri-photographers .bri-photographer[data-position="6"]  .bri-number { color: #129fe2; }
+
+            #bri-photographers .bri-photographer[data-position="7"]  { border-color: #ffb400 }
+            #bri-photographers .bri-photographer[data-position="7"]  .bri-camera { background-color: #ffb400; }
+            #bri-photographers .bri-photographer[data-position="7"]  .bri-number { color: #ffb400; }
+
+            #bri-photographers .bri-photographer[data-position="8"]  { border-color: #c94364 }
+            #bri-photographers .bri-photographer[data-position="8"]  .bri-camera { background-color: #c94364; }
+            #bri-photographers .bri-photographer[data-position="8"]  .bri-number { color: #c94364; }
+
+            #bri-photographers .bri-photographer[data-position="9"]  { border-color: #ee70ab }
+            #bri-photographers .bri-photographer[data-position="9"]  .bri-camera { background-color: #ee70ab; }
+            #bri-photographers .bri-photographer[data-position="9"]  .bri-number { color: #ee70ab; }
+
+            #bri-photographers .bri-photographer[data-position="10"] { border-color: #2b8695 }
+            #bri-photographers .bri-photographer[data-position="10"] .bri-camera { background-color: #2b8695; }
+            #bri-photographers .bri-photographer[data-position="10"] .bri-number { color: #2b8695; }
+
+      #bri-photographers .bri-all  
+      {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        font-family: Futura;
+        font-size: 130%;
+      }
+        #bri-photographers .bri-all .bri-bracket
+        {
+          position: relative;
+          width: 100%;
+          height: 15px;
+          border-width: 0 1px 1px;
+          border-style: solid;
+          border-color: #c94364;     
+        }
+          #bri-photographers .bri-all .bri-bracket:after
+          {
+            position: absolute;
+            left: 50%;
+            margin-left: -15px;
+            bottom: -17px;
+            content: url(/assets/promo/photos/arrow.png);
+          }
+
+          #bri-photographers-select-all
+          {
+            margin-top: 10px;
+            display: block;
+            color: #85b8e3;
+          }
+
+          .bri-hd
+          {
+            position: absolute;
+            margin-top: 10px;
+            right: 0;
+            color: #cac1b4;
+          }
+            #bri-hd-switch
+            {
+              float: right;
+              margin-left: 10px;
+              width: 70px;
+              height: 20px;
+              background: url(/assets/promo/photos/switch.png) no-repeat left top;
+            }
+              #bri-hd-switch.active { background-position: left bottom; }
+
+            #bri-hd-download
+            {
+              position: fixed;
+              right: 5px;
+              width: 49px;
+              height: 46px;
+              background: url(/assets/promo/photos/hd-download.png) no-repeat left top;
+            }
+
+#bri-photos
+{
+}
+  .am-wrapper 
+  {
+    position: relative;
+    float: left;
+    overflow: hidden;
+  }
+    .am-wrapper .bri-checkbox 
+    {
+      position: absolute;
+      z-index: 1;
+      top: 5px;
+      right: 5px;
+      display: none;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 2px #000;
+    }
+      .am-wrapper.active .bri-checkbox div
+      {
+        margin: 4px 0 0 4px;
+        width: 12px;
+        height: 12px;
+        background-color: #c94364;
+        border-radius: 7px;
+      }
+
+    .am-wrapper img
+    {
+      position:absolute;
+      outline:none;
+    }
+      .am-wrapper.bri-hd img { opacity: .5; }
+
+      .am-wrapper.bri-hd.active img { opacity: 1; }
+
+  #bri-preloader
+  {
+    width: 32px;
+    height: 32px;
+    margin: 20px auto;
+    background: url(/assets/promo/photos/preloader.gif) no-repeat left top;
+  }
+
+  footer.photos
+  {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    color: #999;
+  }
+    footer.photos,
+    footer.photos .bri-links,
+    footer.photos .bri-links .bri-news 
+    {
+      border-color: #c7dff3; 
+    }
+
+    footer.photos .bri-credentials a
+    {
+      color: #999;
+    }
