@@ -6,7 +6,64 @@ function photos ()
     $('#bri-hd-switch')
       .click(function()
       {
+
+if($(this).hasClass('active')) {
+
+         
+  $("#bri-photos a").lightbox();
+
+    $.Lightbox.construct({
+      show_linkback: false,
+      show_helper_text: false,
+      show_info: true,
+      show_extended_info: true,
+      download_link: true,
+      keys: {
+        close: 'z',
+        prev: 'q',
+        next: 'e'
+      },
+      opacity: 0.7,
+      text: {
+        image: 'Фото',
+        of: 'из',
+        close: 'Закрыть',
+        download: 'Загрузить'
+      }
+    });  
+
+}
+  else {
+
+$("#bri-photods a").lightbox();
+
+    $.Lightbox.construct({
+      show_linkback: false,
+      show_helper_text: false,
+      show_info: true,
+      show_extended_info: true,
+      download_link: true,
+      keys: {
+        close: 'z',
+        prev: 'q',
+        next: 'e'
+      },
+      opacity: 0.7,
+      text: {
+        image: 'Фото',
+        of: 'из',
+        close: 'Закрыть',
+        download: 'Загрузить'
+      }
+    });  
+
+}
+
         $(this).toggleClass('active')
+
+
+
+
 
         $('.am-wrapper').toggleClass('bri-hd')
         $('.am-wrapper .bri-checkbox').fadeToggle('fast')
@@ -14,10 +71,16 @@ function photos ()
         return false
       })
 
-    $('.am-wrapper.bri-hd .bri-checkbox')
+    $('.am-wrapper.bri-hd ')
       .live( 'click', function()
       {
-        $(this).parent().toggleClass('active')
+        
+        
+
+        $(this).toggleClass('active')
+
+        if($('.am-wrapper.active').length > 0 && $('#bri-hd-switch').hasClass('active') ) { $('#bri-hd-download').show() }
+        else { $('#bri-hd-download').hide()}
 
         // TODO: REWRITE THIS ACCORDING TO THE MAX'S SCRIPT!!!111
         if ( $(this).hasClass('active') )
@@ -27,7 +90,10 @@ function photos ()
           window.localStorage.set('photos', JSON.stringify('photos'))
         }
 
+
+
         // TODO: IF THERE ONE OR MORE PHOTOS SELECTED - SHOW DOWNLOAD ICON!!1
+
 
         return false
       })
@@ -51,11 +117,17 @@ function photos ()
     $('#bri-photographers-select-all')
       .click(function()
       {
+        $(this).toggleClass('active')
+        if($(this).hasClass('active')) { $(this).html('Убрать всех фотографов') }
+        else { $(this).html('Выбрать всех фотографов') }
         $('.bri-photographer').each(function(){ $(this).click() })
       })
 
+
+
+
     var $container = $('#bri-photos')
-    ,   $imgs      = $container.find('img')
+    ,   $imgs      = $container.find('img').hide()
     ,   totalImgs  = $imgs.length
     ,   cnt        = 0
         
@@ -69,7 +141,9 @@ function photos ()
           ++cnt
           if( cnt === totalImgs ) 
           {
-            // $imgs.show()
+             $imgs.fadeIn('slow')
+
+             $('#bri-preloader').remove();
 
             $container.montage(
             {
@@ -103,46 +177,53 @@ function photos ()
         )
 
     // ЧТОБЫ ПОВЕРНУТЬ СТРЕЛКИ ЧАСОВ НА НУЖНОЕ ВРЕМЯ, МОЖНО ИСПОЛЬЗОВАТЬ КОСТЫЛЬ (ВСЯ СОЛЬ В r-60, ГДЕ -60 - ГРАДУС ПОВОРОТА)
-    // clock.minuteHand.animate
-    //   (
-    //     {
-    //       transform: 't'+clock.minuteHand.marginLeft+','+clock.minuteHand.marginTop+'r-60,'+clock.minuteHand.hx+','+clock.minuteHand.hy
-    //     }
-    //   , 500
-    //   , '<>'
-    //   )
-    // clock.hourHand.animate
-    //   (
-    //     {
-    //       transform: 't'+clock.hourHand.marginLeft+','+clock.hourHand.marginTop+'r-120,'+clock.hourHand.hx+','+clock.hourHand.hy
-    //     }
-    //   , 500
-    //   , '<>'
-    //   )
+     clock.minuteHand.animate
+       (
+         {
+           transform: 't'+clock.minuteHand.marginLeft+','+clock.minuteHand.marginTop+'r-360,'+clock.minuteHand.hx+','+clock.minuteHand.hy
+         }
+       , 2500
+       , '<>'
+       )
+     clock.hourHand.animate
+       (
+         {
+           transform: 't'+clock.hourHand.marginLeft+','+clock.hourHand.marginTop+'r-420,'+clock.hourHand.hx+','+clock.hourHand.hy
+         }
+       , 1500
+      , '<>'
+     )
 
-    $(function()
-    {
-      $.Lightbox.construct({
-        show_linkback: false,
-        show_helper_text: false,
-        show_info: true,
-        show_extended_info: true,
-        download_link: true,
-        keys: {
-          close: 'z',
-          prev: 'q',
-          next: 'e'
-        },
-        opacity: 0.7,
-        text: {
-          image: 'Фото',
-          of: 'из',
-          close: 'Закрыть',
-          download: 'Загрузить'
-    }
-  });
-  
-});
+    
+
+
+
+
   })
 
+  $(function()
+  {
+    $("#bri-photos a").lightbox();
+    $.Lightbox.construct({
+      show_linkback: false,
+      show_helper_text: false,
+      show_info: true,
+      show_extended_info: true,
+      download_link: true,
+      keys: {
+        close: 'z',
+        prev: 'q',
+        next: 'e'
+      },
+      opacity: 0.7,
+      text: {
+        image: 'Фото',
+        of: 'из',
+        close: 'Закрыть',
+        download: 'Загрузить'
+      }
+    });  
+  });
+
 }
+

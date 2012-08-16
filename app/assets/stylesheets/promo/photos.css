@@ -185,8 +185,11 @@ body.photos
           #bri-photographers-select-all
           {
             margin-top: 10px;
-            display: block;
+            display: inline-block;
             color: #85b8e3;
+          }
+          #bri-photographers-select-all.active {
+            color: #C94364;
           }
 
           .bri-hd
@@ -209,15 +212,19 @@ body.photos
             #bri-hd-download
             {
               position: fixed;
+              display: none;
               right: 5px;
+              top: 230px;
               width: 49px;
               height: 46px;
+              z-index: 10;
               background: url(/assets/promo/photos/hd-download.png) no-repeat left top;
             }
 
 #bri-photos
 {
 }
+#bri-photos a img {display: none;}
   .am-wrapper 
   {
     position: relative;
