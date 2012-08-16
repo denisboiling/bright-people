@@ -1,5 +1,5 @@
 # Activity comment for main education actiity
-<% 1.upto(20).each do |i| %>
+<% 1.upto(10).each do |i| %>
 comment_<%= i %>:
   activity_id: 1
   commentator: <%= Faker::Name.name %>
@@ -8,7 +8,7 @@ comment_<%= i %>:
 <% end %>
 
 # Activity comment for main not education actiity
-<% 21.upto(40).each do |i| %>
+<% 11.upto(20).each do |i| %>
 comment_<%= i %>:
   activity_id: 2
   commentator: <%= Faker::Name.name %>

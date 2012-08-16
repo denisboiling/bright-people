@@ -1,7 +1,6 @@
 # Simple users
-<% 1.upto(10).each do |i| %>
+<% 1.upto(5).each do |i| %>
 user_<%= i %>:
-  id: <%= i %>
   email: <%= Faker::Internet.email %>
   role_id: 1
   name: <%= Faker::Name.name %>
@@ -9,9 +8,8 @@ user_<%= i %>:
 <% end %>
 
 # experts
-<% 11.upto(20).each do |i| %>
+<% 11.upto(15).each do |i| %>
 user_<%= i %>:
-  id: <%= i %>
   email: <%= Faker::Internet.email %>
   role_id: 4
   name: <%= Faker::Name.name %>
@@ -20,14 +18,25 @@ user_<%= i %>:
 <% end %>
 
 user:
-  id: 222  
   email: user@example.com
   name: <%= Faker::Name.name %>
   role_id: 1
 
 # moderator
 moderator:
-  id: 25
   email: moder@example.com
   role_id: 5
   name: <%= Faker::Name.name %>
+
+main_photographer:
+  email: main_photographer@example.com
+  role_id: 8
+  name: <%= Faker::Name.name %>
+
+<% (1..10).each do |i| %>
+photographer_<%= i %>:
+  email: <%= Faker::Internet.email %>
+  role_id: 7
+  position: <%= i %>
+  name: <%= Faker::Name.name %>
+<% end %>

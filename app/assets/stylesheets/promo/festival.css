@@ -1,0 +1,65 @@
+body.festival header
+{
+
+}
+  #bri-bezier
+  {
+    position: absolute;
+  }
+
+  #bri-fest-events
+  {
+    position: relative;
+    font-family: Futura;
+    font-size: 120%;
+  }
+    #bri-fest-events .bri-item
+    {
+      position: relative;
+      margin-bottom: 5px;
+    }
+      #bri-fest-events .bri-item a
+      {
+        display: inline-block;
+        color: #acc9e7;
+      }
+        #bri-fest-events .bri-item.active a
+        {
+          color: #c74866;
+        }
+
+      #bri-fest-events > .bri-item a:hover 
+      {
+        color: #c74866;        
+      }
+
+      #bri-fest-events .bri-sub
+      {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        margin-left: 100px;
+        width: auto;
+        display: none;
+      }
+
+
+
+footer.festival
+{
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto;
+  color: #999;
+}
+  footer.festival,
+  footer.festival .bri-divnks,
+  footer.festival .bri-divnks .bri-news 
+  {
+    border-color: #c7dff3; 
+  }
+
+  footer.festival .bri-credentials a
+  {
+    color: #999;
+  }
