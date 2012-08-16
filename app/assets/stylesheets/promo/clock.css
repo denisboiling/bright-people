@@ -1,0 +1,113 @@
+body.clock
+{  
+  color: #999;
+}
+
+#bri-main-clock
+{
+  position: absolute;
+  width: 100%;
+  min-width: 720px;
+  top: 0;
+  bottom: 10em;
+}
+  #bri-main-clock .bri-photographer
+  {
+    position: absolute;
+    z-index: 81;
+    width: 10%;
+    text-align: center;
+    font-family: Futura;
+  } 
+    #bri-main-clock .bri-photographer:hover
+    {
+      z-index: 82;
+      cursor: pointer;
+    }
+
+    #bri-main-clock .bri-photographer img { width: 100%; }
+    #bri-main-clock .bri-photographer img.hidden { display: none; }
+
+  #bri-main-clock-mask
+  {
+    position: relative;
+    z-index: 80;
+    margin-left: -88px;
+    height: 100%;
+    text-align: center;
+    background: url(/assets/promo/clock/photographers3.png) no-repeat center top;
+    background-size: contain;
+  }
+    #bri-svg 
+    {
+      margin-left: 44px;
+      display: inline-block;
+    }
+
+  #bri-photographers-all
+  {
+    position: absolute;
+    z-index: 90;
+    top: 2%;
+    left: 50%;
+    padding-top: 10px;
+    font-family: Futura;
+    background: url(/assets/promo/clock/pointer.png) no-repeat left center;
+    background-size: contain;
+    color: #85b8e3;
+  }
+
+  #bri-form
+  {
+    position: absolute;
+    z-index: 99;
+    left: 50%;
+    display: block;
+    text-align: center;
+    font-family: Futura;
+    color: #afd247;
+    text-shadow: 0 1px 1px #888;
+  }
+    #bri-time 
+    {
+      font-size: 200%;
+      color: #dd8a20;
+    }
+
+    #bri-form .bri-nav
+    {
+      width: 150px;
+      height: 40px;
+      line-height: 36px;
+      border-radius: 8px;
+    }
+      #bri-form .bri-nav img { height: 70%; }
+      #bri-form .bri-nav:active { margin-top: 3px; }
+
+
+footer.clock
+{
+  position: absolute; 
+  z-index: 99;
+  left: 50%; 
+  bottom: 0; 
+  width: 74%; 
+  margin-left: -37%; 
+}
+  footer.clock,
+  footer.clock .bri-links,
+  footer.clock .bri-links .bri-news 
+  {
+    border-color: #c7dff3; 
+  }
+
+  footer.clock .bri-credentials a
+  {
+    color: #999;
+  }
+
+
+@media only screen and (max-width: 1200px)
+{
+  #bri-main-clock-mask { margin-left: -89px; }
+}

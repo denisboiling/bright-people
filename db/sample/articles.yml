@@ -1,4 +1,4 @@
-<% 1.upto(15).each do |i| %>
+<% 1.upto(7).each do |i| %>
 article_<%= i %>:
   id: <%= i %>
   title: <%= Faker::Lorem.words.join(' ') %>

@@ -1,6 +1,11 @@
 desc "tail production log files"
 task :tail_logs, :roles => :app do
-  run "tail -f #{shared_path}/log/#{rails_env}.log" do |channel, stream, data|
+  log_file = case ENV['log']
+             when 'd' then 'delayed_job.log'
+             else "#{rails_env}.log"
+             end
+
+  run "tail -f #{File.join(shared_path, 'log', log_file)}" do |channel, stream, data|
     puts  # for an extra line break before the host name
     puts "#{channel[:host]}: #{data}"
     break if stream == :err
@@ -35,7 +40,7 @@ end
 namespace :delayed_job do
   desc "Restart the delayed_job process"
   task :restart, :roles => :app do
-    run "cd #{latest_release}; RAILS_ENV=#{rails_env} script/delayed_job restart"
+    run "cd #{latest_release}; RAILS_ENV=#{rails_env} script/delayed_job -n 4 restart"
   end
 
   task :stop, :roles => :app do
