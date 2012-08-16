@@ -63,5 +63,6 @@ window.setup_photos_page = ->
 
 
   $("form#bri-form-photos").bind 'submit', ->
-    $("#bri-form-photographers").val(choose_photographers())
+    console.log $("#bri-form-photographers").val()
+    # $("#bri-form-photographers").val(choose_photographers())
     true

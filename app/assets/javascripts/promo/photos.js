@@ -44,7 +44,7 @@ function photos ()
 
     list = ( !list.length )? [] : list.split(',') 
     list.push(id)
-    console.log("add photograph #" + id)
+
     $('#bri-form-photographers').val( list.join(',')  ).change()
   }
 
@@ -64,7 +64,7 @@ function photos ()
       }
     }
     list.splice(i,1)
-    console.log("remove photograph #" + id)
+
     $('#bri-form-photographers').val( list.join(',')  ).change()
 
   }
