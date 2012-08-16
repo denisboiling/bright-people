@@ -371,6 +371,8 @@
 				if ( obj.image )
 				{	// Already a image, so copy over values
 					image.src = obj.src || image.src;
+					image.data_id = obj.data_id ;
+					image.data_big = obj.data_big ;
 					image.title = obj.title || image.title;
 					image.description = obj.description || image.description;
 					image.name = obj.name || image.name;
@@ -385,6 +387,8 @@
 					if ( obj.attr('src') || obj.attr('href') )
 					{
 						image.src = obj.attr('src') || obj.attr('href');
+						image.data_id = obj.attr('data-id');
+						image.data_big = obj.attr('data-big');
 						image.title = obj.attr('title') || obj.attr('alt') || image.title;
 						image.name = obj.attr('name') || '';
 						image.color = obj.css('backgroundColor');
@@ -486,7 +490,7 @@
 					colorBlend:	''
 				},
 				css: {
-					lightbox:	'css/jquery.lightbox.css'
+					lightbox:	'/assets/promo/jquery.lightbox.css'
 				}
 			},
 			uncompressed: {
@@ -499,10 +503,10 @@
 				}
 			},
 			images: {
-				prev:		'/assets/images/promo/light/light-left.png',
-				next:		'/assets/images/promo/light/light-right.png',
-				blank:		'/assets/images/promo/light/blank.gif',
-				loading:	'/assets/images/promo/light/light-load.gif'
+				prev:		'/assets/promo/lightbox/light-left.png',
+				next:		'/assets/promo/lightbox/light-right.png',
+				blank:		'/assets/promo/lightbox/blank.gif',
+				loading:	'/assets/promo/lightbox/light-load.gif'
 			}
 		},
 		
@@ -773,13 +777,17 @@
 			$('#lightbox,#lightbox-overlay').remove();
 			$('body').append('<div id="lightbox-overlay"><div id="lightbox-overlay-text">'+(this.show_linkback?'<p><span id="lightbox-overlay-text-about"><a href="#" title="'+this.text.about.title+'">'+this.text.about.text+'</a></span></p><p>&nbsp;</p>':'')+(this.show_helper_text?'<p><span id="lightbox-overlay-text-close">'+this.text.help.close+'</span><br/>&nbsp;<span id="lightbox-overlay-text-interact">'+this.text.help.interact+'</span></p>':'')+'</div></div><div id="lightbox"><div id="lightbox-imageBox"><span id="lightbox-close"><a href="#" id="lightbox-close-button" title="'+this.text.closeInfo+'">' + this.text.close + '</a></span><div id="lightbox-imageContainer"><img id="lightbox-image" /><div id="lightbox-nav"><a href="#" id="lightbox-nav-btnPrev"></a><a href="#" id="lightbox-nav-btnNext"></a></div><div id="lightbox-loading"><a href="#" id="lightbox-loading-link"><img src="' + this.files.images.loading + '" /></a></div></div></div><div id="lightbox-infoBox"><div id="lightbox-infoContainer">'+
 			'<div id="lightbox-infoHeader">'+
-			/*'<span id="lightbox-caption">'+(this.download_link ? '<a href="#" title="' + this.text.download + '" id="lightbox-caption-title"></a>' : '<span id="lightbox-caption-title"></span>')+'<span id="lightbox-caption-seperator"></span><span id="lightbox-caption-description"></span></span>'+*/
-			'<div id="lightbox-count">547568'+
-			'</div>'+
+
+			'<div id="lightbox-count"></div>'+
 			'<div id="lightbox-hd">'+
-			'<a href=""></a>'+
+			'<span id="lightbox-caption">'+(this.download_link ? '<a href="#" title="' + this.text.download + '" id="lightbox-caption-title"></a>' : '<span id="lightbox-caption-title"></span>')+'<span id="lightbox-caption-seperator"></span><span id="lightbox-caption-description"></span></span>'+
 			'</div>'+
 			'<div id="lightbox-social">'+
+			'<div class="soc_link" style="width:230px;"><div class="fb-like" data-href="" data-send="true" data-layout="button_count" data-width="450" data-show-faces="true"></div><div id="fb-root"></div></div>'+
+			'<div class="soc_link"><a href="https://twitter.com/share" class="twitter-share-button" data-url="" data-via="runner_in_dark" data-lang="ru">Твитнуть</a></div>'+
+			'<div class="soc_link"><div id="vk_like"></div><div id="vk_share"></div></div>'+
+			'<div class="soc_link"><a class="odkl-share-oc" href="" onclick="ODKL.Share(this);return false;" ><span>0</span></a></div>'+
+			'<div class="soc_link"><g:plusone size="medium"></g:plusone></div>'+
 			'</div>'+
 			
 			'</div>'+
@@ -1353,8 +1361,14 @@
 					
 					// Hide and set image info
 					var $title = $('#lightbox-caption-title').html(image.title || 'Untitled');
+                    var $data_id = $('#lightbox-social .fb-like').attr({ 'data-href' : 'http://bright-people.ru/photos#'+image.data_id });
+					var $data_id = $('#lightbox-social .twitter-share-button').attr({ 'data-url' : 'http://bright-people.ru/photos#'+image.data_id });
+					var $data_id = $('#lightbox-social .odkl-share-oc').attr({ href : 'http://bright-people.ru/photos#'+image.data_id });
+					var $data_id = $('#lightbox-social g:plusone').attr({ href : 'http://bright-people.ru/photos#'+image.data_id });
+					//var $data_big = $('#lightbox-hd a').attr({ href : image.data_big });
+
 					if ( this.download_link )
-					{	$title.attr('href', this.download_link ? image.src : '');	}
+					{	$title.attr('href', this.download_link ? image.data_big : '');	}
 					delete $title;
 					$('#lightbox-caption-seperator').html(image.description ? ': ' : '');
 					$('#lightbox-caption-description').html(image.description || '&nbsp;');
