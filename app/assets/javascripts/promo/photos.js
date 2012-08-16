@@ -38,9 +38,44 @@ function photos ()
         // Do the twist!
       })
 
-    $('.bri-photographer')
-      .click(function()
+  function addPhotographer (el) {
+    var id   = el.attr('data-id')
+    ,   list = $('#bri-form-photographers').val()
+
+    list = ( !list.length )? [] : list.split(',') 
+    list.push(id)
+
+    $('#bri-form-photographers').val( list.join(',')  ).change()
+  }
+
+  function removePhotographer (el) {
+    var id   = el.attr('data-id')
+    ,   list = $('#bri-form-photographers').val()
+
+    list = list.split(',')
+
+    var deleteId
+    for ( var i=0; i< list.length; i++ )
+    {
+      if ( list[i] == id )
       {
+        deleteId = i
+        break
+      }
+    }
+    list.splice(i,1)
+
+    $('#bri-form-photographers').val( list.join(',')  ).change()
+
+  }
+
+    $('.bri-photographer')
+      .click(function() {
+	if ($(this).hasClass("active")){
+	    removePhotographer($(this))
+	} else {
+	    addPhotographer($(this))
+	}
         $(this).toggleClass('active')
         $(this).find('.bri-photo').slideToggle('fast')
         $(this).find('.bri-camera').slideToggle('fast')
@@ -51,7 +86,13 @@ function photos ()
     $('#bri-photographers-select-all')
       .click(function()
       {
-        $('.bri-photographer').each(function(){ $(this).click() })
+        $('.bri-photographer').each(function(){ 
+	    if (! $(this).hasClass("active")){
+		$(this).click() 
+	    }
+	     
+	})
+	  
       })
 
     var $container = $('#bri-photos')
@@ -91,14 +132,14 @@ function photos ()
         , function (n)
           {
             $('#bri-time .bri-hour').html(n)
-            $('#bri-form-hour').val(n)
+            $('#bri-form-hour').val(n).change()
           }
           // setMinute()
         , function(n)
           {
             if ( n < 10 ) n = '0'+n
             $('#bri-time .bri-minute').html(n)
-            $('#bri-form-minute').val(n)
+            $('#bri-form-minute').val(n).change()
           }
         )
 

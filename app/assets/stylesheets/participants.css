@@ -8,7 +8,7 @@
 .participants_map .map { margin-top: 10px; background-color: #ccc; }
 .participants_map .map img { width: 100%; }
 .participants_map_toggle_wrapper { margin-bottom: 40px; }
-#participants_map_toggle { width: 200px; margin: 0 auto; padding: 5px; background-color: #eee; text-align: center; font-size: 80%; behaviour: url(border-radius.htc); border-radius: 7px 0; -webkit-border-radius: 7px 0; -moz-border-radius: 7px 0; -khtml-border-radius: 7px 0; }
+#participants_map_toggle { width: 200px; margin: 0 auto; padding: 5px; background-color: #eee; text-align: center; font-size: 80%; behaviour: url(/assets/border-radius.htc); border-radius: 7px 0; -webkit-border-radius: 7px 0; -moz-border-radius: 7px 0; -khtml-border-radius: 7px 0; }
 #participants_map_toggle:hover { cursor: pointer }
 
 .participant_photo { position: relative; }
@@ -18,13 +18,13 @@
 .main_participants { margin-top: 20px; overflow: hidden; }
 .main_participants .item { display: inline-block; width: 31%; margin-right: 2%; }
 .main_participants .item:last-child { margin-right: 0; }
-.main_participants .item img { width: 100%; behaviour: url(border-radius.htc); border-radius: 7px; -webkit-border-radius: 7px; -moz-border-radius: 7px; -khtml-border-radius: 7px; }
+.main_participants .item img { width: 100%; behaviour: url(/assets/border-radius.htc); border-radius: 7px; -webkit-border-radius: 7px; -moz-border-radius: 7px; -khtml-border-radius: 7px; }
 .main_participants .item .title { margin: 10px 3px; padding-bottom: 0; font-weight: bold; }
 
 .participants { margin-top: 15px; padding-top: 15px; border-top: 1px solid #ccc; }
 .participants .participant { margin-bottom: 20px; }
 .participants .participant_wrapper { border-bottom: 1px solid #ccc; margin-bottom: 15px; padding-bottom: 15px; }
 .participants .participant_photo { float: left; width: 120px;}
-.participants .participant_photo img { display: block; width: 100%; behaviour: url(border-radius.htc); border-radius: 7px; -webkit-border-radius: 7px; -moz-border-radius: 7px; -khtml-border-radius: 7px; }
+.participants .participant_photo img { display: block; width: 100%; behaviour: url(/assets/border-radius.htc); border-radius: 7px; -webkit-border-radius: 7px; -moz-border-radius: 7px; -khtml-border-radius: 7px; }
 .participants .participant_data { margin-left: 130px; }
 .participants .participant_title { margin-bottom: 5px; font-weight: bold; }

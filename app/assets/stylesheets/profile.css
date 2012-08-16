@@ -3,7 +3,7 @@
 .profile_change_wrapper .info_label { float:left; width:200px; margin-right:20px}
 .profile_change_wrapper .info_label strong { color:#007ba4}
 .profile_change_wrapper .current_ava { text-align:center; float:left; width:140px; margin-right:20px; font-style:italic}
-.profile_change_wrapper .current_ava .thumb {  behavior: url(border-radius.htc); -moz-border-radius:42px; border-radius:42px; -webkit-border-radius:42px; -khtml-border-radius:42px;}
+.profile_change_wrapper .current_ava .thumb {  behavior: url(/assets/border-radius.htc); -moz-border-radius:42px; border-radius:42px; -webkit-border-radius:42px; -khtml-border-radius:42px;}
 .profile_change_wrapper .current_ava .thumb img { width:84px; height:84px; border-radius:42px;}
 
 .profile_change_wrapper .profile_change_avatar .button  { float:left; margin-right:20px; padding-top:40px}

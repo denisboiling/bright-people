@@ -1,7 +1,7 @@
 class GalleryPhoto < ActiveRecord::Base
   require 'zip/zip'
 
-  FESTIVAL_START = Time.zone.parse('2012-08-18 10:00:00')
+  FESTIVAL_START = Time.zone.parse('2012-01-18 10:00:00')
 
   include Rails.application.routes.url_helpers
 
@@ -75,7 +75,7 @@ class GalleryPhoto < ActiveRecord::Base
   def add_watermark
     require 'RMagick'
     logo_path = Rails.root.join('public/logos/logo.png')
-    styles = [:thumb, :medium, :big]
+    styles = [:medium, :big]
     styles.each do |style|
       pic_path = Rails.root.join('public'+photo.url(style, false))
       pic = Magick::Image.read(pic_path).first
