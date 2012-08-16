@@ -1,7 +1,7 @@
 class GalleryPhoto < ActiveRecord::Base
   require 'zip/zip'
 
-  FESTIVAL_START = Time.zone.parse('2012-01-18 10:00:00')
+  FESTIVAL_START = Time.zone.parse('2012-08-18 10:00:00')
 
   include Rails.application.routes.url_helpers
 
