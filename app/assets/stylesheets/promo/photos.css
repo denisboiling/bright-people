@@ -18,7 +18,7 @@ body.photos
   width: 100%;
   max-width: 1200px;
 }
-  header 
+  body.photos header 
   { 
     position: relative;
     height: 244px;
@@ -103,7 +103,8 @@ body.photos
           }
             #bri-photographers .bri-photographer.active .bri-number
             {
-              float: right;
+              position: absolute;
+              right: 0;
               margin-left: 0;
               font-size: 200%;
             } 
@@ -264,6 +265,8 @@ body.photos
 
   footer.photos
   {
+    width: 100%;
+    max-width: 1200px;
     margin: 20px auto;
     color: #999;
   }

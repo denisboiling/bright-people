@@ -33,7 +33,7 @@ body.promo
       background: url(/assets/promo/index/title.png);
     }  
 
-    .bri-photo 
+    .bri-wrapper .bri-photo 
     {
       position: absolute;
       z-index: 0;
@@ -132,6 +132,7 @@ footer.promo
   position: absolute; 
   left: 50%; 
   bottom: 0; 
+  width: 74%; 
   margin-left: -37%; 
   display: none; 
 

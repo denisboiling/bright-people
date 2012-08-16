@@ -1,7 +1,5 @@
 function Clock ( el, setHour, setMinute )
 {
-  console.log($(el))
-
   var obj =
   {
     width               : $(el).width()

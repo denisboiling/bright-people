@@ -24,6 +24,10 @@ class PhotosController < ApplicationController
   def clock
   end
 
+  def festival
+    @photos = GalleryPhoto.by_time(Time.zone.parse('2012-08-18, 10:00:00'))
+  end 
+
   private
 
   # OPTIMIZE: bbrr
