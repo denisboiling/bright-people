@@ -1,5 +1,18 @@
 function clock()
 {
+
+  $('#bri-main-clock-mask, #bri-form').css({"opacity":"0"});
+
+  //$('#bri-main-clock-mask').fadeOut('fast').delay(500).fadeIn('normal', function(){
+  //  $('#bri-form').fadeIn('normal')
+  //})
+
+  $('#bri-main-clock-mask').animate({
+    opacity: 1
+  }, 3000, function() {
+    $('#bri-form').animate({opacity: 1}, 3000);
+  });
+
   function clientWidth ()
   {
     var h
