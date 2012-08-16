@@ -29,6 +29,5 @@ module BrightPeople
       g.test_framework :rspec, :fixture => true, :views => false
       g.stylesheets false
     end
-
   end
 end

@@ -28,8 +28,9 @@ BrightPeople::Application.routes.draw do
 
   resources :photos, only: [:index, :show]
   match '/photos/download' => 'photos#download', :via => :post, :as => :photos_download
-  match '/promo' => 'photos#promo', :as => :photos_promo
-  match '/clock' => 'photos#clock', :as => :photos_clock
+  match '/promo'           => 'photos#promo',   :as => :photos_promo
+  match '/clock'           => 'photos#clock',   :as => :photos_clock
+  match '/festival'        => 'photos#festival',:as => :photos_festival
 
 
   resources :activities, only: [:index, :show, :search] do

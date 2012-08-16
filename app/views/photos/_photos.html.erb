@@ -1,0 +1,8 @@
+<% photos.each do |photo| %>
+  <a href="#">
+    <div class="bri-checkbox">
+      <div></div>
+    </div>
+    <%= image_tag(photo.photo.url) %>
+  </a>
+<% end %>

@@ -1,15 +1,17 @@
+<% @body_class="promo" %>
+
 <%= link_to image_tag('promo/goto-site.png'), root_path, id: 'bri-goto-site' %>
 
 <div id="bri-main">
 
-  <div id="bri-preloader"></div>
+  <div id="bri-main-preloader"></div>
 
   <div class="bri-wrapper">
 
     <div id="bri-fest-title"></div>
 
     <%= link_to image_tag('promo/index/find-me.png'), photos_clock_path, class: 'bri-nav', id: 'bri-find-me' %>
-    <%= link_to image_tag('promo/index/fest.png'), photos_clock_path, id: 'bri-fest' %>
+    <%= link_to image_tag('promo/index/fest.png'), photos_festival_path, class: 'bri-nav', id: 'bri-fest' %>
 
     <div id="bri-letters">
       <%= image_tag 'promo/index/letters/ya.png',    id: 'bri-letters-ya' %>
@@ -24,7 +26,7 @@
       <%= image_tag 'promo/index/letters/exclm.png', id: 'bri-letters-exclm' %>
     </div>
 
-    <!-- Don't forgot remove test data -->
+    <!-- Don't forget to remove test data -->
     <img src="/assets/promo/index/photo.jpg" id="bri-photo-1"  class="bri-photo">
     <img src="/assets/promo/index/photo.jpg" id="bri-photo-2"  class="bri-photo">
     <img src="/assets/promo/index/photo.jpg" id="bri-photo-3"  class="bri-photo">
@@ -41,3 +43,5 @@
 
   </div>
 </div>
+
+<script>$(document).ready(function(){ promo() })</script>

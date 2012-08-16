@@ -1,13 +1,15 @@
-<div id="bri-main">
+<% @body_class="clock" %>
+
+<div id="bri-main-clock">
 
   <% User.junior_photographers.order('position ASC').each do |photographer| %>
-    <div class="bri-photographer" data-id=<%= photographer.id %> >
+    <div class="bri-photographer" data-id="<%= photographer.id %>" data-position="<%= photographer.position %>" >
       <img src="/assets/promo/clock/photographers/<%= photographer.position %>.png" class="bri-number">
       <img src="/assets/promo/clock/photographers/<%= photographer.position %>_.png" class="bri-photo hidden">
     </div>
   <% end %>
 
-  <div id="bri-main-mask">
+  <div id="bri-main-clock-mask">
     <div id="bri-svg"></div>
   </div>
 
@@ -25,3 +27,5 @@
   <% end %>
 
 </div>
+
+<script> $(document).ready(function(){ clock() }) </script>

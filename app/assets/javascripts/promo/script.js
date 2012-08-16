@@ -1,9 +1,8 @@
-(function($)
+function promo ()
 {
-
 	$(document).ready(function()
 	{
-		$('#bri-preloader')
+		$('#bri-main-preloader')
 			.delay(500)
 			.fadeOut
 			(
@@ -34,7 +33,7 @@
 
 					$('#bri-find-me')
 						.delay(5000)
-						.animate( { top: '-126%', opacity: 1 }, 'fast', function(){ $('.bri-photo').addClass('bri-arrowed') } )
+						.animate( { top: '-126%', opacity: 1 }, 'fast' )
 
 					$('#bri-fest')
 						.delay(5000)
@@ -47,4 +46,4 @@
 			)
 	})
 
-})(jQuery)
+}

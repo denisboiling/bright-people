@@ -1,58 +1,51 @@
-<h1>Страничка с фоточками, часиками и фотограФФчиками</h1>
-
-<h2>Переключатель</h2>
-
-<%= check_box_tag :choose_photos, "Выбирать фотографии" %>
-
-<h2>Количетсво фоток готовых к загрузке</h2>
-<span id="photo_download_count"></span>
-
-<h3>Очистить список</h3>
-<%= link_to "clear list", "", id: 'clean-storage' %>
-
-<br /><br /><br />
-
-<%= link_to "HD download", "", id: "hd_download" %>
-<br /><br /><br />
-
+<% @body_class="photos" %>
 
 <div id="bri-content">
-  <header>
-    <div id="bri-clock">здесь/должны/быть/часы</div>
-    <div id="bri-photographers">
 
-      <% User.junior_photographers.order('position ASC').each do |photographer| %>
-        <div class="bri-photographer" data-id=<%= photographer.id %> >
-	  <img src="/assets/promo/clock/photographers/1__.jpg" class="bri-photo">
-          <div class="bri-data">
-            <span class="bri-camera"></span>
-            <span class="bri-number"><%= photographer.position %></span>
-            <span class="bri-name"><%= photographer.first_name %><br><%= photographer.last_name %></span>
-          </div>
-        </div>
-      <% end %>
+  <header>
+
+    <div id="bri-clock"></div>
+
+    <div id="bri-photographers">
+      <% User.junior_photographers.order('position ASC').each do |photographer| %><div class="bri-photographer" data-id="<%= photographer.id %>" data-position="<%= photographer.position %>" >
+	  <%= image_tag photographer.avatar.url, class: 'bri-photo' %>
+	  <div class="bri-data">
+	    <span class="bri-camera"></span>
+	    <span class="bri-number"><%= photographer.position %></span>
+	    <span class="bri-name"><%= photographer.first_name %><br><%= photographer.last_name %></span>
+	  </div>
+	</div><% end %>
 
       <div class="bri-all">
-        <div class="bri-bracket">
-          <a href="#" id="bri-photographers-select-all">Выбрать всех фотографов</a>
-        </div>
+	<div class="bri-bracket"></div>
+	<div class="bri-hd">
+	  <a href="#" id="bri-hd-download"></a>
+	  <a href="#" id="bri-hd-switch"></a>
+	  Сохранить фото в HD
+	</div>
+	<a href="#" id="bri-photographers-select-all">Выбрать всех фотографов</a>
       </div>
 
     </div>
 
   </header>
 
+  <div class="clearfix"></div>
+
   <div id="bri-photos">
     <div class="am-container" id="am-container">
-      <% @photos.each do |photo| %>
-        <div class="photo" id=<%= photo.id %> >
-          <%= link_to image_tag(photo.photo.url), '#'  %>
-          <div class="download hidden">
-            <%= link_to "Mark", "", "data-action" => "mark" %>
-          </div>
-        </div>
-      <% end %>
+      <%= render 'photos', photos: @photos %>
     </div>
+    <div class="clearfix"></div>
+    <div id="bri-preloader"></div>
   </div>
-
 </div>
+
+<%= form_tag photos_path, method: :get, id: 'bri-form-photos', remote: true do %>
+  <%= text_field_tag :photographers, params[:photographers] || '', id: 'bri-form-photographers' %>
+  <%= text_field_tag :hour, params[:hour] || 10, id: 'bri-form-hour' %>
+  <%= text_field_tag :minute, params[:minute] || 00, id: 'bri-form-minute' %>
+  <%= submit_tag %>
+<% end %>
+
+<script> $(document).ready(function(){ photos() })</script>

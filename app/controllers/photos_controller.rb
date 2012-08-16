@@ -10,6 +10,10 @@ class PhotosController < ApplicationController
               else
                 GalleryPhoto.by_time(@time)
               end
+    @photos = @photos.page(params[:page]).per(30)
+    if request.xhr?
+      render partial: 'photos', locals: {photos: @photos}
+    end
   end
 
   # TODO: rewrite..berr
@@ -24,13 +28,19 @@ class PhotosController < ApplicationController
   def clock
   end
 
+  def festival
+    @photos = GalleryPhoto.by_time(Time.zone.parse('2012-08-18, 10:00:00'))
+  end 
+
   private
 
-  # OPTIMIZE
+  # OPTIMIZE: bbrr
   def search_params
     @photographers = params["photographers"].split(',') if params["photographers"].present?
-    params['hour']   ||= 10
-    params['minute'] ||= 00
-    @time = Time.zone.parse("2012-01-18 #{params['hour']}:#{params['minute']}:00").to_s(:db)
+    @time =  if params['hour'].present? || params['minute'].present?
+               GalleryPhoto::FESTIVAL_START.change(hour: params['hour'], minute: params['minute'])
+             else
+               GalleryPhoto::FESTIVAL_START
+             end
   end
 end

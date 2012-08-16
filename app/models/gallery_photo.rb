@@ -1,6 +1,8 @@
 class GalleryPhoto < ActiveRecord::Base
   require 'zip/zip'
 
+  FESTIVAL_START = Time.zone.parse('2012-08-18 10:00:00')
+
   include Rails.application.routes.url_helpers
 
   belongs_to :user
@@ -11,9 +13,9 @@ class GalleryPhoto < ActiveRecord::Base
                             default_style: :thumb,
                             default_url: 'loading.gif'
 
-  attr_accessible :user_id, :photo
+  attr_accessible :user_id, :photo, :views
 
-  validates :photo_fingerprint, presence: true, uniqueness: true
+  # validates :photo_fingerprint, presence: true, uniqueness: true
   validates :user, presence: true
 
   scope :published, where(processing: false)
@@ -25,8 +27,7 @@ class GalleryPhoto < ActiveRecord::Base
   }
 
   # Show photos filters by time
-  scope :by_time, lambda{|time| where('shot_date >= ?', time)}
-
+  scope :by_time, lambda{|time| published.where('shot_date >= ?', time)}
 
   after_create :shot_date!
 
@@ -54,7 +55,7 @@ class GalleryPhoto < ActiveRecord::Base
 
   before_photo_post_process do
     # TODO: remove this dirty hack about test env
-    self.processing = true if Rails.env.test?
+    self.processing = true and return if Rails.env.test?
     self.processing ? false : true
   end
 
@@ -68,24 +69,24 @@ class GalleryPhoto < ActiveRecord::Base
     self.processing = false
     photo.reprocess!
     save
-    add_watermark
+    # add_watermark
   end
 
-  def add_watermark
-    require 'RMagick'
-    logo_path = Rails.root.join('public/logos/logo.png')
-    styles = [:thumb, :medium, :big]
-    styles.each do |style|
-      pic_path = Rails.root.join('public'+photo.url(style, false))
-      pic = Magick::Image.read(pic_path).first
-      logo = Magick::Image.read(logo_path).first
-      x_dim = pic.columns.to_i
-      y_dim = pic.rows.to_i
-      logo = logo.resize_to_fit(x_dim/4, y_dim/4)
-      pic = pic.composite(logo, Magick::SouthEastGravity, Magick::OverCompositeOp)
-      pic.write(pic_path)
-    end
-  end
+  # def add_watermark
+  #   require 'RMagick'
+  #   logo_path = Rails.root.join('public/logos/logo.png')
+  #   styles = [:thumb, :medium, :big]
+  #   styles.each do |style|
+  #     pic_path = Rails.root.join('public'+photo.url(style, false))
+  #     pic = Magick::Image.read(pic_path).first
+  #     logo = Magick::Image.read(logo_path).first
+  #     x_dim = pic.columns.to_i
+  #     y_dim = pic.rows.to_i
+  #     logo = logo.resize_to_fit(x_dim/4, y_dim/4)
+  #     pic = pic.composite(logo, Magick::SouthEastGravity, Magick::OverCompositeOp)
+  #     pic.write(pic_path)
+  #   end
+  # end
 
   class << self
 

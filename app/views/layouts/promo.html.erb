@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="<%= @body_class %>">
   <head>
     <title><%= yield(:title).present? ? yield(:title) : 'Фестиваль Яркие Люди' %></title>
     <%= yield :before_head %>
@@ -8,11 +8,11 @@
     <%= yield :after_head %>
     <%= csrf_meta_tags %>
   </head>
-  <body>
+  <body class="<%= @body_class %>">
     
     <%= yield %>
     
-    <footer>
+    <footer class="<%= @body_class %>">
 
       <div class="bri-links">
 
