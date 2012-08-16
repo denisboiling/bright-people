@@ -18,7 +18,7 @@
 
 article { }
 
-article a.thumb { position:relative; overflow:hidden; -moz-border-radius:0 0 40px 40px; border-radius:0 0 40px 40px; -webkit-border-radius:0 0 40px 40px; -khtml-border-radius:0 0 40px 40px; behavior: url(/assets/border-radius.htc); display:block; width: 82%; margin:auto; -moz-box-shadow:3px 3px 6px rgba(0,0,0,0.3);
+article a.thumb { position:relative; overflow:hidden; -moz-border-radius:0 0 40px 40px; border-radius:0 0 40px 40px; -webkit-border-radius:0 0 40px 40px; -khtml-border-radius:0 0 40px 40px; behavior: url(/assets//assets/border-radius.htc); display:block; width: 82%; margin:auto; -moz-box-shadow:3px 3px 6px rgba(0,0,0,0.3);
         -webkit-box-shadow:3px 3px 6px rgba(0,0,0,0.3);
         box-shadow:3px 3px 6px rgba(0,0,0,0.3);}
 
