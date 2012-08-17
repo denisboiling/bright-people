@@ -3,12 +3,6 @@ function photos ()
 
   $(document).ready(function()
   {
-
-
-
-
-
-
     $("a[rel^='prettyPhoto']").prettyPhoto({
       animation_speed: 'fast', /* fast/slow/normal */
       slideshow: false, /* false OR interval time in ms */
@@ -58,7 +52,6 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22});\
 
 
 
-
     $('#bri-goto-site').mouseenter(function(){
       $(this).stop().animate({ 'top':'0px'}, 300)
     }).mouseleave(function(){
@@ -81,8 +74,6 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22});\
       .live( 'click', function()
       {
         
-        
-
         $(this).toggleClass('active')
 
         if($('.am-wrapper.active').length > 0 && $('#bri-hd-switch').hasClass('active') ) { $('#bri-hd-download').show() }
@@ -110,18 +101,30 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22});\
         // Do the twist!
       })
 
-    $('.bri-photographer')
+      $('.bri-photographer')
       .click(function()
       {
         $(this).toggleClass('active')
         $(this).find('.bri-photo').slideToggle('fast')
         $(this).find('.bri-camera').slideToggle('fast')
 	$("#bri-form-photographers").val(window.choose_photographers());
-        $("form#bri-form-photos").submit()
+        $("#bri-form-photographers").change();
+
+	if ( $('.bri-photographer:not(.active)').length == 10 ) {
+	    $('#bri-photographers-select-all').toggleClass('active')
+	    $('#bri-photographers-select-all').html('Выбрать всех фотографов')
+	}
+
+	if ( $('.bri-photographer.active').length == 10 ) {
+	    $('#bri-photographers-select-all').toggleClass('active')
+	    $('#bri-photographers-select-all').html('Убрать всех фотографов')
+	}
+
         return false
       })
 
-    $('#bri-photographers-select-all')
+
+      $('#bri-photographers-select-all')
       .click(function()
       {
 
@@ -146,42 +149,9 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22});\
     	    })
       }
       $("#bri-form-photographers").val(window.choose_photographers());
-      $("form#bri-form-photos").submit()
+      $("#bri-form-photographers").change();
       })
 
-
-
-
-    var $container = $('#bri-photos')
-    ,   $imgs      = $container.find('img').hide()
-    ,   totalImgs  = $imgs.length
-    ,   cnt        = 0
-        
-    $imgs.each(function(i) 
-    {
-      var $img  = $(this)
-      
-      $('<img/>')
-        .load(function() 
-        {
-          ++cnt
-          if( cnt === totalImgs ) 
-          {
-             $imgs.fadeIn('slow')
-
-             $('#bri-preloader').remove();
-
-            $container.montage(
-            {
-              fillLastRow           : true
-            , alternateHeight       : true
-            , minsize : true
-            , alternateHeightRange  : { min : 90, max : 240 }
-            })
-          }
-        })
-        .attr( 'src', $img.attr('src') )
-    });
 
     var clock = 
         new Clock
