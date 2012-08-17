@@ -31,6 +31,15 @@ class PhotosController < ApplicationController
   def festival
   end
 
+  def add_view
+    photo = GalleryPhoto.find(params[:id])
+    photo.views_counter += 1
+    photo.save
+    respond_to do |format|
+      format.json { render :json => :ok }
+    end
+  end
+
   private
 
   # OPTIMIZE: bbrr
