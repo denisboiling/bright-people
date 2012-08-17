@@ -127,23 +127,20 @@ function photos ()
         )
 
     // ЧТОБЫ ПОВЕРНУТЬ СТРЕЛКИ ЧАСОВ НА НУЖНОЕ ВРЕМЯ, МОЖНО ИСПОЛЬЗОВАТЬ КОСТЫЛЬ (ВСЯ СОЛЬ В r-60, ГДЕ -60 - ГРАДУС ПОВОРОТА)
-    /* clock.minuteHand.animate
-       (
-         {
-           transform: 't'+clock.minuteHand.marginLeft+','+clock.minuteHand.marginTop+'r-360,'+clock.minuteHand.hx+','+clock.minuteHand.hy
-         }
-       , 2500
-       , '<>'
-       )
-     clock.hourHand.animate
-       (
-         {
-           transform: 't'+clock.hourHand.marginLeft+','+clock.hourHand.marginTop+'r-420,'+clock.hourHand.hx+','+clock.hourHand.hy
-         }
-       , 1500
-      , '<>'
-     )
-    */
+    // clock.minuteHand.animate({
+    //        transform: 't'+clock.minuteHand.marginLeft+','+clock.minuteHand.marginTop+'r-360,'+clock.minuteHand.hx+','+clock.minuteHand.hy
+    //      }
+    //    , 2500
+    //    , '<>'
+    //    )
+    //  clock.hourHand.animate
+    //    (
+    //      {
+    //        transform: 't'+clock.hourHand.marginLeft+','+clock.hourHand.marginTop+'r-420,'+clock.hourHand.hx+','+clock.hourHand.hy
+    //      }
+    //    , 1500
+    //   , '<>'
+    //  )
 
   })
 
