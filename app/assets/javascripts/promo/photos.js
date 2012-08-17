@@ -62,6 +62,15 @@ function photos ()
         $(this).find('.bri-camera').slideToggle('fast')
 	$("#bri-form-photographers").val(window.choose_photographers());
         $("#bri-form-photographers").change();
+
+	if ( $('.bri-photographer:not(.active)').length == 10 ) {
+	    $('#bri-photographers-select-all').toggleClass('active')
+	    $('#bri-photographers-select-all').html('Выбрать всех фотографов')
+	}
+	if ( $('.bri-photographer.active').length == 10 ) {
+	    $('#bri-photographers-select-all').toggleClass('active')
+	    $('#bri-photographers-select-all').html('Убрать всех фотографов')
+	}
         return false
       })
 

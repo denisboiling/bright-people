@@ -51,11 +51,18 @@ window.setup_photos_page = ->
 
   active_photographers_by_params =() ->
     return if get_by_params('photographers') == "" || get_by_params('photographers') == []
-    for id in get_by_params('photographers')
+    photographer_ids = get_by_params('photographers')
+    for id in photographer_ids
       photographer = $("div.bri-photographer[data-id='#{id}']")
       photographer.toggleClass('active')
       photographer.find('.bri-photo').slideToggle('fast')
       photographer.find('.bri-camera').slideToggle('fast')
+    if photographer_ids.length == 10
+      $('#bri-photographers-select-all')
+        .toggleClass('active')
+        .html('Убрать всех фотографов')
+      
+      
 
 # BIND LIVE
   active_photographers_by_params()
