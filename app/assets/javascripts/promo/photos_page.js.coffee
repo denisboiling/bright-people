@@ -77,6 +77,7 @@ window.setup_photos_page = ->
   $("form#bri-form-photos").bind 'ajax:success', (event, xhr) ->
     if xhr == ""
       $("#bri-preloader").hide()
+      $("div.am-container#am-container").html("") unless append_photos()
     else
       if append_photos()
         $("div.am-container#am-container").append("<div class='hidden-photos'>#{xhr}</div>")
@@ -87,6 +88,5 @@ window.setup_photos_page = ->
 
 
   $("form#bri-form-photos").bind 'submit', ->
-    console.log window.choose_photographers()
     $("#bri-form-photographers").val(window.choose_photographers())
     true
