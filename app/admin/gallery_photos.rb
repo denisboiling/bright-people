@@ -22,7 +22,7 @@ ActiveAdmin.register GalleryPhoto do
     column "Фотограф" do |photo|
       link_to photo.user.name, admin_user_path(photo.user)
     end
-    column :views_counter
+    column :views
     default_actions
   end
 

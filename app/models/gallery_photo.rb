@@ -87,7 +87,7 @@ class GalleryPhoto < ActiveRecord::Base
       x_dim = pic.columns.to_i
       y_dim = pic.rows.to_i
       logo = logo.resize_to_fit(x_dim/4, y_dim/4)
-      pic = pic.composite(logo, Magick::SouthEastGravity, Magick::OverCompositeOp)
+      pic = pic.composite(logo, Magick::SouthEastGravity, 5, 5, Magick::OverCompositeOp)
       pic.write(pic_path)
     end
     return true
