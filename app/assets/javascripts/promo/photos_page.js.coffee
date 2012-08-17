@@ -89,9 +89,11 @@ window.setup_photos_page = ->
         relocate_photos($("div.hidden-photos"))
         $("div.hidden-photos").removeClass('hidden-photos')
       else
-        $("div.am-container#am-container").html(xhr)
-        relocate_photos($("#bri-photos"))
-
+        $("div.am-container#am-container").html("")
+        $("div.am-container#am-container").append("<div class='hidden-photos'>#{xhr}</div>")
+        relocate_photos($("div.hidden-photos"))
+        $("div.hidden-photos").removeClass('hidden-photos')
+  
   $("form#bri-form-photos").bind 'submit', ->
     $("#bri-form-photographers").val(window.choose_photographers())
     true
