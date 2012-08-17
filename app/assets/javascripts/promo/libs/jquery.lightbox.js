@@ -166,6 +166,22 @@
 			$(group).unbind('click').click(function(){
 				// Get obj
 				var obj = $(this);
+				///////////////////////////////////////////////////////////////////////////////////
+				// * THIS CODE IS NOT ORIGINAL, WAS ADDED BY MYSELF * //
+				var photo_id = obj.attr('data-id');
+				var photos_array = JSON.parse(localStorage.getItem('bp_photos'));
+				if (!photos_array) {
+					photos_array = [];
+				}
+				if ( photos_array.indexOf(photo_id) == -1 ) {
+					photos_array.push(photo_id);
+					$.ajax({
+						url: "/photos/" + photo_id + "/add_view",
+						type: "POST"
+					});
+					localStorage.setItem('bp_photos', JSON.stringify(photos_array));
+				}
+				///////////////////////////////////////////////////////////////////////////////////
 				// Get rel
 				// var rel = $(obj).attr('rel');
 				// Init group
