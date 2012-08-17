@@ -8,7 +8,6 @@ function photos ()
       {
 
 if($(this).hasClass('active')) {
-
          
   $("#bri-photos a").lightbox();
 
@@ -110,17 +109,37 @@ $("#bri-photods a").lightbox();
         $(this).toggleClass('active')
         $(this).find('.bri-photo').slideToggle('fast')
         $(this).find('.bri-camera').slideToggle('fast')
-
+	$("#bri-form-photographers").val(window.choose_photographers());
+        $("form#bri-form-photos").submit()
         return false
       })
 
     $('#bri-photographers-select-all')
       .click(function()
       {
-        $(this).toggleClass('active')
-        if($(this).hasClass('active')) { $(this).html('Убрать всех фотографов') }
-        else { $(this).html('Выбрать всех фотографов') }
-        $('.bri-photographer').each(function(){ $(this).click() })
+
+    	$(this).toggleClass('active')
+        if ($(this).hasClass('active')) { 
+    	    $(this).html('Убрать всех фотографов')
+    	    $('.bri-photographer').each(function(){ 
+    	    	if (! $(this).hasClass("active")) {
+    	    	    $(this).toggleClass('active')
+    	    	    $(this).find('.bri-photo').slideToggle('fast')
+    	    	    $(this).find('.bri-camera').slideToggle('fast')
+    	    	}
+    	    })
+    	} else { 
+    	    $(this).html('Выбрать всех фотографов') 
+    	    $('.bri-photographer').each(function() { 
+    	    	if ($(this).hasClass("active")){
+    	    	    $(this).toggleClass('active')
+    	    	    $(this).find('.bri-photo').slideToggle('fast')
+    	    	    $(this).find('.bri-camera').slideToggle('fast')
+    	    	}
+    	    })
+      }
+      $("#bri-form-photographers").val(window.choose_photographers());
+      $("form#bri-form-photos").submit()
       })
 
 

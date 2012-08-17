@@ -4,16 +4,20 @@ window.setup_photos_page = ->
 
   $.urlParam = (name) ->
     results = new RegExp("[\\?&]" + name + "=([^&#]*)").exec(window.location.href)
+    return "" if results == null
     results[1] or 0
 
   get_by_params =(params) ->
     ret_params = switch params
                    when "photographers"
-                     $.urlParam(params).split('%2C')
+                     if $.urlParam(params) == ""
+                       []
+                     else
+                       $.urlParam(params).split('%2C')
                    else
                      $.urlParam(params)
 
-  choose_photographers =() ->
+  window.choose_photographers =() ->
     choose = []
     $("div.bri-photographer.active").each ->
       choose.push($(this).attr('data-id'))
@@ -83,6 +87,6 @@ window.setup_photos_page = ->
 
 
   $("form#bri-form-photos").bind 'submit', ->
-    console.log choose_photographers()
-    $("#bri-form-photographers").val(choose_photographers())
+    console.log window.choose_photographers()
+    $("#bri-form-photographers").val(window.choose_photographers())
     true
