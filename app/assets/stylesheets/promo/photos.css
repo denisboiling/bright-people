@@ -227,7 +227,7 @@ body.photos
 #bri-photos
 {
 }
-#bri-photos a img {display: none;}
+
   .am-wrapper 
   {
     position: relative;
@@ -264,6 +264,8 @@ body.photos
       .am-wrapper.bri-hd img { opacity: .5; }
 
       .am-wrapper.bri-hd.active img { opacity: 1; }
+
+.soc_like_button { float: left; margin-right: 10px}
 
   #bri-preloader
   {

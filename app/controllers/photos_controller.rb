@@ -31,15 +31,24 @@ class PhotosController < ApplicationController
   def festival
   end
 
+  def add_view
+    photo = GalleryPhoto.find(params[:id])
+    photo.views += 1
+    photo.save
+    respond_to do |format|
+      format.json { render :json => :ok }
+    end
+  end
+
   private
 
   # OPTIMIZE: bbrr
   def search_params
     @photographers = params["photographers"].split(',') if params["photographers"].present?
     @time =  if params['hour'].present? || params['minute'].present?
-               GalleryPhoto::FESTIVAL_START.change(hour: params['hour'], minute: params['minute'])
+               GalleryPhoto::FESTIVAL_START.change(hour: params['hour'], minute: params['minute']).to_s(:db)
              else
-               GalleryPhoto::FESTIVAL_START
+               GalleryPhoto::FESTIVAL_START.to_s(:db)
              end
   end
 end

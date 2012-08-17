@@ -12,7 +12,7 @@ require "rvm/capistrano"
 
 set :deploy_to, "/var/www/#{application}-stage"
 set :rails_env, "staging"
-set :branch, "gallery"
+set :branch, "stage"
 
 load 'config/deploy/avg'
 
