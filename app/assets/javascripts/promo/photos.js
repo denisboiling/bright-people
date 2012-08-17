@@ -3,6 +3,13 @@ function photos ()
 
   $(document).ready(function()
   {
+
+    $('#bri-goto-site').mouseenter(function(){
+      $(this).stop().animate({ 'top':'0px'}, 300)
+    }).mouseleave(function(){
+      $(this).stop().animate({ 'top': '-80px'}, 300)
+    })
+
     $('#bri-hd-switch')
       .click(function()
       {
@@ -168,6 +175,7 @@ $("#bri-photods a").lightbox();
             {
               fillLastRow           : true
             , alternateHeight       : true
+            , minsize : true
             , alternateHeightRange  : { min : 90, max : 240 }
             })
           }
@@ -196,7 +204,7 @@ $("#bri-photods a").lightbox();
         )
 
     // ЧТОБЫ ПОВЕРНУТЬ СТРЕЛКИ ЧАСОВ НА НУЖНОЕ ВРЕМЯ, МОЖНО ИСПОЛЬЗОВАТЬ КОСТЫЛЬ (ВСЯ СОЛЬ В r-60, ГДЕ -60 - ГРАДУС ПОВОРОТА)
-     clock.minuteHand.animate
+    /* clock.minuteHand.animate
        (
          {
            transform: 't'+clock.minuteHand.marginLeft+','+clock.minuteHand.marginTop+'r-360,'+clock.minuteHand.hx+','+clock.minuteHand.hy
@@ -212,7 +220,7 @@ $("#bri-photods a").lightbox();
        , 1500
       , '<>'
      )
-
+    */
     
 
 

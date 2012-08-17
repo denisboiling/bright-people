@@ -3,15 +3,29 @@ function clock()
 
   $('#bri-main-clock-mask, #bri-form').css({"opacity":"0"});
 
-  $('#bri-main-clock-mask').fadeOut('fast').delay(500).fadeIn('normal', function(){
-  //  $('#bri-form').fadeIn('normal')
-  })
+  $('#bri-main-clock').find("div.bri-photographer:first").addClass("current");
 
-  $('#bri-main-clock-mask').animate({
+
+
+  $('#bri-main-clock-mask').delay(100).animate({
     opacity: 1
   }, 3000, function() {
-    $('#bri-form').animate({opacity: 1}, 3000);
+    //$(.)
+
+    chain_fade('current', '.bri-photographer', '#bri-main-clock');
+
+
+    $('#bri-form').delay(4000).animate({opacity: 1}, 3000);
   });
+
+  function chain_fade(current, target, list)
+  {
+    $('div'+list).find('.bri-photographer.'+current).fadeIn(400, function() {
+    $(this).removeClass(current).next(target).addClass(current);
+      chain_fade(current, target, list);
+    });
+  }
+
 
   function clientWidth ()
   {
@@ -158,6 +172,17 @@ function clock()
     , 'width' : clientWidth()*.0775  + 'px'
     })
 
+
+    $('#bri-photographers-select-all')
+    .click(function()
+    {
+      $(this).toggleClass('active')
+      if($(this).hasClass('active')) { $(this).html('Убрать всех фотографов') }
+      else { $(this).html('Выбрать всех фотографов') }
+      $('.bri-photographer').each(function(){ $(this).click() })
+    })
+
+
     $('#bri-photographers-all')
       .css(
       {
@@ -165,7 +190,13 @@ function clock()
       , 'font-size' : clientHeight()*.02 + 'px'
       })
       .click(function()
-      {        
+      { 
+
+        $(this).toggleClass('active')
+        if($(this).hasClass('active')) { $(this).html('Убрать всех фотографов') }
+        else { $(this).html('Выбрать всех фотографов') }
+        
+
         $('#bri-form-photographers').val('')
 
         $('.bri-photographer')

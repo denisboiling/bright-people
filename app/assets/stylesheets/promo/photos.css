@@ -12,6 +12,8 @@ body.photos
   background-color: #fff;
 }
 
+.photos #bri-goto-site { top: -80px}
+
 #bri-content
 {
   margin: 0 auto;
@@ -106,7 +108,8 @@ body.photos
               position: absolute;
               right: 0;
               margin-left: 0;
-              font-size: 200%;
+              font-size: 150%;
+              margin-top: -6px;
             } 
 
           #bri-photographers .bri-photographer .bri-name
