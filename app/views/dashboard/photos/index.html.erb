@@ -2,7 +2,7 @@
 
 <%= form_for GalleryPhoto.new, url: dashboard_photos_path, html: {id: 'fileupload'} do |f| %>
   <%= f.label :user_id, "Фотограф" %>
-  <%= f.select :user_id, options_from_collection_for_select(User.photographers, :id, :name) %>
+  <%= f.select :user_id, options_from_collection_for_select(User.junior_photographers, :id, :name) %>
 
   <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
   <div class="row fileupload-buttonbar">

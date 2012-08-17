@@ -18,6 +18,10 @@ function festival ()
       {
         $('#bri-fest-events .bri-sub').hide()
 
+      //  $(this).parent('div').next().find('a').animate
+        //(
+        //  { fontSize: '150%', color: '#c74866' }, 150)
+
         $(this).animate
         (
           { fontSize: '200%', color: '#c74866' }
@@ -61,6 +65,14 @@ function festival ()
           { fontSize: '100%' }
         , 150
         )
+
+
+        //$(this).parent('div').next().find('a').animate
+        //(
+       //   { fontSize: '100%' }
+      //  , 150
+      //  )
+
       })
   })
 
