@@ -265,6 +265,8 @@ body.photos
 
       .am-wrapper.bri-hd.active img { opacity: 1; }
 
+.soc_like_button { float: left; margin-right: 10px}
+
   #bri-preloader
   {
     width: 32px;
