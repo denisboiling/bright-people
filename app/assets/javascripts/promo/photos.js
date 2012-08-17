@@ -226,4 +226,3 @@ $("#bri-photods a").lightbox();
   });
 
 }
-
