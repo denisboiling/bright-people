@@ -61,7 +61,7 @@ function photos ()
         $(this).find('.bri-photo').slideToggle('fast')
         $(this).find('.bri-camera').slideToggle('fast')
 	$("#bri-form-photographers").val(window.choose_photographers());
-        $("form#bri-form-photos").submit()
+        $("#bri-form-photographers").change();
         return false
       })
 
@@ -90,42 +90,9 @@ function photos ()
     	    })
       }
       $("#bri-form-photographers").val(window.choose_photographers());
-      $("form#bri-form-photos").submit()
+      $("#bri-form-photographers").change();
       })
 
-
-
-
-    var $container = $('#bri-photos')
-    ,   $imgs      = $container.find('img').hide()
-    ,   totalImgs  = $imgs.length
-    ,   cnt        = 0
-        
-    $imgs.each(function(i) 
-    {
-      var $img  = $(this)
-      
-      $('<img/>')
-        .load(function() 
-        {
-          ++cnt
-          if( cnt === totalImgs ) 
-          {
-             $imgs.fadeIn('slow')
-
-             $('#bri-preloader').remove();
-
-            $container.montage(
-            {
-              fillLastRow           : true
-            , alternateHeight       : true
-            , minsize : true
-            , alternateHeightRange  : { min : 90, max : 240 }
-            })
-          }
-        })
-        .attr( 'src', $img.attr('src') )
-    });
 
     var clock = 
         new Clock
@@ -137,6 +104,8 @@ function photos ()
           {
             $('#bri-time .bri-hour').html(n)
             $('#bri-form-hour').val(n)
+	    $('#bri-form-hour').change()
+
           }
           // setMinute()
         , function(n)
@@ -144,6 +113,7 @@ function photos ()
             if ( n < 10 ) n = '0'+n
             $('#bri-time .bri-minute').html(n)
             $('#bri-form-minute').val(n)
+	    $('#bri-form-minute').change()
           }
         )
 
@@ -165,35 +135,9 @@ function photos ()
       , '<>'
      )
     */
-    
-
-
-
 
   })
 
-  $(function()
-  {
-    $("#bri-photos a").lightbox();
-    $.Lightbox.construct({
-      show_linkback: false,
-      show_helper_text: false,
-      show_info: true,
-      show_extended_info: true,
-      download_link: true,
-      keys: {
-        close: 'z',
-        prev: 'q',
-        next: 'e'
-      },
-      opacity: 0.7,
-      text: {
-        image: 'Фото',
-        of: 'из',
-        close: 'Закрыть',
-        download: 'Загрузить'
-      }
-    });  
-  });
+
 
 }
