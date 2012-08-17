@@ -2,6 +2,8 @@ class FestivalCategory < ActiveRecord::Base
   include Hierarchy
   attr_accessible :title, :path
 
+  before_destroy :destroy_children
+
   has_many :gallery_photos
 
   validates :title, presence: true, uniqueness: true
@@ -22,5 +24,12 @@ class FestivalCategory < ActiveRecord::Base
 
   def self.all_photos
     top.map(&:photos).flatten
+  end
+
+  private
+  def destroy_children
+    if top_level?
+      children.map &:destroy
+    end
   end
 end
