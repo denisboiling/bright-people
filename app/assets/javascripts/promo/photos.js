@@ -67,6 +67,7 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22});\
         $('.am-wrapper').toggleClass('bri-hd')
         $('.am-wrapper .bri-checkbox').fadeToggle('fast')
 
+
         return false
       })
 
