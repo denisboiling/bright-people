@@ -61,14 +61,24 @@ window.setup_photos_page = ->
       $('#bri-photographers-select-all')
         .toggleClass('active')
         .html('Убрать всех фотографов')
-      
-      
 
-# BIND LIVE
+  all_downloaded =() ->
+    return false if typeof(window.all_downloaded) == "undefined" || window.all_downloaded == false
+    true
+      
+  set_all_downloaded =() ->
+    $("div.am-container#am-container").html("") unless append_photos()
+    $("#bri-preloader").hide()
+    set_page_one()
+    window.all_downloaded = true
+
+  # BIND LIVE
+
   active_photographers_by_params()
   relocate_photos($("#bri-photos"))
 
   $(window).scroll ->
+    return if all_downloaded()
     if $(window).scrollTop() + $(window).height() > $(document).height() - 200
       $("#bri-form-page").val(parseInt($("#bri-form-page").val()) + 1)
       window.append = true
@@ -76,13 +86,13 @@ window.setup_photos_page = ->
 
   $("#bri-form-hour, #bri-form-minute, #bri-form-photographers").bind 'change', ->
     window.append = false
+    window.all_downloaded = false
     set_page_one()
     $(this).parents("form:first").submit()
 
   $("form#bri-form-photos").bind 'ajax:success', (event, xhr) ->
     if xhr == ""
-      $("#bri-preloader").hide()
-      $("div.am-container#am-container").html("") unless append_photos()
+      set_all_downloaded()
     else
       if append_photos()
         $("div.am-container#am-container").append("<div class='hidden-photos'>#{xhr}</div>")
