@@ -33,7 +33,7 @@ class PhotosController < ApplicationController
 
   def add_view
     photo = GalleryPhoto.find(params[:id])
-    photo.views_counter += 1
+    photo.views += 1
     photo.save
     respond_to do |format|
       format.json { render :json => :ok }
