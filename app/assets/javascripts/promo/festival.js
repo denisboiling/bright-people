@@ -74,6 +74,16 @@ function festival ()
       //  )
 
       })
+
+
+      $(".cat_link").live("click", function(event){
+        event.preventDefault();
+        var category_title = $(this).text();
+        $.ajax({
+          url: "/festival",
+          data: { category: category_title }
+        });
+      });
   })
 
 }

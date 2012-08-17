@@ -6,7 +6,8 @@ class GalleryPhoto < ActiveRecord::Base
   include Rails.application.routes.url_helpers
 
   belongs_to :user
-
+  belongs_to :festival_category
+  
   has_attached_file :photo, styles: { thumb: ['240x240', :jpg], medium: ['1000x1000', :jpg], big: ['9999x9999>', :jpg] },
                             path: ":rails_root/public/system/gallery_photos/:attachment/:id/:style/:filename",
                             url: "/system/gallery_photos/:attachment/:id/:style/:filename",

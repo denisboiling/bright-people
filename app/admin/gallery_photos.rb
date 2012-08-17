@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ActiveAdmin.register GalleryPhoto do
-  menu label: "Галлерея", :parent => "Фото модуль"
+  menu label: "Галерея", :parent => "Фото модуль"
 
   filter :id
   filter :user, as: :select, collection: proc { User.photographers }
