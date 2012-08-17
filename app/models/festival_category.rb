@@ -1,6 +1,6 @@
 class FestivalCategory < ActiveRecord::Base
   include Hierarchy
-  attr_accessible :title, :parent
+  attr_accessible :title, :path
 
   has_many :gallery_photos
 
