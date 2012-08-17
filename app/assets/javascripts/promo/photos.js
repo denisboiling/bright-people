@@ -14,63 +14,7 @@ function photos ()
       .click(function()
       {
 
-if($(this).hasClass('active')) {
-         
-  $("#bri-photos a").lightbox();
-
-    $.Lightbox.construct({
-      show_linkback: false,
-      show_helper_text: false,
-      show_info: true,
-      show_extended_info: true,
-      download_link: true,
-      keys: {
-        close: 'z',
-        prev: 'q',
-        next: 'e'
-      },
-      opacity: 0.7,
-      text: {
-        image: 'Фото',
-        of: 'из',
-        close: 'Закрыть',
-        download: 'Загрузить'
-      }
-    });  
-
-}
-  else {
-
-$("#bri-photods a").lightbox();
-
-    $.Lightbox.construct({
-      show_linkback: false,
-      show_helper_text: false,
-      show_info: true,
-      show_extended_info: true,
-      download_link: true,
-      keys: {
-        close: 'z',
-        prev: 'q',
-        next: 'e'
-      },
-      opacity: 0.7,
-      text: {
-        image: 'Фото',
-        of: 'из',
-        close: 'Закрыть',
-        download: 'Загрузить'
-      }
-    });  
-
-}
-
         $(this).toggleClass('active')
-
-
-
-
-
         $('.am-wrapper').toggleClass('bri-hd')
         $('.am-wrapper .bri-checkbox').fadeToggle('fast')
 
