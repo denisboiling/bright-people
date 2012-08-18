@@ -8,6 +8,6 @@
 #= require_directory .
 
 $ ->
-  window.setup_download_photos()
+#  window.setup_download_photos()
   window.setup_photos_page()
   
