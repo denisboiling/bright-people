@@ -38,6 +38,7 @@ class GalleryPhoto < ActiveRecord::Base
 
   # We can get date of shot only from TIFF(.NEF CR2) file.
   # For jpeg and png we sett current date timesmapt
+  # OPTIMIZE: brrr
   def shot_date!
     date = begin
              if self.photo_content_type == 'image/jpeg'
