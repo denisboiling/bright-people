@@ -41,9 +41,10 @@ function photos ()
 <!-- Put this div tag to the place, where the Like block will be -->\
 <div id="vk_like"></div>\
 <script type="text/javascript">\
-VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+$(this).attr('data-id')+');\
+VK.Widgets.Like("vk_like", {type: "button", height: 22});\
 </script>\
 </div> \
+<iframe src="http://www.facebook.com/plugins/like.php?locale=en_US&href='+location.href+'&amp;layout=button_count&amp;show_faces=true&amp;width=500&amp;action=like&amp;font&amp;colorscheme=light&amp;height=23" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:500px; height:23px;" allowTransparency="true"></iframe>\
 <div class="soc_like_button"> \
 <div id="fb-root"></div>\
 <script>(function(d, s, id) {\
@@ -86,8 +87,6 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+$(this).attr('data-id
 
         return false
       })
-
-    $('.bri-checkbox').live('click', function(e){ e.stopPropagation()})
 
     $('.am-wrapper.bri-hd ')
       .live( 'click', function()
