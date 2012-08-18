@@ -24,7 +24,7 @@ body.photos
   { 
     position: relative;
     height: 244px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
   }
     #bri-clock
     {
@@ -39,7 +39,7 @@ body.photos
     {
       position: relative;
       margin-left: 260px;
-      height: 160px;
+      height: 150px;
     }
       #bri-photographers .bri-photographer
       {
@@ -184,7 +184,7 @@ body.photos
             left: 50%;
             margin-left: -15px;
             bottom: -17px;
-            content: url(/assets/promo/photos/arrow.png);
+            /*content: url(/assets/promo/photos/arrow.png);*/
           }
 
           #bri-photographers-select-all

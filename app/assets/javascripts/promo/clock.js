@@ -183,9 +183,17 @@ function clock()
       { 
 
           $(this).toggleClass('active')
-          if($(this).hasClass('active')) { $(this).html('Скрыть всех фотографов') }
-          else { $(this).html('Выбрать всех фотографов') }
-          $('.bri-photographer').each(function(){ $(this).click()  })
+          if($(this).hasClass('active')) { 
+            $(this).html('Скрыть всех фотографов') 
+            $('.bri-number').addClass('hidden')
+            $('.bri-photo').removeClass('hidden')
+          }
+          else { 
+            $(this).html('Выбрать всех фотографов') 
+            $('.bri-number').removeClass('hidden')
+            $('.bri-photo').addClass('hidden')
+          }
+          //$('.bri-photographer').each(function(){ $(this).click()  })
 	  return false
       })
 

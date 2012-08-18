@@ -186,10 +186,10 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+$(this).attr('data-id
 
             $container.montage(
             {
-              fillLastRow           : true
-            , alternateHeight       : true
+             // fillLastRow           : true
+            //, alternateHeight       : true
             , minsize : true
-            , alternateHeightRange  : { min : 90, max : 240 }
+           // , alternateHeightRange  : { min : 90, max : 240 }
             })
           }
         })
