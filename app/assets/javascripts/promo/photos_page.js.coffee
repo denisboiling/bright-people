@@ -10,7 +10,7 @@ window.setup_photos_page = ->
   get_by_params =(params) ->
     ret_params = switch params
                    when "photographers"
-                     if $.urlParam(params) == ""
+                     if $.urlParam(params) == "" || $.urlParam(params) == 0
                        []
                      else
                        $.urlParam(params).split('%2C')
