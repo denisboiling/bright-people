@@ -164,6 +164,7 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22});\
           {
             $('#bri-time .bri-hour').html(n)
             $('#bri-form-hour').val(n)
+            $('#bri-form-hour').change()
           }
           // setMinute()
         , function(n)
@@ -171,6 +172,7 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22});\
             if ( n < 10 ) n = '0'+n
             $('#bri-time .bri-minute').html(n)
             $('#bri-form-minute').val(n)
+	    $('#bri-form-minute').change()
           }
         )
 
