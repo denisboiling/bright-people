@@ -62,19 +62,10 @@ window.setup_photos_page = ->
       $('#bri-photographers-select-all')
         .toggleClass('active')
         .html('Убрать всех фотографов')
-
-  all_downloaded =() ->
-    return false if typeof(window.all_downloaded) == "undefined" || window.all_downloaded == false
-    true
       
-  set_all_downloaded =() ->
-    $("div.am-container#am-container").html("") unless append_photos()
-    $("#bri-preloader").hide()
-    set_page_one()
-    window.all_downloaded = true
+      
 
-  # BIND LIVE
-
+# BIND LIVE
   active_photographers_by_params()
   relocate_photos($("#bri-photos"))
 

@@ -9,18 +9,18 @@ function clock()
 
   $('#bri-main-clock-mask').delay(100).animate({
     opacity: 1
-  }, 3000, function() {
+  }, 1500, function() {
     //$(.)
 
     chain_fade('current', '.bri-photographer', '#bri-main-clock');
 
 
-    $('#bri-form').delay(4000).animate({opacity: 1}, 3000);
+    $('#bri-form').delay(1500).animate({opacity: 1}, 1500);
   });
 
   function chain_fade(current, target, list)
   {
-    $('div'+list).find('.bri-photographer.'+current).fadeIn(400, function() {
+    $('div'+list).find('.bri-photographer.'+current).fadeIn(150, function() {
     $(this).removeClass(current).next(target).addClass(current);
       chain_fade(current, target, list);
     });
