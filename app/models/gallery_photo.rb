@@ -41,9 +41,9 @@ class GalleryPhoto < ActiveRecord::Base
   def shot_date!
     date = begin
              if self.photo_content_type == 'image/jpeg'
-               EXIFR::JPEG.new(self.photo.path(:original)).date_time
+               EXIFR::JPEG.new(self.photo.path(:original)).date_time.to_s(:db)
              else
-               EXIFR::TIFF.new(self.photo.path(:original)).date_time
+               EXIFR::TIFF.new(self.photo.path(:original)).date_time.to_s(:db)
              end
            rescue
              Time.zone.now
