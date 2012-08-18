@@ -1,7 +1,12 @@
 class GalleryPhoto < ActiveRecord::Base
   require 'zip/zip'
 
-  FESTIVAL_START = Time.zone.parse('2012-01-18 10:00:00')
+  FESTIVAL_START = if Rails.env.production?
+                     Time.zone.parse('2012-08-18 10:00:00')
+                   else
+                     Time.zone.parse('2012-01-18 10:00:00')
+  end
+
 
   include Rails.application.routes.url_helpers
 
@@ -35,7 +40,11 @@ class GalleryPhoto < ActiveRecord::Base
   # For jpeg and png we sett current date timesmapt
   def shot_date!
     date = begin
-             EXIFR::TIFF.new(self.photo.path(:original)).date_time
+             if self.photo_content_type == 'image/jpeg'
+               EXIFR::JPEG.new(self.photo.path(:original)).date_time
+             else
+               EXIFR::TIFF.new(self.photo.path(:original)).date_time
+             end
            rescue
              Time.zone.now
            end
@@ -83,7 +92,7 @@ class GalleryPhoto < ActiveRecord::Base
       x_dim = pic.columns.to_i
       y_dim = pic.rows.to_i
       logo = logo.resize_to_fit(x_dim/4, y_dim/4)
-      pic = pic.composite(logo, Magick::SouthEastGravity, Magick::OverCompositeOp)
+      pic = pic.composite(logo, Magick::SouthEastGravity, 5, 5, Magick::OverCompositeOp)
       pic.write(pic_path)
     end
     return true

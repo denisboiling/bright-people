@@ -38,6 +38,7 @@ body.promo
       position: absolute;
       z-index: 0;
       max-width: 186px;
+      max-height: 120px;
       width: 13%;
       margin-left: -5%;
       opacity: 0;
@@ -92,7 +93,7 @@ body.promo
       { 
         position: absolute; 
         z-index: 11;
-        bottom: 300%; 
+        bottom: 500%; 
         width: 11.1%;
       }
 

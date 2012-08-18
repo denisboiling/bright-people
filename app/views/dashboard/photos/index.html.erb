@@ -1,8 +1,11 @@
-<%= render 'dashboard/shared/profile_menu', current: 'profile' %>
+<%= render 'dashboard/shared/profile_menu', current: 'photo' %>
 
 <%= form_for GalleryPhoto.new, url: dashboard_photos_path, html: {id: 'fileupload'} do |f| %>
   <%= f.label :user_id, "Фотограф" %>
-  <%= f.select :user_id, options_from_collection_for_select(User.photographers, :id, :name) %>
+  <% if current_user.main_photographer? %>
+    <%= f.select :user_id, options_from_collection_for_select(User.junior_photographers, :id, :name) %>
+  <% end %>
+  
 
   <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
   <div class="row fileupload-buttonbar">

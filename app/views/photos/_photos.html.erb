@@ -1,8 +1,11 @@
 <% photos.each do |photo| %>
-  <a rel="lightbox-group" href="<%= photo.photo.url(:medium) %>" data-big="<%= photo.photo.url(:big) %>" data-id="<%= photo.id %>">
-    <div class="bri-checkbox">
+<div class="bri-photo-box">
+	<div class="bri-checkbox">
       <div></div>
     </div>
+  <a rel="prettyPhoto[mixed]" href="<%= photo.photo.url(:medium) %>" data-big="<%= photo.photo.url(:big) %>" data-id="<%= photo.id %>">
+    
     <%= image_tag(photo.photo.url) %>
   </a>
+</div>
 <% end %>
