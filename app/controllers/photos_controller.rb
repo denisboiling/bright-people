@@ -46,7 +46,7 @@ class PhotosController < ApplicationController
   def search_params
     @photographers = params["photographers"].split(',') if params["photographers"].present?
     @time =  if params['hour'].present? || params['minute'].present?
-               GalleryPhoto::FESTIVAL_START.change(hour: params['hour'], minute: params['minute'])
+               GalleryPhoto::FESTIVAL_START.change(hour: params['hour'], min: params['minute'])
              else
                GalleryPhoto::FESTIVAL_START
              end
