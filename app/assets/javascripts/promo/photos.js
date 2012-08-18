@@ -128,6 +128,7 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+$(this).attr('data-id
         $(this).find('.bri-photo').slideToggle('fast')
         $(this).find('.bri-camera').slideToggle('fast')
 	$("#bri-form-photographers").val(window.choose_photographers());
+  $("#bri-form-photographers").change();
   if ( $('.bri-photographer:not(.active)').length == 10 ) {
       $('#bri-photographers-select-all').toggleClass('active')
       $('#bri-photographers-select-all').html('Выбрать всех фотографов')
