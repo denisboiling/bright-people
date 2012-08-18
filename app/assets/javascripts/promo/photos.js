@@ -186,7 +186,7 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+$(this).attr('data-id
             {
              // fillLastRow           : true
             //, alternateHeight       : true
-            , minsize : true
+             minsize : true
            // , alternateHeightRange  : { min : 90, max : 240 }
             })
           }
