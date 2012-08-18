@@ -23,26 +23,24 @@ window.setup_photos_page = ->
       choose.push($(this).attr('data-id'))
     choose
 
-  relocate_photos =() ->
-    $container = $("div.hidden-photos")
-    $imgs = $container.find("img")
-    totalImgs = $imgs.length
+  relocate_photos =(div) ->
+    container = div
+    imgs = container.find("img")
+    totalImgs = imgs.length
     cnt = 0
-    $imgs.each (i) ->
-      $img = $(this)
+    imgs.each (i) ->
+      img = $(this)
     
-      # $imgs.show()
       $("<img/>").load(->
         ++cnt
         if cnt is totalImgs
-          $container.montage
+          container.montage
             fillLastRow: true
             alternateHeight: true
             alternateHeightRange:
               min: 90
               max: 240
-
-      ).attr "src", $img.attr("src")
+      ).attr "src", img.attr("src")
 
   append_photos =() ->
     return false if typeof(window.append) == "undefined" || window.append == false
@@ -53,21 +51,28 @@ window.setup_photos_page = ->
 
   active_photographers_by_params =() ->
     return if get_by_params('photographers') == "" || get_by_params('photographers') == []
-    for id in get_by_params('photographers')
+    photographer_ids = get_by_params('photographers')
+    for id in photographer_ids
       photographer = $("div.bri-photographer[data-id='#{id}']")
       photographer.toggleClass('active')
       photographer.find('.bri-photo').slideToggle('fast')
       photographer.find('.bri-camera').slideToggle('fast')
+    if photographer_ids.length == 10
+      $('#bri-photographers-select-all')
+        .toggleClass('active')
+        .html('Убрать всех фотографов')
+      
+      
 
 # BIND LIVE
   active_photographers_by_params()
+  relocate_photos($("#bri-photos"))
 
   $(window).scroll ->
-    if $(window).scrollTop() + $(window).height() > $(document).height() - 100
+    if $(window).scrollTop() + $(window).height() > $(document).height() - 200
       $("#bri-form-page").val(parseInt($("#bri-form-page").val()) + 1)
       window.append = true
       $("form#bri-form-photos").submit()
-
 
   $("#bri-form-hour, #bri-form-minute, #bri-form-photographers").bind 'change', ->
     window.append = false
@@ -81,11 +86,11 @@ window.setup_photos_page = ->
     else
       if append_photos()
         $("div.am-container#am-container").append("<div class='hidden-photos'>#{xhr}</div>")
+        relocate_photos($("div.hidden-photos"))
+        $("div.hidden-photos").removeClass('hidden-photos')
       else
-        $("div.am-container#am-container").html("<div class='hidden-photos'>#{xhr}</div>")        
-      relocate_photos()
-      $("div.hidden-photos").removeClass('hidden-photos')
-
+        $("div.am-container#am-container").html(xhr)
+        relocate_photos($("#bri-photos"))
 
   $("form#bri-form-photos").bind 'submit', ->
     $("#bri-form-photographers").val(window.choose_photographers())
