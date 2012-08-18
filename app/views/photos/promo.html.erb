@@ -27,19 +27,10 @@
     </div>
 
     <!-- Don't forget to remove test data -->
-    <img src="/assets/promo/index/photo.jpg" id="bri-photo-1"  class="bri-photo">
-    <img src="/assets/promo/index/photo.jpg" id="bri-photo-2"  class="bri-photo">
-    <img src="/assets/promo/index/photo.jpg" id="bri-photo-3"  class="bri-photo">
-    <img src="/assets/promo/index/photo.jpg" id="bri-photo-4"  class="bri-photo">
-    <img src="/assets/promo/index/photo.jpg" id="bri-photo-5"  class="bri-photo">
-    <img src="/assets/promo/index/photo.jpg" id="bri-photo-6"  class="bri-photo">
+    <% GalleryPhoto.published.sample(12).each_with_index do |photo, index| %>
+      <%= image_tag photo.photo, class: 'bri-photo', id: "bri-photo-#{index + 1}" %>
+    <% end %>
 
-    <img src="/assets/promo/index/photo.jpg" id="bri-photo-7"  class="bri-photo">
-    <img src="/assets/promo/index/photo.jpg" id="bri-photo-8"  class="bri-photo">
-    <img src="/assets/promo/index/photo.jpg" id="bri-photo-9"  class="bri-photo">
-    <img src="/assets/promo/index/photo.jpg" id="bri-photo-10" class="bri-photo">
-    <img src="/assets/promo/index/photo.jpg" id="bri-photo-11" class="bri-photo">
-    <img src="/assets/promo/index/photo.jpg" id="bri-photo-12" class="bri-photo">
 
   </div>
 </div>
