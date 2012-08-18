@@ -60,7 +60,7 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22});\
 
     $('#bri-hd-switch')
       .click(function()
-      {
+	     {
 
         $(this).toggleClass('active')
 

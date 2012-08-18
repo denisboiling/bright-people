@@ -173,17 +173,7 @@ function clock()
     })
 
 
-    $('#bri-photographers-select-all')
-    .click(function()
-    {
-      $(this).toggleClass('active')
-      if($(this).hasClass('active')) { $(this).html('Убрать всех фотографов') }
-      else { $(this).html('Выбрать всех фотографов') }
-      $('.bri-photographer').each(function(){ $(this).click() })
-    })
-
-
-    $('#bri-photographers-all')
+     $('#bri-photographers-all')
       .css(
       {
         'padding'   : clientHeight()*.01 + 'px' +' 0 0 '+ clientHeight()*.035 + 'px'
@@ -195,15 +185,7 @@ function clock()
         $(this).toggleClass('active')
         if($(this).hasClass('active')) { $(this).html('Убрать всех фотографов') }
         else { $(this).html('Выбрать всех фотографов') }
-        
-
-        $('#bri-form-photographers').val('')
-
-        $('.bri-photographer')
-          .each(function()
-          {
-            addPhotographer( $(this) )
-          })
+        $('.bri-photographer').each(function(){ $(this).click()  })
       })
 
     $('#bri-form')

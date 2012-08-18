@@ -7,6 +7,7 @@ window.setup_photos_page = ->
     return "" if results == null
     results[1] or 0
 
+  # OPTIMIZE: brr ugly
   get_by_params =(params) ->
     ret_params = switch params
                    when "photographers"
