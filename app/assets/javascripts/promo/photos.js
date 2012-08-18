@@ -81,15 +81,14 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+$(this).attr('data-id
 
         $(this).toggleClass('active')
 
-        $('.am-wrapper').toggleClass('bri-hd')
-        $('.am-wrapper .bri-checkbox').fadeToggle('fast')
+        $('.bri-photo-box').toggleClass('bri-hd')
+        $('.bri-photo-box .bri-checkbox').fadeToggle('fast')
 
         return false
       })
 
-    $('.bri-checkbox').live('click', function(e){ e.stopPropagation()})
 
-    $('.am-wrapper.bri-hd ')
+    $('.bri-photo-box.bri-hd ')
       .live( 'click', function()
       {
         
@@ -97,14 +96,14 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+$(this).attr('data-id
 
         $(this).toggleClass('active')
 
-        if($('.am-wrapper.active').length > 0 && $('#bri-hd-switch').hasClass('active') ) { $('#bri-hd-download').show() }
+        if($('.bri-photo-box.active').length > 0 && $('#bri-hd-switch').hasClass('active') ) { $('#bri-hd-download').show() }
         else { $('#bri-hd-download').hide()}
 
         // TODO: REWRITE THIS ACCORDING TO THE MAX'S SCRIPT!!!111
         if ( $(this).hasClass('active') )
         {
           var ids = JSON.parse( window.localStorage.get('photos') )
-          ids.push( $(this).parent().parent().attr('data-id') )
+          ids.push( $(this).find('a').attr('data-id') )
           window.localStorage.set('photos', JSON.stringify('photos'))
         }
 

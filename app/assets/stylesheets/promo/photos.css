@@ -33,6 +33,8 @@ body.photos
       height: 244px;
     }
 
+    .bri-photo-box {float:left; position:relative}
+
     #bri-photographers
     {
       position: relative;
@@ -197,7 +199,7 @@ body.photos
 
           .bri-hd
           {
-            position: absolute;
+            /*position: absolute;*/
             margin-top: 10px;
             right: 0;
             color: #cac1b4;
@@ -234,7 +236,7 @@ body.photos
     float: left;
     overflow: hidden;
   }
-    .am-wrapper .bri-checkbox 
+    .bri-photo-box .bri-checkbox 
     {
       position: absolute;
       z-index: 1;
@@ -247,7 +249,7 @@ body.photos
       border-radius: 10px;
       box-shadow: 0 0 2px #000;
     }
-      .am-wrapper.active .bri-checkbox div
+      .bri-photo-box.active .bri-checkbox div
       {
         margin: 4px 0 0 4px;
         width: 12px;
@@ -261,9 +263,9 @@ body.photos
       position:absolute;
       outline:none;
     }
-      .am-wrapper.bri-hd img { opacity: .5; }
+      .bri-photo-box.bri-hd img { opacity: .5; }
 
-      .am-wrapper.bri-hd.active img { opacity: 1; }
+      .bri-photo-box.bri-hd.active img { opacity: 1; }
 
 .soc_like_button { float: left; margin-right: 10px}
 
