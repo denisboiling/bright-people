@@ -182,10 +182,11 @@ function clock()
       .click(function()
       { 
 
-        $(this).toggleClass('active')
-        if($(this).hasClass('active')) { $(this).html('Скрыть всех фотографов') }
-        else { $(this).html('Выбрать всех фотографов') }
-        $('.bri-photographer').each(function(){ $(this).click()  })
+          $(this).toggleClass('active')
+          if($(this).hasClass('active')) { $(this).html('Скрыть всех фотографов') }
+          else { $(this).html('Выбрать всех фотографов') }
+          $('.bri-photographer').each(function(){ $(this).click()  })
+	  return false
       })
 
     $('#bri-form')
