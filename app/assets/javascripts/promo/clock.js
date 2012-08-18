@@ -183,7 +183,7 @@ function clock()
       { 
 
         $(this).toggleClass('active')
-        if($(this).hasClass('active')) { $(this).html('Убрать всех фотографов') }
+        if($(this).hasClass('active')) { $(this).html('Скрыть всех фотографов') }
         else { $(this).html('Выбрать всех фотографов') }
         $('.bri-photographer').each(function(){ $(this).click()  })
       })
