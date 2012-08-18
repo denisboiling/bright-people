@@ -10,7 +10,7 @@ class PhotosController < ApplicationController
               else
                 GalleryPhoto.by_time(@time)
               end
-    @photos = @photos.page(params[:page]).per(30)
+    @photos = @photos.order('shot_date ASC').page(params[:page]).per(30)
     if request.xhr?
       render partial: 'photos', locals: {photos: @photos}
     end
