@@ -1,13 +1,6 @@
-function photos ()
-{
-
+function photos (){
   $(document).ready(function()
   {
-
-
-
-
-
 
     $("a[rel^='prettyPhoto']").prettyPhoto({
       animation_speed: 'fast', /* fast/slow/normal */
@@ -24,12 +17,12 @@ function photos ()
       changepicturecallback: function(){
 
         (function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/ru_RU/all.js#xfbml=1&appId=359292310775946";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, "script", "facebook-jssdk"));
+	    var js, fjs = d.getElementsByTagName(s)[0];
+	    if (d.getElementById(id)) return;
+	    js = d.createElement(s); js.id = id;
+	    js.src = "//connect.facebook.net/ru_RU/all.js#xfbml=1&appId=359292310775946";
+	    fjs.parentNode.insertBefore(js, fjs);
+	}(document, "script", "facebook-jssdk"));
 
       },
       social_tools: '<div class="count_view"></div><div class="download_pic"><a http="'+$(this).attr('data-big')+'"></div><div class="pp_social"> \
