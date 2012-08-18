@@ -46,9 +46,10 @@ class GalleryPhoto < ActiveRecord::Base
                EXIFR::TIFF.new(self.photo.path(:original)).date_time.to_s(:db)
              end
            rescue
+             puts "RESCUE in shot_date!"
              Time.zone.now
            end
-    self.update_column(:shot_date, date)
+    self.update_attribute(:shot_date, date)
   end
 
   def to_jq_upload
