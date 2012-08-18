@@ -6,9 +6,9 @@ class PhotosController < ApplicationController
   # OPTIMIZE
   def index
     @photos = if @photographers
-                GalleryPhoto.by_photograph_and_time(@photographers, @time)
+                GalleryPhoto.for_photographers.by_photograph_and_time(@photographers, @time)
               else
-                GalleryPhoto.by_time(@time)
+                GalleryPhoto.for_photographers.by_time(@time)
               end
     @photos = @photos.page(params[:page]).per(30)
     if request.xhr?

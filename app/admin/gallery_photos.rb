@@ -23,6 +23,7 @@ ActiveAdmin.register GalleryPhoto do
       link_to photo.user.name, admin_user_path(photo.user)
     end
     column :views
+    column :festival_category
     default_actions
   end
 
@@ -30,6 +31,7 @@ ActiveAdmin.register GalleryPhoto do
     f.inputs "Основное" do
       f.input :user, as: :select, collection: User.photographers, include_blank: false
       f.input :photo, as: :file, hint: f.template.image_tag(f.object.photo.url)
+      f.input :festival_category, as: :select, collection: FestivalCategory.all, include_blank: true
     end
     f.buttons
   end

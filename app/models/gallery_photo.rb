@@ -14,12 +14,13 @@ class GalleryPhoto < ActiveRecord::Base
                             default_style: :thumb,
                             default_url: 'loading.gif'
 
-  attr_accessible :user_id, :photo, :views
+  attr_accessible :user_id, :photo, :views, :festival_category_id
 
   # validates :photo_fingerprint, presence: true, uniqueness: true
   validates :user, presence: true
-
+  
   scope :published, where(processing: false)
+  scope :for_photographers, where("festival_category_id IS NULL")
 
   # Show photos filters by photograps and time
   scope :by_photograph_and_time, lambda{|user_ids, time|

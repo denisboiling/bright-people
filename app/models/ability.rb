@@ -12,6 +12,7 @@ class Ability
     can :manage, :dashboard if user.persisted?
     can :manage, :dashboard_activity if user.manager?
     can :manage, :dashboard_photos if user.photographer?
+    can :manage, :dashboard_festival_photos if user.main_photographer?
 
     can :create, :comment if user.persisted?
 

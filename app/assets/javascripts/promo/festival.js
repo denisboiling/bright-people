@@ -81,7 +81,10 @@ function festival ()
         var category_title = $(this).text();
         $.ajax({
           url: "/festival",
-          data: { category: category_title }
+          data: { category: category_title },
+          success: function(data){
+            $('.container').html(data);
+          }
         });
       });
   })

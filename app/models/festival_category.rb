@@ -12,13 +12,13 @@ class FestivalCategory < ActiveRecord::Base
 
   def photos
     if top_level?
-      photos = gallery_photos
+      photos = gallery_photos.published
       children.each do |child|
-        photos += child.gallery_photos
+        photos += child.gallery_photos.published
       end
       photos
     else
-      gallery_photos
+      gallery_photos.published
     end
   end
 
