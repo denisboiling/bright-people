@@ -116,6 +116,7 @@ function Clock ( el, setHour, setMinute )
   , function (segment)
     {
       console.log(segment)
+
       obj.minuteClock.forEach(function(item)
       {
         item.attr( 'stroke', obj.minuteStrokeColor )
