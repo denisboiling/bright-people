@@ -8,8 +8,6 @@ class FestivalCategory < ActiveRecord::Base
 
   validates :title, presence: true, uniqueness: true
 
-  scope :top, where(:path => "")
-
   def photos
     if top_level?
       photos = gallery_photos.published
@@ -23,7 +21,7 @@ class FestivalCategory < ActiveRecord::Base
   end
 
   def self.all_photos
-    top.map(&:photos).flatten
+    top_level.map(&:photos).flatten
   end
 
   private

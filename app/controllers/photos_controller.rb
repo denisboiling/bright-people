@@ -6,9 +6,9 @@ class PhotosController < ApplicationController
   # OPTIMIZE
   def index
     @photos = if @photographers
-                GalleryPhoto.for_photographers.by_photograph_and_time(@photographers, @time)
+                GalleryPhoto.by_photograph_and_time(@photographers, @time)
               else
-                GalleryPhoto.for_photographers.by_time(@time)
+                GalleryPhoto.by_time(@time)
               end
     @photos = @photos.page(params[:page]).per(30)
     if request.xhr?
@@ -34,7 +34,7 @@ class PhotosController < ApplicationController
     else
       @photos = FestivalCategory.all_photos
     end
-    @top_categories = FestivalCategory.top
+    @top_categories = FestivalCategory.top_level
     if request.xhr?
       render partial: 'photos', locals: {photos: @photos}
     end

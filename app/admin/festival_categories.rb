@@ -10,7 +10,7 @@ ActiveAdmin.register FestivalCategory do
   form do |f|
     f.inputs "Основное" do
       f.input :title
-      f.input :path, as: :select, collection: (FestivalCategory.top.keep_if { |a| a != f.object }).map { |m| [m.title, m.id] }
+      f.input :path, as: :select, collection: FestivalCategory.top_level.where('id != ?', f.object.id).map { |m| [m.title, m.id] }
     end
     f.buttons
   end
