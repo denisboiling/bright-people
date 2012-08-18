@@ -43,6 +43,7 @@ div.pp_default .pp_next{ margin-right: -25px;}
 
 div.pp_default .count_view { float: left; width: 80px; font-family: Futura; height: 37px; padding-left: 70px; background:url(/assets/promo/photos/light-count.png) 0 0 no-repeat}
 div.pp_default .download_pic { float: right; height: 46px; width: 49px;  background:url(/assets/promo/photos/light-hd.png) 0 0 no-repeat}
+div.pp_default .download_pic a { display: block; height: 46px; width: 49px;}
 
 div.light_rounded .pp_top .pp_left{background:url(../images/prettyPhoto/light_rounded/sprite.png) -88px -53px no-repeat}
 div.light_rounded .pp_top .pp_right{background:url(../images/prettyPhoto/light_rounded/sprite.png) -110px -53px no-repeat}
