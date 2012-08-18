@@ -25,6 +25,7 @@ class GalleryPhoto < ActiveRecord::Base
   validates :user, presence: true
   
   scope :published, where(processing: false)
+  scope :festival_photos, where("festival_category_id IS NOT NULL")
 
   # Show photos filters by photograps and time
   scope :by_photograph_and_time, lambda{|user_ids, time|

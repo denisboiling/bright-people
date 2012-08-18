@@ -20,10 +20,6 @@ class FestivalCategory < ActiveRecord::Base
     end
   end
 
-  def self.all_photos
-    top_level.map(&:photos).flatten
-  end
-
   private
   def destroy_children
     if top_level?

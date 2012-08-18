@@ -32,7 +32,7 @@ class PhotosController < ApplicationController
     if (params[:category])
       @photos = FestivalCategory.find_by_title(params[:category]).photos
     else
-      @photos = FestivalCategory.all_photos
+      @photos = GalleryPhoto.festival_photos
     end
     @top_categories = FestivalCategory.top_level
     if request.xhr?
