@@ -1,6 +1,13 @@
-function photos (){
+function photos ()
+{
+
   $(document).ready(function()
   {
+
+
+
+
+
 
     $("a[rel^='prettyPhoto']").prettyPhoto({
       animation_speed: 'fast', /* fast/slow/normal */
@@ -17,12 +24,12 @@ function photos (){
       changepicturecallback: function(){
 
         (function(d, s, id) {
-	    var js, fjs = d.getElementsByTagName(s)[0];
-	    if (d.getElementById(id)) return;
-	    js = d.createElement(s); js.id = id;
-	    js.src = "//connect.facebook.net/ru_RU/all.js#xfbml=1&appId=359292310775946";
-	    fjs.parentNode.insertBefore(js, fjs);
-	}(document, "script", "facebook-jssdk"));
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ru_RU/all.js#xfbml=1&appId=359292310775946";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, "script", "facebook-jssdk"));
 
       },
       social_tools: '<div class="count_view"></div><div class="download_pic"><a http="'+$(this).attr('data-big')+'"></div><div class="pp_social"> \
@@ -37,7 +44,6 @@ function photos (){
 VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+$(this).attr('data-id')+');\
 </script>\
 </div> \
-<iframe src="http://www.facebook.com/plugins/like.php?locale=en_US&href='+location.href+'&amp;layout=button_count&amp;show_faces=true&amp;width=500&amp;action=like&amp;font&amp;colorscheme=light&amp;height=23" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:500px; height:23px;" allowTransparency="true"></iframe>\
 <div class="soc_like_button"> \
 <div id="fb-root"></div>\
 <script>(function(d, s, id) {\
@@ -75,13 +81,14 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+$(this).attr('data-id
 
         $(this).toggleClass('active')
 
-        $('.am-wrapper').toggleClass('bri-hd')
-        $('.am-wrapper .bri-checkbox').fadeToggle('fast')
+        $('.bri-photo-box').toggleClass('bri-hd')
+        $('.bri-photo-box .bri-checkbox').fadeToggle('fast')
 
         return false
       })
 
-    $('.am-wrapper.bri-hd ')
+
+    $('.bri-photo-box.bri-hd ')
       .live( 'click', function()
       {
         
@@ -89,14 +96,14 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+$(this).attr('data-id
 
         $(this).toggleClass('active')
 
-        if($('.am-wrapper.active').length > 0 && $('#bri-hd-switch').hasClass('active') ) { $('#bri-hd-download').show() }
+        if($('.bri-photo-box.active').length > 0 && $('#bri-hd-switch').hasClass('active') ) { $('#bri-hd-download').show() }
         else { $('#bri-hd-download').hide()}
 
         // TODO: REWRITE THIS ACCORDING TO THE MAX'S SCRIPT!!!111
         if ( $(this).hasClass('active') )
         {
           var ids = JSON.parse( window.localStorage.get('photos') )
-          ids.push( $(this).parent().parent().attr('data-id') )
+          ids.push( $(this).find('a').attr('data-id') )
           window.localStorage.set('photos', JSON.stringify('photos'))
         }
 
@@ -114,30 +121,27 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+$(this).attr('data-id
         // Do the twist!
       })
 
-      $('.bri-photographer')
+    $('.bri-photographer')
       .click(function()
       {
         $(this).toggleClass('active')
         $(this).find('.bri-photo').slideToggle('fast')
         $(this).find('.bri-camera').slideToggle('fast')
 	$("#bri-form-photographers").val(window.choose_photographers());
-        $("#bri-form-photographers").change();
+  $("#bri-form-photographers").change();
+  if ( $('.bri-photographer:not(.active)').length == 10 ) {
+      $('#bri-photographers-select-all').toggleClass('active')
+      $('#bri-photographers-select-all').html('Выбрать всех фотографов')
+  }
 
-	if ( $('.bri-photographer:not(.active)').length == 10 ) {
-	    $('#bri-photographers-select-all').toggleClass('active')
-	    $('#bri-photographers-select-all').html('Выбрать всех фотографов')
-	}
-
-	if ( $('.bri-photographer.active').length == 10 ) {
-	    $('#bri-photographers-select-all').toggleClass('active')
-	    $('#bri-photographers-select-all').html('Убрать всех фотографов')
-	}
-
+  if ( $('.bri-photographer.active').length == 10 ) {
+      $('#bri-photographers-select-all').toggleClass('active')
+      $('#bri-photographers-select-all').html('Убрать всех фотографов')
+  }
         return false
       })
 
-
-      $('#bri-photographers-select-all')
+    $('#bri-photographers-select-all')
       .click(function()
       {
 
@@ -189,10 +193,10 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+$(this).attr('data-id
 
             $container.montage(
             {
-              fillLastRow           : true
-            , alternateHeight       : true
-            , minsize : true
-            , alternateHeightRange  : { min : 90, max : 240 }
+             // fillLastRow           : true
+            //, alternateHeight       : true
+             minsize : true
+           // , alternateHeightRange  : { min : 90, max : 240 }
             })
           }
         })
@@ -217,7 +221,7 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+$(this).attr('data-id
             if ( n < 10 ) n = '0'+n
             $('#bri-time .bri-minute').html(n)
             $('#bri-form-minute').val(n)
-	    $('#bri-form-minute').change()
+            $('#bri-form-minute').change()
           }
         )
 

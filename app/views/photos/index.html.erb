@@ -20,7 +20,7 @@
 
       <div class="bri-all">
 	<div class="bri-bracket"></div>
-	<div class="bri-hd">
+	<div class="bri-hd" style="position:absolute">
 	  <a href="#" id="bri-hd-download"></a>
 	  <a href="#" id="bri-hd-switch"></a>
 	  Сохранить фото в HD
@@ -51,6 +51,10 @@
 <% end %>
 
 <script> $(document).ready(function(){ photos() })</script>
+
+
+
+
 
 
 <div style="display:none">
@@ -85,23 +89,6 @@ document.write(VK.Share.button(false,{type: "round_nocount", text: "Подели
 
 
 
-<link href="http://stg.odnoklassniki.ru/share/odkl_share.css" rel="stylesheet">
-<script src="http://stg.odnoklassniki.ru/share/odkl_share.js" type="text/javascript" ></script>
 
-
-
-<!-- Поместите этот тег туда, где должна отображаться кнопка +1. -->
-
-
-<!-- Поместите этот вызов функции отображения в соответствующее место. -->
-<script type="text/javascript">
-  window.___gcfg = {lang: 'ru'};
-
-  (function() {
-    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-    po.src = 'https://apis.google.com/js/plusone.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-  })();
-</script>
 
 </div>
