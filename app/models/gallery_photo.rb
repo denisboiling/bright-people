@@ -47,9 +47,9 @@ class GalleryPhoto < ActiveRecord::Base
              end
            rescue
              puts "RESCUE in shot_date!"
-             Time.zone.now
+             Time.zone.now.to_s(:db)
            end
-    self.update_attribute(:shot_date, date)
+    self.update_attribute(:shot_date, Time.zone.parse(date))
   end
 
   def to_jq_upload
