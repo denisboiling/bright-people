@@ -213,7 +213,7 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+$(this).attr('data-id
           {
             $('#bri-time .bri-hour').html(n)
             $('#bri-form-hour').val(n)
-            $('#bri-form-minute').change()
+            $('#bri-form-hour').change()
           }
           // setMinute()
         , function(n)
