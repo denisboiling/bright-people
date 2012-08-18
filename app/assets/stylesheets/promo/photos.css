@@ -1,7 +1,7 @@
 html.photos
 { 
   height: auto;
-  padding-top: 10px;
+  padding-top: 15px;
   background-color: #c7dff3; 
 }
 
@@ -37,7 +37,7 @@ body.photos
     {
       position: relative;
       margin-left: 260px;
-      height: 210px;
+      height: 160px;
     }
       #bri-photographers .bri-photographer
       {
@@ -87,7 +87,7 @@ body.photos
         #bri-photographers .bri-photographer .bri-data
         {
           margin-top: 10px;
-          padding: 0 0 50px 5px;
+          padding: 0 0 20px 5px;
         }
           #bri-photographers .bri-photographer .bri-camera
           {
@@ -188,7 +188,7 @@ body.photos
           #bri-photographers-select-all
           {
             margin-top: 10px;
-            display: inline-block;
+            display: none;
             color: #85b8e3;
           }
           #bri-photographers-select-all.active {
@@ -267,11 +267,13 @@ body.photos
 
 .soc_like_button { float: left; margin-right: 10px}
 
+
+
   #bri-preloader
   {
     width: 32px;
     height: 32px;
-    margin: 20px auto;
+    margin: -50px auto 0px auto;
     background: url(/assets/promo/photos/preloader.gif) no-repeat left top;
   }
 

@@ -21,7 +21,18 @@ function photos ()
       allow_resize: true,
       theme: 'pp_default',
       gallery_markup: '',
-      social_tools: '<div class="count_view"></div><div class="download_pic"></div><div class="pp_social"> \
+      changepicturecallback: function(){
+
+        (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ru_RU/all.js#xfbml=1&appId=359292310775946";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, "script", "facebook-jssdk"));
+
+      },
+      social_tools: '<div class="count_view"></div><div class="download_pic"><a http="'+$(this).attr('data-big')+'"></div><div class="pp_social"> \
 <div class="soc_like_button"> \
 <script type="text/javascript" src="http://userapi.com/js/api/openapi.js?45"></script>\
 <script type="text/javascript">\
@@ -30,10 +41,9 @@ function photos ()
 <!-- Put this div tag to the place, where the Like block will be -->\
 <div id="vk_like"></div>\
 <script type="text/javascript">\
-VK.Widgets.Like("vk_like", {type: "button", height: 22});\
+VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+$(this).attr('data-id')+');\
 </script>\
 </div> \
-<iframe src="http://www.facebook.com/plugins/like.php?locale=en_US&href='+location.href+'&amp;layout=button_count&amp;show_faces=true&amp;width=500&amp;action=like&amp;font&amp;colorscheme=light&amp;height=23" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:500px; height:23px;" allowTransparency="true"></iframe>\
 <div class="soc_like_button"> \
 <div id="fb-root"></div>\
 <script>(function(d, s, id) {\
@@ -76,6 +86,8 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22});\
 
         return false
       })
+
+    $('.bri-checkbox').live('click', function(e){ e.stopPropagation()})
 
     $('.am-wrapper.bri-hd ')
       .live( 'click', function()
