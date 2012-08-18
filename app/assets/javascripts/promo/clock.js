@@ -193,7 +193,6 @@ function clock()
             $('.bri-number').removeClass('hidden')
             $('.bri-photo').addClass('hidden')
           }
-          //$('.bri-photographer').each(function(){ $(this).click()  })
 	  return false
       })
 
