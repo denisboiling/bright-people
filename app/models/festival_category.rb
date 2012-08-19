@@ -1,6 +1,9 @@
 class FestivalCategory < ActiveRecord::Base
   include Hierarchy
-  attr_accessible :title, :path
+
+  default_scope :order => 'position ASC'
+
+  attr_accessible :title, :path, :position
 
   before_destroy :destroy_children
 
