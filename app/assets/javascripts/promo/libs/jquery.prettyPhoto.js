@@ -60,10 +60,13 @@ $.prettyPhoto.open=function(event){
   // Khodzha's code ///////////////////////////////////////////////////
   var photo_id = pp_images[set_position].split("/")[4];
   var photos_array = JSON.parse(localStorage.getItem('bp_photos'));
+  var views = parseInt($("a[data-id=" + photo_id +"]").attr("data-views"));
   if (!photos_array) {
     photos_array = [];
   }
   if ( photos_array.indexOf(photo_id) == -1 ) {
+    views += 1;
+    $("a[data-id=" + photo_id +"]").attr("data-views", views);
     photos_array.push(photo_id);
     $.ajax({
       url: "/photos/" + photo_id + "/add_view",
@@ -78,16 +81,6 @@ setHashtag();if(settings.social_tools){
   facebook_like_link=settings.social_tools.replace('{location_href}',encodeURIComponent(location.href));
   $pp_pic_holder.find('.pp_social').html(facebook_like_link);
   ///////////////////////////////////////////////////////////////////
-  var ph_id = pp_images[set_position].split("/")[4];
-  var ph_array = JSON.parse(localStorage.getItem('bp_photos'));
-  if (!ph_array) {
-    ph_array = [];
-  }
-  var views = parseInt($("a[data-id=" + ph_id +"]").attr("data-views"));
-  if ( ph_array.indexOf(ph_id) == -1 ) {
-    views += 1;
-    $("a[data-id=" + ph_id +"]").attr("data-views", views);
-  }
   $('.pp_social div.count_view').append(views);
   ///////////////////////////////////////////////////////////////////
 }
