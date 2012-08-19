@@ -1,9 +1,11 @@
 <%= render 'dashboard/shared/profile_menu', current: 'my_photos' %>
+
+<%= paginate @photos %>
 <ul class="photo-list-user">
 <% @photos.each do |photo| %>
 <li>
   <% if photo.processing %>
-    <%= photo.photo.original_filename %>
+    Обрабатывается <%= photo.photo.original_filename %>
   <% else %> 
     <%= image_tag photo.photo.url %>
   <% end %>
@@ -11,4 +13,5 @@
 </li>
 <% end %>
 </ul>
+<%= paginate @photos %>
 <div class="clear"></div>
