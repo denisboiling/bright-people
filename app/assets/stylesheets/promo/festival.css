@@ -17,6 +17,7 @@ body.festival header
     {
       position: relative;
       margin-bottom: 5px;
+      width: 100%; min-height: 20px;
     }
       #bri-fest-events .bri-item a
       {
@@ -26,11 +27,12 @@ body.festival header
         #bri-fest-events .bri-item.active a
         {
           color: #c74866;
+          display: inline-block;
         }
 
       #bri-fest-events > .bri-item a:hover 
       {
-        color: #c74866;        
+        color: #c74866;
       }
 
       #bri-fest-events .bri-sub
