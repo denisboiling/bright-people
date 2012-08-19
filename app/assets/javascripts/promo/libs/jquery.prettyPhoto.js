@@ -80,6 +80,7 @@ $.prettyPhoto.open=function(event){
 if($.browser.msie&&$.browser.version==6)$('select').css('visibility','hidden');if(settings.hideflash)$('object,embed,iframe[src*=youtube],iframe[src*=vimeo]').css('visibility','hidden');_checkPosition($(pp_images).size());$('.pp_loaderIcon').show();if(settings.deeplinking)
 setHashtag();if(settings.social_tools){
   facebook_like_link=settings.social_tools.replace('{location_href}',encodeURIComponent(location.href));
+  facebook_like_link=facebook_like_link.replace('{data_id}', parseInt(photo_id));
   $pp_pic_holder.find('.pp_social').html(facebook_like_link);
   ///////////////////////////////////////////////////////////////////
   $('.pp_social div.count_view').append(views);

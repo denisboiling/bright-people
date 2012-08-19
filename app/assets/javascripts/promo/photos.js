@@ -31,7 +31,7 @@ function photos (){
 <!-- Put this div tag to the place, where the Like block will be -->\
 <div id="vk_like"></div>\
 <script type="text/javascript">\
-VK.Widgets.Like("vk_like", {type: "button", height: 22});\
+VK.Widgets.Like("vk_like", {type: "button", height: 22}, {data_id});\
 </script>\
 </div> \
 <div class="soc_like_button"> \
