@@ -13,8 +13,8 @@ function festival ()
     var paper = Raphael( 'bri-bezier', $('#bri-fest-events').width(), $('#bri-fest-events').height() )
 
 
-    $('#bri-fest-events > div.bri-item > a')
-      .mouseover(function()
+    $('#bri-fest-events div.bri-item ')
+      .mouseenter(function()
       {
         $('#bri-fest-events .bri-sub').hide()
 
@@ -22,7 +22,7 @@ function festival ()
         //(
         //  { fontSize: '150%', color: '#c74866' }, 150)
 
-        $(this).animate
+        $(this).find('a:first').stop().animate
         (
           { fontSize: '200%', color: '#c74866' }
         , 150
@@ -54,13 +54,13 @@ function festival ()
           }
         )
       })
-      .mouseout(function()
+      .mouseleave(function()
       {
         paper.clear()
 
         $(this).siblings('.bri-sub').hide()
 
-        $(this).animate
+        $(this).find('a:first').stop().animate
         (
           { fontSize: '100%' }
         , 150
