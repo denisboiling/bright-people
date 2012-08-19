@@ -61,6 +61,7 @@ $.prettyPhoto.open=function(event){
   var photo_id = pp_images[set_position].split("/")[4];
   var photos_array = JSON.parse(localStorage.getItem('bp_photos'));
   var views = parseInt($("a[data-id=" + photo_id +"]").attr("data-views"));
+  var big = $("a[data-id=" + photo_id +"]").attr("data-big");
   if (!photos_array) {
     photos_array = [];
   }
@@ -79,9 +80,11 @@ $.prettyPhoto.open=function(event){
 if($.browser.msie&&$.browser.version==6)$('select').css('visibility','hidden');if(settings.hideflash)$('object,embed,iframe[src*=youtube],iframe[src*=vimeo]').css('visibility','hidden');_checkPosition($(pp_images).size());$('.pp_loaderIcon').show();if(settings.deeplinking)
 setHashtag();if(settings.social_tools){
   facebook_like_link=settings.social_tools.replace('{location_href}',encodeURIComponent(location.href));
+  facebook_like_link=facebook_like_link.replace('{data_id}', parseInt(photo_id));
   $pp_pic_holder.find('.pp_social').html(facebook_like_link);
   ///////////////////////////////////////////////////////////////////
   $('.pp_social div.count_view').append(views);
+  $('.pp_social div.download_pic a').attr({href: big});
   ///////////////////////////////////////////////////////////////////
 }
 if($ppt.is(':hidden'))$ppt.css('opacity',0).show();$pp_overlay.show().fadeTo(settings.animation_speed,settings.opacity);$pp_pic_holder.find('.currentTextHolder').text((set_position+1)+settings.counter_separator_label+$(pp_images).size());if(typeof pp_descriptions[set_position]!='undefined'&&pp_descriptions[set_position]!=""){$pp_pic_holder.find('.pp_description').show().html(unescape(pp_descriptions[set_position]));}else{$pp_pic_holder.find('.pp_description').hide();}
