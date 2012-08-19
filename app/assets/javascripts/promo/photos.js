@@ -73,7 +73,7 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+$(this).attr('data-id
     $('#bri-goto-site').mouseenter(function(){
       $(this).stop().animate({ 'top':'0px'}, 300)
     }).mouseleave(function(){
-      $(this).stop().animate({ 'top': '-80px'}, 300)
+      $(this).stop().animate({ 'top': '-98px'}, 300)
     })
 
     $('#bri-hd-switch')

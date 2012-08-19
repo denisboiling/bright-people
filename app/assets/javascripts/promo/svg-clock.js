@@ -162,8 +162,8 @@ function Clock ( el, setHour, setMinute )
   obj.minuteHand.angle      = -90
   obj.minuteHand.marginLeft = obj.cx - obj.minuteHand.getBBox().width / 2 - obj.minuteHand.getBBox().x
   obj.minuteHand.marginTop  = obj.cy - obj.minuteHand.getBBox().height*1.02 - obj.minuteHand.getBBox().y
-  obj.minuteHand.hx         = obj.minuteHand.getBBox().width*.64
-  obj.minuteHand.hy         = obj.minuteHand.getBBox().height*1.04
+  obj.minuteHand.hx         = obj.minuteHand.getBBox().width*.75
+  obj.minuteHand.hy         = obj.minuteHand.getBBox().height*.95
   obj.minuteHand.transform('t'+obj.minuteHand.marginLeft+','+obj.minuteHand.marginTop)
 
   /**
