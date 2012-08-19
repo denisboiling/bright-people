@@ -1023,6 +1023,11 @@ span.sim_check.active { background-position:0px 0px; }
 
 .pdf_link { line-height: 33px; padding-left: 40px; background: url(/assets/pdfico.png) no-repeat left center; }
 
+.photo-list-user { padding: 15px 0}
+.photo-list-user li { float: left; margin: 2px; position: relative;}
+.photo-list-user li a { position: absolute; z-index: 1; top: 4px; right: 4px; background:url(/assets/close_red_big.png) no-repeat; display:block; width:32px; height:32px; overflow:hidden; text-indent:-900px;}
+.photo-list-user li img { height: 80px}
+
 #new_user { padding-top: 15px}
 #new_user { padding:15px 0;}
 #new_user div { display: block; padding-bottom: 8px}
