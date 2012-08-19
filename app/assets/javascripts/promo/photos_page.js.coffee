@@ -77,6 +77,7 @@ window.setup_photos_page = ->
 # BIND LIVE
   active_photographers_by_params()
   relocate_photos($("#bri-photos"))
+  $("div.hidden-photos").removeClass('hidden-photos')
 
   $(window).scroll ->
     return if all_downloaded()
