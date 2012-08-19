@@ -1023,6 +1023,22 @@ span.sim_check.active { background-position:0px 0px; }
 
 .pdf_link { line-height: 33px; padding-left: 40px; background: url(/assets/pdfico.png) no-repeat left center; }
 
+#new_user { padding-top: 15px}
+#new_user { padding:15px 0;}
+#new_user div { display: block; padding-bottom: 8px}
+#new_user div label {  }
+
+#new_user div input[type="email"], #new_user div input[type="password"]  { margin-left:10px; background:#fff; border:1px solid #b2c4d3; margin:0px; padding:6px 10px; font-size:14px; color:#7c7c7c; width:180px}
+
+
+#new_user div input[type="submit"] {
+    background-color: #B73652;
+    border: medium none;
+    border-radius: 2px 2px 2px 2px;
+    box-shadow: 3px 3px 5px #CCCCCC;
+    color: #FFFFFF;
+    padding: 5px 7px; cursor: pointer;
+}
 
 #fileupload { padding:15px 0;}
 #fileupload .field { display: block; padding-bottom: 8px}
