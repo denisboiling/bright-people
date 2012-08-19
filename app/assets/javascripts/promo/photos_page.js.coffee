@@ -182,6 +182,8 @@ window.setup_photos_page = ->
         activated_hd_div($("div.hidden-photos")) if bri_hd_sw_on()
   
         $("div.hidden-photos").removeClass('hidden-photos')
+
+      window.pretty_init_photo()
   
   $("form#bri-form-photos").bind 'submit', ->
     $("#bri-form-photographers").val(window.choose_photographers())

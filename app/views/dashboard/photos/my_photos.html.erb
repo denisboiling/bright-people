@@ -1,6 +1,17 @@
 <%= render 'dashboard/shared/profile_menu', current: 'my_photos' %>
 
+<%= paginate @photos %>
+<ul class="photo-list-user">
 <% @photos.each do |photo| %>
-  <%= image_tag photo.photo.url %>
+<li>
+  <% if photo.processing %>
+    Обрабатывается <%= photo.photo.original_filename %>
+  <% else %> 
+    <%= image_tag photo.photo.url %>
+  <% end %>
   <%= link_to "Delete photo", dashboard_photo_path(photo), :method => :delete %>
+</li>
 <% end %>
+</ul>
+<%= paginate @photos %>
+<div class="clear"></div>

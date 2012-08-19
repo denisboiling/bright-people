@@ -12,6 +12,7 @@ body.festival header
     position: relative;
     font-family: Futura;
     font-size: 120%;
+    height: 220px;
   }
     #bri-fest-events .bri-item
     {
@@ -19,6 +20,9 @@ body.festival header
       margin-bottom: 5px;
       width: 100%; min-height: 20px;
     }
+
+    #bri-fest-events .bri-sub div { float: left; width: 240px}
+
       #bri-fest-events .bri-item a
       {
         display: inline-block;
@@ -40,7 +44,7 @@ body.festival header
         position: absolute;
         top: 0;
         left: 100%;
-        margin-left: 100px;
+        margin-left: 50px;
         width: auto;
         display: none;
       }

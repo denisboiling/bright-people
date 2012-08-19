@@ -28,11 +28,12 @@ function festival ()
         , 150
         , function ()
           {
+            
             var margin  = $(this).width()
             $(this).siblings('.bri-sub')
               .css({ left: margin+'px' })
               .show()
-
+/*
             paper.setSize( $('#bri-fest-events').width(), $('#bri-fest-events').height() )
 
             start = [ $(this).offset().left, $(this).offset().top+$(this).height()/2 ]
@@ -50,7 +51,7 @@ function festival ()
               paper.path(bezier( start[0], start[1], pos[i][0]/2, start[1], pos[i][0]/2, pos[i][1], pos[i][0], pos[i][1] ))
                 .attr('stroke','#c74866')
             }
-
+            */
           }
         )
       })

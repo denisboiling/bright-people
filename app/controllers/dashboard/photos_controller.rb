@@ -3,7 +3,7 @@ class Dashboard::PhotosController < Dashboard::BaseController
   end
 
   def my_photos
-    @photos = GalleryPhoto.published.where('festival_category_id IS NULL AND user_id = ?', current_user.id)
+    @photos = GalleryPhoto.where('festival_category_id IS NULL AND user_id = ?', current_user.id).page(params[:page]).per(50)
   end
 
   def create
