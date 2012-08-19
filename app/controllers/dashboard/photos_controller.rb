@@ -5,6 +5,7 @@ class Dashboard::PhotosController < Dashboard::BaseController
   def create
     @photo = GalleryPhoto.new(params[:gallery_photo])
     @photo.photo = params[:photo]
+    @photo.user = current_user unless @photo.user.present?
     if @photo.save
       respond_to do |format|
         format.html {
