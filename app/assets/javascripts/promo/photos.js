@@ -22,7 +22,7 @@ function photos (){
 		    fjs.parentNode.insertBefore(js, fjs);
 		}(document, "script", "facebook-jssdk"));
       },
-	    social_tools: '<div class="count_view"></div><div class="download_pic"><a http="'+$(this).attr('data-big')+'"></div><div class="pp_social"> \
+	    social_tools: '<div class="count_view"></div><div class="download_pic"><a http="'+$(this).attr('data-big')+'"></a></div><div class="pp_social"> \
 <div class="soc_like_button"> \
 <script type="text/javascript" src="http://userapi.com/js/api/openapi.js?45"></script>\
 <script type="text/javascript">\
@@ -31,7 +31,7 @@ function photos (){
 <!-- Put this div tag to the place, where the Like block will be -->\
 <div id="vk_like"></div>\
 <script type="text/javascript">\
-VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+$(this).attr('data-id')+');\
+VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+location.href+');\
 </script>\
 </div> \
 <div class="soc_like_button"> \
