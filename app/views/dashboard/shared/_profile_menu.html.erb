@@ -14,8 +14,10 @@
 	  class: "activity_ico#{(current == 'activity' ? ' active' : '')}" %>
     <% end %>
     <% if can? :manage, :dashboard_photos %>
-      <%= content_tag :li, link_to('Фотографии', dashboard_photos_path),
+      <%= content_tag :li, link_to('Загрузка фотографий', dashboard_photos_path),
 	  class: "activity_ico#{(current == 'photo' ? ' active' : '')}" %>
+      <%= content_tag :li, link_to('Мои фотографии', my_photos_dashboard_photos_path),
+    class: "activity_ico#{(current == 'my_photos' ? ' active' : '')}" %>
     <% end %>
   </ul>
   <div class="clear"></div>
