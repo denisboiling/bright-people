@@ -2,6 +2,10 @@ class Dashboard::PhotosController < Dashboard::BaseController
   def index
   end
 
+  def my_photos
+    @photos = GalleryPhoto.published.where('festival_category_id IS NULL AND user_id = ?', current_user.id)
+  end
+
   def create
     @photo = GalleryPhoto.new(params[:gallery_photo])
     @photo.photo = params[:photo]
@@ -25,7 +29,9 @@ class Dashboard::PhotosController < Dashboard::BaseController
   def destroy
     @picture = GalleryPhoto.find(params[:id])
     @picture.destroy
-    render :json => true
+    respond_to do |format|
+      format.html { redirect_to my_photos_dashboard_photos_path }
+      format.json { render :json => true }
+    end
   end
-
 end

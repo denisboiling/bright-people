@@ -1,6 +1,9 @@
 class FestivalCategory < ActiveRecord::Base
   include Hierarchy
-  attr_accessible :title, :path
+
+  default_scope :order => 'position ASC'
+
+  attr_accessible :title, :path, :position
 
   before_destroy :destroy_children
 
@@ -14,6 +17,17 @@ class FestivalCategory < ActiveRecord::Base
     else
       gallery_photos.published
     end
+  end
+
+  def self.sorted
+    arr = []
+    cats = FestivalCategory.top_level
+    cats.each do |cat|
+      arr << cat
+      arr << cat.children
+      arr.flatten!
+    end
+    arr
   end
 
   private

@@ -1,0 +1,6 @@
+<%= render 'dashboard/shared/profile_menu', current: 'my_photos' %>
+
+<% @photos.each do |photo| %>
+  <%= image_tag photo.photo.url %>
+  <%= link_to "Delete photo", dashboard_photo_path(photo), :method => :delete %>
+<% end %>
