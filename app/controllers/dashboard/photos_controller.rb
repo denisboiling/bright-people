@@ -7,14 +7,14 @@ class Dashboard::PhotosController < Dashboard::BaseController
     @photo.photo = params[:photo]
     if @photo.save
       respond_to do |format|
-	format.html {
-	  render :json => [@photo.to_jq_upload].to_json,
-	  :content_type => 'text/html',
-	  :layout => false
-	}
-	format.json {
-	  render :json => [@photo.to_jq_upload].to_json
-	}
+        format.html {
+          render :json => [@photo.to_jq_upload].to_json,
+                 :content_type => 'text/html',
+                 :layout => false
+        }
+        format.json {
+          render :json => [@photo.to_jq_upload].to_json
+        }
       end
     else
       render :json => [{:error => "custom_failure"}], :status => 304

@@ -7,28 +7,30 @@ class GalleryPhoto < ActiveRecord::Base
   include Rails.application.routes.url_helpers
 
   belongs_to :user
-
+  belongs_to :festival_category
+  
   has_attached_file :photo, styles: { thumb: ['240x240', :jpg], medium: ['1000x1000', :jpg], big: ['9999x9999>', :jpg] },
                             path: ":rails_root/public/system/gallery_photos/:attachment/:id/:style/:filename",
                             url: "/system/gallery_photos/:attachment/:id/:style/:filename",
                             default_style: :thumb,
                             default_url: 'loading.gif'
 
-  attr_accessible :user_id, :photo, :views
+  attr_accessible :user_id, :photo, :views, :festival_category_id
 
   # validates :photo_fingerprint, presence: true, uniqueness: true
   validates :user, presence: true
-
+  
   scope :published, where(processing: false)
+  scope :festival_photos, where("festival_category_id IS NOT NULL")
 
   # Show photos filters by photograps and time
   scope :by_photograph_and_time, lambda{|user_ids, time|
     published.
-    where('user_id IN (?) AND shot_date >= ?', user_ids, time)
+    where('festival_category_id IS NULL AND user_id IN (?) AND shot_date >= ?', user_ids, time)
   }
 
   # Show photos filters by time
-  scope :by_time, lambda{|time| published.where('shot_date >= ?', time)}
+  scope :by_time, lambda{|time| published.where('festival_category_id IS NULL AND shot_date >= ?', time)}
 
   after_create :shot_date!
 
@@ -88,7 +90,7 @@ class GalleryPhoto < ActiveRecord::Base
       x_dim = pic.columns.to_i
       y_dim = pic.rows.to_i
       logo = logo.resize_to_fit(x_dim/4, y_dim/4)
-      pic = pic.composite(logo, Magick::SouthEastGravity, 5, 5, Magick::OverCompositeOp)
+      pic = pic.composite(logo, Magick::SouthEastGravity, 10, 10, Magick::OverCompositeOp)
       pic.write(pic_path)
     end
     return true
