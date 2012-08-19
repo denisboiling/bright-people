@@ -1,38 +1,28 @@
-function photos ()
-{
+function photos (){
 
-  $(document).ready(function()
-  {
-
-
-
-
-
-
-    $("a[rel^='prettyPhoto']").prettyPhoto({
-      animation_speed: 'fast', /* fast/slow/normal */
-      slideshow: false, /* false OR interval time in ms */
-      autoplay_slideshow: false, /* true/false */
-      opacity: 0.80, /* Value between 0 and 1 */
-      show_title: false, /* true/false */
-      autoplay: false,
-      default_width: 500,
-      default_height: 344,
-      allow_resize: true,
-      theme: 'pp_default',
-      gallery_markup: '',
-      changepicturecallback: function(){
-
-        (function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/ru_RU/all.js#xfbml=1&appId=359292310775946";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, "script", "facebook-jssdk"));
-
+    window.pretty_init_photo = function pretty_init(){
+	$("a[rel^='prettyPhoto']").prettyPhoto({
+	    animation_speed: 'fast', /* fast/slow/normal */
+	    slideshow: false, /* false OR interval time in ms */
+	    autoplay_slideshow: false, /* true/false */
+	    opacity: 0.80, /* Value between 0 and 1 */
+	    show_title: false, /* true/false */
+	    autoplay: false,
+	    default_width: 500,
+	    default_height: 344,
+	    allow_resize: true,
+	    theme: 'pp_default',
+	    gallery_markup: '',
+	    changepicturecallback: function(){
+		(function(d, s, id) {
+		    var js, fjs = d.getElementsByTagName(s)[0];
+		    if (d.getElementById(id)) return;
+		    js = d.createElement(s); js.id = id;
+		    js.src = "//connect.facebook.net/ru_RU/all.js#xfbml=1&appId=359292310775946";
+		    fjs.parentNode.insertBefore(js, fjs);
+		}(document, "script", "facebook-jssdk"));
       },
-      social_tools: '<div class="count_view"></div><div class="download_pic"><a http="'+$(this).attr('data-big')+'"></div><div class="pp_social"> \
+	    social_tools: '<div class="count_view"></div><div class="download_pic"><a http="'+$(this).attr('data-big')+'"></div><div class="pp_social"> \
 <div class="soc_like_button"> \
 <script type="text/javascript" src="http://userapi.com/js/api/openapi.js?45"></script>\
 <script type="text/javascript">\
@@ -65,62 +55,16 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+$(this).attr('data-id
 <div class="soc_like_button"> <link href="http://stg.odnoklassniki.ru/share/odkl_share.css" rel="stylesheet"><a class="odkl-share-oc" href='+location.href+' onclick="ODKL.Share(this);return false;" ><span>0</span></a><script src="http://stg.odnoklassniki.ru/share/odkl_share.js" type="text/javascript" ></script></div> \
 <div class="soc_like_button"><a href="http://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></div> \
 </div>' /* html or false to disable */
-    });
+    })
+    }
 
-
-
-
+    window.pretty_init_photo()
+    
     $('#bri-goto-site').mouseenter(function(){
       $(this).stop().animate({ 'top':'0px'}, 300)
     }).mouseleave(function(){
-      $(this).stop().animate({ 'top': '-80px'}, 300)
+      $(this).stop().animate({ 'top': '-98px'}, 300)
     })
-
-    $('#bri-hd-switch')
-      .click(function()
-      {
-
-        $(this).toggleClass('active')
-
-        $('.bri-photo-box').toggleClass('bri-hd')
-        $('.bri-photo-box .bri-checkbox').fadeToggle('fast')
-
-        return false
-      })
-
-
-    $('.bri-photo-box.bri-hd ')
-      .live( 'click', function()
-      {
-        
-        
-
-        $(this).toggleClass('active')
-
-        if($('.bri-photo-box.active').length > 0 && $('#bri-hd-switch').hasClass('active') ) { $('#bri-hd-download').show() }
-        else { $('#bri-hd-download').hide()}
-
-        // TODO: REWRITE THIS ACCORDING TO THE MAX'S SCRIPT!!!111
-        if ( $(this).hasClass('active') )
-        {
-          var ids = JSON.parse( window.localStorage.get('photos') )
-          ids.push( $(this).find('a').attr('data-id') )
-          window.localStorage.set('photos', JSON.stringify('photos'))
-        }
-
-
-
-        // TODO: IF THERE ONE OR MORE PHOTOS SELECTED - SHOW DOWNLOAD ICON!!1
-
-
-        return false
-      })
-
-    $('#bri-hd-download')
-      .click(function()
-      {
-        // Do the twist!
-      })
 
     $('.bri-photographer')
       .click(function()
@@ -171,39 +115,6 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+$(this).attr('data-id
       })
 
 
-
-
-    var $container = $('#bri-photos')
-    ,   $imgs      = $container.find('img').hide()
-    ,   totalImgs  = $imgs.length
-    ,   cnt        = 0
-        
-    $imgs.each(function(i) 
-    {
-      var $img  = $(this)
-      
-      $('<img/>')
-        .load(function() 
-        {
-          ++cnt
-          if( cnt === totalImgs ) 
-          {
-             $imgs.fadeIn('slow')
-
-             $('#bri-preloader').remove();
-
-            $container.montage(
-            {
-             // fillLastRow           : true
-            //, alternateHeight       : true
-             minsize : true
-           // , alternateHeightRange  : { min : 90, max : 240 }
-            })
-          }
-        })
-        .attr( 'src', $img.attr('src') )
-    });
-
     var clock = 
         new Clock
         (
@@ -225,7 +136,7 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+$(this).attr('data-id
             $('#bri-form-minute').change()
           }
         )
-
+}
     // ЧТОБЫ ПОВЕРНУТЬ СТРЕЛКИ ЧАСОВ НА НУЖНОЕ ВРЕМЯ, МОЖНО ИСПОЛЬЗОВАТЬ КОСТЫЛЬ (ВСЯ СОЛЬ В r-60, ГДЕ -60 - ГРАДУС ПОВОРОТА)
     /* clock.minuteHand.animate
        (
@@ -250,8 +161,4 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+$(this).attr('data-id
 
 
 
-  })
 
-
-
-}

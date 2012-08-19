@@ -51,6 +51,7 @@ body.clock
     z-index: 90;
     top: 2%;
     left: 50%;
+    opacity: 0;
     padding-top: 10px;
     font-family: Futura;
     background: url(/assets/promo/clock/pointer.png) no-repeat left center;
@@ -60,6 +61,8 @@ body.clock
 
     #bri-photographers-all.active {
       color: #C94364;
+      background: url(/assets/promo/clock/pointer_act.png) no-repeat left center;
+      background-size: contain;
     }
 
   #bri-form

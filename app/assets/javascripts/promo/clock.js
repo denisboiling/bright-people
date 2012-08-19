@@ -1,7 +1,7 @@
 function clock()
 {
 
-  $('#bri-main-clock-mask, #bri-form').css({"opacity":"0"});
+  $('#bri-main-clock-mask, #bri-form, #bri-photographers-all').css({"opacity":"0"});
 
   $('body').css({"height":"500px"});
 
@@ -17,7 +17,8 @@ function clock()
     chain_fade('current', '.bri-photographer', '#bri-main-clock');
 
 
-    $('#bri-form').delay(1500).animate({opacity: 1}, 1500);
+    $('#bri-form, #bri-photographers-all').delay(1500).animate({opacity: 1}, 1500);
+
   });
 
   function chain_fade(current, target, list)
@@ -106,12 +107,30 @@ function clock()
     var clockHeight = 500
     var clockWidth = 500
     $('#bri-main-clock').css({'top':'50%'}).css({'margin-top':'-250px'})
-    $('#bri-form').css({'top':'50% !important'}).css({'width':'250px'})
+    //$('#bri-form').css({'width':'250px'}).css({'margin-top:':'-2250px'})
+
+    $('#bri-form')
+      .css(
+      {
+        'top'         : clockHeight*.27 + 'px'
+      , 'margin-left' : clockHeight*.3 + 'px'
+      , 'font-size'   : clockHeight*.04 + 'px'
+      })
+
   $('#bri-main-clock-mask').css({'width':'500px'}).css({'height':'500px'}).css({'margin':'auto'}).css({'margin-top':'-45px'}).css({'margin-left':'205px'})
   }
   else { 
     var clockHeight = clientHeight()
     var clockWidth = clientWidth()
+
+    $('#bri-form')
+      .css(
+      {
+        'top'         : clientHeight()*.3 + 'px'
+      , 'margin-left' : clientHeight()*.3 + 'px'
+      , 'font-size'   : clientHeight()*.04 + 'px'
+      })
+
   }
 
 
@@ -216,13 +235,7 @@ function clock()
 	  return false
       })
 
-    $('#bri-form')
-      .css(
-      {
-        'top'         : clientHeight()*.3 + 'px'
-      , 'margin-left' : clientHeight()*.3 + 'px'
-      , 'font-size'   : clientHeight()*.04 + 'px'
-      })
+    
 
     // SVG top margin
     $('#bri-svg')

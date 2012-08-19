@@ -2,6 +2,8 @@
 ActiveAdmin.register FestivalCategory, { :sort_order => :sorted } do
   menu label: "Категории", :parent => "Фото модуль"
 
+  filter :title
+
   index do
     column :title
     column :position
