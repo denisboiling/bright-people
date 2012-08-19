@@ -61,6 +61,7 @@ $.prettyPhoto.open=function(event){
   var photo_id = pp_images[set_position].split("/")[4];
   var photos_array = JSON.parse(localStorage.getItem('bp_photos'));
   var views = parseInt($("a[data-id=" + photo_id +"]").attr("data-views"));
+  var big = $("a[data-id=" + photo_id +"]").attr("data-big");
   if (!photos_array) {
     photos_array = [];
   }
@@ -82,6 +83,7 @@ setHashtag();if(settings.social_tools){
   $pp_pic_holder.find('.pp_social').html(facebook_like_link);
   ///////////////////////////////////////////////////////////////////
   $('.pp_social div.count_view').append(views);
+  $('.pp_social div.download_pic a').attr({href: big});
   ///////////////////////////////////////////////////////////////////
 }
 if($ppt.is(':hidden'))$ppt.css('opacity',0).show();$pp_overlay.show().fadeTo(settings.animation_speed,settings.opacity);$pp_pic_holder.find('.currentTextHolder').text((set_position+1)+settings.counter_separator_label+$(pp_images).size());if(typeof pp_descriptions[set_position]!='undefined'&&pp_descriptions[set_position]!=""){$pp_pic_holder.find('.pp_description').show().html(unescape(pp_descriptions[set_position]));}else{$pp_pic_holder.find('.pp_description').hide();}

@@ -22,7 +22,7 @@ function photos (){
 		    fjs.parentNode.insertBefore(js, fjs);
 		}(document, "script", "facebook-jssdk"));
       },
-	    social_tools: '<div class="count_view"></div><div class="download_pic"><a http="'+$(this).attr('data-big')+'"></a></div><div class="pp_social"> \
+	    social_tools: '<div class="count_view"></div><div class="download_pic"><a></a></div><div class="pp_social"> \
 <div class="soc_like_button"> \
 <script type="text/javascript" src="http://userapi.com/js/api/openapi.js?45"></script>\
 <script type="text/javascript">\
@@ -31,7 +31,7 @@ function photos (){
 <!-- Put this div tag to the place, where the Like block will be -->\
 <div id="vk_like"></div>\
 <script type="text/javascript">\
-VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+location.href+');\
+VK.Widgets.Like("vk_like", {type: "button", height: 22});\
 </script>\
 </div> \
 <div class="soc_like_button"> \
@@ -43,15 +43,15 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+location.href+');\
   js.src = "//connect.facebook.net/ru_RU/all.js#xfbml=1&appId=359292310775946";\
   fjs.parentNode.insertBefore(js, fjs);\
 }(document, "script", "facebook-jssdk"));</script>\
-<div class="fb-like" data-send="true" data-href="'+location.href+'" data-layout="button_count" data-width="230" data-show-faces="false"></div>\
+<div class="fb-like" data-send="true" data-href="{location_href}" data-layout="button_count" data-width="230" data-show-faces="false"></div>\
 </div>\
 <div class="soc_like_button"> \
 <!-- Вставьте этот тег в заголовок или непосредственно перед закрывающим тегом . -->\
 <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>\
 <!-- Поместите этот тег туда, где должна отображаться кнопка +1. -->\
-<div class="g-plusone" data-size="medium" data-href="'+location.href+'"></div> \
+<div class="g-plusone" data-size="medium" data-href="{location_href}"></div> \
 </div> \
-<div class="soc_like_button"> <link href="http://stg.odnoklassniki.ru/share/odkl_share.css" rel="stylesheet"><a class="odkl-share-oc" href='+location.href+' onclick="ODKL.Share(this);return false;" ><span>0</span></a><script src="http://stg.odnoklassniki.ru/share/odkl_share.js" type="text/javascript" ></script></div> \
+<div class="soc_like_button"> <link href="http://stg.odnoklassniki.ru/share/odkl_share.css" rel="stylesheet"><a class="odkl-share-oc" href={location_href} onclick="ODKL.Share(this);return false;" ><span>0</span></a><script src="http://stg.odnoklassniki.ru/share/odkl_share.js" type="text/javascript" ></script></div> \
 <div class="soc_like_button"><a href="http://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></div> \
 </div>' /* html or false to disable */
     })
