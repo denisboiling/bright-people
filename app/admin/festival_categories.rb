@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-ActiveAdmin.register FestivalCategory do
+ActiveAdmin.register FestivalCategory, { :sort_order => :sorted } do
   menu label: "Категории", :parent => "Фото модуль"
 
   index do

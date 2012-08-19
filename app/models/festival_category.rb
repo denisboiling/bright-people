@@ -19,6 +19,17 @@ class FestivalCategory < ActiveRecord::Base
     end
   end
 
+  def self.sorted
+    arr = []
+    cats = FestivalCategory.top_level
+    cats.each do |cat|
+      arr << cat
+      arr << cat.children
+      arr.flatten!
+    end
+    arr
+  end
+
   private
   def destroy_children
     if top_level?
