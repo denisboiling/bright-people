@@ -10,11 +10,7 @@ class FestivalCategory < ActiveRecord::Base
 
   def photos
     if top_level?
-      photos = gallery_photos.published
-      children.each do |child|
-        photos += child.gallery_photos.published
-      end
-      photos
+      GalleryPhoto.where("festival_category_id IN (?)", [ id ] + children.map(&:id)).published
     else
       gallery_photos.published
     end
