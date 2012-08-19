@@ -1,12 +1,8 @@
 class GalleryPhoto < ActiveRecord::Base
   require 'zip/zip'
+  require 'RMagick'
 
-  FESTIVAL_START = if Rails.env.production?
-                     Time.zone.parse('2012-08-18 10:00:00')
-                   else
-                     Time.zone.parse('2012-01-18 10:00:00')
-  end
-
+  FESTIVAL_START = Time.zone.parse('2012-08-18 10:00:00')
 
   include Rails.application.routes.url_helpers
 
@@ -43,14 +39,15 @@ class GalleryPhoto < ActiveRecord::Base
   def shot_date!
     date = begin
              if self.photo_content_type == 'image/jpeg'
-               EXIFR::JPEG.new(self.photo.path(:original)).date_time
+               EXIFR::JPEG.new(self.photo.path(:original)).date_time.to_s(:db)
              else
-               EXIFR::TIFF.new(self.photo.path(:original)).date_time
+               EXIFR::TIFF.new(self.photo.path(:original)).date_time.to_s(:db)
              end
            rescue
-             Time.zone.now
+             puts "RESCUE in shot_date!"
+             Time.zone.now.to_s(:db)
            end
-    self.update_column(:shot_date, date)
+    self.update_attribute(:shot_date, Time.zone.parse(date))
   end
 
   def to_jq_upload
@@ -84,11 +81,10 @@ class GalleryPhoto < ActiveRecord::Base
   end
 
   def add_watermark
-    require 'RMagick'
     logo_path = Rails.root.join('public/logos/logo.png')
     styles = [:medium, :big]
     styles.each do |style|
-      pic_path = Rails.root.join('public'+photo.url(style, false))
+      pic_path = photo.path(style)
       pic = Magick::Image.read(pic_path).first
       logo = Magick::Image.read(logo_path).first
       x_dim = pic.columns.to_i

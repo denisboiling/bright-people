@@ -72,9 +72,9 @@ window.setup_photos_page = ->
     $("#bri-preloader").hide()
     set_page_one()
     window.all_downloaded = true
+      
 
-  # BIND LIVE
-
+# BIND LIVE
   active_photographers_by_params()
   relocate_photos($("#bri-photos"))
 

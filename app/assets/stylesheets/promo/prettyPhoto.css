@@ -43,6 +43,7 @@ div.pp_default .pp_next{ margin-right: -25px;}
 
 div.pp_default .count_view { float: left; width: 80px; font-family: Futura; height: 37px; padding-left: 70px; background:url(/assets/promo/photos/light-count.png) 0 0 no-repeat}
 div.pp_default .download_pic { float: right; height: 46px; width: 49px;  background:url(/assets/promo/photos/light-hd.png) 0 0 no-repeat}
+div.pp_default .download_pic a { display: block; height: 46px; width: 49px;}
 
 div.light_rounded .pp_top .pp_left{background:url(../images/prettyPhoto/light_rounded/sprite.png) -88px -53px no-repeat}
 div.light_rounded .pp_top .pp_right{background:url(../images/prettyPhoto/light_rounded/sprite.png) -110px -53px no-repeat}
@@ -158,7 +159,7 @@ a.pp_arrow_previous,a.pp_arrow_next{display:block;float:left;height:15px;margin-
 a.pp_next{background:url(../images/prettyPhoto/light_rounded/btnNext.png) 10000px 10000px no-repeat;display:block;float:right;height:100%;text-indent:-10000px;width:49%}
 a.pp_previous{background:url(../images/prettyPhoto/light_rounded/btnNext.png) 10000px 10000px no-repeat;display:block;float:left;height:100%;text-indent:-10000px;width:49%}
 a.pp_expand,a.pp_contract{cursor:pointer;display:none;height:20px;position:absolute;right:30px;text-indent:-10000px;top:10px;width:20px;z-index:20000}
-a.pp_close{position:absolute; z-index: 10;right:10px;top:-10px;display:block;line-height:22px;text-indent:-10000px}
+a.pp_close{position:absolute; z-index: 10;right:-10px;top:-24px;display:block;line-height:22px;text-indent:-10000px}
 .pp_loaderIcon{display:block;height:40px;left:50%;position:absolute;top:50%;width:40px;margin:-20px 0 0 -20px}
 #pp_full_res{line-height:1!important}
 #pp_full_res .pp_inline{text-align:left}

@@ -1,5 +1,7 @@
 window.setup_download_photos = ->
 
+  return unless $("body.photos").length != 0
+
   # Already marked div as 
   marked_div = (link) ->
     link.attr('data-action', 'unmark')

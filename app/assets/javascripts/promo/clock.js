@@ -3,24 +3,26 @@ function clock()
 
   $('#bri-main-clock-mask, #bri-form').css({"opacity":"0"});
 
+  $('body').css({"height":"500px"});
+
   $('#bri-main-clock').find("div.bri-photographer:first").addClass("current");
 
 
 
   $('#bri-main-clock-mask').delay(100).animate({
     opacity: 1
-  }, 3000, function() {
+  }, 1500, function() {
     //$(.)
 
     chain_fade('current', '.bri-photographer', '#bri-main-clock');
 
 
-    $('#bri-form').delay(4000).animate({opacity: 1}, 3000);
+    $('#bri-form').delay(1500).animate({opacity: 1}, 1500);
   });
 
   function chain_fade(current, target, list)
   {
-    $('div'+list).find('.bri-photographer.'+current).fadeIn(400, function() {
+    $('div'+list).find('.bri-photographer.'+current).fadeIn(150, function() {
     $(this).removeClass(current).next(target).addClass(current);
       chain_fade(current, target, list);
     });
@@ -95,6 +97,24 @@ function clock()
 
   $(document).ready(function()
   {
+
+  var isiPad = navigator.userAgent.match(/iPad/i) != null;
+  var isiPhone = navigator.userAgent.match(/iPhone/i) != null;
+  var isiPod = navigator.userAgent.match(/iPod/i) != null;
+
+  if(isiPad == true || isiPhone == true || isiPod == true) {
+    var clockHeight = 500
+    var clockWidth = 500
+    $('#bri-main-clock').css({'top':'50%'}).css({'margin-top':'-250px'})
+    $('#bri-form').css({'top':'50% !important'}).css({'width':'250px'})
+  $('#bri-main-clock-mask').css({'width':'500px'}).css({'height':'500px'}).css({'margin':'auto'}).css({'margin-top':'-45px'}).css({'margin-left':'205px'})
+  }
+  else { 
+    var clockHeight = clientHeight()
+    var clockWidth = clientWidth()
+  }
+
+
     $('.bri-photographer')
       .css(
       {
@@ -118,57 +138,57 @@ function clock()
     $('.bri-photographer[data-position=2]').css (
     { 
       'left'  : clientWidth()*.388 + 'px'
-    , 'top'   : clientHeight()*.038 + 'px'
+    , 'top'   : clockHeight*.038 + 'px'
     , 'width' : clientWidth()*.076 + 'px'
     })
 
     $('.bri-photographer[data-position=3]').css (
     { 
       'left'  : clientWidth()*.349  + 'px'
-    , 'top'   : clientHeight()*.131 + 'px'
+    , 'top'   : clockHeight*.131 + 'px'
     , 'width' : clientWidth()*.074  + 'px'
     })
 
     $('.bri-photographer[data-position=4]').css (
     { 
       'left'  : clientWidth()*.337  + 'px'
-    , 'top'   : clientHeight()*.262 + 'px'
+    , 'top'   : clockHeight*.262 + 'px'
     , 'width' : clientWidth()*.061  + 'px' 
     })
     $('.bri-photographer[data-position=5]').css (
     { 
       'left'  : clientWidth()*.339  + 'px'
-    , 'top'   : clientHeight()*.397 + 'px'
+    , 'top'   : clockHeight*.397 + 'px'
     , 'width' : clientWidth()*.068  + 'px'
     })
     $('.bri-photographer[data-position=6]').css (
     { 
       'left'  : clientWidth()*.362  + 'px'
-    , 'top'   : clientHeight()*.497 + 'px'
+    , 'top'   : clockHeight*.497 + 'px'
     , 'width' : clientWidth()*.077  + 'px'
     })
     $('.bri-photographer[data-position=7]').css (
     { 
       'left'  : clientWidth()*.411  + 'px'
-    , 'top'   : clientHeight()*.577 + 'px'
+    , 'top'   : clockHeight*.577 + 'px'
     , 'width' : clientWidth()*.073  + 'px'
     })
     $('.bri-photographer[data-position=8]').css (
     { 
       'left'  : clientWidth()*.48  + 'px'
-    , 'top'   : clientHeight()*.622 + 'px'
+    , 'top'   : clockHeight*.622 + 'px'
     , 'width' : clientWidth()*.064  + 'px'
     })
     $('.bri-photographer[data-position=9]').css (
     { 
       'left'  : clientWidth()*.543  + 'px'
-    , 'top'   : clientHeight()*.594 + 'px'
+    , 'top'   : clockHeight*.594 + 'px'
     , 'width' : clientWidth()*.069  + 'px'
     })
     $('.bri-photographer[data-position=10]').css(
     { 
       'left'  : clientWidth()*.592  + 'px'
-    , 'top'   : clientHeight()*.518 + 'px'
+    , 'top'   : clockHeight*.518 + 'px'
     , 'width' : clientWidth()*.0775  + 'px'
     })
 
@@ -183,9 +203,16 @@ function clock()
       { 
 
           $(this).toggleClass('active')
-          if($(this).hasClass('active')) { $(this).html('Скрыть всех фотографов') }
-          else { $(this).html('Выбрать всех фотографов') }
-          $('.bri-photographer').each(function(){ $(this).click()  })
+          if($(this).hasClass('active')) { 
+            $(this).html('Скрыть всех фотографов') 
+            $('.bri-number').addClass('hidden')
+            $('.bri-photo').removeClass('hidden')
+          }
+          else { 
+            $(this).html('Выбрать всех фотографов') 
+            $('.bri-number').removeClass('hidden')
+            $('.bri-photo').addClass('hidden')
+          }
 	  return false
       })
 
