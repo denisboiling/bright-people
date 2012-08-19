@@ -1,38 +1,36 @@
 class GalleryPhoto < ActiveRecord::Base
   require 'zip/zip'
+  require 'RMagick'
 
-  FESTIVAL_START = if Rails.env.production?
-                     Time.zone.parse('2012-08-18 10:00:00')
-                   else
-                     Time.zone.parse('2012-01-18 10:00:00')
-  end
-
+  FESTIVAL_START = Time.zone.parse('2012-08-18 10:00:00')
 
   include Rails.application.routes.url_helpers
 
   belongs_to :user
-
+  belongs_to :festival_category
+  
   has_attached_file :photo, styles: { thumb: ['240x240', :jpg], medium: ['1000x1000', :jpg], big: ['9999x9999>', :jpg] },
                             path: ":rails_root/public/system/gallery_photos/:attachment/:id/:style/:filename",
                             url: "/system/gallery_photos/:attachment/:id/:style/:filename",
                             default_style: :thumb,
                             default_url: 'loading.gif'
 
-  attr_accessible :user_id, :photo, :views
+  attr_accessible :user_id, :photo, :views, :festival_category_id
 
   # validates :photo_fingerprint, presence: true, uniqueness: true
   validates :user, presence: true
-
+  
   scope :published, where(processing: false)
+  scope :festival_photos, where("festival_category_id IS NOT NULL")
 
   # Show photos filters by photograps and time
   scope :by_photograph_and_time, lambda{|user_ids, time|
     published.
-    where('user_id IN (?) AND shot_date >= ?', user_ids, time)
+    where('festival_category_id IS NULL AND user_id IN (?) AND shot_date >= ?', user_ids, time)
   }
 
   # Show photos filters by time
-  scope :by_time, lambda{|time| published.where('shot_date >= ?', time)}
+  scope :by_time, lambda{|time| published.where('festival_category_id IS NULL AND shot_date >= ?', time)}
 
   after_create :shot_date!
 
@@ -41,14 +39,15 @@ class GalleryPhoto < ActiveRecord::Base
   def shot_date!
     date = begin
              if self.photo_content_type == 'image/jpeg'
-               EXIFR::JPEG.new(self.photo.path(:original)).date_time
+               EXIFR::JPEG.new(self.photo.path(:original)).date_time.to_s(:db)
              else
-               EXIFR::TIFF.new(self.photo.path(:original)).date_time
+               EXIFR::TIFF.new(self.photo.path(:original)).date_time.to_s(:db)
              end
            rescue
-             Time.zone.now
+             puts "RESCUE in shot_date!"
+             Time.zone.now.to_s(:db)
            end
-    self.update_column(:shot_date, date)
+    self.update_attribute(:shot_date, Time.zone.parse(date))
   end
 
   def to_jq_upload
@@ -82,17 +81,16 @@ class GalleryPhoto < ActiveRecord::Base
   end
 
   def add_watermark
-    require 'RMagick'
     logo_path = Rails.root.join('public/logos/logo.png')
     styles = [:medium, :big]
     styles.each do |style|
-      pic_path = Rails.root.join('public'+photo.url(style, false))
+      pic_path = photo.path(style)
       pic = Magick::Image.read(pic_path).first
       logo = Magick::Image.read(logo_path).first
       x_dim = pic.columns.to_i
       y_dim = pic.rows.to_i
       logo = logo.resize_to_fit(x_dim/4, y_dim/4)
-      pic = pic.composite(logo, Magick::SouthEastGravity, 5, 5, Magick::OverCompositeOp)
+      pic = pic.composite(logo, Magick::SouthEastGravity, 10, 10, Magick::OverCompositeOp)
       pic.write(pic_path)
     end
     return true

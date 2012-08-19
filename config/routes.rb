@@ -12,6 +12,8 @@ BrightPeople::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
+  resources :festival_categories, only: [:index]
+
   resources :news, only: [:index, :show] do
     collection do
       get :tag

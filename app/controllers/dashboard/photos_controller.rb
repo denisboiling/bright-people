@@ -5,16 +5,17 @@ class Dashboard::PhotosController < Dashboard::BaseController
   def create
     @photo = GalleryPhoto.new(params[:gallery_photo])
     @photo.photo = params[:photo]
+    @photo.user = current_user unless @photo.user.present?
     if @photo.save
       respond_to do |format|
-	format.html {
-	  render :json => [@photo.to_jq_upload].to_json,
-	  :content_type => 'text/html',
-	  :layout => false
-	}
-	format.json {
-	  render :json => [@photo.to_jq_upload].to_json
-	}
+        format.html {
+          render :json => [@photo.to_jq_upload].to_json,
+                 :content_type => 'text/html',
+                 :layout => false
+        }
+        format.json {
+          render :json => [@photo.to_jq_upload].to_json
+        }
       end
     else
       render :json => [{:error => "custom_failure"}], :status => 304

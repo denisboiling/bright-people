@@ -1,12 +1,14 @@
 <%= render 'dashboard/shared/profile_menu', current: 'photo' %>
 
-<%= form_for GalleryPhoto.new, url: dashboard_photos_path, html: {id: 'fileupload'} do |f| %>
-  <%= f.label :user_id, "Фотограф" %>
+<%= form_for GalleryPhoto.new, url: dashboard_photos_path, html: {id: 'fileupload'} do |f| %>  
   <% if current_user.main_photographer? %>
+	<%= f.label :user_id, "Фотограф" %>
     <%= f.select :user_id, options_from_collection_for_select(User.junior_photographers, :id, :name) %>
   <% end %>
-  
-
+  <% if can? :manage, :dashboard_festival_photos %>
+    <%= f.label :festival_category_id, "или Категория" %>
+    <%= f.select :festival_category_id, options_from_collection_for_select(FestivalCategory.all, :id, :title), include_blank: true %>
+  <% end %>
   <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
   <div class="row fileupload-buttonbar">
     <div class="span7">

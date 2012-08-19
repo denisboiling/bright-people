@@ -44,6 +44,7 @@ function photos ()
 VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+$(this).attr('data-id')+');\
 </script>\
 </div> \
+<iframe src="http://www.facebook.com/plugins/like.php?locale=en_US&href={location_href}&amp;layout=button_count&amp;show_faces=true&amp;width=500&amp;action=like&amp;font&amp;colorscheme=light&amp;height=23" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:500px; height:23px;" allowTransparency="true"></iframe>\
 <div class="soc_like_button"> \
 <div id="fb-root"></div>\
 <script>(function(d, s, id) {\
@@ -72,7 +73,7 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+$(this).attr('data-id
     $('#bri-goto-site').mouseenter(function(){
       $(this).stop().animate({ 'top':'0px'}, 300)
     }).mouseleave(function(){
-      $(this).stop().animate({ 'top': '-80px'}, 300)
+      $(this).stop().animate({ 'top': '-98px'}, 300)
     })
 
     $('#bri-hd-switch')
@@ -128,7 +129,16 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+$(this).attr('data-id
         $(this).find('.bri-photo').slideToggle('fast')
         $(this).find('.bri-camera').slideToggle('fast')
 	$("#bri-form-photographers").val(window.choose_photographers());
-        $("form#bri-form-photos").submit()
+  $("#bri-form-photographers").change();
+  if ( $('.bri-photographer:not(.active)').length == 10 ) {
+      $('#bri-photographers-select-all').toggleClass('active')
+      $('#bri-photographers-select-all').html('Выбрать всех фотографов')
+  }
+
+  if ( $('.bri-photographer.active').length == 10 ) {
+      $('#bri-photographers-select-all').toggleClass('active')
+      $('#bri-photographers-select-all').html('Убрать всех фотографов')
+  }
         return false
       })
 
@@ -157,7 +167,7 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+$(this).attr('data-id
     	    })
       }
       $("#bri-form-photographers").val(window.choose_photographers());
-      $("form#bri-form-photos").submit()
+      $("#bri-form-photographers").change();
       })
 
 
@@ -204,6 +214,7 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+$(this).attr('data-id
           {
             $('#bri-time .bri-hour').html(n)
             $('#bri-form-hour').val(n)
+            $('#bri-form-hour').change()
           }
           // setMinute()
         , function(n)
@@ -211,6 +222,7 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+$(this).attr('data-id
             if ( n < 10 ) n = '0'+n
             $('#bri-time .bri-minute').html(n)
             $('#bri-form-minute').val(n)
+            $('#bri-form-minute').change()
           }
         )
 
@@ -233,6 +245,7 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+$(this).attr('data-id
      )
     */
     
+
 
 
 

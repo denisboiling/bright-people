@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ActiveAdmin.register GalleryPhoto do
-  menu label: "Галлерея", :parent => "Фото модуль"
+  menu label: "Галерея", :parent => "Фото модуль"
 
   filter :id
   filter :user, as: :select, collection: proc { User.photographers }
@@ -23,6 +23,7 @@ ActiveAdmin.register GalleryPhoto do
       link_to photo.user.name, admin_user_path(photo.user)
     end
     column :views
+    column :festival_category
     default_actions
   end
 
@@ -30,6 +31,7 @@ ActiveAdmin.register GalleryPhoto do
     f.inputs "Основное" do
       f.input :user, as: :select, collection: User.photographers, include_blank: false
       f.input :photo, as: :file, hint: f.template.image_tag(f.object.photo.url)
+      f.input :festival_category, as: :select, collection: FestivalCategory.all
     end
     f.buttons
   end
