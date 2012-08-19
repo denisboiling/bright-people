@@ -3,7 +3,7 @@
 	<div class="bri-checkbox">
       <div></div>
     </div>
-  <a rel="prettyPhoto[mixed]" href="<%= photo.photo.url(:medium) %>" data-big="<%= photo.photo.url(:big) %>" data-id="<%= photo.id %>">
+  <a rel="prettyPhoto[mixed]" href="<%= photo.photo.url(:medium) %>" data-big="<%= photo.photo.url(:big) %>" data-id="<%= photo.id %>" data-views="<%= photo.views %>">
     
     <%= image_tag(photo.photo.url) %>
   </a>
