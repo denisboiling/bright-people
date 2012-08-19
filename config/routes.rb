@@ -12,6 +12,8 @@ BrightPeople::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
+  resources :festival_categories, only: [:index]
+
   resources :news, only: [:index, :show] do
     collection do
       get :tag
@@ -70,7 +72,9 @@ BrightPeople::Application.routes.draw do
     resource :profile, only: [:show, :update]
     resources :favorites, only: [:index, :create, :destroy]
     resources :comments, only: :index
-    resources :photos, only: [:index, :create, :destroy]
+    resources :photos, only: [:index, :create, :destroy] do
+      get :my_photos , on: :collection
+    end
     resource :activity do
       delete 'destroy_teacher', on: :member
     end

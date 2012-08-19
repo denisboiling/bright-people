@@ -1022,3 +1022,20 @@ span.sim_check.active { background-position:0px 0px; }
 #slider-code .nav_arrow { background:#d2d2ce; text-align:center; position:absolute; width:100%; padding:2px 0; bottom:0}
 
 .pdf_link { line-height: 33px; padding-left: 40px; background: url(/assets/pdfico.png) no-repeat left center; }
+
+
+#fileupload { padding:15px 0;}
+#fileupload .field { display: block; padding-bottom: 8px}
+#fileupload .field label { color:#007ba4; float: left; width: 200px}
+#fileupload .table { width: 700px;}
+#fileupload .table td { padding: 4px}
+#fileupload .table td.preview { width: 80px;}
+#fileupload .table td.size { width: 100px;}
+#fileupload .table td.start { width: 70px}
+#fileupload .table td.cancel { width: 70px}
+#fileupload .table td.delete{ width: 100px;}
+
+
+#fileupload .field .download_button_wrapper { margin-left:10px; width:186px; height:36px; overflow:hidden; display:block; position:relative}
+#fileupload .field .mask_button { text-align:center; display:block; background:url(/assets/download_avatar.png) no-repeat; width:186px; height:36px; line-height:36px; cursor:pointer}
+#fileupload .field .download_button_wrapper input { position:absolute; z-index:10; opacity: 0; top:0; margin-left:-10px; margin-top:-10px; background:none; border:none; font-size:2000px; cursor:pointer}

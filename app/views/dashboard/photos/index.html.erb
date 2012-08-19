@@ -1,22 +1,31 @@
 <%= render 'dashboard/shared/profile_menu', current: 'photo' %>
 
-<%= form_for GalleryPhoto.new, url: dashboard_photos_path, html: {id: 'fileupload'} do |f| %>
-  <%= f.label :user_id, "Фотограф" %>
+<%= form_for GalleryPhoto.new, url: dashboard_photos_path, html: {id: 'fileupload'} do |f| %>  
   <% if current_user.main_photographer? %>
+	<div class="field">
+    <%= f.label :user_id, "Фотограф" %>
     <%= f.select :user_id, options_from_collection_for_select(User.junior_photographers, :id, :name) %>
+  </div>
   <% end %>
-  
-
+  <% if can? :manage, :dashboard_festival_photos %>
+  <div class="field">
+    <%= f.label :festival_category_id, "или Категория" %>
+    <%= f.select :festival_category_id, options_from_collection_for_select(FestivalCategory.all, :id, :title), include_blank: true %>
+  </div>
+  <% end %>
   <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
   <div class="row fileupload-buttonbar">
     <div class="span7">
 
       <!-- The fileinput-button span is used to style the file input field as button -->
-      <span class="btn btn-success fileinput-button">
-	<i class="icon-plus icon-white"></i>
-	<span>Добавить файлы</span>
-	<%= file_field_tag :photo, multiple: true %>
-      </span>
+ 
+	<div class="field">
+    <label>Добавить файлы</label>
+    <div class="download_button_wrapper">
+      <span class="mask_button">Выбрать изображение</span>
+      <%= file_field_tag :photo, multiple: true %>
+    </div>
+  </div>
       <button type="submit" class="btn btn-primary start">
 	<i class="icon-upload icon-white"></i>
 	<span>Начать загрузку</span>

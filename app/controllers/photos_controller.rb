@@ -29,6 +29,15 @@ class PhotosController < ApplicationController
   end
 
   def festival
+    if (params[:category])
+      @photos = FestivalCategory.find_by_title(params[:category]).photos
+    else
+      @photos = GalleryPhoto.festival_photos
+    end
+    @top_categories = FestivalCategory.top_level
+    if request.xhr?
+      render partial: 'photos', locals: {photos: @photos}
+    end
   end
 
   def add_view

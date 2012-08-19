@@ -6,55 +6,22 @@
 
     <div id="bri-bezier"></div>
     <div id="bri-fest-events">
-      <div class="bri-item">
-        <a href="#">PUJA</a>
-        <div class="bri-sub">
-          <div><a href="#">Lorem ipsum</a></div>
-          <div><a href="#">Dolor sir amet</a></div>
-          <div><a href="#">Lorem dolor</a></div>
-          <div><a href="#">Ipsum sin aamet</a></div>
+      <% @top_categories.each do |topcat| %>
+        <div class="bri-item">
+          <%= link_to topcat.title, '#', :class => "cat_link" %>
+          <div class="bri-sub">
+            <% topcat.children.each do |child| %>
+              <div><%= link_to child.title, '#', :class => "cat_link" %></div>
+            <% end %>
+          </div>
         </div>
-      </div>
-      <div class="bri-item">
-        <a href="#">STRANGEFRUIT</a>
-        <div class="bri-sub">
-          <div><a href="#">Lorem dolor</a></div>
-          <div><a href="#">Ipsum sin aamet</a></div>
-          <div><a href="#">Lorem ipsum</a></div>
-          <div><a href="#">Dolor sir amet</a></div>
-        </div>
-      </div>
-      <div class="bri-item">
-        <a href="#">EDGARMULLER</a>
-        <div class="bri-sub">
-          <div><a href="#">Ipsum sin aamet</a></div>
-          <div><a href="#">Lorem ipsum</a></div>
-          <div><a href="#">Lorem dolor</a></div>
-          <div><a href="#">Dolor sir amet</a></div>
-        </div>
-      </div>
-      <div class="bri-item">
-        <a href="#">Мастер-классы</a>
-        <div class="bri-sub">
-          <div><a href="#">Мыловарение</a></div>
-          <div><a href="#">Лепка</a></div>
-          <div><a href="#">Валяние</a></div>
-          <div><a href="#">Рисоваие песком</a></div>
-        </div>
-      </div>
-      <div class="bri-item">
-        <a href="#">Общий план</a>
-        <div class="bri-sub">
-          <div><a href="#">Dolor sir amet</a></div>
-          <div><a href="#">Ipsum sin aamet</a></div>
-          <div><a href="#">Lorem ipsum</a></div>
-          <div><a href="#">Lorem dolor</a></div>
-        </div>
-      </div>
+      <% end %>
     </div>
 
   </header>
-
+  <div class="container">
+    <%= render 'photos', photos: @photos %>
+  </div>
 </div>
 
 <script> $(document).ready(function(){ festival() }) </script>

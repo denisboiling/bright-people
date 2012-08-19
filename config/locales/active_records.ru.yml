@@ -1,6 +1,11 @@
 ru:
   activerecord:
     models:
+      festival_category:
+        one: Категория фестиваля
+        few: Категории фестиваля
+        many: Категории фестиваля
+        other: Категории фестиваля
       gallery_photo:
         one: Фото галлерея
         few: Фото галлереи
@@ -253,4 +258,6 @@ ru:
         shot_date: Дата съемки
         user: Фотограф
         photo: Фотография
-        
+      festival_category:
+        title: Название
+        path: Родительская категория

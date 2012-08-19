@@ -4,11 +4,6 @@ function photos ()
   $(document).ready(function()
   {
 
-
-
-
-
-
     $("a[rel^='prettyPhoto']").prettyPhoto({
       animation_speed: 'fast', /* fast/slow/normal */
       slideshow: false, /* false OR interval time in ms */
@@ -44,6 +39,7 @@ function photos ()
 VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+$(this).attr('data-id')+');\
 </script>\
 </div> \
+<iframe src="http://www.facebook.com/plugins/like.php?locale=en_US&href={location_href}&amp;layout=button_count&amp;show_faces=true&amp;width=500&amp;action=like&amp;font&amp;colorscheme=light&amp;height=23" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:500px; height:23px;" allowTransparency="true"></iframe>\
 <div class="soc_like_button"> \
 <div id="fb-root"></div>\
 <script>(function(d, s, id) {\
@@ -72,54 +68,8 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+$(this).attr('data-id
     $('#bri-goto-site').mouseenter(function(){
       $(this).stop().animate({ 'top':'0px'}, 300)
     }).mouseleave(function(){
-      $(this).stop().animate({ 'top': '-80px'}, 300)
+      $(this).stop().animate({ 'top': '-98px'}, 300)
     })
-
-    $('#bri-hd-switch')
-      .click(function()
-      {
-
-        $(this).toggleClass('active')
-
-        $('.bri-photo-box').toggleClass('bri-hd')
-        $('.bri-photo-box .bri-checkbox').fadeToggle('fast')
-
-        return false
-      })
-
-
-    $('.bri-photo-box.bri-hd ')
-      .live( 'click', function()
-      {
-        
-        
-
-        $(this).toggleClass('active')
-
-        if($('.bri-photo-box.active').length > 0 && $('#bri-hd-switch').hasClass('active') ) { $('#bri-hd-download').show() }
-        else { $('#bri-hd-download').hide()}
-
-        // TODO: REWRITE THIS ACCORDING TO THE MAX'S SCRIPT!!!111
-        if ( $(this).hasClass('active') )
-        {
-          var ids = JSON.parse( window.localStorage.get('photos') )
-          ids.push( $(this).find('a').attr('data-id') )
-          window.localStorage.set('photos', JSON.stringify('photos'))
-        }
-
-
-
-        // TODO: IF THERE ONE OR MORE PHOTOS SELECTED - SHOW DOWNLOAD ICON!!1
-
-
-        return false
-      })
-
-    $('#bri-hd-download')
-      .click(function()
-      {
-        // Do the twist!
-      })
 
     $('.bri-photographer')
       .click(function()
@@ -170,39 +120,6 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+$(this).attr('data-id
       })
 
 
-
-
-    var $container = $('#bri-photos')
-    ,   $imgs      = $container.find('img').hide()
-    ,   totalImgs  = $imgs.length
-    ,   cnt        = 0
-        
-    $imgs.each(function(i) 
-    {
-      var $img  = $(this)
-      
-      $('<img/>')
-        .load(function() 
-        {
-          ++cnt
-          if( cnt === totalImgs ) 
-          {
-             $imgs.fadeIn('slow')
-
-             $('#bri-preloader').remove();
-
-            $container.montage(
-            {
-             // fillLastRow           : true
-            //, alternateHeight       : true
-             minsize : true
-           // , alternateHeightRange  : { min : 90, max : 240 }
-            })
-          }
-        })
-        .attr( 'src', $img.attr('src') )
-    });
-
     var clock = 
         new Clock
         (
@@ -244,6 +161,7 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, '+$(this).attr('data-id
      )
     */
     
+
 
 
 
