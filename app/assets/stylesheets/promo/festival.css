@@ -12,6 +12,7 @@ body.festival header
     position: relative;
     font-family: Futura;
     font-size: 120%;
+    height: 220px;
   }
     #bri-fest-events .bri-item
     {
