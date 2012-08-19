@@ -3,12 +3,13 @@ class Dashboard::PhotosController < Dashboard::BaseController
   end
 
   def my_photos
-    @photos = GalleryPhoto.published.where('festival_category_id IS NULL AND user_id = ?', current_user.id)
+    @photos = GalleryPhoto.where('festival_category_id IS NULL AND user_id = ?', current_user.id)
   end
 
   def create
     @photo = GalleryPhoto.new(params[:gallery_photo])
     @photo.photo = params[:photo]
+    @photo.user ||= current_user
     if @photo.save
       respond_to do |format|
         format.html {
