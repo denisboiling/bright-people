@@ -1,0 +1,10 @@
+#fileupload .field .download_button_wrapper { margin-left:10px; width:186px; height:36px; overflow:hidden; display:block; position:relative}
+#fileupload .field .mask_button { background:none; display: none; }
+#fileupload .field .download_button_wrapper input { height: 100% !important; background: inherit !important; margin:auto !important; border: 1px solid #ccc;  width: 100% !important; position: relative !important; font-size: 12px !important; opacity: 1 !important }
+
+.profile_change_wrapper .profile_change_avatar .field  .download_button_wrapper { margin-left:10px; width:186px; height:36px; overflow:hidden; display:block; position:relative}
+.profile_change_wrapper .profile_change_avatar .field  .mask_button { background:none; display: none; }
+.profile_change_wrapper .profile_change_avatar .field  .download_button_wrapper input { height: 100% !important; background: inherit !important; margin:auto !important; border: 1px solid #ccc;  width: 100% !important; position: relative !important; font-size: 12px !important; opacity: 1 !important }
+
+
+.bri-nav { background: #fff !important; }
