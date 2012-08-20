@@ -10,7 +10,7 @@ class PhotosController < ApplicationController
               else
                 GalleryPhoto.by_time(@time)
               end
-    @photos = @photos.page(params[:page]).per(30)
+    @photos = @photos.order('shot_date ASC').page(params[:page]).per(30)
     if request.xhr?
       render partial: 'photos', locals: {photos: @photos}
     end
@@ -55,7 +55,7 @@ class PhotosController < ApplicationController
   def search_params
     @photographers = params["photographers"].split(',') if params["photographers"].present?
     @time =  if params['hour'].present? || params['minute'].present?
-               GalleryPhoto::FESTIVAL_START.change(hour: params['hour'], minute: params['minute'])
+               GalleryPhoto::FESTIVAL_START.change(hour: params['hour'], min: params['minute'])
              else
                GalleryPhoto::FESTIVAL_START
              end
