@@ -79,7 +79,9 @@ $.prettyPhoto.open=function(event){
   if(typeof settings=="undefined"){settings=pp_settings;if($.browser.msie&&$.browser.version==6)settings.theme="light_square";pp_images=$.makeArray(arguments[0]);pp_titles=(arguments[1])?$.makeArray(arguments[1]):$.makeArray("");pp_descriptions=(arguments[2])?$.makeArray(arguments[2]):$.makeArray("");isSet=(pp_images.length>1)?true:false;set_position=(arguments[3])?arguments[3]:0;_build_overlay(event.target);}
 if($.browser.msie&&$.browser.version==6)$('select').css('visibility','hidden');if(settings.hideflash)$('object,embed,iframe[src*=youtube],iframe[src*=vimeo]').css('visibility','hidden');_checkPosition($(pp_images).size());$('.pp_loaderIcon').show();if(settings.deeplinking)
 setHashtag();if(settings.social_tools){
-  facebook_like_link=settings.social_tools.replace('{location_href}',encodeURIComponent(location.href));
+  facebook_like_link=settings.social_tools.replace('{location_href}',encodeURIComponent(location.href)).replace('{photo_id}',photo_id);
+ // facebook_like_link=settings.social_tools.replace('{photo_id}',photo_id);
+  //alert(photo_id)
   $pp_pic_holder.find('.pp_social').html(facebook_like_link);
   ///////////////////////////////////////////////////////////////////
   $('.pp_social div.count_view').append(views);
