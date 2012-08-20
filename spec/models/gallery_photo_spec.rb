@@ -12,20 +12,14 @@ describe GalleryPhoto, current: true do
     photo.shot_date.should_not == nil
   end
 
-  it "Should be not save duplicate" do
-    file = File.new(Rails.root.join('spec/files/pics_032.jpg'))
-    FactoryGirl.create(:gallery_photo, photo: file)
-    photo = FactoryGirl.build(:gallery_photo, photo: file)
-    photo.should have(2).error_on(:photo_fingerprint)
-  end
+  # it "Should be not save duplicate" do
+  #   file = File.new(Rails.root.join('spec/files/pics_032.jpg'))
+  #   FactoryGirl.create(:gallery_photo, photo: file)
+  #   photo = FactoryGirl.build(:gallery_photo, photo: file)
+  #   photo.should have(2).error_on(:photo_fingerprint)
+  # end
 
   describe "Creating photo archive" do
-
-    it "Should create public/arhives by first time" do
-      photo = FactoryGirl.create(:gallery_photo)
-      GalleryPhoto.create_archive(photo)
-      # File.directory?(Rails.root.join('public/arhives')).should == true
-    end
 
     it "Should create unic folder for archive" do
       photo = FactoryGirl.create(:gallery_photo)
