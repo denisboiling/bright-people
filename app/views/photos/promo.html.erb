@@ -9,8 +9,10 @@
   <div class="bri-wrapper">
 
     <div id="bri-fest-title"></div>
-
-    <%= link_to image_tag('promo/index/find-me.png'), photos_clock_path, class: 'bri-nav', id: 'bri-find-me' %>
+    <div id="bri-find-me">
+      <%= link_to image_tag('promo/index/find-me.png'), photos_clock_path, class: 'bri-nav' %>
+      <div class="bri-photo-archive">Фотографии обновляются каждый день<br />Полный архив фотографий вы можете увидеть в пятницу <br />24 августа</div>
+    </div>
     <%= link_to image_tag('promo/index/fest.png'), photos_festival_path, class: 'bri-nav', id: 'bri-fest' %>
 
     <div id="bri-letters">
