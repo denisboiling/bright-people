@@ -85,6 +85,7 @@ scroll_loading =() ->
     return if stop_loaded()
     $("#bri-form-page").val(parseInt($("#bri-form-page").val()) + 1)
     window.append = true
+    window.stop_loaded = true
     $("form#bri-form-photos").submit()
 
 $.urlParam = (name) ->
