@@ -163,15 +163,18 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 #center { min-width:960px; max-width:1235px; margin: 10px auto 0; position:relative}
 
 /* MAIN PAGE */
-#home_video 
+.home_video 
 {
     position: relative;
     margin: 0 auto;
     overflow: hidden;
+    text-align: center;
     width: 100%;
     min-width: 960px;
     max-width: 1235px;
     height: 360px;
+    background:url(/assets/slide.jpg) no-repeat center center;
+    /*
     background: #7D1425;
     background: -moz-linear-gradient(-45deg, #7D1425 0%, #EC144E 50%, #7D1425 100%);
     background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #7D1425), color-stop(50%, #EC144E), color-stop(100%, #7D1425));
@@ -180,6 +183,7 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
     background: -ms-linear-gradient(-45deg, #7D1425 0%, #EC144E 50%, #7D1425 100%);
     background: linear-gradient(135deg, #7D1425 0%, #EC144E 50%, #7D1425 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7d1425', endColorstr='#7d1425',GradientType=1 );
+    */
 }
 #home_video img { height: 100%; }
 #home_video_inner { position: absolute; width: 100%; }

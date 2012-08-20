@@ -6,8 +6,10 @@ div.pp_default .pp_content .ppt{color:#f8f8f8; }
 div.pp_default .pp_content { padding-bottom: 20px; min-width: 568px}
 
 div.pp_default .pp_hoverContainer { min-width: 568px}
-div.pp_default.pp_pic_holder {  min-width: 600px}
+div.pp_default.pp_pic_holder {  min-width: 600px }
 div.pp_default #pp_full_res { text-align: center;}
+
+
 
 div.pp_default .pp_content_container .pp_left{background:url(/assets/promo/prettyPhoto/default/sprite_y.png) -7px 0 repeat-y;padding-left:13px}
 div.pp_default .pp_content_container .pp_right{background:url(/assets/promo/prettyPhoto/default/sprite_y.png) top right repeat-y;padding-right:13px}
@@ -41,8 +43,8 @@ div.pp_default .pp_details { position: static !important; float: none !important
 div.pp_default .pp_previous{ margin-left: -25px;}
 div.pp_default .pp_next{ margin-right: -25px;}
 
-div.pp_default .count_view { float: left; width: 80px; font-family: Futura; font-size: 32px; color: #ccc; line-height: 36px; height: 37px; padding-left: 70px; background:url(/assets/promo/photos/light-count.png) 0 0 no-repeat}
-div.pp_default .download_pic { float: right; height: 46px; width: 49px;  background:url(/assets/promo/photos/light-hd.png) 0 0 no-repeat}
+div.pp_default .count_view { margin-top: 5px; float: left; width: 80px; font-family: Futura; font-size: 32px; color: #ccc; line-height: 36px; height: 37px; padding-left: 70px; background:url(/assets/promo/photos/light-count.png) 0 0 no-repeat}
+div.pp_default .download_pic { margin-top: 5px; float: right; height: 46px; width: 49px;  background:url(/assets/promo/photos/light-hd.png) 0 0 no-repeat}
 div.pp_default .download_pic a { display: block; height: 46px; width: 49px;}
 
 div.light_rounded .pp_top .pp_left{background:url(../images/prettyPhoto/light_rounded/sprite.png) -88px -53px no-repeat}
