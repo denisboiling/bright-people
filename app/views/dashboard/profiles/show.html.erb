@@ -1,5 +1,11 @@
 <%= render 'dashboard/shared/profile_menu', current: 'profile' %>
 
+<% content_for :after_head do %>
+<!--[if IE]>
+<%= stylesheet_link_tag 'ie' %>
+<![endif]-->
+<% end %>
+
 <div id="profile_form_wrapper">
   <%= form_for current_user, url: dashboard_profile_path,
                       method: :put,
