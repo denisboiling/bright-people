@@ -60,109 +60,117 @@ window.i_loaded =(img) ->
     $("div.hidden-photos").removeClass('hidden-photos')
     window.pretty_init_photo()
     $("#bri-preloader").hide()
+    window.stop_loaded = false
 
   console.log window.loaded
+
+# Return true if new photos should be append
+append_photos =() ->
+  return false if typeof(window.append) == "undefined" || window.append == false
+  true
+
+# Return true if all photos are downloaded
+all_downloaded =() ->
+  return false if typeof(window.all_downloaded) == "undefined" || window.all_downloaded == false
+  true
+
+# Return true if we stop all another loading
+stop_loaded =() ->
+  return false if typeof(window.stop_loaded) == "undefined" || window.stop_loaded == false
+  true
+
+scroll_loading =() ->
+  if $(window).scrollTop() + $(window).height() > $(document).height() - 150
+    return if all_downloaded()
+    return if stop_loaded()
+    $("#bri-form-page").val(parseInt($("#bri-form-page").val()) + 1)
+    window.append = true
+    $("form#bri-form-photos").submit()
+
+$.urlParam = (name) ->
+  results = new RegExp("[\\?&]" + name + "=([^&#]*)").exec(window.location.href)
+  return "" if results == null
+  results[1] or 0
+
+# OPTIMIZE: brr ugly
+get_by_params =(params) ->
+  ret_params = switch params
+                 when "photographers"
+                   if $.urlParam(params) == "" || $.urlParam(params) == 0
+                     []
+                   else
+                     $.urlParam(params).split('%2C')
+                 else
+                   $.urlParam(params)
+
+window.choose_photographers =() ->
+  choose = []
+  $("div.bri-photographer.active").each ->
+    choose.push($(this).attr('data-id'))
+  choose
+
+set_page_one =() ->
+  $("#bri-form-page").val(1)
+
+active_photographers_by_params =() ->
+  return if get_by_params('photographers') == "" || get_by_params('photographers') == []
+  photographer_ids = get_by_params('photographers')
+  for id in photographer_ids
+    photographer = $("div.bri-photographer[data-id='#{id}']")
+    photographer.toggleClass('active')
+    photographer.find('.bri-photo').slideToggle('fast')
+    photographer.find('.bri-camera').slideToggle('fast')
+  if photographer_ids.length == 10
+    $('#bri-photographers-select-all')
+      .toggleClass('active')
+      .html('Убрать всех фотографов')
+
+
+# When all photos are downloaded we execute this method for
+# clear some fields      
+set_all_downloaded =() ->
+  $("div.am-container#am-container").html("") unless append_photos()
+  $("#bri-preloader").hide()
+  set_page_one()
+  window.all_downloaded = true
+
+
+
+# Mark or Unmark photo for download
+bri_hd_photo =(div) ->
+  ids = JSON.parse(window.localStorage.choose_photos)
+  id = div.find('a').attr('data-id')
+  unless div.hasClass('active')
+    ids.push(id)
+  else
+    ids.shift(ids.indexOf(id))
+
+  window.localStorage.choose_photos = JSON.stringify(ids)
+  div.toggleClass('active')
+
+  if JSON.parse(window.localStorage.choose_photos).length > 0
+    $('#bri-hd-download').show()
+  else
+    $('#bri-hd-download').hide()
+
+  console.log("Selected photos #{window.localStorage.choose_photos}")
+
+# Back to normal view. Remove all memories about HD download functional
+remove_bri_hd_download =() ->
+  localStorage.choose_photos = JSON.stringify([])
+  $('#bri-hd-switch').removeClass('active')
+  deactivated_hd_div($("#bri-photos"))
+  $('#bri-hd-download').hide()
 
 window.setup_photos_page = ->
 
   return unless $("body.photos").length != 0
 
-  $.urlParam = (name) ->
-    results = new RegExp("[\\?&]" + name + "=([^&#]*)").exec(window.location.href)
-    return "" if results == null
-    results[1] or 0
-
-  # OPTIMIZE: brr ugly
-  get_by_params =(params) ->
-    ret_params = switch params
-                   when "photographers"
-                     if $.urlParam(params) == "" || $.urlParam(params) == 0
-                       []
-                     else
-                       $.urlParam(params).split('%2C')
-                   else
-                     $.urlParam(params)
-
-  window.choose_photographers =() ->
-    choose = []
-    $("div.bri-photographer.active").each ->
-      choose.push($(this).attr('data-id'))
-    choose
-
-  # Return true if new photos should be append
-  append_photos =() ->
-    return false if typeof(window.append) == "undefined" || window.append == false
-    true
-
-  # Return true if all photos are downloaded
-  all_downloaded =() ->
-    return false if typeof(window.all_downloaded) == "undefined" || window.all_downloaded == false
-    true
-
-  set_page_one =() ->
-    $("#bri-form-page").val(1)
-
-  active_photographers_by_params =() ->
-    return if get_by_params('photographers') == "" || get_by_params('photographers') == []
-    photographer_ids = get_by_params('photographers')
-    for id in photographer_ids
-      photographer = $("div.bri-photographer[data-id='#{id}']")
-      photographer.toggleClass('active')
-      photographer.find('.bri-photo').slideToggle('fast')
-      photographer.find('.bri-camera').slideToggle('fast')
-    if photographer_ids.length == 10
-      $('#bri-photographers-select-all')
-        .toggleClass('active')
-        .html('Убрать всех фотографов')
-
-
-  # When all photos are downloaded we execute this method for
-  # clear some fields      
-  set_all_downloaded =() ->
-    $("div.am-container#am-container").html("") unless append_photos()
-    $("#bri-preloader").hide()
-    set_page_one()
-    window.all_downloaded = true
-
-
-
-  # Mark or Unmark photo for download
-  bri_hd_photo =(div) ->
-    ids = JSON.parse(window.localStorage.choose_photos)
-    id = div.find('a').attr('data-id')
-    unless div.hasClass('active')
-      ids.push(id)
-    else
-      ids.shift(ids.indexOf(id))
-
-    window.localStorage.choose_photos = JSON.stringify(ids)
-    div.toggleClass('active')
-
-    if JSON.parse(window.localStorage.choose_photos).length > 0
-      $('#bri-hd-download').show()
-    else
-      $('#bri-hd-download').hide()
-
-    console.log("Selected photos #{window.localStorage.choose_photos}")
-
-  # Back to normal view. Remove all memories about HD download functional
-  remove_bri_hd_download =() ->
-    localStorage.choose_photos = JSON.stringify([])
-    $('#bri-hd-switch').removeClass('active')
-    deactivated_hd_div($("#bri-photos"))
-    $('#bri-hd-download').hide()
-
-
-  # Return true if we stop all another loading
-  stop_loaded =() ->
-    return false if typeof(window.stop_loaded) == "undefined" || window.stop_loaded == false
-    true
-
   # BIND LIVE
-
   active_photographers_by_params()
   window.loaded = $("div.hidden-photos").find('img').size()
   bri_hd_sw()
+  scroll_loading()
 
   $('.bri-photo-box.bri-hd').live 'click', ->
     bri_hd_photo($(this))
@@ -180,12 +188,7 @@ window.setup_photos_page = ->
 
 
   $(window).scroll ->
-    return if all_downloaded()
-    return if stop_loaded()
-    if $(window).scrollTop() + $(window).height() > $(document).height() - 200
-      $("#bri-form-page").val(parseInt($("#bri-form-page").val()) + 1)
-      window.append = true
-      $("form#bri-form-photos").submit()
+    scroll_loading()
 
   $("#bri-form-hour, #bri-form-minute, #bri-form-photographers").bind 'change', ->
     window.append = false
