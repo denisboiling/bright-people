@@ -43,8 +43,14 @@ window.setup_photos_page = ->
               max: 240
       ).attr "src", img.attr("src")
 
+  # Return true if new photos should be append
   append_photos =() ->
     return false if typeof(window.append) == "undefined" || window.append == false
+    true
+
+  # Return true if all photos are downloaded
+  all_downloaded =() ->
+    return false if typeof(window.all_downloaded) == "undefined" || window.all_downloaded == false
     true
 
   set_page_one =() ->
@@ -63,10 +69,9 @@ window.setup_photos_page = ->
         .toggleClass('active')
         .html('Убрать всех фотографов')
 
-  all_downloaded =() ->
-    return false if typeof(window.all_downloaded) == "undefined" || window.all_downloaded == false
-    true
-      
+
+  # When all photos are downloaded we execute this method for
+  # clear some fields      
   set_all_downloaded =() ->
     $("div.am-container#am-container").html("") unless append_photos()
     $("#bri-preloader").hide()
@@ -131,10 +136,29 @@ window.setup_photos_page = ->
     deactivated_hd_div($("#bri-photos"))
     $('#bri-hd-download').hide()
 
-# BIND LIVE
+  # This method should be execute on onload in image
+  # When count of loaded images and window.loaded == 0
+  # remove hidden class
+  window.i_loaded =(img) ->
+    window.loaded = window.loaded - 1
+    if window.loaded == 0
+      relocate_photos($("div.hidden-photos"))
+      activated_hd_div($("div.hidden-photos")) if bri_hd_sw_on()
+      $("div.hidden-photos").removeClass('hidden-photos')
+      window.pretty_init_photo()
+      $("#bri-preloader").hide()
+
+    console.log window.loaded
+
+  # Return true if we stop all another loading
+  stop_loaded =() ->
+    return false if typeof(window.stop_loaded) == "undefined" || window.stop_loaded == false
+    true
+
+  # BIND LIVE
+
   active_photographers_by_params()
-  relocate_photos($("#bri-photos"))
-  $("div.hidden-photos").removeClass('hidden-photos')
+  window.loaded = $("div.hidden-photos").find('img').size()
   bri_hd_sw()
 
   $('.bri-photo-box.bri-hd').live 'click', ->
@@ -154,6 +178,7 @@ window.setup_photos_page = ->
 
   $(window).scroll ->
     return if all_downloaded()
+    return if stop_loaded()
     if $(window).scrollTop() + $(window).height() > $(document).height() - 200
       $("#bri-form-page").val(parseInt($("#bri-form-page").val()) + 1)
       window.append = true
@@ -166,25 +191,23 @@ window.setup_photos_page = ->
     $(this).parents("form:first").submit()
 
   $("form#bri-form-photos").bind 'ajax:success', (event, xhr) ->
+    window.stop_loaded = true
+    window.loaded = window.loaded + $(xhr).find('img').size() * 2
+    console.log "HOW NEEED: #{window.loaded}"
+
     if xhr == ""
       set_all_downloaded()
     else
+      $("#bri-preloader").show()
       if append_photos()
         $("div.am-container#am-container").append("<div class='hidden-photos'>#{xhr}</div>")
-        relocate_photos($("div.hidden-photos"))
-        activated_hd_div($("div.hidden-photos")) if bri_hd_sw_on()
-
-        $("div.hidden-photos").removeClass('hidden-photos')
+        window.loaded = window.loaded + $(xhr).find('img').size()
       else
         $("div.am-container#am-container").html("")
         $("div.am-container#am-container").append("<div class='hidden-photos'>#{xhr}</div>")
-        relocate_photos($("div.hidden-photos"))
-        activated_hd_div($("div.hidden-photos")) if bri_hd_sw_on()
-  
-        $("div.hidden-photos").removeClass('hidden-photos')
 
-      window.pretty_init_photo()
   
   $("form#bri-form-photos").bind 'submit', ->
     $("#bri-form-photographers").val(window.choose_photographers())
+    window.loaded = 0
     true
