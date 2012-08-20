@@ -41,7 +41,7 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, {data_id});\
 <!-- Вставьте этот тег в заголовок или непосредственно перед закрывающим тегом . -->\
 <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>\
 <!-- Поместите этот тег туда, где должна отображаться кнопка +1. -->\
-<div class="g-plusone" data-size="medium" data-href="{location_href}"></div> \
+<div class="g-plusone" data-size="medium" data-href="{location_uri_g}"></div> \
 </div> \
 <div class="soc_like_button"> <link href="http://stg.odnoklassniki.ru/share/odkl_share.css" rel="stylesheet"><a class="odkl-share-oc" href={location_href} onclick="ODKL.Share(this);return false;" ><span>0</span></a><script src="http://stg.odnoklassniki.ru/share/odkl_share.js" type="text/javascript" ></script></div> \
 <div class="soc_like_button"><a href="http://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></div> \
