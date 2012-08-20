@@ -13,7 +13,8 @@ BrightPeople::Application.configure do
                                   dashboard/*.js
                                   home-video/*.js
                                   home-video/*.css
-                                  file-upload/*.js)
+                                  file-upload/*.js
+                                  ext/*.css)
   config.i18n.fallbacks = true
   config.active_support.deprecation = :notify
   config.host_name = "http://stagebp.balticit.ru"
