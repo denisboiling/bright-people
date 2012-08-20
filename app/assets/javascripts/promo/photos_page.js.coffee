@@ -36,12 +36,11 @@ window.setup_photos_page = ->
         ++cnt
         if cnt is totalImgs
           container.montage
-            minsize: true
             fillLastRow: false
-            alternateHeight: false
-            alternateHeightRange:
-              min: 90
-              max: 240
+            minsize: false
+            maxh: 150
+            minh: 90
+            
       ).attr "src", img.attr("src")
 
   append_photos =() ->

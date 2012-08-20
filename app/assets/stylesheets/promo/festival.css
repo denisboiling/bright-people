@@ -1,7 +1,4 @@
-body.festival header
-{
 
-}
   #bri-bezier
   {
     position: absolute;
@@ -21,7 +18,7 @@ body.festival header
       width: 100%; min-height: 20px;
     }
 
-    #bri-fest-events .bri-sub div { float: left; width: 240px}
+    #bri-fest-events .bri-sub div { float: left; width: 190px}
 
       #bri-fest-events .bri-item a
       {
@@ -42,7 +39,7 @@ body.festival header
       #bri-fest-events .bri-sub
       {
         position: absolute;
-        top: 0;
+        top: 12px;
         left: 100%;
         margin-left: 50px;
         width: auto;
@@ -59,13 +56,14 @@ footer.festival
   color: #999;
 }
   footer.festival,
-  footer.festival .bri-divnks,
-  footer.festival .bri-divnks .bri-news 
+  footer.festival .bri-links,
+  footer.festival .bri-links .bri-news 
   {
-    border-color: #c7dff3; 
+    border-color: #c7dff3 !important; 
   }
 
   footer.festival .bri-credentials a
   {
     color: #999;
   }
+
