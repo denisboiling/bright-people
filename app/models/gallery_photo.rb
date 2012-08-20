@@ -120,6 +120,8 @@ class GalleryPhoto < ActiveRecord::Base
         _photos.each {|photo| zipfile.add("#{photo.id}.jpg", photo.photo.path(:big)) }
       end
 
+      File.chmod(0644, arhive_dir + '.zip')
+
       return arhive_dir + '.zip'
 
     end
