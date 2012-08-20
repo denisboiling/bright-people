@@ -132,6 +132,16 @@ td { vertical-align: top; }
       height: 65px;
       line-height: 63px;
       opacity: 0;
+
+    }
+    .bri-photo-archive { font-size: 10px; color: #fff; line-height: 14px; padding-top: 5px; text-align: center; font-size: Futura}
+    #bri-find-me a
+    {
+      
+      width: 298px;
+      height: 65px;
+      line-height: 63px;
+      
     }
       #bri-find-me:active { margin-top: 3px; }
 
