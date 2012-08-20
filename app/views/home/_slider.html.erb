@@ -3,28 +3,8 @@
   <%= stylesheet_link_tag 'home-video/youTubeEmbed-jquery-1.0' %>
 <% end %>
 
-<script type="text/javascript">
-  $(document).ready(function(){
-  var isiPad = navigator.userAgent.match(/iPad/i) != null;
-  var isiPhone = navigator.userAgent.match(/iPhone/i) != null;
-  var isiPod = navigator.userAgent.match(/iPod/i) != null;
-
-  if(isiPad == true || isiPhone == true || isiPod == true) {
-  $("#home_video").css("display","none");
-  $("#home_video_ios").css("display","block");
-  }
-  });
-
-
-</script>
-
-<div id="home_video_ios" style="display:none">
-  <div style="margin:auto; width:640px"><iframe width="640" height="360" src="http://www.youtube.com/embed/2d_RpbxPPac" frameborder="0" allowfullscreen></iframe></div>
-</div>
-
-
 <div id="home_video">
-  <%= image_tag '/assets/video-bg.jpg', :id => 'home_video_inner' %>
+  <%= image_tag '/assets/slide.jpg' %>
   <div class="mask"></div>
 </div>
 
