@@ -8,7 +8,7 @@ class GalleryPhoto < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :festival_category
-  
+
   has_attached_file :photo, styles: { thumb: ['240x240', :jpg], medium: ['1000x1000', :jpg], big: ['9999x9999>', :jpg] },
                             path: ":rails_root/public/system/gallery_photos/:attachment/:id/:style/:filename",
                             url: "/system/gallery_photos/:attachment/:id/:style/:filename",
@@ -19,7 +19,7 @@ class GalleryPhoto < ActiveRecord::Base
 
   # validates :photo_fingerprint, presence: true, uniqueness: true
   validates :user, presence: true
-  
+
   scope :published, where(processing: false)
   scope :festival_photos, where("festival_category_id IS NOT NULL")
 
@@ -40,9 +40,9 @@ class GalleryPhoto < ActiveRecord::Base
   def shot_date!
     date = begin
              if self.photo_content_type == 'image/jpeg'
-               EXIFR::JPEG.new(self.photo.path(:original)).date_time.to_s(:db)
+               EXIFR::JPEG.new(self.photo.path(:original)).date_time_original.to_s(:db)
              else
-               EXIFR::TIFF.new(self.photo.path(:original)).date_time.to_s(:db)
+               EXIFR::TIFF.new(self.photo.path(:original)).date_time_original.to_s(:db)
              end
            rescue
              puts "RESCUE in shot_date!"
