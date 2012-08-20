@@ -35,15 +35,7 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, {data_id});\
 </script>\
 </div> \
 <div class="soc_like_button"> \
-<div id="fb-root"></div>\
-<script>(function(d, s, id) {\
-  var js, fjs = d.getElementsByTagName(s)[0];\
-  if (d.getElementById(id)) return;\
-  js = d.createElement(s); js.id = id;\
-  js.src = "//connect.facebook.net/ru_RU/all.js#xfbml=1&appId=359292310775946";\
-  fjs.parentNode.insertBefore(js, fjs);\
-}(document, "script", "facebook-jssdk"));</script>\
-<div class="fb-like" data-send="true" data-href="{location_href}" data-layout="button_count" data-width="230" data-show-faces="false"></div>\
+<iframe src="http://www.facebook.com/plugins/like.php?locale=en_US&href={location_href}&amp;layout=button_count&amp;show_faces=true&amp;width=500&amp;action=like&amp;font&amp;colorscheme=light&amp;height=23" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:500px; height:23px;" allowTransparency="true"></iframe>\
 </div>\
 <div class="soc_like_button"> \
 <!-- Вставьте этот тег в заголовок или непосредственно перед закрывающим тегом . -->\
