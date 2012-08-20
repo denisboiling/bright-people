@@ -35,6 +35,10 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, {data_id});\
 </script>\
 </div> \
 <div class="soc_like_button"> \
+<div id="vk_share">\
+<script type="text/javascript">VK.Share.button(false,{type: "round_nocount", text: "Поделиться"});</script>\
+</div> \
+<div class="soc_like_button"> \
 <div id="fb-root"></div>\
 <script>(function(d, s, id) {\
   var js, fjs = d.getElementsByTagName(s)[0];\
@@ -52,7 +56,9 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, {data_id});\
 <div class="g-plusone" data-size="medium" data-href="{location_href}"></div> \
 </div> \
 <div class="soc_like_button"> <link href="http://stg.odnoklassniki.ru/share/odkl_share.css" rel="stylesheet"><a class="odkl-share-oc" href={location_href} onclick="ODKL.Share(this);return false;" ><span>0</span></a><script src="http://stg.odnoklassniki.ru/share/odkl_share.js" type="text/javascript" ></script></div> \
-<div class="soc_like_button"><a href="http://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></div> \
+<div class="soc_like_button"> \
+<a href="https://twitter.com/share" class="twitter-share-button" href="{location_href}" data-lang="ru">Твитнуть</a> \
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script> \
 </div>' /* html or false to disable */
     })
     }
