@@ -36,8 +36,9 @@ window.setup_photos_page = ->
         ++cnt
         if cnt is totalImgs
           container.montage
-            fillLastRow: true
-            alternateHeight: true
+            minsize: true
+            fillLastRow: false
+            alternateHeight: false
             alternateHeightRange:
               min: 90
               max: 240

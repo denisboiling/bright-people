@@ -1,4 +1,12 @@
+<% content_for :after_head do %>
+<!--[if IE]>
+<%= stylesheet_link_tag 'ie' %>
+<![endif]-->
+<% end %>
+
 <%= render 'dashboard/shared/profile_menu', current: 'photo' %>
+
+
 
 <%= form_for GalleryPhoto.new, url: dashboard_photos_path, html: {id: 'fileupload'} do |f| %>  
   <% if current_user.main_photographer? %>
