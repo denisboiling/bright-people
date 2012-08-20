@@ -1,3 +1,68 @@
+# Update div to add hd download function and find all early selected photos
+activated_hd_div =(div) ->
+  photos_div = div.find(".bri-photo-box")
+  div.find(".bri-photo-box").addClass('bri-hd')
+  div.find(".bri-photo-box .bri-checkbox").fadeToggle('fast')
+  ids = JSON.parse(window.localStorage.choose_photos)
+  return if ids.length == 0
+  for id in ids
+    photos_div.find("a[data-id='#{id}']").parents(".bri-photo-box.bri-hd").first().addClass('active')
+  $('#bri-hd-download').show()
+
+deactivated_hd_div =(div) ->
+  photos_div = div.find(".bri-photo-box")
+  div.find(".bri-photo-box").removeClass('bri-hd active')
+  div.find(".bri-photo-box .bri-checkbox").fadeToggle('fast')
+  $('#bri-hd-download').hide()
+
+# HD functional is on?
+bri_hd_sw_on =() ->
+  $('#bri-hd-switch').hasClass('active')
+
+# Logic when user check or uncheck "HD on/off"
+bri_hd_sw =() ->
+  $('#bri-hd-switch').live 'click', ->
+    if bri_hd_sw_on()
+      deactivated_hd_div($("#bri-photos"))
+    else
+      activated_hd_div($("#bri-photos"))
+
+    $(this).toggleClass('active')
+    false
+
+relocate_photos =(div) ->
+  container = div
+  imgs = container.find("img")
+  totalImgs = imgs.length
+  cnt = 0
+  imgs.each (i) ->
+    img = $(this)
+    $("<img/>").load(->
+      ++cnt
+      if cnt is totalImgs
+        container.montage
+          minsize: true
+          fillLastRow: false
+          alternateHeight: false
+          alternateHeightRange:
+            min: 90
+            max: 240
+    ).attr "src", img.attr("src")
+  
+# This method should be execute on onload in image
+# When count of loaded images and window.loaded == 0
+# remove hidden class
+window.i_loaded =(img) ->
+  window.loaded = window.loaded - 1
+  if window.loaded == 0
+    relocate_photos($("div.hidden-photos"))
+    activated_hd_div($("div.hidden-photos")) if bri_hd_sw_on()
+    $("div.hidden-photos").removeClass('hidden-photos')
+    window.pretty_init_photo()
+    $("#bri-preloader").hide()
+
+  console.log window.loaded
+
 window.setup_photos_page = ->
 
   return unless $("body.photos").length != 0
@@ -23,26 +88,6 @@ window.setup_photos_page = ->
     $("div.bri-photographer.active").each ->
       choose.push($(this).attr('data-id'))
     choose
-
-  relocate_photos =(div) ->
-    container = div
-    imgs = container.find("img")
-    totalImgs = imgs.length
-    cnt = 0
-    imgs.each (i) ->
-      img = $(this)
-    
-      $("<img/>").load(->
-        ++cnt
-        if cnt is totalImgs
-          container.montage
-            minsize: true
-            fillLastRow: false
-            alternateHeight: false
-            alternateHeightRange:
-              min: 90
-              max: 240
-      ).attr "src", img.attr("src")
 
   # Return true if new photos should be append
   append_photos =() ->
@@ -79,37 +124,7 @@ window.setup_photos_page = ->
     set_page_one()
     window.all_downloaded = true
 
-  # Update div to add hd download function and find all early selected photos
-  activated_hd_div =(div) ->
-    photos_div = div.find(".bri-photo-box")
-    div.find(".bri-photo-box").addClass('bri-hd')
-    div.find(".bri-photo-box .bri-checkbox").fadeToggle('fast')
-    ids = JSON.parse(window.localStorage.choose_photos)
-    return if ids.length == 0
-    for id in ids
-      photos_div.find("a[data-id='#{id}']").parents(".bri-photo-box.bri-hd").first().addClass('active')
-    $('#bri-hd-download').show()
 
-  deactivated_hd_div =(div) ->
-    photos_div = div.find(".bri-photo-box")
-    div.find(".bri-photo-box").removeClass('bri-hd active')
-    div.find(".bri-photo-box .bri-checkbox").fadeToggle('fast')
-    $('#bri-hd-download').hide()
-
-  # HD functional is on?
-  bri_hd_sw_on =() ->
-    $('#bri-hd-switch').hasClass('active')
-
-  # Logic when user check or uncheck "HD on/off"
-  bri_hd_sw =() ->
-    $('#bri-hd-switch').live 'click', ->
-      if bri_hd_sw_on()
-        deactivated_hd_div($("#bri-photos"))
-      else
-        activated_hd_div($("#bri-photos"))
-
-      $(this).toggleClass('active')
-      false
 
   # Mark or Unmark photo for download
   bri_hd_photo =(div) ->
@@ -137,19 +152,6 @@ window.setup_photos_page = ->
     deactivated_hd_div($("#bri-photos"))
     $('#bri-hd-download').hide()
 
-  # This method should be execute on onload in image
-  # When count of loaded images and window.loaded == 0
-  # remove hidden class
-  window.i_loaded =(img) ->
-    window.loaded = window.loaded - 1
-    if window.loaded == 0
-      relocate_photos($("div.hidden-photos"))
-      activated_hd_div($("div.hidden-photos")) if bri_hd_sw_on()
-      $("div.hidden-photos").removeClass('hidden-photos')
-      window.pretty_init_photo()
-      $("#bri-preloader").hide()
-
-    console.log window.loaded
 
   # Return true if we stop all another loading
   stop_loaded =() ->
