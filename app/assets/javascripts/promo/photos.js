@@ -39,7 +39,7 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, {data_id});\
 <script type="text/javascript">VK.Share.button(false,{type: "round_nocount", text: "Поделиться"});</script>\
 </div> \
 <div class="soc_like_button"> \
-	<iframe src="http://www.facebook.com/plugins/like.php?locale=en_US&href={location_href}&amp;layout=button_count&amp;show_faces=true&amp;width=500&amp;action=like&amp;font&amp;colorscheme=light&amp;height=23" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:500px; height:23px;" allowTransparency="true"></iframe>\
+  <iframe src="http://www.facebook.com/plugins/like.php?href={location_href}&amp;send=false&amp;layout=button_count&amp;width=80&amp;show_faces=false&amp;action=like&amp;locale=en_US&amp;colorscheme=light&amp;font&amp;height=20" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:80px; height:20px;" allowTransparency="true"></iframe>
 </div>\
 <div class="soc_like_button"> \
 <!-- Вставьте этот тег в заголовок или непосредственно перед закрывающим тегом . -->\
