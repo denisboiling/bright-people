@@ -59,7 +59,7 @@ function festival ()
       {
         paper.clear()
 
-        $(this).siblings('.bri-sub').hide()
+        $(this).find('.bri-sub').hide()
 
         $(this).find('a:first').stop().animate
         (
@@ -75,6 +75,8 @@ function festival ()
       //  )
 
       })
+
+
 
 
       $(".cat_link").live("click", function(event){
