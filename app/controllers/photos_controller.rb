@@ -19,7 +19,7 @@ class PhotosController < ApplicationController
   # TODO: rewrite..berr
   def download
     arhive = GalleryPhoto.create_archive(params[:ids])
-    render text: "/arhives/#{arhive.match(/(\w+\.zip)$/)[0]}"
+    render text: "/system/arhives/#{arhive.match(/(\w+\.zip)$/)[0]}"
   end
 
   def promo

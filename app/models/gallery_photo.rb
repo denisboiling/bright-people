@@ -109,7 +109,7 @@ class GalleryPhoto < ActiveRecord::Base
         dir
       end
 
-      @public_dir = Rails.root.join('public/arhives')
+      @public_dir = Rails.root.join('public/system/arhives')
       FileUtils.mkdir_p(@public_dir) unless File.exist?(@public_dir)
       arhive_dir = create_archive_dir
 
@@ -123,7 +123,6 @@ class GalleryPhoto < ActiveRecord::Base
       File.chmod(0644, arhive_dir + '.zip')
 
       return arhive_dir + '.zip'
-
     end
 
   end
