@@ -30,6 +30,7 @@ after "deploy:update_code", "delayed_job:stop"
 after "deploy:update_code", "load_staging:db"
 after "load_staging:db", "deploy:migrate"
 after "deploy:update_code", "load_staging:images"
+after "deploy:update_code", "load_staging:gallery_photo_new"
 
 after "deploy:update_code", "thinking_sphinx:configure"
 after "deploy:update_code", "delayed_job:restart"

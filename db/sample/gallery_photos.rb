@@ -3,7 +3,7 @@ FileUtils.rm_rf Rails.root.join('public/arhives')
 
 photos = Dir.glob(Rails.root.join('db/sample/files/*/', '*.jpg'))
 
-120.times.each do |i|
+300.times.each do |i|
   GalleryPhoto.create(user_id: User.junior_photographers.sample.id,
                       photo: File.new(photos.sample),
                       views: rand(1..9999))

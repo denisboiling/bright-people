@@ -72,6 +72,11 @@ namespace :load_staging do
     reload_images = ENV['RELOAD_IMAGES'] ? true : false
     run "cd #{latest_release}; RAILS_ENV=#{rails_env} RELOAD_IMAGES=#{reload_images} bundle exec rake staging:load_images"
   end
+
+  task :gallery_photo_new, :roles => :app do
+    run "cd #{latest_release}; RAILS_ENV=staging bundle exec rails runner 'GalleryPhoto.destroy_all'"
+    run "cd #{latest_release}; RAILS_ENV=staging bundle exec rails runner 'load Rails.root.join(\"db/sample/gallery_photos.rb\")'"
+  end
 end
 
 require 'capistrano-unicorn'
