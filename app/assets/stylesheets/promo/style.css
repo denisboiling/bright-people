@@ -134,7 +134,8 @@ td { vertical-align: top; }
       opacity: 0;
 
     }
-    .bri-photo-archive { font-size: 10px; color: #fff; line-height: 14px; padding-top: 5px; text-align: center; font-size: Futura}
+    .bri-photo-archive { font-size: 12px; color: #fff; line-height: 14px; padding-top: 5px; text-align: center; font-size: Futura;
+			 margin-left: -5%; width: 110% }
     #bri-find-me a
     {
       
