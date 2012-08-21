@@ -27,7 +27,7 @@
     </div>
 
     <!-- Don't forget to remove test data -->
-    <% GalleryPhoto.published.sample(12).each_with_index do |photo, index| %>
+    <% GalleryPhoto.for_promo.sample(12).each_with_index do |photo, index| %>
       <%= image_tag photo.photo, class: 'bri-photo', id: "bri-photo-#{index + 1}" %>
     <% end %>
 
