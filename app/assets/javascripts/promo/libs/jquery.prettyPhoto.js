@@ -85,7 +85,8 @@ setHashtag();if(settings.social_tools){
     <meta property="og:url" content="' + location.href + '" /> \
     <meta property="og:image" content="' + big + '" /> \
     <meta property="og:type" content="non_profit" /> \
-    <meta property="fb:app_id" content="359292310775946" />'
+    <meta property="fb:app_id" content="359292310775946" /> \
+    <meta property="og:description" content="&#x424;&#x43e;&#x442;&#x43e;&#x433;&#x440;&#x430;&#x444;&#x438;&#x44f; &#x441; &#x444;&#x435;&#x441;&#x442;&#x438;&#x432;&#x430;&#x43b;&#x44f; &quot;&#x42f;&#x440;&#x43a;&#x438;&#x435; &#x43b;&#x44e;&#x434;&#x438;&quot;"/>'
   );
   facebook_like_link=settings.social_tools.replace(/{location_href}/g,encodeURIComponent(location.href));
   facebook_like_link=facebook_like_link.replace(/{data_id}/g, parseInt(photo_id));
