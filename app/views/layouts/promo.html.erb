@@ -9,6 +9,8 @@
     <%= csrf_meta_tags %>
   </head>
   <body class="<%= @body_class %>">
+
+    <%= link_to image_tag('promo/goto-site.png'), main_page_path, id: 'bri-goto-site' %>
     
     <%= yield %>
     

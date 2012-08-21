@@ -98,7 +98,7 @@ BrightPeople::Application.routes.draw do
   match '/staff/add_video' => 'staff#add_video', :via => :post
   match '/staff/get_categories' => 'staff#get_categories'
 
-  # root :to => 'home#show'
+  match '/main' => 'home#show', as: :main_page
   root :to => 'photos#promo'
 
   # TODO: dirty and don't why why migrate is broken?
