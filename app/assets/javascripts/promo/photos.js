@@ -134,8 +134,8 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, {data_id});\
 
     var hour = parseInt($('#bri-form-hour').val());
     var minute = parseInt($('#bri-form-minute').val());
-    var hour_angle = (hour - 10) * 30 - 420; // 420 and 360 are some magic numbers by author of the script
-    var minute_angle = (minute / 5) * 30 - 360;
+    var hour_angle = (hour - 10) * 30 - 60;
+    var minute_angle = (minute / 5) * 30;
 
 
     hour_colours = ['#fff368','#ffec1d','#ffdd3f','#ffd22d','#fec905','#fcbf07','#ffb400','#ffa800','#f89c1e','#f1900c','#f8820f','#f9760c'];
