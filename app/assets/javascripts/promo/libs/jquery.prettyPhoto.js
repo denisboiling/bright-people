@@ -79,9 +79,18 @@ $.prettyPhoto.open=function(event){
   if(typeof settings=="undefined"){settings=pp_settings;if($.browser.msie&&$.browser.version==6)settings.theme="light_square";pp_images=$.makeArray(arguments[0]);pp_titles=(arguments[1])?$.makeArray(arguments[1]):$.makeArray("");pp_descriptions=(arguments[2])?$.makeArray(arguments[2]):$.makeArray("");isSet=(pp_images.length>1)?true:false;set_position=(arguments[3])?arguments[3]:0;_build_overlay(event.target);}
 if($.browser.msie&&$.browser.version==6)$('select').css('visibility','hidden');if(settings.hideflash)$('object,embed,iframe[src*=youtube],iframe[src*=vimeo]').css('visibility','hidden');_checkPosition($(pp_images).size());$('.pp_loaderIcon').show();if(settings.deeplinking)
 setHashtag();if(settings.social_tools){
-  facebook_like_link=settings.social_tools.replace('{location_href}',encodeURIComponent(location.href));
-  facebook_like_link=facebook_like_link.replace('{data_id}', parseInt(photo_id));
-  facebook_like_link=facebook_like_link.replace('{location_uri_g}', ("photos"+location.href.split("photos")[1])); // to get path with #params
+  $('head>meta[property^="og:"]').remove();
+  $('head').append('<meta property="og:site_name" content="&#x424;&#x435;&#x441;&#x442;&#x438;&#x432;&#x430;&#x43b;&#x44c; &#x42f;&#x440;&#x43a;&#x438;&#x435; &#x43b;&#x44e;&#x434;&#x438;" /> \
+    <meta property="og:title" content="&#x424;&#x43e;&#x442;&#x43e;&#x433;&#x440;&#x430;&#x444;&#x438;&#x44f; &#x441; &#x444;&#x435;&#x441;&#x442;&#x438;&#x432;&#x430;&#x43b;&#x44f; &quot;&#x42f;&#x440;&#x43a;&#x438;&#x435; &#x43b;&#x44e;&#x434;&#x438;&quot;" /> \
+    <meta property="og:url" content="' + location.href + '" /> \
+    <meta property="og:image" content="' + big + '" /> \
+    <meta property="og:type" content="non_profit" /> \
+    <meta property="fb:app_id" content="359292310775946" /> \
+    <meta property="og:description" content="&#x424;&#x43e;&#x442;&#x43e;&#x433;&#x440;&#x430;&#x444;&#x438;&#x44f; &#x441; &#x444;&#x435;&#x441;&#x442;&#x438;&#x432;&#x430;&#x43b;&#x44f; &quot;&#x42f;&#x440;&#x43a;&#x438;&#x435; &#x43b;&#x44e;&#x434;&#x438;&quot;"/>'
+  );
+  facebook_like_link=settings.social_tools.replace(/{location_href}/g,encodeURIComponent(location.href));
+  facebook_like_link=facebook_like_link.replace(/{data_id}/g, parseInt(photo_id));
+  facebook_like_link=facebook_like_link.replace(/{location_uri_g}/g, ("photos"+location.href.split("photos")[1])); // to get path with #params
   $pp_pic_holder.find('.pp_social').html(facebook_like_link);
   ///////////////////////////////////////////////////////////////////
   $('.pp_social div.count_view').append(views);
