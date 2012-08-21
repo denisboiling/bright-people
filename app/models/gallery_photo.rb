@@ -10,10 +10,10 @@ class GalleryPhoto < ActiveRecord::Base
   belongs_to :festival_category
 
   has_attached_file :photo, styles: { thumb: ['240x240', :jpg], medium: ['1000x1000', :jpg], big: ['9999x9999>', :jpg] },
-                            path: ":rails_root/public/system/gallery_photos/:attachment/:id/:style/:filename",
-                            url: "/system/gallery_photos/:attachment/:id/:style/:filename",
-                            default_style: :thumb,
-                            default_url: 'loading.gif'
+  path: ":rails_root/public/system/gallery_photos/:attachment/:id/:style/:filename",
+  url: "/system/gallery_photos/:attachment/:id/:style/:filename",
+  default_style: :thumb,
+  default_url: 'loading.gif'
 
   attr_accessible :user_id, :photo, :views, :festival_category_id
 
@@ -79,6 +79,21 @@ class GalleryPhoto < ActiveRecord::Base
     photo.reprocess!
     save
     add_watermark
+  end
+
+  def landscape!
+    begin
+      if self.photo_content_type == 'image/jpeg'
+        height = EXIFR::JPEG.new(self.photo.path(:original)).height
+        width = EXIFR::JPEG.new(self.photo.path(:original)).width
+      else
+        height = EXIFR::TIFF.new(self.photo.path(:original)).height
+        width = EXIFR::TIFF.new(self.photo.path(:original)).width
+      end
+      update_attribute(:landscape, width >= height ? true : false)
+    rescue
+      false
+    end
   end
 
   def add_watermark
