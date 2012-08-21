@@ -3,6 +3,8 @@ activated_hd_div =(div) ->
   photos_div = div.find(".bri-photo-box")
   div.find(".bri-photo-box").addClass('bri-hd')
   div.find(".bri-photo-box .bri-checkbox").fadeToggle('fast')
+  if typeof(window.localStorage.choose_photos) == "undefined"
+    window.localStorage.choose_photos = "[]"
   ids = JSON.parse(window.localStorage.choose_photos)
   return if ids.length == 0
   for id in ids
