@@ -1,6 +1,6 @@
-User.find_by_email('user@example.com').update_attributes(password: 'password', password_confirmation: 'password')
-User.find_by_email('moder@example.com').update_attributes(password: 'password', password_confirmation: 'password')
-User.find_by_email('main_photographer@example.com').update_attributes(password: 'password', password_confirmation: 'password')
+%w(user@example.com main_photographer@example.com photographer1@example.com).each do |email|
+  User.find_by_email(email).update_attributes(password: 'password', password_confirmation: 'password')
+end
 
 FileUtils.rm_rf Rails.root.join('public/system/users')
 

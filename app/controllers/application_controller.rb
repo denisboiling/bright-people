@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
   end
-  
+
   # check current user for email
   # if none, then it sets apropriate flag into cookie
   # to show dialog to enter email.
@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
       cookies.delete :email_dialog
     end
   end
-  
+
   # checks is user logged in, if so then it writes user's id to cookies
   def current_user_presence
     if current_user
@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
       cookies.delete :current_user
     end
   end
-  
+
   def set_url_for_fb
     @fb_url = request.url
   end
