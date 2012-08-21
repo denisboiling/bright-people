@@ -34,6 +34,8 @@ class GalleryPhoto < ActiveRecord::Base
 
   scope :for_promo, published.where(landscape: true)
 
+  scope :by_photograph, lambda{|user| where(:user_id => user.id)}
+
   after_create :shot_date!
 
   # We can get date of shot only from TIFF(.NEF CR2) file.
