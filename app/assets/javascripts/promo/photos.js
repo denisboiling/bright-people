@@ -40,7 +40,7 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, {data_id});\
 </div> \
 </div> \
 <div class="soc_like_button"> \
-  <iframe src="http://www.facebook.com/plugins/like.php?href={location_href}&amp;send=false&amp;layout=button_count&amp;width=80&amp;show_faces=false&amp;action=like&amp;locale=en_US&amp;colorscheme=light&amp;font&amp;height=20" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:80px; height:20px;" allowTransparency="true"></iframe> \
+  <div class="fb-like" data-href="{location_href}" data-send="false" data-layout="button_count" data-width="80" data-show-faces="false"></div> \
 </div>\
 <div class="soc_like_button"> \
 <!-- Вставьте этот тег в заголовок или непосредственно перед закрывающим тегом . -->\
