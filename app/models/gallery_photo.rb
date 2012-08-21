@@ -10,10 +10,10 @@ class GalleryPhoto < ActiveRecord::Base
   belongs_to :festival_category
 
   has_attached_file :photo, styles: { thumb: ['240x240', :jpg], medium: ['1000x1000', :jpg], big: ['9999x9999>', :jpg] },
-  path: ":rails_root/public/system/gallery_photos/:attachment/:id/:style/:filename",
-  url: "/system/gallery_photos/:attachment/:id/:style/:filename",
-  default_style: :thumb,
-  default_url: 'loading.gif'
+                            path: ":rails_root/public/system/gallery_photos/:attachment/:id/:style/:filename",
+                            url: "/system/gallery_photos/:attachment/:id/:style/:filename",
+                            default_style: :thumb,
+                            default_url: 'loading.gif'
 
   attr_accessible :user_id, :photo, :views, :festival_category_id
 
@@ -31,6 +31,8 @@ class GalleryPhoto < ActiveRecord::Base
 
   # Show photos filters by time
   scope :by_time, lambda{|time| published.where('festival_category_id IS NULL AND shot_date >= ?', time)}
+
+  scope :for_promo, published.where(landscape: true)
 
   after_create :shot_date!
 
@@ -79,6 +81,7 @@ class GalleryPhoto < ActiveRecord::Base
     photo.reprocess!
     save
     add_watermark
+    landscape!
   end
 
   def landscape!
