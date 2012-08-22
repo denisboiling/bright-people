@@ -16,6 +16,8 @@ function photos (){
 	    changepicturecallback: function(){
 		window.fbAsyncInit();
 		window.vk_init("Яркие Люди", location.href, $("#pp_full_res img").attr("src"));
+		$("a.twitter-share-button").attr("data-url", location.href)
+		$.getScript('http://platform.twitter.com/widgets.js');
 	    },
 	    social_tools: '<div class="count_view"></div> \
                            <div class="download_pic"><a></a></div> \
@@ -30,7 +32,7 @@ function photos (){
                                <div id="vk_share"></div> \
                              </div> \
                              <div class="soc_like_button"> \
-                               <a href="https://twitter.com/share" class="twitter-share-button" data-lang="ru" data-text="Яркие Люди" data-url="' + location.href + '" >Твитнуть</a> \
+                               <a href="https://twitter.com/share" class="twitter-share-button" data-lang="ru" data-url="" target="_blank">Твитнуть</a> \
                              </div> \
                              <div class="soc_like_button"> \
                                <div class="g-plusone" data-size="medium" data-href="' + location.href + '"></div> \
