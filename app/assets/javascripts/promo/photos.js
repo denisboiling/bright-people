@@ -15,8 +15,18 @@ function photos (){
 	    gallery_markup: '',
 	    changepicturecallback: function(){
 		window.fbAsyncInit();
+		window.vk_init("Яркие Люди", location.href, $("#pp_full_res img").attr("src"));
 	    },
-	    social_tools: $("div#social_photo").html()
+	    social_tools: '<div class="count_view"></div> \
+                           <div class="download_pic"><a></a></div> \
+                           <div class="pp_social"> \
+                             <div class="soc_like_button"> \
+                               <div class="fb-like" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div> \
+                               <div id="vk_like"></div> \
+                               <div id="vk_share"></div> \
+                               asdasdas \
+                             </div> \
+                           </div>'
 	})
     }
 
