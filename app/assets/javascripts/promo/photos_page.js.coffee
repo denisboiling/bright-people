@@ -199,6 +199,7 @@ window.setup_photos_page = ->
 
   $("form#bri-form-photos").bind 'ajax:success', (event, xhr) ->
     window.stop_loaded = true
+    window.push_history()
     window.loaded = window.loaded + $(xhr).find('img').size() * 2
     console.log "HOW NEEED: #{window.loaded}"
 
@@ -218,3 +219,10 @@ window.setup_photos_page = ->
     $("#bri-form-photographers").val(window.choose_photographers())
     window.loaded = 0
     true
+
+window.push_history = ->
+  hours = $('#bri-form-hour').val()
+  minutes = $('#bri-form-minute').val()
+  photographers = $('#bri-form-photographers').val()
+  history.pushState({photographers: photographers, minutes: minutes, hours: hours}, '',
+  '/photos?photographers=' + photographers + '&hour=' + hours + '&minute=' + minutes)
