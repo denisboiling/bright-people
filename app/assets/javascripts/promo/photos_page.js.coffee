@@ -100,7 +100,7 @@ get_by_params =(params) ->
                    if $.urlParam(params) == "" || $.urlParam(params) == 0
                      []
                    else
-                     $.urlParam(params).split(',')
+                     decodeURIComponent($.urlParam(params)).split(',')
                  else
                    $.urlParam(params)
 
