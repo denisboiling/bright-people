@@ -267,5 +267,7 @@ window.push_history = ->
   hours = $('#bri-form-hour').val()
   minutes = $('#bri-form-minute').val()
   photographers = $('#bri-form-photographers').val()
-  history.pushState({photographers: photographers, minutes: minutes, hours: hours}, '',
-  '/photos?photographers=' + photographers + '&hour=' + hours + '&minute=' + minutes)
+  page = $('#bri-form-page').val()
+
+  history.pushState({photographers: photographers, minutes: minutes, hours: hours, page: page}, '',
+  "/photos?photographers=#{photographers}&hour=#{hours}&minute=#{minutes}&page=#{page}")
