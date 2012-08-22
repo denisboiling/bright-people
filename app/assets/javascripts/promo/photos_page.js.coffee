@@ -100,7 +100,7 @@ get_by_params =(params) ->
                    if $.urlParam(params) == "" || $.urlParam(params) == 0
                      []
                    else
-                     $.urlParam(params).split('%2C')
+                     $.urlParam(params).split(',')
                  else
                    $.urlParam(params)
 
@@ -116,15 +116,17 @@ set_page_one =() ->
 active_photographers_by_params =() ->
   return if get_by_params('photographers') == "" || get_by_params('photographers') == []
   photographer_ids = get_by_params('photographers')
+  console.log(photographer_ids)
   for id in photographer_ids
     photographer = $("div.bri-photographer[data-id='#{id}']")
-    photographer.toggleClass('active')
-    photographer.find('.bri-photo').slideToggle('fast')
-    photographer.find('.bri-camera').slideToggle('fast')
+    photographer.addClass('active')
+    photographer.find('.bri-photo').slideDown('fast')
+    photographer.find('.bri-camera').slideDown('fast')
   if photographer_ids.length == 10
     $('#bri-photographers-select-all')
       .toggleClass('active')
       .html('Убрать всех фотографов')
+  $('#bri-form-photographers').val(photographer_ids)
 
 
 # When all photos are downloaded we execute this method for
@@ -219,6 +221,19 @@ window.setup_photos_page = ->
     $("#bri-form-photographers").val(window.choose_photographers())
     window.loaded = 0
     true
+
+  window.addEventListener "popstate", (e) ->
+    arr = get_by_params('photographers')
+    $("div.bri-photographer.active").each ->
+      if arr.indexOf($(this).attr('data-id')) == -1
+        $(this).trigger('click')
+    active_photographers_by_params()
+    ### # trigger hour hands movements
+    h = get_by_params('hour')
+    m = get_by_params('minute')
+    hour_angle = (h - 10) * 30 - 60;
+    minute_angle = (m / 5) * 30;
+    ###
 
 window.push_history = ->
   hours = $('#bri-form-hour').val()
