@@ -60,4 +60,9 @@ module ApplicationHelper
               end
     Russian::strftime(time, _format)
   end
+
+  def image_full_url(img_path)
+    return img_path unless ActionController::Base.asset_host
+    File.join(ActionController::Base.asset_host, img_path)
+  end
 end

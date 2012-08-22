@@ -16,4 +16,5 @@ BrightPeople::Application.configure do
   config.fb_page_name = 'Mytestpage'
   config.fb_app_id = '245615425549849'
   config.fb_app_secret = '17849468bffdd53974e21bac98b397e9'
+  # config.action_controller.asset_host = "http://buzzja.mine.nu"
 end

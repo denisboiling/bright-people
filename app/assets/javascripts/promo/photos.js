@@ -14,46 +14,15 @@ function photos (){
 	    theme: 'pp_default',
 	    gallery_markup: '',
 	    changepicturecallback: function(){
-		(function(d, s, id) {
-		    var js, fjs = d.getElementsByTagName(s)[0];
-		    if (d.getElementById(id)) return;
-		    js = d.createElement(s); js.id = id;
-		    js.src = "//connect.facebook.net/ru_RU/all.js#xfbml=1&appId=359292310775946";
-		    fjs.parentNode.insertBefore(js, fjs);
-		}(document, "script", "facebook-jssdk"));
-      },
-	    social_tools: '<div class="count_view"></div><div class="download_pic"><a></a></div><div class="pp_social"> \
-<div class="soc_like_button"> \
-<script type="text/javascript" src="http://userapi.com/js/api/openapi.js?45"></script>\
-<script type="text/javascript">\
-  VK.init({apiId: 2953652, onlyWidgets: true});\
-</script>\
-<!-- Put this div tag to the place, where the Like block will be -->\
-<div id="vk_like"></div>\
-<script type="text/javascript">\
-VK.Widgets.Like("vk_like", {type: "button", height: 22}, {data_id});\
-</script>\
-</div> \
-<div class="soc_like_button"> \
-<div id="vk_share">\
-<script type="text/javascript">VK.Share.button(false,{type: "round_nocount", text: "Поделиться"});</script>\
-</div> \
-</div> \
-<div class="soc_like_button"> \
-  <div class="fb-like" data-href="{location_href}" data-send="false" data-layout="button_count" data-width="80" data-show-faces="false"></div> \
-</div>\
-<div class="soc_like_button"> \
-<!-- Вставьте этот тег в заголовок или непосредственно перед закрывающим тегом . -->\
-<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>\
-<!-- Поместите этот тег туда, где должна отображаться кнопка +1. -->\
-<div class="g-plusone" data-size="medium" data-href="{location_uri_g}"></div> \
-</div> \
-<div class="soc_like_button"> <link href="http://stg.odnoklassniki.ru/share/odkl_share.css" rel="stylesheet"><a class="odkl-share-oc" href={location_href} onclick="ODKL.Share(this);return false;" ><span>0</span></a><script src="http://stg.odnoklassniki.ru/share/odkl_share.js" type="text/javascript" ></script></div> \
-<div class="soc_like_button"> \
-<a href="https://twitter.com/share" class="twitter-share-button" href="{location_href}" data-lang="ru">Твитнуть</a> \
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script> \
-</div>' /* html or false to disable */
-    })
+		var image_path = $("#pp_full_res img").attr("src");
+		$("#link-img").attr("href", image_path);
+		$("meta[property='og:image']").attr("content", image_path);
+		console.log($("meta[property='og:image']"));
+		window.fbAsyncInit();
+
+	    },
+	    social_tools: $("div#social_photo").html()
+	})
     }
 
     window.pretty_init_photo()
