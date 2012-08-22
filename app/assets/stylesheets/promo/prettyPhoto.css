@@ -6,7 +6,7 @@ div.pp_default .pp_content .ppt{color:#f8f8f8; }
 div.pp_default .pp_content { padding-bottom: 20px; min-width: 568px}
 
 div.pp_default .pp_hoverContainer { min-width: 568px}
-div.pp_default.pp_pic_holder {  min-width: 600px; margin-top: -65px; }
+div.pp_default.pp_pic_holder {  min-width: 600px; }
 div.pp_default #pp_full_res { text-align: center;}
 
 
