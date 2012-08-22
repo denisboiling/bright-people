@@ -113,7 +113,7 @@ VK.Widgets.Like("vk_like", {type: "button", height: 22}, {data_id});\
       })
 
 
-    var clock = 
+    window.clock = 
         new Clock
         (
           // Element

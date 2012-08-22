@@ -228,12 +228,40 @@ window.setup_photos_page = ->
       if arr.indexOf($(this).attr('data-id')) == -1
         $(this).trigger('click')
     active_photographers_by_params()
-    ### # trigger hour hands movements
+    # trigger hour hands movements
     h = get_by_params('hour')
     m = get_by_params('minute')
     hour_angle = (h - 10) * 30 - 60;
     minute_angle = (m / 5) * 30;
-    ###
+    $("#bri-form-hour").val(h)
+    $("#bri-form-minute").val(m)
+    hour_colours = ['#fff368','#ffec1d','#ffdd3f','#ffd22d','#fec905','#fcbf07','#ffb400','#ffa800','#f89c1e','#f1900c','#f8820f','#f9760c'];
+    base_hour_color = '#c94364';
+    minute_colours = ['#ebf736','#e1ed34','#d9e432','#cedb0e','#c7d40c','#c1ce08','#b7c708','#afd247','#a7ca3f','#90c119','#86bd00','#73bc00'];
+    base_minute_color = '#e4dacb';
+    clock.minuteHand.animate({
+        transform: 't'+clock.minuteHand.marginLeft+','+clock.minuteHand.marginTop+'r' + minute_angle + ','+clock.minuteHand.hx+','+clock.minuteHand.hy
+      },
+      2500,
+      '<>'
+    )
+    clock.hourHand.animate({
+        transform: 't'+clock.hourHand.marginLeft+','+clock.hourHand.marginTop+'r' + hour_angle + ','+clock.hourHand.hx+','+clock.hourHand.hy
+      },
+      1500,
+      '<>'
+    )
+    arr = $('svg path').slice(0, 12).toArray();
+    arr.reverse();
+    for i in arr
+      $(i).attr('stroke', base_hour_color )
+    $(arr[h - 10]).attr('stroke', hour_colours[h - 10]);
+    arr = $('svg path').slice(12, 24).toArray();
+    arr.reverse();
+    for i in arr
+      $(i).attr('stroke', base_minute_color )
+    $(arr[ m / 5 ]).attr('stroke', minute_colours[m/5]);
+
 
 window.push_history = ->
   hours = $('#bri-form-hour').val()
