@@ -30,7 +30,7 @@ function photos (){
                                <div id="vk_share"></div> \
                              </div> \
                              <div class="soc_like_button"> \
-                               <a href="https://twitter.com/share" class="twitter-share-button" data-lang="ru" data-url="' + location.href + '">Твитнуть</a> \
+                               <a href="https://twitter.com/share" class="twitter-share-button" data-lang="ru" data-text="Яркие Люди" data-url="' + location.href + '" >Твитнуть</a> \
                              </div> \
                              <div class="soc_like_button"> \
                                <div class="g-plusone" data-size="medium" data-href="' + location.href + '"></div> \
