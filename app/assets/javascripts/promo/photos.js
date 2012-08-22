@@ -93,7 +93,7 @@ function photos (){
       })
 
 
-    var clock = 
+    window.clock = 
         new Clock
         (
           // Element
