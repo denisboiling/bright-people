@@ -14,12 +14,7 @@ function photos (){
 	    theme: 'pp_default',
 	    gallery_markup: '',
 	    changepicturecallback: function(){
-		var image_path = $("#pp_full_res img").attr("src");
-		$("#link-img").attr("href", image_path);
-		$("meta[property='og:image']").attr("content", image_path);
-		console.log($("meta[property='og:image']"));
 		window.fbAsyncInit();
-
 	    },
 	    social_tools: $("div#social_photo").html()
 	})

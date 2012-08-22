@@ -58,10 +58,17 @@ $.prettyPhoto.close();e.preventDefault();break;};};};});};$.prettyPhoto.initiali
 $(window).bind('scroll.prettyphoto',function(){_center_overlay();});$.prettyPhoto.open();return false;}
 $.prettyPhoto.open=function(event){
   // Khodzha's code ///////////////////////////////////////////////////
-  var photo_id = pp_images[set_position].split("/")[4];
+  var social_image = pp_images[set_position];
+  var a_img = $("a[href='" + social_image + "']");
+
+  var photo_id = a_img.attr('data-id');
+  var big = a_img.attr("data-big");
+  var views = parseInt(a_img.attr("data-views"));
+
+
   var photos_array = JSON.parse(localStorage.getItem('bp_photos'));
-  var views = parseInt($("a[data-id=" + photo_id +"]").attr("data-views"));
-  var big = $("a[data-id=" + photo_id +"]").attr("data-big");
+
+
   if (!photos_array) {
     photos_array = [];
   }
@@ -83,7 +90,7 @@ setHashtag();if(settings.social_tools){
   $('head').append('<meta property="og:site_name" content="&#x424;&#x435;&#x441;&#x442;&#x438;&#x432;&#x430;&#x43b;&#x44c; &#x42f;&#x440;&#x43a;&#x438;&#x435; &#x43b;&#x44e;&#x434;&#x438;" /> \
     <meta property="og:title" content="&#x424;&#x43e;&#x442;&#x43e;&#x433;&#x440;&#x430;&#x444;&#x438;&#x44f; &#x441; &#x444;&#x435;&#x441;&#x442;&#x438;&#x432;&#x430;&#x43b;&#x44f; &quot;&#x42f;&#x440;&#x43a;&#x438;&#x435; &#x43b;&#x44e;&#x434;&#x438;&quot;" /> \
     <meta property="og:url" content="' + location.href + '" /> \
-    <meta property="og:image" content="' + big + '" /> \
+    <meta property="og:image" content="' + social_image + '" /> \
     <meta property="og:type" content="non_profit" /> \
     <meta property="fb:app_id" content="359292310775946" /> \
     <meta property="og:description" content="&#x424;&#x43e;&#x442;&#x43e;&#x433;&#x440;&#x430;&#x444;&#x438;&#x44f; &#x441; &#x444;&#x435;&#x441;&#x442;&#x438;&#x432;&#x430;&#x43b;&#x44f; &quot;&#x42f;&#x440;&#x43a;&#x438;&#x435; &#x43b;&#x44e;&#x434;&#x438;&quot;"/>'
