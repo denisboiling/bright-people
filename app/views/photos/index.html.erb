@@ -1,4 +1,5 @@
-<% @body_class="photos" %>
+<% @body_class = "photos" %>
+<% @meta_image = image_full_url(@photo.first.photo.url(:medium, false)) if @photo.present? %>
 
 <% content_for :after_head do %>
   <link rel="image_src" href="" id="link-img" />
