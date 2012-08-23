@@ -13,7 +13,13 @@ function photos (){
 	    allow_resize: true,
 	    theme: 'pp_default',
 	    gallery_markup: '',
+	    deeplinking: false,
+	    callback: function(){
+		$('#bri-form-photo').val('');
+		window.push_history();
+	    },
 	    changepicturecallback: function(){
+		console.log("open");
 		window.fbAsyncInit();
 		window.vk_init("Яркие Люди", location.href, $("#pp_full_res img").attr("src"));
 		$("a.twitter-share-button").attr("data-url", location.href)

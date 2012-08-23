@@ -50,7 +50,8 @@
   <%= hidden_field_tag :photographers, params[:photographers] || '', id: 'bri-form-photographers' %>
   <%= hidden_field_tag :hour, params[:hour] || 10, id: 'bri-form-hour' %>
   <%= hidden_field_tag :minute, params[:minute] || 00, id: 'bri-form-minute' %>
-  <%= hidden_field_tag :page, params[:page] || 1, id: 'bri-form-page' %>
+  <%= hidden_field_tag :page, params[:page] || 0, id: 'bri-form-page' %>
+  <%= hidden_field_tag :photo, params[:photo] || '', id: 'bri-form-photo' %>
 <% end %>
 
 <script> $(document).ready(function(){ photos() })</script>

@@ -61,6 +61,7 @@ window.i_loaded =(img) ->
     window.pretty_init_photo()
     $("#bri-preloader").hide()
     window.stop_loaded = false
+    open_first_photo()
 
   console.log window.loaded
 
@@ -83,7 +84,6 @@ scroll_loading =() ->
   if $(window).scrollTop() + $(window).height() > $(document).height() - 150
     return if all_downloaded()
     return if stop_loaded()
-    $("#bri-form-page").val(parseInt($("#bri-form-page").val()) + 1)
     window.append = true
     window.stop_loaded = true
     $("form#bri-form-photos").submit()
@@ -92,6 +92,12 @@ $.urlParam = (name) ->
   results = new RegExp("[\\?&]" + name + "=([^&#]*)").exec(window.location.href)
   return "" if results == null
   results[1] or 0
+
+# When open url with 'photo' params present we open first img
+open_first_photo =() ->
+  return if typeof(window.first_load) == 'undefined' && window.first_load == false
+  unless $.urlParam("photo") == "" || $.urlParam("photo") == 0
+    $("a[rel^='prettyPhoto']:first").click()
 
 # OPTIMIZE: brr ugly
 get_by_params =(params) ->
@@ -174,6 +180,7 @@ window.setup_photos_page = ->
   window.loaded = $("div.hidden-photos").find('img').size()
   bri_hd_sw()
   scroll_loading()
+  window.first_load = true
 
   $('.bri-photo-box.bri-hd').live 'click', ->
     bri_hd_photo($(this))
@@ -210,6 +217,7 @@ window.setup_photos_page = ->
     else
       $("#bri-preloader").show()
       if append_photos()
+        $("#bri-form-page").val(parseInt($("#bri-form-page").val()) + 1)
         $("div.am-container#am-container").append("<div class='hidden-photos'>#{xhr}</div>")
         window.loaded = window.loaded + $(xhr).find('img').size()
       else
@@ -268,6 +276,7 @@ window.push_history = ->
   minutes = $('#bri-form-minute').val()
   photographers = $('#bri-form-photographers').val()
   page = $('#bri-form-page').val()
+  photo = $('#bri-form-photo').val()
 
   history.pushState({photographers: photographers, minutes: minutes, hours: hours, page: page}, '',
-  "/photos?photographers=#{photographers}&hour=#{hours}&minute=#{minutes}&page=#{page}")
+  "/photos?photographers=#{photographers}&hour=#{hours}&minute=#{minutes}&page=#{page}&photo=#{photo}")

@@ -187,6 +187,10 @@
 		    var big = a_img.attr("data-big");
 		    var views = parseInt(a_img.attr("data-views"));
 		    var photos_array = JSON.parse(localStorage.getItem('bp_photos'));
+		    
+		    $('#bri-form-photo').val(photo_id);
+		    window.push_history();
+
 		    if (!photos_array) {
 			photos_array = [];
 		    }
@@ -927,7 +931,6 @@
 	function getHashtag(){
 		url = location.href;
 		hashtag = (url.indexOf('#prettyPhoto') !== -1) ? decodeURI(url.substring(url.indexOf('#prettyPhoto')+1,url.length)) : false;
-
 		return hashtag;
 	};
 	
