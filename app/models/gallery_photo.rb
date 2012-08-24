@@ -82,7 +82,7 @@ class GalleryPhoto < ActiveRecord::Base
     self.processing = false
     photo.reprocess!
     save
-    add_watermark
+    add_watermark if self.festival_category_id == nil
     landscape!
   end
 
