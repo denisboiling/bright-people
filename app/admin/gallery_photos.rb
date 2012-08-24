@@ -2,6 +2,9 @@
 ActiveAdmin.register GalleryPhoto do
   menu label: "Галерея", :parent => "Фото модуль"
 
+  scope :all, :default => true
+  scope :festival_photos
+
   filter :id
   filter :user, as: :select, collection: proc { User.photographers }
   filter :photo_file_name
