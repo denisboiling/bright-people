@@ -61,6 +61,7 @@ window.i_loaded =(img) ->
     window.pretty_init_photo()
     $("#bri-preloader").hide()
     window.stop_loaded = false
+    open_first_photo()
 
   console.log window.loaded
 
@@ -83,7 +84,6 @@ scroll_loading =() ->
   if $(window).scrollTop() + $(window).height() > $(document).height() - 150
     return if all_downloaded()
     return if stop_loaded()
-    $("#bri-form-page").val(parseInt($("#bri-form-page").val()) + 1)
     window.append = true
     window.stop_loaded = true
     $("form#bri-form-photos").submit()
@@ -93,6 +93,12 @@ $.urlParam = (name) ->
   return "" if results == null
   results[1] or 0
 
+# When open url with 'photo' params present we open first img
+open_first_photo =() ->
+  return if typeof(window.first_load) == 'undefined' && window.first_load == false
+  unless $.urlParam("photo") == "" || $.urlParam("photo") == 0
+    $("a[rel^='prettyPhoto']:first").click()
+
 # OPTIMIZE: brr ugly
 get_by_params =(params) ->
   ret_params = switch params
@@ -100,7 +106,7 @@ get_by_params =(params) ->
                    if $.urlParam(params) == "" || $.urlParam(params) == 0
                      []
                    else
-                     $.urlParam(params).split('%2C')
+                     decodeURIComponent($.urlParam(params)).split(',')
                  else
                    $.urlParam(params)
 
@@ -116,15 +122,17 @@ set_page_one =() ->
 active_photographers_by_params =() ->
   return if get_by_params('photographers') == "" || get_by_params('photographers') == []
   photographer_ids = get_by_params('photographers')
+  console.log(photographer_ids)
   for id in photographer_ids
     photographer = $("div.bri-photographer[data-id='#{id}']")
-    photographer.toggleClass('active')
-    photographer.find('.bri-photo').slideToggle('fast')
-    photographer.find('.bri-camera').slideToggle('fast')
+    photographer.addClass('active')
+    photographer.find('.bri-photo').slideDown('fast')
+    photographer.find('.bri-camera').slideDown('fast')
   if photographer_ids.length == 10
     $('#bri-photographers-select-all')
       .toggleClass('active')
       .html('Убрать всех фотографов')
+  $('#bri-form-photographers').val(photographer_ids)
 
 
 # When all photos are downloaded we execute this method for
@@ -172,6 +180,7 @@ window.setup_photos_page = ->
   window.loaded = $("div.hidden-photos").find('img').size()
   bri_hd_sw()
   scroll_loading()
+  window.first_load = true
 
   $('.bri-photo-box.bri-hd').live 'click', ->
     bri_hd_photo($(this))
@@ -199,6 +208,7 @@ window.setup_photos_page = ->
 
   $("form#bri-form-photos").bind 'ajax:success', (event, xhr) ->
     window.stop_loaded = true
+    window.push_history()
     window.loaded = window.loaded + $(xhr).find('img').size() * 2
     console.log "HOW NEEED: #{window.loaded}"
 
@@ -207,6 +217,7 @@ window.setup_photos_page = ->
     else
       $("#bri-preloader").show()
       if append_photos()
+        $("#bri-form-page").val(parseInt($("#bri-form-page").val()) + 1)
         $("div.am-container#am-container").append("<div class='hidden-photos'>#{xhr}</div>")
         window.loaded = window.loaded + $(xhr).find('img').size()
       else
@@ -218,3 +229,54 @@ window.setup_photos_page = ->
     $("#bri-form-photographers").val(window.choose_photographers())
     window.loaded = 0
     true
+
+  window.addEventListener "popstate", (e) ->
+    arr = get_by_params('photographers')
+    $("div.bri-photographer.active").each ->
+      if arr.indexOf($(this).attr('data-id')) == -1
+        $(this).trigger('click')
+    active_photographers_by_params()
+    # trigger hour hands movements
+    h = get_by_params('hour')
+    m = get_by_params('minute')
+    hour_angle = (h - 10) * 30 - 60;
+    minute_angle = (m / 5) * 30;
+    $("#bri-form-hour").val(h)
+    $("#bri-form-minute").val(m)
+    hour_colours = ['#fff368','#ffec1d','#ffdd3f','#ffd22d','#fec905','#fcbf07','#ffb400','#ffa800','#f89c1e','#f1900c','#f8820f','#f9760c'];
+    base_hour_color = '#c94364';
+    minute_colours = ['#ebf736','#e1ed34','#d9e432','#cedb0e','#c7d40c','#c1ce08','#b7c708','#afd247','#a7ca3f','#90c119','#86bd00','#73bc00'];
+    base_minute_color = '#e4dacb';
+    clock.minuteHand.animate({
+        transform: 't'+clock.minuteHand.marginLeft+','+clock.minuteHand.marginTop+'r' + minute_angle + ','+clock.minuteHand.hx+','+clock.minuteHand.hy
+      },
+      2500,
+      '<>'
+    )
+    clock.hourHand.animate({
+        transform: 't'+clock.hourHand.marginLeft+','+clock.hourHand.marginTop+'r' + hour_angle + ','+clock.hourHand.hx+','+clock.hourHand.hy
+      },
+      1500,
+      '<>'
+    )
+    arr = $('svg path').slice(0, 12).toArray();
+    arr.reverse();
+    for i in arr
+      $(i).attr('stroke', base_hour_color )
+    $(arr[h - 10]).attr('stroke', hour_colours[h - 10]);
+    arr = $('svg path').slice(12, 24).toArray();
+    arr.reverse();
+    for i in arr
+      $(i).attr('stroke', base_minute_color )
+    $(arr[ m / 5 ]).attr('stroke', minute_colours[m/5]);
+
+
+window.push_history = ->
+  hours = $('#bri-form-hour').val()
+  minutes = $('#bri-form-minute').val()
+  photographers = $('#bri-form-photographers').val()
+  page = $('#bri-form-page').val()
+  photo = $('#bri-form-photo').val()
+
+  history.pushState({photographers: photographers, minutes: minutes, hours: hours, page: page}, '',
+  "/photos?photographers=#{photographers}&hour=#{hours}&minute=#{minutes}&page=#{page}&photo=#{photo}")
