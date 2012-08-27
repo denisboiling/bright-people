@@ -5,10 +5,8 @@ photos = Dir.glob(Rails.root.join('db/sample/files/*/', '*.jpg'))
 
 photos_count = ENV['PHOTOS_COUNT'].present? ? ENV['PHOTOS_COUNT'].to_i : 300
 
-photographer = User.find_by_email('photographer1@example.com')
-
 photos_count.times.each do |i|
-  GalleryPhoto.create(user_id: [photographer.id, User.junior_photographers.sample.id].sample,
+  GalleryPhoto.create(user_id: User.junior_photographers.sample.id,
                       photo: File.new(photos.sample),
                       views: rand(1..9999),
                       festival_category_id: (rand(2) == 1) ? rand(1..5) : nil

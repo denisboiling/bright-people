@@ -75,6 +75,7 @@ namespace :load_staging do
 
   task :gallery_photo_new, :roles => :app do
     run "cd #{latest_release}; RAILS_ENV=staging bundle exec rails runner 'GalleryPhoto.destroy_all'"
+    run "cd #{latest_release}; RAILS_ENV=staging bundle exec rake 'db:load_file[db/sample/festival_categories.yml]'"
     run "cd #{latest_release}; RAILS_ENV=staging PHOTOS_COUNT=600 bundle exec rails runner 'load Rails.root.join(\"db/sample/gallery_photos.rb\")'"
   end
 end
