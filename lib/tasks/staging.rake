@@ -45,7 +45,8 @@ namespace :staging do
       puts "Images already exists #{tmp_file}"
     else
       puts "Start download images from production server"
-      %x(ssh rvm_user@bright-people.ru "cd /var/www/bright-people/shared && tar czf - system" > #{tmp_file})
+      %x(ssh rvm_user@bright-people.ru "cd /var/www/bright-people/shared && \
+                                        tar --exclude=system/gallery_photos --exclude=system/arhives -czf - system" > #{tmp_file})
     end
     %x(cd #{folder} && tar xvf #{tmp_file})
   end

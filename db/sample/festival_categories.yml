@@ -1,5 +1,5 @@
 <% 1.upto(5).each do |i| %>
 festival_category_<%= i %>:
   id: <%= i %>
-  title: <%= Faker::Lorem.words.join(' ') %>
+  title: festival category <%= i %>
 <% end %>
