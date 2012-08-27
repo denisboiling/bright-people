@@ -54,7 +54,7 @@ function Clock ( el, setHour, setMinute )
    * Clock base drawing
    */
   , drawClockBase :
-      function ( angle, num, radius, segmentAngle, colors, timeMultiplier, strokeWidth, strokeColor, onClick, set )
+      function ( angle, num, radius, digitRadius, segmentAngle, colors, timeMultiplier, strokeWidth, strokeColor, onClick, set )
       {
         for (var i=0; i<num; i++)
         {
@@ -71,8 +71,8 @@ function Clock ( el, setHour, setMinute )
           set.push(segment)
 
           // Clock base digit
-          var x = (radius+strokeWidth+2)*Math.cos( obj.toRadians(angle) )
-          ,   y = (radius+strokeWidth+2)*Math.sin( obj.toRadians(angle) )
+          var x = (digitRadius)*Math.cos( obj.toRadians(angle) )
+          ,   y = (digitRadius)*Math.sin( obj.toRadians(angle) )
           ,   tmpLabel = obj.paper.print( obj.cx+x, obj.cy+y, eval(timeMultiplier.replace('%',i)), obj.paper.getFont('a_FuturaRoundDemi'), obj.fontSize )
                       .attr( 'fill', strokeColor )
                       .toFront()
@@ -112,7 +112,7 @@ function Clock ( el, setHour, setMinute )
    */
   obj.drawClockBase 
   (
-    -90, 12, obj.minuteRadius, 360/12, obj.minuteSegmentColors, '5*%', obj.minuteStroke, obj.minuteStrokeColor
+    -90, 12, obj.minuteRadius, obj.minuteRadius+obj.minuteStroke*1.5, 360/12, obj.minuteSegmentColors, '5*%', obj.minuteStroke, obj.minuteStrokeColor
   , function (segment)
     {
       console.log(segment)
@@ -171,7 +171,7 @@ function Clock ( el, setHour, setMinute )
    */
   obj.drawClockBase 
   (
-    -150, 12, obj.hourRadius, 360/12, obj.hourSegmentColors, '10+%', obj.hourStroke, obj.hourStrokeColor
+    -150, 12, obj.hourRadius, obj.hourRadius+obj.hourStroke*1.1, 360/12, obj.hourSegmentColors, '10+%', obj.hourStroke, obj.hourStrokeColor
   , function (segment)
     {
       obj.hourClock.forEach(function(item)
