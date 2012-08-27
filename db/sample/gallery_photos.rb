@@ -10,5 +10,7 @@ photographer = User.find_by_email('photographer1@example.com')
 photos_count.times.each do |i|
   GalleryPhoto.create(user_id: [photographer.id, User.junior_photographers.sample.id].sample,
                       photo: File.new(photos.sample),
-                      views: rand(1..9999))
+                      views: rand(1..9999),
+                      festival_category_id: (rand(2) == 1) ? rand(1..5) : nil
+                     )
 end
