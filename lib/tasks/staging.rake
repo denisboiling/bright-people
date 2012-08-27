@@ -46,7 +46,7 @@ namespace :staging do
     else
       puts "Start download images from production server"
       %x(ssh rvm_user@bright-people.ru "cd /var/www/bright-people/shared && \
-                                        tar --exclude=system/gallery_photos --exclude=system/arhives -czf - system |gzip -9" > #{tmp_file})
+                                        tar --exclude=system/gallery_photos --exclude=system/arhives -czf - system" > #{tmp_file})
     end
     %x(cd #{folder} && tar xvf #{tmp_file})
   end
