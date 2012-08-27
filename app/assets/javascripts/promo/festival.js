@@ -32,7 +32,7 @@ function festival ()
                            <div class="pp_social"> \
                              <div class="soc_like_button"> \
                                <div class="fb-like" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div> \
-                             </div> \
+                             </div><br> \
                              <div class="soc_like_button"> \
                                <div id="vk_like"></div> \
                              </div> \
@@ -51,13 +51,30 @@ function festival ()
 
     window.pretty_init_photo()
 
-    $('#am-container')
-      .montage(
+    var imgs   = $('#am-container').find('img')
+    ,   total  = imgs.length
+    ,   loaded = 0
+
+    imgs
+      .each(function()
       {
-        minsize     : true
-      , fillLastRow : true
-      , fixedHeight : 110
-      , minw        : 110
+        $(this)
+          .load(function()
+          {
+            loaded++
+            if (loaded == total)
+            {
+              $('#am-container')
+                .montage(
+                {
+                  minsize     : true
+                , fillLastRow : false
+                , fixedHeight : 110
+                , minw        : 110
+                })
+              window.pretty_init_photo()
+            }
+          })
       })
 
     $('#bri-fest-events div.bri-item ')
@@ -105,8 +122,6 @@ function festival ()
           var imgs   = $('#am-container').find('img')
           ,   total  = imgs.length
           ,   loaded = 0
-          
-          console.log(imgs)
 
           imgs
             .each(function()
@@ -121,7 +136,7 @@ function festival ()
                       .montage(
                       {
                         minsize     : true
-                      , fillLastRow : true
+                      , fillLastRow : false
                       , fixedHeight : 110
                       , minw        : 110
                       })

@@ -34,7 +34,12 @@ body.photos
       height: 220px;
     }
 
-    .bri-photo-box {float:left; position:relative}
+    .bri-photo-box 
+    {      
+      position: relative;
+      float: left;
+      overflow: hidden;
+    }
 
     #bri-photographers
     {
@@ -231,6 +236,8 @@ body.photos
 {
 }
 
+  #am-container > div { float: left; }
+
   .am-wrapper 
   {
     position: relative;
@@ -268,7 +275,7 @@ body.photos
 
       .bri-photo-box.bri-hd.active img { opacity: 1; }
 
-.soc_like_button { float: left; margin-right: 10px; height: 22px; margin-bottom: 4px}
+.soc_like_button { float: left; margin-right: 10px; height: 22px; margin-bottom: 4px; width: 100px;}
 
 
 

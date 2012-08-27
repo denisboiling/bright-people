@@ -43,9 +43,8 @@ relocate_photos =(div) ->
       ++cnt
       if cnt is totalImgs
         container.montage
-          minsize: true
-          fillLastRow: true
-          fixedHeight: 110
+          fillLastRow : true
+          fixedHeight : 110
     ).attr "src", img.attr("src")
   
 # This method should be executed on onload event in image

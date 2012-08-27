@@ -30,7 +30,7 @@ function photos (){
                            <div class="pp_social"> \
                              <div class="soc_like_button"> \
                                <div class="fb-like" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div> \
-                             </div> \
+                             </div><br> \
                              <div class="soc_like_button"> \
                                <div id="vk_like"></div> \
                              </div> \
