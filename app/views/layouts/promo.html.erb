@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html class="<%= @body_class %>">
+<html class=<%= @body_class %>>
   <head>
     <title><%= yield(:title).present? ? yield(:title) : 'Фестиваль Яркие Люди' %></title>
     <meta property="og:site_name" content="Яркие Люди" />
     <meta property="og:title" content="Яркие Люди" />
     <meta property="og:type" content="non_profit" />
-    <meta property="og:description" content="Яркие Люди"/>'
+    <meta property="og:description" content="Яркие Люди"/>
     <meta property="og:image" content=<%= @meta_image %> />
     <%= yield :before_head %>
     <%= stylesheet_link_tag 'promo/application', :media => "all" %>
