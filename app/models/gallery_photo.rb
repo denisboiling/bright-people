@@ -122,7 +122,7 @@ class GalleryPhoto < ActiveRecord::Base
 
     # We can send to this method params:
     # GalleryPhoto.first.last || [GalleryPhoto.first.first GalleryPhoto.first.last] || [1, 2, 3]
-    def create_archive(photos)
+    def create_archive(photos, style=:big)
       # Generate random arhive name. If arhive already exist, create with another name
       def create_archive_dir
         dir = File.join(@public_dir, 24.times.map{ ('a'..'z').to_a[rand(26)] }.join)
@@ -138,7 +138,7 @@ class GalleryPhoto < ActiveRecord::Base
       _photos = photos.first.class.name == 'GalleryPhoto' ? photos : self.find(photos)
 
       Zip::ZipFile.open(arhive_dir + '.zip', Zip::ZipFile::CREATE) do |zipfile|
-        _photos.each {|photo| zipfile.add("#{photo.id}.jpg", photo.photo.path(:big)) }
+        _photos.each {|photo| zipfile.add("#{photo.id}.jpg", photo.photo.path(style)) }
       end
 
       File.chmod(0644, arhive_dir + '.zip')
