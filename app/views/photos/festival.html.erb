@@ -4,7 +4,6 @@
 
   <header>
 
-    <div id="bri-bezier"></div>
     <div id="bri-fest-events">
       <% @top_categories.each do |topcat| %>
         <div class="bri-item">
@@ -19,9 +18,12 @@
     </div>
 
   </header>
-  <div class="container">
+  
+  <div class="container am-container" id="am-container">
     <%= render 'photos', photos: @photos %>
   </div>
+  <div class="clearfix"></div>
+
 </div>
 
 <script> $(document).ready(function(){ festival() }) </script>

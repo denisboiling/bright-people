@@ -43,15 +43,14 @@ relocate_photos =(div) ->
       ++cnt
       if cnt is totalImgs
         container.montage
-          minsize: true
-          fillLastRow: true
-          minh: 110
-          maxh: 110
+          fillLastRow : true
+          fixedHeight : 110
     ).attr "src", img.attr("src")
   
-# This method should be execute on onload in image
+# This method should be executed on onload event in image
 # When count of loaded images and window.loaded == 0
 # remove hidden class
+# o/ Grammar-Nazi was here
 window.i_loaded =(img) ->
   window.loaded = window.loaded - 1
   if window.loaded == 0
@@ -63,7 +62,6 @@ window.i_loaded =(img) ->
     window.stop_loaded = false
     open_first_photo()
 
-  console.log window.loaded
 
 # Return true if new photos should be append
 append_photos =() ->
@@ -272,11 +270,13 @@ window.setup_photos_page = ->
 
 
 window.push_history = ->
-  hours = $('#bri-form-hour').val()
-  minutes = $('#bri-form-minute').val()
-  photographers = $('#bri-form-photographers').val()
-  page = $('#bri-form-page').val()
-  photo = $('#bri-form-photo').val()
+  switch window.location.pathname.slice(1)
+    when 'photos'
+      hours = $('#bri-form-hour').val()
+      minutes = $('#bri-form-minute').val()
+      photographers = $('#bri-form-photographers').val()
+      page = $('#bri-form-page').val()
+      photo = $('#bri-form-photo').val()
 
-  history.pushState({photographers: photographers, minutes: minutes, hours: hours, page: page}, '',
-  "/photos?photographers=#{photographers}&hour=#{hours}&minute=#{minutes}&page=#{page}&photo=#{photo}")
+      history.pushState({photographers: photographers, minutes: minutes, hours: hours, page: page}, '',
+      "/photos?photographers=#{photographers}&hour=#{hours}&minute=#{minutes}&page=#{page}&photo=#{photo}")

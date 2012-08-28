@@ -4,6 +4,7 @@ ActiveAdmin.register GalleryPhoto do
 
   scope :all, :default => true
   scope :festival_photos
+  scope :not_festival_photos
 
   filter :id
   filter :user, as: :select, collection: proc { User.photographers }

@@ -24,7 +24,7 @@ describe GalleryPhoto, current: true do
     it "Should create unic folder for archive" do
       photo = FactoryGirl.create(:gallery_photo)
       GalleryPhoto.create_archive(photo)
-      File.directory?(Rails.root.join('public/arhives')).should == true
+      File.directory?(Rails.root.join('public/system/arhives')).should == true
     end
 
     it "Should create zip artiche with random name" do
