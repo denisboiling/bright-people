@@ -12,18 +12,13 @@ task :tail_logs, :roles => :app do
   end
 end
 
-namespace :deploy do
-  task :remove_assets_folder, roles: :app do
-    run "cd #{latest_release} && rm -rf public/assets && mkdir public/assets"
-  end
-end
-
 namespace :rails do
   desc "Open the rails console on one of the remote servers"
   task :console, :roles => :app do
     hostname = find_servers_for_task(current_task).first
     exec "ssh -l #{user} #{hostname} -t 'export LC_ALL=ru_RU.utf8 && \
                                          cd #{latest_release} && \
+                                         source #{rvm_bin_path}/rvm && \
                                          source .rvmrc && \
                                          RAILS_ENV=#{rails_env} bundle exec rails c'"
   end
@@ -37,10 +32,16 @@ namespace :rake_exec do
   end
 end
 
+namespace :deploy do
+  task :remove_assets_folder, roles: :app do
+    run "cd #{latest_release} && rm -rf public/assets && mkdir public/assets"
+  end
+end
+
 namespace :delayed_job do
   desc "Restart the delayed_job process"
   task :restart, :roles => :app do
-    run "cd #{latest_release}; RAILS_ENV=#{rails_env} script/delayed_job -n 2 restart"
+    run "cd #{latest_release}; RAILS_ENV=#{rails_env} script/delayed_job -n #{delayed_workers || 1} restart"
   end
 
   task :stop, :roles => :app do
