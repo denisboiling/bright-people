@@ -258,6 +258,8 @@ ru:
         shot_date: Дата съемки
         user: Фотограф
         photo: Фотография
+        festival_category: Категория фестиваля
+        views: Количество просмотров
       festival_category:
         title: Название
         path: Родительская категория
