@@ -13,10 +13,11 @@ require "rvm/capistrano"
 set :deploy_to, "/var/www/#{application}-stage"
 set :rails_env, "staging"
 set :branch, "stage"
+set :keep_releases, 5
+set :delayed_workers, 1
 
 load 'config/deploy/avg'
 
-set :keep_releases, 5
 after "deploy:restart","deploy:cleanup"
 
 before "bundle:install", "deploy:remove_assets_folder"
