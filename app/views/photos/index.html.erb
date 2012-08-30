@@ -35,11 +35,11 @@
 
   <div class="clearfix"></div>
   
+  <%= @photos.length %>
   <div id="bri-photos">
-    <div class="am-container" id="am-container">
-      <div class='hidden-photos'>
-	     <%= render 'photos', photos: @photos %>
-      </div>
+    <div class="am-container" id="am-container"></div>
+    <div id="hidden-photos" class='hidden-photos'>
+     <%= render 'photos', photos: @photos %>
     </div>
     <div class="clearfix"></div>
     <br /><br /><br /><br /><br />
