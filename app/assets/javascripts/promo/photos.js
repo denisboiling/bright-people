@@ -30,7 +30,7 @@ function photos (){
                            <div class="pp_social"> \
                              <div class="soc_like_button"> \
                                <div class="fb-like" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div> \
-                             </div><br> \
+                             </div> \
                              <div class="soc_like_button"> \
                                <div id="vk_like"></div> \
                              </div> \
@@ -59,20 +59,20 @@ function photos (){
         $(this).toggleClass('active')
         $(this).find('.bri-photo').slideToggle('fast')
         $(this).find('.bri-camera').slideToggle('fast')
-	$("#bri-form-photographers").val(window.choose_photographers());
-	$("#bri-form-photographers").change();
-	
-	if ( $('.bri-photographer:not(.active)').length == 10 ) {
-	    $('#bri-photographers-select-all').toggleClass('active')
-	    $('#bri-photographers-select-all').html('Выбрать всех фотографов')
-	}
+      	$("#bri-form-photographers").val(window.choose_photographers());
+      	$("#bri-form-photographers").change();
+      	
+      	if ( $('.bri-photographer:not(.active)').length == 10 ) {
+      	    $('#bri-photographers-select-all').toggleClass('active')
+      	    $('#bri-photographers-select-all').html('Выбрать всех фотографов')
+      	}
 
-	if ( $('.bri-photographer.active').length == 10 ) {
-	    $('#bri-photographers-select-all').toggleClass('active')
-	    $('#bri-photographers-select-all').html('Убрать всех фотографов')
-	}
-        
-	return false
+      	if ( $('.bri-photographer.active').length == 10 ) {
+      	    $('#bri-photographers-select-all').toggleClass('active')
+      	    $('#bri-photographers-select-all').html('Убрать всех фотографов')
+      	}
+              
+      	return false
       })
 
     $('#bri-photographers-select-all').click(function(){

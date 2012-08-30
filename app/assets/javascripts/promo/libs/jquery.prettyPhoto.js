@@ -556,7 +556,7 @@
       // Resize picture the holder
       var lft = (pp_dimensions['containerWidth'] > 600)? pp_dimensions['containerWidth'] / 2 : 600 / 2
       $pp_pic_holder.animate({
-        'top': projectedTop-windowHeight*.085,
+        'top': projectedTop-windowHeight*.05,
         'left': ((windowWidth/2) - (pp_dimensions['containerWidth']/2) < 0) ? 0 : (windowWidth/2) - lft,
         width:pp_dimensions['containerWidth']
       },settings.animation_speed,function(){

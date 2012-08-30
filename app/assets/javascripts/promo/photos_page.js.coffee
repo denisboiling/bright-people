@@ -35,6 +35,7 @@ bri_hd_sw =() ->
 relocate_photos =(div) ->
   container = div
   imgs = container.find("img")
+  imgs.hide()
   totalImgs = imgs.length
   cnt = 0
   imgs.each (i) ->
@@ -42,9 +43,10 @@ relocate_photos =(div) ->
     $("<img/>").load(->
       ++cnt
       if cnt is totalImgs
-        container.montage
-          fillLastRow : true
-          fixedHeight : 110
+        items = $('#hidden-photos').children()
+        $('#am-container').append(items).montage('add',items)
+        imgs.show()
+        $('#hidden-photos').html('')
     ).attr "src", img.attr("src")
   
 # This method should be executed on onload event in image
@@ -55,8 +57,7 @@ window.i_loaded =(img) ->
   window.loaded = window.loaded - 1
   if window.loaded == 0
     relocate_photos($("div.hidden-photos"))
-    activated_hd_div($("div.hidden-photos")) if bri_hd_sw_on()
-    $("div.hidden-photos").removeClass('hidden-photos')
+    activated_hd_div($("#am-container")) if bri_hd_sw_on()
     window.pretty_init_photo()
     $("#bri-preloader").hide()
     window.stop_loaded = false
@@ -138,7 +139,7 @@ active_photographers_by_params =() ->
 # When all photos are downloaded we execute this method for
 # clear some fields      
 set_all_downloaded =() ->
-  $("div.am-container#am-container").html("") unless append_photos()
+  $("div.am-container#am-container").html('') unless append_photos()
   $("#bri-preloader").hide()
   set_page_one()
   window.all_downloaded = true
@@ -173,11 +174,14 @@ remove_bri_hd_download =() ->
 
 window.setup_photos_page = ->
 
+  $('#am-container').montage
+    fixedHeight: 110
+
   return unless $("body.photos").length != 0
 
   # BIND LIVE
   active_photographers_by_params()
-  window.loaded = $("div.hidden-photos").find('img').size()
+  window.loaded = $("div#hidden-photos").find('img').size()
   bri_hd_sw()
   scroll_loading()
   window.first_load = true
@@ -218,12 +222,15 @@ window.setup_photos_page = ->
       $("#bri-preloader").show()
       if append_photos()
         $("#bri-form-page").val(parseInt($("#bri-form-page").val()) + 1)
-        $("div.am-container#am-container").append("<div class='hidden-photos'>#{xhr}</div>")
+        $('#hidden-photos').html(xhr)
         window.loaded = window.loaded + $(xhr).find('img').size()
       else
-        $("div.am-container#am-container").html("")
-        $("div.am-container#am-container").append("<div class='hidden-photos'>#{xhr}</div>")
-
+        $("div.am-container#am-container")
+        .html('')
+        .montage('destroy')
+        .montage
+          fixedHeight: 110
+        $('#hidden-photos').html(xhr)
   
   $("form#bri-form-photos").bind 'submit', ->
     $("#bri-form-photographers").val(window.choose_photographers())
