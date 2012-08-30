@@ -32,7 +32,7 @@ function festival ()
                            <div class="pp_social"> \
                              <div class="soc_like_button"> \
                                <div class="fb-like" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div> \
-                             </div><br> \
+                             </div> \
                              <div class="soc_like_button"> \
                                <div id="vk_like"></div> \
                              </div> \
@@ -115,7 +115,7 @@ function festival ()
         success: function(data){
           $('.container').detach()
           $('.clearfix')
-            .before('<div class="container am-container" id="am-container"></div>')
+            .before('<div class="container am-container hidden-photos" id="am-container"></div>')
             
           $('#am-container').html(data)
 
@@ -140,6 +140,9 @@ function festival ()
                       , fixedHeight : 110
                       , minw        : 110
                       })
+                      .removeClass('hidden-photos')
+
+
                     window.pretty_init_photo()
                   }
                 })
