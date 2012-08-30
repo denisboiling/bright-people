@@ -34,16 +34,16 @@ function festival ()
                                <div class="fb-like" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div> \
                              </div> \
                              <div class="soc_like_button"> \
-                               <div id="vk_like"></div> \
-                             </div> \
-                             <div class="soc_like_button"> \
-                               <div id="vk_share"></div> \
+                               <div class="g-plusone" data-size="medium" data-href="' + location.href + '"></div> \
                              </div> \
                              <div class="soc_like_button"> \
                                <a href="https://twitter.com/share" class="twitter-share-button" data-lang="ru" data-url="" target="_blank">Твитнуть</a> \
                              </div> \
                              <div class="soc_like_button"> \
-                               <div class="g-plusone" data-size="medium" data-href="' + location.href + '"></div> \
+                               <div id="vk_like"></div> \
+                             </div> \
+                             <div class="soc_like_button"> \
+                               <div id="vk_share"></div> \
                              </div> \
                            </div>'
   })
