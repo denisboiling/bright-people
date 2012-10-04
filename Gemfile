@@ -21,7 +21,7 @@ end
 gem 'jquery-rails'
 gem 'jquery-ui-themes'
 gem 'unicorn'
-gem 'activeadmin'
+gem 'activeadmin', '0.4.4'
 gem 'cancan'
 gem 'spatial_adapter'
 gem 'russian'
