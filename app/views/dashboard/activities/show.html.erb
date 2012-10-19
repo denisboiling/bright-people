@@ -2,20 +2,22 @@
 
 <%= render 'dashboard/shared/profile_menu', current: 'activity' %>
 
-<%= form_for @activity, url: dashboard_activity_path, method: :put do |f| %>
+<% if @activity %>
+  <%= form_for @activity, url: dashboard_activity_path, method: :put do |f| %>
 
-  <%= render 'main', f: f %>
-  <%= render 'place', f: f %>
-  <%= render 'teachers', f: f %>
-  <%= render 'additional', f: f %>
+    <%= render 'main', f: f %>
+    <%= render 'place', f: f %>
+    <%= render 'teachers', f: f %>
+    <%= render 'additional', f: f %>
 
 
-  <%= render 'schedule', f: f %>
-  <%= render 'gallery', f: f %>
+    <%= render 'schedule', f: f %>
+    <%= render 'gallery', f: f %>
 
-  <%= render 'publication', f: f %>
+    <%= render 'publication', f: f %>
 
-  <div class="save">
-    <button>Сохранить</button>
-  </div>
+    <div class="save">
+      <button>Сохранить</button>
+    </div>
+  <% end %>
 <% end %>
