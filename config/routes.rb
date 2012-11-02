@@ -99,7 +99,7 @@ BrightPeople::Application.routes.draw do
   match '/staff/get_categories' => 'staff#get_categories'
 
   match '/main' => 'home#show', as: :main_page
-  root :to => 'photos#promo'
+  root :to => 'home#show'
 
   # TODO: dirty and don't why why migrate is broken?
   ActiveAdmin.routes(self) if ActiveRecord::Base.connection.table_exists?(:activity_comments)
