@@ -13,6 +13,7 @@
 	<% links = ["http://www.krokha.ru", "http://radio7.ru/?utm_source=bright-people&utm_medium=promo&utm_campaign=bright-people", "http://www.bg.ru", "http://schools.mn.ru/schools/", "http://www.mama-tv.ru"] %>
 	<% j = rand(0..4) %>
 	<div class="adv"><%= link_to image_tag(pics[j]), links[j], "target"=>"_blank" %></div>
+	<%= link_to image_tag('button_gallery.png'), '/promo' %>
 	<div class="content-wrapper">
 	  <div class="bank_info">
 	    <div class="title">Добро пожаловать в мир ярких людей!</div>
