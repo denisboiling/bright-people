@@ -3,20 +3,19 @@ source :rubygems
 gem 'rails', '3.2.8'
 gem 'pg'
 
+group :assets do
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+  gem 'therubyracer', :platforms => :ruby
+  gem 'uglifier', '>= 1.0.3'
+end
+
 gem 'omniauth', '1.1.0'
 gem 'omniauth-vkontakte'
 gem 'omniauth-facebook'
 gem 'omniauth-odnoklassniki'
 gem 'devise', '2.1.0'
 gem 'acts-as-taggable-on'
-
-group :assets do
-  # TODO: update to new versions
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
-  gem 'therubyracer'
-end
 
 gem 'jquery-rails'
 gem 'jquery-ui-themes'
