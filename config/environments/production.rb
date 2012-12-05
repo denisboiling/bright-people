@@ -30,5 +30,5 @@ BrightPeople::Application.configure do
   config.vk_public = '-39665521'
   config.fb_page_name = 'Фестиваль "Яркие Люди"'
   config.fb_app_id = '387281317989326'
-  config.fb_app_secret = 'bc8fc778501d7b432521262561ca9ca9'
+  config.fb_app_secret = '6b1865f963ab7ae9ee3a37f1dca7bcf9'
 end
