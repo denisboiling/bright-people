@@ -5,15 +5,15 @@ class SocialPostObserver < ActiveRecord::Observer
 
   include ActionView::Helpers::UrlHelper
 
-  def after_create(model)
-    SocialPostObserver::publish(model) if model.published?
-  end
+  # def after_create(model)
+  #   SocialPostObserver::publish(model) if model.published?
+  # end
 
-  def after_update(model)
-    if model.published? and !model.posted
-      SocialPostObserver::publish(model)
-    end
-  end
+  # def after_update(model)
+  #   if model.published? and !model.posted
+  #     SocialPostObserver::publish(model)
+  #   end
+  # end
 
   def self.publish(model)
     model.posted = true
