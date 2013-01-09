@@ -1,13 +1,12 @@
 role :web, "bright-people.ru"
 role :app, "bright-people.ru"
-role :db,  "bright-people.ru", :primary=>true
+role :db,  "bright-people.ru", :primary => true
 
 set :user, "rvm_user"
 set :deploy_via, :remote_cache
 set :use_sudo, false
 
-set :rvm_type, :user
-set :rvm_ruby_string, "ruby-1.9.3-head"
+set :rvm_type, :system
 require "rvm/capistrano"
 
 set :deploy_to, "/var/www/#{application}"
@@ -15,7 +14,7 @@ set :rails_env, "production"
 set :branch, "master"
 
 set :keep_releases, 30
-set :delayed_workers, 2
+set :delayed_workers, 1
 
 after "deploy:restart","deploy:cleanup"
 
