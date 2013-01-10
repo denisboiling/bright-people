@@ -1,7 +1,7 @@
 app_dir = '/var/www/bright-people'
 
 # Set unicorn options
-worker_processes 4
+worker_processes 2
 preload_app true
 timeout 30
 pid "#{app_dir}/shared/pids/unicorn.pid"
