@@ -52,7 +52,6 @@ end
 namespace :shared do
   task :symlinks, :roles => :app do
     run "ln -nfs #{shared_path}/config/database.yml #{latest_release}/config/database.yml"
-    run "ln -nfs #{shared_path}/config/rvmrc #{latest_release}/.rvmrc"
     run "ln -nfs #{shared_path}/config/sphinx.yml #{latest_release}/config/sphinx.yml"
   end
 
