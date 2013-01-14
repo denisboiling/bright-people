@@ -7,6 +7,8 @@
     <%= javascript_include_tag 'application' %>
     <%= yield :after_head %>
     <%= csrf_meta_tags %>
+    <meta property="fb:app_id" content="359292310775946"/>
+    <meta property="fb:admins" content="ezotrank"/>
   </head>
   <%== yield(:body).present? ? yield(:body) : '<body>' %>
     <div id="wrapper">
