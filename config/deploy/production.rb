@@ -20,13 +20,13 @@ after "deploy:restart","deploy:cleanup"
 
 load 'config/deploy/avg'
 
-before "bundle:install", "deploy:remove_assets_folder"
 before "deploy:finalize_update", "shared:symlinks"
 
 before "deploy:assets:precompile", "deploy:migrate"
 
 after "deploy:migrate", "thinking_sphinx:configure"
-after "deploy:update_code", "delayed_job:restart"
 after "deploy:update_code", "thinking_sphinx:rebuild"
+
+after "deploy:update_code", "delayed_job:restart"
 
 before "unicorn:reload", "unicorn:stop"

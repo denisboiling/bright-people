@@ -1,3 +1,16 @@
+namespace :deploy do
+  namespace :assets do
+    task :precompile, :roles => :web, :except => { :no_release => true } do
+      from = source.next_revision(current_revision)
+      if capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ | wc -l").to_i > 0
+        run %Q{cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assets:precompile}
+      else
+        logger.info "Skipping asset pre-compilation because there were no asset changes"
+      end
+    end
+  end
+end
+
 desc "tail production log files"
 task :tail_logs, :roles => :app do
   log_file = case ENV['log']
@@ -29,12 +42,6 @@ namespace :rake_exec do
   # run like: cap staging rake:invoke task=a_certain_task
   task :invoke do
     run("cd #{latest_release}; RAILS_ENV=#{rails_env} rake #{ENV['task']}")
-  end
-end
-
-namespace :deploy do
-  task :remove_assets_folder, roles: :app do
-    run "cd #{latest_release} && rm -rf public/assets && mkdir public/assets"
   end
 end
 
