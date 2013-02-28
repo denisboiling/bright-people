@@ -23,9 +23,9 @@ $(document).ready(function(){
   });
 
   // <![CDATA[ 
-  var so = new SWFObject("/assets/header.swf", "bnr_1", "100%", "200"); 
-  so.addParam("wmode", "transparent");
-  so.write("flashcontent_1"); 		
+//  var so = new SWFObject("/assets/header.swf", "bnr_1", "100%", "200");
+//  so.addParam("wmode", "transparent");
+//  so.write("flashcontent_1");
   // ]]> 
 	
 	
