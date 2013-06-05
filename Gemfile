@@ -18,7 +18,7 @@ gem 'omniauth-odnoklassniki'
 gem 'devise', '2.1.0'
 gem 'acts-as-taggable-on'
 
-gem 'jquery-rails'
+gem 'jquery-rails', '2.1.4' #TODO: fix live and other removed in jquery 1.9
 gem 'jquery-ui-themes'
 gem 'unicorn'
 gem 'activeadmin', '0.4.4'
@@ -27,7 +27,7 @@ gem 'spatial_adapter'
 gem 'russian'
 gem 'paperclip'
 
-gem 'thinking-sphinx'
+gem 'thinking-sphinx', '~> 2.0'
 gem 'cocoon'
 gem 'rails3-jquery-autocomplete'
 gem 'hierarchy', github: 'RISCfuture/hierarchy'
