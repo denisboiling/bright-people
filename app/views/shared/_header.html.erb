@@ -1,6 +1,6 @@
 <div class="header_flash_wrapper">
   <a href="/"></a>
-  <%#*<div id="flashcontent_1"></div>%>
+<%#*<div id="flashcontent_1"></div>%>
   <%= image_tag "banner_new.jpg" %>
 
 </div>
@@ -10,70 +10,80 @@
   <div class="color_line_left">
     <div class="color_line_right">
       <div class="header_wrapper">
-	<div id="search_block">
-	  <a class="search_button" href="#"><img src="/assets/ico_search.png" alt="" /></a>
-	</div>
+        <div id="search_block">
+          <a class="search_button" href="#"><img src="/assets/ico_search.png" alt="" /></a>
+        </div>
 
-	<div class="show_search hidden">
-	  <div class="search_wrapper">
-	    <%= form_tag search_path, method: :get do %>
-	      <%= text_field_tag :q, params[:q], class: 'main_search_field' %>
-	      <%= submit_tag 'Поиск' %>
-	      <a class="close" href="#">Закрыть</a>
-	    <% end %>
-	  </div>
-	</div>
+        <div class="show_search hidden">
+          <div class="search_wrapper">
+            <%= form_tag search_path, method: :get do %>
+              <%= text_field_tag :q, params[:q], class: 'main_search_field' %>
+                <%= submit_tag 'Поиск' %>
+                <a class="close" href="#">Закрыть</a>
+              <% end %>
+            </div>
+          </div>
 
+          <div id="login_block">
+            <% unless current_user %>
+              <a class="login_button" href="#"><img src="/assets/ico_login.png" alt="" /></a>
+            <% else %>
+              <div class="is_login">
+                <a class="login_user_flag" href="<%= dashboard_profile_path %>">
+                  <%= current_user.name || 'Без имени' %><span class="mask"></span>
+                </a>
+                <a href="#" class="logout logout_link">Выйти</a>
+                <div class="profile_menu hidden">
+                  <ul>
+                    <li><%= link_to 'Профиль', dashboard_profile_path %></li>
+                    <li><%= link_to 'Комментарии', dashboard_comments_path %></li>
+                    <li><%= link_to 'Избранное', dashboard_favorites_path %></li>
+                    <% if can? :manage, :dashboard_activity %>
+                      <li><%= link_to 'Кружок', dashboard_activity_path %></li>
+                    <% end %>
+                    <% if can? :manage, :dashboard_photos %>
+                      <li><%= link_to 'Фотографии', dashboard_photos_path %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              </div>
+            <% end %>
+          </div>
 
-	<div id="login_block">
-	  <% unless current_user %>
-	    <a class="login_button" href="#"><img src="/assets/ico_login.png" alt="" /></a>
-	  <% else %>
-	    <div class="is_login">
-	      <a class="login_user_flag" href="<%= dashboard_profile_path %>"><%= current_user.name || 'Без имени' %><span class="mask"></span></a>
-	      <a href="#" class="logout logout_link">Выйти</a>
-	      <div class="profile_menu hidden">
-		<ul>
-		  <li><%= link_to 'Профиль', dashboard_profile_path %></li>
-		  <li><%= link_to 'Комментарии', dashboard_comments_path %></li>
-		  <li><%= link_to 'Избранное', dashboard_favorites_path %></li>
-		  <% if can? :manage, :dashboard_activity %>
-		    <li><%= link_to 'Кружок', dashboard_activity_path %></li>
-		  <% end %>
-		  <% if can? :manage, :dashboard_photos %>
-		    <li><%= link_to 'Фотографии', dashboard_photos_path %></li>
-		  <% end %>
-		</ul>
-	      </div>
-	    </div>
-	  <% end %>
-	</div>
+          <% unless current_user %>
+            <div class="show_login hidden">
+              <div class="login_wrapper">
+                <span class="login_text">Войти на сайт через: </span>
+                <%= link_to image_tag('ico_fb_big.png'), user_omniauth_authorize_path(:facebook) %>
+                <%= link_to image_tag('ico_vk_big.png'), user_omniauth_authorize_path(:vkontakte) %>
+                <%= link_to image_tag('ico_od_big.png'), user_omniauth_authorize_path(:odnoklassniki) %>
+                <a class="close" href="#">Закрыть</a>
+              </div>
+            </div>
+          <% end %>
 
-	<% unless current_user %>
-	  <div class="show_login hidden">
-	    <div class="login_wrapper">
-	      <span class="login_text">Войти на сайт через: </span>
-	      <%= link_to image_tag('ico_fb_big.png'), user_omniauth_authorize_path(:facebook) %>
-	      <%= link_to image_tag('ico_vk_big.png'), user_omniauth_authorize_path(:vkontakte) %>
-	      <%= link_to image_tag('ico_od_big.png'), user_omniauth_authorize_path(:odnoklassniki) %>
-	      <a class="close" href="#">Закрыть</a>
-	    </div>
-	  </div>
-	<% end %>
+          <div id="menu">
+            <ul class="">
+              <li <%= 'class=selected' if @mission_page %>>
+                <%= link_to 'Миссия', '/pages/mission' %>
+              </li>
+              <li <%= 'class=selected' if @activity_page %>>
+                <%= link_to 'Детские студии', activities_path %>
+              </li>
+              <li class="current <%= 'selected' if current_page?(page_path('about_festival')) or current_page?(page_path('org_komitet')) %>">
+                <%= link_to 'Фестиваль', page_path('about_festival') %>
+              </li>
+              <li <%= 'class=selected' if @article_page %>>
+                <%= link_to 'Яркий журнал', articles_path %>
+              </li>
+              <li <%= 'class=selected' if @expert_page or current_page?(sponsors_path) %>>
+                <%= link_to 'О нас', experts_path %>
+              </li>
+            </ul>
+          </div>
 
-	<div id="menu">
-	  <ul class="">
-	    <li <%= 'class=selected' if @mission_page %>><%= link_to 'Миссия', '/pages/mission' %></li>
-	    <li <%= 'class=selected' if @activity_page %>><%= link_to 'Детские студии', activities_path %></li>
-	    <li class="current <%= 'selected' if current_page?(page_path('about_festival')) or current_page?(page_path('org_komitet')) %>"><%= link_to 'Фестиваль', page_path('about_festival') %>
-	    </li>
-	    <li <%= 'class=selected' if @article_page %>><%= link_to 'Яркий журнал', articles_path %></li>
-	    <li <%= 'class=selected' if @expert_page or current_page?(sponsors_path) %>><%= link_to 'О нас', experts_path %></li>
-	  </ul>
-	</div>
-
+        </div>
       </div>
     </div>
-  </div>
 
-</div>
+  </div>
