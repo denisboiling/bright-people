@@ -9,13 +9,14 @@ ActiveAdmin.register Page do
     column :permalink
     column :created_at
     column :updated_at
+    column :year
     default_actions
   end
 
   form partial: 'form'
 
   show do
-    attributes_table :permalink, :created_at, :updated_at
+    attributes_table :permalink, :created_at, :updated_at, :year
 
     panel 'Текст' do
       raw resource.text
