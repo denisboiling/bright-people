@@ -251,6 +251,8 @@ ru:
         profession: Професия
         description: Описание
         avatar: Фото
+        year: Год
+        position: Позиция
       gallery_photo:
         id: ID
         photo_file_name: Название файла
