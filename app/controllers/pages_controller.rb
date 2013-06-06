@@ -6,13 +6,10 @@ class PagesController < HighVoltage::PagesController
   
   def set_page
     permlink = params[:id]
-    year = params[:year]
-    if year.present?
-      @page = Page.where(year: params[:year]).as(permlink)
-    else
-      @page = Page.where(year: Time.now.year ).as(permlink)
-      @page ||= Page.as(permlink)
-    end
+    year = params[:year] || Time.now.year
+    @page = Page.where(year: year).as(permlink)
+    @page ||= Page.as(permlink)
+    @year = year unless year == Time.now.year
   end
   
 end
