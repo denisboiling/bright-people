@@ -6,18 +6,9 @@
   <div class="common">
     <%= render 'shared/post_category_menu' %>
     <% unless @is_headliners_page %>         
-      <% 
-        links = [ 
-          { 'title' => 'Музыкальная сцена', 'link' => 'music_stage'     },
-          { 'title' => 'Театральная сцена', 'link' => 'theater_stage'   },
-          { 'title' => 'Цирковая сцена'   , 'link' => 'circus_stage'    },
-          { 'title' => 'Уличные театры'   , 'link' => 'street_theater'  },
-          { 'title' => 'Мастер-классы'    , 'link' => 'master_class'    }
-        ]  
-      %>
       <a href="/system/files/scheme.pdf" class="pdf_link">Схема</a>
       <a href="/system/files/schedule.pdf" class="pdf_link">Расписание выступлений</a>
-      <%= participants_menu links %>
+      <%= render 'menu' %>
     <% end %>
 
     <div class="participants_map">

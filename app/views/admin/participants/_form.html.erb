@@ -8,8 +8,8 @@
 
     <%= f.input :priority, as: :number %>
 
-    <%= f.input :category, as: :select, collection: [['Музыкальная сцена', 'music_stage'], ['Театральная сцена', 'theater_stage'],
-                                                    ['Цирковая сцена', 'circus_stage'], ['Уличные театры', 'street_theater'], ['Мастер класс', 'master_class']] %>
+    <%= f.input :category, as: :select, 
+                collection: Stage.all.map{|s| ["#{s.title} (#{s.year})", s.category]} %>
 
     <%= f.input :logo, as: :file, hint: f.template.image_tag(f.object.logo.url) %>
 

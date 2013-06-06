@@ -5,21 +5,11 @@ ActiveAdmin.register Participant do
   scope :all, :default => true
   scope :headliners
   scope :not_headliners
-
-  scope :music_stage do |participants|
-    participants.where(:category => 'music_stage')
-  end
-  scope :theater_stage do |participants|
-    participants.where(:category => 'theater_stage')
-  end
-  scope :circus_stage do |participants|
-    participants.where(:category => 'circus_stage')
-  end
-  scope :street_theater do |participants|
-    participants.where(:category => 'street_theater')
-  end
-  scope :master_class do |participants|
-    participants.where(:category => 'master_class')
+  
+  Stage.all.each do |stage|
+    scope stage.category.to_sym do |participants|
+      participants.where(category: stage.category)
+    end
   end
 
   filter :title

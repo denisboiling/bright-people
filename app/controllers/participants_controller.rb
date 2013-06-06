@@ -1,9 +1,8 @@
 class ParticipantsController < ApplicationController
-  # OPTIMIZE: this is shit, really
   def index
     year = params[:year] || Time.now.year
     category = params[:category]
-    category = nil unless %w(music_stage theater_stage circus_stage street_theater master_class).include?(category)
+    category = nil unless category.in? Stage.pluck(:category)
     if category
       @stage = Stage.where(year: year).by_category_name(category)
       @best = Participant.where(year: year).best(category)
