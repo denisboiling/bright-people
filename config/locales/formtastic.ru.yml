@@ -1,0 +1,6 @@
+ru:
+  formtastic:
+    create: "Создать"
+    update: "Обновить"
+    reset: "Сброс"
+    cancel: "Отмена"

@@ -1,0 +1,7 @@
+<div class="archive_btn">
+  <% unless params[:year] %>
+    <%= link_to params.merge(year: Time.now.year - 1) do %>
+      <img alt="Button_gallery" src="/assets/button_archive.png">
+    <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,11 @@
+<ul class="participants_menu">
+  <% Stage.where(year: (@year || Time.now.year) ).each do |stage|  %>
+    <li>
+      <% if params[:category] == stage.category %>
+        <%= link_to stage.title, participants_path(category: stage.category, year: @year), :class => 'active' %>
+      <% else %>
+        <%= link_to stage.title, participants_path(category: stage.category, year: @year) %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

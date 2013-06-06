@@ -1,5 +1,7 @@
 <div class="pages">
-  <%== Page.as('muntyan').text %>
+  <%= render 'shared/post_category_menu' %>
+
+  <%== @page.try(:text) %>
 </div>
 
 <% content_for :title do %>

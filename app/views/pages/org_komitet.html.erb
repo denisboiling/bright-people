@@ -1,5 +1,7 @@
 <div class="pages">
-  <%== Page.as('org_komitet').text %>
+  <%= render 'shared/post_category_menu' %>
+  <div class="clear"></div>
+  <%== @page.try(:text) %>
   <!-- NOT EDIT -->
   <div class="sidebar">
     <%= render 'shared/sidebar' %>

@@ -1,0 +1,24 @@
+<div class="post_category_menu">
+  <ul>
+    <li class="about_ico <%= 'active' if @page.try(:permalink) == 'about_festival' %>">
+      <%= link_to 'О фестивале', page_path('about_festival', year: @year) %>
+    </li>
+    <li class="creative_ico <%= 'active' if controller_name == 'creative_group' %>">
+      <%= link_to 'Творческая группа', creative_group_index_path(year: @year) %>
+    </li>
+    <li class="participants_ico <%= 'active' if !@is_headliners_page and !@page and controller_name !=  'creative_group' %>">
+      <%= link_to 'Программа', participants_path(category: 'music_stage', year: @year) %>
+    </li>
+    <li class="headliners_ico <%= 'active' if @is_headliners_page and !@page and controller_name !=  'creative_group' %>">
+      <%= link_to 'Хэдлайнеры', participants_path(year: @year) %>
+    </li>
+    <li class="org_ico <%= 'active' if @page.try(:permalink) == 'org_komitet' %>">
+      <%= link_to 'Оргкомитет', page_path('org_komitet', year: @year) %>
+    </li>
+    <li class="org_ico <%= 'active' if @page.try(:permalink) == 'inf' %>">
+      <%= link_to 'Инфопартнёры', page_path('inf', year: @year) %>
+    </li>
+  </ul>
+  <%= render 'shared/archive' %>
+  <div class="clear"></div>
+</div>

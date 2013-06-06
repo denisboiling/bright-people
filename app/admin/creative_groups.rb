@@ -6,6 +6,7 @@ ActiveAdmin.register CreativeGroup do
 
   index do
     id_column
+    column :year
     column "Фотография" do |cr|
         link_to image_tag(cr.avatar.url(:thumb), alt: cr.name), admin_creative_group_path(cr)
     end
@@ -18,7 +19,7 @@ ActiveAdmin.register CreativeGroup do
   form partial: 'form'
 
   show do
-    attributes_table :name, :profession, :description, :position
+    attributes_table :year, :name, :profession, :description, :position
 
     panel 'Фотография' do
       image_tag(creative_group.avatar.url(:original))

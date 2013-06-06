@@ -6,6 +6,8 @@ ActiveAdmin.register Stage do
 
   index do
     id_column
+    column :year
+    column :title
     column :category
     column :content
     column "Большая картинка" do |cr|
@@ -19,8 +21,10 @@ ActiveAdmin.register Stage do
 
   form html: { enctype: 'multipart/form-data' } do |f|
     f.inputs 'Основное' do
+      f.input :year, as: :select, collection: (2012..Time.now.year + 5).to_a, include_blank: false
+      f.input :title
       f.input :content
-      f.input :category, as: :select, collection: all_stages, include_blank: false
+      f.input :category
       f.input :small_pic, as: :file
       f.input :large_pic, as: :file
     end

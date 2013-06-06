@@ -1,5 +1,6 @@
 <%= semantic_form_for [:admin, @creative_group], html: { multipart: true } do |f| %>
   <%= f.inputs 'Основное' do %>
+    <%= f.input :year, as: :select, collection: (2012..Time.now.year+5).to_a %>
     <%= f.input :name %>
     <%= f.input :profession %>
     <%= f.input :position, :label => "Приоритет (чем меньше - тем ближе к началу списка)" %>
