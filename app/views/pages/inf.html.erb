@@ -1,13 +1,15 @@
 <div class="pages">
-  <%== Page.as('inf').text %>
+  <%= render 'shared/post_category_menu' %>
   
-    <!-- DO NOT EDIT -->
-    <div class="sidebar">
-      <%= render 'shared/sidebar' %>
-    </div>
-    <div class="clear">
-    </div>
+  <%== @page.try(:text) %>
+
+  <!-- DO NOT EDIT -->
+  <div class="sidebar">
+    <%= render 'shared/sidebar' %>
   </div>
+  <div class="clear">
+  </div>
+</div>
 
 <% content_for :title do %>
   Фестиваль Яркие Люди | Инфопартнёры

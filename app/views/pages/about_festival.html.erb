@@ -1,5 +1,7 @@
 <div class="pages">
-  <%== Page.as('about_festival').text %>
+  <%= render 'shared/post_category_menu' %>
+  
+  <%= raw @page.try(:text) %>
   <!-- NOT EDIT -->
   <div class="sidebar">
     <%= render 'shared/sidebar' %>

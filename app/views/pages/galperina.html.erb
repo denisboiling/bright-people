@@ -1,5 +1,5 @@
 <div class="pages">
-  <%== Page.as('galperina').text %>
+  <%== @page.try(:text) %>
 </div>
 
 <% content_for :title do %>

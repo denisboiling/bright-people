@@ -25,7 +25,8 @@ class Participant < ActiveRecord::Base
   accepts_nested_attributes_for :photos, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :videos, allow_destroy: true, reject_if: :all_blank
 
-  attr_accessible :title, :description, :logo, :photos_attributes, :videos_attributes, :headliner, :category, :priority
+  attr_accessible :title, :description, :logo, :photos_attributes, :videos_attributes, 
+                  :headliner, :category, :priority, :year
 
 
   class << self

@@ -1,5 +1,7 @@
 <%= semantic_form_for [:admin, @page] do |f| %>
   <%= f.inputs 'Основное' do %>
+    <%= f.input :permalink %>
+    <%= f.input :year, as: :select, collection: (2012..Time.now.year+5).to_a %>
     <%= f.input :text, input_html: { size: 10 } %>
   <% end %>
   <%= f.buttons %>

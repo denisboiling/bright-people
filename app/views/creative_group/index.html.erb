@@ -3,36 +3,28 @@
 <% end %>
 
 <div class="pages">
-  <div class="post_category_menu">
-    <ul>
-      <li class="about_ico"><a href="/pages/about_festival">О фестивале</a></li>
-      <li class="creative_ico active"><a href="/creative_group">Творческая группа</a></li>
-      <li class="participants_ico"><a href="/participants?category=music_stage">Программа</a></li>
-      <li class="headliners_ico"><a href="/participants">Хэдлайнеры</a></li>
-      <li class="org_ico"><a href="/pages/org_komitet">Оргкомитет</a></li>
-      <li class="org_ico"><a href="/pages/inf">Инфопартнёры</a></li>
-    </ul>
-    <div class="clear"></div>
-  </div>
+  <%= render 'shared/post_category_menu' %>
   <div class="expert_list_wrapper">
     <div class="expert_list">
-      
-    <% @cg.each_with_index do |tm, index| %>
-      <div class="exp_preview">
-        <%= link_to creative_group_path(tm) do %>
-        <div class="thumb">
-          <%= image_tag(tm.avatar)  %>
+
+      <% @cg.each_with_index do |tm, index| %>
+        <div class="exp_preview">
+          <%= link_to creative_group_path(tm) do %>
+            <div class="thumb">
+              <%= image_tag(tm.avatar)  %>
+            </div>
+            <span class="name"><%= tm.name %></span>
+          <% end %>
+          <span class="info"><%= tm.profession %></span>
         </div>
-        <span class="name"><%= tm.name %></span>
+        <% if (index+1) % 6 == 0 %>
+          <div class="clear"></div>
         <% end %>
-        <span class="info"><%= tm.profession %></span>
-      </div>
-      <% if (index+1) % 6 == 0 %>
-      <div class="clear"></div>
       <% end %>
-    <% end %>
-      
+
       <div class="clear"></div>
+
+      <%= render 'shared/archive' %>
     </div>
   </div>
 </div>
