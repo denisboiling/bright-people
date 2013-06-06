@@ -103,6 +103,16 @@ ru:
         few: Новости
         many: Новостей
         other: Новости
+      participant:
+        one: Участник фестиваля
+        few: Участники фестиваля
+        many: Участников фестиваля
+        other: Участники фестиваля
+      stage:
+        one: Сцена
+        few: Сцены
+        many: Сцен
+        other: Сцены
     attributes:
       article:
         best: Лучшие
@@ -266,3 +276,18 @@ ru:
       festival_category:
         title: Название
         path: Родительская категория
+      participant:
+        year: Год
+        title: Заголовок
+        headliner: Хэдлайнер
+        category: Категория
+        priority: Приоритет
+        description: Описание
+        logo: Лого
+        updated_at: Дата изменения
+      stage:
+        year: Год
+        category: Категория
+        content: Содержание
+        small_pic: Маленькая картинка
+        large_pic: Большая картинка

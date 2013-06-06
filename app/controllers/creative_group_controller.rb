@@ -1,11 +1,8 @@
 class CreativeGroupController < ApplicationController
   def index
-    year = params[:year]
-    @cg = if year
-      CreativeGroup.where(year: year)
-    else
-      CreativeGroup.where(year: Time.now.year)
-    end
+    year = params[:year] || Time.now.year
+    @cg = CreativeGroup.where(year: year)
+    @year = year unless year == Time.now.year
   end
   
   def show

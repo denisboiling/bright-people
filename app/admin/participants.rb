@@ -26,6 +26,7 @@ ActiveAdmin.register Participant do
 
   index do
     id_column
+    column :year
     column "Фотография" do |p|
       link_to image_tag(p.logo.url(:thumb), alt: p.title), p.logo.url(:original)
     end
@@ -40,7 +41,7 @@ ActiveAdmin.register Participant do
   form partial: 'form'
 
   show do
-    attributes_table :title, :headliner, :priority, :category, :updated_at
+    attributes_table :year, :title, :headliner, :priority, :category, :updated_at
 
     panel 'Лого' do
       image_tag resource.logo.url(:medium)
