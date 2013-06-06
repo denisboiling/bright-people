@@ -1,7 +1,7 @@
 <div class="pages">
   <%= render 'shared/post_category_menu' %>
   
-  <%== @page.text %>
+  <%== @page.try(:text) %>
 </div>
 
 <% content_for :title do %>
