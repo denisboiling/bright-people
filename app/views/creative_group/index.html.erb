@@ -16,24 +16,24 @@
   </div>
   <div class="expert_list_wrapper">
     <div class="expert_list">
-      
-    <% @cg.each_with_index do |tm, index| %>
-      <div class="exp_preview">
-        <%= link_to creative_group_path(tm) do %>
-        <div class="thumb">
-          <%= image_tag(tm.avatar)  %>
+
+      <% @cg.each_with_index do |tm, index| %>
+        <div class="exp_preview">
+          <%= link_to creative_group_path(tm) do %>
+            <div class="thumb">
+              <%= image_tag(tm.avatar)  %>
+            </div>
+            <span class="name"><%= tm.name %></span>
+          <% end %>
+          <span class="info"><%= tm.profession %></span>
         </div>
-        <span class="name"><%= tm.name %></span>
+        <% if (index+1) % 6 == 0 %>
+          <div class="clear"></div>
         <% end %>
-        <span class="info"><%= tm.profession %></span>
-      </div>
-      <% if (index+1) % 6 == 0 %>
-      <div class="clear"></div>
       <% end %>
-    <% end %>
-      
+
       <div class="clear"></div>
-      
+
       <%= render 'shared/archive' %>
     </div>
   </div>
