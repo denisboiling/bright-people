@@ -3,7 +3,12 @@ class AddYearToCreativeGroups < ActiveRecord::Migration
     add_column :creative_groups, :year, :integer
     
     CreativeGroup.reset_column_information
-    CreativeGroup.all.each { |group| group.update_attributes!(year: 2012 ) }
+    CreativeGroup.all.each do |group|
+      group.update_attribute :year, 2012
+      new_group = group.dup
+      new_group.year = 2013
+      new_group.save!
+    end
   end
   
   def down

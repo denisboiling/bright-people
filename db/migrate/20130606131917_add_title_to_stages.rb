@@ -13,7 +13,10 @@ class AddTitleToStages < ActiveRecord::Migration
       { 'title' => 'Мастер-классы'    , 'category' => 'master_class'    }
     ]
     stages.each do |stage|
-      Stage.find_by_category(stage['category']).update_column(:title, stage['title'])
+      sts = Stage.find_all_by_category(stage['category'])
+      sts.each do |s|
+        s.update_column(:title, stage['title'])
+      end
     end
   end
 
