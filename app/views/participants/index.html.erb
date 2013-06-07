@@ -6,8 +6,8 @@
   <%= render 'shared/post_category_menu' %>
   <div class="common">
     <% unless @is_headliners_page %>         
-      <a href="/system/files/scheme.pdf" class="pdf_link">Схема</a>
-      <a href="/system/files/schedule.pdf" class="pdf_link">Расписание выступлений</a>
+      <a href="/system/files/scheme_<%= @year || Time.now.year %>.pdf" class="pdf_link">Схема</a>
+      <a href="/system/files/schedule_<%= @year || Time.now.year %>.pdf" class="pdf_link">Расписание выступлений</a>
       <%= render 'menu' %>
     <% end %>
 

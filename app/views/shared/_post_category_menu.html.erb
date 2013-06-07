@@ -7,7 +7,7 @@
       <%= link_to 'Творческая группа', creative_group_index_path(year: @year) %>
     </li>
     <li class="participants_ico <%= 'active' if !@is_headliners_page and !@page and controller_name !=  'creative_group' %>">
-      <%= link_to 'Программа', participants_path(category: 'music_stage', year: @year) %>
+      <%= link_to 'Программа', participants_path(category: Stage.where(year: (@year || Time.now.year)).first.try(:category), year: @year) %>
     </li>
     <li class="headliners_ico <%= 'active' if @is_headliners_page and !@page and controller_name !=  'creative_group' %>">
       <%= link_to 'Хэдлайнеры', participants_path(year: @year) %>

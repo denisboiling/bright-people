@@ -11,7 +11,7 @@ class Stage < ActiveRecord::Base
                                 url: "/system/stage/large/:attachment/:id/:style/:filename",
                                 default_style: :original
 
-  validates :small_pic, :large_pic, presence: :true
+  #validates :small_pic, :large_pic, presence: :true
 
   class << self
     def by_category_name(_name)
