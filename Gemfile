@@ -62,9 +62,9 @@ end
 
 group :development do
   gem 'letter_opener'
-  gem 'capistrano'
+  gem 'capistrano', '~> 2.13.5'
   gem 'capistrano-ext'
-  gem 'capistrano-unicorn'
+  gem 'capistrano-unicorn', '0.1.6'
   gem 'rvm-capistrano'
   gem 'sextant'
   gem 'quiet_assets'

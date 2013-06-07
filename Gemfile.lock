@@ -71,7 +71,7 @@ GEM
       terminal-table (~> 1.4)
     builder (3.0.4)
     cancan (1.6.10)
-    capistrano (2.15.4)
+    capistrano (2.13.5)
       highline
       net-scp (>= 1.0.0)
       net-sftp (>= 2.0.0)
@@ -79,7 +79,7 @@ GEM
       net-ssh-gateway (>= 1.1.0)
     capistrano-ext (1.2.1)
       capistrano (>= 1.0.0)
-    capistrano-unicorn (0.1.9)
+    capistrano-unicorn (0.1.6)
       capistrano
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -421,9 +421,9 @@ DEPENDENCIES
   acts-as-taggable-on
   brakeman
   cancan
-  capistrano
+  capistrano (~> 2.13.5)
   capistrano-ext
-  capistrano-unicorn
+  capistrano-unicorn (= 0.1.6)
   cocoon
   coffee-rails (~> 3.2.1)
   cucumber-rails
