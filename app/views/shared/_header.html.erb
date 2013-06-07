@@ -14,7 +14,7 @@
         </div>
 
         <div class="show_search hidden">
-          Button_gallery <div class="search_wrapper">
+          <div class="search_wrapper">
             <%= form_tag search_path, method: :get do %>
               <%= text_field_tag :q, params[:q], :class => 'main_search_field' %>
               <%= submit_tag 'Поиск' %>
