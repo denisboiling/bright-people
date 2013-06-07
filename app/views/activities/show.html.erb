@@ -79,7 +79,7 @@
       <% unless @activity.site.blank? %>
       <div class="info_title">
 	      <div class="info_left"><span>Сайт</span></div>
-	      <div class="info_right"><div class="activ_site"><a href=<%= @activity.site %> target="_blank" ><%= @activity.site %></a></div></div>
+	      <div class="info_right"><div class="activ_site"><%= link_to @activity.site, @activity.site, :target => '_blank' %></div></div>
 	    </div>
       <% end %>
       <% unless @activity.phone.blank? %>
