@@ -171,7 +171,7 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 .timer_wrapper .cntSeparator { padding-top:22px; font-weight:bold; color:#af0035; font-size:20px}
 
 .main_content .bank_info { float:right; width:410px; margin-left:3% }
-.main_content .bank_info  .order_bank_catd { background:url(../assets/samp/cards.jpg) no-repeat; padding-top:180px; float:left; width:180px; font-size:11px; text-align:center}
+.main_content .bank_info  .order_bank_catd { background:url(../assets/samp/cards2.jpg) no-repeat; padding-top:180px; float:left; width:180px; font-size:11px; text-align:center}
 .main_content .bank_info .bank_text { color:#525252; font-size:12px; float:left; width:220px; text-align:left; margin-left:10px; background:url(../assets/samp/signature.jpg) no-repeat right 130px;}
 
 .main_content .adv { float:right; margin-left:3%; height:250px; width:213px; border:1px solid #bb224c; text-align:center; padding-top:100px}
