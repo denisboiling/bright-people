@@ -99,7 +99,7 @@ BrightPeople::Application.routes.draw do
   match '/staff/get_categories' => 'staff#get_categories'
 
   match '/main' => 'home#show', as: :main_page
-  root :to => 'home#show'
+  root :to => 'pages#show', :defaults => { :id => 'about_festival'}
 
   get "/pages/*id" => 'pages#show', :as => :page, :format => false
   
