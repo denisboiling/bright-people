@@ -98,10 +98,16 @@ BrightPeople::Application.routes.draw do
   match '/staff/add_video' => 'staff#add_video', :via => :post
   match '/staff/get_categories' => 'staff#get_categories'
 
+<<<<<<< HEAD
   root :to => 'pages#show', :defaults => { :id => 'about_festival'}, as: :main_page
   match '/main' => 'home#show'
   
 
+=======
+  match '/main' => 'home#show', as: :main_page
+  # root :to => 'pages#show', :defaults => { :id => 'about_festival'} 
+  map.root  :controller => 'pages', :defaults => { :id => 'about_festival'} 
+>>>>>>> fe82bafaaf10e62db01f0655209f727c9ea777b6
 
   get "/pages/*id" => 'pages#show', :as => :page, :format => false
   
