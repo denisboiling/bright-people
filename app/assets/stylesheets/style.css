@@ -312,6 +312,14 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 .moscow_agencies .preview_agencies .name { padding-bottom:8px; line-height:1.3}
 .moscow_agencies .preview_agencies .geo { font-size:12px; }
 
+/* rly dirty quote in about_festival */
+
+.alongside  .order_bank_catd { background:url(../assets/samp/cards2.jpg) no-repeat; padding-left:180px; width:auto; font-size:10px; text-align:center}
+.alongside  .bank_text { color:#525252; font-size:12px; width:auto; text-align:left; margin-left:10px; }
+
+.alongside .to_bank_link { margin-top:23px; background:#fff; border:3px solid #bb224c; -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; behavior: url(border-radius.htc); text-decoration:none; font-weight:bold; color:#bb224c; padding:1px 5px; display:inline-block}
+.alongside .to_bank_link:hover { border:3px solid #21a2dc;}
+
 /* COUNCIL BLOCK IN MAIN */
 .council { padding:20px 20px;}
 .council .title { font-family:Futura; border-bottom:2px solid #cdcdc9; color:#4f4f4f; font-size:20px; padding:10px 0px;}
