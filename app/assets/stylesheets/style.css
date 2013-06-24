@@ -229,7 +229,9 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 
 .main_content .bank_info { float:right; width:410px;}
 .main_content .bank_info  .order_bank_catd { background:url(../assets/samp/cards2.jpg) no-repeat; padding-top:177px; float:left; width:180px; font-size:12px; line-height:14px; text-align:center}
-.main_content .bank_info .bank_text { color:#525252; font-size:12px; float:left; width:220px; text-align:left; margin-left:10px; background:url(../assets/samp/signature.jpg) no-repeat right 235px;}
+.main_content .bank_info .bank_text { color:#525252; font-size:12px; float:left; width:220px; text-align:left; margin-left:10px; height:310px; }
+.main_content .bank_info .bank_scroll { overflow:auto; height:270px; }
+
 .main_content .bank_info .to_bank_link { margin-top:23px; background:#fff; border:3px solid #bb224c; -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; behavior: url(/assets/border-radius.htc); text-decoration:none; font-weight:bold; color:#bb224c; padding:1px 5px; display:inline-block}
 .main_content .bank_info .to_bank_link:hover { border:3px solid #21a2dc;}
 
