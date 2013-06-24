@@ -1,74 +1,47 @@
-about_festival:
+﻿about_festival:
   permalink: about_festival
   text: >-
-    <div class="common">
-    <div class="post_category_menu">
+<div class="common">
+  <div class="post_category_menu">
     <ul>
-    <li class="about_ico active"><a href="/pages/about_festival">О фестивале</a></li>
-    <li class="creative_ico"><a href="/creative_group">Творческая группа</a></li>
-    <li class="participants_ico"><a href="/participants?category=music_stage">Программа</a></li>
-    <li class="headliners_ico"><a href="/participants">Хэдлайнеры</a></li>
-    <li class="org_ico"><a href="/pages/org_komitet">Оргкомитет</a></li>
+      <li class="about_ico active"><a href="/pages/about_festival">О фестивале</a></li>
+      <li class="creative_ico"><a href="/creative_group">Творческая группа</a></li>
+      <li class="participants_ico"><a href="/participants?category=music_stage">Программа</a></li>
+      <li class="headliners_ico"><a href="/participants">Хэдлайнеры</a></li>
+      <li class="org_ico"><a href="/pages/org_komitet">Оргкомитет</a></li>
     </ul>
-    <div class="clear">
-    </div>
-    </div>
-    <div id="slider_about_fest">
+    <div class="clear"> </div>
+  </div>
+  <div id="slider_about_fest">
     <div class="slides_container">
-    <div class="slide" style="background:url(/assets/samp/slide_1_small.jpg) no-repeat 0 top; height:395px">
+      <div class="slide" style="background:url(/assets/samp/slide_promo_1.jpg) no-repeat 0 top; height:395px"> </div>
+      <div class="slide" style="background:url(/assets/samp/slide_promo_2.jpg) no-repeat 0 top; height:395px"> </div>
+      <div class="slide" style="background:url(/assets/samp/slide_promo_3.jpg) no-repeat 0 top; height:395px"> </div>
+      <div class="slide" style="background:url(/assets/samp/slide_promo_4.jpg) no-repeat 0 top; height:395px"> </div>
+      <div class="slide" style="background:url(/assets/samp/slide_promo_5.jpg) no-repeat 0 top; height:395px"> </div>
+      <div class="slide" style="background:url(/assets/samp/slide_promo_6.jpg) no-repeat 0 top; height:395px"> </div>
+      <div class="slide" style="background:url(/assets/samp/slide_promo_7.jpg) no-repeat 0 top; height:395px"> </div>
+      <div class="slide" style="background:url(/assets/samp/slide_promo_8.jpg) no-repeat 0 top; height:395px"> </div>
     </div>
-    <div class="slide" style="background:url(/assets/samp/slide_2_small.jpg) no-repeat 0 top; height:395px">
-    </div>
-    <div class="slide" style="background:url(/assets/samp/slide_4_small.jpg) no-repeat 0 top; height:395px">
-    </div>
-    </div>
-    <a href="#" class="next">Вперед</a>
-    <a href="#" class="prev">Назад</a>
-    </div>
-    <div class="about_fest">
-    <div class="left_part">
-    <div class="title">
-    Что такое фестиваль "Яркие люди 2012"?
-    </div>
-    - Это ежегодный международный фестиваль, объединяющий лучшие культурные и образовательные проекты для детей, талантливых педагогов и самых ярких представителей творческих профессий из России и Европы с родителями, заинтересованных во всестороннем развитие своих детей.<br />
-    <br />
-    - Это уличный перформанс-карнавал, в котором участвуют детские и взрослые артисты ведущих московских и зарубежных театров, школ и ВУЗов, цирковые артисты, музыканты.<br />
-    <br />
-    - Это многочисленные мастер-классы, яркие обучающие активности, делающие гостей соучастниками фестиваля.
-    </div>
-    <div class="right_part">
-    <div class="title">
-    О фестивале "Яркие люди 2012"
-    </div>
-    Ежегодный детский фестиваль "Яркие люди" состоится в Парке Горького 18 августа 2012 г.<br />
-    <br />
-    <div class="title">
-    Что вас ждет на фестивале?
-    </div>
-    - 3 сцены: цирковая, театральная, музыкальная;<br />
-      <br />
-      - многочисленные творческие мастерские;<br />
-      <br />
-      - эко-городок;<br />
-      <br />
-      - зона для самых маленьких;<br />
-      <br />
-      - зона детского вокального мастерства;<br />
-      <br />
-      - зона активных игр;<br />
-      <br />
-      - маркет с творческими товарами;<br />
-      <br />
-      - книжная зона;<br />
-      <br />
-      - кафе и мороженое;<br />
-      <br />
-      - зона пикника.
-      </div>
-      <div class="clear">
-      </div>
-      </div>
-      </div>
+    <a href="#" class="next">Вперед</a> <a href="#" class="prev">Назад</a> </div>
+  <div class="about_fest">
+    <div class="title"> Что такое фестиваль "Яркие люди"? </div>
+    <p>Яркие люди это международный семейный творческий фестиваль&nbsp;&mdash; главное событие лета. 7&nbsp;июля c&nbsp;12.00 до&nbsp;23.00 Цветной бульвар, Кузнецкий мост, Неглинная и&nbsp;Столешников переулок.</p>
+    <ul>
+      <li>Грандиозное театральное действие подготовленное современными режиссерами: <i>Ю.Муравицкий</i>, <i>А.Жеребцов</i>, <i>Г.Спичкин</i>, <i>Д.Васильев</i>, <i>Д.Аросьев</i>, <i>Ю.Макеев</i>, <i>Ю.Квятковский</i>, <i>А.Афонин</i></li>
+    </ul>
+    <p>Масштабная интерактивная программа от&nbsp;ведущих студий Москвы: персонажи Картонии, &laquo;Ветер Бюро&raquo;, мастерская балета Егора Симачева, Школа живописи Перотти, студия анимации Павлин, &laquo;СемиНотка&raquo;, клуб кулинарного дизайна &laquo;Академия Домашних волшебников&raquo;, тематический парк профессий &laquo;Город Мастерславль&raquo;, Картонный Папа, танцевальный клуб &laquo;GallaDance&raquo;, дизайн-завод Flacon, Mama&rsquo;s Lab, музей &laquo;Экспериментаниум&raquo;, Vikiland, Булки не&nbsp;растут на&nbsp;деревьях, Шардам, Иннопарк, СэндПро, Картонный Папа, дизайн-завод Flacon, Mama&rsquo;s Lab, музей &laquo;Экспериментаниум&raquo;, и&nbsp;многие другие премьеры лучших уличных театров : &laquo;Tall Brothers, Огненные Люди&raquo;, &laquo;Liquid Theatre&raquo;, &laquo;Театр Тут&raquo; (&laquo;Театр вкуса&raquo;), &laquo;Спам-театр&raquo;, &laquo;Цирк Шарля Ла&nbsp;Танна&raquo;, &laquo;Странствующие куклы господинана Пэжо&raquo;, &laquo;Круг&raquo;.</p>
+    <ul>
+      <li>массовые карнавальные шествия c арт-объктами на колесах</li>
+      <li>яркие перформансы и арт-инсталляции студентов творческих ВУЗов</li>
+      <li>необычные средства передвижения</li>
+      <li>арт-ярмарка</li>
+      <li>насыщенная музыкальная программа: Пакава Ить, Бубамара, Оркестр карнавальной музыки &laquo;Маракату&raquo;, Жулики, Marsh Mellows, ДобраНочь, Видели! Знаем и&nbsp;другие</li>
+      <li>хедлайнер фестиваля&nbsp;&mdash; известная французская театрально-цирковая труппа&nbsp;La compagnie las passagers. Артисты выполняют сложнейшие трюки, будучи подвешенными на&nbsp;стальных тросах, а&nbsp;площадкой для выступлений становятся отвесные стены городских зданий и&nbsp;высотные конструкции</li>
+    </ul>
+  </div>
+</div>
+
 
 org_komitet:
   permalink: org_komitet
