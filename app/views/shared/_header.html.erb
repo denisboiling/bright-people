@@ -1,4 +1,4 @@
-<div class="header_flash_wrapper">
+﻿<div class="header_flash_wrapper">
   <a href="/"></a>
   <%#*<div id="flashcontent_1"></div>%>
   <%= image_tag 'img_header.jpg' %>
@@ -63,6 +63,9 @@
 
         <div id="menu">
           <ul class="">
+            <li <%= 'class=selected' if @main_page %>>
+              <%= link_to 'Главная', '/main' %>
+            </li>
             <li <%= 'class=selected' if @mission_page %>>
               <%= link_to 'Миссия', '/pages/mission' %>
             </li>

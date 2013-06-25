@@ -1,4 +1,5 @@
 class Crew < ActiveRecord::Base
+ default_scope :order => 'description ASC'
   attr_accessible :name, :description, :photo
 
   has_attached_file :photo, styles: { medium: "300x300^#", thumb: '125x125^#' },
