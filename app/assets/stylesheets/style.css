@@ -321,7 +321,7 @@ h1 { font-size:22px; color:#4f4f4f; font-family:Futura}
 
 .alongside .to_bank_link { margin-top:23px; background:#fff; border:3px solid #bb224c; -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; behavior: url(border-radius.htc); text-decoration:none; font-weight:bold; color:#bb224c; padding:1px 5px; display:inline-block}
 .alongside .to_bank_link:hover { border:3px solid #21a2dc;}
-.alongside:first_child { margin-top:0 !important; }
+.sidebar div:first_child { margin-top:0 !important; }
 
 /* ABOUT_FESTIVAL STYLING */
 .about_fest ul { padding:5px 5px 5px 20px; list-style:circle outside none; }
