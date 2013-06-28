@@ -31,7 +31,7 @@ class Participant < ActiveRecord::Base
 
   class << self
     def best(_category)
-      by_category(_category).take(3)
+      by_category(_category).to(2)
     end
   end
 
