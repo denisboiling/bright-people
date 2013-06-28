@@ -1,4 +1,4 @@
-<div class="post_category_menu">
+﻿<div class="post_category_menu">
   <ul>
     <li class="about_ico <%= 'active' if @page.try(:permalink) == 'about_festival' %>">
       <%= link_to 'О фестивале', page_path('about_festival', year: @year) %>
@@ -16,7 +16,7 @@
       <%= link_to 'Оргкомитет', page_path('org_komitet', year: @year) %>
     </li>
     <li class="org_ico <%= 'active' if @page.try(:permalink) == 'inf' %>">
-      <%= link_to 'Инфопартнёры', page_path('inf', year: @year) %>
+      <%= link_to 'Партнёры', page_path('inf', year: @year) %>
     </li>
   </ul>
   <%= render 'shared/archive' %>
