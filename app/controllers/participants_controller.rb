@@ -10,7 +10,7 @@ class ParticipantsController < ApplicationController
       @is_headliners_page = false
     else
       @is_headliners_page = true
-      @best = Participant.where(year: year).headliners.sample(3)
+      @best = Participant.where(year: year).headliners.to(2)
       @participants = Participant.headliners_unless(@best)
     end
     @participants = @participants.where(year: year)
