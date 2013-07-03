@@ -24,7 +24,7 @@ BrightPeople::Application.routes.draw do
   resources :experts, only: [:index, :show]
   resources :sponsors, only: [:index, :show]
   resources :participants, only: [:index]
-  resources :about_company, only: [:index]
+  resources :about_company
 
   resource :comments, only: :create
   resource :search, only: [:show]
