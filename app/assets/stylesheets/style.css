@@ -453,7 +453,7 @@ span.sim_check.active { background-position:0px 0px; }
 
 .entertainment_list .preview_catalog { width:25%;}
 
-.inf_page { min-height: 415px; background: url(/assets/expert_list_bg_small.jpg) no-repeat center 74px; }
+.inf_page { min-height: 415px; }
 .inf_page .preview_catalog { width: 25%; margin-bottom: 10px; }
 .inf_page .preview_catalog .thumb { display: table-cell; vertical-align: middle; height: 114px; text-align: center; }
 .inf_page .preview_catalog .thumb img { width: auto; max-width: 100%; height: auto; max-height: 100%; }
