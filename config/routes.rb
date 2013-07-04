@@ -1,5 +1,6 @@
 BrightPeople::Application.routes.draw do
   match '/crew' => 'crew#index'
+  match '/about_company' => 'pages#show', :defaults => { :id => 'about_company'}
   match '/authors' => 'users#authors'
   match '/vk' => 'vk_pages#create_vk_page'
   match '/vk_token' => 'vk_pages#auth'
@@ -24,7 +25,6 @@ BrightPeople::Application.routes.draw do
   resources :experts, only: [:index, :show]
   resources :sponsors, only: [:index, :show]
   resources :participants, only: [:index]
-  resources :about_company
 
   resource :comments, only: :create
   resource :search, only: [:show]
