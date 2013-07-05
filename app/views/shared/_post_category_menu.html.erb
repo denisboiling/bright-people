@@ -18,6 +18,7 @@
     <li class="org_ico <%= 'active' if @page.try(:permalink) == 'inf' %>">
       <%= link_to 'Партнёры', page_path('inf', year: @year) %>
     </li>
+    <li class="sponsors_ico <%= 'active' if controller_name == 'sponsors' %>"><a href="/sponsors">Попечительский совет</a></li>
   </ul>
   <%= render 'shared/archive' %>
   <div class="clear"></div>
