@@ -13,7 +13,7 @@
       <%= link_to 'Хэдлайнеры', participants_path(year: @year) %>
     </li>
     <li class="org_ico <%= 'active' if @page.try(:permalink) == 'org_komitet' %>">
-      <%= link_to 'Оргкомитет', page_path('org_komitet', year: @year) %>
+      <%= link_to 'Организаторы', page_path('org_komitet', year: @year) %>
     </li>
     <li class="org_ico <%= 'active' if @page.try(:permalink) == 'inf' %>">
       <%= link_to 'Партнёры', page_path('inf', year: @year) %>

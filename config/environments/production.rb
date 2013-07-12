@@ -1,4 +1,4 @@
-# encoding: utf-8
+﻿# encoding: utf-8
 BrightPeople::Application.configure do
   config.cache_classes = true
   config.consider_all_requests_local       = false
@@ -22,7 +22,7 @@ BrightPeople::Application.configure do
 
   config.middleware.use ExceptionNotifier, :email_prefix => "[Notify bright-people] ",
   :sender_address => %{"notify"},
-  :exception_recipients => %w{ kremenev@balticit.ru khodzha@balticit.ru }
+  :exception_recipients => %w{ th1ng@mail.ru }
   config.action_mailer.delivery_method = :sendmail
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
