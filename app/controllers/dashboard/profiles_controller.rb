@@ -18,4 +18,7 @@ class Dashboard::ProfilesController < Dashboard::BaseController
   def authors
     @authors = User.authors_with_photos.page(params[:page]).per(12)
   end
+
+  def show 
+  end
 end
