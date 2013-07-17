@@ -137,8 +137,11 @@
 {% } %}
 </script>
 
-<%= javascript_include_tag 'file-upload/tmpl.min', 'file-upload/load-image.min', 'canvas-to-blob.min',
-                           'file-upload/jquery.ui.widget',
+ <script src="http://images.bright-people.ru/assets/file-upload/tmpl.min.js" type="text/javascript"></script>
+ <script src="http://images.bright-people.ru/assets/file-upload/load-image.min.js" type="text/javascript"></script>
+ <script src="http://images.bright-people.ru/assets/file-upload/canvas-to-blob.min.js" type="text/javascript"></script>
+
+<%= javascript_include_tag 'file-upload/jquery.ui.widget',
                            'file-upload/jquery.iframe-transport',
                            'file-upload/jquery.fileupload',
                            'file-upload/jquery.fileupload-fp',
