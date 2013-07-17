@@ -80,7 +80,7 @@ class ActivitiesController < ApplicationController
 
   def check_published
     return if current_admin_user
-    redirect_to root_path unless @activity.published?
+    redirect_to '/' unless @activity.published?
   end
 
 end

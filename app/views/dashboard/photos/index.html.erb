@@ -1,4 +1,4 @@
-<%= render 'dashboard/shared/profile_menu', current: 'photo' %>
+﻿<%= render 'dashboard/shared/profile_menu', current: 'photo' %>
 
 <% content_for :after_head do %>
   <!--[if IE]>
@@ -137,11 +137,8 @@
 {% } %}
 </script>
 
-<script src="http://blueimp.github.com/JavaScript-Templates/tmpl.min.js"></script>
-<script src="http://blueimp.github.com/JavaScript-Load-Image/load-image.min.js"></script>
-<script src="http://blueimp.github.com/JavaScript-Canvas-to-Blob/canvas-to-blob.min.js"></script>
-
-<%= javascript_include_tag 'file-upload/jquery.ui.widget',
+<%= javascript_include_tag 'file-upload/tmpl.min', 'file-upload/load-image.min', 'canvas-to-blob.min',
+                           'file-upload/jquery.ui.widget',
                            'file-upload/jquery.iframe-transport',
                            'file-upload/jquery.fileupload',
                            'file-upload/jquery.fileupload-fp',
