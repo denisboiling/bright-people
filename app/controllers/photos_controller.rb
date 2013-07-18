@@ -36,7 +36,7 @@ class PhotosController < ApplicationController
     else
       @photos = GalleryPhoto.festival_photos
     end
-    @photos = @photos.order('shot_date ASC').page(params[:page]).per(30)
+    @photos = @photos.order('shot_date ASC').page(params[:page]).per(1000)
     @top_categories = FestivalCategory.top_level
     if request.xhr?
       render partial: 'photos', locals: {photos: @photos}
