@@ -10,7 +10,7 @@
           <%= link_to topcat.title, '#', :class => "cat_link" %>
           <div class="bri-sub">
             <% topcat.children.each do |child| %>
-              <div><%= link_to child.title, '#', :class => "cat_link" %></div>
+              <div><%= link_to child.title, '/festival?category='+child.title, :class => "cat_link" %></div>
             <% end %>
           </div>
         </div>
@@ -21,7 +21,7 @@
   
   <div class="container am-container hidden-photos" id="am-container">
       <%= render 'photos', photos: @photos %>
-       <%= paginate @photos %>
+      <%= paginate @photos %>
   </div>
   <div class="clearfix"></div>
 
