@@ -105,49 +105,6 @@ function festival ()
         , 150
         )
       });
-      event.preventDefault();
-      var category_title = $(this).text();
-      $.ajax({
-        url: "/festival",
-        data: { category: category_title },
-        success: function(data){
-          $('.container').detach()
-          $('.clearfix')
-            .before('<div class="container am-container hidden-photos" id="am-container"></div>')
-            
-          $('#am-container').html(data)
-
-          var imgs   = $('#am-container').find('img')
-          ,   total  = imgs.length
-          ,   loaded = 0
-
-          imgs
-            .each(function()
-            {
-              $(this)
-                .load(function()
-                {
-                  loaded++
-                  if (loaded == total)
-                  {
-                    $('#am-container')
-                      .montage(
-                      {
-                        minsize     : true
-                      , fillLastRow : false
-                      , fixedHeight : 110
-                      , minw        : 110
-                      })
-                      .removeClass('hidden-photos')
-
-
-                    window.pretty_init_photo()
-                  }
-                })
-            })
-        }
-      });
-    });
-  })
+     })
 
 }
