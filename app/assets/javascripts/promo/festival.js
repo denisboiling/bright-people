@@ -105,8 +105,6 @@ function festival ()
         , 150
         )
       });
-
-    $(".cat_link").live("click", function(event){
       event.preventDefault();
       var category_title = $(this).text();
       $.ajax({

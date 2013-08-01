@@ -7,7 +7,7 @@
     <div id="bri-fest-events">
       <% @top_categories.each do |topcat| %>
         <div class="bri-item">
-          <%= link_to topcat.title, '#', :class => "cat_link" %>
+          <%= link_to topcat.title, '/festival?category='+topcat.title, :class => "cat_link" %>
           <div class="bri-sub">
             <% topcat.children.each do |child| %>
               <div><%= link_to child.title, '/festival?category='+child.title, :class => "cat_link" %></div>
