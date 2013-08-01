@@ -64,14 +64,14 @@ function festival ()
             loaded++
             if (loaded == total)
             {
-              $('#am-container')
+              /*$('#am-container')
                 .montage(
                 {
                   minsize     : true
                 , fillLastRow : false
                 , fixedHeight : 110
                 , minw        : 110
-                })
+                })*/
               window.pretty_init_photo()
             }
           })

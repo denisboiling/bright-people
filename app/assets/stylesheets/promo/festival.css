@@ -77,4 +77,8 @@ footer.festival
   {
     color: #999;
   }
-
+.pager { text-align:center}
+.pager ul {}
+.pager li { display:inline-block; behavior: url(/assets/border-radius.htc); -moz-border-radius:6px; border-radius:6px; -webkit-border-radius:6px; -khtml-border-radius:6px; margin:5px; border:1px solid #c1c1c1}
+.pager li a { display:block; height:30px; width:30px; text-align:center; color:#515151; font-size:18px; text-decoration:none; line-height:30px; }
+.pager li span {  display:block; height:30px; width:30px; text-align:center; color:red; font-size:18px; text-decoration:none; line-height:30px;}
