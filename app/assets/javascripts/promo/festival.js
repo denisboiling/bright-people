@@ -49,13 +49,13 @@ function festival ()
   })
     }
 
-    window.pretty_init_photo()
+    /*window.pretty_init_photo()*/
 
     var imgs   = $('#am-container').find('img')
     ,   total  = imgs.length
     ,   loaded = 0
 
-    imgs
+    /*imgs
       .each(function()
       {
         $(this)
@@ -63,19 +63,19 @@ function festival ()
           {
             loaded++
             if (loaded == total)
-            {
-              /*$('#am-container')
+            {*/
+              $('#am-container')
                 .montage(
                 {
                   minsize     : true
                 , fillLastRow : false
                 , fixedHeight : 110
                 , minw        : 110
-                })*/
+                })
               window.pretty_init_photo()
-            }
+            /*}
           })
-      })
+      })*/
 
     $('#bri-fest-events div.bri-item ')
       .mouseenter(function()
